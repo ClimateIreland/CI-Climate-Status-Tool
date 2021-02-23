@@ -1,0 +1,2 @@
+FID,County,Station_Nu,name,Height__m_,Easting,Northing,Latitude,Longitude,Open_Year,Close_Year,Type
+0,Galway,0,SmartBay Wave Buoy,0,0,0,53.228233000000003,-9.268115000000000,0, ,WaveRide/SmartBayObsCenter
