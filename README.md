@@ -10,7 +10,7 @@ Clone the repo (Or download and `unzip` the repo from the [github repo](https://
 git clone https://github.com/ClimateIreland/CI-Status-Report-Dash
 ```
 
-Then `cd` into the app directory and install its dependencies in a virtual environment in the following way:
+Install its dependencies in a virtual environment in the following way:
 
 ```bash
 python3 -m venv CI-Status-Report-Dash
