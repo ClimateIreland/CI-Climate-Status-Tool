@@ -14,7 +14,7 @@ IMAGES_PATH=PATH.joinpath("../assets/images").resolve()
 
 ecvName='Surface Air Temperature'
 bannerImgSrc='assets/images/AtmosphericSections/AirTemp_MetEireann.jpg'
-bannerImgCredit='Credit: Met Eirean'
+bannerImgCredit='Credit: Met Eireann'
 ecvIconSrc='assets/images/icons/surface-temperature.png'
 
 introText="""

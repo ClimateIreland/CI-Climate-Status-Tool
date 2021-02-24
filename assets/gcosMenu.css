@@ -1,0 +1,494 @@
+#gcosGraphicMenu 
+{
+position: relative;
+/*border: 1px solid #000;
+-webkit-box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.75);F
+-moz-box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.75);
+box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.75);*/
+width: 1140px;
+height: 708px;
+background-image: url(https://ane4bf-datap1.s3-eu-west-1.amazonaws.com/wmocms/s3fs-public/ckeditor/files/Globe-ECV_Website_1140-708_white.png?T9YhqXHd9rpGiak06WzxOKhDzqIYp.sd);
+margin:auto;
+}
+/*Icones titles */
+/*Icones titles */
+
+
+#uaa-text, #sa-text, #ac-text, #cry-text, #ant-text, #bio-text, #hyd-text,#sop-text, #obe-text, #obgc-text, #ssop-text
+{
+position: absolute;
+background:rgba(255, 255, 255, 0.8);
+width: auto;/*175px*/
+color: #fff;
+font-weight: bold;
+/*text-shadow: 1px 1px #000000;*/
+display: block;
+padding: 5px;
+}
+#uaa-text
+{
+top:50px;
+left:165px;
+color:#299DD8;	
+}
+#sa-text
+{
+top: 138px;
+left: 415px;
+color:#299DD8;
+}
+
+#ac-text
+{
+/*width: 200px;*/
+top: 85px;
+left: 758px;
+color:#299DD8;	
+}
+#cry-text
+{
+/*width: 150px;*/
+top: 260px;
+left: 555px;
+color:#F09100;
+}
+#ant-text
+{
+top: 295px;
+left: 750px;
+color: #F09100;
+}
+
+#bio-text
+{
+top: 406px;
+left: 800px;
+color: #F09100;
+}
+
+#hyd-text
+{
+top: 595px;
+left: 850px;
+color: #F09100;
+}
+#sop-text
+{
+top: 344px;
+left: 164px;
+color: #00839B;
+}
+#obe-text
+{
+top: 475px;
+left: 360px;
+/*width: 250px;*/
+color: #00839B;
+}
+
+#obgc-text
+{
+top: 485px;
+left: 120px;
+color: #00839B;
+}
+#ssop-text
+{
+top: 570px;
+left: 305px;
+/*width:250px;*/
+color: #00839B;
+}
+/* XXXXX Icones XXXXX*/
+
+#uaa-1,#uaa-2, #uaa-3, #uaa-4, #uaa-5, #uaa-6, #sa-1, #sa-2, #sa-3, #sa-4, #sa-5, #sa-6, #ac-1, #ac-2, #ac-3, #ac-4,
+#cry-1, #cry-2, #cry-3, #cry-4, #ant-1, #ant-2, #bio-1, #bio-2, #bio-3, #bio-4, #bio-5, #bio-6, #bio-7, #bio-8, 
+#hyd-1, #hyd-2, #hyd-3, #hyd-4,#hyd-5,#sop-1, #sop-2, #sop-3, #sop-4, #sop-5, #sop-6, #sop-7, #sop-8, #obe-1, #obe-2,
+#obgc-1, #obgc-2, #obgc-3, #obgc-4, #obgc-5, #obgc-6, #ssop-1, #ssop-2, #ssop-3  
+{
+position: absolute;
+height: 63px;
+
+}
+
+/* Upper Air Atmosphere icones*/
+#uaa-1, #uaa-2, #uaa-3, #uaa-4, #uaa-5, #uaa-6     
+
+{	
+top: 75px;
+}
+
+#uaa-1 
+{
+left: 100px;	
+}
+
+#uaa-2
+{
+left: 150px;
+}
+
+#uaa-3
+{
+left: 200px;
+}
+
+#uaa-4
+{
+left: 250px;
+}
+
+#uaa-5
+{
+left: 300px;
+}
+
+#uaa-6
+{
+left: 350px;
+}
+/* Surface Atmosphere icones*/
+#sa-1, #sa-2, #sa-3, #sa-4, #sa-5, #sa-6
+{
+top:170px;
+}
+
+#sa-1
+{
+left: 350px;
+}
+#sa-2
+{
+left: 400px;
+}
+
+#sa-3
+{
+left: 450px;
+}
+#sa-4
+{
+left: 500px;
+}
+#sa-5
+{
+left: 550px;
+}
+#sa-6
+{
+left: 600px;
+}
+/* Atmospheric Composition icones */
+#ac-1, #ac-2, #ac-3, #ac-4
+{
+top:120px;
+
+}
+
+#ac-1
+{
+left: 750px;
+}
+#ac-2
+{
+left: 800px;
+}
+#ac-3
+{
+left: 850px;
+}
+#ac-4
+{
+left: 900px;
+}
+/*Cryosphere icones*/
+
+#cry-1, #cry-2, #cry-3, #cry-4
+{
+
+top: 285px;
+}
+
+#cry-1
+{
+left:495px;
+
+}
+
+#cry-2
+{
+left:545px;
+}
+#cry-3
+{
+left:595px;
+}
+#cry-4
+{
+left:645px;
+}
+/*Anthoposphere icones*/
+#ant-1, #ant-2
+{
+top: 320px;
+}
+#ant-1
+{
+left:755px;
+}
+#ant-2
+{
+left:805px;
+}
+
+/*Biosphere icones */
+#bio-1, #bio-2, #bio-3, #bio-4
+{
+top: 440px;
+}
+#bio-5, #bio-6, #bio-7, #bio-8
+{
+top: 490px;
+}
+
+#bio-1, #bio-5
+{
+left:740px;
+}
+#bio-2, #bio-6
+{
+left:790px;
+}
+#bio-3, #bio-7
+{
+left:840px;
+}
+#bio-4, #bio-8
+{
+left:890px;
+}
+
+/*Hydrosphere icones*/
+#hyd-1, #hyd-2, #hyd-3, #hyd-4, #hyd-5
+{
+top:625px;
+}
+
+#hyd-1
+{
+left:780px;
+}
+#hyd-2
+{
+left:825px;
+}
+
+#hyd-3
+{
+left:870px;
+}
+
+#hyd-4
+{
+left:915px;
+}
+
+#hyd-5
+{
+left:960px;
+}
+
+
+
+/* Surface Ocean Physics icones */
+#sop-1, #sop-2, #sop-3, #sop-4
+{
+top:370px;
+}
+
+#sop-5, #sop-6, #sop-7, #sop-8
+{
+top:420px;
+}
+
+#sop-1, #sop-5
+{
+left:150px;
+}
+
+#sop-2, #sop-6
+{
+left:200px;
+}
+
+#sop-3, #sop-7
+{
+left:250px;
+}
+
+#sop-4, #sop-8
+{
+left:300px;
+}
+/* Ocean Biology / Ecosystems icones*/
+
+#obe-1, #obe-2
+{
+top:500px;
+}
+
+#obe-1
+{
+left:400px;
+}
+#obe-2
+{
+left:450px;
+}
+/*Ocean Biogeochemistry icones */
+#obgc-1, #obgc-2
+{
+top:520px;
+}
+
+#obgc-3, #obgc-4
+{
+top:570px;
+}
+
+#obgc-5, #obgc-6
+{
+top:620px;
+}
+
+
+#obgc-1, #obgc-3, #obgc-5
+{
+left:150px;
+}
+
+#obgc-2, #obgc-4, #obgc-6
+{
+left:200px;
+}
+/*Subsurface Ocean Physics icones */
+#ssop-1, #ssop-2, #ssop-3
+{
+top:595px;
+}
+
+#ssop-1
+{
+left:320px;
+}
+#ssop-2
+{
+left:370px;
+}
+#ssop-3
+{
+left:420px;
+}
+/* XXXXX Overlays on mouse over XXXXX */
+
+.overlay {
+position: absolute;
+/*top: 16px;*/
+bottom: 0;
+left: 0;
+right: 0;
+height: 100%;
+width: 100%;
+opacity: 0;
+transition: .3s ease;
+/*background-color: #008CBA;*/
+}
+
+#uaa-1:hover .overlay, #uaa-2:hover .overlay, #uaa-3:hover .overlay,
+#uaa-4:hover .overlay, #uaa-5:hover .overlay, #uaa-6:hover .overlay,
+#sa-1:hover .overlay, #sa-2:hover .overlay, #sa-3:hover .overlay,
+#sa-4:hover .overlay, #sa-5:hover .overlay, #sa-6:hover .overlay,
+#ac-1:hover .overlay, #ac-2:hover .overlay, #ac-3:hover .overlay, #ac-4:hover .overlay,
+#cry-1:hover .overlay, #cry-2:hover .overlay, #cry-3:hover .overlay, #cry-4:hover .overlay,
+#ant-1:hover .overlay, #ant-2:hover .overlay, #bio-1:hover .overlay, #bio-2:hover .overlay,
+#bio-3:hover .overlay, #bio-4:hover .overlay, #bio-5:hover .overlay, #bio-6:hover .overlay,
+#bio-7:hover .overlay, #bio-8:hover .overlay, #hyd-1:hover .overlay, #hyd-2:hover .overlay,
+#hyd-3:hover .overlay, #hyd-4:hover .overlay, #hyd-5:hover .overlay, #sop-1:hover .overlay, #sop-2:hover .overlay,
+#sop-3:hover .overlay, #sop-4:hover .overlay, #sop-5:hover .overlay, #sop-6:hover .overlay,
+#sop-7:hover .overlay, #sop-8:hover .overlay, #obe-1:hover .overlay, #obe-2:hover .overlay,
+#obgc-1:hover .overlay, #obgc-2:hover .overlay, #obgc-3:hover .overlay, #obgc-4:hover .overlay,
+#obgc-5:hover .overlay, #obgc-6:hover .overlay, #ssop-1:hover .overlay, #ssop-2:hover .overlay,#ssop-3:hover .overlay
+
+{
+opacity: 1;
+}
+
+
+
+/* XXXXX Dropdown - menus XXXXX */
+
+.dropdown
+{
+position: relative;
+display: inline;
+}
+
+.block-entity-fieldnodebody #container .dropdown img{width:auto !important}
+.dropdown-content
+{
+display:none;
+position: absolute;
+top:60px;
+background-color: #f9f9f9;
+min-width: 160px;
+/*max-width: 250px;
+width: auto;*/
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+padding: 6px 8px;
+z-index: 1;
+text-align: center;
+}
+.dropdown:hover .dropdown-content 
+{
+display:block;
+}
+
+.dropdown-content a
+{
+text-decoration: none;
+
+}
+.dropdown-content .orange a 
+{
+color:#F09100;
+
+}
+
+.dropdown-content .green a
+{
+color:#00839B;
+}
+
+.dropdown-content .blue a	
+{
+color:#009fe3;
+}
+
+.dropdown-content .orange a:hover, .dropdown-content .green a:hover, .dropdown-content .blue a:hover  
+{
+text-decoration:underline;
+
+}
+
+/*Arrow on the dropdown menu */
+
+.dropdown-content:after {
+content: " ";
+position: absolute;
+right: 120px;
+top: -10px;
+border-top: none;
+border-right: 10px solid transparent;
+border-left: 10px solid transparent;
+border-bottom: 15px solid #f9f9f9;
+}

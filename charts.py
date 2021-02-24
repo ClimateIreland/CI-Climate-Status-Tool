@@ -314,8 +314,6 @@ def dissolvedOxygenStationsMap():
             "Lon: %{lat}\u00b0<br>" +
             "<extra></extra>",)
 
-
-
         MIStationsDF=pd.DataFrame()
         MIStationsDF['Station_Nu']=MIStationsDF_origin.Station.unique()
 

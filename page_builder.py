@@ -70,7 +70,8 @@ def build_breadcrumb(ecvName, domainColor,domainBGColor):
             dcc.Link(
                     style={'color':domainColor},
                     children='Climate Ireland', 
-                    href='https://www.climateireland.ie'
+                    href='https://www.climateireland.ie',
+                    target='_blank'
                     ),
             html.Span(
                  children=' / ',
