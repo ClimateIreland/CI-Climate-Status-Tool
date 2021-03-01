@@ -15,6 +15,7 @@
 
 .sr-footer{
     background-color:#353535;
+    margin-top:30px;
     min-height: 50px;
     width:100%;
 }
@@ -37,7 +38,7 @@
 
 .sr-banner-img {
     width:100%;
-    max-width: 1000px;
+    max-width: 1140px;
 }
 
 .sr-img-credit{
@@ -102,7 +103,7 @@ margin-top: 10px;
     margin: -60px 0 0; 
 }
 
-.sr-intro, .sr-trends, .sr-infrastructure {
+.sr-intro, .sr-trends, .sr-infrastructure, .sr-info {
     border-bottom: 1px solid;
     padding-bottom:10px;
 }
@@ -139,3 +140,30 @@ margin-top: 10px;
 .sr-chart-title{
     text-align: center
 }
+
+.sr-nav-carousel {
+
+}
+
+.sr-nav-carousel-img, .sr-nav-carousel-img-hover {
+    width:100%;
+    max-width:100px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: .3s ease;
+}
+
+.sr-nav-carousel-link .sr-nav-carousel-img-hover {
+    opacity: 0;
+    display:none;
+}
+
+.sr-nav-carousel-link:hover > .sr-nav-carousel-img-hover{
+    opacity: 1;
+    display:block;
+}
+
+.sr-nav-carousel-link:hover > .sr-nav-carousel-img{
+    display:none;
+}
+

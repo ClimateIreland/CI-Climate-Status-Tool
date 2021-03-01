@@ -95,7 +95,8 @@ domainBGColor=pb.domainBGColor(domain)
       
 
 def create_layout(app):
-      return html.Div(children=[
+      return html.Div(
+              children=[
         pb.build_banner(domain,
                         ecvName,
                         bannerImgSrc,
@@ -136,5 +137,7 @@ def create_layout(app):
         pb.build_info(infoLinks,
                       domain,
                       domainColor,
-                      domainBGColor)
-                    ],)
+                      domainBGColor),
+                  
+        pb.build_nav_carousel(domainColor)
+        ])

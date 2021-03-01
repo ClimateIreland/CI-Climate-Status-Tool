@@ -20,3 +20,4 @@ share/
 *.tif.aux.xml
 *.tif.ovr
 data/Terrestrial_Domain/4.6LandCover/Figure4.9/
+.DS_Store

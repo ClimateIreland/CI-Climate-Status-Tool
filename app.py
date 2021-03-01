@@ -7,7 +7,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-
+import page_builder as pb
 import dash_bootstrap_components as dbc
 
 from pages import (
@@ -19,8 +19,11 @@ from pages import (
 app = dash.Dash(
     __name__, 
     meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
-    external_stylesheets=[dbc.themes.BOOTSTRAP]
+    external_stylesheets=[
+        dbc.themes.BOOTSTRAP
+        ],
     )
+
 
 app.layout = html.Div(children=[
     dcc.Location(id='url', refresh=False),

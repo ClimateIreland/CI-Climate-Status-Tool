@@ -1,8 +1,9 @@
 
 import dash_core_components as dcc
 import dash_html_components as html
-
+import dash_trich_components as dtc
 import dash_bootstrap_components as dbc
+from settings import MENU_ITEMS
 
 import pathlib
 
@@ -140,14 +141,14 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,domain,su
         children=[
         dbc.Row(
             children=[
-                dbc.Col(className="col-md-2 offset-md-1 text-center my-auto",
+                dbc.Col(className="col-12 col-md-2 offset-md-1 text-center my-auto",
                         children=[
                             html.Img(
                                 className='sr-intro-icon',
                                 src=ecvIconSrc
                             )]
                             ),
-                dbc.Col(className="col-md-6 my-auto",
+                dbc.Col(className="col-12 col-md-6 my-auto text-center",
                         children=[
                             html.H1(
                                 className='sr-ecv-heading',
@@ -257,8 +258,8 @@ def build_trend(trendChartTitle,trendChart,trendCaption,domain, domainColor,doma
         children=[
         html.H3(
             className='sr-section-heading',
-            children='Trends and Observations',
             style={'color':domainColor},
+            children='Trends and Observations',
             ),
         dbc.Row(
             children=[
@@ -300,11 +301,11 @@ def build_infrastructure(infrastructureText,infrastructureMap,domain, domainColo
                 ),
             dbc.Row(
                 children=[
-                    dbc.Col(className="col-md-6 my-auto",
+                    dbc.Col(className="col-12 col-md-6 my-auto",
                     children=[
                         html.P(infrastructureText)]
                     ),
-                    dbc.Col(className="col-md-6",
+                    dbc.Col(className="col-12 col-md-6",
                     children=[dcc.Graph(
                     id='StationsMap',
                     figure=infrastructureMap,
@@ -318,6 +319,7 @@ def build_info(infoLinks, domain,domainColor,domainBGColor):
     return dbc.Container(
         className='sr-info',
         id='info',
+        style={'borderColor':domainColor},
         children=[
             html.H3(
                 className='sr-section-heading',
@@ -327,8 +329,56 @@ def build_info(infoLinks, domain,domainColor,domainBGColor):
             html.Ul(
                 children=[html.Li(children=[
                                 dcc.Link(
+                                    
                                     className='sr-info-item',
+                                    style={'color':domainColor},
                                     children=link['text'], 
                                     href=link['url'],
                                     target='_blank')]) for link in infoLinks])
             ])
+
+def build_nav_carousel(domainColor):
+    return dbc.Container(
+        className='sr-nav-carousel container-fluid',
+        children=[
+            dcc.Link(
+                href='/',
+                children=[
+                    html.H3(
+                        className='sr-section-heading',
+                        children='<new logo link to home>',
+                        style={'color':domainColor},
+                    )]),
+            dtc.Carousel(
+                children=[html.Div(
+                    className='sr-nav-carosuel-item text-center',
+                    children=dcc.Link(
+                            className='sr-nav-carousel-link',
+                            style={'color':item['domainColor']},
+                            href=item['href'],
+                            children=[
+                                html.Img(
+                                    className='sr-nav-carousel-img',
+                                    src='assets/images/icons/'+item['icon-src']),
+                                html.Img(
+                                    className='sr-nav-carousel-img-hover',
+                                    src='assets/images/icons/'+item['icon-hover-src']),
+                                html.Div(
+                                    children=item['name']
+                                    )])
+                ) for item in MENU_ITEMS],
+                slides_to_scroll=1,
+                swipe_to_slide=True,
+                autoplay=False,
+                speed=2000,
+                variable_width=False,
+                center_mode=True,
+                responsive=[
+                {
+                    'breakpoint': 600,
+                    'settings': {
+                        'arrows': True,
+                        'slidesToShow': 1,
+                    }
+                }]
+            )])
