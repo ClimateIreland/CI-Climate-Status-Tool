@@ -3,14 +3,11 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
-# from settings import menu_items
-from settings import MENU_ITEMS
+# from settings import CHAPTERS
+from settings import *
 
 PATH = pathlib.Path(__file__).parent
 ICONS_PATH=PATH.joinpath("../assets/images/icons").resolve()
-
-
-
 
 menu_list = dbc.Container(
         className='sr-menu-list',
@@ -19,28 +16,28 @@ menu_list = dbc.Container(
                 dbc.Col(className="col-12  col-md-4",
                         children=[html.Ul(
                                   className='sr-menu-ul',
-                                    style={'color':pb.domainColor('Atmosphere')},
+                                    style={'color':ATMOSPHERE_COLOR},
                                   children=[html.Li(html.H4('Atmosphere')),
                                             html.Li(children=[dcc.Link(
-                                                className='sr-menu-item',
+                                                className='sr-menu-chapter',
                                                 children='Surface Air Temperature', 
                                                 href='/_2_1_SurfaceAirTemperature'
                                                 )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Precipitation', 
                                                     href=''
                                                     )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Carbon Dioxide', 
                                                     href=''
                                                     )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Methane', 
                                                     href=''
                                                     )])
@@ -49,34 +46,34 @@ menu_list = dbc.Container(
                 dbc.Col(className="col-12 col-md-4",
                         children=[html.Ul(
                                   className='sr-menu-ul',
-                                  style={'color':pb.domainColor('Terrestrial')},
+                                  style={'color':TERRESTRIAL_COLOR},
                                   children=[html.Li(html.H4('Terrestrial')),
                                             html.Li(children=[dcc.Link(
-                                                className='sr-menu-item',
+                                                className='sr-menu-chapter',
                                                 children='Landcover', 
                                                 href=''
                                                 )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='FAPAR', 
                                                     href=''
                                                     )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='River Discharge', 
                                                     href=''
                                                     )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Fire Disturbance', 
                                                     href=''
                                                     )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Anthropogenic Greenhouse Gas Emissions', 
                                                     href=''
                                                     )])
@@ -85,34 +82,34 @@ menu_list = dbc.Container(
                  dbc.Col(className="col-12 col-md-4",
                         children=[html.Ul(
                                   className='sr-menu-ul',
-                                  style={'color':pb.domainColor('Ocean')},
+                                  style={'color':OCEAN_COLOR},
                                   children=[html.Li(html.H4('Ocean')),
                                             html.Li(children=[dcc.Link(
-                                                className='sr-menu-item',
+                                                className='sr-menu-chapter',
                                                 children='Sea Surface Temperature', 
                                                 href=''
                                                 )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Sub-Surface Temperature', 
                                                     href=''
                                                     )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Sea Level', 
                                                     href=''
                                                     )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Inorganic Carbon', 
                                                     href=''
                                                     )]),
                                             html.Li(children=[
                                                 dcc.Link(
-                                                    className='sr-menu-item',
+                                                    className='sr-menu-chapter',
                                                     children='Dissolved Oxygen', 
                                                     href='/_3_7_DissolvedOxygen'
                                                     )])
@@ -161,30 +158,30 @@ menu_graphic = dbc.Container(
                 children='Subsurface Ocean Physics'),
                      ]+
             [html.Div(
-                id=item['id'],
+                id=chapter['id'],
                 className="dropdown",
                 children=[
                     dcc.Link(children=[
-                            html.Img(src='assets/images/icons/'+item['icon-src'])
+                            html.Img(src='assets/images/icons/'+chapter['icon-src'])
                             ], 
-                            href=item['href']),
+                            href=chapter['href']),
                     html.Div(
                         className="overlay",
                         children=[
-                        dcc.Link(children=[
-                            html.Img(src='assets/images/icons/'+item['icon-hover-src'])
-                            ], 
-                            href=item['href'])],),
-                html.Div(
+                            dcc.Link(children=[
+                                html.Img(src='assets/images/icons/'+chapter['icon-hover-src'])
+                                ], 
+                                href=chapter['href'])],),
+                    html.Div(
                             className="dropdown-content",
                             children=[
                                 dcc.Link(
-                                    style={'color':pb.domainColor(item['domain'])},
-                                    children=item['name'],
-                            href=item['href'])
+                                    style={'color':chapter['domain-color']},
+                                    children=chapter['name'],
+                            href=chapter['href'])
                             ]
                             ) ]                  
-                ) for item in MENU_ITEMS           
+                ) for chapter in CHAPTERS           
                 ])
                
 

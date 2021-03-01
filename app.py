@@ -14,6 +14,8 @@ from pages import (
     index,
     _2_1_SurfaceAirTemperature,
     _3_7_DissolvedOxygen,
+    _4_6_LandCover,
+    _4_7_FAPAR,
     )
 
 app = dash.Dash(
@@ -46,6 +48,10 @@ def display_page(pathname):
         return _2_1_SurfaceAirTemperature.create_layout(app)
     elif pathname == "/_3_7_DissolvedOxygen":
         return _3_7_DissolvedOxygen.create_layout(app)
+    elif pathname == "/_4_6_LandCover":
+        return _4_6_LandCover.create_layout(app)
+    elif pathname == "/_4_7_FAPAR":
+        return _4_7_FAPAR.create_layout(app)
     else:
         return index.create_layout(app)
 

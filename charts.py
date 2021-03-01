@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import datetime
+import dateutil
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
@@ -42,7 +44,7 @@ def surfaceAirTempChart():
                             "Tmean: %{y:.2f}\u00b0C<br>" + 
                             "Anomaly: %{text:.2f}\u00b0C<extra></extra>"
                             )
-    # Set the trace for movingAvg, sets plot type and configurations
+   
     movingAvgTrace = go.Scatter(x=dataDF.Year, 
                             y=dataDF.filter11, 
                             text=dataDF['Std Dev (11 year average)'],
@@ -69,8 +71,6 @@ def surfaceAirTempChart():
 
     satChart = make_subplots(specs=[[{"secondary_y": True}]])
 
-    # satChart.add_trace(normalTrace,
-    #                secondary_y=False)
     satChart.add_trace(annualTrace,
                 secondary_y=True,)
     satChart.add_trace(movingAvgTrace,
@@ -369,6 +369,204 @@ def dissolvedOxygenStationsMap():
                                         x=0.01
                                 ), )
         return dissolvedOxygenStationMap
+
+def FAPARTrend():
+        data_path = PATH.joinpath("data/Terrestrial_Domain/4.7FAPAR").resolve()
+        xls = pd.ExcelFile(data_path.joinpath('Figure4.12/FAPAR_CopernicusLandService_10Days_OverIreland_v2.xlsx'))
+        dataDF = pd.read_excel(xls, "FAPAR_10_Daily_OverIreland")  
+        faparDF=pd.DataFrame()
+        faparDF['Date']=dataDF['Unnamed: 1'].dt.date
+        faparDF['Year']=dataDF['Unnamed: 1'].dt.year
+        faparDF['Month']=dataDF['Unnamed: 1'].dt.month
+        faparDF['Day']=dataDF['Unnamed: 1'].dt.day
+        faparDF['Mean']=dataDF['Mean']
+        faparDF['Min']=dataDF['Min']
+        faparDF['Max']=dataDF['Max']
+
+        for index, row in faparDF.iterrows():
+                if row.Month==1 and row.Day<12:
+                        faparDF.at[index,'xAxis']=1
+                elif row.Month==1 and row.Day<22:
+                        faparDF.at[index,'xAxis']=2
+                elif row.Month==1 and row.Day<32:
+                        faparDF.at[index,'xAxis']=3
+                
+                elif row.Month==2 and row.Day<12:
+                        faparDF.at[index,'xAxis']=4
+                elif row.Month==2 and row.Day<22:
+                        faparDF.at[index,'xAxis']=5
+                elif row.Month==2 and row.Day<32:
+                        faparDF.at[index,'xAxis']=6
+                        
+                elif row.Month==3 and row.Day<12:
+                        faparDF.at[index,'xAxis']=7
+                elif row.Month==3 and row.Day<22:
+                        faparDF.at[index,'xAxis']=8
+                elif row.Month==3 and row.Day<32:
+                        faparDF.at[index,'xAxis']=9
+                        
+                elif row.Month==4 and row.Day<12:
+                        faparDF.at[index,'xAxis']=10
+                elif row.Month==4 and row.Day<22:
+                        faparDF.at[index,'xAxis']=11
+                elif row.Month==4 and row.Day<32:
+                        faparDF.at[index,'xAxis']=12
+                        
+                elif row.Month==5 and row.Day<12:
+                        faparDF.at[index,'xAxis']=13
+                elif row.Month==5 and row.Day<22:
+                        faparDF.at[index,'xAxis']=14
+                elif row.Month==5 and row.Day<32:
+                        faparDF.at[index,'xAxis']=15
+                        
+                elif row.Month==6 and row.Day<12:
+                        faparDF.at[index,'xAxis']=16
+                elif row.Month==6 and row.Day<22:
+                        faparDF.at[index,'xAxis']=17
+                elif row.Month==6 and row.Day<32:
+                        faparDF.at[index,'xAxis']=18
+                        
+                elif row.Month==7 and row.Day<12:
+                        faparDF.at[index,'xAxis']=19
+                elif row.Month==7 and row.Day<22:
+                        faparDF.at[index,'xAxis']=20
+                elif row.Month==7 and row.Day<32:
+                        faparDF.at[index,'xAxis']=21
+                        
+                elif row.Month==8 and row.Day<12:
+                        faparDF.at[index,'xAxis']=22
+                elif row.Month==8 and row.Day<22:
+                        faparDF.at[index,'xAxis']=23
+                elif row.Month==8 and row.Day<32:
+                        faparDF.at[index,'xAxis']=24
+                
+                elif row.Month==9 and row.Day<12:
+                        faparDF.at[index,'xAxis']=25
+                elif row.Month==9 and row.Day<22:
+                        faparDF.at[index,'xAxis']=26
+                elif row.Month==9 and row.Day<32:
+                        faparDF.at[index,'xAxis']=27
+                        
+                elif row.Month==10 and row.Day<12:
+                        faparDF.at[index,'xAxis']=28
+                elif row.Month==10 and row.Day<22:
+                        faparDF.at[index,'xAxis']=29
+                elif row.Month==10 and row.Day<32:
+                        faparDF.at[index,'xAxis']=30
+                        
+                elif row.Month==11 and row.Day<12:
+                        faparDF.at[index,'xAxis']=31
+                elif row.Month==11 and row.Day<22:
+                        faparDF.at[index,'xAxis']=32
+                elif row.Month==11 and row.Day<32:
+                        faparDF.at[index,'xAxis']=33
+                        
+                elif row.Month==12 and row.Day<12:
+                        faparDF.at[index,'xAxis']=34
+                elif row.Month==12 and row.Day<22:
+                        faparDF.at[index,'xAxis']=35
+                elif row.Month==12 and row.Day<32:
+                        faparDF.at[index,'xAxis']=36
+        my_text=['Date: '+'{}'.format(date)+'<br>'+
+         'Min: '+'{}'.format(mn)+'<br>'+
+         'Max: '+'{}'.format(mx)+'<br>'
+         for date, mn, mx, in zip(list(faparDF['Date']), 
+                                  list(faparDF['Min']), 
+                                     list(faparDF['Max'])
+                                                            )]
+        colorscale=[
+                # 5% are to be purple
+                [0.0, "rgb(98, 55, 155)"],
+                [0.08, "rgb(98, 55, 155)"],
+                # 20% are to be blue
+                [0.08, "rgb(184, 197, 229)"],
+                [0.28, "rgb(184, 197, 229)"],
+                # 25% are to be green
+                [0.28, "rgb(166, 206, 93)"],
+                [0.507, "rgb(166, 206, 93)"],
+                # 25% are to be yellow
+                [0.507, "rgb(255, 254, 66)"],
+                [0.77, "rgb(255, 254, 66)"],
+                # 20% are to be orange
+                [0.77, "rgb(239, 191, 49)"],
+                [0.92, "rgb(239, 191, 49)"],
+                # 5% are to be red
+                [0.92, "rgb(219, 32, 1)"],
+                [1.0, "rgb(219, 32, 1)"],
+        ]
+        date_list=[datetime.date.today()- dateutil.relativedelta.relativedelta(months = x) for x in range(11,-1,-1)]
+        month_list=[datetime.date.strftime(x,'%b') for x in date_list]
+        faparTrace = go.Heatmap(
+                        z=faparDF.Mean,
+                        x=faparDF.xAxis,
+                        y=faparDF.Year,
+                        text=my_text,
+        #                     colorscale=["purple", "lightblue", "lightgreen", "yellow", "lightorange", "orange","red"],
+        #                     colorscale='rdylbu_r',
+                        colorscale=colorscale,
+                        colorbar=dict(title="Mean (%)",
+                                        tickmode="array",
+                                        ticktext=['<50', '50-56', '56-65', '65-72', '72-76', '>76'],
+                                        tickvals=[0.48, 0.52, 0.59, 0.67, 0.735, 0.77]),
+                        hovertemplate="<b>Mean: %{z:.1%}</b><br>" +
+                                "%{text}" +
+                                "<extra></extra>")
+
+        faparChart = go.Figure(data=faparTrace, layout=ciStatusReportTimeSeriesLayoutDict())
+        faparChart.update_layout(
+                # title_text="<b>10-day average FAPAR over Ireland</b>",
+                yaxis=dict(title="Year",
+                        nticks=20),
+                xaxis=dict(title="Month",
+                        ticktext=month_list,
+                        showgrid=True, gridwidth=3, gridcolor='black',
+                        tickvals=[2,5,8,11,14,17,20,23,26,29,32,35],))
+        faparChart.add_shape(type="line",
+        x0=3.5, y0=1998.6, x1=3.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=6.5, y0=1998.6, x1=6.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=9.5, y0=1998.6, x1=9.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=12.5, y0=1998.6, x1=12.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=15.5, y0=1998.6, x1=15.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=18.5, y0=1998.6, x1=18.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=21.5, y0=1998.6, x1=21.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=24.5, y0=1998.6, x1=24.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=27.5, y0=1998.6, x1=27.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=30.5, y0=1998.6, x1=30.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        faparChart.add_shape(type="line",
+        x0=33.5, y0=1998.6, x1=33.5, y1=2018.4,
+        line=dict(color="White",width=3)
+        )
+        return faparChart
+
 
 
 

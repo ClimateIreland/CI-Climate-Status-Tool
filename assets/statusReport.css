@@ -138,7 +138,8 @@ margin-top: 10px;
 }
 
 .sr-chart-title{
-    text-align: center
+    text-align: center;
+    color:#808080;
 }
 
 .sr-nav-carousel {

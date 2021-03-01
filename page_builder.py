@@ -3,40 +3,32 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_trich_components as dtc
 import dash_bootstrap_components as dbc
-from settings import MENU_ITEMS
+from settings import *
 
 import pathlib
 
-def domainColor(domain):
-    atmosphereColor='#009fe3'
-    oceanColor='#00909e'
-    terrestrialColor='#f39200'
+# def domainColor(domain):
+#     if domain == 'Atmosphere':
+#         return ATMOSPHERE_COLOR
+#     elif domain == 'Ocean':
+#          return OCEAN_COLOR
+#     elif domain == 'Terrestrial':
+#          return TERRESTRIAL_COLOR
+#     else:
+#         return 'black'
 
-    if domain == 'Atmosphere':
-        return atmosphereColor
-    elif domain == 'Ocean':
-         return oceanColor
-    elif domain == 'Terrestrial':
-         return terrestrialColor
-    else:
-        return 'black'
-
-def domainBGColor(domain):
-
-    atmosphereBGColor='#e6f5fc'
-    oceanBGColor='#e6f3f5'
-    terrestrialBGColor='#fef4e6'
-    if domain == 'Atmosphere':
-        return atmosphereBGColor
-    elif domain == 'Ocean':
-         return oceanBGColor
-    elif domain == 'Terrestrial':
-         return terrestrialBGColor
-    else:
-        return 'white'
+# def domainBGColor(domain):
+#     if domain == 'Atmosphere':
+#         return ATMOSPHERE_BG_COLOR
+#     elif domain == 'Ocean':
+#          return OCEAN_BG_COLOR
+#     elif domain == 'Terrestrial':
+#          return TERRESTRIAL_BG_COLOR
+#     else:
+#         return 'white'
 
 
-def build_banner(domain, ecvName, bannerImgSrc, bannerImgCredit, domainColor,domainBGColor):
+def build_banner(ecvName, bannerImgSrc, bannerImgCredit, chapter_dict):
 
     return dbc.Container(
         className="sr-banner container-fluid",
@@ -55,7 +47,7 @@ def build_banner(domain, ecvName, bannerImgSrc, bannerImgCredit, domainColor,dom
                     html.H4(
                         className='sr-banner-heading',
                         children=ecvName,
-                        style={'color':domainColor}
+                        style={'color':chapter_dict['domain-color']}
                     ),
                     html.Img(
                         className='sr-banner-logo',
@@ -63,13 +55,13 @@ def build_banner(domain, ecvName, bannerImgSrc, bannerImgCredit, domainColor,dom
                     ),]),
                 ])
 
-def build_breadcrumb(ecvName, domainColor,domainBGColor):
+def build_breadcrumb(ecvName, chapter_dict):
 
     return dbc.Container(
         className='sr-page-breadcrumb',
         children=[
             dcc.Link(
-                    style={'color':domainColor},
+                    style={'color':chapter_dict['domain-color']},
                     children='Climate Ireland', 
                     href='https://www.climateireland.ie',
                     target='_blank'
@@ -78,7 +70,7 @@ def build_breadcrumb(ecvName, domainColor,domainBGColor):
                  children=' / ',
             ),
             dcc.Link(
-                    style={'color':domainColor},
+                    style={'color':chapter_dict['domain-color']},
                     children='Climate Status Report', 
                     href='/'
                     ),
@@ -86,15 +78,16 @@ def build_breadcrumb(ecvName, domainColor,domainBGColor):
                  children=' / ',
             ),
             html.Span(
-                 style={'color':domainColor},
+                 style={'color':chapter_dict['domain-color']},
                  children=ecvName,
             )
             ]             
     )
-def build_nav(domain, domainColor,domainBGColor):
+
+def build_nav(chapter_dict):
 
     return dbc.Container(
-        style={'borderColor':domainColor, 'color':domainColor},
+        style={'borderColor':chapter_dict['domain-color'], 'color':chapter_dict['domain-color']},
         className='sr-page-nav d-none d-md-block',
         children=[
         dbc.Row(
@@ -103,7 +96,7 @@ def build_nav(domain, domainColor,domainBGColor):
                         children=[
                             html.A(
                                 className='sr-page-nav-item',
-                                style={'color':domainColor},
+                                style={'color':chapter_dict['domain-color']},
                                 children='Observations', 
                                 href='#trends'),
                             ]),
@@ -111,7 +104,7 @@ def build_nav(domain, domainColor,domainBGColor):
                     children=[
                         html.A(
                             className='sr-page-nav-item',
-                            style={'color':domainColor},
+                            style={'color':chapter_dict['domain-color']},
                             children='Infrastructure',
                             href='#infrastructure'),
                         ]),
@@ -119,7 +112,7 @@ def build_nav(domain, domainColor,domainBGColor):
                     children=[
                         html.A(
                             className='sr-page-nav-item',
-                            style={'color':domainColor},
+                            style={'color':chapter_dict['domain-color']},
                             children='Further Info',
                             href='#info'),
                         ]),
@@ -127,16 +120,16 @@ def build_nav(domain, domainColor,domainBGColor):
                     children=[
                         html.A(
                             className='sr-page-nav-item',
-                            style={'color':domainColor},
-                            children='Report Chapter (pdf)',  
+                            style={'color':chapter_dict['domain-color']},
+                            children='Report chapter_dict (pdf)',  
                             href=''),
                         ]),
             ])])
 
-def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,domain,subdomain,scientificArea,authors, domainColor,domainBGColor):
+def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,subdomain,scientificArea,authors, chapter_dict):
 
     return dbc.Container(
-        style={'borderColor':domainColor},
+        style={'borderColor':chapter_dict['domain-color']},
         className='sr-intro',
         children=[
         dbc.Row(
@@ -153,7 +146,7 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,domain,su
                             html.H1(
                                 className='sr-ecv-heading',
                                 children=ecvName,
-                                style={'color':domainColor},
+                                style={'color':chapter_dict['domain-color']},
                             )]
                             ),
 
@@ -178,7 +171,7 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,domain,su
             children=[
                 html.Ul(
                     className='sr-bullet-ul',
-                    style={'backgroundColor':domainBGColor},
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
                     children=[
                         html.Li(className='mb-4',
                         children=bulletPoint1),
@@ -191,7 +184,7 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,domain,su
 
         ),
         dbc.Row(
-            style={'color':domainColor},
+            style={'color':chapter_dict['domain-color']},
             children=[
                 dbc.Col(
                 
@@ -200,27 +193,27 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,domain,su
                 ),
                 dbc.Col(
                     className='col-xs-6 col-md-10',
-                    children=domain
+                    children=chapter_dict['domain']
                 ),
             ]
         ),
         dbc.Row(
-            style={'color':domainColor},
+            style={'color':chapter_dict['domain-color']},
             children=[
                 dbc.Col(
-                    style={'backgroundColor':domainBGColor},
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
                     className='col-xs-6 col-md-2',
                     children='Subdomain:'
                 ),
                 dbc.Col(
-                    style={'backgroundColor':domainBGColor},
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
                     className='col-xs-6 col-md-10',
                     children=subdomain
                 ),
             ]
         ),
         dbc.Row(
-            style={'color':domainColor},
+            style={'color':chapter_dict['domain-color']},
             children=[
                 dbc.Col(
                     className='col-xs-6 col-md-2',
@@ -233,32 +226,32 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,domain,su
             ]
         ),
         dbc.Row(
-            style={'color':domainColor},
+            style={'color':chapter_dict['domain-color']},
             children=[
                 dbc.Col(
                     className='col-xs-6 col-md-2',
                     children='Authors:',
-                    style={'backgroundColor':domainBGColor},
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
                 ),
                 dbc.Col(
                     className='col-xs-6 col-md-10',
                     children=authors,
-                    style={'backgroundColor':domainBGColor},
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
                 ),
             ]
         ),
             ])
 
-def build_trend(trendChartTitle,trendChart,trendCaption,domain, domainColor,domainBGColor):
+def build_trend(trendChartTitle,trendChart,trendCaption, chapter_dict):
 
     return dbc.Container(
         className='sr-trends',
-        style={'borderColor':domainColor},
+        style={'borderColor':chapter_dict['domain-color']},
         id='trends',
         children=[
         html.H3(
             className='sr-section-heading',
-            style={'color':domainColor},
+            style={'color':chapter_dict['domain-color']},
             children='Trends and Observations',
             ),
         dbc.Row(
@@ -287,17 +280,17 @@ def build_trend(trendChartTitle,trendChart,trendCaption,domain, domainColor,doma
                     ),
             ])
 
-def build_infrastructure(infrastructureText,infrastructureMap,domain, domainColor,domainBGColor):
+def build_infrastructure(infrastructureText,infrastructureMap,chapter_dict):
 
     return dbc.Container(
         className='sr-infrastructure',
-        style={'borderColor':domainColor},
+        style={'borderColor':chapter_dict['domain-color']},
         id='infrastructure',
         children=[
             html.H3(
                 className='sr-section-heading',
                 children='Observation Infrastructure',
-                style={'color':domainColor},
+                style={'color':chapter_dict['domain-color']},
                 ),
             dbc.Row(
                 children=[
@@ -314,30 +307,30 @@ def build_infrastructure(infrastructureText,infrastructureMap,domain, domainColo
                     ])
                 ])
 
-def build_info(infoLinks, domain,domainColor,domainBGColor):
+def build_info(infoLinks, chapter_dict):
 
     return dbc.Container(
         className='sr-info',
         id='info',
-        style={'borderColor':domainColor},
+        style={'borderColor':chapter_dict['domain-color']},
         children=[
             html.H3(
                 className='sr-section-heading',
                 children='Further Information',
-                style={'color':domainColor},
+                style={'color':chapter_dict['domain-color']},
                 ),
             html.Ul(
                 children=[html.Li(children=[
                                 dcc.Link(
                                     
                                     className='sr-info-item',
-                                    style={'color':domainColor},
+                                    style={'color':chapter_dict['domain-color']},
                                     children=link['text'], 
                                     href=link['url'],
                                     target='_blank')]) for link in infoLinks])
             ])
 
-def build_nav_carousel(domainColor):
+def build_nav_carousel(chapter_dict):
     return dbc.Container(
         className='sr-nav-carousel container-fluid',
         children=[
@@ -347,14 +340,14 @@ def build_nav_carousel(domainColor):
                     html.H3(
                         className='sr-section-heading',
                         children='<new logo link to home>',
-                        style={'color':domainColor},
+                        style={'color':chapter_dict['domain-color']},
                     )]),
             dtc.Carousel(
                 children=[html.Div(
                     className='sr-nav-carosuel-item text-center',
                     children=dcc.Link(
                             className='sr-nav-carousel-link',
-                            style={'color':item['domainColor']},
+                            style={'color':item['domain-color'],'textDecoration':'none'},
                             href=item['href'],
                             children=[
                                 html.Img(
@@ -366,7 +359,7 @@ def build_nav_carousel(domainColor):
                                 html.Div(
                                     children=item['name']
                                     )])
-                ) for item in MENU_ITEMS],
+                ) for item in CHAPTERS],
                 slides_to_scroll=1,
                 swipe_to_slide=True,
                 autoplay=False,

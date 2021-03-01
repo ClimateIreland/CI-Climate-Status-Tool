@@ -5,13 +5,14 @@ import dash_bootstrap_components as dbc
 
 import pathlib
 import page_builder as pb
+from settings import CHAPTERS
 from charts import surfaceAirTempChart, surfaceAirTempStationsMap
 
 # get relative data folder
 PATH = pathlib.Path(__file__).parent
 IMAGES_PATH=PATH.joinpath("../assets/images").resolve()
 
-
+chapter=2.1
 ecvName='Surface Air Temperature'
 bannerImgSrc='assets/images/AtmosphericSections/AirTemp_MetEireann.jpg'
 bannerImgCredit='Credit: Met Eireann'
@@ -89,55 +90,42 @@ infoLinks=[{'text':'Surface Temperature ESSENTIAL CLIMATE VARIABLES (ECV). GCOS 
 
 
 
+
 ########################################################################################################################
-domainColor=pb.domainColor(domain)
-domainBGColor=pb.domainBGColor(domain)
-      
+chapter_dict=next((item for item in CHAPTERS if item['chapter']==chapter),None)
 
 def create_layout(app):
       return html.Div(
               children=[
-        pb.build_banner(domain,
-                        ecvName,
+        pb.build_banner(ecvName,
                         bannerImgSrc,
                         bannerImgCredit,
-                        domainColor,
-                        domainBGColor
+                        chapter_dict
                         ),
-        pb.build_breadcrumb(ecvName, 
-                     domainColor,
-                     domainBGColor),
-        pb.build_nav(domain,
-                     domainColor,
-                     domainBGColor),
+        pb.build_breadcrumb(ecvName,
+        chapter_dict),
+        pb.build_nav(chapter_dict),
         pb.build_intro(ecvName,
-                       introText,bulletPoint1,
+                       introText,
+                       bulletPoint1,
                        bulletPoint2,
                        ecvIconSrc,
-                       domain,
                        subdomain,
                        scientificArea,
                        authors,
-                       domainColor,
-                       domainBGColor
+                       chapter_dict
                        ),
         pb.build_trend(trendChartTitle,
                        trendChart,
                        trendCaption,
-                       domain,
-                       domainColor,
-                       domainBGColor
+                       chapter_dict
                        ),
         pb.build_infrastructure(infrastructureText,
                                 infrastructureMap,
-                                domain,
-                                domainColor,
-                                domainBGColor
+                                chapter_dict
                                 ),
         pb.build_info(infoLinks,
-                      domain,
-                      domainColor,
-                      domainBGColor),
+        chapter_dict),
                   
-        pb.build_nav_carousel(domainColor)
+        pb.build_nav_carousel(chapter_dict)
         ])

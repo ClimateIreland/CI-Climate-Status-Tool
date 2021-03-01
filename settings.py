@@ -1,11 +1,12 @@
-import page_builder as pb
-
-
 ATMOSPHERE_COLOR='#009fe3'
 OCEAN_COLOR='#00909e'
 TERRESTRIAL_COLOR='#f39200'
 
-MENU_ITEMS = [
+ATMOSPHERE_BG_COLOR='#e6f5fc'
+OCEAN_BG_COLOR='#e6f3f5'
+TERRESTRIAL_BG_COLOR='#fef4e6'
+
+CHAPTERS = [
 
         # Upper-air Atmoshere
         # {
@@ -66,13 +67,15 @@ MENU_ITEMS = [
         #  'domain':'Atmosphere',
                 # },
                 {
+        'chapter':2.1,
         'id':'sa-5',
         'name':'Surface Temperature', 
         'href':'/_2_1_SurfaceAirTemperature',
         'icon-src':'ico-sa-temperature.png',
         'icon-hover-src':'ico-sa-temperature_hover.png',
         'domain':'Atmosphere',
-        'domainColor':ATMOSPHERE_COLOR
+        'domain-color':ATMOSPHERE_COLOR,
+        'domain-bg-color':ATMOSPHERE_BG_COLOR
    
                 },
             # Atmoshperic Composition
@@ -96,35 +99,39 @@ MENU_ITEMS = [
         #         },
         # Biosphere
             {
+        'chapter':4.6,
         'id':'bio-2',
         'name':'Land Cover', 
-        'href':'',
+        'href':'/_4_6_LandCover',
         'icon-src':'ico-bio-land-cover.png',
         'icon-hover-src':'ico-bio-land-cover_hover.png',
         'domain':'Terrestrial',
-        'domainColor':TERRESTRIAL_COLOR
-
+        'domain-color':TERRESTRIAL_COLOR,
+        'domain-bg-color':TERRESTRIAL_BG_COLOR
                 },
                     {
+        'chapter':4.7,
         'id':'bio-7',
         'name':'Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)', 
-        'href':'',
+        'href':'/_4_7_FAPAR',
         'icon-src':'ico-bio-fapr.png',
         'icon-hover-src':'ico-bio-fapr_hover.png',
         'domain':'Terrestrial',
-        'domainColor':TERRESTRIAL_COLOR
-
+        'domain-color':TERRESTRIAL_COLOR,
+        'domain-bg-color':TERRESTRIAL_BG_COLOR
                 },
 
         # Ocean Biogeochemistry
 
                         {
+        'chapter':3.7,
         'id':'obgc-2',
         'name':'Oxygen', 
         'href':'/_3_7_DissolvedOxygen',
         'icon-src':'ico-obgc-oxygen.png',
         'icon-hover-src':'ico-obgc-oxygen_hover.png',
         'domain':'Ocean',
-        'domainColor':OCEAN_COLOR
+        'domain-color':OCEAN_COLOR,
+        'domain-bg-color':OCEAN_BG_COLOR
                 }
                 ]
