@@ -5,18 +5,15 @@ import dash_bootstrap_components as dbc
 
 import pathlib
 import page_builder as pb
-from settings import CHAPTERS
+from settings import *
 from charts import FAPARTrend, surfaceAirTempStationsMap
 
-# get relative data folder
-PATH = pathlib.Path(__file__).parent
-IMAGES_PATH=PATH.joinpath("../assets/images").resolve()
 
 chapter=4.7
 ecvName='Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)'
-bannerImgSrc='assets/images/TerrestrialSections/FAPAR_ Vytenis Malisauskas.jpg'
+bannerImgSrc=IMAGES_PATH+'TerrestrialSections/FAPAR_ Vytenis Malisauskas.jpg'
 bannerImgCredit='Credit: Vytenis Malisauskas'
-ecvIconSrc='assets/images/icons/fapar.png'
+ecvIconSrc=IMAGES_PATH+'icons/fapar.png'
 
 introText="""
         Radiation from the sun plays an essential role in all biological process on Earth. 

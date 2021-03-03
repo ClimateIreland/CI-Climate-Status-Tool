@@ -5,18 +5,14 @@ import dash_bootstrap_components as dbc
 
 import pathlib
 import page_builder as pb
-from settings import CHAPTERS
+from settings import *
 from charts import surfaceAirTempChart, surfaceAirTempStationsMap
-
-# get relative data folder
-PATH = pathlib.Path(__file__).parent
-IMAGES_PATH=PATH.joinpath("../assets/images").resolve()
 
 chapter=2.1
 ecvName='Surface Air Temperature'
-bannerImgSrc='assets/images/AtmosphericSections/AirTemp_MetEireann.jpg'
+bannerImgSrc=IMAGES_PATH+'AtmosphericSections/AirTemp_MetEireann.jpg'
 bannerImgCredit='Credit: Met Eireann'
-ecvIconSrc='assets/images/icons/surface-temperature.png'
+ecvIconSrc=IMAGES_PATH+'icons/surface-temperature.png'
 
 introText="""
         Surface air temperature is a key climate indicator and has widespread impacts 

@@ -5,18 +5,14 @@ import dash_bootstrap_components as dbc
 
 import pathlib
 import page_builder as pb
-from settings import CHAPTERS
+from settings import *
 from charts import dissolvedOxygenTrend, dissolvedOxygenStationsMap
-
-# get relative data folder
-PATH = pathlib.Path(__file__).parent
-IMAGES_PATH=PATH.joinpath("../assets/images").resolve()
 
 chapter=3.7
 ecvName='Dissolved Oxygen'
-bannerImgSrc='assets/images/OceanicSections/Dissolved OxygenTomasz_Szumski.JPG'
+bannerImgSrc=IMAGES_PATH+'OceanicSections/Dissolved OxygenTomasz_Szumski.JPG'
 bannerImgCredit='Credit: Tomasz_Szumski'
-ecvIconSrc='assets/images/icons/oxygen.png'
+ecvIconSrc=IMAGES_PATH+'icons/oxygen.png'
 
 introText="""
         Oxygen is essential for ocean life. 

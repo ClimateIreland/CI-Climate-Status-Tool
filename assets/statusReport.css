@@ -20,6 +20,22 @@
     width:100%;
 }
 
+.menu_intro_textbox{
+    background-color:#e6f3f5;
+    border-radius:10px;
+    padding:10px;
+    margin-top:15px;
+}
+
+.sr-menu-logo{
+    max-width:300px;
+    margin-top:15px
+}
+
+.sr-menu-list{
+    margin-top:15px;
+}
+
 .sr-menu-ul {
     list-style-type: none;
 }
@@ -29,7 +45,7 @@
 }
 
 .sr-banner {
-    max-height: 450px;
+ 
     overflow-y: hidden;
     position:relative;
     border-radius:3px;
@@ -38,6 +54,7 @@
 
 .sr-banner-img {
     width:100%;
+    max-height: 450px;
     max-width: 1140px;
 }
 
@@ -50,25 +67,34 @@
 }
 
 .sr-banner-inner {
-    width:40%;
-    min-width:300px;
-    height: 200px;
+    width:80%;
+    /* min-width:300px; */
+    max-width:600px;
+    /* height: 300px; */
     position:absolute;
     bottom:10%;
     left:15px;
-    background-color:#fff;
-    opacity:0.8;
+    background-color:rgb(255, 255, 255, 0.9);
     padding:10px;
+    padding-left:20px;
     border-radius:3px;
 }
 
 .sr-banner-heading{
 
+
 }
 
 .sr-banner-logo {
-    height:100px;
-    margin-left: 20px;
+    width:80%;
+    max-width:300px;
+    margin-top:10px
+    /* margin-left: 20px; */
+}
+
+.sr-banner-org-icon{
+    max-height:70px;
+    margin-bottom:10px;
 }
 
 .sr-page-nav-row {
@@ -143,7 +169,17 @@ margin-top: 10px;
 }
 
 .sr-nav-carousel {
+margin-top:15px;
+}
 
+.sr-nav-carousel-logo {
+    max-width:250px;
+    padding: 10px;
+    border-radius: 10px;   
+}
+
+.sr-nav-carousel-logo:hover{
+    background-color:#e6f3f5;
 }
 
 .sr-nav-carousel-img, .sr-nav-carousel-img-hover {
@@ -167,4 +203,6 @@ margin-top: 10px;
 .sr-nav-carousel-link:hover > .sr-nav-carousel-img{
     display:none;
 }
+
+
 

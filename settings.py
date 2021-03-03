@@ -1,3 +1,10 @@
+import pathlib
+
+PATH = pathlib.Path(__file__).parent
+
+DATA_PATH='/Users/dan/OneDrive - University College Cork/Status_Tool/'
+IMAGES_PATH='assets/images/'
+
 ATMOSPHERE_COLOR='#009fe3'
 OCEAN_COLOR='#00909e'
 TERRESTRIAL_COLOR='#f39200'

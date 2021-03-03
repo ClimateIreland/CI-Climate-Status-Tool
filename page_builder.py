@@ -44,15 +44,53 @@ def build_banner(ecvName, bannerImgSrc, bannerImgCredit, chapter_dict):
             html.Div(
                 className="sr-banner-inner",
                 children=[
-                    html.H4(
-                        className='sr-banner-heading',
+                    html.H1(
+                        className='sr-banner-heading d-none d-md-block',
                         children=ecvName,
                         style={'color':chapter_dict['domain-color']}
                     ),
-                    html.Img(
-                        className='sr-banner-logo',
-                        src='assets/images/CSRI_logo_with_partners.png'
-                    ),]),
+                    dbc.Row(
+                        children=[
+                            dbc.Col(
+                                className='',
+                                children=
+                                html.Img(
+                                    className='sr-banner-logo',
+                                    src='assets/images/CSRI2020Logo.png'
+                                ),)]),
+                    dbc.Row(
+                        children=[
+                            dbc.Col(
+                                className='col-sm-3 offset-md-1 my-auto text-center',
+                                children=html.Img(
+                                    className='sr-banner-org-icon',
+                                    src='assets/images/EPA_logo.gif'
+                                )
+                                ),
+                            dbc.Col(
+                                className='col-sm-3 my-auto text-center',
+                                children=html.Img(
+                                    className='sr-banner-org-icon',
+                                    src='assets/images/UCC_Logo_2018_low.png'
+                                )
+                                ),
+                            dbc.Col(
+                                className='col-sm-3 my-auto text-center',
+                                children=html.Img(
+                                    className='sr-banner-org-icon',
+                                    src='assets/images/mi_logo.gif'
+                                )
+                                ),
+                            dbc.Col(
+                                className='col-sm-2 my-auto text-center',
+                                children=html.Img(
+                                    className='sr-banner-org-icon',
+                                    src='assets/images/met.ie-logo.gif'
+                                )
+                                )
+                            ],
+                        )
+                    ]),
                 ])
 
 def build_breadcrumb(ecvName, chapter_dict):
@@ -121,7 +159,7 @@ def build_nav(chapter_dict):
                         html.A(
                             className='sr-page-nav-item',
                             style={'color':chapter_dict['domain-color']},
-                            children='Report chapter_dict (pdf)',  
+                            children='Report Chapter (pdf)',  
                             href=''),
                         ]),
             ])])
@@ -334,44 +372,51 @@ def build_nav_carousel(chapter_dict):
     return dbc.Container(
         className='sr-nav-carousel container-fluid',
         children=[
-            dcc.Link(
-                href='/',
-                children=[
-                    html.H3(
-                        className='sr-section-heading',
-                        children='<new logo link to home>',
-                        style={'color':chapter_dict['domain-color']},
-                    )]),
-            dtc.Carousel(
-                children=[html.Div(
-                    className='sr-nav-carosuel-item text-center',
-                    children=dcc.Link(
-                            className='sr-nav-carousel-link',
-                            style={'color':item['domain-color'],'textDecoration':'none'},
-                            href=item['href'],
+            dbc.Row(
+                dbc.Col(
+                    className='text-center',
+                    children=[
+                        dcc.Link(
+                            href='/',
                             children=[
                                 html.Img(
-                                    className='sr-nav-carousel-img',
-                                    src='assets/images/icons/'+item['icon-src']),
-                                html.Img(
-                                    className='sr-nav-carousel-img-hover',
-                                    src='assets/images/icons/'+item['icon-hover-src']),
-                                html.Div(
-                                    children=item['name']
-                                    )])
-                ) for item in CHAPTERS],
-                slides_to_scroll=1,
-                swipe_to_slide=True,
-                autoplay=False,
-                speed=2000,
-                variable_width=False,
-                center_mode=True,
-                responsive=[
-                {
-                    'breakpoint': 600,
-                    'settings': {
-                        'arrows': True,
-                        'slidesToShow': 1,
-                    }
-                }]
-            )])
+                                    className='sr-nav-carousel-logo',
+                                    src='assets/images/CSRI2020Logo.png'
+                                    )])]
+                                    )),
+            dbc.Row(
+                dbc.Col(
+                    dtc.Carousel(
+                        children=[
+                            html.Div(
+                                className='sr-nav-carosuel-item text-center',
+                                children=dcc.Link(
+                                        className='sr-nav-carousel-link',
+                                        style={'color':item['domain-color'],'textDecoration':'none'},
+                                        href=item['href'],
+                                        children=[
+                                            html.Img(
+                                                className='sr-nav-carousel-img',
+                                                src='assets/images/icons/'+item['icon-src']),
+                                            html.Img(
+                                                className='sr-nav-carousel-img-hover',
+                                                src='assets/images/icons/'+item['icon-hover-src']),
+                                            html.Div(
+                                                children=item['name']
+                                                )])
+                            ) for item in CHAPTERS],
+                            slides_to_scroll=1,
+                            swipe_to_slide=True,
+                            autoplay=False,
+                            speed=2000,
+                            variable_width=False,
+                            center_mode=True,
+                            responsive=[
+                            {
+                                'breakpoint': 600,
+                                'settings': {
+                                    'arrows': True,
+                                    'slidesToShow': 1,
+                                }
+                            }]
+                        )))])

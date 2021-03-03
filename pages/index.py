@@ -189,9 +189,69 @@ menu_graphic = dbc.Container(
 def create_layout(app):
         # Page layouts
     return html.Div(children=[
-        html.H1(
-          className='text-center',
-          children='Climate Status Report Ireland'),
+        dbc.Row(
+                dbc.Col(
+                    className='text-center',
+                    children=[
+                        dcc.Link(
+                            href='/',
+                            children=[
+                                html.Img(
+                                    className='sr-menu-logo',
+                                    src='assets/images/CSRI2020Logo.png'
+                                    )])]
+                                    )),
+        dbc.Row(
+                        children=[
+                            dbc.Col(
+                                className='col-3 col-sm-2 offset-sm-2 my-auto text-center',
+                                children=html.Img(
+                                    className='sr-banner-org-icon',
+                                    src='assets/images/EPA_logo.gif'
+                                )
+                                ),
+                            dbc.Col(
+                                className='col-3 col-sm-2 my-auto text-center',
+                                children=html.Img(
+                                    className='sr-banner-org-icon',
+                                    src='assets/images/UCC_Logo_2018_low.png'
+                                )
+                                ),
+                            dbc.Col(
+                                className='col-3 col-sm-2 my-auto text-center',
+                                children=html.Img(
+                                    className='sr-banner-org-icon',
+                                    src='assets/images/mi_logo.gif'
+                                )
+                                ),
+                            dbc.Col(
+                                className='col-3 col-sm-1 my-auto text-center',
+                                children=html.Img(
+                                    className='sr-banner-org-icon',
+                                    src='assets/images/met.ie-logo.gif'
+                                )
+                                )
+                            ],
+                        ),
+        dbc.Row(
+            dbc.Col(
+                html.Div(
+                    className='menu_intro_textbox',
+                    children=[
+                        html.P("""
+        As an island on the western boundary of Europe facing the Atlantic Ocean Ireland is ideally positioned to 
+        measure and assess ongoing climate change. 
+        This is achieved through baseline and background measurements of essential climate variables (ECVs).
+        """),
+                             html.P("""
+        The Climate Status Report Ireland 2020 assesses the current state of Irelands climate, and can be explored through this online resource.
+        """),
+
+                    ]
+                )
+                )
+
+            ),
         menu_graphic,
         menu_list,
 
