@@ -29,10 +29,10 @@ bulletPoint2="""
         by artificial surfaces and forests and a decrease in wetland areas which include peatlands.
         """
 
-domain='Terrestrial'
-subdomain='Biology'
-scientificArea='Biosphere'
-authors='Walther C.A. Cámaro García, Ned Dwyer'
+# domain='Terrestrial'
+# subdomain='Biology'
+# scientificArea='Biosphere'
+# authors='Walther C.A. Cámaro García, Ned Dwyer'
 
 trendChartTitle='Percentage of Cumulative Change within Each Class'
 trendChart=LandCoverTrend()
@@ -54,9 +54,21 @@ infrastructureText="""
         """
 infrastructureMap=surfaceAirTempStationsMap()
 
-infoLinks=[{'text':'text', 
-            'url':'https://gcos.wmo.int/en/essential-climate-variables/surface-temperature/'},
-
+infoLinks=[
+    {'text':'Land Cover ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS', 
+     'url':'https://gcos.wmo.int/en/essential-climate-variables/land-cover/'},
+        {'text':'The CORINE dataset in Ireland', 
+     'url':'https://www.epa.ie/soilandbiodiversity/soils/land/corine/'},
+        {'text':'View CORINE maps for all of Europe', 
+     'url':'https://land.copernicus.eu/pan-european/corine-land-cover'},
+        {'text':'The ILMO project', 
+     'url':'https://landmapping.wordpress.com/ilmo/'},
+        {'text':'The TALAM project', 
+     'url':'https://landmapping.wordpress.com/talam/'},
+        {'text':'The BRIAR project', 
+     'url':'https://landmapping.wordpress.com/briar-biomass-retrieval-in-ireland-using-active-remote-sensing/'},
+   {'text':'Irish Times article on Ireland´s new land cover mapping initiative', 
+     'url':'https://www.irishtimes.com/news/science/ireland-needs-needs-more-detailed-land-use-maps-1.4010070'},
             ]
 
 chapter_dict=next((item for item in CHAPTERS if item['chapter']==chapter),None)
@@ -196,10 +208,10 @@ def create_layout(app):
                        introText,
                        bulletPoint1,
                        bulletPoint2,
-                       ecvIconSrc,
-                       subdomain,
-                       scientificArea,
-                       authors,
+                    #    ecvIconSrc,
+                    #    subdomain,
+                    #    scientificArea,
+                    #    authors,
                        chapter_dict
                        ),
         # pb.build_trend(trendChartTitle,

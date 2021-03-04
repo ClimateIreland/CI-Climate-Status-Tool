@@ -29,10 +29,10 @@ bulletPoint2="""
         validate and support satellite observations.
         """
 
-domain='Terrestrial'
-subdomain='Biology'
-scientificArea='Biosphere'
-authors='Walther C.A. Cámaro García, Ned Dwyer'
+# domain='Terrestrial'
+# subdomain='Biology'
+# scientificArea='Biosphere'
+# authors='Walther C.A. Cámaro García, Ned Dwyer'
 
 trendChartTitle='10-day average FAPAR over Ireland'
 trendChart=FAPARTrend()
@@ -56,9 +56,17 @@ infrastructureText="""
         """
 infrastructureMap=surfaceAirTempStationsMap()
 
-infoLinks=[{'text':'text', 
-            'url':'https://gcos.wmo.int/en/essential-climate-variables/surface-temperature/'},
-
+infoLinks=[
+        {'text':'FAPAR ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS', 
+            'url':'https://gcos.wmo.int/en/essential-climate-variables/fapar/'},
+                {'text':'Copernicus Global Land Service (CGLS) data', 
+            'url':'https://land.copernicus.eu/global/products/fapar'},
+                {'text':'Copernicus vegetation phenology and productivity product', 
+            'url':'https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity'},
+                {'text':'Joint Research Centre (JRC) FAPAR project', 
+            'url':'https://fapar.jrc.ec.europa.eu/Home.php'},
+                {'text':'Sentinel Global Vegetation Index (FAPAR) description', 
+            'url':'https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-3-olci/level-2/olci-global-vegetation-index-fapar'},
             ]
 
 ######################################################################################################################
@@ -104,10 +112,10 @@ def create_layout(app):
                        introText,
                        bulletPoint1,
                        bulletPoint2,
-                       ecvIconSrc,
-                       subdomain,
-                       scientificArea,
-                       authors,
+                    #    ecvIconSrc,
+                    #    subdomain,
+                    #    scientificArea,
+                    #    authors,
                        chapter_dict
                        ),
         pb.build_trend(trendChartTitle,

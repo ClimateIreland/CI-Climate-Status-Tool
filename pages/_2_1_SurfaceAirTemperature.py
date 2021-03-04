@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import surfaceAirTempChart, surfaceAirTempStationsMap
+from charts import Figure_2_1, surfaceAirTempStationsMap
 
 chapter=2.1
 ecvName='Surface Air Temperature'
@@ -31,13 +31,13 @@ bulletPoint2="""
         increased over the last 60 years.
         """
 
-domain='Atmosphere'
-subdomain='Surface'
-scientificArea='Energy and Temperature'
-authors='Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin'
+# domain='Atmosphere'
+# subdomain='Surface'
+# scientificArea='Energy and Temperature'
+# authors='Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin'
 
 trendChartTitle='Mean Surface Air Temperature (1900-2019)'
-trendChart=surfaceAirTempChart()
+trendChart=Figure_2_1()
 
 trendCaption="""
         A time series graph of mean annual observed
@@ -105,10 +105,10 @@ def create_layout(app):
                        introText,
                        bulletPoint1,
                        bulletPoint2,
-                       ecvIconSrc,
-                       subdomain,
-                       scientificArea,
-                       authors,
+                #        ecvIconSrc,
+                #        subdomain,
+                #        scientificArea,
+                #        authors,
                        chapter_dict
                        ),
         pb.build_trend(trendChartTitle,

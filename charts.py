@@ -23,7 +23,37 @@ stationColor = {
     'EPA':'purple'
 }
 
-def surfaceAirTempChart():
+def empty_chart():
+        print('Show no_chart')
+        noTrace1 = go.Scatter(x=[0,1], 
+                             y=[0,1],
+                             marker=dict(
+                                color='black')
+                                )
+        noTrace2 = go.Scatter(x=[0,1], 
+                              y=[1,0],
+                              marker=dict(
+                                color='black'))
+
+        empty_chart = go.Figure(data=[noTrace1, noTrace2])
+        empty_chart.update_layout(
+                    showlegend=False,
+                    margin={'t':0, 'b':0}
+        )
+
+        empty_chart.add_annotation(
+                x=0.5, 
+                y=0.8,
+                text='Error: Chart or data not found.<br>The chart may still be in development.',
+                showarrow=False,
+        )
+        return empty_chart
+
+
+def Figure_2_1():
+    """
+    Mean Surface Air Temperature (1900-2019) 
+    """
 #     data_path = PATH.joinpath('data/Atmospheric_Domain/2.1SurfaceAirTemperature').resolve()
 #     xls = pd.ExcelFile(data_path.joinpath('Figure2.1/AnnualMeanSurfaceAirTemperature1900-2019.xlsx'))
     data_path = DATA_PATH+'Atmospheric_Domain/2.1SurfaceAirTemperature/Figure2.1/'
@@ -72,15 +102,15 @@ def surfaceAirTempChart():
                             hoverinfo='skip',
     )
 
-    satChart = make_subplots(specs=[[{'secondary_y': True}]])
+    Figure_2_1 = make_subplots(specs=[[{'secondary_y': True}]])
 
-    satChart.add_trace(annualTrace,
+    Figure_2_1.add_trace(annualTrace,
                 secondary_y=True,)
-    satChart.add_trace(movingAvgTrace,
+    Figure_2_1.add_trace(movingAvgTrace,
                 secondary_y=False)
-    satChart.add_trace(linearTrendTrace,
+    Figure_2_1.add_trace(linearTrendTrace,
                 secondary_y=False)
-    satChart.update_layout(
+    Figure_2_1.update_layout(
                     #    title='<b>Mean Surface Air Temperature (1900-2019)</b>',
                     title_x=0.5, # Centers the title
                     height=450,
@@ -102,7 +132,7 @@ def surfaceAirTempChart():
                             itemdoubleclick=False,
                                     ), )
     # Update y-axes layout seperatly due to the double y-axis chart
-    satChart.update_yaxes(title_text='Difference (\u00b0C) from 1961-1990 Normal',
+    Figure_2_1.update_yaxes(title_text='Difference (\u00b0C) from 1961-1990 Normal',
                     secondary_y=False,
                     range=[-0.9,1.3],
                     showgrid=False,
@@ -117,7 +147,7 @@ def surfaceAirTempChart():
     #                   linecolor = '#356b6a'
                         )
 
-    satChart.update_yaxes(title_text='Mean Annual Temperature (\u00b0C)',
+    Figure_2_1.update_yaxes(title_text='Mean Annual Temperature (\u00b0C)',
                     secondary_y=True,
                     range=[8.65,10.85],
                     showgrid=False,
@@ -130,7 +160,7 @@ def surfaceAirTempChart():
                         )
                             
     # X AXIS
-    satChart.update_xaxes(
+    Figure_2_1.update_xaxes(
                     title='Year',
                     fixedrange=True, #stops the users being able to zoom
                     tickformat = '000', #number format
@@ -140,14 +170,14 @@ def surfaceAirTempChart():
     #                  linecolor = '#356b6a'
     ) # colour of axis line
 
-    satChart.add_annotation(x=2015, 
+    Figure_2_1.add_annotation(x=2015, 
                             y=0.055,
                             text='1961-1990 Normal',
                             showarrow=False,
                             font=dict(
                                 color='#E1AF00'),)
 
-    return satChart
+    return Figure_2_1
 
 
 def surfaceAirTempStationsMap():

@@ -27,13 +27,13 @@ padding: 5px;
 }
 #uaa-text
 {
-top:50px;
+top:45px;
 left:165px;
 color:#299DD8;	
 }
 #sa-text
 {
-top: 138px;
+top: 133px;
 left: 415px;
 color:#299DD8;
 }
@@ -41,46 +41,46 @@ color:#299DD8;
 #ac-text
 {
 /*width: 200px;*/
-top: 85px;
+top: 80px;
 left: 758px;
 color:#299DD8;	
 }
 #cry-text
 {
 /*width: 150px;*/
-top: 260px;
+top: 255px;
 left: 555px;
 color:#F09100;
 }
 #ant-text
 {
-top: 295px;
+top: 285px;
 left: 750px;
 color: #F09100;
 }
 
 #bio-text
 {
-top: 406px;
+top: 401px;
 left: 800px;
 color: #F09100;
 }
 
 #hyd-text
 {
-top: 595px;
+top: 590px;
 left: 850px;
 color: #F09100;
 }
 #sop-text
 {
-top: 344px;
+top: 335px;
 left: 164px;
 color: #00839B;
 }
 #obe-text
 {
-top: 475px;
+top: 470px;
 left: 360px;
 /*width: 250px;*/
 color: #00839B;
@@ -94,7 +94,7 @@ color: #00839B;
 }
 #ssop-text
 {
-top: 570px;
+top: 560px;
 left: 305px;
 /*width:250px;*/
 color: #00839B;

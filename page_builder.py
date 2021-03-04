@@ -164,7 +164,7 @@ def build_nav(chapter_dict):
                         ]),
             ])])
 
-def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,subdomain,scientificArea,authors, chapter_dict):
+def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,chapter_dict):
 
     return dbc.Container(
         style={'borderColor':chapter_dict['domain-color']},
@@ -176,7 +176,7 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,subdomain
                         children=[
                             html.Img(
                                 className='sr-intro-icon',
-                                src=ecvIconSrc
+                                src=IMAGES_PATH+'icons/'+chapter_dict['icon-lg-src']
                             )]
                             ),
                 dbc.Col(className="col-12 col-md-6 my-auto text-center",
@@ -209,12 +209,15 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,subdomain
             children=[
                 html.Ul(
                     className='sr-bullet-ul',
-                    style={'backgroundColor':chapter_dict['domain-bg-color']},
+                    style={
+                        'backgroundColor':chapter_dict['domain-bg-color']},
                     children=[
-                        html.Li(className='mb-4',
-                        children=bulletPoint1),
-                        html.Li(className='',
-                        children=bulletPoint2),
+                        html.Li(
+                            className='mb-4',
+                            children=bulletPoint1),
+                        html.Li(
+                            className='',
+                            children=bulletPoint2),
                         ]
                         )
                     ]
@@ -246,7 +249,7 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,subdomain
                 dbc.Col(
                     style={'backgroundColor':chapter_dict['domain-bg-color']},
                     className='col-xs-6 col-md-10',
-                    children=subdomain
+                    children=chapter_dict['subdomain']
                 ),
             ]
         ),
@@ -259,7 +262,7 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,subdomain
                 ),
                 dbc.Col(
                     className='col-xs-6 col-md-10',
-                    children=scientificArea
+                    children=chapter_dict['scientific-area']
                 ),
             ]
         ),
@@ -273,7 +276,7 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,ecvIconSrc,subdomain
                 ),
                 dbc.Col(
                     className='col-xs-6 col-md-10',
-                    children=authors,
+                    children=chapter_dict['authors'],
                     style={'backgroundColor':chapter_dict['domain-bg-color']},
                 ),
             ]
@@ -358,9 +361,10 @@ def build_info(infoLinks, chapter_dict):
                 style={'color':chapter_dict['domain-color']},
                 ),
             html.Ul(
+                className='sr-bullet-ul',
+                style={'color':chapter_dict['domain-color']},
                 children=[html.Li(children=[
                                 dcc.Link(
-                                    
                                     className='sr-info-item',
                                     style={'color':chapter_dict['domain-color']},
                                     children=link['text'], 
@@ -397,10 +401,10 @@ def build_nav_carousel(chapter_dict):
                                         children=[
                                             html.Img(
                                                 className='sr-nav-carousel-img',
-                                                src='assets/images/icons/'+item['icon-src']),
+                                                src='assets/images/icons/'+item['icon-hover-src']),
                                             html.Img(
                                                 className='sr-nav-carousel-img-hover',
-                                                src='assets/images/icons/'+item['icon-hover-src']),
+                                                src='assets/images/icons/'+item['icon-src']),
                                             html.Div(
                                                 children=item['name']
                                                 )])

@@ -9,6 +9,17 @@ from settings import *
 PATH = pathlib.Path(__file__).parent
 ICONS_PATH=PATH.joinpath("../assets/images/icons").resolve()
 
+atmoshpere_chapters=[]
+ocean_chapters=[]
+terrestrial_chapters=[]
+for chapter in CHAPTERS:
+    if chapter['domain'] == 'Atmosphere':
+        atmoshpere_chapters.append(chapter)
+    elif chapter['domain'] == 'Ocean':
+        ocean_chapters.append(chapter)
+    elif chapter['domain'] == 'Terrestrial':
+        terrestrial_chapters.append(chapter)
+
 menu_list = dbc.Container(
         className='sr-menu-list',
         children=[dbc.Row(
@@ -17,104 +28,42 @@ menu_list = dbc.Container(
                         children=[html.Ul(
                                   className='sr-menu-ul',
                                     style={'color':ATMOSPHERE_COLOR},
-                                  children=[html.Li(html.H4('Atmosphere')),
-                                            html.Li(children=[dcc.Link(
+                                  children=[html.Li(html.H4('Atmosphere'))]+
+                                                    [html.Li(children=[dcc.Link(
+                                                style={'color':ATMOSPHERE_COLOR},
                                                 className='sr-menu-chapter',
-                                                children='Surface Air Temperature', 
-                                                href='/_2_1_SurfaceAirTemperature'
-                                                )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Precipitation', 
-                                                    href=''
-                                                    )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Carbon Dioxide', 
-                                                    href=''
-                                                    )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Methane', 
-                                                    href=''
-                                                    )])
-                                                    ])
+                                                children=str(chapter['chapter']) + ' ' + chapter['name'], 
+                                                href=chapter['href']
+                                                )]) for chapter in atmoshpere_chapters]
+                                                    )
                                                     ]),
-                dbc.Col(className="col-12 col-md-4",
+       
+               dbc.Col(className="col-12  col-md-4",
                         children=[html.Ul(
                                   className='sr-menu-ul',
-                                  style={'color':TERRESTRIAL_COLOR},
-                                  children=[html.Li(html.H4('Terrestrial')),
-                                            html.Li(children=[dcc.Link(
+                                    style={'color':OCEAN_COLOR},
+                                  children=[html.Li(html.H4('Ocean'))]+
+                                                    [html.Li(children=[dcc.Link(
+                                                style={'color':OCEAN_COLOR},
                                                 className='sr-menu-chapter',
-                                                children='Landcover', 
-                                                href=''
-                                                )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='FAPAR', 
-                                                    href=''
-                                                    )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='River Discharge', 
-                                                    href=''
-                                                    )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Fire Disturbance', 
-                                                    href=''
-                                                    )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Anthropogenic Greenhouse Gas Emissions', 
-                                                    href=''
-                                                    )])
-                                                    ])
+                                                children=str(chapter['chapter']) + ' ' + chapter['name'], 
+                                                href=chapter['href']
+                                                )]) for chapter in ocean_chapters]
+                                                    )
                                                     ]),
-                 dbc.Col(className="col-12 col-md-4",
+             dbc.Col(className="col-12  col-md-4",
                         children=[html.Ul(
                                   className='sr-menu-ul',
-                                  style={'color':OCEAN_COLOR},
-                                  children=[html.Li(html.H4('Ocean')),
-                                            html.Li(children=[dcc.Link(
+                                    style={'color':TERRESTRIAL_COLOR},
+                                  children=[html.Li(html.H4('Terrestrial'))]+
+                                                    [html.Li(children=[dcc.Link(
+                                                style={'color':TERRESTRIAL_COLOR},
                                                 className='sr-menu-chapter',
-                                                children='Sea Surface Temperature', 
-                                                href=''
-                                                )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Sub-Surface Temperature', 
-                                                    href=''
-                                                    )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Sea Level', 
-                                                    href=''
-                                                    )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Inorganic Carbon', 
-                                                    href=''
-                                                    )]),
-                                            html.Li(children=[
-                                                dcc.Link(
-                                                    className='sr-menu-chapter',
-                                                    children='Dissolved Oxygen', 
-                                                    href='/_3_7_DissolvedOxygen'
-                                                    )])
-                                                    ])
-                                                    ]),             
+                                                children=str(chapter['chapter']) + ' ' + chapter['name'], 
+                                                href=chapter['href']
+                                                )]) for chapter in terrestrial_chapters]
+                                                    )
+                                                    ]),        
                         ])
         ])
 

@@ -31,10 +31,10 @@ bulletPoint2="""
         major mortalities of marine organisms.
         """
 
-domain='Ocean'
-subdomain='Biogeochemistry'
-scientificArea='Biosphere'
-authors='Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes, Rob Thomas, Evin McGovern'
+# domain='Ocean'
+# subdomain='Biogeochemistry'
+# scientificArea='Biosphere'
+# authors='Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes, Rob Thomas, Evin McGovern'
 
 trendChartTitle='Dissolved Oxygen Saturation (2002-2019)'
 trendChart=dissolvedOxygenTrend()
@@ -65,14 +65,96 @@ infrastructureText="""
         """
 infrastructureMap=dissolvedOxygenStationsMap()
 
-infoLinks=[{'text':'Oxygen ESSENTIAL CLIMATE VARIABLES (ECV). GCOS FACTSHEETS', 
-            'url':'https://gcos.wmo.int/en/essential-climate-variables/oxygen/'},
+infoLinks=[
+        {'text':'Oxygen ESSENTIAL CLIMATE VARIABLES (ECV). GCOS FACTSHEETS', 
+         'url':'https://gcos.wmo.int/en/essential-climate-variables/oxygen/'},
+        {'text':'Silke, J., O\'Beirn, F. & Cronin, M. (2005), "Karenia mikimotoi: An Exceptional Dinoflagellate Bloom in Western Irish Waters, Summer 2005", Marine Environment and Health Series No. 21, Marine Institute 2005 ', 
+         'url':'https://oar.marine.ie/handle/10793/240'},
+        {'text':'Linden, O., (2019), Evidence for ocean deoxygenation and its patterns, in: Ocean Deoxygenation: Everyone´s Problem, Laffoley, D. & Baxter, J.M. (eds), IUCN, Geneva.', 
+         'url':'https://doi.org/10.2305/IUCN.CH.2019.13.en'},
+        {'text':'Information about ICES', 
+         'url':'https://www.ices.dk/'},
+        {'text':'The GO-SHIP programme', 
+         'url':'https://www.go-ship.org/About.html'},
+        {'text':'The Marine Institute operated Research Vessels', 
+         'url':'https://www.marine.ie/Home/site-area/infrastructure-facilities/research-vessels/research-vessels'},
+        {'text':'Water Quality in Ireland under the Water Framework Directive', 
+         'url':'http://www.epa.ie/pubs/reports/water/waterqua/waterqualityinireland2013-2018.html'},
             ]
 
 
 
-########################################################################################################################
+################################################################################
 chapter_dict=next((item for item in CHAPTERS if item['chapter']==chapter),None)
+
+################################################################################
+
+trendCaption2="""
+Above shows a deep-water dissolved oxygen section as measured during the annual
+ Rockall Ocean Climate Survey in winter 20131. The lowest values are observed in the subsurface waters at 
+ approximately 500m depth due to respiration associated with decomposition of organic matter. 
+"""
+custom_trend= dbc.Container(
+        className='sr-trends',
+        style={'borderColor':chapter_dict['domain-color']},
+        id='trends',
+        children=[
+        html.H3(
+            className='sr-section-heading',
+            style={'color':chapter_dict['domain-color']},
+            children='Trends and Observations',
+            ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendChartTitle),
+                            dcc.Graph(
+                                figure=trendChart,
+                                config={'displayModeBar': False})]
+                            )
+                        ]
+                    ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.P(
+                                className='sr-chart-caption',
+                                children=trendCaption
+                                )]
+                            )
+                        ]
+                    ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.Img(
+                                # src=DATA_PATH+'Oceanic_Domain/3.7Oxygen/Figure3.16/Figure3.16_OxygenConcentrationSectionRockallTrough.png'
+                                className='w-100',
+                                src=IMAGES_PATH+'Figure3.16_OxygenConcentrationSectionRockallTrough.png'
+                                )]
+                            )
+                        ]
+                    ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.P(
+                                className='sr-chart-caption',
+                                children=trendCaption2
+                                )]
+                            )
+                        ]
+                    ),
+            ])
+
+
+##############################################################################
 
 def create_layout(app):
       return html.Div(
@@ -88,17 +170,18 @@ def create_layout(app):
                        introText,
                        bulletPoint1,
                        bulletPoint2,
-                       ecvIconSrc,
-                       subdomain,
-                       scientificArea,
-                       authors,
+                #        ecvIconSrc,
+                #        subdomain,
+                #        scientificArea,
+                #        authors,
                        chapter_dict
                        ),
-        pb.build_trend(trendChartTitle,
-                       trendChart,
-                       trendCaption,
-                       chapter_dict
-                       ),
+        # pb.build_trend(trendChartTitle,
+        #                trendChart,
+        #                trendCaption,
+        #                chapter_dict
+        #                ),
+        custom_trend,
         pb.build_infrastructure(infrastructureText,
                                 infrastructureMap,
                                 chapter_dict
