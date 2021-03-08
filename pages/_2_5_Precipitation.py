@@ -8,20 +8,27 @@ import page_builder as pb
 from settings import *
 from charts import empty_chart
 
-chapter_num='0'
-bannerImgSrc=IMAGES_PATH+''
-bannerImgCredit=''
+chapter_num='2.5'
+bannerImgSrc=IMAGES_PATH+'AtmosphericSections/Precipitation_Glendalough-Lynn Walsh.JPG'
+bannerImgCredit='Lynn Walsh'
 
 introText="""
-
+Rainfall (precipitation) plays a vital role in the water cycle and water balance and is essential for the maintenance of life.   
+An understanding of precipitation distribution and trends is essential for assessing potential effects of climate change on 
+the supply of water and for supporting both flood and drought mitigation initiatives. 
         """
 bulletPoint1="""
-
+Globally there has been a discernible intensification in heavy rainfall events over the second half of the 20th century.
         """
 bulletPoint2="""
-
+In Ireland the decade from 2006 to 2015 has been the wettest in the period 1711 to 2016.
         """
-bulletPoints=[bulletPoint1,bulletPoint2]
+
+bulletPoint3="""
+In Ireland the decade from 2006 to 2015 has been the wettest in the period 1711 to 2016.
+        """
+bulletPoints=[bulletPoint1,bulletPoint2,bulletPoint3]
+
 trendChartTitle=''
 trendChart=empty_chart()
 

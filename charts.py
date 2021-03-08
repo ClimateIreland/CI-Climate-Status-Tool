@@ -24,7 +24,6 @@ stationColor = {
 }
 
 def empty_chart():
-        print('Show no_chart')
         noTrace1 = go.Scatter(x=[0,1], 
                              y=[0,1],
                              marker=dict(

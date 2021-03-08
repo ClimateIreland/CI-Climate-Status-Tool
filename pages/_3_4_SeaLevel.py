@@ -8,18 +8,23 @@ import page_builder as pb
 from settings import *
 from charts import empty_chart
 
-chapter_num='0'
-bannerImgSrc=IMAGES_PATH+''
-bannerImgCredit=''
+chapter_num='3.4'
+bannerImgSrc=IMAGES_PATH+'OceanicSections/Sea_Level_Aldert Otter.jpg'
+bannerImgCredit='Aldert Otter'
 
 introText="""
-
+        Sea Level is among the primary indicators of global climate change. 
+        Sea level continues to rise because increasing global temperatures cause 
+        thermal expansion of the oceans as well as increasing freshwater input due 
+        to melting land ice sources (e.g. glaciers and ice sheets, permafrost). 
         """
 bulletPoint1="""
-
+        Estimates show that globally, average sea level has risen approximately 160 mm 
+        since 1902, at a rate of approximately 1.4 mm per year. 
         """
 bulletPoint2="""
-
+        Satellite observations indicate that the sea level around Ireland has 
+        risen by approximately 2-3mm/year since the early 1990s.
         """
 bulletPoints=[bulletPoint1,bulletPoint2]
 trendChartTitle=''

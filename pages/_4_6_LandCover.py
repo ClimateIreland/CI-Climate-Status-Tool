@@ -8,11 +8,9 @@ import page_builder as pb
 from settings import *
 from charts import LandCoverArea1990, LandCoverArea2018, LandCoverTrend, surfaceAirTempStationsMap
 
-chapter=4.6
-ecvName='Land Cover'
+chapter_num='4.6'
 bannerImgSrc=IMAGES_PATH+'TerrestrialSections/Land_Cover_IMG_1918 Barry O Dwyer.jpg'
-bannerImgCredit='Credit: Barry O Dwyer'
-ecvIconSrc=IMAGES_PATH+'icons/land-cover.png'
+bannerImgCredit='Barry O Dwyer'
 
 introText="""
         Land cover - the observed (bio)-physical cover on the Earth’s surface, 
@@ -28,7 +26,7 @@ bulletPoint2="""
         Land cover observations since 1990 show increases in the area covered 
         by artificial surfaces and forests and a decrease in wetland areas which include peatlands.
         """
-
+bulletPoints=[bulletPoint1,bulletPoint2]
 # domain='Terrestrial'
 # subdomain='Biology'
 # scientificArea='Biosphere'
@@ -71,7 +69,7 @@ infoLinks=[
      'url':'https://www.irishtimes.com/news/science/ireland-needs-needs-more-detailed-land-use-maps-1.4010070'},
             ]
 
-chapter_dict=next((item for item in CHAPTERS if item['chapter']==chapter),None)
+chapter_dict=next((item for item in CHAPTERS if item['chapter-num']==chapter_num),None)
 ########################################################################################################################
 
 trendCaption2="""
@@ -196,22 +194,14 @@ custom_infrastructure=  dbc.Container(
 def create_layout(app):
       return html.Div(
               children=[
-        pb.build_banner(ecvName,
-                        bannerImgSrc,
+        pb.build_banner(bannerImgSrc,
                         bannerImgCredit,
                         chapter_dict
                         ),
-        pb.build_breadcrumb(ecvName,
-        chapter_dict),
+        pb.build_breadcrumb(chapter_dict),
         pb.build_nav(chapter_dict),
-        pb.build_intro(ecvName,
-                       introText,
-                       bulletPoint1,
-                       bulletPoint2,
-                    #    ecvIconSrc,
-                    #    subdomain,
-                    #    scientificArea,
-                    #    authors,
+        pb.build_intro(introText,
+                       bulletPoints,
                        chapter_dict
                        ),
         # pb.build_trend(trendChartTitle,

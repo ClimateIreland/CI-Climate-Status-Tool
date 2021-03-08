@@ -8,18 +8,24 @@ import page_builder as pb
 from settings import *
 from charts import empty_chart
 
-chapter_num='0'
-bannerImgSrc=IMAGES_PATH+''
-bannerImgCredit=''
+chapter_num='4.1'
+bannerImgSrc=IMAGES_PATH+'TerrestrialSections/River_Discharge_NedDwyer_P1090399.JPG'
+bannerImgCredit='Ned Dwyer'
 
 introText="""
-
+        Changes in climate affect rivers and the flora, fauna and humans that depend on them, 
+        in the form of increasing droughts, floods and waterborne diseases. 
+        Changes in precipitation patterns, temperature, groundwater runoff and sea level 
+        rise as well as human use and interventions affect river conditions, generating 
+        impacts on energy production, infrastructure, human health, agriculture and ecosystems.
         """
 bulletPoint1="""
-
+        Analysis of a long time series of more than 50 years of data (1972 to 2017) 
+        indicates an increase in river flows across most of the country
         """
 bulletPoint2="""
-
+        Analysis of a shorter data period from 1992 suggests an increase in potential 
+        drought conditions, especially in the east. 
         """
 bulletPoints=[bulletPoint1,bulletPoint2]
 trendChartTitle=''

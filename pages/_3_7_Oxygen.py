@@ -8,11 +8,9 @@ import page_builder as pb
 from settings import *
 from charts import dissolvedOxygenTrend, dissolvedOxygenStationsMap
 
-chapter=3.7
-ecvName='Dissolved Oxygen'
+chapter_num='3.7'
 bannerImgSrc=IMAGES_PATH+'OceanicSections/Dissolved OxygenTomasz_Szumski.JPG'
-bannerImgCredit='Credit: Tomasz_Szumski'
-ecvIconSrc=IMAGES_PATH+'icons/oxygen.png'
+bannerImgCredit='Tomasz_Szumski'
 
 introText="""
         Oxygen is essential for ocean life. 
@@ -30,7 +28,7 @@ bulletPoint2="""
         2012 are associated with summer phytoplankton blooms which caused 
         major mortalities of marine organisms.
         """
-
+bulletPoints=[bulletPoint1,bulletPoint2]
 # domain='Ocean'
 # subdomain='Biogeochemistry'
 # scientificArea='Biosphere'
@@ -85,7 +83,7 @@ infoLinks=[
 
 
 ################################################################################
-chapter_dict=next((item for item in CHAPTERS if item['chapter']==chapter),None)
+chapter_dict=next((item for item in CHAPTERS if item['chapter-num']==chapter_num),None)
 
 ################################################################################
 
@@ -159,21 +157,14 @@ custom_trend= dbc.Container(
 def create_layout(app):
       return html.Div(
               children=[
-        pb.build_banner(ecvName,
-                        bannerImgSrc,
+        pb.build_banner(bannerImgSrc,
                         bannerImgCredit,
                         chapter_dict
                         ),
-        pb.build_breadcrumb(ecvName,chapter_dict),
+        pb.build_breadcrumb(chapter_dict),
         pb.build_nav(chapter_dict),
-        pb.build_intro(ecvName,
-                       introText,
-                       bulletPoint1,
-                       bulletPoint2,
-                #        ecvIconSrc,
-                #        subdomain,
-                #        scientificArea,
-                #        authors,
+        pb.build_intro(introText,
+                       bulletPoints,
                        chapter_dict
                        ),
         # pb.build_trend(trendChartTitle,

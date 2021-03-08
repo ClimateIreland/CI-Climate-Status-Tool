@@ -28,7 +28,7 @@ import pathlib
 #         return 'white'
 
 
-def build_banner(ecvName, bannerImgSrc, bannerImgCredit, chapter_dict):
+def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
 
     return dbc.Container(
         className="sr-banner container-fluid",
@@ -39,14 +39,14 @@ def build_banner(ecvName, bannerImgSrc, bannerImgCredit, chapter_dict):
             ),
             html.P(
                 className='sr-img-credit',
-                children=bannerImgCredit
+                children='Credit: '+ bannerImgCredit
             ),
             html.Div(
                 className="sr-banner-inner",
                 children=[
                     html.H1(
                         className='sr-banner-heading d-none d-md-block',
-                        children=ecvName,
+                        children=chapter_dict['title'],
                         style={'color':chapter_dict['domain-color']}
                     ),
                     dbc.Row(
@@ -93,7 +93,7 @@ def build_banner(ecvName, bannerImgSrc, bannerImgCredit, chapter_dict):
                     ]),
                 ])
 
-def build_breadcrumb(ecvName, chapter_dict):
+def build_breadcrumb(chapter_dict):
 
     return dbc.Container(
         className='sr-page-breadcrumb',
@@ -117,7 +117,7 @@ def build_breadcrumb(ecvName, chapter_dict):
             ),
             html.Span(
                  style={'color':chapter_dict['domain-color']},
-                 children=ecvName,
+                 children=chapter_dict['title'],
             )
             ]             
     )
@@ -164,7 +164,7 @@ def build_nav(chapter_dict):
                         ]),
             ])])
 
-def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,chapter_dict):
+def build_intro(introText,bulletPoints,chapter_dict):
 
     return dbc.Container(
         style={'borderColor':chapter_dict['domain-color']},
@@ -183,7 +183,7 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,chapter_dict):
                         children=[
                             html.H1(
                                 className='sr-ecv-heading',
-                                children=ecvName,
+                                children=chapter_dict['title'],
                                 style={'color':chapter_dict['domain-color']},
                             )]
                             ),
@@ -213,12 +213,13 @@ def build_intro(ecvName,introText,bulletPoint1,bulletPoint2,chapter_dict):
                         'backgroundColor':chapter_dict['domain-bg-color']},
                     children=[
                         html.Li(
-                            className='mb-4',
-                            children=bulletPoint1),
-                        html.Li(
                             className='',
-                            children=bulletPoint2),
-                        ]
+                            children=point)
+                        # html.Li(
+                        #     className='',
+                        #     children=bulletPoint2),
+                         for point in bulletPoints]
+                        
                         )
                     ]
                 )]
@@ -373,6 +374,12 @@ def build_info(infoLinks, chapter_dict):
             ])
 
 def build_nav_carousel(chapter_dict):
+    chapter_index=CHAPTERS.index(chapter_dict)
+    chapters_before=CHAPTERS[0:chapter_index+1]
+    chapters_after=CHAPTERS[chapter_index+1:]
+    chapters_sorted=chapters_after+chapters_before
+
+
     return dbc.Container(
         className='sr-nav-carousel container-fluid',
         children=[
@@ -396,19 +403,19 @@ def build_nav_carousel(chapter_dict):
                                 className='sr-nav-carosuel-item text-center',
                                 children=dcc.Link(
                                         className='sr-nav-carousel-link',
-                                        style={'color':item['domain-color'],'textDecoration':'none'},
-                                        href=item['href'],
+                                        style={'color':chapter['domain-color'],'textDecoration':'none'},
+                                        href=chapter['href'],
                                         children=[
                                             html.Img(
                                                 className='sr-nav-carousel-img',
-                                                src='assets/images/icons/'+item['icon-hover-src']),
+                                                src='assets/images/icons/'+chapter['icon-lg-src']),
                                             html.Img(
                                                 className='sr-nav-carousel-img-hover',
-                                                src='assets/images/icons/'+item['icon-src']),
+                                                src='assets/images/icons/'+chapter['icon-src']),
                                             html.Div(
-                                                children=item['name']
+                                                children=chapter['chapter-num']+ ' ' + chapter['title']
                                                 )])
-                            ) for item in CHAPTERS],
+                            ) for chapter in CHAPTERS],
                             slides_to_scroll=1,
                             swipe_to_slide=True,
                             autoplay=False,
@@ -416,11 +423,18 @@ def build_nav_carousel(chapter_dict):
                             variable_width=False,
                             center_mode=True,
                             responsive=[
+                                        { 
+                                'breakpoint': 3000,
+                                'settings': {
+                                    'initialSlide':chapter_index
+                                    }
+                                },
                             {
                                 'breakpoint': 600,
                                 'settings': {
                                     'arrows': True,
                                     'slidesToShow': 1,
+                                    'initialSlide':chapter_index
                                 }
                             }]
                         )))])

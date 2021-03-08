@@ -32,7 +32,7 @@ menu_list = dbc.Container(
                                                     [html.Li(children=[dcc.Link(
                                                 style={'color':ATMOSPHERE_COLOR},
                                                 className='sr-menu-chapter',
-                                                children=str(chapter['chapter']) + ' ' + chapter['name'], 
+                                                children=chapter['chapter-num'] + ' ' + chapter['title'], 
                                                 href=chapter['href']
                                                 )]) for chapter in atmoshpere_chapters]
                                                     )
@@ -46,7 +46,7 @@ menu_list = dbc.Container(
                                                     [html.Li(children=[dcc.Link(
                                                 style={'color':OCEAN_COLOR},
                                                 className='sr-menu-chapter',
-                                                children=str(chapter['chapter']) + ' ' + chapter['name'], 
+                                                children=chapter['chapter-num'] + ' ' + chapter['title'], 
                                                 href=chapter['href']
                                                 )]) for chapter in ocean_chapters]
                                                     )
@@ -59,7 +59,7 @@ menu_list = dbc.Container(
                                                     [html.Li(children=[dcc.Link(
                                                 style={'color':TERRESTRIAL_COLOR},
                                                 className='sr-menu-chapter',
-                                                children=str(chapter['chapter']) + ' ' + chapter['name'], 
+                                                children=chapter['chapter-num'] + ' ' + chapter['title'], 
                                                 href=chapter['href']
                                                 )]) for chapter in terrestrial_chapters]
                                                     )
@@ -71,6 +71,7 @@ menu_graphic = dbc.Container(
 
         id='gcosGraphicMenu',
         className='d-none d-lg-block',
+        style={'marginTop':'-60px'},
         children=[
             html.Div(
                 id='uaa-text',
@@ -126,7 +127,7 @@ menu_graphic = dbc.Container(
                             children=[
                                 dcc.Link(
                                     style={'color':chapter['domain-color']},
-                                    children=chapter['name'],
+                                    children=chapter['title'],
                             href=chapter['href'])
                             ]
                             ) ]                  
@@ -193,7 +194,8 @@ def create_layout(app):
         This is achieved through baseline and background measurements of essential climate variables (ECVs).
         """),
                              html.P("""
-        The Climate Status Report Ireland 2020 assesses the current state of Irelands climate, and can be explored through this online resource.
+        The Climate Status Report Ireland 2020 assesses the current state of Irelands climate. 
+        The full report can be downladed as pdf here (Link) or can be explored interactively below.
         """),
 
                     ]
@@ -201,8 +203,28 @@ def create_layout(app):
                 )
 
             ),
+        dbc.Row(
+            dbc.Col(
+                html.H3(
+                    className='sr-section-title text-center',
+                    style={'color':'#08839b'},
+                    children='Explore Irelands Essential Climate Variables'
+                )
+                )
+
+            ),
         menu_graphic,
         menu_list,
+        dbc.Row(
+            dbc.Col(
+                html.P(
+                    className='sr-section-title text-center',
+                    style={'color':'#08839b'},
+                    children='More Chapters in Development'
+                )
+                )
+
+            ),
 
         ])
 

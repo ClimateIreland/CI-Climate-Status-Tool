@@ -8,18 +8,23 @@ import page_builder as pb
 from settings import *
 from charts import empty_chart
 
-chapter_num='0'
-bannerImgSrc=IMAGES_PATH+''
-bannerImgCredit=''
+chapter_num='2.12'
+bannerImgSrc=IMAGES_PATH+'AtmosphericSections/Other_GHG_IMG_3709 Hester Whyte.JPG'
+bannerImgCredit='Hester Whyte'
 
 introText="""
-
+In addition to water vapour, carbon dioxide (CO2) and methane (CH4), 
+a number of other gases contribute significantly to the enhanced greenhouse effect.  
+These include Nitrous oxide (N2O) which has a global warming potential 265 times that of 
+CO2 and synthetic gases which are exclusively produced by human activities but have extremely high global warming potentials.
         """
 bulletPoint1="""
-
+        N2O concentrations in the atmosphere are now approximately 20% 
+        higher compared to the pre-industrial era  
         """
 bulletPoint2="""
-
+        Synthetic gasses, which replaced ozone depleting chlorofluorocarbons 
+        (CFCs) are increasing steadily in the atmosphere.
         """
 bulletPoints=[bulletPoint1,bulletPoint2]
 trendChartTitle=''

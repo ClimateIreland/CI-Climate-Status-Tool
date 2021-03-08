@@ -9,11 +9,9 @@ from settings import *
 from charts import FAPARTrend, surfaceAirTempStationsMap
 
 
-chapter=4.7
-ecvName='Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)'
+chapter_num='4.7'
 bannerImgSrc=IMAGES_PATH+'TerrestrialSections/FAPAR_ Vytenis Malisauskas.jpg'
-bannerImgCredit='Credit: Vytenis Malisauskas'
-ecvIconSrc=IMAGES_PATH+'icons/fapar.png'
+bannerImgCredit='Vytenis Malisauskas'
 
 introText="""
         Radiation from the sun plays an essential role in all biological process on Earth. 
@@ -28,7 +26,7 @@ bulletPoint2="""
         A ground-based FAPAR observation system should be considered in order to 
         validate and support satellite observations.
         """
-
+bulletPoints=[bulletPoint1,bulletPoint2]
 # domain='Terrestrial'
 # subdomain='Biology'
 # scientificArea='Biosphere'
@@ -70,7 +68,7 @@ infoLinks=[
             ]
 
 ######################################################################################################################
-chapter_dict=next((item for item in CHAPTERS if item['chapter']==chapter),None)
+chapter_dict=next((item for item in CHAPTERS if item['chapter-num']==chapter_num),None)
 
 
 custom_infrastructure = dbc.Container(
@@ -100,22 +98,14 @@ custom_infrastructure = dbc.Container(
 def create_layout(app):
       return html.Div(
               children=[
-        pb.build_banner(ecvName,
-                        bannerImgSrc,
+        pb.build_banner(bannerImgSrc,
                         bannerImgCredit,
                         chapter_dict
                         ),
-        pb.build_breadcrumb(ecvName,
-        chapter_dict),
+        pb.build_breadcrumb(chapter_dict),
         pb.build_nav(chapter_dict),
-        pb.build_intro(ecvName,
-                       introText,
-                       bulletPoint1,
-                       bulletPoint2,
-                    #    ecvIconSrc,
-                    #    subdomain,
-                    #    scientificArea,
-                    #    authors,
+        pb.build_intro(introText,
+                       bulletPoints,
                        chapter_dict
                        ),
         pb.build_trend(trendChartTitle,

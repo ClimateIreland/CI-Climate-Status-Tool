@@ -14,11 +14,10 @@ OCEAN_BG_COLOR='#e6f3f5'
 TERRESTRIAL_BG_COLOR='#fef4e6'
 
 CHAPTERS = [
-
         # Upper-air Atmoshere
         # {
         #  'id':'uaa-1',
-        #  'name':'Lightning', 
+        #  'title':'Lightning', 
         #  'href':'',
         #  'icon-src':'ico-uaa-lightning.png',
         #  'icon-hover-src':'ico-uaa-lightning_hover.png',
@@ -26,7 +25,7 @@ CHAPTERS = [
         #         },
         #     {
         #  'id':'uaa-2',
-        #  'name':'Clouds', 
+        #  'title':'Clouds', 
         #  'href':'',
         #  'icon-src':'ico-uaa-cloud-properties.png',
         #  'icon-hover-src':'ico-uaa-cloud-properties_hover.png',
@@ -34,7 +33,7 @@ CHAPTERS = [
         #         },
         #             {
         #  'id':'uaa-3',
-        #  'name':'Earth Radiation Budget', 
+        #  'title':'Earth Radiation Budget', 
         #  'href':'',
         #  'icon-src':'ico-uaa-earth-radiation-budget.png',
         #  'icon-hover-src':'ico-uaa-earth-radiation-budget_hover.png',
@@ -42,7 +41,7 @@ CHAPTERS = [
         #         },
         #             {
         #  'id':'uaa-4',
-        #  'name':'Wind Speed', 
+        #  'title':'Wind Speed', 
         #  'href':'',
         #  'icon-src':'ico-uaa-lightning.png',
         #  'icon-hover-src':'ico-uaa-windspeed_hover.png',
@@ -50,7 +49,7 @@ CHAPTERS = [
         #         },
         #             {
         #  'id':'uaa-5',
-        #  'name':'Upper Air Atmosphere Temperature', 
+        #  'title':'Upper Air Atmosphere Temperature', 
         #  'href':'',
         #  'icon-src':'ico-uaa-temperature.png',
         #  'icon-hover-src':'ico-uaa-temperature_hover.png',
@@ -58,7 +57,7 @@ CHAPTERS = [
         #         },
         #             {
         #  'id':'uaa-6',
-        #  'name':'Upper Air Atmosphere Water Vapour', 
+        #  'title':'Upper Air Atmosphere Water Vapour', 
         #  'href':'',
         #  'icon-src':'ico-uaa-watervapour.png',
         #  'icon-hover-src':'ico-uaa-watervapour_hover.png',
@@ -67,9 +66,9 @@ CHAPTERS = [
 
             # Surface Atmoshere
                 {
-        'chapter':2.1,
+        'chapter-num':'2.1',
         'id':'sa-1',
-        'name':'Surface Temperature', 
+        'title':'Surface Temperature', 
         'href':'/_2_1_SurfaceAirTemperature',
         'icon-lg-src':'surface-temperature.png',
         'icon-src':'ico-sa-temperature.png',
@@ -83,9 +82,9 @@ CHAPTERS = [
    
                 },
                                {
-        'chapter':2.5,
+        'chapter-num':'2.5',
         'id':'sa-2',
-        'name':'Precipitation', 
+        'title':'Precipitation', 
         'href':'/_2_5_Precipitation',
         'icon-lg-src':'precipitation.png',
         'icon-src':'ico-sa-precipitation.png',
@@ -99,9 +98,9 @@ CHAPTERS = [
    
                 },
                                                {
-        'chapter':2.10,
+        'chapter-num':'2.10',
         'id':'ac-1',
-        'name':'Carbon Dioxide', 
+        'title':'Carbon Dioxide', 
         'href':'/_2_10_CarbonDioxide',
         'icon-lg-src':'greenhouse-gases.png',
         'icon-src':'ico-ac-co2-ghgs.png',
@@ -115,9 +114,9 @@ CHAPTERS = [
    
                 },
                 {
-        'chapter':2.11,
+        'chapter-num':'2.11',
         'id':'ac-2',
-        'name':'Methane', 
+        'title':'Methane', 
         'href':'/_2_11_Methane',
         'icon-lg-src':'precursors_0.png',
         'icon-src':'ico-ac-precursors.png',
@@ -130,32 +129,29 @@ CHAPTERS = [
         'domain-bg-color':ATMOSPHERE_BG_COLOR
    
                 },
-            # Atmoshperic Composition
-            #    {
-        #  'id':'ac-2',
-        #  'name':'Carbon Dioxide, Methane and other Greenhouse gases', 
-        #  'name':'Carbon Dioxide', 
-        #  'href':'',
-        #  'icon-src':'ico-ac-co2-ghgs.png',
-        #  'icon-hover-src':'ico-ac-co2-ghgs_hover.png',
-        #  'domain':'Atmosphere',
-                # },
-        #     {
-        # 'id':'ac-4',
-        #  'name':'Atmospheric Composition Precursors', 
-        #  'name':'Methane', 
-        #  'href':'',
-        #  'icon-src':'ico-ac-precursors.png',
-        #  'icon-hover-src':'ico-ac-precursors_hover.png',
-        #  'domain':'Atmosphere',
-        #         },
+                                {
+        'chapter-num':'2.12',
+        'id':'ac-3',
+        'title':'Other Greenhouse Gases', 
+        'href':'/_2_12_OtherGreenhouseGases',
+        'icon-lg-src':'precursors_0.png',
+        'icon-src':'ico-ac-precursors.png',
+        'icon-hover-src':'ico-ac-precursors_hover.png',
+        'domain':'Atmosphere',
+        'subdomain':'',
+        'scientific-area':'',
+        'authors':'',
+        'domain-color':ATMOSPHERE_COLOR,
+        'domain-bg-color':ATMOSPHERE_BG_COLOR
+   
+                },
 
         # Ocean Biogeochemistry
                         {
-        'chapter':3.1,
+        'chapter-num':'3.1a',
         'id':'sop-1',
-        'name':'Surface Temperature', 
-        'href':'/_3_1_SurfaceTemperature',
+        'title':'Surface and Sub-surface Temperature', 
+        'href':'/_3_1a_SurfaceTemperature',
         'icon-lg-src':'sea-surface-temperature.png',
         'icon-src':'ico-sop-sea-surface-temp.png',
         'icon-hover-src':'ico-sop-sea-surface-temp_hover.png',
@@ -166,27 +162,27 @@ CHAPTERS = [
         'domain-color':OCEAN_COLOR,
         'domain-bg-color':OCEAN_BG_COLOR
                 },
-                                        {
-        'chapter':3.1,
-        'id':'ssop-1',
-        'name':'Sub-surface Temperature', 
-        'href':'/_3_1_SubsurfaceTemperature',
-        'icon-lg-src':'subsurface-temperature.png',
-        'icon-src':'ico-ssop-subsurface-temp.png',
-        'icon-hover-src':'ico-ssop-subsurface-temp_hover.png',
-        'domain':'Ocean',
-        'subdomain':'',
-        'scientific-area':'',
-        'authors':'',
-        'domain-color':OCEAN_COLOR,
-        'domain-bg-color':OCEAN_BG_COLOR
-                },
+        #                                 {
+        # 'chapter-num':'3.1b',
+        # 'id':'ssop-1',
+        # 'title':'Sub-surface Temperature', 
+        # 'href':'/_3_1b_SubsurfaceTemperature',
+        # 'icon-lg-src':'subsurface-temperature_1.png',
+        # 'icon-src':'ico-ssop-subsurface-temp.png',
+        # 'icon-hover-src':'ico-ssop-subsurface-temp_hover.png',
+        # 'domain':'Ocean',
+        # 'subdomain':'',
+        # 'scientific-area':'',
+        # 'authors':'',
+        # 'domain-color':OCEAN_COLOR,
+        # 'domain-bg-color':OCEAN_BG_COLOR
+        #         },
                                                        {
-        'chapter':3.4,
+        'chapter-num':'3.4',
         'id':'sop-2',
-        'name':'Sea Level', 
+        'title':'Sea Level', 
         'href':'/_3_4_SeaLevel',
-        'icon-lg-src':'sea-level.png',
+        'icon-lg-src':'sea-level_0.png',
         'icon-src':'ico-sop-sea-level.png',
         'icon-hover-src':'ico-sop-sea-level_hover.png',
         'domain':'Ocean',
@@ -197,9 +193,9 @@ CHAPTERS = [
         'domain-bg-color':OCEAN_BG_COLOR
                 },
                                                                        {
-        'chapter':3.6,
+        'chapter-num':'3.6',
         'id':'obgc-1',
-        'name':'Inorganic Carbon', 
+        'title':'Inorganic Carbon', 
         'href':'/_3_6_InorganicCarbon',
         'icon-lg-src':'inorganic-carbon.png',
         'icon-src':'ico-obgc-inorganic-carbon.png',
@@ -212,10 +208,10 @@ CHAPTERS = [
         'domain-bg-color':OCEAN_BG_COLOR
                 },
                         {
-        'chapter':3.7,
+        'chapter-num':'3.7',
         'id':'obgc-2',
-        'name':'Oxygen', 
-        'href':'/_3_7_DissolvedOxygen',
+        'title':'Oxygen', 
+        'href':'/_3_7_Oxygen',
         'icon-lg-src':'oxygen.png',
         'icon-src':'ico-obgc-oxygen.png',
         'icon-hover-src':'ico-obgc-oxygen_hover.png',
@@ -228,10 +224,26 @@ CHAPTERS = [
                 },
 
         # Biosphere
+
+                  {
+        'chapter-num':'4.1',
+        'id':'hyd-1',
+        'title':'River Discharge', 
+        'href':'/_4_1_RiverDischarge',
+        'icon-lg-src':'river-discharge.png',
+        'icon-src':'ico-hyd-river-discharge.png',
+        'icon-hover-src':'ico-hyd-river-discharge_hover.png',
+        'domain':'Terrestrial',
+        'subdomain':'',
+        'scientific-area':'',
+        'authors':'',
+        'domain-color':TERRESTRIAL_COLOR,
+        'domain-bg-color':TERRESTRIAL_BG_COLOR
+                },
             {
-        'chapter':4.6,
+        'chapter-num':'4.6',
         'id':'bio-1',
-        'name':'Land Cover', 
+        'title':'Land Cover', 
         'href':'/_4_6_LandCover',
         'icon-lg-src':'land-cover.png',
         'icon-src':'ico-bio-land-cover.png',
@@ -244,9 +256,9 @@ CHAPTERS = [
         'domain-bg-color':TERRESTRIAL_BG_COLOR
                 },
                     {
-        'chapter':4.7,
+        'chapter-num':'4.7',
         'id':'bio-2',
-        'name':'Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)', 
+        'title':'Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)', 
         'href':'/_4_7_FAPAR',
         'icon-lg-src':'fapar.png',
         'icon-src':'ico-bio-fapr.png',
@@ -258,25 +270,11 @@ CHAPTERS = [
         'domain-color':TERRESTRIAL_COLOR,
         'domain-bg-color':TERRESTRIAL_BG_COLOR
                 },
-                                  {
-        'chapter':4.1,
-        'id':'hyd-1',
-        'name':'River Discharge', 
-        'href':'/_4_1_RiverDischarge',
-        'icon-lg-src':'river-discharge.png',
-        'icon-src':'ico-hyd-river-discharge.png',
-        'icon-hover-src':'ico-hyd-river-discharge_hover.png',
-        'domain':'Terrestrial',
-        'subdomain':'',
-        'scientific-area':'',
-        'authors':'',
-        'domain-color':TERRESTRIAL_COLOR,
-        'domain-bg-color':TERRESTRIAL_BG_COLOR
-                },
+
                                               {
-        'chapter':4.11,
+        'chapter-num':'4.11',
         'id':'bio-3',
-        'name':'Fire', 
+        'title':'Fire', 
         'href':'/_4_11_Fire',
         'icon-lg-src':'fire_0.png',
         'icon-src':'ico-bio-fire.png',
@@ -289,9 +287,9 @@ CHAPTERS = [
         'domain-bg-color':TERRESTRIAL_BG_COLOR
                 },
                 {
-        'chapter':4.14,
+        'chapter-num':'4.14',
         'id':'ant-1',
-        'name':'Anthropogenic Greenhouse Gas Emissions ', 
+        'title':'Anthropogenic Greenhouse Gas Emissions ', 
         'href':'/_4_14_AnthropogenicGreenhouseGasEmissions ',
         'icon-lg-src':'anthropogenic-ghg-fluxes.png',
         'icon-src':'ico-ant-ghg-fluxes.png',

@@ -8,11 +8,11 @@ import page_builder as pb
 from settings import *
 from charts import Figure_2_1, surfaceAirTempStationsMap
 
-chapter=2.1
+chapter_num='2.1'
 ecvName='Surface Air Temperature'
 bannerImgSrc=IMAGES_PATH+'AtmosphericSections/AirTemp_MetEireann.jpg'
-bannerImgCredit='Credit: Met Eireann'
-ecvIconSrc=IMAGES_PATH+'icons/surface-temperature.png'
+bannerImgCredit='Met Eireann'
+# ecvIconSrc=IMAGES_PATH+'icons/surface-temperature.png'
 
 introText="""
         Surface air temperature is a key climate indicator and has widespread impacts 
@@ -30,6 +30,8 @@ bulletPoint2="""
         The number of warm spell days across Ireland has slightly 
         increased over the last 60 years.
         """
+
+bulletPoints=[bulletPoint1,bulletPoint2]
 
 # domain='Atmosphere'
 # subdomain='Surface'
@@ -88,27 +90,19 @@ infoLinks=[{'text':'Surface Temperature ESSENTIAL CLIMATE VARIABLES (ECV). GCOS 
 
 
 ########################################################################################################################
-chapter_dict=next((item for item in CHAPTERS if item['chapter']==chapter),None)
+chapter_dict=next((item for item in CHAPTERS if item['chapter-num']==chapter_num),None)
 
 def create_layout(app):
       return html.Div(
               children=[
-        pb.build_banner(ecvName,
-                        bannerImgSrc,
+        pb.build_banner(bannerImgSrc,
                         bannerImgCredit,
                         chapter_dict
                         ),
-        pb.build_breadcrumb(ecvName,
-        chapter_dict),
+        pb.build_breadcrumb(chapter_dict),
         pb.build_nav(chapter_dict),
-        pb.build_intro(ecvName,
-                       introText,
-                       bulletPoint1,
-                       bulletPoint2,
-                #        ecvIconSrc,
-                #        subdomain,
-                #        scientificArea,
-                #        authors,
+        pb.build_intro(introText,
+                       bulletPoints,
                        chapter_dict
                        ),
         pb.build_trend(trendChartTitle,

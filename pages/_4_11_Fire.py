@@ -8,18 +8,24 @@ import page_builder as pb
 from settings import *
 from charts import empty_chart
 
-chapter_num='0'
-bannerImgSrc=IMAGES_PATH+''
-bannerImgCredit=''
+chapter_num='4.11'
+bannerImgSrc=IMAGES_PATH+'TerrestrialSections/Fires_CiaranNugent.jpg'
+bannerImgCredit='Ciaran Nugent'
 
 introText="""
-
+        Land cover - the observed (bio)-physical cover on the Earth’s surface, 
+        including grassland, forest, built environment, etc. 
+        – plays a key role in climate dynamics such as water and energy exchanges 
+        between the ground and the atmosphere, and contributes to the capture 
+        and release of greenhouse gases and aerosols.  
         """
 bulletPoint1="""
-
+        Peatlands represent almost 14% of Irish land cover and are an 
+        essential feature in the regulation of the climate by removing carbon
         """
 bulletPoint2="""
-
+        Land cover observations since 1990 show increases in the area covered 
+        by artificial surfaces and forests and a decrease in wetland areas which include peatlands.
         """
 bulletPoints=[bulletPoint1,bulletPoint2]
 trendChartTitle=''

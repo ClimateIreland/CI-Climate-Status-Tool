@@ -8,18 +8,25 @@ import page_builder as pb
 from settings import *
 from charts import empty_chart
 
-chapter_num='0'
-bannerImgSrc=IMAGES_PATH+''
-bannerImgCredit=''
+chapter_num='4.14'
+bannerImgSrc=IMAGES_PATH+'TerrestrialSections/GHG_EMissions_Metro Centric.jpg'
+bannerImgCredit='Metro Centric'
 
 introText="""
-
+        Greenhouse gas emissions including carbon dioxide (CO2), methane (CH4), 
+        and nitrous oxide (N2O) from human (anthropogenic) activities such as 
+        fossil fuel use, industry, agriculture and the waste sector continue to increase globally.  
+        These gases reside in the atmosphere for a period from decades to thousands of years 
+        and the increase in their concentrations is a cause of increase in surface temperature and climate change.       
         """
 bulletPoint1="""
-
+        In 2018 in Ireland emissions from fossil fuel energy use were 18% higher 
+        than in 1990 with emissions from agriculture having increased 2%.  
+        Combined these represent over 87% of total emissions.
         """
 bulletPoint2="""
-
+        Nitrous oxide emissions decreased by 10% over the period, mainly because of 
+        reductions of synthetic fertiliser and animal manure use in agriculture.
         """
 bulletPoints=[bulletPoint1,bulletPoint2]
 trendChartTitle=''

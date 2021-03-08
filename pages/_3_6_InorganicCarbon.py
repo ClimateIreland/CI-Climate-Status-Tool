@@ -8,18 +8,25 @@ import page_builder as pb
 from settings import *
 from charts import empty_chart
 
-chapter_num='0'
-bannerImgSrc=IMAGES_PATH+''
-bannerImgCredit=''
+chapter_num='3.6'
+bannerImgSrc=IMAGES_PATH+'OceanicSections/Inorganic Carbon_Tomas Szumski.jpg'
+bannerImgCredit='Tomas Szumski'
 
 introText="""
-
+        The ocean absorbs significant quantities of carbon through natural cycles 
+        driven by ocean circulation, biogeochemistry and biology.  
+        It is estimated that the ocean has absorbed between 20–30% of total anthropogenic CO2 
+        emissions since the 1980s thereby reducing atmospheric accumulation and thus partially 
+        mitigating global warming. 
         """
 bulletPoint1="""
-
+        Estimates of future carbon dioxide levels indicate that by the end of this 
+        century the surface waters of the ocean could be nearly 150% more acidic, 
+        a condition not experienced for more than 20 million years.
         """
 bulletPoint2="""
-
+        Measurements of surface waters in the Rockall Trough to the west of Ireland between 
+        1991 and 2013 indicate increasing acidity  comparable to the rate of change in other ocean time series.  
         """
 bulletPoints=[bulletPoint1,bulletPoint2]
 trendChartTitle=''
