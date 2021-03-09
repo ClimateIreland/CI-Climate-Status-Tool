@@ -39,25 +39,27 @@ app = dash.Dash(
         ],
     )
 
-
+app.title='Climate Status Report Ireland'
 app.layout = html.Div(children=[
     dcc.Location(id='url', refresh=False),
-    html.Div(
-        className='sr-header text-center',
-        children='Climate Ireland'
-    ),
+    # html.Div(
+    #     className='sr-header text-center',
+    #     children='Climate Ireland'
+    # ),
     html.Div(id='page-content'),
-    html.Div(
-        className='sr-footer',
-        children='Climate Ireland'
-    )
+    # html.Div(
+    #     className='sr-footer',
+    #     children='Climate Ireland'
+    # )
 ],
 )
 
 # Update page
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    if pathname == "/_2_1_SurfaceAirTemperature":
+    if pathname == "/StatusReport":
+        return index.create_layout(app)
+    elif pathname == "/_2_1_SurfaceAirTemperature":
         return _2_1_SurfaceTemperature.create_layout(app)
     elif pathname == "/_2_5_Precipitation":
         return _2_5_Precipitation.create_layout(app)
@@ -87,6 +89,8 @@ def display_page(pathname):
         return _4_11_Fire.create_layout(app)
     elif pathname == "/_4_14_AnthropogenicGreenhouseGasEmissions":
         return _4_14_AnthropogenicGreenhouseGasEmissions.create_layout(app)
+    # else:
+    #     return dcc.Location(pathname="/StatusReport", id='any')
     else:
         return index.create_layout(app)
 

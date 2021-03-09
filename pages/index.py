@@ -32,7 +32,7 @@ menu_list = dbc.Container(
                                                     [html.Li(children=[dcc.Link(
                                                 style={'color':ATMOSPHERE_COLOR},
                                                 className='sr-menu-chapter',
-                                                children=chapter['chapter-num'] + ' ' + chapter['title'], 
+                                                children=chapter['title'], 
                                                 href=chapter['href']
                                                 )]) for chapter in atmoshpere_chapters]
                                                     )
@@ -46,7 +46,7 @@ menu_list = dbc.Container(
                                                     [html.Li(children=[dcc.Link(
                                                 style={'color':OCEAN_COLOR},
                                                 className='sr-menu-chapter',
-                                                children=chapter['chapter-num'] + ' ' + chapter['title'], 
+                                                children=chapter['title'], 
                                                 href=chapter['href']
                                                 )]) for chapter in ocean_chapters]
                                                     )
@@ -59,7 +59,7 @@ menu_list = dbc.Container(
                                                     [html.Li(children=[dcc.Link(
                                                 style={'color':TERRESTRIAL_COLOR},
                                                 className='sr-menu-chapter',
-                                                children=chapter['chapter-num'] + ' ' + chapter['title'], 
+                                                children=chapter['title'], 
                                                 href=chapter['href']
                                                 )]) for chapter in terrestrial_chapters]
                                                     )
@@ -71,7 +71,7 @@ menu_graphic = dbc.Container(
 
         id='gcosGraphicMenu',
         className='d-none d-lg-block',
-        style={'marginTop':'-60px'},
+        style={'marginTop':'-50px'},
         children=[
             html.Div(
                 id='uaa-text',
@@ -208,7 +208,7 @@ def create_layout(app):
                 html.H3(
                     className='sr-section-title text-center',
                     style={'color':'#08839b'},
-                    children='Explore Irelands Essential Climate Variables'
+                    children='Explore Ireland\'s Essential Climate Variables'
                 )
                 )
 

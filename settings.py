@@ -4,7 +4,8 @@ PATH = pathlib.Path(__file__).parent
 
 DATA_PATH='/Users/dan/OneDrive - University College Cork/Status_Tool/'
 IMAGES_PATH='assets/images/'
-
+# IMAGES_PATH='/Users/dan/ClimateIreland/Projects/CI-Status-Report-Dash/assets/images/'
+# IMAGES_PATH='https://www.climateireland.ie/web_resource/images/'
 ATMOSPHERE_COLOR='#009fe3'
 OCEAN_COLOR='#00909e'
 TERRESTRIAL_COLOR='#f39200'

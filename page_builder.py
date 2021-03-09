@@ -7,27 +7,6 @@ from settings import *
 
 import pathlib
 
-# def domainColor(domain):
-#     if domain == 'Atmosphere':
-#         return ATMOSPHERE_COLOR
-#     elif domain == 'Ocean':
-#          return OCEAN_COLOR
-#     elif domain == 'Terrestrial':
-#          return TERRESTRIAL_COLOR
-#     else:
-#         return 'black'
-
-# def domainBGColor(domain):
-#     if domain == 'Atmosphere':
-#         return ATMOSPHERE_BG_COLOR
-#     elif domain == 'Ocean':
-#          return OCEAN_BG_COLOR
-#     elif domain == 'Terrestrial':
-#          return TERRESTRIAL_BG_COLOR
-#     else:
-#         return 'white'
-
-
 def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
 
     return dbc.Container(
@@ -215,9 +194,6 @@ def build_intro(introText,bulletPoints,chapter_dict):
                         html.Li(
                             className='',
                             children=point)
-                        # html.Li(
-                        #     className='',
-                        #     children=bulletPoint2),
                          for point in bulletPoints]
                         
                         )
@@ -386,14 +362,19 @@ def build_nav_carousel(chapter_dict):
             dbc.Row(
                 dbc.Col(
                     className='text-center',
-                    children=[
-                        dcc.Link(
-                            href='/',
-                            children=[
-                                html.Img(
-                                    className='sr-nav-carousel-logo',
-                                    src='assets/images/CSRI2020Logo.png'
-                                    )])]
+                    children=[          html.H3(
+                className='sr-section-heading',
+                children='Browse Climate Variables',
+                style={'color':chapter_dict['domain-color']},
+                ),
+                        # dcc.Link(
+                        #     href='/',
+                        #     children=[
+                        #         html.Img(
+                        #             className='sr-nav-carousel-logo',
+                        #             src=IMAGES_PATH+'icons/'+'CSRI2020Logo.png'
+                        #             )])
+                            ]
                                     )),
             dbc.Row(
                 dbc.Col(
@@ -408,12 +389,12 @@ def build_nav_carousel(chapter_dict):
                                         children=[
                                             html.Img(
                                                 className='sr-nav-carousel-img',
-                                                src='assets/images/icons/'+chapter['icon-lg-src']),
+                                                src=IMAGES_PATH+'icons/'+chapter['icon-lg-src']),
                                             html.Img(
                                                 className='sr-nav-carousel-img-hover',
-                                                src='assets/images/icons/'+chapter['icon-src']),
+                                                src=IMAGES_PATH+'icons/'+chapter['icon-src']),
                                             html.Div(
-                                                children=chapter['chapter-num']+ ' ' + chapter['title']
+                                                children=chapter['title']
                                                 )])
                             ) for chapter in CHAPTERS],
                             slides_to_scroll=1,

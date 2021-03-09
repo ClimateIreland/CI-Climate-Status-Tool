@@ -2,6 +2,8 @@ Climate Status Report Ireland - Online Version
 =========================================================
 Online version of the Climate Status Report Ireland 2020. Developed using the [Dash](https://dash.plotly.com/) Python web-dashboard framework.
 
+The application is running standalone at [dash.climateireland.ie](http://dash.climateireland.ie/) and wrapped in [int.climateireland.ie](http://int.climateireland.ie)
+
 
 ## Downloading and running the application
 
@@ -17,6 +19,12 @@ python3 -m venv CI-Status-Report-Dash
 cd CI-Status-Report-Dash
 source bin/activate  # Windows: \venv\scripts\activate
 pip install -r requirements.txt
+```
+
+In the settings.py you will need to set the DATA_PATH to the sahred Status_Tool folder on OneDrive. In my case:
+
+```python
+DATA_PATH='/Users/dan/OneDrive - University College Cork/Status_Tool/'
 ```
 
 then run the app:
