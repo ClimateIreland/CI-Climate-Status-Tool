@@ -2,7 +2,7 @@ Climate Status Report Ireland - Online Version
 =========================================================
 Online version of the Climate Status Report Ireland 2020. Developed using the [Dash](https://dash.plotly.com/) Python web-dashboard framework.
 
-The application is running standalone at [dash.climateireland.ie](http://dash.climateireland.ie/) and wrapped in [int.climateireland.ie](http://int.climateireland.ie)
+The application is running standalone at [dash.climateireland.ie](http://dash.climateireland.ie/) and wrapped in [int.climateireland.ie](http://int.climateireland.ie/#!/tools/statusReport2020)
 
 
 ## Downloading and running the application
