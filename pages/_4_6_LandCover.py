@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import LandCoverArea1990, LandCoverArea2018, LandCoverTrend, surfaceAirTempStationsMap
+from charts import figure_4_10_1, figure_4_10_2, figure_4_11
 
 chapter_num='4.6'
 bannerImgSrc=IMAGES_PATH+'TerrestrialSections/Land_Cover_IMG_1918 Barry O Dwyer.jpg'
@@ -27,13 +27,9 @@ bulletPoint2="""
         by artificial surfaces and forests and a decrease in wetland areas which include peatlands.
         """
 bulletPoints=[bulletPoint1,bulletPoint2]
-# domain='Terrestrial'
-# subdomain='Biology'
-# scientificArea='Biosphere'
-# authors='Walther C.A. Cámaro García, Ned Dwyer'
 
 trendChartTitle='Percentage of Cumulative Change within Each Class'
-trendChart=LandCoverTrend()
+trendChart=figure_4_11()
 
 
 trendCaption="""
@@ -50,7 +46,8 @@ infrastructureText="""
         A ground-based observation system should also be considered in order to validate 
         and support the satellite observations. 
         """
-infrastructureMap=surfaceAirTempStationsMap()
+# custom infrastruture uses corina iframe
+# infrastructureMap=surfaceAirTempStationsMap()
 
 infoLinks=[
     {'text':'Land Cover ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS', 
@@ -88,7 +85,7 @@ custom_trend = dbc.Container(
         html.H3(
             className='sr-section-heading',
             style={'color':chapter_dict['domain-color']},
-            children='Trends and Observations',
+            children='Trends',
             ),
         dbc.Row(
             children=[
@@ -104,7 +101,7 @@ custom_trend = dbc.Container(
                                 className='sr-chart-title',
                                 children='1990'),
                             dcc.Graph(
-                                figure=LandCoverArea1990(),
+                                figure=figure_4_10_1(),
                                 config={'displayModeBar': False})]
                             ),
                 dbc.Col(className="col-12 col-md-6",
@@ -113,7 +110,7 @@ custom_trend = dbc.Container(
                                 className='sr-chart-title',
                                 children='2018'),
                             dcc.Graph(
-                                figure=LandCoverArea2018(),
+                                figure=figure_4_10_2(),
                                 config={'displayModeBar': False})]
                             )
                         ]
@@ -164,7 +161,7 @@ custom_infrastructure=  dbc.Container(
         children=[
             html.H3(
                 className='sr-section-heading',
-                children='Observation Infrastructure',
+                children='Infrastructure',
                 style={'color':chapter_dict['domain-color']},
                 ),
             dbc.Row(

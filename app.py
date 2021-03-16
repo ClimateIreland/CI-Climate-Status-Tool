@@ -61,6 +61,8 @@ def display_page(pathname):
         return index.create_layout(app)
     elif pathname == "/_2_1_SurfaceAirTemperature":
         return _2_1_SurfaceTemperature.create_layout(app)
+    elif pathname == "/_2_1_SurfaceAirTemperature/chart":
+        return _2_1_SurfaceTemperature.create_chart(app)
     elif pathname == "/_2_5_Precipitation":
         return _2_5_Precipitation.create_layout(app)
     elif pathname == "/_2_10_CarbonDioxide":

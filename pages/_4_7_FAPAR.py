@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import FAPARTrend, surfaceAirTempStationsMap
+from charts import figure_4_12
 
 
 chapter_num='4.7'
@@ -33,7 +33,7 @@ bulletPoints=[bulletPoint1,bulletPoint2]
 # authors='Walther C.A. Cámaro García, Ned Dwyer'
 
 trendChartTitle='10-day average FAPAR over Ireland'
-trendChart=FAPARTrend()
+trendChart=figure_4_12()
 
 trendCaption="""
            Above shows a heat map of 10-Day averaged FAPAR derived over Ireland using the CGLS dataset. 
@@ -52,7 +52,9 @@ infrastructureText="""
         Comprehensive analysis of satellite-derived FAPAR spatio-temporal trends for Ireland needs to be carried out. 
         A ground-based observation system should also be considered in order to validate and support the satellite observations. 
         """
-infrastructureMap=surfaceAirTempStationsMap()
+
+# no map
+# infrastructureMap=surfaceAirTempStationsMap()
 
 infoLinks=[
         {'text':'FAPAR ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS', 
@@ -78,7 +80,7 @@ custom_infrastructure = dbc.Container(
         children=[
             html.H3(
                 className='sr-section-heading',
-                children='Observation Infrastructure',
+                children='Infrastructure',
                 style={'color':chapter_dict['domain-color']},
                 ),
             dbc.Row(

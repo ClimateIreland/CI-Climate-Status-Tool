@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import dissolvedOxygenTrend, dissolvedOxygenStationsMap
+from charts import figure_3_15, map_3_6
 
 chapter_num='3.7'
 bannerImgSrc=IMAGES_PATH+'OceanicSections/Dissolved OxygenTomasz_Szumski.JPG'
@@ -35,7 +35,7 @@ bulletPoints=[bulletPoint1,bulletPoint2]
 # authors='Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes, Rob Thomas, Evin McGovern'
 
 trendChartTitle='Dissolved Oxygen Saturation (2002-2019)'
-trendChart=dissolvedOxygenTrend()
+trendChart=figure_3_15()
 
 trendCaption="""
         Above shows the percentage saturation of dissolved oxygen taken at sampling sites 
@@ -61,7 +61,7 @@ infrastructureText="""
         such as those described in the GO-SHIP hydrography manual.
 
         """
-infrastructureMap=dissolvedOxygenStationsMap()
+infrastructureMap=map_3_6()
 
 infoLinks=[
         {'text':'Oxygen ESSENTIAL CLIMATE VARIABLES (ECV). GCOS FACTSHEETS', 
@@ -100,7 +100,7 @@ custom_trend= dbc.Container(
         html.H3(
             className='sr-section-heading',
             style={'color':chapter_dict['domain-color']},
-            children='Trends and Observations',
+            children='Trends',
             ),
         dbc.Row(
             children=[

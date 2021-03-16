@@ -24,6 +24,10 @@ stationColor = {
 }
 
 def empty_chart():
+        """
+        Empty chart used as placeholder for when chart or data is not found,
+        or in development.
+        """
         noTrace1 = go.Scatter(x=[0,1], 
                              y=[0,1],
                              marker=dict(
@@ -49,9 +53,9 @@ def empty_chart():
         return empty_chart
 
 
-def Figure_2_1():
+def figure_2_1():
     """
-    Mean Surface Air Temperature (1900-2019) 
+    Surface Air Temperature (1900-2019) trend
     """
 #     data_path = PATH.joinpath('data/Atmospheric_Domain/2.1SurfaceAirTemperature').resolve()
 #     xls = pd.ExcelFile(data_path.joinpath('Figure2.1/AnnualMeanSurfaceAirTemperature1900-2019.xlsx'))
@@ -101,15 +105,15 @@ def Figure_2_1():
                             hoverinfo='skip',
     )
 
-    Figure_2_1 = make_subplots(specs=[[{'secondary_y': True}]])
+    figure_2_1 = make_subplots(specs=[[{'secondary_y': True}]])
 
-    Figure_2_1.add_trace(annualTrace,
+    figure_2_1.add_trace(annualTrace,
                 secondary_y=True,)
-    Figure_2_1.add_trace(movingAvgTrace,
+    figure_2_1.add_trace(movingAvgTrace,
                 secondary_y=False)
-    Figure_2_1.add_trace(linearTrendTrace,
+    figure_2_1.add_trace(linearTrendTrace,
                 secondary_y=False)
-    Figure_2_1.update_layout(
+    figure_2_1.update_layout(
                     #    title='<b>Mean Surface Air Temperature (1900-2019)</b>',
                     title_x=0.5, # Centers the title
                     height=450,
@@ -131,7 +135,7 @@ def Figure_2_1():
                             itemdoubleclick=False,
                                     ), )
     # Update y-axes layout seperatly due to the double y-axis chart
-    Figure_2_1.update_yaxes(title_text='Difference (\u00b0C) from 1961-1990 Normal',
+    figure_2_1.update_yaxes(title_text='Difference (\u00b0C) from 1961-1990 Normal',
                     secondary_y=False,
                     range=[-0.9,1.3],
                     showgrid=False,
@@ -146,7 +150,7 @@ def Figure_2_1():
     #                   linecolor = '#356b6a'
                         )
 
-    Figure_2_1.update_yaxes(title_text='Mean Annual Temperature (\u00b0C)',
+    figure_2_1.update_yaxes(title_text='Mean Annual Temperature (\u00b0C)',
                     secondary_y=True,
                     range=[8.65,10.85],
                     showgrid=False,
@@ -159,7 +163,7 @@ def Figure_2_1():
                         )
                             
     # X AXIS
-    Figure_2_1.update_xaxes(
+    figure_2_1.update_xaxes(
                     title='Year',
                     fixedrange=True, #stops the users being able to zoom
                     tickformat = '000', #number format
@@ -169,17 +173,20 @@ def Figure_2_1():
     #                  linecolor = '#356b6a'
     ) # colour of axis line
 
-    Figure_2_1.add_annotation(x=2015, 
+    figure_2_1.add_annotation(x=2015, 
                             y=0.055,
                             text='1961-1990 Normal',
                             showarrow=False,
                             font=dict(
                                 color='#E1AF00'),)
 
-    return Figure_2_1
+    return figure_2_1
 
 
-def surfaceAirTempStationsMap():
+def map_2_1():
+    """
+    Surface Air Temperature infrastructure map
+    """
 #     data_path = PATH.joinpath('data/Atmospheric_Domain/2.1SurfaceAirTemperature').resolve()
 #     stationsDF = pd.read_csv(data_path.joinpath('Map2.1/Map2.1_StationTable.txt'))
     data_path = DATA_PATH+'Atmospheric_Domain/2.1SurfaceAirTemperature/Map2.1/'
@@ -259,26 +266,25 @@ def surfaceAirTempStationsMap():
                 '<extra></extra>',
     )
 
-    surfaceTempStationMap = go.Figure(data=[buoyTrend, 
-    synopticTrend, 
-    rainfallTrend, 
-    climateTrend],layout=cilSationMapLayoutDict())
+    map_2_1 = go.Figure(
+            data=[buoyTrend,synopticTrend, rainfallTrend, climateTrend],
+            layout=cilSationMapLayoutDict())
     config={'scrollZoom': True,
             'displayModeBar': False,
             'displaylogo': False}
-    surfaceTempStationMap.update_layout(
+    map_2_1.update_layout(
             showlegend=True,
-                        legend=dict(orientation='v', #h for horizontal, 'v' is default
-                                    title='<b>Station Type</b>',
-                                    x=0.01
-                                ), 
-    )
+            legend=dict(orientation='v', #h for horizontal, 'v' is default
+                        title='<b>Station Type</b>',
+                        x=0.01)
+                        )
 
-    return surfaceTempStationMap
+    return map_2_1
 
-def dissolvedOxygenTrend():
-        # data_path = PATH.joinpath('data/Oceanic_Domain/3.7Oxygen').resolve()
-        # xls = pd.ExcelFile(data_path.joinpath('Figure3.15/DO_McSwynes_2019.xlsx'))
+def figure_3_15():
+        """
+        Dissolved Oxygen trend
+        """
 
         data_path = DATA_PATH+'Oceanic_Domain/3.7Oxygen/Figure3.15/'
         xls = pd.ExcelFile(data_path+'DO_McSwynes_2019.xlsx')
@@ -306,19 +312,17 @@ def dissolvedOxygenTrend():
                         'Date: %{x}<br>' + 
 #                         'DO_Saturation.: %{y}%<br>' +
                         'Depth: %{text}m<br><extra></extra>')
-        dissolvedOxygenDateChart = go.Figure(data=dissolvedOxygenDateTrace, layout=ciStatusReportTimeSeriesLayoutDict())
-        dissolvedOxygenDateChart.update_layout(
+        figure_3_15 = go.Figure(data=dissolvedOxygenDateTrace, layout=ciStatusReportTimeSeriesLayoutDict())
+        figure_3_15.update_layout(
                 yaxis=dict(title='Saturation (%)'),
                 xaxis=dict(title='Year'))
 
-        return dissolvedOxygenDateChart
+        return figure_3_15
 
-def dissolvedOxygenStationsMap():
-        # data_path = PATH.joinpath('data/Oceanic_Domain/3.7Oxygen').resolve()
-        # epaStationsDF = pd.read_csv(data_path.joinpath('Map3.6/Map3.6_StationTable_EPA_Stations.txt'))
-        # maceHeadStationsDF = pd.read_csv(data_path.joinpath('Map3.6/Map3.6_StationTable_MaceHead.txt'))
-        # MIStationsDF_origin = pd.read_csv(data_path.joinpath('Map3.6/Map3.6_StationTable_MI_SurveysStations.txt'))
-        # smartBayStationsDF = pd.read_csv(data_path.joinpath('Map3.6/Map3.6_StationTable_SmartBayObservatory.txt'))
+def map_3_6():
+        """
+        Dissolved Oxygen infrastructure map
+        """
 
         data_path = DATA_PATH+'Oceanic_Domain/3.7Oxygen/Map3.6/'
         epaStationsDF = pd.read_csv(data_path+'Map3.6_StationTable_EPA_Stations.txt')
@@ -383,12 +387,12 @@ def dissolvedOxygenStationsMap():
             'Lon: %{lat}\u00b0<br>' +
             '<extra></extra>',)
         
-        dissolvedOxygenStationMap = go.Figure(data=[MIStationsTrace, 
+        map_3_6 = go.Figure(data=[MIStationsTrace, 
                                                     epaStationsTrace, 
                                                     smartBayStationsTrace,
                                                     maceHeadStationsTrace],
                                                layout=cilSationMapLayoutDict())
-        dissolvedOxygenStationMap.update_layout(
+        map_3_6.update_layout(
                         mapbox=dict(
                                 center=dict(
                                         lat=52.5,
@@ -398,15 +402,261 @@ def dissolvedOxygenStationsMap():
         config={'scrollZoom': True,
                 'displayModeBar': False,
                 'displaylogo': False}
-        dissolvedOxygenStationMap.update_layout(
+        map_3_6.update_layout(
                         showlegend=True,
                         legend=dict(orientation='v',
                                         title='<b>Station Type</b>',
                                         x=0.01
                                 ), )
-        return dissolvedOxygenStationMap
+        return map_3_6
 
-def FAPARTrend():
+def figure_4_10_1():
+        """
+        Landcover 1990 Pie
+        """
+        # data_path = PATH.joinpath('data/Terrestrial_Domain/4.6LandCover').resolve()
+        # areaDF = pd.read_excel(data_path.joinpath('Figure4.11/CorineStats_CumulativeChanges.xlsx'), header=0,  skiprows=2, nrows= 6)
+        #e6e43b = agri
+        #4c52f9 = wetlands
+        #5ea32a = forest
+        #c4fd89 = semiVeg
+        #db2001 = artiSurface
+        #72caf0 = waterBodies
+
+        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
+        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx') 
+        areaDF = pd.read_excel(xls, header=0,  skiprows=2, nrows= 6)
+        # Tidy text by wrapping
+        areaDF.loc[
+                areaDF['Corine L1 Class']=='Semi-Natural & Low Vegetation','Corine L1 Class']='Semi-Natural &<br>Low Vegetation'
+        area1990Trace = go.Pie(
+                labels=areaDF['Corine L1 Class'], 
+                values=areaDF['CLC90 Area(HA)']/1000,
+                textinfo='label+percent',
+                textposition= 'auto',
+                marker=dict(colors=['#db2001',
+                                        '#e6e43b',
+                                        '#5ea32a',
+                                        '#c4fd89',
+                                        '#4c52f9',
+                                        '#72caf0',]),
+                sort=True,
+                texttemplate = '<b>%{label}<br>%{percent:.1%}<b>',
+                        hovertemplate='<b>%{label}</b><br>' +
+                        '%{value:.0f}kHA<br>' +
+                        '%{percent:.2%}<extra></extra>',
+                )
+        figure_4_10_1 = go.Figure(data=[area1990Trace])
+        figure_4_10_1.update_layout(
+                height=300,
+                margin={"b": 0,"r": 0, "l": 0, "t":0},
+                font=dict(
+                        color = "#7f7f7f"
+                        ),
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)',
+                showlegend=False)
+        return figure_4_10_1
+
+def figure_4_10_2():
+        """
+        Landcover 2018 Pie
+        """
+        # data_path = PATH.joinpath('data/Terrestrial_Domain/4.6LandCover').resolve()
+        # areaDF = pd.read_excel(data_path.joinpath('Figure4.11/CorineStats_CumulativeChanges.xlsx'), header=0,  skiprows=2, nrows= 6)
+        #e6e43b = agri
+        #4c52f9 = wetlands
+        #5ea32a = forest
+        #c4fd89 = semiVeg
+        #db2001 = artiSurface
+        #72caf0 = waterBodies
+
+        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
+        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx')  
+        areaDF = pd.read_excel(xls, header=0,  skiprows=2, nrows= 6)
+        # Tidy text by wrapping
+        areaDF.loc[
+                areaDF['Corine L1 Class']=='Semi-Natural & Low Vegetation','Corine L1 Class']='Semi-Natural &<br>Low Vegetation'
+        area2018Trace = go.Pie(labels=areaDF['Corine L1 Class'], 
+                values=areaDF['CLC18 Area(HA)']/1000,
+                textinfo='label+percent',
+                textposition= 'auto',
+                # insidetextorientation='radial',
+                # textposition= 'inside',
+                marker=dict(colors=['#db2001',
+                                        '#e6e43b',
+                                        '#5ea32a',
+                                        '#c4fd89',
+                                        '#4c52f9',
+                                        '#72caf0',]),
+                sort=True,
+                texttemplate = '<b>%{label}<br>%{percent:.1%}<b>',
+                        hovertemplate='<b>%{label}</b><br>' +
+                        '%{value:.0f}kHA<br>' +
+                        '%{percent:.2%}<extra></extra>',
+                )
+        figure_4_10_2 = go.Figure(data=[area2018Trace])
+        figure_4_10_2.update_layout(
+                height=300,
+                margin={"b": 0,"r": 0, "l": 0, "t":0},
+                font=dict(
+                        color = "#7f7f7f"
+                        ),
+                paper_bgcolor='rgba(0,0,0,0)',
+                plot_bgcolor='rgba(0,0,0,0)',
+                showlegend=False)
+        return figure_4_10_2
+
+def figure_4_11():
+        """
+        Landcover time series
+        """
+        # data_path = PATH.joinpath('data/Terrestrial_Domain/4.6LandCover').resolve()
+        # xls = pd.ExcelFile(pd.read_csv(data_path.joinpath('Figure4.11/CorineStats_CumulativeChanges.xlsx')
+        # dataDF = xls.parse('Summary', skiprows=2, index_col=None, na_values=['NA'])   
+        # 
+        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
+        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx')  
+        cumChangeDF = pd.read_excel(xls, header=0,  skiprows=22, nrows= 6)
+        cumChangeDF=cumChangeDF.set_index('Corine L1 Class').T
+        cumChangeDF.reset_index(level=0, inplace=True)
+        cumChangeNameDict={
+                'index': 'Year',
+                'Artificial Surfaces' : 'ArtificialSurfacesCumChange',
+                'Agricultural Areas' : 'AgriculturalAreasCumChange',
+                'Forest' : 'ForestCumChange',
+                'Semi-Natural & Low Vegetation' : 'SemiNaturalLowVegetationsCumChange',
+                'Wetlands' : 'WetlandsCumChange',
+                'Water Bodies' : 'WaterBodiesCumChange',
+                 }
+
+        cumChangeDF=cumChangeDF.rename(columns=cumChangeNameDict)
+
+        #e6e43b = agri
+        #4c52f9 = wetlands
+        #5ea32a = forest
+        #c4fd89 = semiVeg
+        #db2001 = artiSurface
+        #72caf0 = waterBodies
+
+        artificialSurfacesTrace = go.Scatter(x=cumChangeDF.Year, 
+                                y=cumChangeDF.ArtificialSurfacesCumChange, 
+                                name='Artificial Surfacese', 
+                                mode='lines+markers',
+                                marker=dict(color='#db2001',
+                                        size=4,
+                                        line=dict(color='#db2001',
+                                                width=0)),
+                                hovertemplate='<b>Artificial Surfacese</b><br>' +
+                                'Year: %{x}<br>' + 
+                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
+
+        agriculturalAreasTrace = go.Scatter(x=cumChangeDF.Year, 
+                                y=cumChangeDF.AgriculturalAreasCumChange, 
+                                name='Agricultural Areas', 
+                                mode='lines+markers',
+                                marker=dict(color='#e6e43b',
+                                size=4,
+                                line=dict(color='#e6e43b',
+                                        width=0)),
+                                hovertemplate='<b>Agricultural Areas</b><br>' +
+                                'Year: %{x}<br>' + 
+                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
+
+        forestTrace = go.Scatter(x=cumChangeDF.Year, 
+                                y=cumChangeDF.ForestCumChange, 
+                                name='Forest', 
+                                mode='lines+markers',
+                                marker=dict(color='#5ea32a',
+                                size=4,
+                                line=dict(color='#5ea32a',
+                                        width=0)), 
+                                hovertemplate='<b>Forest</b><br>' +
+                                'Year: %{x}<br>' + 
+                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
+
+        semiNaturalLowVegetationsTrace = go.Scatter(x=cumChangeDF.Year, 
+                                y=cumChangeDF.SemiNaturalLowVegetationsCumChange, 
+                                name='Semi-Natural & Low Vegetations', 
+                                mode='lines+markers',
+                                marker=dict(color='#c4fd89',
+                                size=4,
+                                line=dict(color='#c4fd89',
+                                        width=0)),
+                                hovertemplate='<b>Semi-Natural & Low Vegetations</b><br>' +
+                                'Year: %{x}<br>' + 
+                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
+
+        wetlandsTrace = go.Scatter(x=cumChangeDF.Year, 
+                                y=cumChangeDF.WetlandsCumChange, 
+                                name='Wetlands', 
+                                mode='lines+markers',
+                                marker=dict(color='#4c52f9',
+                                                size=4,
+                                                line=dict(color='#4c52f9',
+                                                        width=0)),
+                                hovertemplate='<b>Wetlands</b><br>' +
+                                'Year: %{x}<br>' + 
+                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
+
+        waterBodiesTrace = go.Scatter(x=cumChangeDF.Year, 
+                                y=cumChangeDF.WaterBodiesCumChange, 
+                                name='Water Bodies', 
+                                mode='lines+markers',
+                                marker=dict(color='#72caf0',
+                                size=4,
+                                line=dict(color='#72caf0',
+                                        width=0)),
+                                hovertemplate='<b>Water Bodies</b><br>' +
+                                'Year: %{x}<br>' + 
+                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
+
+        data=[artificialSurfacesTrace,
+                                agriculturalAreasTrace,
+                                forestTrace,
+                                semiNaturalLowVegetationsTrace,
+                                wetlandsTrace,
+                                waterBodiesTrace]
+
+        # landcoverCumChangeChart=go.Figure(data=data, layout=cilSlideTimeSeriesLayoutDict())
+        # landcoverCumChangeChart.update_layout(
+                # title_text='<b>Percentage of Cumulative Change within Each Class</b>',
+                                #         height=450,
+                                # legend=dict(orientation='h', #h for horizontal, 'v' is default
+                                # x=0, 
+                                # y=0
+                                # ), )
+        figure_4_11=go.Figure(data=data)
+        figure_4_11.update_layout(
+                    height=450,
+                    margin={'t':0, 'b':0,'r':0,'l':0,},  
+                    plot_bgcolor='#f7fbfd',
+                    paper_bgcolor='rgba(0,0,0,0)',
+                    font = dict(
+                        # family = 'Arial',
+                        # size = 13,
+                        color = '#7f7f7f'
+                        ),
+                    hovermode='closest',
+                        legend=dict(
+                            orientation='h',
+                            #   x=0.1,
+                            y=-0.15,
+                            bgcolor='rgba(0,0,0,0)',
+                        #     itemclick=False,
+                        #     itemdoubleclick=False,
+                                    ), )
+        figure_4_11.update_yaxes(title_text='<b>Percentage (%)</b>',
+                                tickformat=',.0%',)
+        figure_4_11.update_xaxes(title_text='<b>Year</b>')
+
+        return figure_4_11
+
+
+def figure_4_12():
+        """
+        FAPAR Trend
+        """
         # data_path = PATH.joinpath('data/Terrestrial_Domain/4.7FAPAR').resolve()
         # xls = pd.ExcelFile(data_path.joinpath('Figure4.12/FAPAR_CopernicusLandService_10Days_OverIreland_v2.xlsx'))
 
@@ -551,8 +801,8 @@ def FAPARTrend():
                                 '%{text}' +
                                 '<extra></extra>')
 
-        faparChart = go.Figure(data=faparTrace, layout=ciStatusReportTimeSeriesLayoutDict())
-        faparChart.update_layout(
+        figure_4_12 = go.Figure(data=faparTrace, layout=ciStatusReportTimeSeriesLayoutDict())
+        figure_4_12.update_layout(
                 # title_text='<b>10-day average FAPAR over Ireland</b>',
                 yaxis=dict(title='Year',
                         nticks=20),
@@ -560,277 +810,51 @@ def FAPARTrend():
                         ticktext=month_list,
                         showgrid=True, gridwidth=3, gridcolor='black',
                         tickvals=[2,5,8,11,14,17,20,23,26,29,32,35],))
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=3.5, y0=1998.6, x1=3.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=6.5, y0=1998.6, x1=6.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=9.5, y0=1998.6, x1=9.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=12.5, y0=1998.6, x1=12.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=15.5, y0=1998.6, x1=15.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=18.5, y0=1998.6, x1=18.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=21.5, y0=1998.6, x1=21.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=24.5, y0=1998.6, x1=24.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=27.5, y0=1998.6, x1=27.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=30.5, y0=1998.6, x1=30.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        faparChart.add_shape(type='line',
+        figure_4_12.add_shape(type='line',
         x0=33.5, y0=1998.6, x1=33.5, y1=2018.4,
         line=dict(color='White',width=3)
         )
-        return faparChart
-
-
-def LandCoverTrend():
-        # data_path = PATH.joinpath('data/Terrestrial_Domain/4.6LandCover').resolve()
-        # xls = pd.ExcelFile(pd.read_csv(data_path.joinpath('Figure4.11/CorineStats_CumulativeChanges.xlsx')
-        # dataDF = xls.parse('Summary', skiprows=2, index_col=None, na_values=['NA'])   
-        # 
-        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
-        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx')  
-        cumChangeDF = pd.read_excel(xls, header=0,  skiprows=22, nrows= 6)
-        cumChangeDF=cumChangeDF.set_index('Corine L1 Class').T
-        cumChangeDF.reset_index(level=0, inplace=True)
-        cumChangeNameDict={
-                'index': 'Year',
-                'Artificial Surfaces' : 'ArtificialSurfacesCumChange',
-                'Agricultural Areas' : 'AgriculturalAreasCumChange',
-                'Forest' : 'ForestCumChange',
-                'Semi-Natural & Low Vegetation' : 'SemiNaturalLowVegetationsCumChange',
-                'Wetlands' : 'WetlandsCumChange',
-                'Water Bodies' : 'WaterBodiesCumChange',
-                 }
-
-        cumChangeDF=cumChangeDF.rename(columns=cumChangeNameDict)
-
-        #e6e43b = agri
-        #4c52f9 = wetlands
-        #5ea32a = forest
-        #c4fd89 = semiVeg
-        #db2001 = artiSurface
-        #72caf0 = waterBodies
-
-        artificialSurfacesTrace = go.Scatter(x=cumChangeDF.Year, 
-                                y=cumChangeDF.ArtificialSurfacesCumChange, 
-                                name='Artificial Surfacese', 
-                                mode='lines+markers',
-                                marker=dict(color='#db2001',
-                                        size=4,
-                                        line=dict(color='#db2001',
-                                                width=0)),
-                                hovertemplate='<b>Artificial Surfacese</b><br>' +
-                                'Year: %{x}<br>' + 
-                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
-
-        agriculturalAreasTrace = go.Scatter(x=cumChangeDF.Year, 
-                                y=cumChangeDF.AgriculturalAreasCumChange, 
-                                name='Agricultural Areas', 
-                                mode='lines+markers',
-                                marker=dict(color='#e6e43b',
-                                size=4,
-                                line=dict(color='#e6e43b',
-                                        width=0)),
-                                hovertemplate='<b>Agricultural Areas</b><br>' +
-                                'Year: %{x}<br>' + 
-                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
-
-        forestTrace = go.Scatter(x=cumChangeDF.Year, 
-                                y=cumChangeDF.ForestCumChange, 
-                                name='Forest', 
-                                mode='lines+markers',
-                                marker=dict(color='#5ea32a',
-                                size=4,
-                                line=dict(color='#5ea32a',
-                                        width=0)), 
-                                hovertemplate='<b>Forest</b><br>' +
-                                'Year: %{x}<br>' + 
-                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
-
-        semiNaturalLowVegetationsTrace = go.Scatter(x=cumChangeDF.Year, 
-                                y=cumChangeDF.SemiNaturalLowVegetationsCumChange, 
-                                name='Semi-Natural & Low Vegetations', 
-                                mode='lines+markers',
-                                marker=dict(color='#c4fd89',
-                                size=4,
-                                line=dict(color='#c4fd89',
-                                        width=0)),
-                                hovertemplate='<b>Semi-Natural & Low Vegetations</b><br>' +
-                                'Year: %{x}<br>' + 
-                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
-
-        wetlandsTrace = go.Scatter(x=cumChangeDF.Year, 
-                                y=cumChangeDF.WetlandsCumChange, 
-                                name='Wetlands', 
-                                mode='lines+markers',
-                                marker=dict(color='#4c52f9',
-                                                size=4,
-                                                line=dict(color='#4c52f9',
-                                                        width=0)),
-                                hovertemplate='<b>Wetlands</b><br>' +
-                                'Year: %{x}<br>' + 
-                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
-
-        waterBodiesTrace = go.Scatter(x=cumChangeDF.Year, 
-                                y=cumChangeDF.WaterBodiesCumChange, 
-                                name='Water Bodies', 
-                                mode='lines+markers',
-                                marker=dict(color='#72caf0',
-                                size=4,
-                                line=dict(color='#72caf0',
-                                        width=0)),
-                                hovertemplate='<b>Water Bodies</b><br>' +
-                                'Year: %{x}<br>' + 
-                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
-
-        data=[artificialSurfacesTrace,
-                                agriculturalAreasTrace,
-                                forestTrace,
-                                semiNaturalLowVegetationsTrace,
-                                wetlandsTrace,
-                                waterBodiesTrace]
-
-        # landcoverCumChangeChart=go.Figure(data=data, layout=cilSlideTimeSeriesLayoutDict())
-        # landcoverCumChangeChart.update_layout(
-                # title_text='<b>Percentage of Cumulative Change within Each Class</b>',
-                                #         height=450,
-                                # legend=dict(orientation='h', #h for horizontal, 'v' is default
-                                # x=0, 
-                                # y=0
-                                # ), )
-        landcoverCumChangeChart=go.Figure(data=data)
-        landcoverCumChangeChart.update_layout(
-                    height=450,
-                    margin={'t':0, 'b':0,'r':0,'l':0,},  
-                    plot_bgcolor='#f7fbfd',
-                    paper_bgcolor='rgba(0,0,0,0)',
-                    font = dict(
-                        # family = 'Arial',
-                        # size = 13,
-                        color = '#7f7f7f'
-                        ),
-                    hovermode='closest',
-                        legend=dict(
-                            orientation='h',
-                            #   x=0.1,
-                            y=-0.15,
-                            bgcolor='rgba(0,0,0,0)',
-                        #     itemclick=False,
-                        #     itemdoubleclick=False,
-                                    ), )
-        landcoverCumChangeChart.update_yaxes(title_text='<b>Percentage (%)</b>',
-                                tickformat=',.0%',)
-        landcoverCumChangeChart.update_xaxes(title_text='<b>Year</b>')
-
-        return landcoverCumChangeChart
-
-def LandCoverArea1990():
-        # data_path = PATH.joinpath('data/Terrestrial_Domain/4.6LandCover').resolve()
-        # areaDF = pd.read_excel(data_path.joinpath('Figure4.11/CorineStats_CumulativeChanges.xlsx'), header=0,  skiprows=2, nrows= 6)
-        #e6e43b = agri
-        #4c52f9 = wetlands
-        #5ea32a = forest
-        #c4fd89 = semiVeg
-        #db2001 = artiSurface
-        #72caf0 = waterBodies
-
-        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
-        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx')  
-        areaDF = pd.read_excel(xls, header=0,  skiprows=2, nrows= 6)
-        area1990Trace = go.Pie(labels=areaDF['Corine L1 Class'], 
-                values=areaDF['CLC90 Area(HA)']/1000,
-                textinfo='label+percent',
-                textposition= 'auto',
-                marker=dict(colors=['#db2001',
-                                        '#e6e43b',
-                                        '#5ea32a',
-                                        '#c4fd89',
-                                        '#4c52f9',
-                                        '#72caf0',]),
-                sort=True,
-                texttemplate = '<b>%{label}<br>%{percent:.1%}<b>',
-                        hovertemplate='<b>%{label}</b><br>' +
-                        '%{value:.0f}kHA<br>' +
-                        '%{percent:.2%}<extra></extra>',
-                )
-        area1990Pie = go.Figure(data=[area1990Trace])
-        area1990Pie.update_layout(
-                margin={"b": 0,"r": 0, "l": 0, "t":60},
-                font=dict(
-                        color = "#7f7f7f"
-                        ),
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',
-                showlegend=False)
-        return area1990Pie
-
-def LandCoverArea2018():
-        # data_path = PATH.joinpath('data/Terrestrial_Domain/4.6LandCover').resolve()
-        # areaDF = pd.read_excel(data_path.joinpath('Figure4.11/CorineStats_CumulativeChanges.xlsx'), header=0,  skiprows=2, nrows= 6)
-        #e6e43b = agri
-        #4c52f9 = wetlands
-        #5ea32a = forest
-        #c4fd89 = semiVeg
-        #db2001 = artiSurface
-        #72caf0 = waterBodies
-
-        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
-        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx')  
-        areaDF = pd.read_excel(xls, header=0,  skiprows=2, nrows= 6)
-
-        area2018Trace = go.Pie(labels=areaDF['Corine L1 Class'], 
-                values=areaDF['CLC18 Area(HA)']/1000,
-                textinfo='label+percent',
-                insidetextorientation='radial',
-                textposition= 'inside',
-                marker=dict(colors=['#db2001',
-                                        '#e6e43b',
-                                        '#5ea32a',
-                                        '#c4fd89',
-                                        '#4c52f9',
-                                        '#72caf0',]),
-                sort=True,
-                texttemplate = '<b>%{label}<br>%{percent:.1%}<b>',
-                        hovertemplate='<b>%{label}</b><br>' +
-                        '%{value:.0f}kHA<br>' +
-                        '%{percent:.2%}<extra></extra>',
-                )
-        area2018Pie = go.Figure(data=[area2018Trace])
-        area2018Pie.update_layout(
-                margin={"b": 0,"r": 0, "l": 0, "t":60},
-                font=dict(
-                        color = "#7f7f7f"
-                        ),
-                paper_bgcolor='rgba(0,0,0,0)',
-                plot_bgcolor='rgba(0,0,0,0)',
-                showlegend=False)
-        return area2018Pie
-
+        return figure_4_12
 
 
 

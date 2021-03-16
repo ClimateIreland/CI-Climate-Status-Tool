@@ -151,7 +151,8 @@ CHAPTERS = [
                         {
         'chapter-num':'3.1a',
         'id':'sop-1',
-        'title':'Surface and Sub-surface Temperature', 
+        # Both Surface and Sub-surface on same page
+        'title':'Surface Temperature', 
         'href':'/_3_1a_SurfaceTemperature',
         'icon-lg-src':'sea-surface-temperature.png',
         'icon-src':'ico-sop-sea-surface-temp.png',
@@ -163,21 +164,22 @@ CHAPTERS = [
         'domain-color':OCEAN_COLOR,
         'domain-bg-color':OCEAN_BG_COLOR
                 },
-        #                                 {
-        # 'chapter-num':'3.1b',
-        # 'id':'ssop-1',
-        # 'title':'Sub-surface Temperature', 
-        # 'href':'/_3_1b_SubsurfaceTemperature',
-        # 'icon-lg-src':'subsurface-temperature_1.png',
-        # 'icon-src':'ico-ssop-subsurface-temp.png',
-        # 'icon-hover-src':'ico-ssop-subsurface-temp_hover.png',
-        # 'domain':'Ocean',
-        # 'subdomain':'',
-        # 'scientific-area':'',
-        # 'authors':'',
-        # 'domain-color':OCEAN_COLOR,
-        # 'domain-bg-color':OCEAN_BG_COLOR
-        #         },
+                                        {
+        'chapter-num':'3.1b',
+        'id':'ssop-1',
+        'title':'Sub-surface Temperature', 
+        # Both Surface and Sub-surface on same page
+        'href':'/_3_1a_SurfaceTemperature',
+        'icon-lg-src':'subsurface-temperature_1.png',
+        'icon-src':'ico-ssop-subsurface-temp.png',
+        'icon-hover-src':'ico-ssop-subsurface-temp_hover.png',
+        'domain':'Ocean',
+        'subdomain':'',
+        'scientific-area':'',
+        'authors':'',
+        'domain-color':OCEAN_COLOR,
+        'domain-bg-color':OCEAN_BG_COLOR
+                },
                                                        {
         'chapter-num':'3.4',
         'id':'sop-2',
@@ -211,7 +213,7 @@ CHAPTERS = [
                         {
         'chapter-num':'3.7',
         'id':'obgc-2',
-        'title':'Oxygen', 
+        'title':'Dissolved Oxygen', 
         'href':'/_3_7_Oxygen',
         'icon-lg-src':'oxygen.png',
         'icon-src':'ico-obgc-oxygen.png',
@@ -275,7 +277,7 @@ CHAPTERS = [
                                               {
         'chapter-num':'4.11',
         'id':'bio-3',
-        'title':'Fire', 
+        'title':'Fire Disturbance', 
         'href':'/_4_11_Fire',
         'icon-lg-src':'fire_0.png',
         'icon-src':'ico-bio-fire.png',

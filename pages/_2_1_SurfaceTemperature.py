@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import Figure_2_1, surfaceAirTempStationsMap
+from charts import figure_2_1, map_2_1
 
 chapter_num='2.1'
 ecvName='Surface Air Temperature'
@@ -39,7 +39,7 @@ bulletPoints=[bulletPoint1,bulletPoint2]
 # authors='Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin'
 
 trendChartTitle='Mean Surface Air Temperature (1900-2019)'
-trendChart=Figure_2_1()
+trendChart=figure_2_1()
 
 trendCaption="""
         A time series graph of mean annual observed
@@ -62,7 +62,7 @@ infrastructureText="""
         Difficulties arise because of inhomogeneities due to changes in instrumentation, observer, 
         location and times of observation and new building and tree growth in the vicinity of a station.
         """
-infrastructureMap=surfaceAirTempStationsMap()
+infrastructureMap=map_2_1()
 
 infoLinks=[{'text':'Surface Temperature ESSENTIAL CLIMATE VARIABLES (ECV). GCOS FACTSHEETS', 
             'url':'https://gcos.wmo.int/en/essential-climate-variables/surface-temperature/'},
@@ -91,6 +91,11 @@ infoLinks=[{'text':'Surface Temperature ESSENTIAL CLIMATE VARIABLES (ECV). GCOS 
 
 ########################################################################################################################
 chapter_dict=next((item for item in CHAPTERS if item['chapter-num']==chapter_num),None)
+
+def create_chart(app):
+        return dcc.Graph(
+                figure=trendChart,
+                config={'displayModeBar': False})
 
 def create_layout(app):
       return html.Div(

@@ -7,6 +7,7 @@ import pathlib
 import page_builder as pb
 from settings import *
 from charts import empty_chart
+import copy
 
 chapter_num='3.1a'
 bannerImgSrc=IMAGES_PATH+'OceanicSections/Sea_Temperature_Annual Ocean Climate Survey 2019_Photo by Tomasz Szumski_158.JPG'
@@ -52,20 +53,151 @@ infoLinks=[
 
 ########################################################################################################################
 chapter_dict=next((item for item in CHAPTERS if item['chapter-num']==chapter_num),None)
+# deep copy insures object indepdence
+chapter_dict_combined=copy.deepcopy(chapter_dict)
+chapter_dict_combined['title']='Surface and Sub-surface Temperature'
 
+
+custom_intro=dbc.Container(
+        style={'borderColor':chapter_dict_combined['domain-color']},
+        className='sr-intro',
+        children=[
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-6 col-md-1 offset-md-1 my-auto",
+                        children=[
+                            html.Img(
+                                className='sr-intro-icon float-right',
+                                src=IMAGES_PATH+'icons/'+chapter_dict['icon-lg-src']
+                            ),]
+                            ),
+                dbc.Col(className="col-6 col-md-1  my-auto",
+                        children=[
+                            html.Img(
+                                className='sr-intro-icon float-left',
+                                src=IMAGES_PATH+'icons/'+'subsurface-temperature_1.png'
+                            ),
+                            
+                            ]
+                            ),
+                dbc.Col(className="col-12 col-md-7 my-auto text-center",
+                        children=[
+                            html.H1(
+                                className='sr-ecv-heading',
+                                children=chapter_dict_combined['title'],
+                                style={'color':chapter_dict['domain-color']},
+                            )]
+                            ),
+
+                        ]
+                    ),
+        dbc.Row(
+            children=[
+                dbc.Col(
+                    children=[
+                        html.P(
+                            children=introText
+                        )
+                    ]
+
+                )
+            ]
+
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(
+            children=[
+                html.Ul(
+                    className='sr-bullet-ul',
+                    style={
+                        'backgroundColor':chapter_dict['domain-bg-color']},
+                    children=[
+                        html.Li(
+                            className='',
+                            children=point)
+                         for point in bulletPoints]
+                        
+                        )
+                    ]
+                )]
+
+        ),
+        dbc.Row(
+            style={'color':chapter_dict['domain-color']},
+            children=[
+                dbc.Col(
+                
+                    className='col-xs-6 col-md-2',
+                    children='Domain:'
+                ),
+                dbc.Col(
+                    className='col-xs-6 col-md-10',
+                    children=chapter_dict['domain']
+                ),
+            ]
+        ),
+        dbc.Row(
+            style={'color':chapter_dict['domain-color']},
+            children=[
+                dbc.Col(
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
+                    className='col-xs-6 col-md-2',
+                    children='Subdomain:'
+                ),
+                dbc.Col(
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
+                    className='col-xs-6 col-md-10',
+                    children=chapter_dict['subdomain']
+                ),
+            ]
+        ),
+        dbc.Row(
+            style={'color':chapter_dict['domain-color']},
+            children=[
+                dbc.Col(
+                    className='col-xs-6 col-md-2',
+                    children='Scientific Area:'
+                ),
+                dbc.Col(
+                    className='col-xs-6 col-md-10',
+                    children=chapter_dict['scientific-area']
+                ),
+            ]
+        ),
+        dbc.Row(
+            style={'color':chapter_dict['domain-color']},
+            children=[
+                dbc.Col(
+                    className='col-xs-6 col-md-2',
+                    children='Authors:',
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
+                ),
+                dbc.Col(
+                    className='col-xs-6 col-md-10',
+                    children=chapter_dict['authors'],
+                    style={'backgroundColor':chapter_dict['domain-bg-color']},
+                ),
+            ]
+        ),
+            ])
+
+
+########################################################################################################################
 def create_layout(app):
       return html.Div(
               children=[
         pb.build_banner(bannerImgSrc,
                         bannerImgCredit,
-                        chapter_dict
+                        chapter_dict_combined
                         ),
-        pb.build_breadcrumb(chapter_dict),
+        pb.build_breadcrumb(chapter_dict_combined),
         pb.build_nav(chapter_dict),
-        pb.build_intro(introText,
-                       bulletPoints,
-                       chapter_dict
-                       ),
+        custom_intro,
+        # pb.build_intro(introText,
+        #                bulletPoints,
+        #                chapter_dict
+        #                ),
         pb.build_trend(trendChartTitle,
                        trendChart,
                        trendCaption,

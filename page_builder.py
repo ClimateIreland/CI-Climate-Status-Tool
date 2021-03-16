@@ -16,7 +16,7 @@ def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
                 className='sr-banner-img',
                 src=bannerImgSrc
             ),
-            html.P(
+            html.Span(
                 className='sr-img-credit',
                 children='Credit: '+ bannerImgCredit
             ),
@@ -43,14 +43,14 @@ def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
                                 className='col-sm-3 offset-md-1 my-auto text-center',
                                 children=html.Img(
                                     className='sr-banner-org-icon',
-                                    src='assets/images/EPA_logo.gif'
+                                    src='assets/images/UCC_Logo_2018_low.png'
                                 )
                                 ),
                             dbc.Col(
                                 className='col-sm-3 my-auto text-center',
                                 children=html.Img(
                                     className='sr-banner-org-icon',
-                                    src='assets/images/UCC_Logo_2018_low.png'
+                                    src='assets/images/EPA_logo.gif'
                                 )
                                 ),
                             dbc.Col(
@@ -103,6 +103,7 @@ def build_breadcrumb(chapter_dict):
 
 def build_nav(chapter_dict):
 
+
     return dbc.Container(
         style={'borderColor':chapter_dict['domain-color'], 'color':chapter_dict['domain-color']},
         className='sr-page-nav d-none d-md-block',
@@ -114,7 +115,7 @@ def build_nav(chapter_dict):
                             html.A(
                                 className='sr-page-nav-item',
                                 style={'color':chapter_dict['domain-color']},
-                                children='Observations', 
+                                children='Trends', 
                                 href='#trends'),
                             ]),
                 dbc.Col(className="col-md-3 my-auto",
@@ -270,7 +271,7 @@ def build_trend(trendChartTitle,trendChart,trendCaption, chapter_dict):
         html.H3(
             className='sr-section-heading',
             style={'color':chapter_dict['domain-color']},
-            children='Trends and Observations',
+            children='Trends',
             ),
         dbc.Row(
             children=[
@@ -307,7 +308,7 @@ def build_infrastructure(infrastructureText,infrastructureMap,chapter_dict):
         children=[
             html.H3(
                 className='sr-section-heading',
-                children='Observation Infrastructure',
+                children='Infrastructure',
                 style={'color':chapter_dict['domain-color']},
                 ),
             dbc.Row(
@@ -363,17 +364,15 @@ def build_nav_carousel(chapter_dict):
                 dbc.Col(
                     className='text-center',
                     children=[          html.H3(
-                className='sr-section-heading',
+                className='sr-section-heading mb-0',
                 children='Browse Climate Variables',
                 style={'color':chapter_dict['domain-color']},
                 ),
-                        # dcc.Link(
-                        #     href='/',
-                        #     children=[
-                        #         html.Img(
-                        #             className='sr-nav-carousel-logo',
-                        #             src=IMAGES_PATH+'icons/'+'CSRI2020Logo.png'
-                        #             )])
+                        dcc.Link(
+                            href='/',
+                            style={'color':chapter_dict['domain-color']},
+                            className='mb-5',
+                            children=["Or Return to Index"])
                             ]
                                     )),
             dbc.Row(
