@@ -2,6 +2,7 @@ import pathlib
 
 PATH = pathlib.Path(__file__).parent
 
+# DATA_PATH='/home/dancasey/Status_Tool_Data/'
 DATA_PATH='/Users/dan/OneDrive - University College Cork/Status_Tool/'
 IMAGES_PATH='assets/images/'
 # IMAGES_PATH='/Users/dan/ClimateIreland/Projects/CI-Status-Report-Dash/assets/images/'
