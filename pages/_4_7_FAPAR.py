@@ -9,33 +9,33 @@ from settings import *
 from charts import figure_4_12
 
 
-chapter_num='4.7'
-bannerImgSrc=IMAGES_PATH+'TerrestrialSections/FAPAR_ Vytenis Malisauskas.jpg'
-bannerImgCredit='Vytenis Malisauskas'
+chapter_num = '4.7'
+bannerImgSrc = IMAGES_PATH+'TerrestrialSections/FAPAR_ Vytenis Malisauskas.jpg'
+bannerImgCredit = 'Vytenis Malisauskas'
 
-introText="""
+introText = """
         Radiation from the sun plays an essential role in all biological process on Earth. 
         Part of this radiation is absorbed by vegetation and provides the energy required for growth. 
         This radiation is called FAPAR or the Fraction of Absorbed Photosynthetically Active Radiation. 
         """
-bulletPoint1="""
+bulletPoint1 = """
         The highest photosynthetic activity over Ireland is observed from May to July. 
         Western margins of the country show the lowest values of FAPAR.
         """
-bulletPoint2="""
+bulletPoint2 = """
         A ground-based FAPAR observation system should be considered in order to 
         validate and support satellite observations.
         """
-bulletPoints=[bulletPoint1,bulletPoint2]
+bulletPoints = [bulletPoint1, bulletPoint2]
 # domain='Terrestrial'
 # subdomain='Biology'
 # scientificArea='Biosphere'
 # authors='Walther C.A. Cámaro García, Ned Dwyer'
 
-trendChartTitle='10-day average FAPAR over Ireland'
-trendChart=figure_4_12()
+trendChartTitle = '10-day average FAPAR over Ireland'
+trendChart = figure_4_12()
 
-trendCaption="""
+trendCaption = """
            Above shows a heat map of 10-Day averaged FAPAR derived over Ireland using the CGLS dataset. 
            The red colour represents the 10-day periods with the highest values; only 5% of the values 
            are at or above the threshold of 0.76 (the 95th percentile). A seasonal trend is observed,
@@ -44,7 +44,7 @@ trendCaption="""
             The highest values in the time series are in the summer periods between 2007 and 2009, and between 2013 and2017. 
         """
 
-infrastructureText="""
+infrastructureText = """
         The CGLS is one of the Copernicus services that provide satellite information that may 
         be used to monitor a number of vegetation parameters around the globe. 
         The global FAPAR dataset available is derived from several satellite sensors. Currently, 
@@ -56,73 +56,74 @@ infrastructureText="""
 # no map
 # infrastructureMap=surfaceAirTempStationsMap()
 
-infoLinks=[
-        {'text':'FAPAR ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS', 
-            'url':'https://gcos.wmo.int/en/essential-climate-variables/fapar/'},
-                {'text':'Copernicus Global Land Service (CGLS) data', 
-            'url':'https://land.copernicus.eu/global/products/fapar'},
-                {'text':'Copernicus vegetation phenology and productivity product', 
-            'url':'https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity'},
-                {'text':'Joint Research Centre (JRC) FAPAR project', 
-            'url':'https://fapar.jrc.ec.europa.eu/Home.php'},
-                {'text':'Sentinel Global Vegetation Index (FAPAR) description', 
-            'url':'https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-3-olci/level-2/olci-global-vegetation-index-fapar'},
-            ]
+infoLinks = [
+    {'text': 'FAPAR ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/fapar/'},
+    {'text': 'Copernicus Global Land Service (CGLS) data',
+     'url': 'https://land.copernicus.eu/global/products/fapar'},
+    {'text': 'Copernicus vegetation phenology and productivity product',
+     'url': 'https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity'},
+    {'text': 'Joint Research Centre (JRC) FAPAR project',
+     'url': 'https://fapar.jrc.ec.europa.eu/Home.php'},
+    {'text': 'Sentinel Global Vegetation Index (FAPAR) description',
+     'url': 'https://sentinel.esa.int/web/sentinel/technical-guides/sentinel-3-olci/level-2/olci-global-vegetation-index-fapar'},
+]
 
 ######################################################################################################################
-chapter_dict=next((item for item in CHAPTERS if item['chapter-num']==chapter_num),None)
+chapter_dict = next(
+    (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
 
 custom_infrastructure = dbc.Container(
-        className='sr-infrastructure',
-        style={'borderColor':chapter_dict['domain-color']},
-        id='infrastructure',
-        children=[
-            html.H3(
-                className='sr-section-heading',
-                children='Infrastructure',
-                style={'color':chapter_dict['domain-color']},
-                ),
-            dbc.Row(
-                children=[
-                    dbc.Col(className="col-12 my-auto",
-                    children=[
-                        html.P(infrastructureText)]
-                    ),
-   
-                    ])
-                ])
+    className='sr-infrastructure',
+    style={'borderColor': chapter_dict['domain-color']},
+    id='infrastructure',
+    children=[
+        html.H3(
+            className='sr-section-heading',
+            children='Infrastructure',
+            style={'color': chapter_dict['domain-color']},
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-12 my-auto",
+                        children=[
+                            html.P(infrastructureText)]
+                        ),
+
+            ])
+    ])
 
 
 ########################################################################################################################
 
 
 def create_layout(app):
-      return html.Div(
-              children=[
-        pb.build_banner(bannerImgSrc,
-                        bannerImgCredit,
-                        chapter_dict
-                        ),
-        pb.build_breadcrumb(chapter_dict),
-        pb.build_nav(chapter_dict),
-        pb.build_intro(introText,
-                       bulletPoints,
-                       chapter_dict
-                       ),
-        pb.build_trend(trendChartTitle,
-                       trendChart,
-                       trendCaption,
-                       chapter_dict
-                       ),
-        # pb.build_infrastructure(infrastructureText,
-        #                         infrastructureMap,
-        #                         chapter_dict
-        #                         ),
-        custom_infrastructure,
-        pb.build_info(
+    return html.Div(
+        children=[
+            pb.build_banner(bannerImgSrc,
+                            bannerImgCredit,
+                            chapter_dict
+                            ),
+            pb.build_breadcrumb(chapter_dict),
+            pb.build_nav(chapter_dict),
+            pb.build_intro(introText,
+                           bulletPoints,
+                           chapter_dict
+                           ),
+            pb.build_trend(trendChartTitle,
+                           trendChart,
+                           trendCaption,
+                           chapter_dict
+                           ),
+            # pb.build_infrastructure(infrastructureText,
+            #                         infrastructureMap,
+            #                         chapter_dict
+            #                         ),
+            custom_infrastructure,
+            pb.build_info(
                 infoLinks,
                 chapter_dict),
-                  
-        pb.build_nav_carousel(chapter_dict)
+
+            pb.build_nav_carousel(chapter_dict)
         ])

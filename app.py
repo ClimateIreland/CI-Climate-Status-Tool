@@ -18,8 +18,7 @@ from pages import (
     _2_11_Methane,
     _2_12_OtherGreenhouseGases,
 
-    _3_1a_SurfaceTemperature,
-    _3_1b_SubsurfaceTemperature,
+    _3_1_SurfaceSubsurfaceTemperature,
     _3_4_SeaLevel,
     _3_6_InorganicCarbon,
     _3_7_Oxygen,
@@ -29,17 +28,18 @@ from pages import (
     _4_7_FAPAR,
     _4_11_Fire,
     _4_14_AnthropogenicGreenhouseGasEmissions,
-    )
+)
 
 app = dash.Dash(
-    __name__, 
-    meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
+    __name__,
+    meta_tags=[{"name": "viewport",
+                "content": "width=device-width, initial-scale=1"}],
     external_stylesheets=[
         dbc.themes.BOOTSTRAP
-        ],
-    )
+    ],
+)
 
-app.title='Climate Status Report Ireland'
+app.title = 'Climate Status Report Ireland'
 app.layout = html.Div(children=[
     dcc.Location(id='url', refresh=False),
     # html.Div(
@@ -55,6 +55,8 @@ app.layout = html.Div(children=[
 )
 
 # Update page
+
+
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
     if pathname == "/StatusReport":
@@ -71,10 +73,8 @@ def display_page(pathname):
         return _2_11_Methane.create_layout(app)
     elif pathname == "/_2_12_OtherGreenhouseGases":
         return _2_12_OtherGreenhouseGases.create_layout(app)
-    elif pathname == "/_3_1a_SurfaceTemperature":
-        return _3_1a_SurfaceTemperature.create_layout(app)
-    # elif pathname == "/_3_1b_SubsurfaceTemperature":
-    #     return _3_1b_SubsurfaceTemperature.create_layout(app)
+    elif pathname == "/_3_1_SurfaceSubsurfaceTemperature":
+        return _3_1_SurfaceSubsurfaceTemperature.create_layout(app)
     elif pathname == "/_3_4_SeaLevel":
         return _3_4_SeaLevel.create_layout(app)
     elif pathname == "/_3_6_InorganicCarbon":
@@ -95,6 +95,7 @@ def display_page(pathname):
     #     return dcc.Location(pathname="/StatusReport", id='any')
     else:
         return index.create_layout(app)
+
 
 if __name__ == '__main__':
     # app.run_server(host='0.0.0.0',port='80')
