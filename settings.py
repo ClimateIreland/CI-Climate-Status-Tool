@@ -15,6 +15,58 @@ ATMOSPHERE_BG_COLOR = '#e6f5fc'
 OCEAN_BG_COLOR = '#e6f3f5'
 TERRESTRIAL_BG_COLOR = '#fef4e6'
 
+TIMESERIES_COLOR_PRIMARY = "#00a4ae"
+TIMESERIES_COLOR_SECONDARY = "#E1AF00"
+
+STATION_COLORS = {
+    'Buoy': '#e69800',
+    'Synoptic': '#ff0000',
+    'Rainfall': '#ffff00',
+    'Climate': '#004da8',
+    'WaveRide/SmartBayObsCenter': '#ffff00',
+    'MI_Survey': '#ff0000',
+    'EPA': '#002673'
+}
+
+CHART_FONT = dict(
+    color="#7f7f7f")
+
+TIMESERIES_LAYOUT = dict(
+    xaxis=dict(showgrid=False),
+    height=450,
+    margin={"t": 0, "b": 0, "r": 0, "l": 0, },
+    plot_bgcolor='#f7fbfd',
+    paper_bgcolor='rgba(0,0,0,0)',
+    font=CHART_FONT,
+    hovermode='x',
+    legend=dict(
+            orientation='h',
+            bgcolor='rgba(0,0,0,0)',
+            itemclick=False,
+            itemdoubleclick=False,
+        ), 
+)
+
+
+MAP_LAYOUT = dict(
+    legend=dict(title='<b>Station Type</b>',
+                x=0.01),
+    plot_bgcolor='rgba(0,0,0,0)',
+    paper_bgcolor='rgba(0,0,0,0)',
+    height=400,
+    margin=dict(t=0, b=0, r=0, l=0),
+    mapbox=dict(bearing=0,
+                center=dict(
+                    lat=53.4,
+                    lon=352
+                ),
+                pitch=0,
+                zoom=5,
+                style="open-street-map"  # does not require token
+                )
+)
+
+
 CHAPTERS = [
     # Upper-air Atmoshere
     # {
@@ -94,7 +146,7 @@ CHAPTERS = [
         'domain': 'Atmosphere',
         'subdomain': '',
         'scientific-area': '',
-        'authors': '',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 

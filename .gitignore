@@ -21,3 +21,5 @@ share/
 *.tif.ovr
 data/Terrestrial_Domain/4.6LandCover/Figure4.9/
 .DS_Store
+.vscode/
+notebooks/.ipynb_checkpoints/

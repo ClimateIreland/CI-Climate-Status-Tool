@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import figure_2_9, map_2_5
 
 chapter_num = '2.5'
 bannerImgSrc = IMAGES_PATH + \
@@ -30,17 +30,26 @@ In Ireland the decade from 2006 to 2015 has been the wettest in the period 1711 
         """
 bulletPoints = [bulletPoint1, bulletPoint2, bulletPoint3]
 
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'Annual Rainfall Totals and Anomalies'
+trendChart = figure_2_9()
 
 trendCaption = """
-
+Annual rainfall totals and anomalies averaged over Ireland (1941–2019).
         """
 
 infrastructureText = """
-
+Being a key indicator, precipitation has been measured systematically in 
+Ireland since the late nineteenth century with a peak of over 800 rainfall
+stations in the late 1950s. Currently precipitation is measured at the 25 
+synoptic (red) and 57 climatological (blue) weather stations; in addition, 
+there is a wide network of over 400 voluntary rainfall observers (yellow) 
+(map 2.5). At the synoptic stations, readings are made continuously 
+and reported on the hour; at climate and rainfall stations a daily 
+precipitation total is recorded each day at 09:00 am. 
+There are some gauges in remote locations which are read once a month.  
+All precipitation data since January 1941 are available in digital format. 
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_2_5()
 
 infoLinks = [
     {'text': '',

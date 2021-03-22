@@ -6,54 +6,87 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from settings import *
 
-import pathlib
-
-TIMESERIES_COLOR_PRIMARY = "#00a4ae"
-TIMESERIES_COLOR_SECONDARY = "#E1AF00"
-
-CHART_FONT=dict(
-        color="#7f7f7f")
-
-TIMESERIES_LAYOUT = dict(
-    xaxis=dict(showgrid=False),
-    height=450,
-    margin={"t": 0, "b": 0, "r": 0, "l": 0, },
-    plot_bgcolor='#f7fbfd',
-    paper_bgcolor='rgba(0,0,0,0)',
-    font=CHART_FONT
-)
 
 
-MAP_LAYOUT = dict(
-    legend=dict(title='<b>Station Type</b>',
-                x=0.01),
-    plot_bgcolor='rgba(0,0,0,0)',
-    paper_bgcolor='rgba(0,0,0,0)',
-    height=400,
-    margin=dict(t=0, b=0, r=0, l=0),
-    mapbox=dict(bearing=0,
-                center=dict(
-                    lat=52.5,
-                    lon=349
-                ),
-                pitch=0,
-                zoom=4,
-                style="open-street-map"  # does not require token
-                )
-)
 
+def stations_map(df):
 
-PATH = pathlib.Path(__file__).parent
+    def stations_map_hovertemplate(df):
+        return ['Name: '+'{}'.format(n)+'<br>' +
+                'Type: '+'{}'.format(t)+'<br>' +
+                'Station No.: '+'{}'.format(sN)+'<br>' +
+                'County.: '+'{}'.format(cnty)+'<br>' +
+                'Open Year.: '+'{}'.format(oY)+'<br>' +
+                'Height: '+'{:.2f}'.format(h)+'m<br>' +
+                'Easting: '+'{}'.format(easting)+'<br>' +
+                'Northing: '+'{}'.format(northing)+'<br>'
+                'Lat: '+'{:.2f}'.format(lat)+'\u00b0<br>' +
+                'Lon: '+'{:.2f}'.format(lon)+'\u00b0<br>' + '<extra></extra>'
+                for n, t, sN, cnty, oY, h, easting, northing, lat, lon in zip(list(df['name']),
+                                                                            list(
+                    df['Type']),
+            list(
+                    df['Station_Nu']),
+            list(
+                    df['County']),
+            list(
+                    df['Open_Year']),
+            list(
+                    df['Height__m_']),
+            list(
+                    df['Easting']),
+            list(
+                    df['Northing']),
+            list(
+                    df['Latitude']),
+            list(
+                    df['Longitude']),
+        )]
 
-stationColor = {
-    'Buoy': 'yellow',
-    'Synoptic': 'red',
-    'Rainfall': 'blue',
-    'Climate': 'green',
-    'WaveRide/SmartBayObsCenter': 'orange',
-    'MI_Survey': 'darkblue',
-    'EPA': 'purple'
-}
+    buoyDF = df.loc[df['Type'] == 'Buoy']
+    synopticDF = df.loc[df['Type'] == 'Synoptic']
+    rainfallDF = df.loc[df['Type'] == 'Rainfall']
+    climateDF = df.loc[df['Type'] == 'Climate']
+
+    buoyTrend = go.Scattermapbox(
+        name='Buoys',
+        lon=buoyDF.Longitude,
+        lat=buoyDF.Latitude,
+        marker=dict(color=STATION_COLORS['Buoy'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(buoyDF),
+    )
+    rainfallTrend = go.Scattermapbox(
+        name='Rainfall',
+        lon=rainfallDF.Longitude,
+        lat=rainfallDF.Latitude,
+        marker=dict(color=STATION_COLORS['Rainfall'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(rainfallDF),
+    )
+
+    synopticTrend = go.Scattermapbox(
+        name='Synoptic',
+        lon=synopticDF.Longitude,
+        lat=synopticDF.Latitude,
+        marker=dict(color=STATION_COLORS['Synoptic'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(synopticDF),
+    )
+
+    climateTrend = go.Scattermapbox(
+        name='Climate',
+        lon=climateDF.Longitude,
+        lat=climateDF.Latitude,
+        marker=dict(color=STATION_COLORS['Climate'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(climateDF),
+    )
+    stations_map = go.Figure(
+        data=[buoyTrend, synopticTrend, rainfallTrend, climateTrend],
+        layout=MAP_LAYOUT)
+    
+    return stations_map
 
 
 def empty_chart():
@@ -95,9 +128,9 @@ def figure_2_1():
         data_path = DATA_PATH+'Atmospheric_Domain/2.1SurfaceAirTemperature/Figure2.1/'
         xls = pd.ExcelFile(
             data_path+'AnnualMeanSurfaceAirTemperature1900-2019.xlsx')
+        dataDF = pd.read_excel(xls, 'Sheet1')
     except:
         return empty_chart()
-    dataDF = pd.read_excel(xls, 'Sheet1')
     # remove first row as part of column names, and rename Anom colum
     dataDF = dataDF[1:]
     dataDF = dataDF.rename(columns={'1961-1990 Normal': 'Anom'})
@@ -150,21 +183,7 @@ def figure_2_1():
                          secondary_y=False)
     figure_2_1.add_trace(linearTrendTrace,
                          secondary_y=False)
-    figure_2_1.update_layout(
-        #    title='<b>Mean Surface Air Temperature (1900-2019)</b>',
-        title_x=0.5,  # Centers the title
-        height=450,
-        margin={'t': 0, 'b': 0, 'r': 0, 'l': 0, },
-        plot_bgcolor='#f7fbfd',
-        paper_bgcolor='rgba(0,0,0,0)',
-        font=CHART_FONT,
-        hovermode='x',
-        legend=dict(
-            orientation='h',
-            bgcolor='rgba(0,0,0,0)',
-            itemclick=False,
-            itemdoubleclick=False,
-        ), )
+    figure_2_1.update_layout(TIMESERIES_LAYOUT)
     # Update y-axes layout seperatly due to the double y-axis chart
     figure_2_1.update_yaxes(title_text='Difference (\u00b0C) from 1961-1990 Normal',
                             secondary_y=False,
@@ -190,7 +209,6 @@ def figure_2_1():
                             #                   linecolor = '#356b6a'
                             )
 
-    # X AXIS
     figure_2_1.update_xaxes(
         title='Year',
         fixedrange=True,  # stops the users being able to zoom
@@ -215,100 +233,134 @@ def map_2_1():
     """
     Surface Air Temperature infrastructure map
     """
-
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.1SurfaceAirTemperature/Map2.1/'
-        stationsDF = pd.read_csv(data_path+'Map2.1_StationTable.txt')
+        df = pd.read_csv(data_path+'Map2.1_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_1=stations_map(df)
+    return map_2_1
+
+def figure_2_9():
+    """
+    Precipitation Totals and Anomalies Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.5Precipitation/Figure2.9/'
+        xls = pd.ExcelFile(
+            data_path+'Annual_rainfall_totals_and_anomalies_OverIreland.xlsx')
+        dataDF = pd.read_excel(xls, '2010SeasannRR')
     except:
         return empty_chart()
 
-    def my_text(df):
-        my_text = ['Name: '+'{}'.format(n)+'<br>' +
-                   'Type: '+'{}'.format(t)+'<br>' +
-                   'Station No.: '+'{}'.format(sN)+'<br>' +
-                   'County.: '+'{}'.format(cnty)+'<br>' +
-                   'Open Year.: '+'{}'.format(oY)+'<br>' +
-                   'Height: '+'{:.2f}'.format(h)+'m<br>' +
-                   'Easting: '+'{}'.format(easting)+'<br>' +
-                   'Northing: '+'{}'.format(northing)+'<br>'
-                   for n, t, sN, cnty, oY, h, easting, northing in zip(list(df['name']),
-                                                                       list(
-                                                                           stationsDF['Type']),
-                                                                       list(
-                                                                           stationsDF['Station_Nu']),
-                                                                       list(
-                                                                           stationsDF['County']),
-                                                                       list(
-                                                                           stationsDF['Open_Year']),
-                                                                       list(
-                                                                           stationsDF['Height__m_']),
-                                                                       list(
-                                                                           stationsDF['Easting']),
-                                                                       list(
-                                                                           stationsDF['Northing']),
-                                                                       )]
-        return my_text
+    dataDF.rename(columns={
+        "Unnamed: 3": "11 Year Moving Average Totals",
+        "Unnamed: 4": "Anomaly",
+        "11 year moving average": "11 Year Moving Average Anomaly"
+    }, inplace=True)
+    movingAverageTotals = dataDF.ANN.rolling(window=11, center=True).mean()
+    dataDF["11 Year Average"] = movingAverageTotals
 
-    buoyDF = stationsDF.loc[stationsDF['Type'] == 'Buoy']
-    synopticDF = stationsDF.loc[stationsDF['Type'] == 'Synoptic']
-    rainfallDF = stationsDF.loc[stationsDF['Type'] == 'Rainfall']
-    climateDF = stationsDF.loc[stationsDF['Type'] == 'Climate']
-
-    buoyTrend = go.Scattermapbox(
-        name='Buoys',
-        lon=buoyDF.Longitude,
-        lat=buoyDF.Latitude,
-        text=my_text(buoyDF),
-        marker=dict(color='Yellow',
-                    size=7),
-        hovertemplate='%{text}' +
-        'Lat: %{lon}\u00b0<br>' +
-        'Lon: %{lat}\u00b0<br>' +
-        '<extra></extra>',
+    annualTrace = go.Bar(x=dataDF["years"],
+                         y=dataDF["Anomaly"],
+                         text=dataDF["ANN"],
+                         name='Annual',
+                         marker=dict(
+        # color="#214a7b", color used in report
+        color=TIMESERIES_COLOR_SECONDARY,
+        opacity=0.5
+    ),
+        hovertemplate='%{x}<br>' +
+        '<b>Annual</b><br>' +
+        'Total: %{text:.2f}mm<br>' +
+        'Anomaly: %{y:.2f}mm<extra></extra>'
     )
-    synopticTrend = go.Scattermapbox(
-        name='Synoptic',
-        lon=synopticDF.Longitude,
-        lat=synopticDF.Latitude,
-        text=my_text(synopticDF),
-        marker=dict(color='Red',
-                    size=7),
-        hovertemplate='%{text}' +
-        'Lat: %{lon}\u00b0<br>' +
-        'Lon: %{lat}\u00b0<br>' +
-        '<extra></extra>',
+    movingAverage = go.Scatter(x=dataDF["years"],
+                               y=dataDF["11 Year Moving Average Anomaly"],
+                               text=dataDF["11 Year Moving Average Totals"],
+                               name='11yr Moving Average',
+                               mode='lines',  # 'line' is default
+                               line_shape='spline',
+                               line=dict(
+        # color="#fc0d1b", color used in report
+        color=TIMESERIES_COLOR_PRIMARY,
+        width=2),
+        hovertemplate='%{x}<br>' +
+        '<b>11yr Moving Average</b><br>' +
+        'Total: %{text:.2f}mm<br>' +
+        'Anomaly: %{y:.2f}mm<extra></extra>'
     )
-    rainfallTrend = go.Scattermapbox(
-        name='Rainfall',
-        lon=rainfallDF.Longitude,
-        lat=rainfallDF.Latitude,
-        text=my_text(rainfallDF),
-        marker=dict(color='Blue',
-                    size=7),
-        hovertemplate='%{text}' +
-        'Lat: %{lon}\u00b0<br>' +
-        'Lon: %{lat}\u00b0<br>' +
-        '<extra></extra>',
+    normal = go.Scatter(x=dataDF["years"],
+                        y=dataDF["ANNmean"],
+                        name='1961-1990 Normal',
+                        mode='lines',  # 'line' is default
+                        line_shape='spline',
+                        line=dict(color="#22b2ed",  # color used in report
+                                  width=1),
+                        hoverinfo='skip',
+                        )
+    average1990_2019 = go.Scatter(x=dataDF["years"],
+                                  y=dataDF["1990-2019 Average"],
+                                  name='1990-2019 Average',
+                                  mode='lines',  # 'line' is default
+                                  line_shape='spline',
+                                  line=dict(color="#22b2ed",  # color used in report
+                                  dash='dash',
+                                  width=1),
+                                  hoverinfo='skip',
+                                  )
+    figure_2_9 = make_subplots(specs=[[{'secondary_y': True}]])
+    figure_2_9.add_trace(annualTrace,
+                         secondary_y=False,)
+    figure_2_9.add_trace(movingAverage,
+                         secondary_y=False,)
+    figure_2_9.add_trace(normal,
+                         secondary_y=True,)
+
+    figure_2_9.add_trace(average1990_2019,
+                         secondary_y=False,)
+
+    figure_2_9.update_layout(TIMESERIES_LAYOUT)
+    figure_2_9.update_yaxes(title_text='Difference (mm) from 1961-1990 Normal',
+                            secondary_y=False,
+                            range=[-300, 330],
+                            showgrid=False,
+                            dtick=100,  # dtick sets the distance between ticks
+                            tick0=0,  # tick0 sets a point to map the other ticks
+                            fixedrange=True,
+                            showspikes=True,
+                            # zeroline=True,  # add a zero line
+                            # zerolinecolor=TIMESERIES_COLOR_SECONDARY
+                            )
+    figure_2_9.update_yaxes(title_text='Annual Rainfall Total (mm)',
+                            secondary_y=True,
+                            range=[886, 1517],
+                            showgrid=False,
+                            dtick=100,  # dtick sets the distance between ticks
+                            tick0=1186,  # tick0 sets a point to map the other ticks
+                            fixedrange=True,
+                            )
+
+    figure_2_9.update_xaxes(
+        title='Year',
+        fixedrange=True,
+        tickformat='000',
+        showspikes=True,
+        spikethickness=2,
     )
-    climateTrend = go.Scattermapbox(
-        name='Climate',
-        lon=climateDF.Longitude,
-        lat=climateDF.Latitude,
-        text=my_text(climateDF),
-        marker=dict(color='green',
-                    size=7),
-        hovertemplate='%{text}' +
-        'Lat: %{lon}\u00b0<br>' +
-        'Lon: %{lat}\u00b0<br>' +
-        '<extra></extra>',
-    )
+    return figure_2_9
 
-    map_2_1 = go.Figure(
-        data=[buoyTrend, synopticTrend, rainfallTrend, climateTrend],
-        layout=MAP_LAYOUT)
-
-    return map_2_1
-
+def map_2_5():
+    """
+    Precipitation infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.5Precipitation/Map2.5/'
+        df = pd.read_csv(data_path+'Map2.5_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_5=stations_map(df)
+    return map_2_5
 
 def figure_3_15():
     """
@@ -377,7 +429,7 @@ def map_3_6():
         lon=epaStationsDF.longitude,
         lat=epaStationsDF.latitude,
         text=epaStationsDF.agency,
-        marker=dict(color=[stationColor[k] for k in epaStationsDF['agency'].values],
+        marker=dict(color=[STATION_COLORS[k] for k in epaStationsDF['agency'].values],
                     size=7),
         hovertemplate='Type: %{text}<br>' +
         'Lat: %{lon}\u00b0<br>' +
@@ -389,7 +441,7 @@ def map_3_6():
         lon=maceHeadStationsDF.Longitude,
         lat=maceHeadStationsDF.Latitude,
         text=maceHeadStationsDF.Type,
-        marker=dict(color=[stationColor[k] for k in maceHeadStationsDF['Type'].values],
+        marker=dict(color=[STATION_COLORS[k] for k in maceHeadStationsDF['Type'].values],
                     size=7),
         hovertemplate='Type: %{text}<br>' +
         'Lat: %{lon}\u00b0<br>' +
@@ -411,7 +463,7 @@ def map_3_6():
         lon=MIStationsDF.Longitude,
         lat=MIStationsDF.Latitude,
         text=MIStationsDF.Type,
-        marker=dict(color=[stationColor[k] for k in MIStationsDF['Type'].values],
+        marker=dict(color=[STATION_COLORS[k] for k in MIStationsDF['Type'].values],
                     size=7),
         hovertemplate='Type: %{text}<br>' +
         'Lat: %{lon}\u00b0<br>' +
@@ -423,7 +475,7 @@ def map_3_6():
         lon=smartBayStationsDF.Longitude,
         lat=smartBayStationsDF.Latitude,
         text=smartBayStationsDF.Type,
-        marker=dict(color=[stationColor[k] for k in smartBayStationsDF['Type'].values],
+        marker=dict(color=[STATION_COLORS[k] for k in smartBayStationsDF['Type'].values],
                     size=7),
         hovertemplate='Type: %{text}<br>' +
         'Lat: %{lon}\u00b0<br>' +
