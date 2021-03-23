@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, figure_3_1
 import copy
 
 chapter_num = '3.1'
@@ -31,8 +31,8 @@ bulletPoint3 = """
         Observations of the annual water temperature in the Rockall Trough at depths between 1500 m and 2000m from 1975 to 2018 show no evident trend.   
         """
 bulletPoints = [bulletPoint1, bulletPoint2, bulletPoint3]
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'Mean Sea Surface Temperature (1961-2018)'
+trendChart = figure_3_1()
 
 trendCaption = """
 

@@ -362,6 +362,144 @@ def map_2_5():
     map_2_5=stations_map(df)
     return map_2_5
 
+def figure_3_1():
+    """
+    Ocean Surface Temperature Totals and Anomalies Trend
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Figure3.1/'
+        xls = pd.ExcelFile(
+            data_path+'MeanAnnualSeaSurfaceTemperature_Anomalies_MalinHead.xlsx')
+        df = pd.read_excel(xls, 'MALIN_Timeseries')
+    except:
+        return empty_chart()
+
+    movingAverageTotals = df.temperature.rolling(window=5, center=True).mean() 
+    df["5 Year Moving Average - Mean"]=movingAverageTotals
+
+
+    annualTrace = go.Bar(x=df["year"],
+                        y=df["Calculated Anomalies"],
+                        text=df["temperature"],
+                        name='Annual',
+                        marker=dict(
+                                # color="#214a7b", color used in report
+                                color=TIMESERIES_COLOR_SECONDARY,
+                                opacity=0.5
+                                ),
+                        hovertemplate='%{x}<br>' +
+                                '<b>Annual</b><br>' +
+                                'Total: %{text:.2f}\u00b0C<br>' +
+                                'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                                )
+    movingAverage = go.Scatter(x=df["year"],
+                        y=df["5 year moving average"],
+                        text=df["5 Year Moving Average - Mean"],
+                        name='5yr Moving Average',
+                        mode='lines',  # 'line' is default
+                        line_shape='spline',
+                        line=dict(
+                                # color="#fc0d1b", color used in report
+                                color=TIMESERIES_COLOR_PRIMARY,
+                                width=2),
+                        hovertemplate='%{x}<br>' +
+                                '<b>5yr Moving Average</b><br>' +
+                                'Total: %{text:.2f}\u00b0C<br>' +
+                                'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                                )
+    normal = go.Scatter(x=df["year"],
+                        y=df["Unnamed: 5"],
+                        name='1981-2010 Normal',
+                        mode='lines',  # 'line' is default
+                        line_shape='spline',
+                        line=dict(color="#fdbf2d", #color used in report
+                                width=1),
+                        hoverinfo='skip',
+                                )
+
+    figure_3_1 = make_subplots(specs=[[{'secondary_y': True}]])
+    figure_3_1.add_trace(annualTrace,
+                secondary_y=False,)
+    figure_3_1.add_trace(movingAverage,
+                secondary_y=False,)
+    figure_3_1.add_trace(normal,
+                secondary_y=True,)
+    figure_3_1.update_layout(TIMESERIES_LAYOUT)
+    figure_3_1.update_yaxes(title_text='Difference (\u00b0C) from 1981-2010 Normal',
+                            secondary_y=False,
+                            range=[-1, 1],
+                            showgrid=False,
+                            dtick=0.25,  # dtick sets the distance between ticks
+                            tick0=0,  # tick0 sets a point to map the other ticks
+                            fixedrange=True,
+                            showspikes=True,
+                            # zeroline=True,  # add a zero line
+                            # zerolinecolor=TIMESERIES_COLOR_SECONDARY
+                            )
+    figure_3_1.update_yaxes(title_text='Annual SST (\u00b0C)',
+                        secondary_y=True,
+                        range=[9.5, 11.6],
+                        showgrid=False,
+                        dtick=0.5,  # dtick sets the distance between ticks
+                        tick0=10.6,  # tick0 sets a point to map the other ticks
+                        fixedrange=True,
+                        )
+    figure_3_1.update_xaxes(
+        title='Year',
+        fixedrange=True,
+        tickformat='000',  
+        showspikes=True,  
+        spikethickness=2, 
+        ) 
+    
+    return figure_3_1
+
+def figure_3_8():
+    """
+    Sea Level Dublin Port 
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.8/'
+        xls = pd.ExcelFile(
+            data_path+'dub_all_1938_to_2016_v2.xlsx')
+        df = pd.read_excel(xls, 'dub_all_1938_to_2016')
+        df.rename(columns = {
+            "Unnamed: 3":"Date",
+            "Unnamed: 10":"AnnualDate",
+            "Unnamed: 11":"AnnualAverage"
+            }, inplace = True)
+    except:
+        return empty_chart()
+    monthlyTrace = go.Scatter(x=df["Date"],
+                     y=df["Msl_OD_Malin"],
+                     name='Monthly Average',
+                    mode='markers',
+                    marker=dict(color=TIMESERIES_COLOR_SECONDARY,
+                                size=5,
+                                opacity=0.5),
+                    hovertemplate='%{x}<br>' +
+                            '<b>Monthly Average</b><br>' +
+                            'Mean Sea Level: %{y:.2f}m<extra></extra>'
+                            )
+    annualTrace = go.Scatter(x=df["AnnualDate"],
+                        y=df["AnnualAverage"],
+                        name='Annual Average',
+                        mode='lines',  # 'line' is default
+                        line_shape='spline',
+                        line=dict(
+                                color=TIMESERIES_COLOR_PRIMARY,
+                                width=2),
+                        hovertemplate='%{x}<br>' +
+                                '<b>Annual Average</b><br>' +
+                                'Mean Sea Level: %{y:.2f}m<extra></extra>'
+                                )
+    figure_3_8=go.Figure(data=[monthlyTrace, annualTrace], layout=TIMESERIES_LAYOUT)
+    figure_3_8.update_layout(
+        yaxis=dict(title='Sea Level (m) relative to OD Malin'),
+        xaxis=dict(title='Date'),
+        hovermode='closest')
+    return figure_3_8
+
 def figure_3_15():
     """
     Dissolved Oxygen trend

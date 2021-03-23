@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart,figure_3_8
 
 chapter_num = '3.4'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Sea_Level_Aldert Otter.jpg'
@@ -27,8 +27,8 @@ bulletPoint2 = """
         risen by approximately 2-3mm/year since the early 1990s.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'Mean Sea Level (1938-2016) - Dublin Port'
+trendChart = figure_3_8()
 
 trendCaption = """
 

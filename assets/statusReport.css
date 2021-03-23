@@ -132,7 +132,11 @@ a, a:active, a:focus{
     max-height:70px;
     margin-bottom:10px;
 }
-
+.sr-banner-org-icon2 {
+    margin-left:5px;
+    margin-right:5px;
+    max-height:70px
+}
 .sr-page-nav-row {
     min-height: 50px;
     display: flex;

@@ -37,6 +37,27 @@ def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
                                     className='sr-banner-logo',
                                     src='assets/images/CSRI2020Logo.png'
                                 ),)]),
+                    # dbc.Row(
+                    #     children=[
+                    #         dbc.Col(children=[
+                    #             html.Img(
+                    #                 className='sr-banner-org-icon2',
+                    #                 src='assets/images/UCC_Logo_2018_low.png'
+                    #             ),
+                    #             html.Img(
+                    #                 className='sr-banner-org-icon2',
+                    #                 src='assets/images/EPA_logo.gif'
+                    #             ),
+                    #             html.Img(
+                    #                 className='sr-banner-org-icon2',
+                    #                 src='assets/images/mi_logo.gif'
+                    #             ),
+                    #             html.Img(
+                    #                 className='sr-banner-org-icon2',
+                    #                 src='assets/images/met.ie-logo.gif'
+                    #             ),
+
+                    #         ])]),
                     dbc.Row(
                         children=[
                             dbc.Col(
