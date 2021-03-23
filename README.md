@@ -21,13 +21,18 @@ source bin/activate  # Windows: \venv\scripts\activate
 pip install -r requirements.txt
 ```
 
-In the settings.py you will need to set the DATA_PATH to the sahred Status_Tool folder on OneDrive. In my case:
+Set the DATA_PATH:
+- Make a copy of env.txt
+- Rename the copy env.py
+- Set the DATA_PATH to the your local link to OneDrive [Status_Tool folder](https://uccireland-my.sharepoint.com/:f:/g/personal/walther_camaro_ucc_ie/EvDuB5pRGjxFiIva2GNwbcMBhZN4cHrps0owgUdv9J89EQ?e=w87bPT):
 
 ```python
-DATA_PATH='/Users/dan/OneDrive - University College Cork/Status_Tool/'
+import os
+# Set the path to your local data repository, don't forget the trailing '/'
+os.environ.setdefault("DATA_PATH","/Users/dan/OneDrive - University College Cork/Status_Tool/")
 ```
 
-then run the app:
+Run the app:
 ```bash
 python app.py
 ```

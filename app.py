@@ -2,13 +2,14 @@
 
 # Run this app with `python app.py` and
 # visit http://127.0.0.1:8050/ in your web browser.
-
+import os
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import page_builder as pb
 import dash_bootstrap_components as dbc
+from settings import *
 
 from pages import (
     index,
@@ -96,7 +97,18 @@ def display_page(pathname):
     else:
         return index.create_layout(app)
 
-
 if __name__ == '__main__':
+    # For local
+    app.run_server(debug='True')
+
+    # For remote
     # app.run_server(host='0.0.0.0',port='80')
-    app.run_server(debug=True)
+    
+    # Need to set up env variables
+    # app.run_server(
+    #     host=HOST,
+    #     port=PORT,
+    #     debug=DEBUG)
+       
+    
+    

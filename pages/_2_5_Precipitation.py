@@ -26,7 +26,7 @@ In Ireland the decade from 2006 to 2015 has been the wettest in the period 1711 
         """
 
 bulletPoint3 = """
-In Ireland the decade from 2006 to 2015 has been the wettest in the period 1711 to 2016.
+There is evidence that there is an increasing trend in winter rainfall and a decrease in summer rainfall
         """
 bulletPoints = [bulletPoint1, bulletPoint2, bulletPoint3]
 

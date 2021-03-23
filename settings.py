@@ -1,12 +1,8 @@
 import pathlib
+import os
+if os.path.isfile('env.py'):
+    import env
 
-PATH = pathlib.Path(__file__).parent
-
-# DATA_PATH='/home/dancasey/Status_Tool_Data/'
-DATA_PATH = '/Users/dan/OneDrive - University College Cork/Status_Tool/'
-IMAGES_PATH = 'assets/images/'
-# IMAGES_PATH='/Users/dan/ClimateIreland/Projects/CI-Status-Report-Dash/assets/images/'
-# IMAGES_PATH='https://www.climateireland.ie/web_resource/images/'
 ATMOSPHERE_COLOR = '#009fe3'
 OCEAN_COLOR = '#00909e'
 TERRESTRIAL_COLOR = '#f39200'
@@ -48,23 +44,6 @@ TIMESERIES_LAYOUT = dict(
 )
 
 
-MAP_LAYOUT = dict(
-    legend=dict(title='<b>Station Type</b>',
-                x=0.01),
-    plot_bgcolor='rgba(0,0,0,0)',
-    paper_bgcolor='rgba(0,0,0,0)',
-    height=400,
-    margin=dict(t=0, b=0, r=0, l=0),
-    mapbox=dict(bearing=0,
-                center=dict(
-                    lat=53.4,
-                    lon=352
-                ),
-                pitch=0,
-                zoom=5,
-                style="open-street-map"  # does not require token
-                )
-)
 
 
 CHAPTERS = [
@@ -360,3 +339,39 @@ CHAPTERS = [
 
 
 ]
+
+
+
+MAP_LAYOUT = dict(
+    legend=dict(title='<b>Station Type</b>',
+                x=0.01),
+    plot_bgcolor='rgba(0,0,0,0)',
+    paper_bgcolor='rgba(0,0,0,0)',
+    height=400,
+    margin=dict(t=0, b=0, r=0, l=0),
+    mapbox=dict(bearing=0,
+                center=dict(
+                    lat=53.4,
+                    lon=352
+                ),
+                pitch=0,
+                zoom=5,
+                style="open-street-map"  # does not require token
+                )
+)
+
+
+IMAGES_PATH = 'assets/images/'
+# IMAGES_PATH='/Users/dan/ClimateIreland/Projects/CI-Status-Report-Dash/assets/images/'
+# IMAGES_PATH='https://www.climateireland.ie/web_resource/images/'
+
+PATH = pathlib.Path(__file__).parent
+DATA_PATH = os.getenv("DATA_PATH")
+# DATA_PATH='/home/dancasey/Status_Tool_Data/'
+# DATA_PATH = '/Users/dan/OneDrive - University College Cork/Status_Tool/'
+# HOST=os.getenv("IP",default='127.0.0.1')
+# PORT=os.getenv("PORT",default='1850')
+# DEBUG=os.getenv("DEBUG",default=True)
+# HOST=os.getenv("IP",default='127.0.0.1')
+# PORT=os.getenv("PORT",default='1850')
+# DEBUG=os.getenv("DEBUG",default=True)
