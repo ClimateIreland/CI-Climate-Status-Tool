@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_3_1
+from charts import empty_chart, figure_3_1, figure_3_3
 import copy
 
 chapter_num = '3.1'
@@ -35,7 +35,7 @@ trendChartTitle = 'Mean Sea Surface Temperature (1961-2018)'
 trendChart = figure_3_1()
 
 trendCaption = """
-
+Mean annual sea surface temperature (SST) and anomalies at Malin Head (1961-2018).
         """
 
 infrastructureText = """
@@ -56,6 +56,13 @@ chapter_dict = next(
 # deep copy insures object indepdence
 chapter_dict_combined = copy.deepcopy(chapter_dict)
 chapter_dict_combined['title'] = 'Surface and Sub-surface Temperature'
+
+trendChartTitle2 = "Mean Sub-Surface Temperture (1975-2018)"
+trendChart2 = figure_3_3()
+trendCaption2 = """
+Mean annual sea sub-surface temperature and anomalies at Rockall Trough (1500-2000m) on the Extended Ellett Line  (1961-2018). 
+Line (Data Provider: National Oceanography Centre and Scottish Association for Marine Science – UK). Ref: ICES Report on Ocean Climate 2018.
+"""
 
 
 custom_intro = dbc.Container(
@@ -188,6 +195,66 @@ custom_intro = dbc.Container(
         ),
     ])
 
+custom_trend =  dbc.Container(
+            className='sr-trends',
+        style={'borderColor': chapter_dict['domain-color']},
+        id='trends',
+        children=[
+            html.H3(
+                className='sr-section-heading',
+                style={'color': chapter_dict['domain-color']},
+                children='Trends',
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle),
+                                dcc.Graph(
+                                    figure=trendChart,
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption
+                                )]
+                            )
+                ]
+            ),
+                        dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle2),
+                                dcc.Graph(
+                                    figure=trendChart2,
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption2
+                                )]
+                            )
+                ]
+            ),
+        ])
+
 
 ########################################################################################################################
 def create_layout(app):
@@ -204,11 +271,13 @@ def create_layout(app):
             #                bulletPoints,
             #                chapter_dict
             #                ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
+            custom_trend,
+    
+            # pb.build_trend(trendChartTitle,
+            #                trendChart,
+            #                trendCaption,
+            #                chapter_dict
+            #                ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

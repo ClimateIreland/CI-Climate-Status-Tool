@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, figure_4_22
 
 chapter_num = '4.11'
 bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Fires_CiaranNugent.jpg'
@@ -28,11 +28,12 @@ bulletPoint2 = """
         by artificial surfaces and forests and a decrease in wetland areas which include peatlands.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'Very High or Extreme Fire Danger'
+trendChart = figure_4_22()
 
 trendCaption = """
-
+Number of days on which the fire index was very high or extreme as 
+calculated using data from Dublin airport and Shannon airport synoptic stations (1971–2018).
         """
 
 infrastructureText = """

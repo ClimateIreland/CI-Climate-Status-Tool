@@ -34,38 +34,48 @@ intro = dbc.Container(
                                 src='assets/images/CSRI2020Logo.png'
                             )])]
             )),
-        dbc.Row(
-            children=[
-                dbc.Col(
-                    className='col-3 col-sm-2 offset-sm-2 my-auto text-center',
-                    children=html.Img(
-                        className='sr-banner-org-icon',
-                        src='assets/images/UCC_Logo_2018_low.png'
-                    )
-                ),
-                dbc.Col(
-                    className='col-3 col-sm-2 my-auto text-center',
-                    children=html.Img(
-                        className='sr-banner-org-icon',
-                        src='assets/images/EPA_logo.gif'
-                    )
-                ),
-                dbc.Col(
-                    className='col-3 col-sm-2 my-auto text-center',
-                    children=html.Img(
-                        className='sr-banner-org-icon',
-                        src='assets/images/mi_logo.gif'
-                    )
-                ),
-                dbc.Col(
-                    className='col-3 col-sm-1 my-auto text-center',
-                    children=html.Img(
-                        className='sr-banner-org-icon',
-                        src='assets/images/met.ie-logo.gif'
-                    )
-                ),
-            ],
-        ),
+                     dbc.Row(
+                        children=[
+                            dbc.Col(
+                                className='text-center',
+                                children=[
+                                    html.Img(
+                                    src='assets/images/LogoBannerCSRI.png'
+                                ),
+                                
+                            ])]),
+        # dbc.Row(
+        #     children=[
+        #         dbc.Col(
+        #             className='col-3 col-sm-2 offset-sm-2 my-auto text-center',
+        #             children=html.Img(
+        #                 className='sr-banner-org-icon',
+        #                 src='assets/images/UCC_Logo_2018_low.png'
+        #             )
+        #         ),
+        #         dbc.Col(
+        #             className='col-3 col-sm-2 my-auto text-center',
+        #             children=html.Img(
+        #                 className='sr-banner-org-icon',
+        #                 src='assets/images/EPA_logo.gif'
+        #             )
+        #         ),
+        #         dbc.Col(
+        #             className='col-3 col-sm-2 my-auto text-center',
+        #             children=html.Img(
+        #                 className='sr-banner-org-icon',
+        #                 src='assets/images/mi_logo.gif'
+        #             )
+        #         ),
+        #         dbc.Col(
+        #             className='col-3 col-sm-1 my-auto text-center',
+        #             children=html.Img(
+        #                 className='sr-banner-org-icon',
+        #                 src='assets/images/met.ie-logo.gif'
+        #             )
+        #         ),
+        #     ],
+        # ),
         dbc.Row(
             dbc.Col(
                 className='sr-menu-intro-textbox',

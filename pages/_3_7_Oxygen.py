@@ -29,10 +29,6 @@ bulletPoint2 = """
         major mortalities of marine organisms.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-# domain='Ocean'
-# subdomain='Biogeochemistry'
-# scientificArea='Biosphere'
-# authors='Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes, Rob Thomas, Evin McGovern'
 
 trendChartTitle = 'Dissolved Oxygen Saturation (2002-2019)'
 trendChart = figure_3_15()
@@ -133,8 +129,9 @@ custom_trend = dbc.Container(
                             html.Img(
                                 # src=DATA_PATH+'Oceanic_Domain/3.7Oxygen/Figure3.16/Figure3.16_OxygenConcentrationSectionRockallTrough.png'
                                 className='w-100',
-                                src=IMAGES_PATH+'Figure3.16_OxygenConcentrationSectionRockallTrough.png'
-                            )]
+                                src=IMAGES_PATH+'OceanicSections/Figure3.16_OxygenConcentrationSectionRockallTrough.png'
+                            )
+                            ]
                         )
             ]
         ),

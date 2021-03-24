@@ -37,6 +37,15 @@ def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
                                     className='sr-banner-logo',
                                     src='assets/images/CSRI2020Logo.png'
                                 ),)]),
+                     dbc.Row(
+                        children=[
+                            dbc.Col(children=[
+                                    html.Img(
+                                    src='assets/images/LogoBannerCSRI.png'
+                                ),
+                                
+                            ])]),
+                # Remove before release
                     # dbc.Row(
                     #     children=[
                     #         dbc.Col(children=[
@@ -58,39 +67,39 @@ def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
                     #             ),
 
                     #         ])]),
-                    dbc.Row(
-                        children=[
-                            dbc.Col(
-                                className='col-sm-3 offset-md-1 my-auto text-center',
-                                children=html.Img(
-                                    className='sr-banner-org-icon',
-                                    src='assets/images/UCC_Logo_2018_low.png'
-                                )
-                            ),
-                            dbc.Col(
-                                className='col-sm-3  my-auto text-center',
-                                children=html.Img(
-                                    className='sr-banner-org-icon',
-                                    src='assets/images/EPA_logo.gif'
-                                )
-                            ),
-                            dbc.Col(
-                                className='col-sm-3 my-auto text-center',
-                                children=html.Img(
-                                    className='sr-banner-org-icon',
-                                    src='assets/images/mi_logo.gif'
-                                )
-                            ),
-                            dbc.Col(
-                                className='col-sm-2 my-auto text-center',
-                                children=html.Img(
-                                    className='sr-banner-org-icon',
-                                    src='assets/images/met.ie-logo.gif'
-                                )
-                            ),
+                    # dbc.Row(
+                    #     children=[
+                    #         dbc.Col(
+                    #             className='col-sm-3 offset-md-1 my-auto text-center',
+                    #             children=html.Img(
+                    #                 className='sr-banner-org-icon',
+                    #                 src='assets/images/UCC_Logo_2018_low.png'
+                    #             )
+                    #         ),
+                    #         dbc.Col(
+                    #             className='col-sm-3  my-auto text-center',
+                    #             children=html.Img(
+                    #                 className='sr-banner-org-icon',
+                    #                 src='assets/images/EPA_logo.gif'
+                    #             )
+                    #         ),
+                    #         dbc.Col(
+                    #             className='col-sm-3 my-auto text-center',
+                    #             children=html.Img(
+                    #                 className='sr-banner-org-icon',
+                    #                 src='assets/images/mi_logo.gif'
+                    #             )
+                    #         ),
+                    #         dbc.Col(
+                    #             className='col-sm-2 my-auto text-center',
+                    #             children=html.Img(
+                    #                 className='sr-banner-org-icon',
+                    #                 src='assets/images/met.ie-logo.gif'
+                    #             )
+                    #         ),
 
-                        ],
-                    )
+                    #     ],
+                    # )
                 ]),
         ])
 
@@ -187,7 +196,8 @@ def build_intro(introText, bulletPoints, chapter_dict):
                                     className='sr-intro-icon',
                                     src=IMAGES_PATH+'icons/' +
                                     chapter_dict['icon-lg-src']
-                                )]
+                                )
+                                ]
                             ),
                     dbc.Col(className="col-12 col-md-6 my-auto text-center",
                             children=[
@@ -198,7 +208,6 @@ def build_intro(introText, bulletPoints, chapter_dict):
                                         'color': chapter_dict['domain-color']},
                                 )]
                             ),
-
                 ]
             ),
             dbc.Row(
@@ -209,10 +218,8 @@ def build_intro(introText, bulletPoints, chapter_dict):
                                 children=introText
                             )
                         ]
-
                     )
                 ]
-
             ),
             dbc.Row(
                 children=[
@@ -227,11 +234,9 @@ def build_intro(introText, bulletPoints, chapter_dict):
                                         className='',
                                         children=point)
                                     for point in bulletPoints]
-
                             )
                         ]
                     )]
-
             ),
             dbc.Row(
                 style={'color': chapter_dict['domain-color']},

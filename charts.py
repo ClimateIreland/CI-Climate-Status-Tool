@@ -436,7 +436,7 @@ def figure_3_1():
                             # zeroline=True,  # add a zero line
                             # zerolinecolor=TIMESERIES_COLOR_SECONDARY
                             )
-    figure_3_1.update_yaxes(title_text='Annual SST (\u00b0C)',
+    figure_3_1.update_yaxes(title_text='Sea Surface Temperature (\u00b0C)',
                         secondary_y=True,
                         range=[9.5, 11.6],
                         showgrid=False,
@@ -453,6 +453,95 @@ def figure_3_1():
         ) 
     
     return figure_3_1
+
+def figure_3_3():
+    """
+    Ocean Sub Surface Temperature Totals and Anomalies Trend
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Figure3.3/'
+        xls = pd.ExcelFile(
+            data_path+'SubSurfaceTemperature_Anomalies_Rockall.xlsx')
+        df = xls.parse('Depth_Rockall', skiprows=20, index_col=None, na_values=['NA'])
+    except:
+        return empty_chart()
+    annualTrace = go.Bar(x=df["Decimal Year"],
+                     y=df["Temperature Anomaly °C"],
+                     text=df["Temperature °C"],
+                     name='Annual',
+                     marker=dict(
+                            # color="#214a7b", color used in report
+                            color=TIMESERIES_COLOR_SECONDARY,
+                            opacity=0.5
+                            ),
+                     hovertemplate='%{x}<br>' +
+                            '<b>Annual</b><br>' +
+                            'Total: %{text:.2f}\u00b0C<br>' +
+                            'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                            )
+    movingAverage = go.Scatter(x=df["Decimal Year"],
+                        y=df["5 year moving average"],
+                        #  text=df["5 Year Moving Average - Mean"],
+                        name='5yr Moving Average',
+                        mode='lines',  # 'line' is default
+                        line_shape='spline',
+                        line=dict(
+                                # color="#fc0d1b", color used in report
+                                color=TIMESERIES_COLOR_PRIMARY,
+                                width=2),
+                        hovertemplate='%{x}<br>' +
+                                '<b>5yr Moving Average</b><br>' +
+                                # 'Total: %{text:.2f}\u00b0C<br>' +
+                                'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                                )
+    normal = go.Scatter(x=df["Decimal Year"],
+                        y=df["1981-2010 (Normalized)"],
+                        name='1981-2010 Normal',
+                        mode='lines',  # 'line' is default
+                        line_shape='spline',
+                        line=dict(color="#fdbf2d", #color used in report
+                                width=1),
+                        hoverinfo='skip',
+                                )
+
+    figure_3_3 = make_subplots(specs=[[{'secondary_y': True}]])
+    figure_3_3.add_trace(annualTrace,
+                secondary_y=False,)
+    figure_3_3.add_trace(movingAverage,
+                secondary_y=False,)
+    figure_3_3.add_trace(normal,
+                secondary_y=True,)
+
+    figure_3_3.update_layout(TIMESERIES_LAYOUT)
+    figure_3_3.update_yaxes(title_text='Difference (\u00b0C) from 1981-2010 Normal',
+                            secondary_y=False,
+                            range=[-0.25, 0.45],
+                            showgrid=False,
+                            dtick=0.05,  # dtick sets the distance between ticks
+                            tick0=0,  # tick0 sets a point to map the other ticks
+                            fixedrange=True,
+                            showspikes=True,
+                            # zeroline=True,  # add a zero line
+                            # zerolinecolor=TIMESERIES_COLOR_SECONDARY
+                            )
+    figure_3_3.update_yaxes(title_text='Sea Sub-surface Temperature (\u00b0C)',
+                            secondary_y=True,
+                            range=[3.93, 4.59],
+                            showgrid=False,
+                            dtick=0.1,  # dtick sets the distance between ticks
+                            tick0=4.17,  # tick0 sets a point to map the other ticks
+                            fixedrange=True,
+                            )
+
+    figure_3_3.update_xaxes(
+        title='Year',
+        fixedrange=True,
+        tickformat='000',  
+        showspikes=True,  
+        spikethickness=2, 
+    ) 
+
+    return figure_3_3
 
 def figure_3_8():
     """
@@ -1068,3 +1157,138 @@ def figure_4_12():
                           line=dict(color='White', width=3)
                           )
     return figure_4_12
+
+def figure_4_22():
+    """
+    Fire Index
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.11Fire/Figure4.22/'
+        xls = pd.ExcelFile(
+            data_path+'Figure4.22_FireIndex.xlsx')
+        df = pd.read_excel(xls, 'May_Sep')
+    except:
+        return empty_chart()
+    
+    dublinTrace = go.Scatter(x=df["year"],
+                     y=df["mycount"],
+                     name='Dublin Airport',
+                     mode='lines',  # 'line' is default
+                     line=dict(
+                            color=TIMESERIES_COLOR_PRIMARY,
+                            width=2),
+                     hovertemplate='%{x}<br>' +
+                            '<b>Dublin Airport</b><br>' +
+                            'Days: %{y}<extra></extra>'
+                            )
+    shannonTrace = go.Scatter(x=df["year"],
+                        y=df["mycount.1"],
+                        name='Shannon Airport',
+                        mode='lines',  # 'line' is default
+                        line=dict(
+                                color=TIMESERIES_COLOR_SECONDARY,
+                                width=2),
+                        hovertemplate='%{x}<br>' +
+                                '<b>Shannon Airport</b><br>' +
+                                'Days: %{y}<extra></extra>'
+                                )
+    figure_4_22=go.Figure(data=[dublinTrace, shannonTrace], layout=TIMESERIES_LAYOUT)
+    figure_4_22.update_layout(
+        yaxis=dict(title='Number of Days'),
+        xaxis=dict(title='Year')
+    )
+    return figure_4_22
+
+def figure_4_27():
+    """
+    Anthropogenic Greenhouse Gas Emissions
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.14AnthropogenicGreenhouseGasEmissions/Figure4.27/'
+        xls = pd.ExcelFile(
+            data_path+'NIR_GHG_Emissions_CSRI2020.xlsx')
+        df = pd.read_excel(xls, 'Figure 2.1')
+    except:
+        return empty_chart()
+    df = df.drop(columns=['Unnamed: 0', 
+                          'Unnamed: 31',
+                          'Unnamed: 32',
+                          'Unnamed: 33',
+                            ])
+    df.loc[1,'Total GHG emissions by sector (kt CO2e)']='Year'
+    df1=df.T
+    new_header = df1.iloc[0]#grab the first row for the header
+    df1 = df1[1:] #take the data less the header row
+    df1.columns = new_header #set the header row as the df header
+
+    energyTrace=go.Bar(
+    name="Energy",
+    x=df1.Year,
+    y=df1["Energy"]/1000,
+        text=df1['Energy']*100/df1['Total '],
+    marker_color="#5182bb",
+    hovertemplate='<b>Energy</b><br>' +
+    '%{x}<br>' +
+    '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
+    '%{text:.2f}%</sub><extra></extra>'
+                            )
+
+    agricultureTrace=go.Bar(
+        name="Agriculture",
+        x=df1.Year,
+        y=df1["Agriculture "]/1000,
+            text=df1['Agriculture ']*100/df1['Total '],
+        marker_color="#fdbf2d",
+        hovertemplate='<b>Agriculture</b><br>' +
+        '%{x}<br>' +
+        '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
+        '%{text:.2f}%</sub><extra></extra>'
+                                )
+
+    landuseTrace=go.Bar(
+        name="Land-Use Change and Forestry (LULUCF)",
+        x=df1.Year,
+        y=df1["Land-Use Change and Forestry (LULUCF)"]/1000,
+            text=df1["Land-Use Change and Forestry (LULUCF)"]*100/df1['Total '],
+        marker_color="#3dca3f",
+        hovertemplate='<b>Land-Use Change and Forestry)</b><br>' +
+        '%{x}<br>' +
+        '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
+        '%{text:.2f}%</sub><extra></extra>'
+                                )
+    industryTrace=go.Bar(
+        name="Industrial Processes and Product Use (IPPU)",
+        x=df1.Year,
+        y=df1["Industrial Processes and Product Use (IPPU)"]/1000,
+        text=df1["Industrial Processes and Product Use (IPPU)"]*100/df1['Total '],
+        marker_color="#fc0d1b",
+        hovertemplate='<b>Industrial Processes and Product Use (IPPU)</b><br>' +
+        '%{x}<br>' +
+        '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
+        '%{text:.2f}%</sub><extra></extra>'
+                                )
+
+    wasteTrace=go.Bar(
+        name="Waste",
+        x=df1.Year,
+        y=df1['Waste ']/1000,
+        text=df1['Waste ']*100/df1['Total '],
+        marker_color="#262626",
+        hovertemplate='<b>Agriculture</b><br>' +
+        '%{x}<br>' +
+        '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
+        '%{text:.2f}%</sub><extra></extra>'
+                                )
+    figure_4_27=go.Figure(data=[energyTrace,
+                                agricultureTrace,
+                                landuseTrace,
+                                industryTrace,
+                                wasteTrace],
+                          layout=TIMESERIES_LAYOUT)
+    figure_4_27.update_layout(
+        barmode='stack',
+        yaxis=dict(title='kilotonnes CO<sub>2</sub> eq'),
+        xaxis=dict(title='Year')
+        )
+
+    return figure_4_27
