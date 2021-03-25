@@ -42,9 +42,22 @@ infrastructureText = """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
-
+    {'text': 'Carbon Dioxide, Methane & Other Greenhouse Gases ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/ghg/'},
+     {'text': 'Information on the Mace Head Facility',
+     'url': 'http://www.macehead.org/'},
+     {'text': 'Ireland´s GHG emissions by sector and gas',
+     'url': 'http://www.epa.ie/ghg/'},
+     {'text': 'ESA’s Greenhouse Gases Climate Change Initiative',
+     'url': 'http://cci.esa.int/ghg'},
+     {'text': 'NASA’s Orbiting Carbon Observatory-2 mission information',
+     'url': 'https://www.nasa.gov/mission_pages/oco2/index.html'},
+     {'text': 'Greenhouse Gas Concentration in the European State of the Climate Bulletin – 2019',
+     'url': 'https://climate.copernicus.eu/ESOTC/2019/greenhouse-gas-concentrations'},
+     {'text': 'Integrated Carbon Observation System (ICOS) information',
+     'url': 'https://www.icos-cp.eu/'},
+     {'text': 'Global Carbon Budget 2019, Pierre Friedlingstein et al., Earth Syst. Sci. Data, 11, 1783–1838, 2019',
+     'url': 'https://doi.org/10.5194/essd-11-1783-2019'}
 ]
 
 

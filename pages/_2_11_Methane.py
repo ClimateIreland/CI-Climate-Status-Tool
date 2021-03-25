@@ -37,9 +37,24 @@ infrastructureText = """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
-
+    {'text': 'Carbon Dioxide, Methane & Other Greenhouse Gases ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/ghg/'},
+     {'text': 'Nisbet, E.G., Dlugokencky, E.J., Manning, M.R., et al., (2016) Rising atmospheric methane: 2007–2014 growth and isotopic shift, Global Biogeochemical Cycles, Vol. 30, 9, pp. 1356-1370',
+     'url': 'https://doi.org/10.1002/2016GB005406'},
+     {'text': 'Jackson, R.B., Saunois, M., Bousquet, P., et al, (2020), Increasing anthropogenic methane emissions arise equally from agricultural and fossil fuel sources,  Environ. Res. Lett. 15 071002',
+     'url': 'https://doi.org/10.1088/1748-9326/ab9ed2'},
+     {'text': 'Information on the Mace Head Facility',
+     'url': 'http://www.macehead.org/'},
+     {'text': 'Ireland´s GHG emissions by sector and gas',
+     'url': 'http://www.epa.ie/ghg/'},
+     {'text': 'ESA’s Greenhouse Gases Climate Change Initiative',
+     'url': 'http://cci.esa.int/ghg'},
+     {'text': 'ESA Sentinel 5P Mission',
+     'url': 'https://sentinel.esa.int/web/sentinel/missions/sentinel-5p'},
+     {'text': 'Greenhouse Gas Concentration in the European State of the Climate Bulletin – 2019',
+     'url': 'https://climate.copernicus.eu/ESOTC/2019/greenhouse-gas-concentrations'},
+     {'text': 'Integrated Carbon Observation System (ICOS)',
+     'url': '(https://www.icos-cp.eu/'}
 ]
 
 

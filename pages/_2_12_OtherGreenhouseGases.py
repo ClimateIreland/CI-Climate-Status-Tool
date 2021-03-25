@@ -53,8 +53,22 @@ infrastructureText = """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Carbon Dioxide, Methane & Other Greenhouse Gases ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/ghg/'},
+     {'text': 'Simmonds, P.G., M. Rigby, A. McCulloch, et al., (2017) Changing trends and emissions of hydrochlorofluorocarbons (HCFCs) and their hydrofluorcarbon (HFCs) replacements. Atmospheric Chemistry and Physics. Vol. 17, pp. 4641-4655',
+     'url': 'https://doi.org/10.5194/acp-17-4641-2017'},
+     {'text': 'Information on the Mace Head Facility',
+     'url': 'http://www.macehead.org/'},
+     {'text': 'GHG observations from Mace Head and other AGAGE observatories',
+     'url': 'https://agage.mit.edu/'},
+     {'text': 'Information about the Montreal Protocol',
+     'url': 'https://www.unenvironment.org/ozonaction/who-we-are/about-montreal-protocol'},
+     {'text': 'ESA Sentinel 5P Mission',
+     'url': 'https://sentinel.esa.int/web/sentinel/missions/sentinel-5p'},
+     {'text': 'NASA’s Aura Spacecraft',
+     'url': 'https://aura.gsfc.nasa.gov/omi.html'},
+     {'text': 'Integrated Carbon Observation System (ICOS)',
+     'url': 'https://www.icos-cp.eu/'},
 
 ]
 
