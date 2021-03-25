@@ -362,7 +362,7 @@ def map_2_5():
     map_2_5=stations_map(df)
     return map_2_5
 
-def figure_2_10():
+def figure_2_18():
     """
     Monthly CO2 Trend
     """
@@ -405,31 +405,31 @@ def figure_2_10():
                             'CO<sub>2</sub>: %{y:.2f} ppm<extra></extra>' 
                             )
 
-    figure_2_10 = make_subplots(specs=[[{'secondary_y': False}]])
+    figure_2_18 = make_subplots(specs=[[{'secondary_y': False}]])
 
-    figure_2_10.add_trace(MaunaLoa,
+    figure_2_18.add_trace(MaunaLoa,
                 secondary_y=False,)
 
-    figure_2_10.add_trace(MaceHead,
+    figure_2_18.add_trace(MaceHead,
                 secondary_y=False,)
 
-    figure_2_10.update_layout(TIMESERIES_LAYOUT)
+    figure_2_18.update_layout(TIMESERIES_LAYOUT)
 
-    figure_2_10.update_yaxes(title_text='CO<sub>2</sub> concentration (ppm)',
+    figure_2_18.update_yaxes(title_text='CO<sub>2</sub> concentration (ppm)',
                             showgrid=False,
                             fixedrange=True,
                             showspikes=True,
                             )
-    figure_2_10.update_xaxes(title_text='Year',
+    figure_2_18.update_xaxes(title_text='Year',
                             range=['1955-01-01', '2020-01-01'],
                             tickformat="%Y",
                             showspikes=True,  
                             spikethickness=2
                             )
 
-    return figure_2_10
+    return figure_2_18
 
-def figure_2_11():
+def figure_2_20():
     """
     Monthly CH4 Trend
     """
@@ -472,29 +472,29 @@ def figure_2_11():
                             'CH<sub>4</sub>: %{y:.2f} ppb<extra></extra>' 
                             )
 
-    figure_2_11 = make_subplots(specs=[[{'secondary_y': False}]])
+    figure_2_20 = make_subplots(specs=[[{'secondary_y': False}]])
 
-    figure_2_11.add_trace(MonthlyMean,
+    figure_2_20.add_trace(MonthlyMean,
                 secondary_y=False,)
 
-    figure_2_11.add_trace(MovingAverage,
+    figure_2_20.add_trace(MovingAverage,
                 secondary_y=False,)
 
-    figure_2_11.update_layout(TIMESERIES_LAYOUT)
+    figure_2_20.update_layout(TIMESERIES_LAYOUT)
 
-    figure_2_11.update_yaxes(title_text='CH<sub>4</sub> concentration (ppb)',
+    figure_2_20.update_yaxes(title_text='CH<sub>4</sub> concentration (ppb)',
                             showgrid=False,
                             fixedrange=True,
                             showspikes=True,
                             )
-    figure_2_11.update_xaxes(title_text='Year',
+    figure_2_20.update_xaxes(title_text='Year',
                             range=['1985-01-01', '2020-12-31'],
                             tickformat="%Y",
                             showspikes=True,  
                             spikethickness=2
                             )
 
-    return figure_2_11
+    return figure_2_20
 
 
 
