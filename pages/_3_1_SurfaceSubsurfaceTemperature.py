@@ -44,9 +44,41 @@ infrastructureText = """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Sea Surface Temperature ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/sst'},
 
+     {'text': 'Sea Subsurface Temperature ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/subsurface-temperature'},
+     
+     {'text': 'Cannaby, H. and Hüsrevoğlu, Y.S. (2009) The Influence of low-frequency variability and long-term trends in Irish SST records, ICES Journal of Marine Science, Vol. 66, No. 7, pp. 1480–9',
+     'url': 'https://academic.oup.com/icesjms/article/66/7/1480/657991'},
+
+     {'text': 'Tinker, J., Howes, E., Wakelin, S., et al. (2020) The impacts of climate change on temperature (air and sea), relevant to the coastal and marine environment around the UK. MCCIP Science Review 2020, Marine Climate Change Impacts Partnership, pp 1–30',
+     'url': 'http://www.mccip.org.uk/media/2003/01_temperature_2020.pdf'},
+
+     {'text': 'Annual ICES Report on Ocean Climate (IROC)',
+     'url': 'https://ocean.ices.dk/iroc/#'},
+
+     {'text': 'Marine Institute data portal',
+     'url': 'http://data.marine.ie/'},
+
+     {'text': 'Information from the Irish Marine Data Buoy Observation Network',
+     'url': 'http://www.marine.ie/Home/site-area/data-services/real-time-observations/integrated-marine-observations'},
+     
+     {'text': 'Copernicus Marine Environment Monitoring Service OCEAN PRODUCTS',
+     'url': 'http://marine.copernicus.eu/services-portfolio/access-to-products/'},
+
+     {'text': 'Information about NEPHROPS survey ',
+     'url': 'https://www.marine.ie/Home/site-area/areas-activity/fisheries-ecosystems/nephrops-under-water-tv-surveys'},
+
+     {'text': 'Information about Euro-Argo',
+     'url': 'https://www.marine.ie/Home/site-area/areas-activity/oceanography/euro-argo'},
+
+     {'text': 'Information about Extended Ellet Line',
+     'url': 'https://mars.noc.ac.uk/projects/extended-ellet-line'},
+
+     {'text': 'NOAA National Centers for Environmental information, Climate at a Glance: Global Time Series',
+     'url': 'https://www.ncdc.noaa.gov/cag/'},
 ]
 
 
