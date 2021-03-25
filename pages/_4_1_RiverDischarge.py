@@ -28,11 +28,14 @@ bulletPoint2 = """
         drought conditions, especially in the east. 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = ''
+trendChartTitle = 'Annual Trend of River Flow'
 trendChart = empty_chart()
 
 trendCaption = """
-
+Annual trend of river flows over the island of Ireland for different types of 
+flow based on the hydrometric network as of 1972 (long period) and 1992 (short period).  
+Blue arrows indicate and increasing trend while red arrows indicate a decreasing trend. 
+Changes identified as significant are indicated by arrows with white fills. (adapted from  Murphy et al., 2013)  
         """
 
 infrastructureText = """
@@ -51,6 +54,44 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+figure_4_1 = IMAGES_PATH+'TerrestrialSections/Figure4.1_AnnualTrendRiverFlows.png'
+custom_trend = dbc.Container(
+        className='sr-trends',
+        style={'borderColor': chapter_dict['domain-color']},
+        id='trends',
+        children=[
+            html.H3(
+                className='sr-section-heading',
+                style={'color': chapter_dict['domain-color']},
+                children='Trends',
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle),
+                                html.Img(
+                                    className='w-100',
+                                    src=figure_4_1
+                                )
+                                    ]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption
+                                )]
+                            )
+                ]
+            ),
+        ])
 
 def create_layout(app):
     return html.Div(
@@ -65,11 +106,12 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
+            custom_trend,
+        #     pb.build_trend(trendChartTitle,
+        #                    trendChart,
+        #                    trendCaption,
+        #                    chapter_dict
+        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

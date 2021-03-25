@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, figure_4_27
 
 chapter_num = '4.14'
 bannerImgSrc = IMAGES_PATH+'TerrestrialSections/GHG_EMissions_Metro Centric.jpg'
@@ -29,11 +29,11 @@ bulletPoint2 = """
         reductions of synthetic fertiliser and animal manure use in agriculture.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'National Greenhouse Gas Emissions 1990-2018'
+trendChart = figure_4_27()
 
 trendCaption = """
-
+National total Greenhouse Gas emissions by IPCC sectors 1990 – 2018. Ref: Ireland’s National Inventory Report 2020. 
         """
 
 infrastructureText = """

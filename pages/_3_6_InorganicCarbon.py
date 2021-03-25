@@ -52,6 +52,109 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+trendTitle1='Deep-water Dissolved Inorganic Carbon Concentration (µmol/kg) '
+figure_3_13 = IMAGES_PATH+'OceanicSections/Figure3.13_DeepWater_DissolvedInorganicConcentration_RockallTrough.png'
+trendCaption1 = """
+Deep-water dissolved inorganic carbon concentration (µmol/kg) section for the Rockall Trough in 
+the winter of 2013 (left), during the annual survey on the Irish Shelf (right).  
+The rows of vertical dots represent sampling points at different depths (left) 
+and correspond to the blue point locations indicated in the red polygon (left)
+"""
+trendTitle2='Surface Water Dissolved Inorganic Carbon Concentration (µmol/kg) '
+figure_3_14_a=IMAGES_PATH+'OceanicSections/HR_Final_ Winter2017_18 shelf pCO2_2.jpg'
+figure_3_14_b = IMAGES_PATH+'OceanicSections/HR_Final_Summer 2018_final_2.jpg'
+trendCaption2 = """
+Surface water pCO2 measurements in a) Winter 2017-18 and b) Summer 2018, as collected by the RV Celtic Explorer. 
+"""
+
+custom_trend = dbc.Container(
+    className='sr-trends',
+    style={'borderColor': chapter_dict['domain-color']},
+    id='trends',
+    children=[
+        html.H3(
+            className='sr-section-heading',
+            style={'color': chapter_dict['domain-color']},
+            children='Trends',
+        ),
+                dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendTitle1),
+                            html.Img(
+                                className='w-100',
+                                src=figure_3_13
+                            )
+                                ]
+                        )
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(
+                    className="col-md-10 offset-md-1",
+                    children=[
+                        html.P(
+                            className='sr-chart-caption',
+                            children=trendCaption1
+                        )]
+                )
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-12",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendTitle2)]
+                        ),
+                dbc.Col(className="col-12 col-md-6 text-center",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children='Winter 2017-18 '),
+                            html.Img(
+                                style={"marginTop":"-40px",
+                                       "position":"relative",
+                                       "z-index":"-1"},
+                                src=figure_3_14_a
+                            )]
+                        ),
+                dbc.Col(className="col-12 col-md-6 text-center",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children='Summer 2018'),
+                        html.Img(
+                                style={"marginTop":"-40px",
+                                       "position":"relative",
+                                       "z-index":"-1"},
+                                src=figure_3_14_b
+                            )
+                                ]
+                        )
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(
+                    className="col-md-10 offset-md-1",
+                    children=[
+                        html.P(
+                            className='sr-chart-caption',
+                            style={"marginTop":"-40px",
+                                   "position":"relative",},
+                            children=trendCaption2
+                        )]
+                )
+            ]
+        ),
+
+    ])
 
 def create_layout(app):
     return html.Div(
@@ -66,11 +169,12 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
+            custom_trend,
+        #     pb.build_trend(trendChartTitle,
+        #                    trendChart,
+        #                    trendCaption,
+        #                    chapter_dict
+        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict
