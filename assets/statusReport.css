@@ -40,13 +40,6 @@ a, a:active, a:focus{
     margin-top:15px;
     margin-bottom:15px;
 }
-@media only screen and (max-width: 1000px) {
-    .sr-menu-intro-textbox {
-        border-radius:0px;
-
-    }
-  }
-
 
 .sr-menu-logo{
     max-width:300px;
@@ -88,7 +81,6 @@ a, a:active, a:focus{
 
 .sr-banner-img {
     width:100%;
-
     max-width: 1140px;
 }
 
@@ -100,7 +92,6 @@ a, a:active, a:focus{
     padding:5px;
     font-size:12px;
     font-weight:100;
-
 }
 
 .sr-banner-inner {
@@ -143,9 +134,9 @@ a, a:active, a:focus{
     margin-top: 10px;
 }
 .sr-page-nav {
-border-top: 1px solid;
-border-bottom: 1px solid;
-margin-top: 10px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-top: 10px;
 }
 
 .sr-page-nav-item {
@@ -183,9 +174,10 @@ margin-top: 10px;
     max-width: 100px;
     margin-bottom: 10px;
 }
-
-.sr-bullet-ul {
+.sr-bullet-col {
     border-radius:10px;
+}
+.sr-bullet-ul {
     margin-bottom: 15px;
     padding-bottom: 15px;
     padding-top: 10px;
@@ -244,6 +236,15 @@ margin-top:15px;
     display:none;
 }
 
+@media only screen and (max-width: 1000px) {
+    .sr-menu-intro-textbox {
+        border-radius:0px;
+    }
+    .sr-bullet-col {
+        border-radius:0px;
+    }
+  }
+
 @media only screen and (max-width: 600px) {
     .sr-bullet-ul{
         padding-left:15px;
@@ -255,6 +256,7 @@ margin-top:15px;
         right:-15px;
     }
   }
+
 
 
 

@@ -25,7 +25,7 @@ The annual rate of increase in atmospheric CO2 over the past 60 years is about
 such as those that occurred at the end of the last ice age 11,000-17,000 years ago.
         """
 bulletPoint2 = """
-Atmospheric CO2 concentrations of 413 ppm at Mace Head in 2018 are estimated to be more than 50% higher than those of the pre-industrial era.
+Atmospheric CO\u2082 concentrations of 413 ppm at Mace Head in 2018 are estimated to be more than 50% higher than those of the pre-industrial era.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 

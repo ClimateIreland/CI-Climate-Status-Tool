@@ -28,7 +28,7 @@ bulletPoint2 = """
         The sea surface temperature record at Malin Head in the period 2009 to 2018  was on average 0.47°C above the 1981-2010 mean.
         """
 bulletPoint3 = """
-        Observations of the annual water temperature in the Rockall Trough at depths between 1500 m and 2000m from 1975 to 2018 show no evident trend.   
+        Observations of the annual water temperature in the Rockall Trough at depths between 1500m and 2000m from 1975 to 2018 show no evident trend.   
         """
 bulletPoints = [bulletPoint1, bulletPoint2, bulletPoint3]
 trendChartTitle = 'Mean Sea Surface Temperature (1961-2018)'
@@ -116,11 +116,11 @@ custom_intro = dbc.Container(
         dbc.Row(
             children=[
                 dbc.Col(
+                    className='sr-bullet-col',
+                    style={'backgroundColor': chapter_dict['domain-bg-color']},
                     children=[
                         html.Ul(
                             className='sr-bullet-ul',
-                            style={
-                                'backgroundColor': chapter_dict['domain-bg-color']},
                             children=[
                                 html.Li(
                                     className='',

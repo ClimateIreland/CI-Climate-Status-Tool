@@ -11,7 +11,7 @@ from charts import figure_2_1, map_2_1
 chapter_num = '2.1'
 ecvName = 'Surface Air Temperature'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/AirTemp_MetEireann.jpg'
-bannerImgCredit = 'Met Eireann'
+bannerImgCredit = 'Met Éireann'
 # ecvIconSrc=IMAGES_PATH+'icons/surface-temperature.png'
 
 introText = """
@@ -67,13 +67,13 @@ infrastructureMap = map_2_1()
 infoLinks = [{'text': 'Surface Temperature ESSENTIAL CLIMATE VARIABLES (ECV). GCOS FACTSHEETS',
               'url': 'https://gcos.wmo.int/en/essential-climate-variables/surface-temperature/'},
 
-             {'text': 'ETCCDI/CRD Climate Change Indices. Definiiton of the 27 core indices',
+             {'text': 'ETCCDI/CRD Climate Change Indices. Definiton of the 27 core indices',
              'url': 'http://etccdi.pacificclimate.org/list_27_indices.shtml'},
 
-             {'text': 'Met Eirean information on air temperature in Ireland',
+             {'text': 'Met Éireann information on air temperature in Ireland',
              'url': 'https://www.met.ie/climate/what-we-measure/temperature'},
 
-             {'text': 'Met Eirean information on data availability',
+             {'text': 'Met Éireann information on data availability',
              'url': 'https://www.met.ie/climate/available-data/'},
 
              {'text': 'Information from the Irish Marine Weather Buoy Network',

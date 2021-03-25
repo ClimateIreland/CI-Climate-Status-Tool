@@ -224,11 +224,11 @@ def build_intro(introText, bulletPoints, chapter_dict):
             dbc.Row(
                 children=[
                     dbc.Col(
+                        className='sr-bullet-col',
+                        style={'backgroundColor': chapter_dict['domain-bg-color']},
                         children=[
                             html.Ul(
                                 className='sr-bullet-ul',
-                                style={
-                                    'backgroundColor': chapter_dict['domain-bg-color']},
                                 children=[
                                     html.Li(
                                         className='',
