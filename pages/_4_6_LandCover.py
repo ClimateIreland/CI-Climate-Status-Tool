@@ -173,11 +173,16 @@ custom_infrastructure = dbc.Container(
                         ),
                 dbc.Col(className="col-12 col-md-6 my-auto",
                         children=[
-                            html.I(
-                                style={'position': 'relative', 'float': 'right',
-                                       'bottom': '-25px', 'margin-right': '10px'},
-                                className='fas fa-arrows-alt '
-                            ),
+                            dcc.Link(
+                                style={
+                                    'color':chapter_dict['domain-color'],
+                                    'position': 'relative', 'float': 'right',
+                                       'bottom': '-30px', 'margin-right': '10px'},
+                                href='https://maps.eea.europa.eu/CopernicusViewer/?webmap=f9a8ae48d60a49f1bd9b16dba0f2c5fe',
+                                target='_blank',
+                                title='Open Full Screen',
+                                children=[
+                                    html.I(className='fas fa-arrows-alt ')]),
                             html.Iframe(
                                 style={'height': '450px',
                                        'width': '100%', 'border': 'none'},
