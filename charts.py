@@ -455,7 +455,7 @@ def figure_2_20():
                                 size=5,
                                 opacity=0.5),
                       hovertemplate='%{x}<br>' +
-                            '<b>MonthlyMean</b><br>' +
+                            '<b>Monthly Mean</b><br>' +
                             'CH<sub>4</sub>: %{y:.2f} ppb<extra></extra>' 
                             )
 
@@ -496,7 +496,152 @@ def figure_2_20():
 
     return figure_2_20
 
+def figure_2_22():
+    """
+    Monthly N2O Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Figure2.22/'
+        xls = pd.ExcelFile(
+            data_path+'Monthly_Mean_N20.xlsx')
+        dataDF = pd.read_excel(xls, 'Sheet1', header = None, skiprows=[0,1,2])
+    except:
+        return empty_chart()
 
+    dataDF.rename(columns = {
+        0:"Date",
+        1:"N2O"
+        }, inplace = True)
+    dataDF = dataDF.iloc[:, 0:2]
+
+    MonthlyMean = go.Scatter(x=dataDF["Date"],
+                     y=dataDF["N2O"],
+                     name='Monthly Mean',
+                     line_shape='spline',
+                     line=dict(
+                            # color="#fc0d1b", color used in report
+                            color=TIMESERIES_COLOR_PRIMARY,
+                            width=2),
+                      hovertemplate='%{x}<br>' +
+                            '<b>Monthly Mean</b><br>' +
+                            'N<sub>2</sub>O: %{y:.2f} ppb<extra></extra>' 
+                            )
+
+    figure_2_22 = make_subplots(specs=[[{'secondary_y': False}]])
+    figure_2_22.add_trace(MonthlyMean,
+            secondary_y=False,)
+    figure_2_22.update_layout(TIMESERIES_LAYOUT)
+    figure_2_22.update_yaxes(title_text='N<sub>2</sub>O concentration (ppb)',
+                         showgrid=False,
+                         fixedrange=True,
+                         showspikes=True,
+                        )
+    figure_2_22.update_xaxes(title_text='Year',
+                         range=['1978-01-01', '2020-06-30'],
+                         tickformat="%Y",
+                         showspikes=True,  
+                         spikethickness=2
+                        )
+
+    return figure_2_22
+
+def figure_2_23():
+    """
+    Monthly CFC-12 Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Figure2.23/'
+        xls = pd.ExcelFile(
+            data_path+'Monthly_Mean_CFC12.xlsx')
+        dataDF = pd.read_excel(xls, 'Sheet1', header = None, skiprows=[0,1,2])
+    except:
+        return empty_chart()
+
+    dataDF.rename(columns = {
+        0:"Date",
+        1:"CFC-12"
+        }, inplace = True)
+    dataDF = dataDF.iloc[:, 0:2]
+
+    MonthlyMean = go.Scatter(x=dataDF["Date"],
+                     y=dataDF["CFC-12"],
+                     name='Monthly Mean',
+                     line_shape='spline',
+                     line=dict(
+                            # color="#fc0d1b", color used in report
+                            color=TIMESERIES_COLOR_PRIMARY,
+                            width=2),
+                      hovertemplate='%{x}<br>' +
+                            '<b>Monthly Mean</b><br>' +
+                            'CFC-12: %{y:.2f} ppt<extra></extra>' 
+                            )
+
+    figure_2_23 = make_subplots(specs=[[{'secondary_y': False}]])
+    figure_2_23.add_trace(MonthlyMean,
+                secondary_y=False,)
+    figure_2_23.update_layout(TIMESERIES_LAYOUT)
+    figure_2_23.update_yaxes(title_text='CFC-12 concentration (ppt)',
+                            showgrid=False,
+                            fixedrange=True,
+                            showspikes=True,
+                            )
+    figure_2_23.update_xaxes(title_text='Year',
+                            range=['1978-01-01', '2020-06-30'],
+                            tickformat="%Y",
+                            showspikes=True,  
+                            spikethickness=2
+                            )
+    return figure_2_23
+
+def figure_2_24():
+    """
+    Monthly HFC-134a Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Figure2.24/'
+        xls = pd.ExcelFile(
+            data_path+'Monthly_MeanHFC134a.xlsx')
+        dataDF = pd.read_excel(xls, 'Sheet1')
+    except:
+        return empty_chart()
+
+    dataDF.rename(columns = {
+        "MONTH":"Date"
+        }, inplace = True)
+    dataDF = dataDF.iloc[:, 0:2]
+
+    MonthlyMean = go.Scatter(x=dataDF["Date"],
+                     y=dataDF["HFC-134a"],
+                     name='Monthly Mean',
+                     line_shape='spline',
+                     line=dict(
+                            # color="#fc0d1b", color used in report
+                            color=TIMESERIES_COLOR_PRIMARY,
+                            width=2),
+                      hovertemplate='%{x}<br>' +
+                            '<b>Monthly Mean</b><br>' +
+                            'HFC-134a: %{y:.2f} ppt<extra></extra>' 
+                            )
+
+    figure_2_24 = make_subplots(specs=[[{'secondary_y': False}]])
+    figure_2_24.add_trace(MonthlyMean,
+                secondary_y=False,)
+
+
+    figure_2_24.update_layout(TIMESERIES_LAYOUT)
+
+    figure_2_24.update_yaxes(title_text='HFC-134a concentration (ppt)',
+                            showgrid=False,
+                            fixedrange=True,
+                            showspikes=True,
+                            )
+    figure_2_24.update_xaxes(title_text='Year',
+                            range=['1994-01-01', '2020-06-30'],
+                            tickformat="%Y",
+                            showspikes=True,  
+                            spikethickness=2
+                            )
+    return figure_2_24
 
 def figure_3_1():
     """
