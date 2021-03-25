@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, figure_2_10
 
 chapter_num = '2.10'
 bannerImgSrc = IMAGES_PATH + \
@@ -25,12 +25,12 @@ The annual rate of increase in atmospheric CO2 over the past 60 years is about
 such as those that occurred at the end of the last ice age 11,000-17,000 years ago.
         """
 bulletPoint2 = """
-Atmospheric CO2 concentrations of 413 ppm at Mace Head in 2018 are estimated to be more than 50% higher than those of the pre-industrial era.
+Atmospheric CO2 concentrations of 413 ppm at Mace Head in 2018 are estimated to be more than 50% higher than those of the pre-industrial era. u'H\u2082O\u2082'
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'Carbon Dioxide (CO2) Concentration (1958-2018)'
+trendChart = figure_2_10()
 
 trendCaption = """
 
