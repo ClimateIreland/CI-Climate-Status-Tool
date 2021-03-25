@@ -78,7 +78,7 @@ intro = dbc.Container(
         # ),
         dbc.Row(
             dbc.Col(
-                className='sr-menu-intro-textbox',
+                className='sr-menu-intro-col',
                 children=[
                     html.Div(
 

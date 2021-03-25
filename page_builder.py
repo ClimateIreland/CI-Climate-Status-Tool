@@ -359,7 +359,7 @@ def build_infrastructure(infrastructureText, infrastructureMap, chapter_dict):
                             children=[
                                 html.P(infrastructureText)]
                             ),
-                    dbc.Col(className="col-12 col-md-6",
+                    dbc.Col(className="col-12 col-md-6 my-auto",
                             children=[dcc.Graph(
                                 id='StationsMap',
                                 figure=infrastructureMap,

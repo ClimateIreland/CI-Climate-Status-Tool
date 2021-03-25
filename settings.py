@@ -21,7 +21,10 @@ STATION_COLORS = {
     'Climate': '#004da8',
     'WaveRide/SmartBayObsCenter': '#ffff00',
     'MI_Survey': '#ff0000',
-    'EPA': '#002673'
+    'EPA': '#002673',
+    'TidbiT':'#004da8',
+    'ExtendedElletLineBuoy':'#00734c',
+    'TideGauge':'#8400a8'
 }
 
 CHART_FONT = dict(

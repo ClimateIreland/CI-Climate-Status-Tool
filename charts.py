@@ -17,12 +17,13 @@ def stations_map(df):
                 'Station No.: '+'{}'.format(sN)+'<br>' +
                 'County.: '+'{}'.format(cnty)+'<br>' +
                 'Open Year.: '+'{}'.format(oY)+'<br>' +
+                'Close Year.: '+'{}'.format(cY)+'<br>' +
                 'Height: '+'{:.2f}'.format(h)+'m<br>' +
-                'Easting: '+'{}'.format(easting)+'<br>' +
-                'Northing: '+'{}'.format(northing)+'<br>'
+                # 'Easting: '+'{}'.format(easting)+'<br>' +
+                # 'Northing: '+'{}'.format(northing)+'<br>'
                 'Lat: '+'{:.2f}'.format(lat)+'\u00b0<br>' +
                 'Lon: '+'{:.2f}'.format(lon)+'\u00b0<br>' + '<extra></extra>'
-                for n, t, sN, cnty, oY, h, easting, northing, lat, lon in zip(list(df['name']),
+                for n, t, sN, cnty, oY, cY, h, lat, lon in zip(list(df['name']),
                                                                             list(
                     df['Type']),
             list(
@@ -32,21 +33,63 @@ def stations_map(df):
             list(
                     df['Open_Year']),
             list(
+                    df['Close_Year']),
+            list(
                     df['Height__m_']),
-            list(
-                    df['Easting']),
-            list(
-                    df['Northing']),
+            # list(
+            #         df['Easting']),
+            # list(
+            #         df['Northing']),
             list(
                     df['Latitude']),
             list(
                     df['Longitude']),
         )]
 
-    buoyDF = df.loc[df['Type'] == 'Buoy']
+    buoyDF = df.loc[(df['Type'] == 'Buoy') | (df['Type'] == 'BuoySubSurf')]
     synopticDF = df.loc[df['Type'] == 'Synoptic']
     rainfallDF = df.loc[df['Type'] == 'Rainfall']
     climateDF = df.loc[df['Type'] == 'Climate']
+    waveRideDF = df.loc[(df['Type'] == 'WaveRide/SmartBayObsCenter') | (df['Type'] == 'WaveRide')]
+    tideGaugeDF = df.loc[(df['Type'] == 'TideGauge')]
+    elletDF = df.loc[(df['Type'] == 'ExtendedElletLineBuoy')]
+    tidbiTDF = df.loc[df['Type'] == 'TidbiT Sea Temperature Station']
+    
+    tidbiTTrend = go.Scattermapbox(
+        name='tidbiT',
+        lon=tidbiTDF.Longitude,
+        lat=tidbiTDF.Latitude,
+        marker=dict(color=STATION_COLORS['TidbiT'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(tidbiTDF),
+    )
+
+    tideGaugeTrend = go.Scattermapbox(
+        name='Tide Gauge',
+        lon=tideGaugeDF.Longitude,
+        lat=tideGaugeDF.Latitude,
+        marker=dict(color=STATION_COLORS['TideGauge'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(tideGaugeDF),
+    )
+
+    elletTrend = go.Scattermapbox(
+        name='Extended Ellet Line Buoy',
+        lon=elletDF.Longitude,
+        lat=elletDF.Latitude,
+        marker=dict(color=STATION_COLORS['ExtendedElletLineBuoy'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(elletDF),
+    )
+
+    waveRideTrend = go.Scattermapbox(
+        name='WaveRide/SmartBayObsCent',
+        lon=waveRideDF.Longitude,
+        lat=waveRideDF.Latitude,
+        marker=dict(color=STATION_COLORS['WaveRide/SmartBayObsCenter'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(waveRideDF),
+    )
 
     buoyTrend = go.Scattermapbox(
         name='Buoys',
@@ -83,8 +126,24 @@ def stations_map(df):
         hovertemplate=stations_map_hovertemplate(climateDF),
     )
     stations_map = go.Figure(
-        data=[buoyTrend, synopticTrend, rainfallTrend, climateTrend],
+        data=[buoyTrend, 
+              synopticTrend, 
+              rainfallTrend, 
+              climateTrend,
+              tidbiTTrend, 
+              elletTrend, 
+              tideGaugeTrend,
+              waveRideTrend],
         layout=MAP_LAYOUT)
+    stations_map.update_layout(
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=54,
+                    lon=349
+                ),
+                pitch=0,
+                zoom=4.2)
+    )
     
     return stations_map
 
@@ -679,6 +738,33 @@ def figure_3_3():
 
     return figure_3_3
 
+
+def map_3_1():
+    """
+    Ocean Surface and Sub-surface Air Temperature infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Map3.1/'
+        stationsDF = pd.read_csv(
+                    data_path+'Map3.1_StationTable_MI.txt')
+
+        rockallDF = pd.read_csv(
+                    data_path+'Map3.1_StationTable_RockallTroughSection.txt')
+        tidbiDF = pd.read_csv(
+                    data_path+'Map3.1_StationTable_TidbiT.txt')
+    except:
+        return empty_chart()
+    tidbiDFNew=pd.DataFrame(columns=rockallDF.columns)
+    tidbiDFNew['name']=tidbiDF["localId"]
+    tidbiDFNew['Latitude']=tidbiDF["latitude"]
+    tidbiDFNew['Longitude']=tidbiDF["longitude"]
+    tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
+    tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
+    tidbiDFNew['Type']=tidbiDF["datasetNam"]
+    combinedDF = pd.concat([stationsDF,rockallDF,tidbiDFNew])
+    map_3_1=stations_map(combinedDF)
+    return map_3_1
+
 def figure_3_8():
     """
     Sea Level Dublin Port 
@@ -724,6 +810,28 @@ def figure_3_8():
         xaxis=dict(title='Date'),
         hovermode='closest')
     return figure_3_8
+
+def map_3_4():
+    """
+    Sea Level infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Map3.4/'
+        tidalGaugeDF = pd.read_csv(
+                data_path+'Map3.4_StationTable_IrishNationalTideGaugeNetwork.txt')
+    except:
+        return empty_chart()
+    stationColumns=['FID', 'County', 'Station_Nu', 'name', 'Height__m_', 'Easting',
+       'Northing', 'Latitude', 'Longitude', 'Open_Year', 'Close_Year', 'Type']
+    tidalGaugeDFNew=pd.DataFrame(columns=stationColumns)
+    tidalGaugeDFNew['name']=tidalGaugeDF["Station_Na"]
+    tidalGaugeDFNew['Latitude']=tidalGaugeDF["Latitude"]
+    tidalGaugeDFNew['Longitude']=tidalGaugeDF["Longitude"]
+    tidalGaugeDFNew['Easting']=tidalGaugeDF["Easting"]
+    tidalGaugeDFNew['Northing']=tidalGaugeDF["Northing"]
+    tidalGaugeDFNew['Type']=tidalGaugeDFNew['Type'].apply(lambda x: 'TideGauge')
+    map_3_4=stations_map(tidalGaugeDFNew)
+    return map_3_4
 
 def figure_3_15():
     """

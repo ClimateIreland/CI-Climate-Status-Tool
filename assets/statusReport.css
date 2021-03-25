@@ -32,7 +32,7 @@ a, a:active, a:focus{
     width:100%;
 }
 
-.sr-menu-intro-textbox{
+.sr-menu-intro-col{
     background-color:#fef4e6;
     border-radius:10px;
     padding-top:1rem;
@@ -72,7 +72,8 @@ a, a:active, a:focus{
     overflow-y: hidden;
     position:relative;
     border-radius:3px;
-    margin-top:10px;
+    /* margin-top:10px; */
+    padding:0px;
     max-height: 450px;
     justify-content: center;
     display: flex;
@@ -101,7 +102,8 @@ a, a:active, a:focus{
     /* height: 300px; */
     position:absolute;
     bottom:10%;
-    left:15px;
+    /* left:15px; */
+    left:0px;
     background-color:rgb(255, 255, 255, 0.8);
     padding:10px;
     padding-left:20px;
@@ -176,10 +178,11 @@ a, a:active, a:focus{
 }
 .sr-bullet-col {
     border-radius:10px;
+    margin-bottom:15px;
 }
 .sr-bullet-ul {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+    /* margin-bottom: 15px;
+    padding-bottom: 15px; */
     padding-top: 10px;
     list-style-type: none !important;
     text-align: left !important;
@@ -237,12 +240,7 @@ margin-top:15px;
 }
 
 @media only screen and (max-width: 1000px) {
-    .sr-menu-intro-textbox {
-        border-radius:0px;
-    }
-    .sr-bullet-col {
-        border-radius:0px;
-    }
+
   }
 
 @media only screen and (max-width: 600px) {
@@ -254,6 +252,12 @@ margin-top:15px;
     }
     .slick-next{
         right:-15px;
+    }
+    .sr-menu-intro-col {
+        border-radius:0px;
+    }
+    .sr-bullet-col {
+        border-radius:0px;
     }
   }
 

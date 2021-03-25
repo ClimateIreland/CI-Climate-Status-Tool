@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_3_1, figure_3_3
+from charts import empty_chart, figure_3_1, figure_3_3, map_3_1
 import copy
 
 chapter_num = '3.1'
@@ -39,9 +39,19 @@ Mean annual sea surface temperature (SST) and anomalies at Malin Head (1961-2018
         """
 
 infrastructureText = """
-
+Sea surface temperature (SST) measurements are made by the Irish Marine Data Buoy Observation Network 
+(orange and red), at the Malin Head Co. Donegal weather station (yellow), at the Ballycotton Co. Cork 
+tide gauge station (purple) and at wave buoys (brown and black) (map 3.1). A set of coastal temperature 
+sensors (blue) installed predominately at aquaculture sites by the Marine Institute measure temperature 
+but are not accurate enough for climate studies.
+The Malin Head station has collected SST observations since 1958 and is the longest record available in Irish waters, 
+although water temperature records for parts of the northeast Atlantic go back to 1850.\u000A\u000A
+Measurements of subsurface ocean temperature in Irish waters are made by the Marine Institute at the M6 buoy mooring 
+(red) and at the SmartBay Observatory (black) in Galway Bay.  Since 2008, the Marine Institute has deployed twenty 
+Argo floats in the North Atlantic; these underwater autonomous profilers measure temperature and salinity down to a 
+depth of 2000m and Ireland contributes to international efforts through the Euro-Argo programme
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_3_1()
 
 infoLinks = [
     {'text': '',
