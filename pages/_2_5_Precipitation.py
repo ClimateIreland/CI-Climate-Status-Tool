@@ -52,9 +52,29 @@ All precipitation data since January 1941 are available in digital format.
 infrastructureMap = map_2_5()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Precipitation ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/precipitation'},
 
+     {'text': 'Murphy, C., Broderick, C. et al., 2018, A 305-year continuous monthly rainfall series for the island of Ireland (1711–2016), Climate of the Past, 14, 413–440',
+     'url': 'https://doi.org/10.5194/cp-14-413-2018'},
+
+     {'text': 'ETCCDI/CRD Climate Change Indices. Definition of the 27 core indices',
+     'url': 'http://etccdi.pacificclimate.org/list_27_indices.shtml'},
+
+     {'text': 'Information on precipitation in Ireland',
+     'url': 'https://www.met.ie/climate/what-we-measure/rainfall'},
+
+     {'text': 'Information on data availability',
+     'url': 'https://www.met.ie/climate/available-data'},
+
+     {'text': 'About EUMETSAT, Europe´s weather satellite programme',
+     'url': 'https://www.eumetsat.int/website/home/index.html'},
+
+     {'text': 'About EUMETNET',
+     'url': 'https://www.eumetnet.eu/about-us/'},
+     
+     {'text': 'About the Global Precipitation Measurement mission',
+     'url': 'https://www.nasa.gov/mission_pages/GPM/overview/index.html'},
 ]
 
 
