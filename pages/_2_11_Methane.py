@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, figure_2_11
 
 chapter_num = '2.11'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Methane_Ned_Dwyer_P1000356.JPG'
@@ -24,8 +24,8 @@ bulletPoint2 = """
 Following a stable period in the late 1990s and early 2000s there has been a 4% increase in CH4 concentrations since 2007 observed at Mace Head. 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'Methane (CH4) Concentration at Mace Head (1987-2018)'
+trendChart = figure_2_11()
 
 trendCaption = """
 

@@ -362,6 +362,142 @@ def map_2_5():
     map_2_5=stations_map(df)
     return map_2_5
 
+def figure_2_10():
+    """
+    Monthly CO2 Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.10CarbonDioxide/Figure2.18/'
+        xls = pd.ExcelFile(
+            data_path+'MonthlyMeanConcentrationOfCarbonDioxide_MaunaLoa_MaceHead2018.xlsx')
+        dataDF = pd.read_excel(xls, 'co2_mm_mlo')
+    except:
+        return empty_chart()
+
+    dataDF.rename(columns = {
+        "Unnamed: 0":"Date"
+    }, inplace = True)
+    dataDF = dataDF.iloc[:, 0:5]
+
+    MaunaLoa = go.Scatter(x=dataDF["Date"],
+                     y=dataDF["Mauna Loa (Hawaii)"],
+                     name='Mauna Loa (Hawaii)',
+                     line_shape='spline',
+                     line=dict(
+                            # color="#fc0d1b", color used in report
+                            color=TIMESERIES_COLOR_PRIMARY,
+                            width=2),
+                      hovertemplate='%{x}<br>' +
+                            '<b>Mauna Loa (Hawaii)</b><br>' +
+                            'CO<sub>2</sub>: %{y:.2f} ppm<extra></extra>' 
+                            )
+
+    MaceHead = go.Scatter(x=dataDF["Date"],
+                     y=dataDF["Mace Head"],
+                     name='Mace Head',
+                     line_shape='spline',
+                     line=dict(
+                            # color="#fc0d1b", color used in report
+                            color=TIMESERIES_COLOR_SECONDARY,
+                            width=2),
+                      hovertemplate='%{x}<br>' +
+                            '<b>Mace Head</b><br>' +
+                            'CO<sub>2</sub>: %{y:.2f} ppm<extra></extra>' 
+                            )
+
+    figure_2_10 = make_subplots(specs=[[{'secondary_y': False}]])
+
+    figure_2_10.add_trace(MaunaLoa,
+                secondary_y=False,)
+
+    figure_2_10.add_trace(MaceHead,
+                secondary_y=False,)
+
+    figure_2_10.update_layout(TIMESERIES_LAYOUT)
+
+    figure_2_10.update_yaxes(title_text='CO<sub>2</sub> concentration (ppm)',
+                            showgrid=False,
+                            fixedrange=True,
+                            showspikes=True,
+                            )
+    figure_2_10.update_xaxes(title_text='Year',
+                            range=['1955-01-01', '2020-01-01'],
+                            tickformat="%Y",
+                            showspikes=True,  
+                            spikethickness=2
+                            )
+
+    return figure_2_10
+
+def figure_2_11():
+    """
+    Monthly CH4 Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.11Methane/Figure2.20/'
+        xls = pd.ExcelFile(
+            data_path+'MonthlyMeanMethaneConcentration_MaceHead_2018.xlsx')
+        dataDF = pd.read_excel(xls, 'MHD-gcmd')
+    except:
+        return empty_chart()
+
+    dataDF.rename(columns = {
+        "Unnamed: 0":"Date",
+        "Unnamed: 2":"MovingAverage"
+        }, inplace = True)
+    dataDF = dataDF.iloc[:, 0:3]
+
+    MonthlyMean = go.Scatter(x=dataDF["Date"],
+                     y=dataDF["CH4"],
+                     name='Monthly Mean',
+                     mode='markers',
+                     marker=dict(color=TIMESERIES_COLOR_SECONDARY,
+                                size=5,
+                                opacity=0.5),
+                      hovertemplate='%{x}<br>' +
+                            '<b>MonthlyMean</b><br>' +
+                            'CH<sub>4</sub>: %{y:.2f} ppb<extra></extra>' 
+                            )
+
+    MovingAverage = go.Scatter(x=dataDF["Date"],
+                     y=dataDF["MovingAverage"],
+                     name='12 Month Moving Average',
+                     line_shape='spline',
+                     line=dict(
+                            # color="#fc0d1b", color used in report
+                            color=TIMESERIES_COLOR_PRIMARY,
+                            width=2),
+                      hovertemplate='%{x}<br>' +
+                            '<b>Moving Avaerge</b><br>' +
+                            'CH<sub>4</sub>: %{y:.2f} ppb<extra></extra>' 
+                            )
+
+    figure_2_11 = make_subplots(specs=[[{'secondary_y': False}]])
+
+    figure_2_11.add_trace(MonthlyMean,
+                secondary_y=False,)
+
+    figure_2_11.add_trace(MovingAverage,
+                secondary_y=False,)
+
+    figure_2_11.update_layout(TIMESERIES_LAYOUT)
+
+    figure_2_11.update_yaxes(title_text='CH<sub>4</sub> concentration (ppb)',
+                            showgrid=False,
+                            fixedrange=True,
+                            showspikes=True,
+                            )
+    figure_2_11.update_xaxes(title_text='Year',
+                            range=['1985-01-01', '2020-12-31'],
+                            tickformat="%Y",
+                            showspikes=True,  
+                            spikethickness=2
+                            )
+
+    return figure_2_11
+
+
+
 def figure_3_1():
     """
     Ocean Surface Temperature Totals and Anomalies Trend
