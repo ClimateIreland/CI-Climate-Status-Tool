@@ -44,9 +44,23 @@ infrastructureText = """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'River Discharge ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/rivers/'},
 
+     {'text': 'Murphy, C., Harrigan, S., Hall, J., & Wilby, J.H. (2013) Climate driven trends in mean and high flows from a network of reference stations in Ireland, Hydrological Sciences Journal, Vol. 58, No. 4, pp 755-772',
+     'url': 'https://doi.org/10.1080/02626667.2013.782407'},
+
+     {'text': 'The EPA website on river monitoring',
+     'url': 'https://www.epa.ie/water/wm/rivers/'},
+
+     {'text': 'EPA data source',
+     'url': 'https://gis.epa.ie/GetData/Download'}, 
+
+     {'text': 'EPA Hydronet Portal - River flow data',
+     'url': 'https://www.epa.ie/hydronet/#Flow'},
+
+     {'text': 'Online hydrometric data from the Office of Public Works hydrometric network',
+     'url': 'https://waterlevel.ie/'},
 ]
 
 

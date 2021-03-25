@@ -42,8 +42,20 @@ infrastructureText = """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Fire ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/fire/'},
+
+     {'text': 'Prat-Guitart, N.; Nugent, C.; Mullen, E.; et al. (2019) Peat Fires of Ireland. In Coal and Peat Fires: A Global Perspective; Stracher, G.B., Prakash, A., Sokol, E.V., Eds.;Elsevier Inc.: Amsterdam, The Netherlands, Vol. 5, pp. 451–482',
+     'url': 'https://doi.org/10.1016/C2016-0-02048-X'},
+
+     {'text': 'Annual Reports on Forest Fires in Europe Middle East and North Africa',
+     'url': 'https://effis.jrc.ec.europa.eu/reports-and-publications/annual-fire-reports'},
+
+     {'text': 'Global Wildfire Information System',
+     'url': 'https://gwis.jrc.ec.europa.eu/apps/gwis_current_situation/'},
+
+     {'text': 'Fire, Land and Atmospheric Remote Sensing of Emissions (FLARES) project',
+     'url': 'https://www.ucc.ie/en/eri/projects/flares--fire-land-and-atmospheric-remote-sensing-of-emissions.html'},
 
 ]
 

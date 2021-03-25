@@ -42,9 +42,23 @@ infrastructureText = """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Inorganic Carbon ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/inorganic-carbon/'},
 
+     {'text': 'Ocean Acidification Observing in Coastal, Shelf and Ocean Waters around Ireland, (2019) E. McGovern, T. McGrath, M. Cronin,  G. O’Donnell, B. Ward, C. Cusack, R. Cave, Poster at Conference: 4th Global Ocean Acidification Observing Network (GOA-ON) International Workshop, Hangzhou',
+     'url': 'https://www.researchgate.net/publication/332950133_Ocean_Acidification_Observing_in_Coastal_Shelf_and_Ocean_Waters_around_Ireland'},
+
+     {'text': 'Information about ICES',
+     'url': 'https://www.ices.dk/'},
+
+     {'text': 'Surface Ocean CO\u2082 Atlas',
+     'url': 'http://www.socat.info'},
+
+     {'text': 'The GO-SHIP programme',
+     'url': 'https://www.go-ship.org/About.html'},
+
+     {'text': 'The Marine Institute operated Research Vessels',
+     'url': 'https://www.marine.ie/Home/site-area/infrastructure-facilities/research-vessels/research-vessels'},
 ]
 
 

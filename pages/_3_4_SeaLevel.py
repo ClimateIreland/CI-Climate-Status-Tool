@@ -45,8 +45,33 @@ The longest continuous records for Ireland are from Dublin Port (orange) where a
 infrastructureMap = map_3_4()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Sea level ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/sea-level/'},
+
+     {'text': 'Nejad, A.S., Parnell, A., Greene, A., et al. (2020, May 27) Recent Rapid Sea Level Rise in Dublin Bay Based on Tide Gauge Analysis',
+     'url': 'https://doi.org/10.31223/osf.io/z9hk2'},
+
+     {'text': 'Dataset from the Irish National Tide Network project portal',
+     'url': 'http://www.Irishtides.ie'},
+
+     {'text': 'Hydrometric data from the Office of Public Works',
+     'url': 'https://waterlevel.ie/group/16/'},
+
+     {'text': 'Dataset from the GLOSS sea level data centres',
+     'url': 'https://www.gloss-sealevel.org/data'},
+
+     {'text': 'Tide gauge data from around the world',
+     'url': 'https://www.psmsl.org/data/'},
+
+     {'text': 'Information on sea level retrieval from altimeters for the Copernicus Programme',
+     'url': 'https://duacs.cls.fr/'},
+
+     {'text': 'Sea Level. European State of the Climate 2018',
+     'url': 'https://climate.copernicus.eu/sea-level'},
+
+     {'text': 'Sea Level Global and Regional interactive products based on satellite information',
+     'url': 'https://www.aviso.altimetry.fr/?id=1599'},
+
 
 ]
 

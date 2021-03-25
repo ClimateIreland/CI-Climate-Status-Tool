@@ -42,8 +42,24 @@ infrastructureText = """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Anthropogenic Greenhouse Gas Emissions  ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/ghg-fluxes/'},
+
+     {'text': 'Kiely, G., Leahy, P., Lewis, C., et al.,  (2018),  GHG Fluxes from Terrestrial Ecosystems in Ireland, EPA Report 227',
+     'url': 'http://www.epa.ie/pubs/reports/research/climate/Research_Report_227.pdf'},
+
+     {'text': 'Ireland’s National Inventory Report 2020',
+     'url': 'http://www.epa.ie/pubs/reports/air/airemissions/ghg/nir2020/NIR%202020_Merge_finalv2.pdf'},
+
+
+     {'text': 'Fluxnet information',
+     'url': 'https://fluxnet.ornl.gov/fluxnetdb'},
+
+     {'text': 'ICOS information',
+     'url': 'https://www.icos-ri.eu/greenhouse-gases'},
+
+     {'text': 'ESA’s Greenhouse Gases Climate Change Initiative',
+     'url': 'http://cci.esa.int/ghg'},
 
 ]
 
