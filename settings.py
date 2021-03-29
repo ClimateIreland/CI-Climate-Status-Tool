@@ -46,9 +46,6 @@ TIMESERIES_LAYOUT = dict(
         ), 
 )
 
-
-
-
 CHAPTERS = [
     # Upper-air Atmoshere
     # {
@@ -126,8 +123,8 @@ CHAPTERS = [
         'icon-src': 'ico-sa-precipitation.png',
         'icon-hover-src': 'ico-sa-precipitation_hover.png',
         'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
+        'subdomain': 'Surface',
+        'scientific-area': 'Hydrosphere',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
@@ -142,9 +139,9 @@ CHAPTERS = [
         'icon-src': 'ico-ac-co2-ghgs.png',
         'icon-hover-src': 'ico-ac-co2-ghgs_hover.png',
         'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Atmospheric Composition',
+        'scientific-area': 'Carbon cycle and other GHGs',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Damien Martin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 
@@ -158,9 +155,9 @@ CHAPTERS = [
         'icon-src': 'ico-ac-precursors.png',
         'icon-hover-src': 'ico-ac-precursors_hover.png',
         'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Atmospheric Composition',
+        'scientific-area': 'Carbon cycle and other GHGs',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Damien Martin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 
@@ -174,9 +171,9 @@ CHAPTERS = [
         'icon-src': 'ico-ac-precursors.png',
         'icon-hover-src': 'ico-ac-precursors_hover.png',
         'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Atmospheric Composition',
+        'scientific-area': 'Carbon cycle and other GHGs',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Damien Martin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 
@@ -193,9 +190,9 @@ CHAPTERS = [
         'icon-src': 'ico-sop-sea-surface-temp.png',
         'icon-hover-src': 'ico-sop-sea-surface-temp_hover.png',
         'domain': 'Ocean',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Physical',
+        'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Kieran Lyons, Caroline Cusack, Glenn Nolan',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -209,9 +206,9 @@ CHAPTERS = [
         'icon-src': 'ico-ssop-subsurface-temp.png',
         'icon-hover-src': 'ico-ssop-subsurface-temp_hover.png',
         'domain': 'Ocean',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Physical',
+        'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Kieran Lyons, Caroline Cusack, Glenn Nolan',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -224,9 +221,9 @@ CHAPTERS = [
         'icon-src': 'ico-sop-sea-level.png',
         'icon-hover-src': 'ico-sop-sea-level_hover.png',
         'domain': 'Ocean',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Guy Westbrook, Glenn Nolan, Rosemarie Lawlor, Sarah Gallaher, Gerard McCarthy',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -239,9 +236,9 @@ CHAPTERS = [
         'icon-src': 'ico-obgc-inorganic-carbon.png',
         'icon-hover-src': 'ico-obgc-inorganic-carbon_hover.png',
         'domain': 'Ocean',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Biogeochemical',
+        'scientific-area': 'Carbon Cycle and other GHGs',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Margot Cronin, Evin McGovern',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -272,9 +269,9 @@ CHAPTERS = [
         'icon-src': 'ico-hyd-river-discharge.png',
         'icon-hover-src': 'ico-hyd-river-discharge_hover.png',
         'domain': 'Terrestrial',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Hydrology',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Barry O’Dwyer, Conor Murphy, Ned Dwyer',
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
@@ -318,9 +315,9 @@ CHAPTERS = [
         'icon-src': 'ico-bio-fire.png',
         'icon-hover-src': 'ico-bio-fire_hover.png',
         'domain': 'Terrestrial',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Biology',
+        'scientific-area': 'Biosphere',
+        'authors': 'Ciaran Nugent, Ned Dwyer, Walther C.A. Cámaro García, Keith Lambkin, Frank Barrett  ',
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
@@ -333,17 +330,13 @@ CHAPTERS = [
         'icon-src': 'ico-ant-ghg-fluxes.png',
         'icon-hover-src': 'ico-ant-ghg-fluxes_hover.png',
         'domain': 'Terrestrial',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Human Use of Natural Resources',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-
-
 ]
-
-
 
 MAP_LAYOUT = dict(
     legend=dict(title='<b>Station Type</b>',
