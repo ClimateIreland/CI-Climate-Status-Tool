@@ -10,4 +10,4 @@ share/
 .vscode/
 *.ipynb_checkpoints*
 *env.py
-dash_app/data/
+data
