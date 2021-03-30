@@ -361,13 +361,8 @@ IMAGES_PATH = 'assets/images/'
 # IMAGES_PATH='/Users/dan/ClimateIreland/Projects/CI-Status-Report-Dash/assets/images/'
 # IMAGES_PATH='https://www.climateireland.ie/web_resource/images/'
 
-PATH = pathlib.Path(__file__).parent
-DATA_PATH = os.getenv("DATA_PATH")
-# DATA_PATH='/home/dancasey/Status_Tool_Data/'
-# DATA_PATH = '/Users/dan/OneDrive - University College Cork/Status_Tool/'
-# HOST=os.getenv("IP",default='127.0.0.1')
-# PORT=os.getenv("PORT",default='1850')
-# DEBUG=os.getenv("DEBUG",default=True)
-# HOST=os.getenv("IP",default='127.0.0.1')
-# PORT=os.getenv("PORT",default='1850')
-# DEBUG=os.getenv("DEBUG",default=True)
+PROJECT_PATH = pathlib.Path(__file__).parent.parent
+if os.path.isdir(str(PROJECT_PATH)+'/data'):
+    DATA_PATH=str(PROJECT_PATH)+'/data/'
+else:
+    DATA_PATH="/home/data/"

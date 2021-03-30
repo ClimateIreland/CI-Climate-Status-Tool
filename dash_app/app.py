@@ -40,6 +40,8 @@ app = dash.Dash(
     ],
 )
 
+server = app.server
+
 app.title = 'Climate Status Report Ireland'
 app.layout = html.Div(children=[
     dcc.Location(id='url', refresh=False),
@@ -98,17 +100,7 @@ def display_page(pathname):
         return index.create_layout(app)
 
 if __name__ == '__main__':
-    # For local
     app.run_server(debug='True')
-
-    # For remote
-    # app.run_server(host='0.0.0.0',port='80')
-    
-    # Need to set up env variables
-    # app.run_server(
-    #     host=HOST,
-    #     port=PORT,
-    #     debug=DEBUG)
        
     
     
