@@ -1,2 +1,0 @@
-FID,County,Station_Nu,name,Height__m_,Easting,Northing,Latitude,Longitude,Open_Year,Close_Year,Type
-0,Galway,275,Mace_Head,21,73400,232276,53.322000000000003,-9.901000000000000,2003, ,Synoptic
