@@ -28,7 +28,7 @@ services:
 
   certbot:
     image: certbot/certbot:latest
-    command: certonly --webroot --webroot-path=/var/www/certbot --email info@dancasey.ie --agree-tos --no-eff-email -d apps.dancasey.ie
+    command: certonly --webroot --webroot-path=/var/www/certbot --email dev@climateireland.ie --agree-tos --no-eff-email -d dash.climateireland.ie
     volumes:
       - ./nginx/certbot/conf:/etc/letsencrypt
       - ./nginx/certbot/logs:/var/log/letsencrypt
