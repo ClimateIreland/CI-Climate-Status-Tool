@@ -11,4 +11,4 @@ share/
 *.ipynb_checkpoints*
 *env.py
 data
-nginx/certbot/
+certbot/

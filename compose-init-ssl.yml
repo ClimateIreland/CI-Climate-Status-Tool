@@ -22,7 +22,7 @@ services:
       - dash_app
     volumes:
       - ./nginx/public:/var/www/html
-      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/conf.d.init_ssl:/etc/nginx/conf.d
       - ./certbot/conf:/etc/nginx/ssl
       - ./certbot/data:/var/www/certbot
 
