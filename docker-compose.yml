@@ -17,5 +17,19 @@ services:
     build: ./nginx
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - dash_app
+    volumes:
+      - ./nginx/public:/var/www/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/certbot/conf:/etc/nginx/ssl
+      - ./nginx/certbot/data:/var/www/certbot
+
+  certbot:
+    image: certbot/certbot:latest
+    command: certonly --webroot --webroot-path=/var/www/certbot --email info@dancasey.ie --agree-tos --no-eff-email -d apps.dancasey.ie
+    volumes:
+      - ./nginx/certbot/conf:/etc/letsencrypt
+      - ./nginx/certbot/logs:/var/log/letsencrypt
+      - ./nginx/certbot/data:/var/www/certbot
