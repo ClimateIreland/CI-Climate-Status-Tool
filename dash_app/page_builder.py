@@ -435,7 +435,7 @@ def build_nav_carousel(chapter_dict):
                                             src=IMAGES_PATH+'icons/'+chapter['icon-lg-src']),
                                         html.Img(
                                             className='sr-nav-carousel-img-hover',
-                                            src=IMAGES_PATH+'icons/'+chapter['icon-src']),
+                                            src=IMAGES_PATH+'icons/'+chapter['icon-lg-hover-src']),
                                         html.Div(
                                             children=chapter['title']
                                         )])

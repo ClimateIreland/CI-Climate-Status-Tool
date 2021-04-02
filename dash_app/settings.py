@@ -22,9 +22,9 @@ STATION_COLORS = {
     'WaveRide/SmartBayObsCenter': '#ffff00',
     'MI_Survey': '#ff0000',
     'EPA': '#002673',
-    'TidbiT':'#004da8',
-    'ExtendedElletLineBuoy':'#00734c',
-    'TideGauge':'#8400a8'
+    'TidbiT': '#004da8',
+    'ExtendedElletLineBuoy': '#00734c',
+    'TideGauge': '#8400a8'
 }
 
 CHART_FONT = dict(
@@ -39,11 +39,11 @@ TIMESERIES_LAYOUT = dict(
     font=CHART_FONT,
     hovermode='closest',
     legend=dict(
-            orientation='h',
-            bgcolor='rgba(0,0,0,0)',
-            itemclick=False,
-            itemdoubleclick=False,
-        ), 
+        orientation='h',
+        bgcolor='rgba(0,0,0,0)',
+        itemclick=False,
+        itemdoubleclick=False,
+    ),
 )
 
 CHAPTERS = [
@@ -104,6 +104,7 @@ CHAPTERS = [
         'title': 'Surface Temperature',
         'href': '/_2_1_SurfaceAirTemperature',
         'icon-lg-src': 'surface-temperature.png',
+        'icon-lg-hover-src': 'surface-temperature_hover.png',
         'icon-src': 'ico-sa-temperature.png',
         'icon-hover-src': 'ico-sa-temperature_hover.png',
         'domain': 'Atmosphere',
@@ -120,6 +121,7 @@ CHAPTERS = [
         'title': 'Precipitation',
         'href': '/_2_5_Precipitation',
         'icon-lg-src': 'precipitation.png',
+        'icon-lg-hover-src': 'precipitation_hover.png',
         'icon-src': 'ico-sa-precipitation.png',
         'icon-hover-src': 'ico-sa-precipitation_hover.png',
         'domain': 'Atmosphere',
@@ -136,6 +138,7 @@ CHAPTERS = [
         'title': 'Carbon Dioxide',
         'href': '/_2_10_CarbonDioxide',
         'icon-lg-src': 'greenhouse-gases.png',
+        'icon-lg-hover-src': 'greenhouse-gases_hover.png',
         'icon-src': 'ico-ac-co2-ghgs.png',
         'icon-hover-src': 'ico-ac-co2-ghgs_hover.png',
         'domain': 'Atmosphere',
@@ -152,6 +155,7 @@ CHAPTERS = [
         'title': 'Methane',
         'href': '/_2_11_Methane',
         'icon-lg-src': 'precursors_0.png',
+        'icon-lg-hover-src': 'precursors_0_hover.png',
         'icon-src': 'ico-ac-precursors.png',
         'icon-hover-src': 'ico-ac-precursors_hover.png',
         'domain': 'Atmosphere',
@@ -168,6 +172,7 @@ CHAPTERS = [
         'title': 'Other Greenhouse Gases',
         'href': '/_2_12_OtherGreenhouseGases',
         'icon-lg-src': 'precursors_0.png',
+        'icon-lg-hover-src': 'precursors_0_hover.png',
         'icon-src': 'ico-ac-precursors.png',
         'icon-hover-src': 'ico-ac-precursors_hover.png',
         'domain': 'Atmosphere',
@@ -187,6 +192,7 @@ CHAPTERS = [
         'title': 'Surface Temperature',
         'href': '/_3_1_SurfaceSubsurfaceTemperature',
         'icon-lg-src': 'sea-surface-temperature.png',
+        'icon-lg-hover-src': 'sea-surface-temperature_hover.png',
         'icon-src': 'ico-sop-sea-surface-temp.png',
         'icon-hover-src': 'ico-sop-sea-surface-temp_hover.png',
         'domain': 'Ocean',
@@ -203,6 +209,7 @@ CHAPTERS = [
         # Both Surface and Sub-surface on same page
         'href': '/_3_1_SurfaceSubsurfaceTemperature',
         'icon-lg-src': 'subsurface-temperature_1.png',
+        'icon-lg-hover-src': 'subsurface-temperature_1_hover.png',
         'icon-src': 'ico-ssop-subsurface-temp.png',
         'icon-hover-src': 'ico-ssop-subsurface-temp_hover.png',
         'domain': 'Ocean',
@@ -218,6 +225,7 @@ CHAPTERS = [
         'title': 'Sea Level',
         'href': '/_3_4_SeaLevel',
         'icon-lg-src': 'sea-level_0.png',
+        'icon-lg-hover-src': 'sea-level_0_hover.png',
         'icon-src': 'ico-sop-sea-level.png',
         'icon-hover-src': 'ico-sop-sea-level_hover.png',
         'domain': 'Ocean',
@@ -233,6 +241,7 @@ CHAPTERS = [
         'title': 'Inorganic Carbon',
         'href': '/_3_6_InorganicCarbon',
         'icon-lg-src': 'inorganic-carbon.png',
+        'icon-lg-hover-src': 'inorganic-carbon_hover.png',
         'icon-src': 'ico-obgc-inorganic-carbon.png',
         'icon-hover-src': 'ico-obgc-inorganic-carbon_hover.png',
         'domain': 'Ocean',
@@ -248,6 +257,7 @@ CHAPTERS = [
         'title': 'Dissolved Oxygen',
         'href': '/_3_7_Oxygen',
         'icon-lg-src': 'oxygen.png',
+        'icon-lg-hover-src': 'oxygen_hover.png',
         'icon-src': 'ico-obgc-oxygen.png',
         'icon-hover-src': 'ico-obgc-oxygen_hover.png',
         'domain': 'Ocean',
@@ -266,6 +276,7 @@ CHAPTERS = [
         'title': 'River Discharge',
         'href': '/_4_1_RiverDischarge',
         'icon-lg-src': 'river-discharge.png',
+        'icon-lg-hover-src': 'river-discharge_hover.png',
         'icon-src': 'ico-hyd-river-discharge.png',
         'icon-hover-src': 'ico-hyd-river-discharge_hover.png',
         'domain': 'Terrestrial',
@@ -281,6 +292,7 @@ CHAPTERS = [
         'title': 'Land Cover',
         'href': '/_4_6_LandCover',
         'icon-lg-src': 'land-cover.png',
+        'icon-lg-hover-src': 'land-cover_hover.png',
         'icon-src': 'ico-bio-land-cover.png',
         'icon-hover-src': 'ico-bio-land-cover_hover.png',
         'domain': 'Terrestrial',
@@ -296,6 +308,7 @@ CHAPTERS = [
         'title': 'Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)',
         'href': '/_4_7_FAPAR',
         'icon-lg-src': 'fapar.png',
+        'icon-lg-hover-src': 'fapar_hover.png',
         'icon-src': 'ico-bio-fapr.png',
         'icon-hover-src': 'ico-bio-fapr_hover.png',
         'domain': 'Terrestrial',
@@ -312,6 +325,7 @@ CHAPTERS = [
         'title': 'Fire Disturbance',
         'href': '/_4_11_Fire',
         'icon-lg-src': 'fire_0.png',
+        'icon-lg-hover-src': 'fire_0_hover.png',
         'icon-src': 'ico-bio-fire.png',
         'icon-hover-src': 'ico-bio-fire_hover.png',
         'domain': 'Terrestrial',
@@ -327,6 +341,7 @@ CHAPTERS = [
         'title': 'Anthropogenic Greenhouse Gas Emissions ',
         'href': '/_4_14_AnthropogenicGreenhouseGasEmissions ',
         'icon-lg-src': 'anthropogenic-ghg-fluxes.png',
+        'icon-lg-hover-src': 'anthropogenic-ghg-fluxes_hover.png',
         'icon-src': 'ico-ant-ghg-fluxes.png',
         'icon-hover-src': 'ico-ant-ghg-fluxes_hover.png',
         'domain': 'Terrestrial',
@@ -363,6 +378,6 @@ IMAGES_PATH = 'assets/images/'
 
 PROJECT_PATH = pathlib.Path(__file__).parent.parent
 if os.path.isdir(str(PROJECT_PATH)+'/data'):
-    DATA_PATH=str(PROJECT_PATH)+'/data/'
+    DATA_PATH = str(PROJECT_PATH)+'/data/'
 else:
-    DATA_PATH="/home/data/"
+    DATA_PATH = "/home/data/"
