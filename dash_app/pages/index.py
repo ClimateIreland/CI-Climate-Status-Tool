@@ -148,20 +148,20 @@ menu_graphic = dbc.Container(
 
     id='gcosGraphicMenu',
     className='d-none d-lg-block',
-    style={'marginTop': '-50px'},
+    style={'marginTop': '-100px'},
     children=[
-        html.Div(
-            id='uaa-text',
-            children='Upper-air Atmosphere'),
+        # html.Div(
+        #     id='uaa-text',
+        #     children='Upper-air Atmosphere'),
         html.Div(
             id='sa-text',
             children='Surface Atmosphere'),
         html.Div(
             id='ac-text',
             children='Atmospheric Composition'),
-        html.Div(
-            id='cry-text',
-            children='Cryosphere'),
+        # html.Div(
+        #     id='cry-text',
+        #     children='Cryosphere'),
         html.Div(
             id='ant-text',
             children='Anthroposphere'),
@@ -174,9 +174,9 @@ menu_graphic = dbc.Container(
         html.Div(
             id='sop-text',
             children='Surface Ocean Physics'),
-        html.Div(
-            id='obe-text',
-            children='Ocean Biology / Ecosystems'),
+        # html.Div(
+        #     id='obe-text',
+        #     children='Ocean Biology / Ecosystems'),
         html.Div(
             id='obgc-text',
             children='Ocean Biogeochemistry'),

@@ -33,16 +33,20 @@ color:#299DD8;
 }
 #sa-text
 {
-top: 133px;
-left: 415px;
+/* top: 133px; */
+top: 165px;
+/* left: 415px; */
+left:300px;
 color:#299DD8;
 }
 
 #ac-text
 {
 /*width: 200px;*/
-top: 80px;
-left: 758px;
+/* top: 80px; */
+top: 120px;
+/* left: 758px; */
+left: 638px;
 color:#299DD8;	
 }
 #cry-text
@@ -69,7 +73,7 @@ color: #F09100;
 #hyd-text
 {
 top: 590px;
-left: 850px;
+left: 870px;
 color: #F09100;
 }
 #sop-text
@@ -89,7 +93,8 @@ color: #00839B;
 #obgc-text
 {
 top: 485px;
-left: 120px;
+/* left: 120px; */
+left: 80px;
 color: #00839B;
 }
 #ssop-text
@@ -150,7 +155,8 @@ left: 350px;
 /* Surface Atmosphere icones*/
 #sa-1, #sa-2, #sa-3, #sa-4, #sa-5, #sa-6
 {
-top:170px;
+/* top:170px; */
+top: 200px;
 }
 
 #sa-1
@@ -181,21 +187,24 @@ left: 600px;
 /* Atmospheric Composition icones */
 #ac-1, #ac-2, #ac-3, #ac-4
 {
-top:120px;
-
+/* top:120px; */
+top: 160px;
 }
 
 #ac-1
 {
-left: 750px;
+/* left: 750px; */
+left: 700px;
 }
 #ac-2
 {
-left: 800px;
+/* left: 800px; */
+left: 750px;
 }
 #ac-3
 {
-left: 850px;
+/* left: 850px; */
+left: 800px;
 }
 #ac-4
 {

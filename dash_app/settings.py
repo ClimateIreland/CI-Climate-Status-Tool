@@ -182,7 +182,7 @@ CHAPTERS = [
     # Ocean Biogeochemistry
     {
         'chapter-num': '3.1',
-        'id': 'sop-1',
+        'id': 'sop-2',
         # Both Surface and Sub-surface on same page
         'title': 'Surface Temperature',
         'href': '/_3_1_SurfaceSubsurfaceTemperature',
@@ -198,7 +198,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '3.1',
-        'id': 'ssop-1',
+        'id': 'ssop-3',
         'title': 'Sub-surface Temperature',
         # Both Surface and Sub-surface on same page
         'href': '/_3_1_SurfaceSubsurfaceTemperature',
@@ -214,7 +214,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '3.4',
-        'id': 'sop-2',
+        'id': 'sop-3',
         'title': 'Sea Level',
         'href': '/_3_4_SeaLevel',
         'icon-lg-src': 'sea-level_0.png',
@@ -262,7 +262,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '4.1',
-        'id': 'hyd-1',
+        'id': 'hyd-4',
         'title': 'River Discharge',
         'href': '/_4_1_RiverDischarge',
         'icon-lg-src': 'river-discharge.png',
@@ -277,7 +277,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '4.6',
-        'id': 'bio-1',
+        'id': 'bio-2',
         'title': 'Land Cover',
         'href': '/_4_6_LandCover',
         'icon-lg-src': 'land-cover.png',
@@ -292,7 +292,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '4.7',
-        'id': 'bio-2',
+        'id': 'bio-3',
         'title': 'Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)',
         'href': '/_4_7_FAPAR',
         'icon-lg-src': 'fapar.png',
@@ -308,7 +308,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '4.11',
-        'id': 'bio-3',
+        'id': 'bio-4',
         'title': 'Fire Disturbance',
         'href': '/_4_11_Fire',
         'icon-lg-src': 'fire_0.png',
@@ -323,7 +323,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '4.14',
-        'id': 'ant-1',
+        'id': 'ant-2',
         'title': 'Anthropogenic Greenhouse Gas Emissions ',
         'href': '/_4_14_AnthropogenicGreenhouseGasEmissions ',
         'icon-lg-src': 'anthropogenic-ghg-fluxes.png',
