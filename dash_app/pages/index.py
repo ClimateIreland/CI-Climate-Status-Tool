@@ -47,16 +47,16 @@ intro = dbc.Container(
                                 src='assets/images/CSRI2020Logo.png'
                             )])]
             )),
-                     dbc.Row(
-                        children=[
-                            dbc.Col(
-                                className='text-center',
-                                children=[
-                                    html.Img(
-                                    src='assets/images/LogoBannerCSRI.png'
-                                ),
+        dbc.Row(
+            children=[
+                dbc.Col(
+                    className='text-center',
+                    children=[
+                        html.Img(
+                            src='assets/images/LogoBannerCSRI.png'
+                        ),
 
-                            ])]),
+                    ])]),
         # dbc.Row(
         #     children=[
         #         dbc.Col(
@@ -225,7 +225,7 @@ menu_graphic = dbc.Container(
             )]
     ) for chapter in CHAPTERS
     ] +
-        [html.Div(
+    [html.Div(
         id=chapter['id'],
         className="dropdown",
         children=[
@@ -233,9 +233,9 @@ menu_graphic = dbc.Container(
                 html.Img(
                     style={"opacity": "0.4"},
                     src='assets/images/icons/' +
-                         chapter['icon-src'])
+                    chapter['icon-src'])
             ],
-             ),
+            ),
             html.Div(
                 className="overlay",
                 children=[
@@ -243,26 +243,26 @@ menu_graphic = dbc.Container(
                         html.Img(
                             style={"opacity": "0.4"},
                             src='assets/images/icons/' +
-                                 chapter['icon-hover-src'])
+                            chapter['icon-hover-src'])
                     ],
-                        )],),
+                    )],),
             html.Div(
                 className="dropdown-content",
                 children=[
                     html.P(
                         style={'color': chapter['domain-color']},
                         children=chapter['title'],
-                       ),
-                                html.P(
+                    ),
+                    html.P(
                         style={'color': chapter['domain-color']},
                         children="(In Development)",
-                       )
+                    )
                 ]
             )]
     ) for chapter in CHAPTERS_DEV
     ]
 
-    )
+)
 
 menu_list = dbc.Container(
     className='sr-menu-list',
@@ -304,7 +304,7 @@ menu_list = dbc.Container(
                                     children=[
                                         dbc.Col(
                                             className='text-center',
-                                            style={  'font-style': 'italic'},
+                                            style={'font-style': 'italic'},
                                             children="Coming Soon"
                                         )
                                     ]
@@ -373,7 +373,7 @@ menu_list = dbc.Container(
                         className='sr-menu-ul',
                         style={'color': TERRESTRIAL_COLOR},
                         children=[html.Li(html.H4('Terrestrial'))] +
-                        [html.Li(children=[html.Div(
+                        [html.Li(children=[dcc.Link(
                             style={'color': TERRESTRIAL_COLOR},
                             className='sr-menu-chapter',
                             children=[
@@ -394,6 +394,8 @@ menu_list = dbc.Container(
                                     ]
                                 )
                             ],
+                            href=chapter['href']
+
                         )]) for chapter in terrestrial_chapters]
                     )
                     ]),
