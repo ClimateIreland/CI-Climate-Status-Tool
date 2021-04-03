@@ -12,6 +12,8 @@ ICONS_PATH = PATH.joinpath("../assets/images/icons").resolve()
 atmoshpere_chapters = []
 ocean_chapters = []
 terrestrial_chapters = []
+
+
 for chapter in CHAPTERS:
     if chapter['domain'] == 'Atmosphere':
         atmoshpere_chapters.append(chapter)
@@ -19,6 +21,17 @@ for chapter in CHAPTERS:
         ocean_chapters.append(chapter)
     elif chapter['domain'] == 'Terrestrial':
         terrestrial_chapters.append(chapter)
+
+atmoshpere_chapters_dev = []
+ocean_chapters_dev = []
+terrestrial_chapters_dev = []
+for chapter in CHAPTERS_DEV:
+    if chapter['domain'] == 'Atmosphere':
+        atmoshpere_chapters_dev.append(chapter)
+    elif chapter['domain'] == 'Ocean':
+        ocean_chapters_dev.append(chapter)
+    elif chapter['domain'] == 'Terrestrial':
+        terrestrial_chapters_dev.append(chapter)
 
 intro = dbc.Container(
     children=[
@@ -42,7 +55,7 @@ intro = dbc.Container(
                                     html.Img(
                                     src='assets/images/LogoBannerCSRI.png'
                                 ),
-                                
+
                             ])]),
         # dbc.Row(
         #     children=[
@@ -83,10 +96,10 @@ intro = dbc.Container(
                     html.Div(
 
                         children=[html.P("""
-        The Climate Status Report Ireland 2020 presents the state of Ireland’s climate based on the collation 
+        The Climate Status Report Ireland 2020 presents the state of Ireland’s climate based on the collation
         and analysis of almost 50 internationally defined essential climate variables (ECV) observed in the atmospheric,
-            oceanic and terrestrial environments. Moreover, it documents the status of Ireland’s climate-observing infrastructure. 
-            The full report can be downloaded as a pdf here (link) or each ECV can be explored interactively below. 
+            oceanic and terrestrial environments. Moreover, it documents the status of Ireland’s climate-observing infrastructure.
+            The full report can be downloaded as a pdf here (link) or each ECV can be explored interactively below.
             """),
                                   html.P("""
             This work was carried out by the MaREI Centre at University College Cork. This work has been endorsed by GCOS-Ireland and has been co-funded by the Environmental Protection Agency, the Marine Institute and Met Éireann.
@@ -148,11 +161,11 @@ menu_graphic = dbc.Container(
 
     id='gcosGraphicMenu',
     className='d-none d-lg-block',
-    style={'marginTop': '-100px'},
+    style={'marginTop': '-50px'},
     children=[
-        # html.Div(
-        #     id='uaa-text',
-        #     children='Upper-air Atmosphere'),
+        html.Div(
+            id='uaa-text',
+            children='Upper-air Atmosphere'),
         html.Div(
             id='sa-text',
             children='Surface Atmosphere'),
@@ -211,7 +224,45 @@ menu_graphic = dbc.Container(
                 ]
             )]
     ) for chapter in CHAPTERS
-    ])
+    ] +
+        [html.Div(
+        id=chapter['id'],
+        className="dropdown",
+        children=[
+            html.Div(children=[
+                html.Img(
+                    style={"opacity": "0.4"},
+                    src='assets/images/icons/' +
+                         chapter['icon-src'])
+            ],
+             ),
+            html.Div(
+                className="overlay",
+                children=[
+                    html.Div(children=[
+                        html.Img(
+                            style={"opacity": "0.4"},
+                            src='assets/images/icons/' +
+                                 chapter['icon-hover-src'])
+                    ],
+                        )],),
+            html.Div(
+                className="dropdown-content",
+                children=[
+                    html.P(
+                        style={'color': chapter['domain-color']},
+                        children=chapter['title'],
+                       ),
+                                html.P(
+                        style={'color': chapter['domain-color']},
+                        children="(In Development)",
+                       )
+                ]
+            )]
+    ) for chapter in CHAPTERS_DEV
+    ]
+
+    )
 
 menu_list = dbc.Container(
     className='sr-menu-list',
@@ -244,7 +295,46 @@ menu_list = dbc.Container(
                                 )
                             ],
                             href=chapter['href']
-                        )]) for chapter in atmoshpere_chapters]
+                        )]) for chapter in atmoshpere_chapters] +
+                        [html.Li(children=[html.Div(
+                            style={'color': ATMOSPHERE_COLOR},
+                            className='sr-menu-chapter',
+                            children=[
+                                dbc.Row(
+                                    children=[
+                                        dbc.Col(
+                                            className='text-center',
+                                            style={  'font-style': 'italic'},
+                                            children="Coming Soon"
+                                        )
+                                    ]
+                                )
+                            ],
+                        )])] +
+                        [html.Li(children=[html.Div(
+                            style={'color': ATMOSPHERE_COLOR},
+                            className='sr-menu-chapter',
+                            children=[
+                                dbc.Row(
+                                    children=[
+                                        dbc.Col(
+                                            className='col-2 p-0 text-right my-auto',
+                                            children=[
+                                                html.Img(
+                                                    className='sr-menu-list-icon',
+                                                    style={"opacity": "0.4"},
+                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                            ]
+                                        ),
+                                        dbc.Col(
+                                            className='col-10',
+                                            style={"opacity": "0.4"},
+                                            children=chapter['title']
+                                        )
+                                    ]
+                                )
+                            ],
+                        )]) for chapter in atmoshpere_chapters_dev]
                     )
                     ]),
 
@@ -283,7 +373,7 @@ menu_list = dbc.Container(
                         className='sr-menu-ul',
                         style={'color': TERRESTRIAL_COLOR},
                         children=[html.Li(html.H4('Terrestrial'))] +
-                        [html.Li(children=[dcc.Link(
+                        [html.Li(children=[html.Div(
                             style={'color': TERRESTRIAL_COLOR},
                             className='sr-menu-chapter',
                             children=[
@@ -304,7 +394,6 @@ menu_list = dbc.Container(
                                     ]
                                 )
                             ],
-                            href=chapter['href']
                         )]) for chapter in terrestrial_chapters]
                     )
                     ]),
@@ -335,7 +424,7 @@ def create_layout(app):
                         html.P(
                             className="sr-gcos-ack",
                             children=[
-                                """Graphical elements and icons used in these pages are 
+                                """Graphical elements and icons used in these pages are
                                     reproduced with the permission of GCOS-WMO and are in line with those featured on the """,
                                 dcc.Link(
                                     children="GCOS ECV",

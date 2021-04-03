@@ -47,56 +47,6 @@ TIMESERIES_LAYOUT = dict(
 )
 
 CHAPTERS = [
-    # Upper-air Atmoshere
-    # {
-    #  'id':'uaa-1',
-    #  'title':'Lightning',
-    #  'href':'',
-    #  'icon-src':'ico-uaa-lightning.png',
-    #  'icon-hover-src':'ico-uaa-lightning_hover.png',
-    #  'domain':'Atmosphere',
-    #         },
-    #     {
-    #  'id':'uaa-2',
-    #  'title':'Clouds',
-    #  'href':'',
-    #  'icon-src':'ico-uaa-cloud-properties.png',
-    #  'icon-hover-src':'ico-uaa-cloud-properties_hover.png',
-    #  'domain':'Atmosphere',
-    #         },
-    #             {
-    #  'id':'uaa-3',
-    #  'title':'Earth Radiation Budget',
-    #  'href':'',
-    #  'icon-src':'ico-uaa-earth-radiation-budget.png',
-    #  'icon-hover-src':'ico-uaa-earth-radiation-budget_hover.png',
-    #  'domain':'Atmosphere',
-    #         },
-    #             {
-    #  'id':'uaa-4',
-    #  'title':'Wind Speed',
-    #  'href':'',
-    #  'icon-src':'ico-uaa-lightning.png',
-    #  'icon-hover-src':'ico-uaa-windspeed_hover.png',
-    #  'domain':'Atmosphere',
-    #         },
-    #             {
-    #  'id':'uaa-5',
-    #  'title':'Upper Air Atmosphere Temperature',
-    #  'href':'',
-    #  'icon-src':'ico-uaa-temperature.png',
-    #  'icon-hover-src':'ico-uaa-temperature_hover.png',
-    #  'domain':'Atmosphere',
-    #         },
-    #             {
-    #  'id':'uaa-6',
-    #  'title':'Upper Air Atmosphere Water Vapour',
-    #  'href':'',
-    #  'icon-src':'ico-uaa-watervapour.png',
-    #  'icon-hover-src':'ico-uaa-watervapour_hover.png',
-    #  'domain':'Atmosphere',
-    #         },
-
     # Surface Atmoshere
     {
         'chapter-num': '2.1',
@@ -350,6 +300,100 @@ CHAPTERS = [
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+]
+
+CHAPTERS_DEV = [
+    # Upper-air Atmoshere
+    {
+        'id': 'uaa-1',
+        'title': 'Lightning',
+        'href': '',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-uaa-lightning.png',
+        'icon-hover-src': 'ico-uaa-lightning_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+    {
+        'id': 'uaa-2',
+        'title': 'Clouds',
+        'href': '',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-uaa-cloud-properties.png',
+        'icon-hover-src': 'ico-uaa-cloud-properties_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+    {
+        'id': 'uaa-3',
+        'title': 'Earth Radiation Budget',
+        'href': '',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-uaa-earth-radiation-budget.png',
+        'icon-hover-src': 'ico-uaa-earth-radiation-budget_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+    {
+        'id': 'uaa-4',
+        'title': 'Wind Speed',
+        'href': '',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-uaa-windspeed.png',
+        'icon-hover-src': 'ico-uaa-windspeed_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+    {
+        'id': 'uaa-5',
+        'title': 'Upper Air Atmosphere Temperature',
+        'href': '',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-uaa-temperature.png',
+        'icon-hover-src': 'ico-uaa-temperature_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+    {
+        'id': 'uaa-6',
+        'title': 'Upper Air Atmosphere Water Vapour',
+        'href': '',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-uaa-watervapour.png',
+        'icon-hover-src': 'ico-uaa-watervapour_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
 ]
 
