@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_2_18
+from charts import empty_chart, figure_2_18, map_2_10
 
 chapter_num = '2.10'
 bannerImgSrc = IMAGES_PATH + \
@@ -37,9 +37,16 @@ trendCaption = """
         """
 
 infrastructureText = """
-
+Atmospheric CO\u2082 concentrations are
+ measured at a number of sites in Ireland (map 2.10). 
+ Mace Head Atmospheric Research Station, Carna, Co. Galway (red)
+  has been conducting observations since 1992. CO\u2082 concentrations are also
+   measured at Carnsore Point, Co. Wexford and Malin Head, Co. Donegal (green) since 2009. 
+   Measurements at Valentia Observatory, Co. Kerry (blue) started in 2019. 
+   The site at Mace Head is of global importance as the measurements are representative of 
+   the background concentration of atmospheric CO\u2082 in the northeast Atlantic region. 
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_2_10()
 
 infoLinks = [
     {'text': 'Carbon Dioxide, Methane & Other Greenhouse Gases ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',

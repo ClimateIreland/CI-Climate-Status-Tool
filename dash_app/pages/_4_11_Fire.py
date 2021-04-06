@@ -37,7 +37,9 @@ calculated using data from Dublin airport and Shannon airport synoptic stations 
         """
 
 infrastructureText = """
-
+Data on vegetation fires are generally not compiled centrally by the fire services, however burned area estimates, based on assessments of known fires are generated for reporting by the Department of Agriculture, Fisheries and the Marine (DAFM) to the European Commission annually. 
+Daily fire risk is assessed by Met Éireann using meteorological variables derived using the Canadian Fire Weather Index (FWI), and fire danger notices are issued to forestry interests by DAFM throughout the fire season. 
+Satellite data are used internationally to make regional and global estimates of fire disturbance and their impact on the atmosphere and some research studies have been carried out on their utility over Ireland, However, frequent cloud cover, the short duration of fire events and low heat signature of typical fires limit detection rates and the small size of many burnt land parcels reduce the usefulness of satellite imagery under Irish conditions. 
         """
 infrastructureMap = empty_chart()
 

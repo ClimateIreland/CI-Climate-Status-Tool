@@ -37,6 +37,8 @@ trendCaption = """
         """
 
 infrastructureText = """
+The Marine Institute (MI) and the National University of Ireland Galway (NUI Galway) have undertaken measurements of the inorganic carbon system and associated biogeochemical parameters in Irish coastal, shelf and offshore waters. Two of the following four parameters are required to fully determine the carbonate system:  dissolved inorganic carbon (DIC), total alkalinity (TA), pH and the partial pressure of carbon dioxide (pCO2) in water. 
+Since 2009, MI annual repeat ship-based hydrography surveys measuring Essential Climate Variables in Irish shelf waters and across the southern Rockall Trough have included water sampling for DIC and TA. The surveys are primarily in winter as the period of least biological activity, although winter sampling has been heavily constrained by poor weather conditions during recent years. 
 
         """
 infrastructureMap = empty_chart()

@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_2_20
+from charts import empty_chart, figure_2_20, map_2_11
 
 chapter_num = '2.11'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Methane_Ned_Dwyer_P1000356.JPG'
@@ -32,9 +32,15 @@ trendCaption = """
         """
 
 infrastructureText = """
-
+Atmospheric CH\u2084 concentrations have been measur
+ed at the Mace Head Atmospheric Research Station, Carna, Co. Galway (
+        red) since 1987 (map 2.11). Given its location at the extreme west of Europe and becau
+        se of prevailing westerly winds, the measurements are representative of the underlying concentra
+        tions of atmospheric methane in the northeast Atlantic area. CH\u2084 concentrations have also been m
+        easured at Carnsore Point, Co. Wexford and Malin Head, Co. Donegal (green) since 2009. This network
+         of Irish measurements is led by NUI Galway as part of the EPA funded Atmospheric Chemistry and Climate Change Network
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_2_11()
 
 infoLinks = [
     {'text': 'Carbon Dioxide, Methane & Other Greenhouse Gases ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',

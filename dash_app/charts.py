@@ -47,7 +47,11 @@ def stations_map(df):
         )]
 
     buoyDF = df.loc[(df['Type'] == 'Buoy') | (df['Type'] == 'BuoySubSurf')]
-    synopticDF = df.loc[df['Type'] == 'Synoptic']
+    flowDF = df.loc[(df['Type'] == 'Flow')]
+    ghgFluxDF = df.loc[(df['Type'] == 'GHG_FLUX_TOWER')]
+    epaDF = df.loc[(df['Type'] == 'EPA')]
+    nuigDF = df.loc[(df['Type'] == 'NUIG')]
+    synopticDF = df.loc[(df['Type'] == 'Synoptic') | (df['Type'] == 'ClosedS')]
     rainfallDF = df.loc[df['Type'] == 'Rainfall']
     climateDF = df.loc[df['Type'] == 'Climate']
     waveRideDF = df.loc[(df['Type'] == 'WaveRide/SmartBayObsCenter') | (df['Type'] == 'WaveRide')]
@@ -62,6 +66,25 @@ def stations_map(df):
         marker=dict(color=STATION_COLORS['TidbiT'],
                     size=7),
         hovertemplate=stations_map_hovertemplate(tidbiTDF),
+    )
+
+    ghgFluxTrend = go.Scattermapbox(
+        name='GHG Flux Tower',
+        lon=ghgFluxDF.Longitude,
+        lat=ghgFluxDF.Latitude,
+        marker=dict(color=STATION_COLORS['GHG_FLUX_TOWER'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(ghgFluxDF),
+    )
+
+
+    nuigTrend = go.Scattermapbox(
+        name='NUIG',
+        lon=nuigDF.Longitude,
+        lat=nuigDF.Latitude,
+        marker=dict(color=STATION_COLORS['NUIG'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(nuigDF),
     )
 
     tideGaugeTrend = go.Scattermapbox(
@@ -82,6 +105,15 @@ def stations_map(df):
         hovertemplate=stations_map_hovertemplate(elletDF),
     )
 
+    epaTrend = go.Scattermapbox(
+        name='EPA',
+        lon=epaDF.Longitude,
+        lat=epaDF.Latitude,
+        marker=dict(color=STATION_COLORS['EPA'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(epaDF),
+    )
+
     waveRideTrend = go.Scattermapbox(
         name='WaveRide/SmartBayObsCent',
         lon=waveRideDF.Longitude,
@@ -99,6 +131,7 @@ def stations_map(df):
                     size=7),
         hovertemplate=stations_map_hovertemplate(buoyDF),
     )
+
     rainfallTrend = go.Scattermapbox(
         name='Rainfall',
         lon=rainfallDF.Longitude,
@@ -127,6 +160,9 @@ def stations_map(df):
     )
     stations_map = go.Figure(
         data=[buoyTrend, 
+              epaTrend,
+              nuigTrend,
+              ghgFluxTrend,
               synopticTrend, 
               climateTrend,
               rainfallTrend, 
@@ -488,9 +524,21 @@ def figure_2_18():
 
     return figure_2_18
 
+def map_2_10():
+    """
+    CO2 infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.10CarbonDioxide/Map2.10/'
+        df = pd.read_csv(data_path+'Map2.10_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_10=stations_map(df)
+    return map_2_10
+
 def figure_2_20():
     """
-    Monthly CH4 Trend
+    CH4 Trend
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.11Methane/Figure2.20/'
@@ -555,9 +603,21 @@ def figure_2_20():
 
     return figure_2_20
 
+def map_2_11():
+    """
+    CH4 infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.11Methane/Map2.11/'
+        df = pd.read_csv(data_path+'Map2.11_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_11=stations_map(df)
+    return map_2_11
+
 def figure_2_22():
     """
-    Monthly N\u2082O Trend
+    Monthly N2O Trend
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Figure2.22/'
@@ -701,6 +761,18 @@ def figure_2_24():
                             spikethickness=2
                             )
     return figure_2_24
+
+def map_2_12():
+    """
+    Other GHGs infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Map2.12/'
+        df = pd.read_csv(data_path+'Map2.12_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_12=stations_map(df)
+    return map_2_12
 
 def figure_3_1():
     """
@@ -1106,6 +1178,44 @@ def map_3_6():
 
     return map_3_6
 
+def map_4_1():
+    """
+    River Discharge infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.1RiverDischarge/Map4.1/'
+        df = pd.read_csv(data_path+'Map4.1_StationTable_RiverDischargeStations.txt', delimiter = ",")
+        dfString=df.astype(str)
+        dfString['Type']='Flow'
+    except:
+        return empty_chart()
+
+    flowTrend = go.Scattermapbox(
+        name='Flow',
+        lon=dfString.Longitude,
+        lat=dfString.Latitude,
+        marker=dict(color=STATION_COLORS['Flow'],
+                    size=7),
+        hovertemplate='Station: ' + dfString.Station_Na +
+                '<br>Station No.: ' + dfString.STATION_NU +
+                '<br>River: '+ dfString.River_Name +
+                '<br>Catchment: '+ dfString.Catchment +
+                '<br>Lat: %{lat:.2f}'+
+                '<br>Lon: %{lon:.2f}<extra></extra>',)
+
+    map_4_1=go.Figure(
+        data=[flowTrend],
+        layout=MAP_LAYOUT)
+    map_4_1.update_layout(
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=54,
+                    lon=349
+                ),
+                pitch=0,
+                zoom=4.2)
+    )
+    return map_4_1
 
 def figure_4_10_1():
     """
@@ -1684,3 +1794,18 @@ def figure_4_27():
         )
 
     return figure_4_27
+
+def map_4_5():
+    """
+    Anthropogenic Greenhouse Gas Emissions infrastructure map
+    """
+
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.14AnthropogenicGreenhouseGasEmissions/Map4.5/'
+        df = pd.read_csv(data_path+'Map4.5_StationTable_GHG.txt', delimiter = ",")
+        df = df.rename(columns={'Height_m_': 'Height__m_'})
+    except:
+        return empty_chart()
+
+    map_4_5=stations_map(df)
+    return map_4_5

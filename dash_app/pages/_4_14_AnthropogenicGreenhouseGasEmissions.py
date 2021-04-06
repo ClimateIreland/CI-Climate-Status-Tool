@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_4_27
+from charts import empty_chart, figure_4_27, map_4_5
 
 chapter_num = '4.14'
 bannerImgSrc = IMAGES_PATH+'TerrestrialSections/GHG_EMissions_Metro Centric.jpg'
@@ -37,9 +37,13 @@ National total Greenhouse Gas emissions by IPCC sectors 1990 – 2018. Ref: Irel
         """
 
 infrastructureText = """
-
+Direct measurements of anthropogenic GHG emissions for Ireland, like many other countries, are limited. 
+National estimations for reporting to the UNFCCC are based on a set of detailed guidelines provided by 
+the Intergovernmental Panel on Climate Change (IPCC), the UN body for assessing the science related to climate change. 
+The methodology uses a set of emission factors for each GHG linked to an activity or sector such as energy production, 
+agriculture, land use, land use change and forestry (LULUCF), industrial processes and product use (IPPU) and waste management. 
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_4_5()
 
 infoLinks = [
     {'text': 'Anthropogenic Greenhouse Gas Emissions  ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',

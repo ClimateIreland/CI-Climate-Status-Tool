@@ -15,16 +15,19 @@ TIMESERIES_COLOR_PRIMARY = "#00a4ae"
 TIMESERIES_COLOR_SECONDARY = "#E1AF00"
 
 STATION_COLORS = {
-    'Buoy': '#e69800',
-    'Synoptic': '#ff0000',
-    'Rainfall': '#ffff00',
-    'Climate': '#004da8',
-    'WaveRide/SmartBayObsCenter': '#ffff00',
-    'MI_Survey': '#ff0000',
-    'EPA': '#002673',
-    'TidbiT': '#004da8',
-    'ExtendedElletLineBuoy': '#00734c',
-    'TideGauge': '#8400a8'
+    'Buoy': '#e69800', # orange
+    'Synoptic': '#ff0000', # red
+    'Rainfall': '#ffff00', # yellow
+    'Climate': '#004da8', # blue
+    'WaveRide/SmartBayObsCenter': '#ffff00', # yellow
+    'MI_Survey': '#ff0000', # red
+    'EPA': '#002673', # dark blue
+    'NUIG': '#00734c', # dark green
+    'TidbiT': '#004da8', # blue
+    'ExtendedElletLineBuoy': '#00734c', # dark green
+    'TideGauge': '#8400a8', # purple
+    'Flow': 'green', # green
+    'GHG_FLUX_TOWER' : 'red'
 }
 
 CHART_FONT = dict(

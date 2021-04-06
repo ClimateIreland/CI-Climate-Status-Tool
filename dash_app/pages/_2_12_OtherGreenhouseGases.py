@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_2_22, figure_2_23, figure_2_24
+from charts import empty_chart, figure_2_22, figure_2_23, figure_2_24, map_2_12
 
 chapter_num = '2.12'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Other_GHG_IMG_3709 Hester Whyte.JPG'
@@ -48,9 +48,15 @@ trendCaption3 = """
         """
 
 infrastructureText = """
+Greenhouse gas concentrations have been measured routinely at the Mace Head Atmospheric Research Station, Carna, Co. Galway (red) 
+since the 1990s (map 2.12). Monitoring of a number of HFC and HCFC compounds started in 1994, and PFCs and SF6 in 2004. 
+N2O and CFCs were measured at Adrigole, Co. Cork (blue) from 1978 to 1984. The current measurement programme is 
+led by NUI Galway as part of the EPA funded Atmospheric Chemistry and Climate Change Network. 
+Concentrations of N\u2082O in both the lower and upper atmosphere can be inferred from measurements b
+y satellite sensors such as those obtained by the ESA Sentinel-5P satellite and the US AURA spacecraft. 
 
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_2_12()
 
 infoLinks = [
     {'text': 'Carbon Dioxide, Methane & Other Greenhouse Gases ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',

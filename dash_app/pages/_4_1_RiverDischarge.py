@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, map_4_1
 
 chapter_num = '4.1'
 bannerImgSrc = IMAGES_PATH+'TerrestrialSections/River_Discharge_NedDwyer_P1090399.JPG'
@@ -39,9 +39,16 @@ Changes identified as significant are indicated by arrows with white fills. (ada
         """
 
 infrastructureText = """
-
+River discharge or flow is measured and data are currently collected by a number of 
+agencies including the EPA, the OPW, local authorities and the ESB. There are over 
+800 active river flow meter stations in the country. Capitalising on this network, 
+the EPA has identified a set of high quality reference hydrometric gauges that can 
+be used for monitoring and detecting climate change signals (map 4.1). The stations 
+identified include 35 from the Republic, and a further 8 in Northern Ireland from 
+the UK Benchmark Network (green). The average record length of these stations 
+is 40 years with a minimum of 28 and a maximum of 63 years. 
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_4_1()
 
 infoLinks = [
     {'text': 'River Discharge ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
