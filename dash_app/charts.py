@@ -448,7 +448,7 @@ def figure_2_18():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Mauna Loa (Hawaii)</b><br>' +
-                            'CO<sub>2</sub>: %{y:.2f} ppm<extra></extra>' 
+                            'CO<sub>2</sub>: %{y:.2f}ppm<extra></extra>' 
                             )
 
     MaceHead = go.Scatter(x=dataDF["Date"],
@@ -461,7 +461,7 @@ def figure_2_18():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Mace Head</b><br>' +
-                            'CO<sub>2</sub>: %{y:.2f} ppm<extra></extra>' 
+                            'CO<sub>2</sub>: %{y:.2f}ppm<extra></extra>' 
                             )
 
     figure_2_18 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -528,7 +528,7 @@ def figure_2_20():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Moving Avaerge</b><br>' +
-                            'CH<sub>4</sub>: %{y:.2f} ppb<extra></extra>' 
+                            'CH<sub>4</sub>: %{y:.2f}ppb<extra></extra>' 
                             )
 
     figure_2_20 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -541,7 +541,7 @@ def figure_2_20():
 
     figure_2_20.update_layout(TIMESERIES_LAYOUT)
 
-    figure_2_20.update_yaxes(title_text='CH<sub>4</sub> concentration (ppb)',
+    figure_2_20.update_yaxes(title_text='CH<sub>4</sub> Concentration (ppb)',
                             showgrid=False,
                             fixedrange=True,
                             showspikes=True,
@@ -583,14 +583,14 @@ def figure_2_22():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Monthly Mean</b><br>' +
-                            'N<sub>2</sub>O: %{y:.2f} ppb<extra></extra>' 
+                            'N<sub>2</sub>O: %{y:.2f}ppb<extra></extra>' 
                             )
 
     figure_2_22 = make_subplots(specs=[[{'secondary_y': False}]])
     figure_2_22.add_trace(MonthlyMean,
             secondary_y=False,)
     figure_2_22.update_layout(TIMESERIES_LAYOUT)
-    figure_2_22.update_yaxes(title_text='N<sub>2</sub>O concentration (ppb)',
+    figure_2_22.update_yaxes(title_text='N<sub>2</sub>O Concentration (ppb)',
                          showgrid=False,
                          fixedrange=True,
                          showspikes=True,
@@ -632,7 +632,7 @@ def figure_2_23():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Monthly Mean</b><br>' +
-                            'CFC-12: %{y:.2f} ppt<extra></extra>' 
+                            'CFC-12: %{y:.2f}ppt<extra></extra>' 
                             )
 
     figure_2_23 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -679,7 +679,7 @@ def figure_2_24():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Monthly Mean</b><br>' +
-                            'HFC-134a: %{y:.2f} ppt<extra></extra>' 
+                            'HFC-134a: %{y:.2f}ppt<extra></extra>' 
                             )
 
     figure_2_24 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -1009,9 +1009,9 @@ def figure_3_15():
 
                                           ),
                                           showlegend=False,
-                                          hovertemplate='<b>Dissolved Oxygen Saturation: %{y}%</b><br>' +
-                                          'Date: %{x}<br>' +
-                                          #                         'DO_Saturation.: %{y}%<br>' +
+                                          hovertemplate='%{x}<br>' +
+                                          '<b>Dissolved Oxygen</b><br>' +
+                                          'Saturation: %{y}%<br>' +
                                           'Depth: %{text}m<br><extra></extra>')
     figure_3_15 = go.Figure(
         data=dissolvedOxygenDateTrace, layout=TIMESERIES_LAYOUT)
@@ -1142,7 +1142,8 @@ def figure_4_10_1():
                             '#72caf0', ]),
         sort=True,
         texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
-        hovertemplate='<b>%{label}</b><br>' +
+        hovertemplate= '1990<br>' +
+        '<b>%{label}</b><br>' +
         '%{value:.0f}kHA<br>' +
         '%{percent:.2%}<extra></extra>',
     )
@@ -1192,7 +1193,8 @@ def figure_4_10_2():
                                                '#72caf0', ]),
                            sort=True,
                            texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
-                           hovertemplate='<b>%{label}</b><br>' +
+                           hovertemplate= '2018<br>' +
+                           '<b>%{label}</b><br>' +
                            '%{value:.0f}kHA<br>' +
                            '%{percent:.2%}<extra></extra>',
                            )
@@ -1248,8 +1250,8 @@ def figure_4_11():
                                                      size=4,
                                                      line=dict(color='#db2001',
                                                                width=0)),
-                                         hovertemplate='<b>Artificial Surfacese</b><br>' +
-                                         'Year: %{x}<br>' +
+                                         hovertemplate='%{x}<br>' +
+                                         '<b>Artificial Surfacese</b><br>' +
                                          'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
     agriculturalAreasTrace = go.Scatter(x=cumChangeDF.Year,
@@ -1260,8 +1262,8 @@ def figure_4_11():
                                                     size=4,
                                                     line=dict(color='#e6e43b',
                                                               width=0)),
-                                        hovertemplate='<b>Agricultural Areas</b><br>' +
-                                        'Year: %{x}<br>' +
+                                        hovertemplate='%{x}<br>' +
+                                        '<b>Agricultural Areas</b><br>' +
                                         'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
     forestTrace = go.Scatter(x=cumChangeDF.Year,
@@ -1272,8 +1274,8 @@ def figure_4_11():
                                          size=4,
                                          line=dict(color='#5ea32a',
                                                    width=0)),
-                             hovertemplate='<b>Forest</b><br>' +
-                             'Year: %{x}<br>' +
+                             hovertemplate='%{x}<br>' +
+                             '<b>Forest</b><br>' +
                              'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
     semiNaturalLowVegetationsTrace = go.Scatter(x=cumChangeDF.Year,
@@ -1284,8 +1286,8 @@ def figure_4_11():
                                                             size=4,
                                                             line=dict(color='#c4fd89',
                                                                       width=0)),
-                                                hovertemplate='<b>Semi-Natural & Low Vegetations</b><br>' +
-                                                'Year: %{x}<br>' +
+                                                hovertemplate='%{x}<br>' +
+                                                '<b>Semi-Natural & Low Vegetations</b><br>' +
                                                 'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
     wetlandsTrace = go.Scatter(x=cumChangeDF.Year,
@@ -1296,8 +1298,8 @@ def figure_4_11():
                                            size=4,
                                            line=dict(color='#4c52f9',
                                                      width=0)),
-                               hovertemplate='<b>Wetlands</b><br>' +
-                               'Year: %{x}<br>' +
+                               hovertemplate='%{x}<br>' +
+                               '<b>Wetlands</b><br>' +
                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
     waterBodiesTrace = go.Scatter(x=cumChangeDF.Year,
@@ -1308,8 +1310,8 @@ def figure_4_11():
                                               size=4,
                                               line=dict(color='#72caf0',
                                                         width=0)),
-                                  hovertemplate='<b>Water Bodies</b><br>' +
-                                  'Year: %{x}<br>' +
+                                  hovertemplate='%{x}<br>' +
+                                  '<b>Water Bodies</b><br>' +
                                   'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
     data = [artificialSurfacesTrace,
@@ -1332,9 +1334,9 @@ def figure_4_11():
             y=-0.15,
             bgcolor='rgba(0,0,0,0)',
         ), )
-    figure_4_11.update_yaxes(title_text='<b>Percentage (%)</b>',
+    figure_4_11.update_yaxes(title_text='Cumulative Change (%)',
                              tickformat=',.0%',)
-    figure_4_11.update_xaxes(title_text='<b>Year</b>')
+    figure_4_11.update_xaxes(title_text='Year')
 
     return figure_4_11
 
@@ -1444,12 +1446,14 @@ def figure_4_12():
             faparDF.at[index, 'xAxis'] = 35
         elif row.Month == 12 and row.Day < 32:
             faparDF.at[index, 'xAxis'] = 36
-    my_text = ['Date: '+'{}'.format(date)+'<br>' +
-               'Min: '+'{}'.format(mn)+'<br>' +
-               'Max: '+'{}'.format(mx)+'<br>'
-               for date, mn, mx, in zip(list(faparDF['Date']),
-                                        list(faparDF['Min']),
-                                        list(faparDF['Max'])
+    my_text = ['{}'.format(date)+'<br>' +
+               'Min: {:.1%}'.format(mn)+'<br>' +
+               '<b>Mean: {:.1%}'.format(mean)+'</b><br>' +
+               'Max: {:.1%}'.format(mx)+'<br>'
+               for date, mean, mn,mx, in zip(list(faparDF['Date']),
+                                             list(faparDF['Mean']),
+                                             list(faparDF['Min']),
+                                             list(faparDF['Max'])
                                         )]
     colorscale = [
         # 5% are to be purple
@@ -1485,8 +1489,7 @@ def figure_4_12():
                       ticktext=['<50', '50-56', '56-65',
                                 '65-72', '72-76', '>76'],
                       tickvals=[0.48, 0.52, 0.59, 0.67, 0.735, 0.77]),
-        hovertemplate='<b>Mean: %{z:.1%}</b><br>' +
-        '%{text}' +
+        hovertemplate='%{text}' +
         '<extra></extra>')
 
     figure_4_12 = go.Figure(data=faparTrace, layout=TIMESERIES_LAYOUT)
@@ -1616,8 +1619,8 @@ def figure_4_27():
     y=df1["Energy"]/1000,
         text=df1['Energy']*100/df1['Total '],
     marker_color="#5182bb",
-    hovertemplate='<b>Energy</b><br>' +
-    '%{x}<br>' +
+    hovertemplate='%{x}<br>' +
+    '<b>Energy</b><br>' +
     '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
     '%{text:.2f}%</sub><extra></extra>'
                             )
@@ -1628,8 +1631,8 @@ def figure_4_27():
         y=df1["Agriculture "]/1000,
             text=df1['Agriculture ']*100/df1['Total '],
         marker_color="#fdbf2d",
-        hovertemplate='<b>Agriculture</b><br>' +
-        '%{x}<br>' +
+        hovertemplate=  '%{x}<br>' +
+        '<b>Agriculture</b><br>' +
         '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
         '%{text:.2f}%</sub><extra></extra>'
                                 )
@@ -1640,8 +1643,8 @@ def figure_4_27():
         y=df1["Land-Use Change and Forestry (LULUCF)"]/1000,
             text=df1["Land-Use Change and Forestry (LULUCF)"]*100/df1['Total '],
         marker_color="#3dca3f",
-        hovertemplate='<b>Land-Use Change and Forestry)</b><br>' +
-        '%{x}<br>' +
+        hovertemplate='%{x}<br>' +
+        '<b>Land-Use Change and Forestry</b><br>' +
         '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
         '%{text:.2f}%</sub><extra></extra>'
                                 )
@@ -1651,8 +1654,8 @@ def figure_4_27():
         y=df1["Industrial Processes and Product Use (IPPU)"]/1000,
         text=df1["Industrial Processes and Product Use (IPPU)"]*100/df1['Total '],
         marker_color="#fc0d1b",
-        hovertemplate='<b>Industrial Processes and Product Use (IPPU)</b><br>' +
-        '%{x}<br>' +
+        hovertemplate='%{x}<br>' +
+        '<b>Industrial Processes and Product Use (IPPU)</b><br>' +
         '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
         '%{text:.2f}%</sub><extra></extra>'
                                 )
@@ -1663,8 +1666,8 @@ def figure_4_27():
         y=df1['Waste ']/1000,
         text=df1['Waste ']*100/df1['Total '],
         marker_color="#262626",
-        hovertemplate='<b>Agriculture</b><br>' +
-        '%{x}<br>' +
+        hovertemplate='%{x}<br>' +
+        '<b>Agriculture</b><br>' +
         '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
         '%{text:.2f}%</sub><extra></extra>'
                                 )

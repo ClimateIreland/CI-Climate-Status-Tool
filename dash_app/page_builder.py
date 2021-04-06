@@ -37,15 +37,15 @@ def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
                                     className='sr-banner-logo',
                                     src='assets/images/CSRI2020Logo.png'
                                 ),)]),
-                     dbc.Row(
+                    dbc.Row(
                         children=[
                             dbc.Col(children=[
                                     html.Img(
-                                    src='assets/images/LogoBannerCSRI.png'
-                                ),
-                                
-                            ])]),
-                # Remove before release
+                                        src='assets/images/LogoBannerCSRI.png'
+                                    ),
+
+                                    ])]),
+                    # Remove before release
                     # dbc.Row(
                     #     children=[
                     #         dbc.Col(children=[
@@ -197,7 +197,7 @@ def build_intro(introText, bulletPoints, chapter_dict):
                                     src=IMAGES_PATH+'icons/' +
                                     chapter_dict['icon-lg-src']
                                 )
-                                ]
+                            ]
                             ),
                     dbc.Col(className="col-12 col-md-6 my-auto text-center",
                             children=[
@@ -225,7 +225,8 @@ def build_intro(introText, bulletPoints, chapter_dict):
                 children=[
                     dbc.Col(
                         className='sr-bullet-col',
-                        style={'backgroundColor': chapter_dict['domain-bg-color']},
+                        style={
+                            'backgroundColor': chapter_dict['domain-bg-color']},
                         children=[
                             html.Ul(
                                 className='sr-bullet-ul',
@@ -239,10 +240,10 @@ def build_intro(introText, bulletPoints, chapter_dict):
                     )]
             ),
             dbc.Row(
-                style={'color': chapter_dict['domain-color']},
+
                 children=[
                     dbc.Col(
-
+                        style={'color': chapter_dict['domain-color']},
                         className='col-xs-6 col-md-2',
                         children='Domain:'
                     ),
@@ -253,26 +254,26 @@ def build_intro(introText, bulletPoints, chapter_dict):
                 ]
             ),
             dbc.Row(
-                style={'color': chapter_dict['domain-color']},
+                style={
+                    'backgroundColor': chapter_dict['domain-bg-color']},
                 children=[
                     dbc.Col(
-                        style={
-                            'backgroundColor': chapter_dict['domain-bg-color']},
+                        style={'color': chapter_dict['domain-color']},
                         className='col-xs-6 col-md-2',
                         children='Subdomain:'
                     ),
                     dbc.Col(
-                        style={
-                            'backgroundColor': chapter_dict['domain-bg-color']},
+
                         className='col-xs-6 col-md-10',
                         children=chapter_dict['subdomain']
                     ),
                 ]
             ),
             dbc.Row(
-                style={'color': chapter_dict['domain-color']},
+
                 children=[
                     dbc.Col(
+                        style={'color': chapter_dict['domain-color']},
                         className='col-xs-6 col-md-2',
                         children='Scientific Area:'
                     ),
@@ -283,19 +284,17 @@ def build_intro(introText, bulletPoints, chapter_dict):
                 ]
             ),
             dbc.Row(
-                style={'color': chapter_dict['domain-color']},
+                style={
+                    'backgroundColor': chapter_dict['domain-bg-color']},
                 children=[
                     dbc.Col(
+                        style={'color': chapter_dict['domain-color']},
                         className='col-xs-6 col-md-2',
                         children='Authors:',
-                        style={
-                            'backgroundColor': chapter_dict['domain-bg-color']},
                     ),
                     dbc.Col(
                         className='col-xs-6 col-md-10',
                         children=chapter_dict['authors'],
-                        style={
-                            'backgroundColor': chapter_dict['domain-bg-color']},
                     ),
                 ]
             ),
