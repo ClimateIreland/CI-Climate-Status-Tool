@@ -15,7 +15,7 @@ bannerImgCredit = 'Tomas Szumski'
 introText = """
         The ocean absorbs significant quantities of carbon through natural cycles 
         driven by ocean circulation, biogeochemistry and biology.  
-        It is estimated that the ocean has absorbed between 20–30% of total anthropogenic CO2 
+        It is estimated that the ocean has absorbed between 20–30% of total anthropogenic CO\u2082 
         emissions since the 1980s thereby reducing atmospheric accumulation and thus partially 
         mitigating global warming. 
         """

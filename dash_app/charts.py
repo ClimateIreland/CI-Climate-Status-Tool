@@ -12,17 +12,17 @@ from settings import *
 def stations_map(df):
 
     def stations_map_hovertemplate(df):
-        return ['Name: '+'{}'.format(n)+'<br>' +
-                'Type: '+'{}'.format(t)+'<br>' +
-                'Station No.: '+'{}'.format(sN)+'<br>' +
-                'County.: '+'{}'.format(cnty)+'<br>' +
-                'Open Year.: '+'{}'.format(oY)+'<br>' +
-                'Close Year.: '+'{}'.format(cY)+'<br>' +
-                'Height: '+'{:.2f}'.format(h)+'m<br>' +
-                # 'Easting: '+'{}'.format(easting)+'<br>' +
-                # 'Northing: '+'{}'.format(northing)+'<br>'
-                'Lat: '+'{:.2f}'.format(lat)+'\u00b0<br>' +
-                'Lon: '+'{:.2f}'.format(lon)+'\u00b0<br>' + '<extra></extra>'
+        return ['Name: {}<br>'.format(n)+
+                'Type: {}<br>'.format(t)+
+                'Station No.: {}<br>'.format(sN)+
+                'County: {}<br>'.format(cnty)+
+                'Open Year: {}<br>'.format(oY)+
+                'Close Year: {}<br>'.format(cY)+
+                'Height: {:.2f} m<br>'.format(h)+
+                # 'Easting: {}<br>'.format(easting)+
+                # 'Northing: {}<br>'.format(northing)+
+                'Lat: {:.2f} \u00b0<br>'.format(lat)+
+                'Lon: {:.2f} \u00b0<br>'.format(lon)+'<extra></extra>'
                 for n, t, sN, cnty, oY, cY, h, lat, lon in zip(list(df['name']),
                                                                             list(
                     df['Type']),
@@ -205,7 +205,7 @@ def figure_2_1():
                                           width=2),
                                 hovertemplate='%{x}<br>' +
                                 '<b>Moving Average</b><br>' +
-                                'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                                'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
     annualTrace = go.Scatter(x=dataDF.Year,
                              y=dataDF.Tmean,
@@ -217,8 +217,8 @@ def figure_2_1():
                                          opacity=0.5),
                              hovertemplate='%{x}<br>' +
                              '<b>Annual</b><br>' +
-                             'Tmean: %{y:.2f}\u00b0C<br>' +
-                             'Anomaly: %{text:.2f}\u00b0C<extra></extra>'
+                             'Tmean: %{y:.2f} \u00b0C<br>' +
+                             'Anomaly: %{text:.2f} \u00b0C<extra></extra>'
                              )
 
     movingAvgDF = dataDF.loc[dataDF.filter11.notna()]
@@ -331,8 +331,8 @@ def figure_2_9():
     ),
         hovertemplate='%{x}<br>' +
         '<b>Annual</b><br>' +
-        'Total: %{text:.2f}mm<br>' +
-        'Anomaly: %{y:.2f}mm<extra></extra>'
+        'Total: %{text:.2f} mm<br>' +
+        'Anomaly: %{y:.2f} mm<extra></extra>'
     )
     movingAverage = go.Scatter(x=dataDF["years"],
                                y=dataDF["11 Year Moving Average Anomaly"],
@@ -346,8 +346,8 @@ def figure_2_9():
         width=2),
         hovertemplate='%{x}<br>' +
         '<b>11yr Moving Average</b><br>' +
-        'Total: %{text:.2f}mm<br>' +
-        'Anomaly: %{y:.2f}mm<extra></extra>'
+        'Total: %{text:.2f} mm<br>' +
+        'Anomaly: %{y:.2f} mm<extra></extra>'
     )
     normal = go.Scatter(x=dataDF["years"],
                         y=dataDF["ANNmean"],
@@ -448,7 +448,7 @@ def figure_2_18():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Mauna Loa (Hawaii)</b><br>' +
-                            'CO<sub>2</sub>: %{y:.2f}ppm<extra></extra>' 
+                            'CO\u2082: %{y:.2f} ppm<extra></extra>' 
                             )
 
     MaceHead = go.Scatter(x=dataDF["Date"],
@@ -461,7 +461,7 @@ def figure_2_18():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Mace Head</b><br>' +
-                            'CO<sub>2</sub>: %{y:.2f}ppm<extra></extra>' 
+                            'CO\u2082: %{y:.2f} ppm<extra></extra>' 
                             )
 
     figure_2_18 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -474,7 +474,7 @@ def figure_2_18():
 
     figure_2_18.update_layout(TIMESERIES_LAYOUT)
 
-    figure_2_18.update_yaxes(title_text='CO<sub>2</sub> concentration (ppm)',
+    figure_2_18.update_yaxes(title_text='CO\u2082 Concentration (ppm)',
                             showgrid=False,
                             fixedrange=True,
                             showspikes=True,
@@ -515,7 +515,7 @@ def figure_2_20():
                                 opacity=0.5),
                       hovertemplate='%{x}<br>' +
                             '<b>Monthly Mean</b><br>' +
-                            'CH<sub>4</sub>: %{y:.2f} ppb<extra></extra>' 
+                            'CH\u2084: %{y:.2f} ppb<extra></extra>' 
                             )
 
     MovingAverage = go.Scatter(x=dataDF["Date"],
@@ -528,7 +528,7 @@ def figure_2_20():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Moving Avaerge</b><br>' +
-                            'CH<sub>4</sub>: %{y:.2f}ppb<extra></extra>' 
+                            'CH\u2084: %{y:.2f}ppb<extra></extra>' 
                             )
 
     figure_2_20 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -541,7 +541,7 @@ def figure_2_20():
 
     figure_2_20.update_layout(TIMESERIES_LAYOUT)
 
-    figure_2_20.update_yaxes(title_text='CH<sub>4</sub> Concentration (ppb)',
+    figure_2_20.update_yaxes(title_text='CH\u2084 Concentration (ppb)',
                             showgrid=False,
                             fixedrange=True,
                             showspikes=True,
@@ -557,7 +557,7 @@ def figure_2_20():
 
 def figure_2_22():
     """
-    Monthly N2O Trend
+    Monthly N\u2082O Trend
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Figure2.22/'
@@ -583,14 +583,14 @@ def figure_2_22():
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Monthly Mean</b><br>' +
-                            'N<sub>2</sub>O: %{y:.2f}ppb<extra></extra>' 
+                            'N\u2082O: %{y:.2f}ppb<extra></extra>' 
                             )
 
     figure_2_22 = make_subplots(specs=[[{'secondary_y': False}]])
     figure_2_22.add_trace(MonthlyMean,
             secondary_y=False,)
     figure_2_22.update_layout(TIMESERIES_LAYOUT)
-    figure_2_22.update_yaxes(title_text='N<sub>2</sub>O Concentration (ppb)',
+    figure_2_22.update_yaxes(title_text='N\u2082O Concentration (ppb)',
                          showgrid=False,
                          fixedrange=True,
                          showspikes=True,
@@ -639,7 +639,7 @@ def figure_2_23():
     figure_2_23.add_trace(MonthlyMean,
                 secondary_y=False,)
     figure_2_23.update_layout(TIMESERIES_LAYOUT)
-    figure_2_23.update_yaxes(title_text='CFC-12 concentration (ppt)',
+    figure_2_23.update_yaxes(title_text='CFC-12 Concentration (ppt)',
                             showgrid=False,
                             fixedrange=True,
                             showspikes=True,
@@ -689,7 +689,7 @@ def figure_2_24():
 
     figure_2_24.update_layout(TIMESERIES_LAYOUT)
 
-    figure_2_24.update_yaxes(title_text='HFC-134a concentration (ppt)',
+    figure_2_24.update_yaxes(title_text='HFC-134a Concentration (ppt)',
                             showgrid=False,
                             fixedrange=True,
                             showspikes=True,
@@ -729,8 +729,8 @@ def figure_3_1():
                                 ),
                         hovertemplate='%{x}<br>' +
                                 '<b>Annual</b><br>' +
-                                'Total: %{text:.2f}\u00b0C<br>' +
-                                'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                                'Total: %{text:.2f} \u00b0C<br>' +
+                                'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
     movingAverage = go.Scatter(x=df["year"],
                         y=df["5 year moving average"],
@@ -744,8 +744,8 @@ def figure_3_1():
                                 width=2),
                         hovertemplate='%{x}<br>' +
                                 '<b>5yr Moving Average</b><br>' +
-                                'Total: %{text:.2f}\u00b0C<br>' +
-                                'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                                'Total: %{text:.2f} \u00b0C<br>' +
+                                'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
     normal = go.Scatter(x=df["year"],
                         y=df["Unnamed: 5"],
@@ -816,8 +816,8 @@ def figure_3_3():
                             ),
                      hovertemplate='%{x}<br>' +
                             '<b>Annual</b><br>' +
-                            'Total: %{text:.2f}\u00b0C<br>' +
-                            'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                            'Total: %{text:.2f} \u00b0C<br>' +
+                            'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                             )
     movingAverage = go.Scatter(x=df["Decimal Year"],
                         y=df["5 year moving average"],
@@ -831,8 +831,8 @@ def figure_3_3():
                                 width=2),
                         hovertemplate='%{x}<br>' +
                                 '<b>5yr Moving Average</b><br>' +
-                                # 'Total: %{text:.2f}\u00b0C<br>' +
-                                'Anomaly: %{y:.2f}\u00b0C<extra></extra>'
+                                # 'Total: %{text:.2f} \u00b0C<br>' +
+                                'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
     normal = go.Scatter(x=df["Decimal Year"],
                         y=df["1981-2010 (Normalized)"],
@@ -935,7 +935,7 @@ def figure_3_8():
                                 opacity=0.5),
                     hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
-                            'Mean Sea Level: %{y:.2f}m<extra></extra>'
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
     annualTrace = go.Scatter(x=df["AnnualDate"],
                         y=df["AnnualAverage"],
@@ -947,7 +947,7 @@ def figure_3_8():
                                 width=2),
                         hovertemplate='%{x}<br>' +
                                 '<b>Annual Average</b><br>' +
-                                'Mean Sea Level: %{y:.2f}m<extra></extra>'
+                                'Mean Sea Level: %{y:.2f} m<extra></extra>'
                                 )
     figure_3_8=go.Figure(data=[monthlyTrace, annualTrace], layout=TIMESERIES_LAYOUT)
     figure_3_8.update_layout(
@@ -1011,8 +1011,8 @@ def figure_3_15():
                                           showlegend=False,
                                           hovertemplate='%{x}<br>' +
                                           '<b>Dissolved Oxygen</b><br>' +
-                                          'Saturation: %{y}%<br>' +
-                                          'Depth: %{text}m<br><extra></extra>')
+                                          'Saturation: %{y} %<br>' +
+                                          'Depth: %{text} m<br><extra></extra>')
     figure_3_15 = go.Figure(
         data=dissolvedOxygenDateTrace, layout=TIMESERIES_LAYOUT)
     figure_3_15.update_layout(
@@ -1048,8 +1048,8 @@ def map_3_6():
         marker=dict(color=[STATION_COLORS[k] for k in epaStationsDF['agency'].values],
                     size=7),
         hovertemplate='Type: %{text}<br>' +
-        'Lat: %{lon}\u00b0<br>' +
-        'Lon: %{lat}\u00b0<br>' +
+        'Lat: %{lon} \u00b0<br>' +
+        'Lon: %{lat} \u00b0<br>' +
         '<extra></extra>',)
 
     maceHeadStationsTrace = go.Scattermapbox(
@@ -1060,8 +1060,8 @@ def map_3_6():
         marker=dict(color=[STATION_COLORS[k] for k in maceHeadStationsDF['Type'].values],
                     size=7),
         hovertemplate='Type: %{text}<br>' +
-        'Lat: %{lon}\u00b0<br>' +
-        'Lon: %{lat}\u00b0<br>' +
+        'Lat: %{lon} \u00b0<br>' +
+        'Lon: %{lat} \u00b0<br>' +
         '<extra></extra>',)
 
     MIStationsDF = pd.DataFrame()
@@ -1082,8 +1082,8 @@ def map_3_6():
         marker=dict(color=[STATION_COLORS[k] for k in MIStationsDF['Type'].values],
                     size=7),
         hovertemplate='Type: %{text}<br>' +
-        'Lat: %{lon}\u00b0<br>' +
-        'Lon: %{lat}\u00b0<br>' +
+        'Lat: %{lon} \u00b0<br>' +
+        'Lon: %{lat} \u00b0<br>' +
         '<extra></extra>')
 
     smartBayStationsTrace = go.Scattermapbox(
@@ -1094,8 +1094,8 @@ def map_3_6():
         marker=dict(color=[STATION_COLORS[k] for k in smartBayStationsDF['Type'].values],
                     size=7),
         hovertemplate='Type: %{text}<br>' +
-        'Lat: %{lon}\u00b0<br>' +
-        'Lon: %{lat}\u00b0<br>' +
+        'Lat: %{lon} \u00b0<br>' +
+        'Lon: %{lat} \u00b0<br>' +
         '<extra></extra>',)
 
     map_3_6 = go.Figure(data=[MIStationsTrace,
@@ -1446,10 +1446,10 @@ def figure_4_12():
             faparDF.at[index, 'xAxis'] = 35
         elif row.Month == 12 and row.Day < 32:
             faparDF.at[index, 'xAxis'] = 36
-    my_text = ['{}'.format(date)+'<br>' +
-               'Min: {:.1%}'.format(mn)+'<br>' +
-               '<b>Mean: {:.1%}'.format(mean)+'</b><br>' +
-               'Max: {:.1%}'.format(mx)+'<br>'
+    my_text = ['{}<br>'.format(date)+
+               'Min: {:.1%}<br>'.format(mn)+
+               '<b>Mean: {:.1%}</b><br>'.format(mean)+
+               'Max: {:.1%}<br>'.format(mx)
                for date, mean, mn,mx, in zip(list(faparDF['Date']),
                                              list(faparDF['Mean']),
                                              list(faparDF['Min']),
@@ -1621,8 +1621,8 @@ def figure_4_27():
     marker_color="#5182bb",
     hovertemplate='%{x}<br>' +
     '<b>Energy</b><br>' +
-    '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
-    '%{text:.2f}%</sub><extra></extra>'
+    '%{y:.2f}kTCO\u2082eq<br>' +
+    '%{text:.2f} %</sub><extra></extra>'
                             )
 
     agricultureTrace=go.Bar(
@@ -1633,8 +1633,8 @@ def figure_4_27():
         marker_color="#fdbf2d",
         hovertemplate=  '%{x}<br>' +
         '<b>Agriculture</b><br>' +
-        '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
-        '%{text:.2f}%</sub><extra></extra>'
+        '%{y:.2f}kTCO\u2082eq<br>' +
+        '%{text:.2f} %</sub><extra></extra>'
                                 )
 
     landuseTrace=go.Bar(
@@ -1645,8 +1645,8 @@ def figure_4_27():
         marker_color="#3dca3f",
         hovertemplate='%{x}<br>' +
         '<b>Land-Use Change and Forestry</b><br>' +
-        '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
-        '%{text:.2f}%</sub><extra></extra>'
+        '%{y:.2f}kTCO\u2082eq<br>' +
+        '%{text:.2f} %</sub><extra></extra>'
                                 )
     industryTrace=go.Bar(
         name="Industrial Processes and Product Use (IPPU)",
@@ -1656,8 +1656,8 @@ def figure_4_27():
         marker_color="#fc0d1b",
         hovertemplate='%{x}<br>' +
         '<b>Industrial Processes and Product Use (IPPU)</b><br>' +
-        '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
-        '%{text:.2f}%</sub><extra></extra>'
+        '%{y:.2f}kTCO\u2082eq<br>' +
+        '%{text:.2f} %</sub><extra></extra>'
                                 )
 
     wasteTrace=go.Bar(
@@ -1668,8 +1668,8 @@ def figure_4_27():
         marker_color="#262626",
         hovertemplate='%{x}<br>' +
         '<b>Agriculture</b><br>' +
-        '%{y:.2f}kTCO<sub>2</sub>eq<br>' +
-        '%{text:.2f}%</sub><extra></extra>'
+        '%{y:.2f}kTCO\u2082eq<br>' +
+        '%{text:.2f} %</sub><extra></extra>'
                                 )
     figure_4_27=go.Figure(data=[energyTrace,
                                 agricultureTrace,
@@ -1679,7 +1679,7 @@ def figure_4_27():
                           layout=TIMESERIES_LAYOUT)
     figure_4_27.update_layout(
         barmode='stack',
-        yaxis=dict(title='kilotonnes CO<sub>2</sub> eq'),
+        yaxis=dict(title='kilotonnes CO\u2082 eq'),
         xaxis=dict(title='Year')
         )
 

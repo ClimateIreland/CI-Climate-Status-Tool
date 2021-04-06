@@ -16,7 +16,7 @@ introText = """
 In addition to water vapour, carbon dioxide (CO\u2082) and methane (CH\u2084), 
 a number of other gases contribute significantly to the enhanced greenhouse effect.  
 These include Nitrous oxide (N\u2082O) which has a global warming potential 265 times that of 
-CO2 and synthetic gases which are exclusively produced by human activities but have extremely high global warming potentials.
+CO\u2082 and synthetic gases which are exclusively produced by human activities but have extremely high global warming potentials.
         """
 bulletPoint1 = """
         N\u2082O concentrations in the atmosphere are now approximately 20% 
