@@ -19,7 +19,8 @@ from pages import (
     _2_11_Methane,
     _2_12_OtherGreenhouseGases,
 
-    _3_1_SurfaceSubsurfaceTemperature,
+    _3_1a_SeaSurfaceTemperature,
+    _3_1b_SeaSubsurfaceTemperature,
     _3_4_SeaLevel,
     _3_6_InorganicCarbon,
     _3_7_Oxygen,
@@ -76,8 +77,10 @@ def display_page(pathname):
         return _2_11_Methane.create_layout(app)
     elif pathname == "/_2_12_OtherGreenhouseGases":
         return _2_12_OtherGreenhouseGases.create_layout(app)
-    elif pathname == "/_3_1_SurfaceSubsurfaceTemperature":
-        return _3_1_SurfaceSubsurfaceTemperature.create_layout(app)
+    elif pathname == "/_3_1a_SeaSurfaceTemperature":
+        return _3_1a_SeaSurfaceTemperature.create_layout(app)
+    elif pathname == "/_3_1b_SeaSubsurfaceTemperature":
+        return _3_1b_SeaSubsurfaceTemperature.create_layout(app)
     elif pathname == "/_3_4_SeaLevel":
         return _3_4_SeaLevel.create_layout(app)
     elif pathname == "/_3_6_InorganicCarbon":

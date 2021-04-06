@@ -139,11 +139,11 @@ CHAPTERS = [
 
     # Ocean Biogeochemistry
     {
-        'chapter-num': '3.1',
+        'chapter-num': '3.1a',
         'id': 'sop-2',
         # Both Surface and Sub-surface on same page
-        'title': 'Surface Temperature',
-        'href': '/_3_1_SurfaceSubsurfaceTemperature',
+        'title': 'Sea Surface Temperature',
+        'href': '/_3_1a_SeaSurfaceTemperature',
         'icon-lg-src': 'sea-surface-temperature.png',
         'icon-lg-hover-src': 'sea-surface-temperature_hover.png',
         'icon-src': 'ico-sop-sea-surface-temp.png',
@@ -156,11 +156,10 @@ CHAPTERS = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
-        'chapter-num': '3.1',
+        'chapter-num': '3.1b',
         'id': 'ssop-3',
-        'title': 'Sub-surface Temperature',
-        # Both Surface and Sub-surface on same page
-        'href': '/_3_1_SurfaceSubsurfaceTemperature',
+        'title': 'Sea Sub-surface Temperature',
+        'href': '/_3_1b_SeaSubsurfaceTemperature',
         'icon-lg-src': 'subsurface-temperature_1.png',
         'icon-lg-hover-src': 'subsurface-temperature_1_hover.png',
         'icon-src': 'ico-ssop-subsurface-temp.png',

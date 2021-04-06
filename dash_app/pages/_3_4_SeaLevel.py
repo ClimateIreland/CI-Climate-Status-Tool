@@ -27,20 +27,33 @@ bulletPoint2 = """
         risen by approximately 2-3mm/year since the early 1990s.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Mean Sea Level (1938-2016) - Dublin Port'
+trendChartTitle = 'Mean Sea Level - Dublin Port' #(1938-2016)
 trendChart = figure_3_8()
 
 trendCaption = """
-Monthly Mean Sea Level observed at Dublin Port (1938-2016). The annual average sea level is also shown.
+The complete time series for the Dublin Port monthly mean sea level from 1938 to 2016 (updated by Maynooth University). 
+Since the 1980s there has been significant variability in the record, with an upward trend over the last 25 years. 
+The attribution of this recent increase is not certain. However, taken over the full time period, the sea level in 
+Dublin has risen by 1.67 mm per year, consistent with global rates.
+        """
+
+trendChartTitle = '4 gauges' 
+trendChart = empty_chart()
+trendCaption2 = """
+Tide gauge measurements at four different locations, in the north, west, south and east respectively, since the mid-2000s. 
+The time series are not yet long enough to accurately determine any trend. Moreover, any land elevation changes due to 
+glacial isostatic adjustment or other factors are not taken into account.
         """
 
 infrastructureText = """
 Measurements of sea level rely on high precision contemporaneous measurements of sea and land level. 
 Measurements of relative sea levels are mainly made by a network of tide gauges around the Irish Coast, 
-which are operated by a number of different bodies including the Marine Institute (MI) (blue), 
-the Office of Public Works (OPW) (red and yellow), Local Authorities and Port Companies (brown and orange) (map 3.4). 
-The “EPA Gauging Station Register” is a national inventory for all gauges including tide gauges.   
-The longest continuous records for Ireland are from Dublin Port (orange) where a tide gauge has been in 
+which are operated by a number of different bodies including the Marine Institute (MI) (blue), the Office of Public Works (OPW) 
+(red and yellow), Local Authorities and Port Companies (brown and orange) (map 3.4). 
+The “EPA Gauging Station Register” is a national inventory for all gauges including tide gauges. 
+The longest continuous records for Ireland are from Dublin Port (orange) where a tide gauge has been 
+in operation since at least 1923, with digitised records available from 1938, and from Malin Head, Co. Donegal (yellow), 
+in operation since 1958.
         """
 infrastructureMap = map_3_4()
 

@@ -30,7 +30,7 @@ bulletPoint2 = """
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
-trendChartTitle = 'Dissolved Oxygen Saturation (2002-2019)'
+trendChartTitle = 'Dissolved Oxygen Saturation' #(2002-2019)
 trendChart = figure_3_15()
 
 trendCaption = """
@@ -47,15 +47,12 @@ trendCaption = """
         """
 
 infrastructureText = """
-        The MI and NUI Galway have undertaken ship-based hydrographic observations including dissolved
-        oxygen since 2008 and supported additional initiatives such as GO-SHIP. Data collected from these 
-        programmes are reported to the International Council for the Exploration of the Sea (ICES) and 
-        other international data centres.
-
-        There is a need to sustain “climate” quality objective seawater 
-        dissolved oxygen measurements that meet international standards 
-        such as those described in the GO-SHIP hydrography manual.
-
+The annual winter environmental survey on board the RV Celtic Voyager collects dissolved oxygen sensor profiles in coastal and 
+shelf waters around the island of Ireland (outlined in red in inset, Map 3.6). As part of ongoing projects, 
+observations are also made at the Mace Head buoy and at the SmartBay Observatory in Galway Bay (yellow dots, Map 3.6). 
+As part of Ireland’s water framework directive and shellfish waters monitoring programme, in situ dissolved oxygen measurements are made 
+by the EPA and the Marine Institute in 116 transitional and coastal water bodies (blue dots, Map 3.6). 
+This monitoring programme has been in place since 2007.
         """
 infrastructureMap = map_3_6()
 

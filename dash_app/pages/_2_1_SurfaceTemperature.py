@@ -38,29 +38,37 @@ bulletPoints = [bulletPoint1, bulletPoint2]
 # scientificArea='Energy and Temperature'
 # authors='Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin'
 
-trendChartTitle = 'Mean Surface Air Temperature (1900-2019)'
+trendChartTitle = 'Mean Surface Air Temperature' #(1900-2019)
 trendChart = figure_2_1()
 
 trendCaption = """
-        A time series graph of mean annual observed
-        temperature for Ireland (1900-2011) (black dots) along 
-        with simple statistical fits to the data.
-        The left hand axis indicates anomalies (the difference 
-        between the mean annual temperature and the 1961-1990 
-        normal or reference mean value) and the right-hand axis 
-        the mean annual temperature for the period. 
-        The red line represents a simple linear trend which has been 
-        fitted to the annual anomaly values while the blue curve shows 
-        the 11-year moving average.
+        A time series graph of mean annual observed temperature for Ireland (1900-2019) (yellow dots) 
+        along with simple statistical fits to the data. 
+        The left hand axis indicates anomalies (the difference between the mean annual temperature and the 1961-1990 
+        normal or reference mean value) and the right-hand axis the mean annual temperature for the period. 
+        A simple linear trend line (green dashed ) has been fitted to the annual anomaly values. 
+        This indicates that temperature has been increasing at an average rate of 0.078°C per decade since 1900 
+        and that the annual average temperature is now approximately 0.9°C higher than it was in the early 1900s. 
+        Fifteen of the top 20 warmest years on record have occurred since 1990.
+        """
+
+trendCaption2 = """
+       Trend in number of annual cold spell days (number of days in a year with temperature below a certain threshold 
+       for at least 6 consecutive days) per decade (left) and number of annual warm spell days (number of days in a year 
+       with temperature above a certain threshold for at least 6 consecutive days)  per decade (right) (1961–2018). 
+       For example, there are on average 2 or 3 additional warm spell days each decade at Belmullet, Co. Mayo, over the six decades analysed. 
+       The trends indicate a slight increase in the number of warm spell days across the whole country and very little change in the number 
+       of cold spell days.
         """
 
 infrastructureText = """
-        Surface air temperature in Ireland is measured at 25 synoptic (red), 
-        numerous climatological weather stations (blue) and more recently at weather marine weather 
-        buoys (orange). The network of weather stations needs to be maintained and further developed 
-        to ensure the future of long-term representative temperature measurements. 
-        Difficulties arise because of inhomogeneities due to changes in instrumentation, observer, 
-        location and times of observation and new building and tree growth in the vicinity of a station.
+        Surface air temperature is measured at the 25 synoptic (red) and numerous climatological 
+        (blue) weather stations and also at the Irish Marine Data Buoy Observation Network stations (orange). 
+        Readings at automated synoptic stations are made every minute and at staffed stations, located in the main airports, 
+        every hour on the hour; at climatological stations readings of maximum and minimum temperatures over the previous 24 
+        hours are made once a day at 0900 Coordinated Universal Time (UTC). Eighty climatological stations are currently 
+        being automated to facilitate sub-hourly temperature measurements. Surface air temperature is measured every hour 
+        on the marine data buoys, the first of which was deployed in 2000.
         """
 infrastructureMap = map_2_1()
 

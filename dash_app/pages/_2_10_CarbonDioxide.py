@@ -29,22 +29,22 @@ Atmospheric CO\u2082 concentrations of 413 ppm at Mace Head in 2018 are estimate
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
-trendChartTitle = 'Carbon Dioxide (CO\u2082) Concentration (1958-2018)'
+trendChartTitle = 'Carbon Dioxide (CO\u2082) Concentration' #(1958-2018)
 trendChart = figure_2_18()
 
 trendCaption = """
-        Monthly mean concentration of carbon dioxide at Mauna Loa, Hawaii (1958–2012) and Mace Head Research Station, Ireland (1992–2018). 
+Monthly mean concentration of CO\u2082 at Mauna Loa Observatory, Hawaii (1958–2018), and Mace Head Atmospheric Research Station, 
+Ireland (1992–2018). The signal observed at Mace Head is more variable because of its 
+proximity to Europe and the influence of North America, where the uptake of CO\u2082 
+by growing vegetation and its subsequent release when the vegetation decays causes seasonal fluctuations. 
+In addition, the seasonal cycle of the phytoplankton bloom in the North Atlantic affects the levels.  
         """
 
 infrastructureText = """
-Atmospheric CO\u2082 concentrations are
- measured at a number of sites in Ireland (map 2.10). 
- Mace Head Atmospheric Research Station, Carna, Co. Galway (red)
-  has been conducting observations since 1992. CO\u2082 concentrations are also
-   measured at Carnsore Point, Co. Wexford and Malin Head, Co. Donegal (green) since 2009. 
-   Measurements at Valentia Observatory, Co. Kerry (blue) started in 2019. 
-   The site at Mace Head is of global importance as the measurements are representative of 
-   the background concentration of atmospheric CO\u2082 in the northeast Atlantic region. 
+Mace Head Atmospheric Research Station, Carna, Co. Galway (red), has been conducting CO\u2082 observations since 1992. 
+CO\u2082 concentrations are also measured at Carnsore Point, Co. Wexford, and Malin Head, Co. Donegal (green), since 2009. 
+Measurements at Valentia Observatory, Co. Kerry (blue), started in 2019. The site at Mace Head is of global importance, 
+as the measurements are representative of the background concentration of atmospheric CO\u2082 in the North-east Atlantic region.
         """
 infrastructureMap = map_2_10()
 

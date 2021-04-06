@@ -33,12 +33,18 @@ trendChartTitle = ''
 trendChart = empty_chart()
 
 trendCaption = """
-
+Deep-water dissolved inorganic carbon concentration (µmol/kg) section for the Rockall Trough in the winter of 2013 (left), 
+during the annual survey on the Irish Shelf (right). The rows of vertical dots represent sampling points at different depths (left) 
+and correspond to the blue point locations indicated in the red polygon (left). Measurements in the surface waters of the Rockall 
+Trough between 1991 and 2013 indicated an increase in anthropogenic dissolved inorganic carbon, equivalent to a decrease of 0.050 pH units. 
+This represents an increase in acidity that is comparable to the rate of change in other ocean time series. 
         """
 
 infrastructureText = """
-The Marine Institute (MI) and the National University of Ireland Galway (NUI Galway) have undertaken measurements of the inorganic carbon system and associated biogeochemical parameters in Irish coastal, shelf and offshore waters. Two of the following four parameters are required to fully determine the carbonate system:  dissolved inorganic carbon (DIC), total alkalinity (TA), pH and the partial pressure of carbon dioxide (pCO2) in water. 
-Since 2009, MI annual repeat ship-based hydrography surveys measuring Essential Climate Variables in Irish shelf waters and across the southern Rockall Trough have included water sampling for DIC and TA. The surveys are primarily in winter as the period of least biological activity, although winter sampling has been heavily constrained by poor weather conditions during recent years. 
+The Marine Institute and NUI Galway have undertaken measurements of the inorganic carbon system and associated biogeochemical 
+parameters in Irish coastal, shelf and offshore waters. Since 2009, Marine Institute annual repeat ship-based hydrography 
+surveys measuring ECVs in Irish Shelf waters and across the southern Rockall Trough have included water sampling for dissolved 
+inorganic carbon and total alkalinity.  
 
         """
 infrastructureMap = empty_chart()
@@ -68,19 +74,25 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
-trendTitle1='Deep-water Dissolved Inorganic Carbon Concentration (µmol/kg) '
+trendTitle1='Deep-water Dissolved Inorganic Carbon Concentration'
 figure_3_13 = IMAGES_PATH+'OceanicSections/Figure3.13_DeepWater_DissolvedInorganicConcentration_RockallTrough.png'
 trendCaption1 = """
-Deep-water dissolved inorganic carbon concentration (µmol/kg) section for the Rockall Trough in 
-the winter of 2013 (left), during the annual survey on the Irish Shelf (right).  
-The rows of vertical dots represent sampling points at different depths (left) 
-and correspond to the blue point locations indicated in the red polygon (left)
+Deep-water dissolved inorganic carbon concentration (µmol/kg) section for the Rockall Trough in the winter of 2013 (left), 
+during the annual survey on the Irish Shelf (right). The rows of vertical dots represent sampling points at different depths (left) 
+and correspond to the blue point locations indicated in the red polygon (left). Measurements in the surface waters of the Rockall 
+Trough between 1991 and 2013 indicated an increase in anthropogenic dissolved inorganic carbon, equivalent to a decrease of 0.050 pH units. 
+This represents an increase in acidity that is comparable to the rate of change in other ocean time series. 
 """
-trendTitle2='Surface Water Dissolved Inorganic Carbon Concentration (µmol/kg) '
+trendTitle2='Surface Water Dissolved Inorganic Carbon Concentration'
 figure_3_14_a=IMAGES_PATH+'OceanicSections/HR_Final_ Winter2017_18 shelf pCO2_2.jpg'
 figure_3_14_b = IMAGES_PATH+'OceanicSections/HR_Final_Summer 2018_final_2.jpg'
 trendCaption2 = """
-Surface water pCO2 measurements in a) Winter 2017-18 and b) Summer 2018, as collected by the RV Celtic Explorer. 
+Surface water pCO\u2082 measurements in a) Winter 2017-18 and b) Summer 2018, as collected by the RV Celtic Explorer. 
+Temporal (seasonal) variations due to increasing primary production, e.g. photosynthesis from the spring phytoplankton 
+bloom and shell formation from growth of organisms, results in increased uptake of pCO\u2082 from water, giving lower surface 
+seawater pCO\u2082 in spring and summer periods. In addition, warming water temperatures can hold less dissolved CO\u2082. Conversely, 
+reduced primary production and the seasonal die-off of phytoplankton in autumn, together with the gradual remineralisation of 
+organic matter, releases CO\u2082 back into the surface waters and therefore the highest concentrations are observed in winter periods.
 """
 
 custom_trend = dbc.Container(

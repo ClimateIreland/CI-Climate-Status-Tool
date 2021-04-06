@@ -124,7 +124,7 @@ def stations_map(df):
     )
 
     buoyTrend = go.Scattermapbox(
-        name='Buoys',
+        name='Buoy',
         lon=buoyDF.Longitude,
         lat=buoyDF.Latitude,
         marker=dict(color=STATION_COLORS['Buoy'],
@@ -151,7 +151,7 @@ def stations_map(df):
     )
 
     climateTrend = go.Scattermapbox(
-        name='Climate',
+        name='Climatological',
         lon=climateDF.Longitude,
         lat=climateDF.Latitude,
         marker=dict(color=STATION_COLORS['Climate'],
@@ -159,12 +159,12 @@ def stations_map(df):
         hovertemplate=stations_map_hovertemplate(climateDF),
     )
     stations_map = go.Figure(
-        data=[buoyTrend, 
+        data=[synopticTrend, 
+              climateTrend,
+              buoyTrend, 
               epaTrend,
               nuigTrend,
-              ghgFluxTrend,
-              synopticTrend, 
-              climateTrend,
+              ghgFluxTrend, 
               rainfallTrend, 
               tidbiTTrend, 
               elletTrend, 
@@ -1125,7 +1125,7 @@ def map_3_6():
         '<extra></extra>',)
 
     maceHeadStationsTrace = go.Scattermapbox(
-        name='Maze Head',
+        name='Mace Head',
         lon=maceHeadStationsDF.Longitude,
         lat=maceHeadStationsDF.Latitude,
         text=maceHeadStationsDF.Type,

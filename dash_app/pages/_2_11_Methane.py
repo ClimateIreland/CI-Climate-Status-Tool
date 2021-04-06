@@ -24,21 +24,20 @@ bulletPoint2 = """
 Following a stable period in the late 1990s and early 2000s there has been a 4% increase in CH\u2084 concentrations since 2007 observed at Mace Head. 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Methane (CH\u2084) Concentration at Mace Head (1987-2018)'
+trendChartTitle = 'Methane (CH\u2084) Concentration at Mace Head' #(1987-2018)
 trendChart = figure_2_20()
 
 trendCaption = """
-        Monthly mean methane concentration observed at Mace Head Research Station (1987–2018).     
+Concentration of atmospheric CH\u2084 at the Mace Head station. 
+Average global CH\u2084 concentrations in the atmosphere are now almost 1900 ppb, 
+but the concentrations observed at Mace Head are higher because most of the sources of CH\u2084 are located in the northern hemisphere. 
+Increases were observed between 1987 and 1998. Levels then stabilised until 2007 after which an increasing trend is observed. 
+Recent research suggests that this increase is attributable to the global agricultural and waste sectors as well as the fossil fuel sector.
         """
 
 infrastructureText = """
-Atmospheric CH\u2084 concentrations have been measur
-ed at the Mace Head Atmospheric Research Station, Carna, Co. Galway (
-        red) since 1987 (map 2.11). Given its location at the extreme west of Europe and becau
-        se of prevailing westerly winds, the measurements are representative of the underlying concentra
-        tions of atmospheric methane in the northeast Atlantic area. CH\u2084 concentrations have also been m
-        easured at Carnsore Point, Co. Wexford and Malin Head, Co. Donegal (green) since 2009. This network
-         of Irish measurements is led by NUI Galway as part of the EPA funded Atmospheric Chemistry and Climate Change Network
+Atmospheric CH\u2084 concentrations have been measured at the Mace Head Atmospheric Research Station, Carna, Co. Galway (red) since 1987. 
+CH\u2084 concentrations have also been measured at Carnsore Point, Co. Wexford, and Malin Head, Co. Donegal (green), since 2009.
         """
 infrastructureMap = map_2_11()
 

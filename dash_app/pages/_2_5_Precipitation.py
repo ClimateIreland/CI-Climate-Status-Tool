@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import figure_2_9, map_2_5
+from charts import figure_2_9, map_2_5, empty_chart
 
 chapter_num = '2.5'
 bannerImgSrc = IMAGES_PATH + \
@@ -26,7 +26,7 @@ In Ireland the decade from 2006 to 2015 has been the wettest in the period 1711 
         """
 
 bulletPoint3 = """
-There is evidence that there is an increasing trend in winter rainfall and a decrease in summer rainfall
+There is evidence that there is an increasing trend in winter rainfall and a decrease in summer rainfall.
         """
 bulletPoints = [bulletPoint1, bulletPoint2, bulletPoint3]
 
@@ -34,20 +34,33 @@ trendChartTitle = 'Annual Rainfall Totals and Anomalies'
 trendChart = figure_2_9()
 
 trendCaption = """
-Annual rainfall totals and anomalies averaged over Ireland (1941–2019).
+A time-series graph (1941-2019) of the annual average rainfall totals (yellow bars, right-hand axis) 
+and the annual anomalies, or differences, from the 1961–1990 normal (left-hand axis). 
+A moving average for periods of 11 years is also shown (green line). 
+Since the 1980s an increasing trend can be observed in the 11-year moving average. 
+Compared with an annual average rainfall of 1186mm in the period 1961–1990 (blue line), 
+the last 30-year period (1990–2019) (blue dashed line) shows a 79-mm or almost 7% increase in annual rainfall.
+        """
+
+trendChartTitle2 = 'Wet and Dry Spell Days'
+trendChart2 = empty_chart()
+
+trendCaption2 = """
+Trends in the maximum length of annual wet spell days 
+(maximum number of consecutive days with precipitation of 1mm or above) 
+per decade(left) and the maximum length of annual dry spell days 
+(maximum number of consecutive days with precipitation below 1mm) per decade (right). 
+For example, there is on average 1 additional wet spell day in each decade at Valentia, Co. Kerry, 
+over the six decades analysed. The trends indicate an increase in the length of wet spell days across 
+all of the country; however, no consistent trend is apparent in dry spell days.
         """
 
 infrastructureText = """
-Being a key indicator, precipitation has been measured systematically in 
-Ireland since the late nineteenth century with a peak of over 800 rainfall
-stations in the late 1950s. Currently precipitation is measured at the 25 
-synoptic (red) and 57 climatological (blue) weather stations; in addition, 
-there is a wide network of over 400 voluntary rainfall observers (yellow) 
-(map 2.5). At the synoptic stations, readings are made continuously 
-and reported on the hour; at climate and rainfall stations a daily 
-precipitation total is recorded each day at 09:00 am. 
-There are some gauges in remote locations which are read once a month.  
-All precipitation data since January 1941 are available in digital format. 
+Precipitation is measured at the 25 synoptic (red) and 57 climatological (blue) weather stations; 
+in addition, there is a wide network of over 400 voluntary rainfall observers (yellow). 
+At the synoptic stations, readings are made continuously and reported on the hour; at climatological 
+and rainfall stations a daily precipitation total is recorded each day at 0900. There are some gauges 
+in remote locations that are read once a month.
         """
 infrastructureMap = map_2_5()
 

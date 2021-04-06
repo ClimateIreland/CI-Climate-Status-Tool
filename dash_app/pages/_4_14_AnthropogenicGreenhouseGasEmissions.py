@@ -29,7 +29,7 @@ bulletPoint2 = """
         reductions of synthetic fertiliser and animal manure use in agriculture.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'National Greenhouse Gas Emissions 1990-2018'
+trendChartTitle = 'National Greenhouse Gas Emissions' #1990-2018
 trendChart = figure_4_27()
 
 trendCaption = """
