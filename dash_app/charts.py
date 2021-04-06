@@ -13,9 +13,9 @@ def stations_map(df):
 
     def stations_map_hovertemplate(df):
         return ['Name: {}<br>'.format(n)+
+                'County: {}<br>'.format(cnty)+
                 'Type: {}<br>'.format(t)+
                 'Station No.: {}<br>'.format(sN)+
-                'County: {}<br>'.format(cnty)+
                 'Open Year: {}<br>'.format(oY)+
                 'Close Year: {}<br>'.format(cY)+
                 'Height: {:.2f} m<br>'.format(h)+
@@ -128,8 +128,8 @@ def stations_map(df):
     stations_map = go.Figure(
         data=[buoyTrend, 
               synopticTrend, 
-              rainfallTrend, 
               climateTrend,
+              rainfallTrend, 
               tidbiTTrend, 
               elletTrend, 
               tideGaugeTrend,
