@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart,figure_3_8, map_3_4
+from charts import empty_chart,figure_3_8, map_3_4, figure_3_7_1, figure_3_7_2, figure_3_7_3, figure_3_7_4
 
 chapter_num = '3.4'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Sea_Level_Aldert Otter.jpg'
@@ -27,9 +27,10 @@ bulletPoint2 = """
         risen by approximately 2-3mm/year since the early 1990s.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
+
+# first chart
 trendChartTitle = 'Mean Sea Level - Dublin Port' #(1938-2016)
 trendChart = figure_3_8()
-
 trendCaption = """
 The complete time series for the Dublin Port monthly mean sea level from 1938 to 2016 (updated by Maynooth University). 
 Since the 1980s there has been significant variability in the record, with an upward trend over the last 25 years. 
@@ -37,8 +38,22 @@ The attribution of this recent increase is not certain. However, taken over the 
 Dublin has risen by 1.67 mm per year, consistent with global rates.
         """
 
-trendChartTitle = '4 gauges' 
-trendChart = empty_chart()
+# second chart
+trendChartTitle2 = 'Malin Head'
+trendChart2 = figure_3_7_1()
+
+# third chart
+trendChartTitle3 = 'Ballyglass Harbour'
+trendChart3 = figure_3_7_2()
+
+# fourth chart
+trendChartTitle4 = 'Castletownbare Port'
+trendChart4 = figure_3_7_3()
+
+# fifth chart
+trendChartTitle5 = 'Howth Harbour'
+trendChart5 = figure_3_7_4()
+
 trendCaption2 = """
 Tide gauge measurements at four different locations, in the north, west, south and east respectively, since the mid-2000s. 
 The time series are not yet long enough to accurately determine any trend. Moreover, any land elevation changes due to 
@@ -93,7 +108,112 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+# create a custom layout for >1 chart
+custom_trend =  dbc.Container(
+            className='sr-trends',
+        style={'borderColor': chapter_dict['domain-color']},
+        id='trends',
+        children=[
+            html.H3(
+                className='sr-section-heading',
+                style={'color': chapter_dict['domain-color']},
+                children='Trends',
+            ),
+            # First chart
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle),
+                                dcc.Graph(
+                                    figure=trendChart,
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption
+                                )]
+                            )
+                ]
+            ),
+            # Second chart
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle2),
+                                dcc.Graph(
+                                    figure=trendChart2,
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            # Third chart
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle3),
+                                dcc.Graph(
+                                    figure=trendChart3,
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+        # Fourth chart
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle4),
+                                dcc.Graph(
+                                    figure=trendChart4,
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+        # Fifth chart
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle5),
+                                dcc.Graph(
+                                    figure=trendChart5,
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption2
+                                )]
+                            )
+                ]
+            ),
+        ])
 
+########################################################################################################################
 def create_layout(app):
     return html.Div(
         children=[
@@ -107,11 +227,12 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
+        custom_trend,
+        #     pb.build_trend(trendChartTitle,
+                        #    trendChart,
+                        #    trendCaption,
+                        #    chapter_dict
+                        #    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict
