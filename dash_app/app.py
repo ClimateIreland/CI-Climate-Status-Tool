@@ -23,7 +23,7 @@ from pages import (
     _3_1b_SeaSubsurfaceTemperature,
     _3_4_SeaLevel,
     _3_6_InorganicCarbon,
-    _3_7_Oxygen,
+    _3_7_DissolvedOxygen,
 
     _4_1_RiverDischarge,
     _4_6_LandCover,
@@ -85,8 +85,8 @@ def display_page(pathname):
         return _3_4_SeaLevel.create_layout(app)
     elif pathname == "/_3_6_InorganicCarbon":
         return _3_6_InorganicCarbon.create_layout(app)
-    elif pathname == "/_3_7_Oxygen":
-        return _3_7_Oxygen.create_layout(app)
+    elif pathname == "/_3_7_DissolvedOxygen":
+        return _3_7_DissolvedOxygen.create_layout(app)
     elif pathname == "/_4_1_RiverDischarge":
         return _4_1_RiverDischarge.create_layout(app)
     elif pathname == "/_4_6_LandCover":

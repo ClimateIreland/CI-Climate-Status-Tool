@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_3_1, map_3_1
+from charts import empty_chart, figure_3_1, map_3_1a
 import copy
 
 chapter_num = '3.1a'
@@ -46,7 +46,7 @@ at the Malin Head Atmospheric Research Station, Co. Donegal (yellow), at the Bal
 and at wave buoys (brown and black). A set of coastal temperature sensors (blue) installed predominately at aquaculture sites by 
 the Marine Institute measure temperature but are not accurate enough for climate studies.
         """
-infrastructureMap = map_3_1()
+infrastructureMap = map_3_1a()
 
 infoLinks = [
     {'text': 'Sea Surface Temperature ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',

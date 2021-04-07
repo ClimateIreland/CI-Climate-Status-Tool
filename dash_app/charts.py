@@ -6,46 +6,43 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from settings import *
 
-
+def stations_map_hovertemplate(df):
+    return ['Name: {}<br>'.format(n)+
+            'County: {}<br>'.format(cnty)+
+            'Type: {}<br>'.format(t)+
+            'Station No.: {}<br>'.format(sN)+
+            'Open Year: {}<br>'.format(oY)+
+            'Close Year: {}<br>'.format(cY)+
+            'Height: {:.2f} m<br>'.format(h)+
+            # 'Easting: {}<br>'.format(easting)+
+            # 'Northing: {}<br>'.format(northing)+
+            'Lat: {:.2f} \u00b0<br>'.format(lat)+
+            'Lon: {:.2f} \u00b0<br>'.format(lon)+'<extra></extra>'
+            for n, t, sN, cnty, oY, cY, h, lat, lon in zip(list(df['name']),
+                                                                        list(
+                df['Type']),
+        list(
+                df['Station_Nu']),
+        list(
+                df['County']),
+        list(
+                df['Open_Year']),
+        list(
+                df['Close_Year']),
+        list(
+                df['Height__m_']),
+        # list(
+        #         df['Easting']),
+        # list(
+        #         df['Northing']),
+        list(
+                df['Latitude']),
+        list(
+                df['Longitude']),
+    )]
 
 
 def stations_map(df):
-
-    def stations_map_hovertemplate(df):
-        return ['Name: {}<br>'.format(n)+
-                'County: {}<br>'.format(cnty)+
-                'Type: {}<br>'.format(t)+
-                'Station No.: {}<br>'.format(sN)+
-                'Open Year: {}<br>'.format(oY)+
-                'Close Year: {}<br>'.format(cY)+
-                'Height: {:.2f} m<br>'.format(h)+
-                # 'Easting: {}<br>'.format(easting)+
-                # 'Northing: {}<br>'.format(northing)+
-                'Lat: {:.2f} \u00b0<br>'.format(lat)+
-                'Lon: {:.2f} \u00b0<br>'.format(lon)+'<extra></extra>'
-                for n, t, sN, cnty, oY, cY, h, lat, lon in zip(list(df['name']),
-                                                                            list(
-                    df['Type']),
-            list(
-                    df['Station_Nu']),
-            list(
-                    df['County']),
-            list(
-                    df['Open_Year']),
-            list(
-                    df['Close_Year']),
-            list(
-                    df['Height__m_']),
-            # list(
-            #         df['Easting']),
-            # list(
-            #         df['Northing']),
-            list(
-                    df['Latitude']),
-            list(
-                    df['Longitude']),
-        )]
-
     buoyDF = df.loc[(df['Type'] == 'Buoy') | (df['Type'] == 'BuoySubSurf')]
     flowDF = df.loc[(df['Type'] == 'Flow')]
     ghgFluxDF = df.loc[(df['Type'] == 'GHG_FLUX_TOWER')]
@@ -58,6 +55,7 @@ def stations_map(df):
     tideGaugeDF = df.loc[(df['Type'] == 'TideGauge')]
     elletDF = df.loc[(df['Type'] == 'ExtendedElletLineBuoy')]
     tidbiTDF = df.loc[df['Type'] == 'TidbiT Sea Temperature Station']
+    miDF = df.loc[df['Type'] == 'MI_Survey']
     
     tidbiTTrend = go.Scattermapbox(
         name='tidbiT',
@@ -66,6 +64,15 @@ def stations_map(df):
         marker=dict(color=STATION_COLORS['TidbiT'],
                     size=7),
         hovertemplate=stations_map_hovertemplate(tidbiTDF),
+    )
+
+    miTrend = go.Scattermapbox(
+        name='MI_Survey',
+        lon=miDF.Longitude,
+        lat=miDF.Latitude,
+        marker=dict(color='orange',
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(miDF),
     )
 
     ghgFluxTrend = go.Scattermapbox(
@@ -169,7 +176,8 @@ def stations_map(df):
               tidbiTTrend, 
               elletTrend, 
               tideGaugeTrend,
-              waveRideTrend],
+              waveRideTrend,
+              miTrend],
         layout=MAP_LAYOUT)
     stations_map.update_layout(
         mapbox=dict(bearing=0,
@@ -776,7 +784,7 @@ def map_2_12():
 
 def figure_3_1():
     """
-    Ocean Surface Temperature Totals and Anomalies Trend
+    Sea Surface Temperature Totals and Anomalies Trend
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Figure3.1/'
@@ -868,7 +876,7 @@ def figure_3_1():
 
 def figure_3_3():
     """
-    Ocean Sub Surface Temperature Totals and Anomalies Trend
+    Sea Subsurface Temperature Totals and Anomalies Trend
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Figure3.3/'
@@ -958,7 +966,7 @@ def figure_3_3():
 
 def map_3_1():
     """
-    Ocean Surface and Sub-surface Air Temperature infrastructure map
+    Ocean Surface and Subsurface Temperature infrastructure map
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Map3.1/'
@@ -978,7 +986,33 @@ def map_3_1():
     tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
     tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
     tidbiDFNew['Type']=tidbiDF["datasetNam"]
-    combinedDF = pd.concat([stationsDF,rockallDF,tidbiDFNew])
+    combinedDF = pd.concat([stationsDF,rockallDF, tidbiDFNew])
+    map_3_1a=stations_map(combinedDF)
+    return map_3_1a
+
+def map_3_1a():
+    """
+    Sea Surface Temperature infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Map3.1/'
+        stationsDF = pd.read_csv(
+                    data_path+'Map3.1_StationTable_MI.txt')
+
+        rockallDF = pd.read_csv(
+                    data_path+'Map3.1_StationTable_RockallTroughSection.txt')
+        tidbiDF = pd.read_csv(
+                    data_path+'Map3.1_StationTable_TidbiT.txt')
+    except:
+        return empty_chart()
+    tidbiDFNew=pd.DataFrame(columns=rockallDF.columns)
+    tidbiDFNew['name']=tidbiDF["localId"]
+    tidbiDFNew['Latitude']=tidbiDF["latitude"]
+    tidbiDFNew['Longitude']=tidbiDF["longitude"]
+    tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
+    tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
+    tidbiDFNew['Type']=tidbiDF["datasetNam"]
+    combinedDF = pd.concat([stationsDF, tidbiDFNew])
     map_3_1=stations_map(combinedDF)
     return map_3_1
 
@@ -1166,6 +1200,26 @@ def figure_3_7_4():
                             )
     return figure_3_7_4
 
+def map_3_1b():
+    """
+    Sea Subsurface Temperature infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Map3.1/'
+        stationsDF = pd.read_csv(
+                    data_path+'Map3.1_StationTable_MI.txt')
+        stationsDF_subsurface = stationsDF[stationsDF['name'].isin(['M6_Buoy', 'SmartBay Wave Buoy'])]
+
+        rockallDF = pd.read_csv(
+                    data_path+'Map3.1_StationTable_RockallTroughSection.txt')
+        # tidbiDF = pd.read_csv(
+        #             data_path+'Map3.1_StationTable_TidbiT.txt')
+    except:
+        return empty_chart()
+
+    combinedDF = pd.concat([stationsDF_subsurface,rockallDF])
+    map_3_1b=stations_map(combinedDF)
+    return map_3_1b
 
 def figure_3_8():
     """
@@ -1231,8 +1285,66 @@ def map_3_4():
     tidalGaugeDFNew['Longitude']=tidalGaugeDF["Longitude"]
     tidalGaugeDFNew['Easting']=tidalGaugeDF["Easting"]
     tidalGaugeDFNew['Northing']=tidalGaugeDF["Northing"]
-    tidalGaugeDFNew['Type']=tidalGaugeDFNew['Type'].apply(lambda x: 'TideGauge')
-    map_3_4=stations_map(tidalGaugeDFNew)
+    tidalGaugeDFNew['Station_Nu']=tidalGaugeDF["Station_No"]
+    tidalGaugeDFNew['Body_Respo']=tidalGaugeDF["Body_Respo"]
+    tidalGaugeDFNew['Type']="TideGauge"
+    df=tidalGaugeDFNew
+    miDF = df.loc[(df['Body_Respo'] == 'MI')]
+    opwDF = df.loc[(df['Body_Respo'] == 'OPW')]
+    epaDF = df.loc[(df['Body_Respo'] == 'EPA')]
+    pcDF = df.loc[df['Body_Respo'].isin(['POC', 'SFPC','LHC','BHC','DLPC'])]
+    laDF = df.loc[df['Body_Respo'].isin(['Cork City Council', 'Dublin City Council'])]
+    miTrend = go.Scattermapbox(
+        name='Marine Institute',
+        lon=miDF.Longitude,
+        lat=miDF.Latitude,
+        marker=dict(color='blue',
+                    size=7),
+        hovertemplate='Maintainer: '+ miDF.Body_Respo + '<br>'+
+                     stations_map_hovertemplate(miDF),
+    )
+    opwTrend = go.Scattermapbox(
+            name='OPW',
+            lon=opwDF.Longitude,
+            lat=opwDF.Latitude,
+            marker=dict(color='yellow',
+                        size=7),
+            hovertemplate='Maintainer: '+ opwDF.Body_Respo + '<br>'+
+                        stations_map_hovertemplate(opwDF),
+        )
+
+    pcTrend = go.Scattermapbox(
+            name='Port Company',
+            lon=pcDF.Longitude,
+            lat=pcDF.Latitude,
+            marker=dict(color='brown',
+                        size=7),
+            hovertemplate='Maintainer: '+ pcDF.Body_Respo + '<br>'+
+                        stations_map_hovertemplate(pcDF),
+        )
+    laTrend = go.Scattermapbox(
+            name='Local Authority',
+            lon=laDF.Longitude,
+            lat=laDF.Latitude,
+            marker=dict(color='orange',
+                        size=7),
+            hovertemplate='Maintainer: '+ laDF.Body_Respo + '<br>'+
+                        stations_map_hovertemplate(laDF))
+    map_3_4 = go.Figure(
+            data=[miTrend,
+                opwTrend,
+                pcTrend,
+                laTrend
+                ],
+            layout=MAP_LAYOUT)
+    map_3_4.update_layout(
+            mapbox=dict(bearing=0,
+                    center=dict(
+                        lat=54,
+                        lon=349
+                    ),
+                    pitch=0,
+                    zoom=4.2))
     return map_3_4
 
 def figure_3_15():
@@ -1278,8 +1390,46 @@ def figure_3_15():
 
     return figure_3_15
 
-
 def map_3_6():
+    """
+    Dissolved Oxygen infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.7Oxygen/Map3.6/'
+        epaStationsDF_origin = pd.read_csv(
+            data_path+'Map3.6_StationTable_EPA_Stations.txt')
+        maceHeadStationsDF = pd.read_csv(
+            data_path+'Map3.6_StationTable_MaceHead.txt')
+        miStationsDF_origin = pd.read_csv(
+            data_path+'Map3.6_StationTable_MI_SurveysStations.txt')
+        smartBayStationsDF = pd.read_csv(
+            data_path+'Map3.6_StationTable_SmartBayObservatory.txt')
+    except:
+        return empty_chart()
+    columns=['FID', 'County', 'Station_Nu', 'name', 'Height__m_', 'Easting',
+       'Northing', 'Latitude', 'Longitude', 'Open_Year', 'Close_Year', 'Type']
+    epaStationsDF=pd.DataFrame(columns=columns)
+    epaStationsDF['Station_Nu']=epaStationsDF_origin['Station_Co']
+    epaStationsDF['Latitude']=epaStationsDF_origin['latitude']
+    epaStationsDF['Longitude']=epaStationsDF_origin['longitude']
+    epaStationsDF['Type']='EPA'
+    miStationsDF=pd.DataFrame(columns=columns)
+
+    miStationsDF['Station_Nu']=miStationsDF_origin.Station.unique()
+
+    for index, row in miStationsDF.iterrows():
+    #     print(row['Latitude'])
+        stationRow=miStationsDF_origin[miStationsDF_origin.Station == row['Station_Nu']].iloc[0]
+        miStationsDF.at[index,'Latitude']=stationRow['Latitude']
+        miStationsDF.at[index,'Longitude']=stationRow['Longitude']
+        miStationsDF.at[index,'Type']='MI_Survey'
+
+    combinedDF = pd.concat([epaStationsDF,smartBayStationsDF,maceHeadStationsDF, miStationsDF])
+    map_3_6=stations_map(combinedDF)
+
+    return map_3_6
+
+def map_3_6_old():
     """
     Dissolved Oxygen infrastructure map
     """
@@ -1361,6 +1511,27 @@ def map_3_6():
                               maceHeadStationsTrace],
                         layout=MAP_LAYOUT)
 
+    return map_3_6
+
+def map_3_6_new():
+    """
+    Dissolved Oxygen infrastructure map
+    """
+
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.7Oxygen/Map3.6/'
+        epaStationsDF = pd.read_csv(
+            data_path+'Map3.6_StationTable_EPA_Stations.txt')
+        maceHeadStationsDF = pd.read_csv(
+            data_path+'Map3.6_StationTable_MaceHead.txt')
+        MIStationsDF_origin = pd.read_csv(
+            data_path+'Map3.6_StationTable_MI_SurveysStations.txt')
+        smartBayStationsDF = pd.read_csv(
+            data_path+'Map3.6_StationTable_SmartBayObservatory.txt')
+    except:
+        return empty_chart()
+    
+    map_3_6 = 6
     return map_3_6
 
 def map_4_1():
