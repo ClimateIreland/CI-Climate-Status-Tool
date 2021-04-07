@@ -158,7 +158,7 @@ CHAPTERS = [
     {
         'chapter-num': '3.1b',
         'id': 'ssop-3',
-        'title': 'Sea Sub-surface Temperature',
+        'title': 'Sea Subsurface Temperature',
         'href': '/_3_1b_SeaSubsurfaceTemperature',
         'icon-lg-src': 'subsurface-temperature_1.png',
         'icon-lg-hover-src': 'subsurface-temperature_1_hover.png',
@@ -207,7 +207,7 @@ CHAPTERS = [
         'chapter-num': '3.7',
         'id': 'obgc-2',
         'title': 'Dissolved Oxygen',
-        'href': '/_3_7_Oxygen',
+        'href': '/_3_7_DissolvedOxygen',
         'icon-lg-src': 'oxygen.png',
         'icon-lg-hover-src': 'oxygen_hover.png',
         'icon-src': 'ico-obgc-oxygen.png',

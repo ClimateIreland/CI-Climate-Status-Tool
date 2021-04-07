@@ -53,19 +53,19 @@ infoLinks = [
     {'text': 'Inorganic Carbon ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/inorganic-carbon/'},
 
-     {'text': 'Ocean Acidification Observing in Coastal, Shelf and Ocean Waters around Ireland, (2019) E. McGovern, T. McGrath, M. Cronin,  G. O’Donnell, B. Ward, C. Cusack, R. Cave, Poster at Conference: 4th Global Ocean Acidification Observing Network (GOA-ON) International Workshop, Hangzhou',
+    {'text': 'Ocean Acidification Observing in Coastal, Shelf and Ocean Waters around Ireland, (2019) E. McGovern, T. McGrath, M. Cronin,  G. O’Donnell, B. Ward, C. Cusack, R. Cave, Poster at Conference: 4th Global Ocean Acidification Observing Network (GOA-ON) International Workshop, Hangzhou',
      'url': 'https://www.researchgate.net/publication/332950133_Ocean_Acidification_Observing_in_Coastal_Shelf_and_Ocean_Waters_around_Ireland'},
 
-     {'text': 'Information about ICES',
+    {'text': 'Information about ICES',
      'url': 'https://www.ices.dk/'},
 
-     {'text': 'Surface Ocean CO\u2082 Atlas',
+    {'text': 'Surface Ocean CO\u2082 Atlas',
      'url': 'http://www.socat.info'},
 
-     {'text': 'The GO-SHIP programme',
+    {'text': 'The GO-SHIP programme',
      'url': 'https://www.go-ship.org/About.html'},
 
-     {'text': 'The Marine Institute operated Research Vessels',
+    {'text': 'The Marine Institute operated Research Vessels',
      'url': 'https://www.marine.ie/Home/site-area/infrastructure-facilities/research-vessels/research-vessels'},
 ]
 
@@ -74,8 +74,9 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
-trendTitle1='Deep-water Dissolved Inorganic Carbon Concentration'
-figure_3_13 = IMAGES_PATH+'OceanicSections/Figure3.13_DeepWater_DissolvedInorganicConcentration_RockallTrough.png'
+trendTitle1 = 'Deep-water Dissolved Inorganic Carbon Concentration'
+figure_3_13 = IMAGES_PATH + \
+    'OceanicSections/Figure3.13_DeepWater_DissolvedInorganicConcentration_RockallTrough.png'
 trendCaption1 = """
 Deep-water dissolved inorganic carbon concentration (µmol/kg) section for the Rockall Trough in the winter of 2013 (left), 
 during the annual survey on the Irish Shelf (right). The rows of vertical dots represent sampling points at different depths (left) 
@@ -83,8 +84,8 @@ and correspond to the blue point locations indicated in the red polygon (left). 
 Trough between 1991 and 2013 indicated an increase in anthropogenic dissolved inorganic carbon, equivalent to a decrease of 0.050 pH units. 
 This represents an increase in acidity that is comparable to the rate of change in other ocean time series. 
 """
-trendTitle2='Surface Water Dissolved Inorganic Carbon Concentration'
-figure_3_14_a=IMAGES_PATH+'OceanicSections/HR_Final_ Winter2017_18 shelf pCO2_2.jpg'
+trendTitle2 = 'Surface Water Dissolved Inorganic Carbon Concentration'
+figure_3_14_a = IMAGES_PATH+'OceanicSections/HR_Final_ Winter2017_18 shelf pCO2_2.jpg'
 figure_3_14_b = IMAGES_PATH+'OceanicSections/HR_Final_Summer 2018_final_2.jpg'
 trendCaption2 = """
 Surface water pCO\u2082 measurements in a) Winter 2017-18 and b) Summer 2018, as collected by the RV Celtic Explorer. 
@@ -105,7 +106,7 @@ custom_trend = dbc.Container(
             style={'color': chapter_dict['domain-color']},
             children='Trends',
         ),
-                dbc.Row(
+        dbc.Row(
             children=[
                 dbc.Col(className="col-md-10 offset-md-1",
                         children=[
@@ -116,7 +117,7 @@ custom_trend = dbc.Container(
                                 className='w-100',
                                 src=figure_3_13
                             )
-                                ]
+                        ]
                         )
             ]
         ),
@@ -146,9 +147,9 @@ custom_trend = dbc.Container(
                                 className='sr-chart-title',
                                 children='Winter 2017-18 '),
                             html.Img(
-                                style={"marginTop":"-40px",
-                                       "position":"relative",
-                                       "z-index":"-1"},
+                                style={"marginTop": "-40px",
+                                       "position": "relative",
+                                       "z-index": "-1"},
                                 src=figure_3_14_a
                             )]
                         ),
@@ -157,13 +158,13 @@ custom_trend = dbc.Container(
                             html.H4(
                                 className='sr-chart-title',
                                 children='Summer 2018'),
-                        html.Img(
-                                style={"marginTop":"-40px",
-                                       "position":"relative",
-                                       "z-index":"-1"},
+                            html.Img(
+                                style={"marginTop": "-40px",
+                                       "position": "relative",
+                                       "z-index": "-1"},
                                 src=figure_3_14_b
                             )
-                                ]
+                        ]
                         )
             ]
         ),
@@ -174,8 +175,8 @@ custom_trend = dbc.Container(
                     children=[
                         html.P(
                             className='sr-chart-caption',
-                            style={"marginTop":"-40px",
-                                   "position":"relative",},
+                            style={"marginTop": "-40px",
+                                   "position": "relative", },
                             children=trendCaption2
                         )]
                 )
@@ -183,6 +184,38 @@ custom_trend = dbc.Container(
         ),
 
     ])
+
+custom_infrastructure = dbc.Container(
+    className='sr-infrastructure',
+    style={'borderColor': chapter_dict['domain-color']},
+    id='infrastructure',
+    children=[
+        html.H3(
+            className='sr-section-heading',
+            children='Infrastructure',
+            style={'color': chapter_dict['domain-color']},
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-12 col-md-6 my-auto",
+                        children=[
+                            html.P(infrastructureText)]
+                        ),
+                dbc.Col(className="col-12 col-md-6 my-auto",
+                        children=[html.Div(
+                            style={"position": "relative"},
+                            children=[html.Img(
+                                style={"width":"100%"},
+                                src=IMAGES_PATH+'OceanicSections/Celtic_Explorer_TomaszSzumski.jpg'
+                            ),
+                                html.Span(
+                                className='sr-img-credit',
+                                children='Credit: Tomasz Szumski'
+                            ),
+                        ])])
+            ])
+    ])
+
 
 def create_layout(app):
     return html.Div(
@@ -198,15 +231,16 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
-            pb.build_infrastructure(infrastructureText,
-                                    infrastructureMap,
-                                    chapter_dict
-                                    ),
+            #     pb.build_trend(trendChartTitle,
+            #                    trendChart,
+            #                    trendCaption,
+            #                    chapter_dict
+            #                    ),
+            custom_infrastructure,
+            # pb.build_infrastructure(infrastructureText,
+            #                         infrastructureMap,
+            #                         chapter_dict
+            #                         ),
             pb.build_info(infoLinks,
                           chapter_dict),
 

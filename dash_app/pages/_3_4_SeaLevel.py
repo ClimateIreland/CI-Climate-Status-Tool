@@ -37,8 +37,8 @@ The attribution of this recent increase is not certain. However, taken over the 
 Dublin has risen by 1.67 mm per year, consistent with global rates.
         """
 
-trendChartTitle = '4 gauges' 
-trendChart = empty_chart()
+trendChartTitle2 = '4 gauges' 
+trendChart2 = empty_chart()
 trendCaption2 = """
 Tide gauge measurements at four different locations, in the north, west, south and east respectively, since the mid-2000s. 
 The time series are not yet long enough to accurately determine any trend. Moreover, any land elevation changes due to 

@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_3_3, map_3_1
+from charts import empty_chart, figure_3_3, map_3_1b
 import copy
 
 chapter_num = '3.1b'
@@ -40,7 +40,7 @@ Measurements of subsurface ocean temperature in Irish waters are made by the Mar
 and at the SmartBay Observatory (black dot) in Galway Bay. Since 2008, the Marine Institute has deployed 20 Argo floats in the North Atlantic; 
 these underwater autonomous profilers measure temperature and salinity down to a depth of 2000 m.
         """
-infrastructureMap = map_3_1()
+infrastructureMap = map_3_1b()
 
 infoLinks = [
     {'text': 'Sea Surface Temperature ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',

@@ -34,7 +34,7 @@ trendChart = figure_2_22()
 trendCaption = """
 Monthly mean N\u2082O concentration observed at Adrigole (1978-1984) and Mace Head Research Station (1987–2018). 
 A steady increase is observed, with concentrations now above 330 ppb. 
-This is a 20% increase compared to the pre-industrial era when N2O global concentrations were around 270 ppb.
+This is a 20% increase compared to the pre-industrial era when N\u2082O global concentrations were around 270 ppb.
         """
 # second chart
 trendChartTitle2 = 'CFC-12 Concentration' #(1978-2018)
