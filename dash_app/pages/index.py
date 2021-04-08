@@ -338,13 +338,15 @@ menu_list = dbc.Container(
                     )
                     ]),
 
+
+            ##################################
             dbc.Col(className="col-12  col-md-4",
                     children=[html.Ul(
                         className='sr-menu-ul',
-                        style={'color': OCEAN_COLOR},
+                        style={'color': ATMOSPHERE_COLOR},
                         children=[html.Li(html.H4('Ocean'))] +
                         [html.Li(children=[dcc.Link(
-                            style={'color': OCEAN_COLOR},
+                            style={'color': ATMOSPHERE_COLOR},
                             className='sr-menu-chapter',
                             children=[
                                 dbc.Row(
@@ -365,9 +367,49 @@ menu_list = dbc.Container(
                                 )
                             ],
                             href=chapter['href']
-                        )]) for chapter in ocean_chapters]
+                        )]) for chapter in ocean_chapters] +
+                        [html.Li(children=[html.Div(
+                            style={'color': OCEAN_COLOR},
+                            className='sr-menu-chapter',
+                            children=[
+                                dbc.Row(
+                                    children=[
+                                        dbc.Col(
+                                            className='text-center',
+                                            style={'font-style': 'italic'},
+                                            children="Coming Soon"
+                                        )
+                                    ]
+                                )
+                            ],
+                        )])] +
+                        [html.Li(children=[html.Div(
+                            style={'color': OCEAN_COLOR},
+                            className='sr-menu-chapter',
+                            children=[
+                                dbc.Row(
+                                    children=[
+                                        dbc.Col(
+                                            className='col-2 p-0 text-right my-auto',
+                                            children=[
+                                                html.Img(
+                                                    className='sr-menu-list-icon',
+                                                    style={"opacity": "0.4"},
+                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                            ]
+                                        ),
+                                        dbc.Col(
+                                            className='col-10',
+                                            style={"opacity": "0.4"},
+                                            children=chapter['title']
+                                        )
+                                    ]
+                                )
+                            ],
+                        )]) for chapter in ocean_chapters_dev]
                     )
                     ]),
+            ######################################
             dbc.Col(className="col-12  col-md-4",
                     children=[html.Ul(
                         className='sr-menu-ul',
@@ -395,8 +437,46 @@ menu_list = dbc.Container(
                                 )
                             ],
                             href=chapter['href']
-
-                        )]) for chapter in terrestrial_chapters]
+                        )]) for chapter in terrestrial_chapters] +
+                        [html.Li(children=[html.Div(
+                            style={'color': TERRESTRIAL_COLOR},
+                            className='sr-menu-chapter',
+                            children=[
+                                dbc.Row(
+                                    children=[
+                                        dbc.Col(
+                                            className='text-center',
+                                            style={'font-style': 'italic'},
+                                            children="Coming Soon"
+                                        )
+                                    ]
+                                )
+                            ],
+                        )])] +
+                        [html.Li(children=[html.Div(
+                            style={'color': TERRESTRIAL_COLOR},
+                            className='sr-menu-chapter',
+                            children=[
+                                dbc.Row(
+                                    children=[
+                                        dbc.Col(
+                                            className='col-2 p-0 text-right my-auto',
+                                            children=[
+                                                html.Img(
+                                                    className='sr-menu-list-icon',
+                                                    style={"opacity": "0.4"},
+                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                            ]
+                                        ),
+                                        dbc.Col(
+                                            className='col-10',
+                                            style={"opacity": "0.4"},
+                                            children=chapter['title']
+                                        )
+                                    ]
+                                )
+                            ],
+                        )]) for chapter in terrestrial_chapters_dev]
                     )
                     ]),
         ])
@@ -410,15 +490,15 @@ def create_layout(app):
             intro,
             menu_graphic,
             menu_list,
-            dbc.Row(
-                dbc.Col(
-                    children=[
-                        html.P(
-                            className='sr-section-title text-center',
-                            style={'color': '#08839b'},
-                            children='More Chapters in Development'
-                        )])
-            ),
+            # dbc.Row(
+            #     dbc.Col(
+            #         children=[
+            #             html.P(
+            #                 className='sr-section-title text-center',
+            #                 style={'color': '#08839b'},
+            #                 children='More Chapters in Development'
+            #             )])
+            # ),
             dbc.Row(
                 dbc.Col(
                     className="",
