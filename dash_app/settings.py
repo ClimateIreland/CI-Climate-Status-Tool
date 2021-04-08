@@ -867,6 +867,6 @@ IMAGES_PATH = 'assets/images/'
 
 PROJECT_PATH = pathlib.Path(__file__).parent.parent
 if os.path.isdir(str(PROJECT_PATH)+'/data'):
-    DATA_PATH = "/Users/james/University College Cork/Camaro, Walther - Status_Tool/"
+    DATA_PATH = str(PROJECT_PATH)+'/data/'
 else:
     DATA_PATH = "/home/data/"
