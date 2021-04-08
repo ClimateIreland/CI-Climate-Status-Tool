@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart,figure_3_8, map_3_4, figure_3_7_1, figure_3_7_2, figure_3_7_3, figure_3_7_4
+from charts import empty_chart,figure_3_8, map_3_4, figure_3_7, figure_3_7_1, figure_3_7_2, figure_3_7_3, figure_3_7_4
 
 chapter_num = '3.4'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Sea_Level_Aldert Otter.jpg'
@@ -29,7 +29,7 @@ bulletPoint2 = """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
 # first chart
-trendChartTitle = 'Mean Sea Level - Dublin Port' #(1938-2016)
+trendChartTitle = 'Mean Monthly Sea Level - Dublin Port' #(1938-2016)
 trendChart = figure_3_8()
 trendCaption = """
 The complete time series for the Dublin Port monthly mean sea level from 1938 to 2016 (updated by Maynooth University). 
@@ -140,6 +140,31 @@ custom_trend =  dbc.Container(
                                 html.P(
                                     className='sr-chart-caption',
                                     children=trendCaption
+                                )]
+                            )
+                ]
+            ),
+                        # Second chart
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children="Mean Monthly Sea Level - Ballyglass, Casteltownbare, Howth Harbour and Malin Head"),
+                                dcc.Graph(
+                                    figure=figure_3_7(),
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption2
                                 )]
                             )
                 ]

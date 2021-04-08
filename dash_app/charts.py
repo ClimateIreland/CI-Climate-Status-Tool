@@ -1016,19 +1016,101 @@ def map_3_1a():
     map_3_1=stations_map(combinedDF)
     return map_3_1
 
+def figure_3_7():
+    """
+    Sea Level Monthly Mean, Ballyglass, Casteltownbare, Howth Harbout, Malin head
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
+        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
+                         parse_dates=['Date'],
+                         dayfirst=True)
+    except:
+        return empty_chart()
+
+    ballyglassTrace = go.Scatter(x=df["Date"],
+                     y=df["Ballyglass_MonthlyAverage_m"],
+                     name='Ballyglass',
+                     mode='lines',
+                     line_shape='spline',
+                     line=dict(
+                            color='#ff5768',
+                            width=2),
+                        hovertemplate='%{x}<br>' +
+                            '<b>Ballyglass</b><br>' +
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>',
+                            )
+
+    castletownbareTrace = go.Scatter(x=df["Date"],
+                     y=df["Castletownbare_MonthlyAverage_m"],
+                     name='Castletownbare',
+                     mode='lines', 
+                     line_shape='spline',
+                     line=dict(
+                            color='#ff96c5',
+                            width=2),
+                      hovertemplate='%{x}<br>' +
+                            '<b>Castletownbare</b><br>' +
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>',
+                            )
+
+    howthHarbourTrace = go.Scatter(x=df["Date"],
+                     y=df["HowthHarbour_MonthlyAverage_m"],
+                     name='Howth Harbour',
+                     mode='lines',
+                     line_shape='spline',
+                     line=dict(
+                            color='#ffbf65',
+                            width=2),
+                        hovertemplate='%{x}<br>' +
+                            '<b>Howth Harbour</b><br>' +
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>',
+                            )
+
+    malinHeadTrace = go.Scatter(x=df["Date"],
+                     y=df["MalinHead_MonthlyAverage_m"],
+                     name='Malin Head',
+                     mode='lines',
+                     line_shape='spline',
+                     line=dict(
+                            color='#00a5e3',
+                            width=2),
+                        hovertemplate='%{x}<br>' +
+                            '<b>Malin Head</b><br>' +
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>',
+                            )
+    figure_3_7=go.Figure(data=[
+                           malinHeadTrace,
+                           ballyglassTrace,
+                           castletownbareTrace,
+                           howthHarbourTrace,
+                           ],
+                    layout=TIMESERIES_LAYOUT)
+    figure_3_7.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
+                            range=[-0.45, 0.45],
+                            showgrid=False,
+                            fixedrange=True,
+                            )
+    figure_3_7.update_xaxes(title_text='Year',
+                            range=['2003-01-01', '2020-06-30'],)
+    figure_3_7.update_layout(legend = dict(title=dict(text='<b>Click to Toggle Trend</b>',
+                                                      side='top'),
+                                            itemclick='toggle'))
+    return figure_3_7
+
 def figure_3_7_1():
     """
     Sea Level Malin Head
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        xls = pd.ExcelFile(
-            data_path+'malinHead.xlsx')
-        df = pd.read_excel(xls, 'Sheet1')
+        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
+                         parse_dates=['Date'],
+                         dayfirst=True)
     except:
         return empty_chart()
     monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["MonthlyAverage_m"],
+                     y=df["MalinHead_MonthlyAverage_m"],
                     #  text=dataDF["11 Year Moving Average Totals"],
                      name='Malin Head',
                      connectgaps=False,
@@ -1038,7 +1120,8 @@ def figure_3_7_1():
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
                       hovertemplate='%{x}<br>' +
-                            '<b>Monthly Average: %{y:.2f} m<extra></extra></b>'
+                            '<b>Monthly Average</b><br>' +
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
 
     figure_3_7_1 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -1048,7 +1131,7 @@ def figure_3_7_1():
 
     figure_3_7_1.update_layout(TIMESERIES_LAYOUT)
 
-    figure_3_7_1.update_yaxes(title_text='Sea Level (metres) relative to OD Malin',
+    figure_3_7_1.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
                             range=[-0.45, 0.45],
                             showgrid=False,
                             fixedrange=True,
@@ -1068,13 +1151,13 @@ def figure_3_7_2():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        xls = pd.ExcelFile(
-            data_path+'ballyglass.xlsx')
-        df = pd.read_excel(xls, 'Sheet1')
+        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
+                         parse_dates=['Date'],
+                         dayfirst=True)
     except:
         return empty_chart()
     monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["MonthlyAverage_m"],
+                     y=df["Ballyglass_MonthlyAverage_m"],
                     #  text=dataDF["11 Year Moving Average Totals"],
                      name='Ballyglass',
                      connectgaps=False,
@@ -1084,7 +1167,8 @@ def figure_3_7_2():
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
                       hovertemplate='%{x}<br>' +
-                            '<b>Monthly Average: %{y:.2f} m<extra></extra></b>'
+                            '<b>Monthly Average</b><br>' +
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
 
     figure_3_7_2 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -1094,7 +1178,7 @@ def figure_3_7_2():
 
     figure_3_7_2.update_layout(TIMESERIES_LAYOUT)
 
-    figure_3_7_2.update_yaxes(title_text='Sea Level (metres) relative to OD Malin',
+    figure_3_7_2.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
                             range=[-0.45, 0.45],
                             showgrid=False,
                             fixedrange=True,
@@ -1114,13 +1198,13 @@ def figure_3_7_3():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        xls = pd.ExcelFile(
-            data_path+'castletownbare.xlsx')
-        df = pd.read_excel(xls, 'Sheet1')
+        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
+                         parse_dates=['Date'],
+                         dayfirst=True)
     except:
         return empty_chart()
     monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["MonthlyAverage_m"],
+                     y=df["Castletownbare_MonthlyAverage_m"],
                     #  text=dataDF["11 Year Moving Average Totals"],
                      name='Castletownbare',
                      connectgaps=False,
@@ -1129,8 +1213,9 @@ def figure_3_7_3():
                      line=dict(
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
-                      hovertemplate='%{x}<br>' +
-                            '<b>Monthly Average: %{y:.2f} m<extra></extra></b>'
+                     hovertemplate='%{x}<br>' +
+                            '<b>Monthly Average</b><br>' +
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
 
     figure_3_7_3 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -1140,7 +1225,7 @@ def figure_3_7_3():
 
     figure_3_7_3.update_layout(TIMESERIES_LAYOUT)
 
-    figure_3_7_3.update_yaxes(title_text='Sea Level (metres) relative to OD Malin',
+    figure_3_7_3.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
                             range=[-0.45, 0.45],
                             showgrid=False,
                             fixedrange=True,
@@ -1160,13 +1245,13 @@ def figure_3_7_4():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        xls = pd.ExcelFile(
-            data_path+'howthHarbour.xlsx')
-        df = pd.read_excel(xls, 'Sheet1')
+        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
+                         parse_dates=['Date'],
+                         dayfirst=True)
     except:
         return empty_chart()
     monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["MonthlyAverage_m"],
+                     y=df["HowthHarbour_MonthlyAverage_m"],
                     #  text=dataDF["11 Year Moving Average Totals"],
                      name='Howth Harbour',
                      connectgaps=False,
@@ -1175,8 +1260,9 @@ def figure_3_7_4():
                      line=dict(
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
-                      hovertemplate='%{x}<br>' +
-                            '<b>Monthly Average: %{y:.2f} m<extra></extra></b>'
+                    hovertemplate='%{x}<br>' +
+                            '<b>Monthly Average</b><br>' +
+                            'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
 
     figure_3_7_4 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -1186,7 +1272,7 @@ def figure_3_7_4():
 
     figure_3_7_4.update_layout(TIMESERIES_LAYOUT)
 
-    figure_3_7_4.update_yaxes(title_text='Sea Level (metres) relative to OD Malin',
+    figure_3_7_4.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
                             range=[-0.45, 0.45],
                             showgrid=False,
                             fixedrange=True,
@@ -1262,7 +1348,7 @@ def figure_3_8():
                                 )
     figure_3_8=go.Figure(data=[monthlyTrace, annualTrace], layout=TIMESERIES_LAYOUT)
     figure_3_8.update_layout(
-        yaxis=dict(title='Sea Level (m) relative to OD Malin'),
+        yaxis=dict(title='Sea Level (m) Relative to OD Malin'),
         xaxis=dict(title='Date'),
         hovermode='closest')
     return figure_3_8
