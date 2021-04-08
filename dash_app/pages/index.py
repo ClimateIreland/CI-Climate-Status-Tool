@@ -187,9 +187,9 @@ menu_graphic = dbc.Container(
         html.Div(
             id='sop-text',
             children='Surface Ocean Physics'),
-        # html.Div(
-        #     id='obe-text',
-        #     children='Ocean Biology / Ecosystems'),
+        html.Div(
+            id='obe-text',
+            children='Ocean Biology / Ecosystems'),
         html.Div(
             id='obgc-text',
             children='Ocean Biogeochemistry'),
