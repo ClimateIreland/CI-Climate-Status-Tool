@@ -986,7 +986,7 @@ def map_3_1():
     tidbiDFNew['Latitude']=tidbiDF["latitude"]
     tidbiDFNew['Longitude']=tidbiDF["longitude"]
     tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
-    # tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
+    # tidbiDFNew['Close_Year']=""
     tidbiDFNew['Type']=tidbiDF["datasetNam"]
     combinedDF = pd.concat([stationsDF,rockallDF, tidbiDFNew])
     map_3_1a=stations_map(combinedDF)
@@ -1012,7 +1012,7 @@ def map_3_1a():
     tidbiDFNew['Latitude']=tidbiDF["latitude"]
     tidbiDFNew['Longitude']=tidbiDF["longitude"]
     tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
-    tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
+    # tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
     tidbiDFNew['Type']=tidbiDF["datasetNam"]
     combinedDF = pd.concat([stationsDF, tidbiDFNew])
     map_3_1=stations_map(combinedDF)
@@ -2001,9 +2001,9 @@ def figure_4_12():
         elif row.Month == 12 and row.Day < 32:
             faparDF.at[index, 'xAxis'] = 36
     my_text = ['{}<br>'.format(date)+
-               'Min: {:.1%}<br>'.format(mn)+
-               '<b>Mean: {:.1%}</b><br>'.format(mean)+
-               'Max: {:.1%}<br>'.format(mx)
+            #    'Min: {:.1%}<br>'.format(mn)+
+               '<b>Mean: {:.2}</b><br>'.format(mean)
+            #    'Max: {:.1%}<br>'.format(mx)
                for date, mean, mn,mx, in zip(list(faparDF['Date']),
                                              list(faparDF['Mean']),
                                              list(faparDF['Min']),
@@ -2036,25 +2036,27 @@ def figure_4_12():
         z=faparDF.Mean,
         x=faparDF.xAxis,
         y=faparDF.Year,
-        text=my_text,
+        text=faparDF['Date'],
         colorscale=colorscale,
-        colorbar=dict(title='Mean (%)',
+        colorbar=dict(
+            # lenmode="pixels",
+            # len=100,
                       tickmode='array',
-                      ticktext=['<50', '50-56', '56-65',
-                                '65-72', '72-76', '>76'],
+                      thickness=10,
+                      ticktext=['0.47-0.50', '0.50-0.56', '0.56-0.65',
+                                '0.65-0.72', '0.72-0.76', '>0.76'],
                       tickvals=[0.48, 0.52, 0.59, 0.67, 0.735, 0.77]),
-        hovertemplate='%{text}' +
-        '<extra></extra>')
+        hovertemplate='%{text}'+
+        'Mean FAPAR: %{z:.2}<extra></extra>')
 
     figure_4_12 = go.Figure(data=faparTrace, layout=TIMESERIES_LAYOUT)
     figure_4_12.update_layout(
-        # title_text='<b>10-day average FAPAR over Ireland</b>',
         yaxis=dict(
             title='Year',
             nticks=20),
         xaxis=dict(
             title='Month',
-            ticktext=month_list,
+            ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
             showgrid=True, gridwidth=3, gridcolor='black',
             tickvals=[2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35],))
     figure_4_12.add_shape(

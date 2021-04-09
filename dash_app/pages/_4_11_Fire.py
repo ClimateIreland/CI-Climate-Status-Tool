@@ -34,15 +34,19 @@ Number of days on which the fire index was very high or extreme as
 calculated using data from Dublin airport and Shannon airport synoptic stations (1971–2018).
         """
 
-trendChartTitle2 = 'Very High or Extreme Fire Danger'
+trendChartTitle2 = 'Forest Fires in Ireland'
 trendChart2 = IMAGES_PATH+'TerrestrialSections/Figure4.21_ForestFiresInIreland.png'
 trendCaption2 = """
-
+Combined forest area burned (2000 – 2019) and annual Fire Service mobilizations (2000-2018) to bog, grass, and forest fires. 
+Bars: Area burned, dark green public (Coillte) forest, light green private forest. Blue line: number of Fire Service mobilizations. 
+Red line: Trend in mobilisations. Source: Department of Housing, Planning, Community and Local Government and Department of Agriculture, 
+Food and the Marine (DAFM).
         """
-trendChartTitle3 = 'Very High or Extreme Fire Danger'
+trendChartTitle3 = 'Optimised Hotspot Analysis'
 trendChart3 = IMAGES_PATH+'TerrestrialSections/optimised_hot_spot_analysis_rev_2_V2.png'
 trendCaption3 = """
-
+Optimised Hotspot analysis of fire detection locations in Ireland 2002-2017, based on identification of 
+fire locations from satellite imagery. Location of fires detected by satellite shown as pink crosses
         """
 
 infrastructureText = """
