@@ -32,10 +32,13 @@ trendChartTitle = 'Annual Trend of River Flow'
 trendChart = empty_chart()
 
 trendCaption = """
-Annual trend of river flows over the island of Ireland for different types of 
-flow based on the hydrometric network as of 1972 (long period) and 1992 (short period).  
-Blue arrows indicate and increasing trend while red arrows indicate a decreasing trend. 
-Changes identified as significant are indicated by arrows with white fills. (adapted from  Murphy et al., 2013)  
+Annual trend of river flows over the island of Ireland for different types of flow based on the 
+hydrometric network as of 1972 (long period) and 1992 (short period). Blue arrows indicate an 
+increasing trend while red arrows indicate a decreasing trend. Changes identified as significant 
+are indicated by arrows with white fills. Results for the long period (top panel) indicate an 
+increase in the magnitude of low flows across the majority of gauges for Ireland with the 
+exception of some gauges in the south. In contrast, results for the short period show a 
+decrease in the magnitude of low flows recorded at many gauges throughout Ireland.  
         """
 
 infrastructureText = """
@@ -43,7 +46,7 @@ River discharge or flow is measured and data are currently collected by a number
 agencies including the EPA, the OPW, local authorities and the ESB. There are over 
 800 active river flow meter stations in the country. Capitalising on this network, 
 the EPA has identified a set of high quality reference hydrometric gauges that can 
-be used for monitoring and detecting climate change signals (map 4.1). The stations 
+be used for monitoring and detecting climate change signals. The stations 
 identified include 35 from the Republic, and a further 8 in Northern Ireland from 
 the UK Benchmark Network (green). The average record length of these stations 
 is 40 years with a minimum of 28 and a maximum of 63 years. 

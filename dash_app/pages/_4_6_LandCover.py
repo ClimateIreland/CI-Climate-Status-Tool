@@ -35,16 +35,22 @@ trendChart = figure_4_11()
 trendCaption = """
            CORINE main category distribution over Ireland (% national area) for the CORINE 1990 version (left) and for the CORINE 2018 version (right)
         """
+trendCaption2 = """
+              Above shows percentage cumulative change within each main category for 
+              the five CORINE versions between 1990 and 2018.  Artificial surfaces 
+              show the greatest cumulative increase, with a particularly high rate 
+              between 1990 and 2006. Forest areas have also increased, being particularly marked during the 1990s.  
+              The wetlands class is mostly formed on peat, and a continuous decreasing trend is observed in this land cover class  
+              """
+
 
 infrastructureText = """
-        The CGLS is one of the Copernicus services that provide satellite information that may be 
-        used to monitor a number of vegetation parameters around the globe. 
-        The global FAPAR dataset available is derived from several satellite sensors. 
-        Currently, the CGLS team is updating the dataset based on SENTINEL-3 OLCI and SLSTR 
-        sensors as new data sources. Comprehensive analysis of satellite-derived FAPAR 
-        spatio-temporal trends for Ireland needs to be carried out. 
-        A ground-based observation system should also be considered in order to validate 
-        and support the satellite observations. 
+Since 1990 regular, systematic land cover mapping of Ireland, using satellite imagery, has taken place as part of the 
+European Commission’s CORINE  programme. Until now, CORINE has been the only initiative in place in Ireland that 
+provides a set of time series of land cover data, however albeit with a coarse (25-ha) spatial resolution that misses 
+many important environmental features within the very fragmented landscape of Ireland. A current EPA- and Ordnance Survey 
+Ireland (OSi)-led initiative aimed at generating a new land cover dataset, with a spatial resolution almost 250 times better than CORINE, 
+will release the new dataset later in 2021.
         """
 # custom infrastruture uses corina iframe
 # infrastructureMap=surfaceAirTempStationsMap()
@@ -70,12 +76,6 @@ chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 ########################################################################################################################
 
-trendCaption2 = """
-              Above shows percentage cumulative 
-              change within each main category for the five 
-              CORINE versions between 1990 and 2018. 
-
-              """
 
 
 custom_trend = dbc.Container(

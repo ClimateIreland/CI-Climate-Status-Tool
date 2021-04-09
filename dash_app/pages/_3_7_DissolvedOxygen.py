@@ -46,6 +46,12 @@ trendCaption = """
         major mortalities of marine organisms in both the water column and near the sea floor. 
         """
 
+trendCaption2 = """
+Above shows a deep-water dissolved oxygen section as measured during the annual
+ Rockall Ocean Climate Survey in winter 2013. The lowest values are observed in the subsurface waters at 
+ approximately 500m depth due to respiration associated with decomposition of organic matter. 
+"""
+
 infrastructureText = """
 The annual winter environmental survey on board the RV Celtic Voyager collects dissolved oxygen sensor profiles in coastal and 
 shelf waters around the island of Ireland (outlined in red in inset, Map 3.6). As part of ongoing projects, 
@@ -80,11 +86,7 @@ chapter_dict = next(
 
 ################################################################################
 
-trendCaption2 = """
-Above shows a deep-water dissolved oxygen section as measured during the annual
- Rockall Ocean Climate Survey in winter 20131. The lowest values are observed in the subsurface waters at 
- approximately 500m depth due to respiration associated with decomposition of organic matter. 
-"""
+
 custom_trend = dbc.Container(
     className='sr-trends',
     style={'borderColor': chapter_dict['domain-color']},

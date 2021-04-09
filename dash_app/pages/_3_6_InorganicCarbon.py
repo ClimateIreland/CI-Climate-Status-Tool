@@ -10,7 +10,7 @@ from charts import empty_chart
 
 chapter_num = '3.6'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Inorganic Carbon_Tomas Szumski.jpg'
-bannerImgCredit = 'Tomas Szumski'
+bannerImgCredit = 'Tomasz s Szumski'
 
 introText = """
         The ocean absorbs significant quantities of carbon through natural cycles 

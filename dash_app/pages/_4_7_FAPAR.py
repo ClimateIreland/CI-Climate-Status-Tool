@@ -36,21 +36,20 @@ trendChartTitle = '10-day average FAPAR over Ireland'
 trendChart = figure_4_12()
 
 trendCaption = """
-           Above shows a heat map of 10-Day averaged FAPAR derived over Ireland using the CGLS dataset. 
-           The red colour represents the 10-day periods with the highest values; only 5% of the values 
-           are at or above the threshold of 0.76 (the 95th percentile). A seasonal trend is observed,
-            where the highest values occur during summer, particularly in June, when vegetation tends 
-            to have higher photosynthetic activity, whilst the lowest values are observed during winter months. 
-            The highest values in the time series are in the summer periods between 2007 and 2009, and between 2013 and2017. 
+Above shows a heat map of 10-day averaged FAPAR over Ireland derived from the Copernicus Global Land Services (CGLS) dataset (1999-2018). 
+The data are presented as percentiles calculated using the complete dataset. For example, the 75th percentile means that 75% of all 
+the values are below 0.72 and 25% of the values are above it.. A seasonal trend is observed, where the highest values occur during summer, 
+particularly in June, when vegetation tends to have higher photosynthetic activity, whilst the lowest values are observed during winter months. 
+The highest values in the time series are in the summer periods between 2007 and 2009, and between 2013 and2017.
         """
 
 infrastructureText = """
-        The CGLS is one of the Copernicus services that provide satellite information that may 
-        be used to monitor a number of vegetation parameters around the globe. 
-        The global FAPAR dataset available is derived from several satellite sensors. Currently, 
-        the CGLS team is updating the dataset based on SENTINEL-3 OLCI and SLSTR sensors as new data sources. 
-        Comprehensive analysis of satellite-derived FAPAR spatio-temporal trends for Ireland needs to be carried out. 
-        A ground-based observation system should also be considered in order to validate and support the satellite observations. 
+FAPAR is challenging to measure on the ground in tall and heterogeneous vegetation environments. 
+Measurements tend to be made at the local scale and for research studies and are labour intensive. 
+There is no long-term in situ FAPAR monitoring programme in Ireland. Regional FAPAR estimates are 
+generally based on observations from satellite sensors, which have the ability to measure the visible 
+and infrared radiation reflected by the Earth’s surface on a regular basis. The CGLS generates a 
+FAPAR dataset as part of a set of vegetation monitoring products.
         """
 
 # no map

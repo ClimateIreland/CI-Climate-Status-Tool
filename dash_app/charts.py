@@ -79,6 +79,7 @@ def stations_map(df):
         name='GHG Flux Tower',
         lon=ghgFluxDF.Longitude,
         lat=ghgFluxDF.Latitude,
+        showlegend=True,
         marker=dict(color=STATION_COLORS['GHG_FLUX_TOWER'],
                     size=7),
         hovertemplate=stations_map_hovertemplate(ghgFluxDF),
@@ -95,9 +96,10 @@ def stations_map(df):
     )
 
     tideGaugeTrend = go.Scattermapbox(
-        name='Tide Gauge',
+        name='Tide Gauge Station',
         lon=tideGaugeDF.Longitude,
         lat=tideGaugeDF.Latitude,
+        showlegend=True,
         marker=dict(color=STATION_COLORS['TideGauge'],
                     size=7),
         hovertemplate=stations_map_hovertemplate(tideGaugeDF),
@@ -984,7 +986,7 @@ def map_3_1():
     tidbiDFNew['Latitude']=tidbiDF["latitude"]
     tidbiDFNew['Longitude']=tidbiDF["longitude"]
     tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
-    tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
+    # tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
     tidbiDFNew['Type']=tidbiDF["datasetNam"]
     combinedDF = pd.concat([stationsDF,rockallDF, tidbiDFNew])
     map_3_1a=stations_map(combinedDF)

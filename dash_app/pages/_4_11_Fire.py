@@ -9,39 +9,55 @@ from settings import *
 from charts import empty_chart, figure_4_22
 
 chapter_num = '4.11'
-bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Fires_CiaranNugent.jpg'
-bannerImgCredit = 'Ciaran Nugent'
+bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Fire on arrival Ian Kiely.jpg'
+bannerImgCredit = 'Ian Kiely'
 
 introText = """
-        Land cover - the observed (bio)-physical cover on the Earth’s surface, 
-        including grassland, forest, built environment, etc. 
-        – plays a key role in climate dynamics such as water and energy exchanges 
-        between the ground and the atmosphere, and contributes to the capture 
-        and release of greenhouse gases and aerosols.  
+Vegetation fires and wildfires are an increasingly visible phenomenon in Ireland in recent years. 
+Despite Ireland’s generally moist oceanic climate, periodic dry spells in spring annually give 
+rise to fire risk conditions and facilitate fire outbreaks. Most fires in Ireland can be attributed 
+to human causes, whether deliberate or unintentional.  
         """
 bulletPoint1 = """
-        Peatlands represent almost 14% of Irish land cover and are an 
-        essential feature in the regulation of the climate by removing carbon
+Globally, along with fossil-fuel burning and agriculture, vegetation fires are one of the largest 
+human-caused greenhouse gas emission contributors.   
         """
 bulletPoint2 = """
-        Land cover observations since 1990 show increases in the area covered 
-        by artificial surfaces and forests and a decrease in wetland areas which include peatlands.
+Annual burned area in Ireland is thought to range between 4,000 and 6,000 ha annually, 
+with the bulk of fire activity taking place between March and June each year.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = 'Very High or Extreme Fire Danger'
 trendChart = figure_4_22()
-
 trendCaption = """
 Number of days on which the fire index was very high or extreme as 
 calculated using data from Dublin airport and Shannon airport synoptic stations (1971–2018).
         """
 
-infrastructureText = """
-Data on vegetation fires are generally not compiled centrally by the fire services, however burned area estimates, based on assessments of known fires are generated for reporting by the Department of Agriculture, Fisheries and the Marine (DAFM) to the European Commission annually. 
-Daily fire risk is assessed by Met Éireann using meteorological variables derived using the Canadian Fire Weather Index (FWI), and fire danger notices are issued to forestry interests by DAFM throughout the fire season. 
-Satellite data are used internationally to make regional and global estimates of fire disturbance and their impact on the atmosphere and some research studies have been carried out on their utility over Ireland, However, frequent cloud cover, the short duration of fire events and low heat signature of typical fires limit detection rates and the small size of many burnt land parcels reduce the usefulness of satellite imagery under Irish conditions. 
+trendChartTitle2 = 'Very High or Extreme Fire Danger'
+trendChart2 = IMAGES_PATH+'TerrestrialSections/Figure4.21_ForestFiresInIreland.png'
+trendCaption2 = """
+
         """
-infrastructureMap = empty_chart()
+trendChartTitle3 = 'Very High or Extreme Fire Danger'
+trendChart3 = IMAGES_PATH+'TerrestrialSections/optimised_hot_spot_analysis_rev_2_V2.png'
+trendCaption3 = """
+
+        """
+
+infrastructureText = """
+Data on vegetation fires are generally not compiled centrally by the fire services, 
+however burned area estimates, based on assessments of known fires are generated 
+for reporting by the Department of Agriculture, Fisheries and the Marine (DAFM) 
+to the European Commission annually. Daily fire risk is assessed by Met Éireann 
+using meteorological variables derived using the Canadian Fire Weather Index (FWI), 
+and fire danger notices are issued to forestry interests by DAFM throughout the fire season. 
+Satellite data are used internationally to make regional and global estimates of fire 
+disturbance and their impact on the atmosphere and some research studies have been 
+carried out on their utility over Ireland This image from the Sentinel- 2 satellite 
+shows a fire burning in Co. Wicklow on June 30th 2018. 
+        """
+infrastructureImg = IMAGES_PATH+'TerrestrialSections/FireInfrastructure.png'
 
 infoLinks = [
     {'text': 'Fire ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
@@ -66,6 +82,118 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+custom_trend = dbc.Container(
+        className='sr-trends',
+        style={'borderColor': chapter_dict['domain-color']},
+        id='trends',
+        children=[
+            html.H3(
+                className='sr-section-heading',
+                style={'color': chapter_dict['domain-color']},
+                children='Trends',
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle),
+                                dcc.Graph(
+                                    figure=trendChart,
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption
+                                )]
+                            )
+                ]
+            ),
+                        dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1 text-center",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle2),
+                                html.Img(
+                                style={"max-width":"800px"},
+                                # className='w-100',
+                                src=trendChart2)
+                                    ]
+                            )
+                ]
+            ),
+                        dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption2
+                                )]
+                            )
+                ]
+            ),
+                                    dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1 text-center",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle3),
+                                html.Img(
+                                style={"max-width":"600px"},
+                                # className='w-100',
+                                src=trendChart3)
+                                    ]
+                            )
+                ]
+            ),
+                        dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption3
+                                )]
+                            )
+                ]
+            ),
+        ])
+
+custom_infrastructure = dbc.Container(
+    className='sr-infrastructure',
+    style={'borderColor': chapter_dict['domain-color']},
+    id='infrastructure',
+    children=[
+        html.H3(
+            className='sr-section-heading',
+            children='Infrastructure',
+            style={'color': chapter_dict['domain-color']},
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-12 col-md-6 my-auto",
+                        children=[
+                            html.P(infrastructureText)]
+                        ),
+                dbc.Col(className="col-12 col-md-6 my-auto",
+                        children=[
+                        html.Img(
+                                src=infrastructureImg)
+                        ])
+            ])
+    ])
+
 
 def create_layout(app):
     return html.Div(
@@ -80,15 +208,17 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
-            pb.build_infrastructure(infrastructureText,
-                                    infrastructureMap,
-                                    chapter_dict
-                                    ),
+            custom_trend,
+        #     pb.build_trend(trendChartTitle,
+        #                    trendChart,
+        #                    trendCaption,
+        #                    chapter_dict
+        #                    ),
+        custom_infrastructure,
+        #     pb.build_infrastructure(infrastructureText,
+        #                             infrastructureMap,
+        #                             chapter_dict
+        #                             ),
             pb.build_info(infoLinks,
                           chapter_dict),
 
