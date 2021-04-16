@@ -249,14 +249,15 @@ menu_graphic = dbc.Container(
             html.Div(
                 className="dropdown-content",
                 children=[
+                        html.P(
+                        style={'color': chapter['domain-color']},
+                        children="Coming Soon",
+                    ),
                     html.P(
                         style={'color': chapter['domain-color']},
                         children=chapter['title'],
                     ),
-                    html.P(
-                        style={'color': chapter['domain-color']},
-                        children="(In Development)",
-                    )
+                
                 ]
             )]
     ) for chapter in CHAPTERS_DEV

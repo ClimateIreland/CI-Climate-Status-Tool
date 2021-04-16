@@ -24,7 +24,7 @@ introText = """
         """
 bulletPoint1 = """
         In Ireland the annual average surface air temperature has increased by 
-        approximately 0.9°C over the last 120 years
+        approximately 0.9°C over the last 120 years.
         """
 bulletPoint2 = """
         The number of warm spell days across Ireland has slightly 

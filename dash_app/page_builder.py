@@ -121,7 +121,7 @@ def build_breadcrumb(chapter_dict):
             dcc.Link(
                 style={'color': chapter_dict['domain-color']},
                 children='Climate Status Report',
-                href='/'
+                href='/dash/'
             ),
             html.Span(
                 children=' / ',
@@ -411,7 +411,7 @@ def build_nav_carousel(chapter_dict):
                         style={'color': chapter_dict['domain-color']},
                     ),
                         dcc.Link(
-                            href='/',
+                            href='/dash/',
                             style={'color': chapter_dict['domain-color']},
                             children=["Or Return to Index"])
                     ]

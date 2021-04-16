@@ -34,6 +34,7 @@ from pages import (
 
 app = dash.Dash(
     __name__,
+    url_base_pathname="/dash/",
     meta_tags=[{"name": "viewport",
                 "content": "width=device-width, initial-scale=1"}],
     external_stylesheets=[
@@ -63,44 +64,47 @@ app.layout = html.Div(children=[
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    if pathname == "/StatusReport":
+    
+    if pathname == "/dash/":
         return index.create_layout(app)
-    elif pathname == "/_2_1_SurfaceAirTemperature":
+    elif "_2_1_SurfaceAirTemperature" in pathname:
         return _2_1_SurfaceTemperature.create_layout(app)
-    elif pathname == "/_2_1_SurfaceAirTemperature/chart":
+    elif "_2_1_SurfaceAirTemperature/chart" in pathname:
         return _2_1_SurfaceTemperature.create_chart(app)
-    elif pathname == "/_2_5_Precipitation":
+    elif "_2_5_Precipitation" in pathname:
         return _2_5_Precipitation.create_layout(app)
-    elif pathname == "/_2_10_CarbonDioxide":
+    elif "_2_10_CarbonDioxide" in pathname:
         return _2_10_CarbonDioxide.create_layout(app)
-    elif pathname == "/_2_11_Methane":
+    elif "_2_11_Methane" in pathname:
         return _2_11_Methane.create_layout(app)
-    elif pathname == "/_2_12_OtherGreenhouseGases":
+    elif "_2_12_OtherGreenhouseGases" in pathname:
         return _2_12_OtherGreenhouseGases.create_layout(app)
-    elif pathname == "/_3_1a_SeaSurfaceTemperature":
+    elif "_3_1a_SeaSurfaceTemperature" in pathname:
         return _3_1a_SeaSurfaceTemperature.create_layout(app)
-    elif pathname == "/_3_1b_SeaSubsurfaceTemperature":
+    elif "_3_1b_SeaSubsurfaceTemperature" in pathname:
         return _3_1b_SeaSubsurfaceTemperature.create_layout(app)
-    elif pathname == "/_3_4_SeaLevel":
+    elif "_3_4_SeaLevel" in pathname:
         return _3_4_SeaLevel.create_layout(app)
-    elif pathname == "/_3_6_InorganicCarbon":
+    elif "_3_6_InorganicCarbon" in pathname:
         return _3_6_InorganicCarbon.create_layout(app)
-    elif pathname == "/_3_7_DissolvedOxygen":
+    elif "_3_7_DissolvedOxygen" in pathname:
         return _3_7_DissolvedOxygen.create_layout(app)
-    elif pathname == "/_4_1_RiverDischarge":
+    elif "_4_1_RiverDischarge" in pathname:
         return _4_1_RiverDischarge.create_layout(app)
-    elif pathname == "/_4_6_LandCover":
+    elif "_4_6_LandCover" in pathname:
         return _4_6_LandCover.create_layout(app)
-    elif pathname == "/_4_7_FAPAR":
+    elif "_4_7_FAPAR" in pathname:
         return _4_7_FAPAR.create_layout(app)
-    elif pathname == "/_4_11_Fire":
+    elif "_4_11_Fire" in pathname:
         return _4_11_Fire.create_layout(app)
-    elif pathname == "/_4_14_AnthropogenicGreenhouseGasEmissions":
+    elif "_4_14_AnthropogenicGreenhouseGasEmissions" in pathname:
         return _4_14_AnthropogenicGreenhouseGasEmissions.create_layout(app)
     # else:
     #     return dcc.Location(pathname="/StatusReport", id='any')
     else:
-        return index.create_layout(app)
+        # pathname = "/dash/"
+        return dcc.Location(pathname="/dash", id="someid_doesnt_matter")
+        # return index.create_layout(app)
 
 if __name__ == '__main__':
     app.run_server(debug='True')
