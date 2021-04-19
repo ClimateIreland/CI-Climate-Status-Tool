@@ -24,14 +24,14 @@ bulletPoint1 = """
         Globally, the upper ocean (0-700 m) and intermediate ocean (700-2000 m) have warmed since the 1970s.   
         """
 bulletPoint2 = """
-        However, observations of the annual water temperature in the Rockall Trough at depths between 1500m and 2000m from 1975 to 2018 show no evident trend.   
+        However, observations of the annual water temperature in the Rockall Trough at depths between 1500 m and 2000 m from 1975 to 2018 show no evident trend.   
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Mean Sea Sub-urface Temperature' #(1961-2018)
+trendChartTitle = 'Mean Sea Subsurface Temperature' #(1961-2018)
 trendChart = figure_3_3()
 
 trendCaption = """
- Annual water temperature at the Rockall Trough at depths between 1500m and 2000m on the Extended Ellett Line 
+ Annual water temperature at the Rockall Trough at depths between 1500 m and 2000 m on the Extended Ellett Line 
  for the period 1975–2018. Over the time series, there is no significant trend evident.
         """
 

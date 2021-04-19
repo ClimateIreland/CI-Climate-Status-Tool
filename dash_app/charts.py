@@ -884,73 +884,41 @@ def figure_3_3():
         xls = pd.ExcelFile(
             data_path+'SubSurfaceTemperature_Anomalies_Rockall.xlsx')
         df = xls.parse('Depth_Rockall', skiprows=20, index_col=None, na_values=['NA'])
+        df["5 Year Moving Average - Mean"]=df["Unnamed: 6"]
     except:
         return empty_chart()
-    annualTrace = go.Bar(x=df["Decimal Year"],
-                     y=df["Temperature Anomaly °C"],
-                     text=df["Temperature °C"],
+    annualTrace = go.Scatter(x=df["Decimal Year"],
+                     y=df["Temperature °C"],
                      name='Annual',
-                     marker=dict(
-                            # color="#214a7b", color used in report
-                            color=TIMESERIES_COLOR_SECONDARY,
-                            opacity=0.5
-                            ),
+                      mode='lines',  # 'line' is default
+                        line_shape='spline',
+                        line=dict(
+                                color=TIMESERIES_COLOR_SECONDARY,
+                                width=2),
+                    # mode='markers',
+                    # marker=dict(color=TIMESERIES_COLOR_SECONDARY,
+                    #             size=5,
+                    #             # opacity=0.5
+                    #             ),
                      hovertemplate='%{x}<br>' +
                             '<b>Annual</b><br>' +
-                            'Total: %{text:.2f} \u00b0C<br>' +
-                            'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
+                            'Temperature: %{y:.2f} \u00b0C<extra></extra>'
                             )
     movingAverage = go.Scatter(x=df["Decimal Year"],
-                        y=df["5 year moving average"],
-                        #  text=df["5 Year Moving Average - Mean"],
+                        y=df["5 Year Moving Average - Mean"],
                         name='5yr Moving Average',
                         mode='lines',  # 'line' is default
                         line_shape='spline',
                         line=dict(
-                                # color="#fc0d1b", color used in report
                                 color=TIMESERIES_COLOR_PRIMARY,
                                 width=2),
                         hovertemplate='%{x}<br>' +
                                 '<b>5yr Moving Average</b><br>' +
-                                # 'Total: %{text:.2f} \u00b0C<br>' +
-                                'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
-                                )
-    normal = go.Scatter(x=df["Decimal Year"],
-                        y=df["1981-2010 (Normalized)"],
-                        name='1981-2010 Normal',
-                        mode='lines',  # 'line' is default
-                        line_shape='spline',
-                        line=dict(color="#fdbf2d", #color used in report
-                                width=1),
-                        hoverinfo='skip',
+                                'Temperature: %{y:.2f} \u00b0C<extra></extra>'
                                 )
 
-    figure_3_3 = make_subplots(specs=[[{'secondary_y': True}]])
-    figure_3_3.add_trace(annualTrace,
-                secondary_y=False,)
-    figure_3_3.add_trace(movingAverage,
-                secondary_y=False,)
-    figure_3_3.add_trace(normal,
-                secondary_y=True,)
-
-    figure_3_3.update_layout(TIMESERIES_LAYOUT)
-    figure_3_3.update_yaxes(title_text='Difference (\u00b0C) from 1981-2010 Normal',
-                            secondary_y=False,
-                            range=[-0.25, 0.45],
-                            showgrid=False,
-                            dtick=0.05,  # dtick sets the distance between ticks
-                            tick0=0,  # tick0 sets a point to map the other ticks
-                            fixedrange=True,
-                            showspikes=True,
-                            # zeroline=True,  # add a zero line
-                            # zerolinecolor=TIMESERIES_COLOR_SECONDARY
-                            )
-    figure_3_3.update_yaxes(title_text='Sea Sub-surface Temperature (\u00b0C)',
-                            secondary_y=True,
-                            range=[3.93, 4.59],
-                            showgrid=False,
-                            dtick=0.1,  # dtick sets the distance between ticks
-                            tick0=4.17,  # tick0 sets a point to map the other ticks
+    figure_3_3 = go.Figure(data=[annualTrace, movingAverage], layout=TIMESERIES_LAYOUT)
+    figure_3_3.update_yaxes(title_text='Sea Subsurface Temperature (\u00b0C)',
                             fixedrange=True,
                             )
 
@@ -2104,6 +2072,89 @@ def figure_4_12():
                           line=dict(color='White', width=3)
                           )
     return figure_4_12
+
+def figure_4_21():
+    """
+    Fire bar chart
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.11Fire/Figure4.21/'
+        xls = pd.ExcelFile(
+            data_path+'Forest Fires 2000-2019.xlsx')
+        df = pd.read_excel(xls, 'Sheet1')
+        df['Total']=df['Coillte Forests']+df['Private Forests']
+        df = df.loc[df['Fire service mobilisations'].notna()]
+        linearTrendPoly = np.polyfit(
+            df['Year'], df['Fire service mobilisations'],1)
+        linearTrendY = np.poly1d(linearTrendPoly)(df['Year'])
+    except:
+        return empty_chart()
+    
+    coillteTrace=go.Bar(
+    name="Public Forests",
+    x=df.Year,
+    y=df["Coillte Forests"],
+    text=df['Coillte Forests']*100/df['Total'],
+    marker_color="#4f612c",
+    hovertemplate='%{x}<br>'
+    '<b>Coillte Forests</b><br>' +
+    'Area Burnt: %{y:.2f} Ha<br>' +
+    'Annual Percentage: %{text:.2f} %<extra></extra>'
+                            )
+    privateTrace=go.Bar(
+        name="Private Forests",
+        x=df.Year,
+        y=df["Private Forests"],
+        text=df['Private Forests']*100/df['Total'],
+        marker_color="#9cba5f",
+        hovertemplate='%{x}<br>'
+        '<b>Private Forests</b><br>' +
+        'Area Burnt: %{y:.2f} Ha<br>' +
+        'Annual Percentage: %{text:.2f} %<extra></extra>'
+                                )
+
+    mobileTrace=go.Scatter(
+        name="Fire Service Mobilisations",
+        x=df.Year,
+        y=df["Fire service mobilisations"],
+        marker_color=TIMESERIES_COLOR_PRIMARY,
+        hovertemplate='%{x}<br>'
+        '<b>Fire Service Mobilisations</b><br>' +
+        'Callouts: %{y:.0f}<extra></extra>'
+                                )
+    linearTrendTrace = go.Scatter(x=df['Year'],
+                                y=linearTrendY,
+                                name='Linear Trend',
+                                mode='lines',
+                                line=dict(color=TIMESERIES_COLOR_PRIMARY,
+                                            dash='dash',
+                                            width=2),
+                                hoverinfo='skip',
+                                )
+    figure_4_21 = make_subplots(specs=[[{"secondary_y": True}]])
+
+    figure_4_21.add_trace(linearTrendTrace,
+                secondary_y=True)
+    figure_4_21.add_trace(mobileTrace,
+                secondary_y=True)
+    figure_4_21.add_trace(coillteTrace,
+                secondary_y=False)
+    figure_4_21.add_trace(privateTrace,
+                secondary_y=False)
+    figure_4_21.update_layout(TIMESERIES_LAYOUT)
+    figure_4_21.update_layout(
+        xaxis=dict(title='Year',
+                  dtick=5,),
+        barmode='stack')
+    figure_4_21.update_yaxes(title_text='Area Burnt (Ha)',
+                            secondary_y=False,
+                            )
+    figure_4_21.update_yaxes(title_text='Number of Callouts',
+                        secondary_y=True,
+                        )
+
+    return figure_4_21
+
 
 def figure_4_22():
     """
