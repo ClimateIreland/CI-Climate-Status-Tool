@@ -29,9 +29,9 @@ bulletPoint2 = """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
 # first chart
-trendChartTitle = 'Mean Monthly Sea Level - Dublin Port' #(1938-2016)
-trendChart = figure_3_8()
-trendCaption = """
+trendChartTitle2 = 'Mean Monthly Sea Level - Dublin Port' #(1938-2016)
+trendChart2 = figure_3_8()
+trendCaption2 = """
 The complete time series for the Dublin Port monthly mean sea level from 1938 to 2016 (updated by Maynooth University). 
 Since the 1980s there has been significant variability in the record, with an upward trend over the last 25 years. 
 The attribution of this recent increase is not certain. However, taken over the full time period, the sea level in 
@@ -39,25 +39,34 @@ Dublin has risen by 1.67 mm per year, consistent with global rates.
         """
 
 # second chart
-trendChartTitle2 = 'Malin Head'
-trendChart2 = figure_3_7_1()
+trendChartTitle1 = 'Malin Head, Co. Donegal'
+trendChart1 = figure_3_7_1()
 
 # third chart
-trendChartTitle3 = 'Ballyglass Harbour'
-trendChart3 = figure_3_7_2()
+trendChartTitle2 = 'Ballyglass Harbour, Co. Mayo'
+trendChart2 = figure_3_7_2()
 
 # fourth chart
-trendChartTitle4 = 'Castletownbare Port'
-trendChart4 = figure_3_7_3()
+trendChartTitle3 = 'Castletownbare Port, Co. Cork'
+trendChart3 = figure_3_7_3()
 
 # fifth chart
-trendChartTitle5 = 'Howth Harbour'
-trendChart5 = figure_3_7_4()
+trendChartTitle4 = 'Howth Harbour, Co. Dublin'
+trendChart4 = figure_3_7_4()
 
-trendCaption2 = """
+trendCaption1 = """
 Tide gauge measurements at four different locations, in the north, west, south and east respectively, since the mid-2000s. 
 The time series are not yet long enough to accurately determine any trend. Moreover, any land elevation changes due to 
 glacial isostatic adjustment or other factors are not taken into account.
+        """
+
+trendChartTitle5 = 'Mean Monthly Sea Level - Dublin Port' #(1938-2016)
+trendChart5 = figure_3_8()
+trendCaption2 = """
+The complete time series for the Dublin Port monthly mean sea level from 1938 to 2016 (updated by Maynooth University). 
+Since the 1980s there has been significant variability in the record, with an upward trend over the last 25 years. 
+The attribution of this recent increase is not certain. However, taken over the full time period, the sea level in 
+Dublin has risen by 1.67 mm per year, consistent with global rates.
         """
 
 infrastructureText = """
@@ -119,99 +128,69 @@ custom_trend =  dbc.Container(
                 style={'color': chapter_dict['domain-color']},
                 children='Trends',
             ),
-            # First chart
             dbc.Row(
                 children=[
-                    dbc.Col(className="col-md-10 offset-md-1",
+                               dbc.Col(className="col-12",
                             children=[
                                 html.H4(
                                     className='sr-chart-title',
-                                    children=trendChartTitle),
-                                dcc.Graph(
-                                    figure=trendChart,
-                                    config={'displayModeBar': False})]
-                            )
-                ]
-            ),
-            dbc.Row(
-                children=[
-                    dbc.Col(className="col-md-10 offset-md-1",
-                            children=[
-                                html.P(
-                                    className='sr-chart-caption',
-                                    children=trendCaption
-                                )]
-                            )
-                ]
-            ),
-                        # Second chart
-            dbc.Row(
-                children=[
-                    dbc.Col(className="col-md-10 offset-md-1",
+                                    children="Mean Monthly Sea Level")]
+                            ),
+                    dbc.Col(className="col-12 col-md-6",
                             children=[
                                 html.H4(
                                     className='sr-chart-title',
-                                    children="Mean Monthly Sea Level - Ballyglass, Casteltownbare, Howth Harbour and Malin Head"),
+                                    children=trendChartTitle1),
                                 dcc.Graph(
-                                    figure=figure_3_7(),
+                                    figure=trendChart1,
+                                    className="sr-chart-short",
                                     config={'displayModeBar': False})]
-                            )
-                ]
-            ),
-            dbc.Row(
-                children=[
-                    dbc.Col(className="col-md-10 offset-md-1",
-                            children=[
-                                html.P(
-                                    className='sr-chart-caption',
-                                    children=trendCaption2
-                                )]
-                            )
-                ]
-            ),
-            # Second chart
-            dbc.Row(
-                children=[
-                    dbc.Col(className="col-md-10 offset-md-1",
+                            ),
+                        dbc.Col(className="col-12 col-md-6",
                             children=[
                                 html.H4(
                                     className='sr-chart-title',
                                     children=trendChartTitle2),
                                 dcc.Graph(
                                     figure=trendChart2,
+                                    className="sr-chart-short",
                                     config={'displayModeBar': False})]
-                            )
-                ]
-            ),
-            # Third chart
-            dbc.Row(
-                children=[
-                    dbc.Col(className="col-md-10 offset-md-1",
+                            ),
+                                dbc.Col(className="col-12 col-md-6",
                             children=[
                                 html.H4(
                                     className='sr-chart-title',
                                     children=trendChartTitle3),
                                 dcc.Graph(
                                     figure=trendChart3,
+                                    className="sr-chart-short",
                                     config={'displayModeBar': False})]
-                            )
-                ]
-            ),
-        # Fourth chart
-            dbc.Row(
-                children=[
-                    dbc.Col(className="col-md-10 offset-md-1",
+                            ),
+                                dbc.Col(className="col-12 col-md-6",
                             children=[
                                 html.H4(
                                     className='sr-chart-title',
                                     children=trendChartTitle4),
                                 dcc.Graph(
                                     figure=trendChart4,
+                                    className="sr-chart-short",
                                     config={'displayModeBar': False})]
+                            )
+
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=trendCaption1
+                                )]
                             )
                 ]
             ),
-        # Fifth chart
+            # Third chart
             dbc.Row(
                 children=[
                     dbc.Col(className="col-md-10 offset-md-1",
@@ -225,6 +204,7 @@ custom_trend =  dbc.Container(
                             )
                 ]
             ),
+
             dbc.Row(
                 children=[
                     dbc.Col(className="col-md-10 offset-md-1",

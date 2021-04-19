@@ -1086,7 +1086,7 @@ def figure_3_7_1():
                      mode='lines',  # 'line' is default
                      line_shape='spline',
                      line=dict(
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color="#00a5e3",
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
@@ -1098,9 +1098,11 @@ def figure_3_7_1():
     figure_3_7_1.add_trace(monthlyTrace,
                 secondary_y=False,)
 
-    figure_3_7_1.update_layout(TIMESERIES_LAYOUT)
+    figure_3_7_1.update_layout(
+        TIMESERIES_LAYOUT,
+    )
 
-    figure_3_7_1.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
+    figure_3_7_1.update_yaxes(title_text='Sea Level (m)<br>Relative to OD Malin',
                             range=[-0.45, 0.45],
                             showgrid=False,
                             fixedrange=True,
@@ -1133,7 +1135,7 @@ def figure_3_7_2():
                      mode='lines',  # 'line' is default
                      line_shape='spline',
                      line=dict(
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color='#ff5768',
                             width=2),
                       hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
@@ -1147,7 +1149,7 @@ def figure_3_7_2():
 
     figure_3_7_2.update_layout(TIMESERIES_LAYOUT)
 
-    figure_3_7_2.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
+    figure_3_7_2.update_yaxes(title_text='Sea Level (m)<br>Relative to OD Malin',
                             range=[-0.45, 0.45],
                             showgrid=False,
                             fixedrange=True,
@@ -1180,7 +1182,7 @@ def figure_3_7_3():
                      mode='lines',  # 'line' is default
                      line_shape='spline',
                      line=dict(
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color='#ff96c5',
                             width=2),
                      hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
@@ -1194,7 +1196,7 @@ def figure_3_7_3():
 
     figure_3_7_3.update_layout(TIMESERIES_LAYOUT)
 
-    figure_3_7_3.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
+    figure_3_7_3.update_yaxes(title_text='Sea Level (m)<br>Relative to OD Malin',
                             range=[-0.45, 0.45],
                             showgrid=False,
                             fixedrange=True,
@@ -1227,7 +1229,7 @@ def figure_3_7_4():
                      mode='lines',  # 'line' is default
                      line_shape='spline',
                      line=dict(
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color='#ffbf65',
                             width=2),
                     hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
@@ -1241,7 +1243,7 @@ def figure_3_7_4():
 
     figure_3_7_4.update_layout(TIMESERIES_LAYOUT)
 
-    figure_3_7_4.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
+    figure_3_7_4.update_yaxes(title_text='Sea Level (m)<br>Relative to OD Malin',
                             range=[-0.45, 0.45],
                             showgrid=False,
                             fixedrange=True,
@@ -2117,6 +2119,7 @@ def figure_4_21():
         name="Fire Service Mobilisations",
         x=df.Year,
         y=df["Fire service mobilisations"],
+        mode="lines",
         marker_color=TIMESERIES_COLOR_PRIMARY,
         hovertemplate='%{x}<br>'
         '<b>Fire Service Mobilisations</b><br>' +
@@ -2151,6 +2154,7 @@ def figure_4_21():
                             )
     figure_4_21.update_yaxes(title_text='Number of Callouts',
                         secondary_y=True,
+                        fixedrange=True
                         )
 
     return figure_4_21

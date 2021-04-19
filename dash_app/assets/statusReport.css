@@ -239,6 +239,9 @@ margin-top:15px;
     display:none;
 }
 
+.sr-chart-short{
+    height:300px;
+}
 @media only screen and (max-width: 1000px) {
 
   }
