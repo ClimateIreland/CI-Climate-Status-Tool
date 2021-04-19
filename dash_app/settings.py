@@ -157,6 +157,22 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+            {
+        'chapter-num': '3.1b',
+        'id': 'ssop-1',
+        'title': 'Sea Subsurface Temperature',
+        'href': '_3_1b_SeaSubsurfaceTemperature',
+        'icon-lg-src': 'subsurface-temperature_1.png',
+        'icon-lg-hover-src': 'subsurface-temperature_1_hover.png',
+        'icon-src': 'ico-ssop-subsurface-temp.png',
+        'icon-hover-src': 'ico-ssop-subsurface-temp_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Kieran Lyons, Caroline Cusack, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
 
     {
         'chapter-num': '3.4',
@@ -175,22 +191,6 @@ CHAPTERS = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
 
-        {
-        'chapter-num': '3.1b',
-        'id': 'ssop-1',
-        'title': 'Sea Subsurface Temperature',
-        'href': '_3_1b_SeaSubsurfaceTemperature',
-        'icon-lg-src': 'subsurface-temperature_1.png',
-        'icon-lg-hover-src': 'subsurface-temperature_1_hover.png',
-        'icon-src': 'ico-ssop-subsurface-temp.png',
-        'icon-hover-src': 'ico-ssop-subsurface-temp_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': 'Energy and Temperature',
-        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Kieran Lyons, Caroline Cusack, Glenn Nolan',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
     {
         'chapter-num': '3.6',
         'id': 'obgc-1',

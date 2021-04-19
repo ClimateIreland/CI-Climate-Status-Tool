@@ -51,9 +51,6 @@ infrastructureMap = map_3_1a()
 infoLinks = [
     {'text': 'Sea Surface Temperature ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/sst'},
-
-     {'text': 'Sea Subsurface Temperature ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
-     'url': 'https://gcos.wmo.int/en/essential-climate-variables/subsurface-temperature'},
      
      {'text': 'Cannaby, H. and Hüsrevoğlu, Y.S. (2009) The Influence of low-frequency variability and long-term trends in Irish SST records, ICES Journal of Marine Science, Vol. 66, No. 7, pp. 1480–9',
      'url': 'https://academic.oup.com/icesjms/article/66/7/1480/657991'},
@@ -72,15 +69,6 @@ infoLinks = [
      
      {'text': 'Copernicus Marine Environment Monitoring Service OCEAN PRODUCTS',
      'url': 'http://marine.copernicus.eu/services-portfolio/access-to-products/'},
-
-     {'text': 'Information about NEPHROPS survey ',
-     'url': 'https://www.marine.ie/Home/site-area/areas-activity/fisheries-ecosystems/nephrops-under-water-tv-surveys'},
-
-     {'text': 'Information about Euro-Argo',
-     'url': 'https://www.marine.ie/Home/site-area/areas-activity/oceanography/euro-argo'},
-
-     {'text': 'Information about Extended Ellet Line',
-     'url': 'https://mars.noc.ac.uk/projects/extended-ellet-line'},
 
      {'text': 'NOAA National Centers for Environmental information, Climate at a Glance: Global Time Series',
      'url': 'https://www.ncdc.noaa.gov/cag/'},

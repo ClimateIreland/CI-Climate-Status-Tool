@@ -12,7 +12,7 @@ def stations_map_hovertemplate(df):
             'Type: {}<br>'.format(t)+
             'Station No.: {}<br>'.format(sN)+
             'Open Year: {}<br>'.format(oY)+
-            'Close Year: {}<br>'.format(cY)+
+            # 'Close Year: {}<br>'.format(cY)+
             'Height: {:.2f} m<br>'.format(h)+
             # 'Easting: {}<br>'.format(easting)+
             # 'Northing: {}<br>'.format(northing)+
