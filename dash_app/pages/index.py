@@ -107,39 +107,6 @@ intro = dbc.Container(
 
                                   ]
                     ),
-                    # dbc.Row(
-                    #     children=[
-
-                    #         dbc.Col(
-                    #             className='col-3 col-sm-2 offset-sm-2 my-auto text-center',
-                    #             children=html.Img(
-                    #                 className='sr-banner-org-icon',
-                    #                 src='assets/images/EPA_logo.gif'
-                    #             )
-                    #         ),
-                    #         dbc.Col(
-                    #             className='col-3 col-sm-2 my-auto text-center',
-                    #             children=html.Img(
-                    #                 className='sr-banner-org-icon',
-                    #                 src='assets/images/mi_logo.gif'
-                    #             )
-                    #         ),
-                    #         dbc.Col(
-                    #             className='col-3 col-sm-1 my-auto text-center',
-                    #             children=html.Img(
-                    #                 className='sr-banner-org-icon',
-                    #                 src='assets/images/met.ie-logo.gif'
-                    #             )
-                    #         ),
-                    #         dbc.Col(
-                    #             className='col-3 col-sm-2 my-auto text-center',
-                    #             children=html.Img(
-                    #                 className='sr-banner-org-icon',
-                    #                 src='assets/images/UCC_Logo_2018_low.png'
-                    #             )
-                    #         )
-                    #     ],
-                    # ),
                 ]
 
             )
@@ -249,15 +216,16 @@ menu_graphic = dbc.Container(
             html.Div(
                 className="dropdown-content",
                 children=[
-                        html.P(
-                        style={'color': chapter['domain-color']},
-                        children="Coming Soon",
-                    ),
                     html.P(
                         style={'color': chapter['domain-color']},
                         children=chapter['title'],
                     ),
-                
+                    html.P(
+                        style={
+                            'color': chapter['domain-color'], "fontStyle": "italic"},
+                        children="Coming Soon",
+                    ),
+
                 ]
             )]
     ) for chapter in CHAPTERS_DEV
@@ -304,21 +272,6 @@ menu_list = dbc.Container(
                                 dbc.Row(
                                     children=[
                                         dbc.Col(
-                                            className='text-center',
-                                            style={'font-style': 'italic'},
-                                            children="Coming Soon"
-                                        )
-                                    ]
-                                )
-                            ],
-                        )])] +
-                        [html.Li(children=[html.Div(
-                            style={'color': ATMOSPHERE_COLOR},
-                            className='sr-menu-chapter',
-                            children=[
-                                dbc.Row(
-                                    children=[
-                                        dbc.Col(
                                             className='col-2 p-0 text-right my-auto',
                                             children=[
                                                 html.Img(
@@ -330,7 +283,8 @@ menu_list = dbc.Container(
                                         dbc.Col(
                                             className='col-10',
                                             style={"opacity": "0.4"},
-                                            children=chapter['title']
+                                            children=html.Div(
+                                                chapter['title'], title='Coming Soon')
                                         )
                                     ]
                                 )
@@ -344,10 +298,10 @@ menu_list = dbc.Container(
             dbc.Col(className="col-12  col-md-4",
                     children=[html.Ul(
                         className='sr-menu-ul',
-                        style={'color': ATMOSPHERE_COLOR},
+                        style={'color': OCEAN_COLOR},
                         children=[html.Li(html.H4('Ocean'))] +
                         [html.Li(children=[dcc.Link(
-                            style={'color': ATMOSPHERE_COLOR},
+                            style={'color': OCEAN_COLOR},
                             className='sr-menu-chapter',
                             children=[
                                 dbc.Row(
@@ -376,21 +330,6 @@ menu_list = dbc.Container(
                                 dbc.Row(
                                     children=[
                                         dbc.Col(
-                                            className='text-center',
-                                            style={'font-style': 'italic'},
-                                            children="Coming Soon"
-                                        )
-                                    ]
-                                )
-                            ],
-                        )])] +
-                        [html.Li(children=[html.Div(
-                            style={'color': OCEAN_COLOR},
-                            className='sr-menu-chapter',
-                            children=[
-                                dbc.Row(
-                                    children=[
-                                        dbc.Col(
                                             className='col-2 p-0 text-right my-auto',
                                             children=[
                                                 html.Img(
@@ -402,7 +341,8 @@ menu_list = dbc.Container(
                                         dbc.Col(
                                             className='col-10',
                                             style={"opacity": "0.4"},
-                                            children=chapter['title']
+                                            children=html.Div(
+                                                chapter['title'], title='Coming Soon')
                                         )
                                     ]
                                 )
@@ -446,21 +386,6 @@ menu_list = dbc.Container(
                                 dbc.Row(
                                     children=[
                                         dbc.Col(
-                                            className='text-center',
-                                            style={'font-style': 'italic'},
-                                            children="Coming Soon"
-                                        )
-                                    ]
-                                )
-                            ],
-                        )])] +
-                        [html.Li(children=[html.Div(
-                            style={'color': TERRESTRIAL_COLOR},
-                            className='sr-menu-chapter',
-                            children=[
-                                dbc.Row(
-                                    children=[
-                                        dbc.Col(
                                             className='col-2 p-0 text-right my-auto',
                                             children=[
                                                 html.Img(
@@ -472,7 +397,8 @@ menu_list = dbc.Container(
                                         dbc.Col(
                                             className='col-10',
                                             style={"opacity": "0.4"},
-                                            children=chapter['title']
+                                            children=html.Div(
+                                                chapter['title'], title='Coming Soon')
                                         )
                                     ]
                                 )

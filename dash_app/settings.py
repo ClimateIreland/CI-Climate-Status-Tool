@@ -55,7 +55,7 @@ CHAPTERS = [
     # Surface Atmoshere
     {
         'chapter-num': '2.1',
-        'id': 'sa-5',
+        'id': 'sa-1',
         'title': 'Surface Temperature',
         'href': '_2_1_SurfaceAirTemperature',
         'icon-lg-src': 'surface-temperature.png',
@@ -72,7 +72,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.5',
-        'id': 'sa-1',
+        'id': 'sa-2',
         'title': 'Precipitation',
         'href': '_2_5_Precipitation',
         'icon-lg-src': 'precipitation.png',
@@ -89,13 +89,13 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.10',
-        'id': 'ac-2',
+        'id': 'ac-1',
         'title': 'Carbon Dioxide',
         'href': '_2_10_CarbonDioxide',
-        'icon-lg-src': 'greenhouse-gases.png',
-        'icon-lg-hover-src': 'greenhouse-gases_hover.png',
-        'icon-src': 'ico-ac-co2-ghgs.png',
-        'icon-hover-src': 'ico-ac-co2-ghgs_hover.png',
+        'icon-lg-src': 'carbon-dioxide.png',
+        'icon-lg-hover-src': 'carbon-dioxide_hover.png',
+        'icon-src': 'ico-ac-co2.png',
+        'icon-hover-src': 'ico-ac-co2_hover.png',
         'domain': 'Atmosphere',
         'subdomain': 'Atmospheric Composition',
         'scientific-area': 'Carbon cycle and other GHGs',
@@ -106,13 +106,13 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.11',
-        'id': 'ac-3',
+        'id': 'ac-2',
         'title': 'Methane',
         'href': '_2_11_Methane',
-        'icon-lg-src': 'precursors_0.png',
-        'icon-lg-hover-src': 'precursors_0_hover.png',
-        'icon-src': 'ico-ac-precursors.png',
-        'icon-hover-src': 'ico-ac-precursors_hover.png',
+        'icon-lg-src': 'methane.png',
+        'icon-lg-hover-src': 'methane_hover.png',
+        'icon-src': 'ico-ac-ch4.png',
+        'icon-hover-src': 'ico-ac-ch4_hover.png',
         'domain': 'Atmosphere',
         'subdomain': 'Atmospheric Composition',
         'scientific-area': 'Carbon cycle and other GHGs',
@@ -123,13 +123,13 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.12',
-        'id': 'ac-4',
+        'id': 'ac-3',
         'title': 'Other Greenhouse Gases',
         'href': '_2_12_OtherGreenhouseGases',
-        'icon-lg-src': 'precursors_0.png',
-        'icon-lg-hover-src': 'precursors_0_hover.png',
-        'icon-src': 'ico-ac-precursors.png',
-        'icon-hover-src': 'ico-ac-precursors_hover.png',
+        'icon-lg-src': 'greenhouse-gases.png',
+        'icon-lg-hover-src': 'greenhouse-gases_hover.png',
+        'icon-src': 'ico-ac-co2-ghgs.png',
+        'icon-hover-src': 'ico-ac-co2-ghgs_hover.png',
         'domain': 'Atmosphere',
         'subdomain': 'Atmospheric Composition',
         'scientific-area': 'Carbon cycle and other GHGs',
@@ -157,7 +157,25 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+
     {
+        'chapter-num': '3.4',
+        'id': 'sop-2',
+        'title': 'Sea Level',
+        'href': '_3_4_SeaLevel',
+        'icon-lg-src': 'sea-level_0.png',
+        'icon-lg-hover-src': 'sea-level_0_hover.png',
+        'icon-src': 'ico-sop-sea-level.png',
+        'icon-hover-src': 'ico-sop-sea-level_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Guy Westbrook, Glenn Nolan, Rosemarie Lawlor, Sarah Gallaher, Gerard McCarthy',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+        {
         'chapter-num': '3.1b',
         'id': 'ssop-1',
         'title': 'Sea Subsurface Temperature',
@@ -170,22 +188,6 @@ CHAPTERS = [
         'subdomain': 'Physical',
         'scientific-area': 'Energy and Temperature',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Kieran Lyons, Caroline Cusack, Glenn Nolan',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-    {
-        'chapter-num': '3.4',
-        'id': 'sop-8',
-        'title': 'Sea Level',
-        'href': '_3_4_SeaLevel',
-        'icon-lg-src': 'sea-level_0.png',
-        'icon-lg-hover-src': 'sea-level_0_hover.png',
-        'icon-src': 'ico-sop-sea-level.png',
-        'icon-hover-src': 'ico-sop-sea-level_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': 'Physical Properties',
-        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Guy Westbrook, Glenn Nolan, Rosemarie Lawlor, Sarah Gallaher, Gerard McCarthy',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -242,7 +244,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '4.6',
-        'id': 'bio-2',
+        'id': 'bio-1',
         'title': 'Land Cover',
         'href': '_4_6_LandCover',
         'icon-lg-src': 'land-cover.png',
@@ -258,7 +260,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '4.7',
-        'id': 'bio-7',
+        'id': 'bio-2',
         'title': 'Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)',
         'href': '_4_7_FAPAR',
         'icon-lg-src': 'fapar.png',
@@ -275,7 +277,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '4.11',
-        'id': 'bio-4',
+        'id': 'bio-3',
         'title': 'Fire Disturbance',
         'href': '_4_11_Fire',
         'icon-lg-src': 'fire_0.png',
@@ -291,7 +293,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '4.14',
-        'id': 'ant-2',
+        'id': 'ant-1',
         'title': 'Anthropogenic Greenhouse Gas Emissions ',
         'href': '_4_14_AnthropogenicGreenhouseGasEmissions ',
         'icon-lg-src': 'anthropogenic-ghg-fluxes.png',
@@ -401,7 +403,7 @@ CHAPTERS_DEV = [
     },
     # ATMOSPHERE - COMPOSITION
     {
-        'id': 'ac-1',
+        'id': 'ac-4',
         'title': 'Aerosols',
         'href': '',
         'icon-lg-src': '',
@@ -447,7 +449,7 @@ CHAPTERS_DEV = [
     },
     # ATMOSPHERE - SURFACE
     {
-        'id': 'sa-2',
+        'id': 'sa-3',
         'title': 'Surface Pressure',
         'href': '',
         'icon-lg-src': '',
@@ -462,7 +464,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
-        'id': 'sa-3',
+        'id': 'sa-4',
         'title': 'Surface Radiation Budget',
         'href': '',
         'icon-lg-src': '',
@@ -477,7 +479,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
-        'id': 'sa-4',
+        'id': 'sa-5',
         'title': 'Surface Wind Speed and Direction',
         'href': '',
         'icon-lg-src': '',
@@ -508,7 +510,7 @@ CHAPTERS_DEV = [
     },
     # OCEANIC - SURFACE OCEAN PHYSICS
     {
-        'id': 'sop-2',
+        'id': 'sop-3',
         'title': 'Sea State',
         'href': '',
         'icon-lg-src': '',
@@ -523,7 +525,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
-        'id': 'sop-3',
+        'id': 'sop-4',
         'title': 'Surface Stress',
         'href': '',
         'icon-lg-src': '',
@@ -753,7 +755,7 @@ CHAPTERS_DEV = [
     },
     # TERRESTRIAL - BIOSPHERE
     {
-        'id': 'bio-1',
+        'id': 'bio-4',
         'title': 'Above-ground Biomass',
         'href': '',
         'icon-lg-src': '',
@@ -768,7 +770,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
     {
-        'id': 'bio-3',
+        'id': 'bio-5',
         'title': 'Albedo',
         'href': '',
         'icon-lg-src': '',
@@ -783,7 +785,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
     {
-        'id': 'bio-5',
+        'id': 'bio-6',
         'title': 'Land Surface Temperature',
         'href': '',
         'icon-lg-src': '',
@@ -798,7 +800,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
     {
-        'id': 'bio-6',
+        'id': 'bio-7',
         'title': 'Leaf Area Index (LAI)',
         'href': '',
         'icon-lg-src': '',
@@ -828,7 +830,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },    
     {
-        'id': 'ant-1',
+        'id': 'ant-2',
         'title': 'Anthropogenic Water Use',
         'href': '',
         'icon-lg-src': '',

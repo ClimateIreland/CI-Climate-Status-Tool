@@ -85,7 +85,6 @@ def stations_map(df):
         hovertemplate=stations_map_hovertemplate(ghgFluxDF),
     )
 
-
     nuigTrend = go.Scattermapbox(
         name='NUIG',
         lon=nuigDF.Longitude,
