@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import figure_2_1, map_2_1
+from charts import figure_2_1, figure_2_3, map_2_1
 
 chapter_num = '2.1'
 ecvName = 'Surface Air Temperature'
@@ -51,11 +51,13 @@ trendCaption = """
         and that the annual average temperature is now approximately 0.9°C higher than it was in the early 1900s. 
         Fifteen of the top 20 warmest years on record have occurred since 1990.
         """
-
+trendChart2, trendChart3 = figure_2_3()
+trendChartTitle2 = 'Cold Spell Days'
+trendChartTitle3 = 'Warm Spell Days'
 trendCaption2 = """
        Trend in number of annual cold spell days (number of days in a year with temperature below a certain threshold 
-       for at least 6 consecutive days) per decade (left) and number of annual warm spell days (number of days in a year 
-       with temperature above a certain threshold for at least 6 consecutive days)  per decade (right) (1961–2018). 
+       for at least 6 consecutive days) per decade and number of annual warm spell days (number of days in a year 
+       with temperature above a certain threshold for at least 6 consecutive days)  per decade (1961–2018). 
        For example, there are on average 2 or 3 additional warm spell days each decade at Belmullet, Co. Mayo, over the six decades analysed. 
        The trends indicate a slight increase in the number of warm spell days across the whole country and very little change in the number 
        of cold spell days.
@@ -99,6 +101,76 @@ infoLinks = [{'text': 'Surface Temperature ESSENTIAL CLIMATE VARIABLES (ECV). GC
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+custom_trend = dbc.Container(
+    className='sr-trends',
+    style={'borderColor': chapter_dict['domain-color']},
+    id='trends',
+    children=[
+        html.H3(
+            className='sr-section-heading',
+            style={'color': chapter_dict['domain-color']},
+            children='Trends',
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendChartTitle),
+                            dcc.Graph(
+                                figure=trendChart,
+                                config={'displayModeBar': False})]
+                        )
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.P(
+                                className='sr-chart-caption',
+                                children=trendCaption
+                            )]
+                        )
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-12 col-md-6",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendChartTitle2),
+                            dcc.Graph(
+                                figure=trendChart2,
+                                 config={'displayModeBar': False,'scrollZoom': False,},
+                                )]
+                        ),
+                dbc.Col(className="col-12 col-md-6",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendChartTitle3),
+                            dcc.Graph(
+                                figure=trendChart3,
+                                config={'displayModeBar': False,'scrollZoom': False,},
+                                )]
+                        ),
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.P(
+                                className='sr-chart-caption',
+                                children=trendCaption2
+                            )]
+                        )
+            ]
+        ),
+    ])
 
 def create_chart(app):
     return dcc.Graph(
@@ -119,11 +191,12 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
+            custom_trend,
+        #     pb.build_trend(trendChartTitle,
+        #                    trendChart,
+        #                    trendCaption,
+        #                    chapter_dict
+        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

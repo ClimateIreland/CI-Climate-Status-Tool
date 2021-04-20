@@ -238,7 +238,6 @@ def figure_2_1():
     # remove first row as part of column names, and rename Anom colum
     dataDF = dataDF[1:]
     dataDF = dataDF.rename(columns={'1961-1990 Normal': 'Anom'})
-    dataDF
 
     movingAvgTrace = go.Scatter(x=dataDF.Year,
                                 y=dataDF.filter11,
@@ -332,6 +331,148 @@ def figure_2_1():
 
     return figure_2_1
 
+def figure_2_3():
+    """
+    Cold and Warm spell trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.1SurfaceAirTemperature/Figure2.3/'
+        df = pd.read_csv(data_path+'Fig2.3_StationsTable.txt', delimiter = ",")
+        df=df.round(2) 
+    except:
+        return empty_chart()
+    # Cold Spell chart
+    csd1DF = df.loc[df['CSDI_days_']<= 0]
+    csd1DFStr=csd1DF.astype(str)
+    csd1Trend = go.Scattermapbox(
+            name='<= 0.0',
+            lon=csd1DF.lon,
+            lat=csd1DF.lat,
+            marker=dict(color="#4ce600",#green
+                        size=8,),
+            hovertemplate='<b>'+csd1DF["station_id"]+'</b><br>' +
+        'Trend in CSD per Decade: ' + csd1DFStr["CSDI_days_"]+ ' days<br>' +
+            'Lat: ' + csd1DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + csd1DFStr["lon"]+ '\u00b0<br>' +
+            '<extra><br>'+
+            'Trend in WSD per Decade: ' + csd1DFStr["WSDI_days_"]+' days<br>' +
+            '</extra>',
+        )
+
+    csd2DF = df.loc[(df['CSDI_days_']>0)&(df['CSDI_days_']<=1.0)]
+    csd2DFStr=csd2DF.astype(str)
+    csd2Trend = go.Scattermapbox(
+            name='> 0.0, <= 1.0',
+            lon=csd2DF.lon,
+            lat=csd2DF.lat,
+            marker=dict(color="#004da8",#blue
+                        size=10,),
+            hovertemplate='<b>'+csd2DFStr["station_id"]+'</b><br>' +
+        'Trend in CSD per Decade: ' + csd2DFStr["CSDI_days_"]+' days<br>' +
+            'Lat: ' + csd2DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + csd2DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in WSD per Decade: ' + csd2DFStr["WSDI_days_"]+' days<br>' +
+            '<extra></extra>',
+        )
+    csd3DF = df.loc[(df['CSDI_days_']>1.0)&(df['CSDI_days_']<=2.0)]
+    csd3DFStr=csd3DF.astype(str)
+    csd3Trend = go.Scattermapbox(
+            name='> 1.0, <= 2.0',
+            lon=csd3DF.lon,
+            lat=csd3DF.lat,
+            marker=dict(color="#a900e6",#pink
+                        size=12,),
+            hovertemplate='<b>'+csd3DFStr["station_id"]+'</b><br>' +
+        'Trend in CSD per Decade: ' + csd3DFStr["CSDI_days_"]+' days<br>' +
+            'Lat: ' + csd3DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + csd3DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in WSD per Decade: ' + csd3DFStr["WSDI_days_"]+' days<br>' +
+            '<extra></extra>',
+        )
+    csd4DF = df.loc[df['CSDI_days_']>2.0]
+    csd4DFStr=csd4DF.astype(str)
+    csd4Trend = go.Scattermapbox(
+            name='> 2.0',
+            lon=csd4DF.lon,
+            lat=csd4DF.lat,
+            marker=dict(color="#4c0073",#purple
+                        size=14,),
+            hovertemplate='<b>'+csd4DFStr["station_id"]+'</b><br>' +
+        'Trend in CSD per Decade: ' + csd4DFStr["CSDI_days_"]+' days<br>' +
+            'Lat: ' + csd4DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + csd4DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in WSD per Decade: ' + csd4DFStr["WSDI_days_"]+' days<br>' +
+            '<extra></extra>',
+        )
+    figure_2_3_1 = go.Figure(
+        data=[csd1Trend,csd2Trend,csd3Trend,csd4Trend],
+        layout=MAP_LAYOUT)
+    figure_2_3_1.update_layout(legend_title="<b>Trend in number of"+
+                        "<br>annual cold spell days (CSD) per decade</b>")
+    
+    # Warm Spell chart
+    # wsd1DF = df.loc[(df['WSDI_days_']<=0.0)] 
+    # wsd1DF is empty but need to create 'None' array to show on legend
+    wsd1Trend = go.Scattermapbox(
+            name='<= 0.0',
+            lon=[None],
+            lat=[None],
+            marker=dict(color="#70a800",#green
+                        size=8,),
+        )
+
+    wsd2DF = df.loc[(df['WSDI_days_']>0.0)&(df['WSDI_days_']<=1.0)]
+    wsd2DFStr=wsd2DF.astype(str)
+    wsd2Trend = go.Scattermapbox(
+            name='> 0.0, <= 1.0',
+            lon=wsd2DF.lon,
+            lat=wsd2DF.lat,
+            marker=dict(color="#ffff00",#yellow
+                        size=10,),
+            hovertemplate='<b>'+wsd2DFStr["station_id"]+'</b><br>' +
+        'Trend in WSD per Decade: ' + wsd2DFStr["WSDI_days_"]+' days<br>' +
+            'Lat: ' + wsd2DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + wsd2DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CSD per Decade: ' + wsd2DFStr["CSDI_days_"]+' days<br>' +
+            '<extra></extra>',
+        )
+    wsd3DF = df.loc[(df['WSDI_days_']>1.0)&(df['WSDI_days_']<=2.0)]
+    wsd3DFStr=wsd3DF.astype(str)
+    wsd3Trend = go.Scattermapbox(
+            name='> 1.0, <= 2.0',
+            lon=wsd3DF.lon,
+            lat=wsd3DF.lat,
+            marker=dict(color="#e69800",#orange
+                        size=12,),
+            hovertemplate='<b>'+wsd3DFStr["station_id"]+'</b><br>' +
+        'Trend in WSD per Decade: ' + wsd3DFStr["WSDI_days_"]+' days<br>' +
+            'Lat: ' + wsd3DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + wsd3DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CSD per Decade: ' + wsd3DFStr["CSDI_days_"]+' days<br>' +
+            '<extra></extra>',
+        )
+    wsd4DF = df.loc[(df['WSDI_days_']>2.0)]
+    wsd4DFStr=wsd4DF.astype(str)
+    wsd4Trend = go.Scattermapbox(
+            name='> 2.0',
+            lon=wsd4DF.lon,
+            lat=wsd4DF.lat,
+            marker=dict(color="#e60000",#red
+                        size=14,),
+            hovertemplate='<b>'+wsd4DFStr["station_id"]+'</b><br>' +
+        'Trend in WSD per Decade: ' + wsd4DFStr["WSDI_days_"]+' days<br>' +
+            'Lat: ' + wsd4DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + wsd4DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CSD per Decade: ' + wsd4DFStr["CSDI_days_"]+' days<br>' +
+            '<extra></extra>',
+        )
+    figure_2_3_2 = go.Figure(
+        data=[wsd1Trend,wsd2Trend,wsd3Trend,wsd4Trend],
+        layout=MAP_LAYOUT)
+    figure_2_3_2.update_layout(legend_title="<b>Trend in number of"+
+                        "<br>annual warm spell days (WSD) per decade</b>")
+    
+    return figure_2_3_1, figure_2_3_2
 
 def map_2_1():
     """
