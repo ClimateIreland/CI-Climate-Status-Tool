@@ -454,6 +454,173 @@ def figure_2_9():
     )
     return figure_2_9
 
+def figure_2_10():
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.5Precipitation/Figure2.10/'
+        df = pd.read_csv(data_path+'Fig2.10_StationsTable.txt', delimiter = ",")
+        df=df.round(2)
+    except:
+        return empty_chart()
+    
+    # CWD per decade
+    cwd1DF = df.loc[df['CWD_decade']<= 0]
+    cwd1DFStr=cwd1DF.astype(str)
+    cwd1Trend = go.Scattermapbox(
+            name='<= 0.0',
+            lon=cwd1DF.lon,
+            lat=cwd1DF.lat,
+            marker=dict(color="#4ce600",#green
+                        size=8,),
+            hovertemplate='<b>'+cwd1DF["station_id"]+'</b><br>' +
+        'Trend in CWD per Decade: ' + cwd1DFStr["CWD_decade"]+ ' days<br>' +
+            'Trend in CWD per Year: ' + cwd1DFStr["CWD_year"]+' days<br>' +
+            'Lat: ' + cwd1DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + cwd1DFStr["lon"]+ '\u00b0<br>' +
+            '<extra><br>'+
+            'Trend in CDD per Decade: ' + cwd1DFStr["CDD_decade"]+' days<br>' +
+            'Trend in CDD per Year: ' + cwd1DFStr["CDD_year"]+' days<br>' +
+            '</extra>',
+        )
+
+    cwd2DF = df.loc[(df['CWD_decade']>0)&(df['CWD_decade']<=0.5)]
+    cwd2DFStr=cwd2DF.astype(str)
+    cwd2Trend = go.Scattermapbox(
+            name='> 0.0, <= 0.5',
+            lon=cwd2DF.lon,
+            lat=cwd2DF.lat,
+            marker=dict(color="#004da8",#blue
+                        size=10,),
+            hovertemplate='<b>'+cwd2DFStr["station_id"]+'</b><br>' +
+        'Trend in CWD per Decade: ' + cwd2DFStr["CWD_decade"]+' days<br>' +
+            'Trend in CWD per Year: ' + cwd2DFStr["CWD_year"]+' days<br>' +
+            'Lat: ' + cwd2DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + cwd2DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CDD per Decade: ' + cwd2DFStr["CDD_decade"]+' days<br>' +
+            'Trend in CDD per Year: ' + cwd2DFStr["CDD_year"]+' days<br>' +
+            '<extra></extra>',
+        )
+    cwd3DF = df.loc[(df['CWD_decade']>0.5)&(df['CWD_decade']<=1)]
+    cwd3DFStr=cwd3DF.astype(str)
+    cwd3Trend = go.Scattermapbox(
+            name='> 0.5, <= 1.0',
+            lon=cwd3DF.lon,
+            lat=cwd3DF.lat,
+            marker=dict(color="#a900e6",#pink
+                        size=12,),
+            hovertemplate='<b>'+cwd3DFStr["station_id"]+'</b><br>' +
+        'Trend in CWD per Decade: ' + cwd3DFStr["CWD_decade"]+' days<br>' +
+            'Trend in CWD per Year: ' + cwd3DFStr["CWD_year"]+' days<br>' +
+            'Lat: ' + cwd3DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + cwd3DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CDD per Decade: ' + cwd3DFStr["CDD_decade"]+' days<br>' +
+            'Trend in CDD per Year: ' + cwd3DFStr["CDD_year"]+' days<br>' +
+            '<extra></extra>',
+        )
+    cwd4DF = df.loc[df['CWD_decade']>1.0]
+    cwd4DFStr=cwd4DF.astype(str)
+    cwd4Trend = go.Scattermapbox(
+            name='> 1.0',
+            lon=cwd4DF.lon,
+            lat=cwd4DF.lat,
+            marker=dict(color="#4c0073",#purple
+                        size=14,),
+            hovertemplate='<b>'+cwd4DFStr["station_id"]+'</b><br>' +
+        'Trend in CWD per Decade: ' + cwd4DFStr["CWD_decade"]+' days<br>' +
+            'Trend in CWD per Year: ' + cwd4DFStr["CWD_year"]+' days<br>' +
+            'Lat: ' + cwd4DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + cwd4DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CDD per Decade: ' + cwd4DFStr["CDD_decade"]+' days<br>' +
+            'Trend in CDD per Year: ' + cwd4DFStr["CDD_year"]+' days<br>' +
+            '<extra></extra>',
+        )
+    
+    figure_2_10_1 = go.Figure(
+        data=[cwd1Trend,cwd2Trend,cwd3Trend,cwd4Trend],
+        layout=MAP_LAYOUT)
+    figure_2_10_1.update_layout(legend_title="<b>Trend in maximum length of"+
+                        "<br>annual wet spell days (CWD) per decade</b>")
+    figure_2_10_1
+
+    # CDD per decade
+    cdd1DF = df.loc[df['CDD_decade']<= 0]
+    cdd1DFStr=cdd1DF.astype(str)
+    cdd1Trend = go.Scattermapbox(
+            name='<= 0.0',
+            lon=cdd1DF.lon,
+            lat=cdd1DF.lat,
+            marker=dict(color="#70a800",#green
+                        size=8,),
+            hovertemplate='<b>'+cdd1DF["station_id"]+'</b><br>' +
+        'Trend in CDD per Decade: ' + cdd1DFStr["CDD_decade"]+ ' days<br>' +
+            'Trend in CDD per Year: ' + cdd1DFStr["CDD_year"]+' days<br>' +
+            'Lat: ' + cdd1DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + cdd1DFStr["lon"]+ '\u00b0<br>' +
+            '<extra><br>'+
+            'Trend in CWD per Decade: ' + cdd1DFStr["CWD_decade"]+' days<br>' +
+            'Trend in CWD per Year: ' + cdd1DFStr["CWD_year"]+' days<br>' +
+            '</extra>',
+        )
+
+    cdd2DF = df.loc[(df['CDD_decade']>0)&(df['CDD_decade']<=0.5)]
+    cdd2DFStr=cdd2DF.astype(str)
+    cdd2Trend = go.Scattermapbox(
+            name='> 0.0, <= 0.5',
+            lon=cdd2DF.lon,
+            lat=cdd2DF.lat,
+            marker=dict(color="#ffff00",#yellow
+                        size=10,),
+            hovertemplate='<b>'+cdd2DFStr["station_id"]+'</b><br>' +
+        'Trend in CDD per Decade: ' + cdd2DFStr["CDD_decade"]+' days<br>' +
+            'Trend in CDD per Year: ' + cdd2DFStr["CDD_year"]+' days<br>' +
+            'Lat: ' + cdd2DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + cdd2DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CWD per Decade: ' + cdd2DFStr["CWD_decade"]+' days<br>' +
+            'Trend in CWD per Year: ' + cdd2DFStr["CWD_year"]+' days<br>' +
+            '<extra></extra>',
+        )
+    cdd3DF = df.loc[(df['CDD_decade']>0.5)&(df['CDD_decade']<=1)]
+    cdd3DFStr=cdd3DF.astype(str)
+    cdd3Trend = go.Scattermapbox(
+            name='> 0.5, <= 1.0',
+            lon=cdd3DF.lon,
+            lat=cdd3DF.lat,
+            marker=dict(color="#e69800",#orange
+                        size=12,),
+            hovertemplate='<b>'+cdd3DFStr["station_id"]+'</b><br>' +
+        'Trend in CDD per Decade: ' + cdd3DFStr["CDD_decade"]+' days<br>' +
+            'Trend in CDD per Year: ' + cdd3DFStr["CDD_year"]+' days<br>' +
+            'Lat: ' + cdd3DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + cdd3DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CWD per Decade: ' + cdd3DFStr["CWD_decade"]+' days<br>' +
+            'Trend in CWD per Year: ' + cdd3DFStr["CWD_year"]+' days<br>' +
+            '<extra></extra>',
+        )
+    cdd4DF = df.loc[df['CDD_decade']>1.0]
+    cdd4DFStr=cdd4DF.astype(str)
+    cdd4Trend = go.Scattermapbox(
+            name='> 1.0',
+            lon=cdd4DF.lon,
+            lat=cdd4DF.lat,
+            marker=dict(color="#e60000",#red
+                        size=14,),
+            hovertemplate='<b>'+cdd4DFStr["station_id"]+'</b><br>' +
+        'Trend in CDD per Decade: ' + cdd4DFStr["CDD_decade"]+' days<br>' +
+            'Trend in CDD per Year: ' + cdd4DFStr["CDD_year"]+' days<br>' +
+            'Lat: ' + cdd4DFStr["lat"]+ '\u00b0<br>' +
+            'Lon: ' + cdd4DFStr["lon"]+ '\u00b0<br>' +
+            'Trend in CWD per Decade: ' + cdd4DFStr["CWD_decade"]+' days<br>' +
+            'Trend in CWD per Year: ' + cdd4DFStr["CWD_year"]+' days<br>' +
+            '<extra></extra>',
+        )
+    figure_2_10_2 = go.Figure(
+        data=[cdd1Trend,cdd2Trend,cdd3Trend,cdd4Trend],
+        layout=MAP_LAYOUT)
+    figure_2_10_2.update_layout(legend_title="<b>Trend in maximum length of"+
+                        "<br>annual dry spell days (CDD) per decade</b>")
+    figure_2_10_2
+
+    return figure_2_10_1, figure_2_10_2
+
 def map_2_5():
     """
     Precipitation infrastructure map
