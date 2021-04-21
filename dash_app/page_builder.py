@@ -322,6 +322,7 @@ def build_trend(trendChartTitle, trendChart, trendCaption, chapter_dict):
                                     children=trendChartTitle),
                                 dcc.Graph(
                                     figure=trendChart,
+                                    id='chart'+chapter_dict['href'],
                                     config={'displayModeBar': False})]
                             )
                 ]

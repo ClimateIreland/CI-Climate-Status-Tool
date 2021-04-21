@@ -243,8 +243,17 @@ margin-top:15px;
     height:300px;
 }
 @media only screen and (max-width: 1000px) {
-
+    #chart_4_7_FAPAR .annotation {
+        visibility:hidden;
   }
+  /* #chart_4_7_FAPAR .infolayer {
+    visibility:hidden;
+    width:0px;
+} */
+/* #chart_4_7_FAPAR .hm {
+    width:100%!important;
+} */
+}
 
 @media only screen and (max-width: 600px) {
     .sr-bullet-ul{
@@ -262,7 +271,9 @@ margin-top:15px;
     .sr-bullet-col {
         border-radius:0px;
     }
+
   }
+
 
 
 

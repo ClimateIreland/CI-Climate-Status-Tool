@@ -294,8 +294,8 @@ CHAPTERS = [
     {
         'chapter-num': '4.14',
         'id': 'ant-1',
-        'title': 'Anthropogenic Greenhouse Gas Emissions ',
-        'href': '_4_14_AnthropogenicGreenhouseGasEmissions ',
+        'title': 'Anthropogenic Greenhouse Gas Emissions',
+        'href': '_4_14_AnthropogenicGreenhouseGasEmissions',
         'icon-lg-src': 'anthropogenic-ghg-fluxes.png',
         'icon-lg-hover-src': 'anthropogenic-ghg-fluxes_hover.png',
         'icon-src': 'ico-ant-ghg-fluxes.png',

@@ -799,7 +799,7 @@ def figure_2_18():
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
-                      hovertemplate='%{x}<br>' +
+                      hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Mauna Loa (Hawaii)</b><br>' +
                             'CO\u2082: %{y:.2f} ppm<extra></extra>' 
                             )
@@ -812,7 +812,7 @@ def figure_2_18():
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_SECONDARY,
                             width=2),
-                      hovertemplate='%{x}<br>' +
+                      hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Mace Head</b><br>' +
                             'CO\u2082: %{y:.2f} ppm<extra></extra>' 
                             )
@@ -878,7 +878,7 @@ def figure_2_20():
                      marker=dict(color=TIMESERIES_COLOR_SECONDARY,
                                 size=5,
                                 opacity=0.5),
-                      hovertemplate='%{x}<br>' +
+                      hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Monthly Mean</b><br>' +
                             'CH\u2084: %{y:.2f} ppb<extra></extra>' 
                             )
@@ -891,9 +891,9 @@ def figure_2_20():
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
-                      hovertemplate='%{x}<br>' +
+                      hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Moving Avaerge</b><br>' +
-                            'CH\u2084: %{y:.2f}ppb<extra></extra>' 
+                            'CH\u2084: %{y:.2f} ppb<extra></extra>' 
                             )
 
     figure_2_20 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -958,9 +958,9 @@ def figure_2_22():
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
-                      hovertemplate='%{x}<br>' +
+                      hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Monthly Mean</b><br>' +
-                            'N\u2082O: %{y:.2f}ppb<extra></extra>' 
+                            'N\u2082O: %{y:.2f} ppb<extra></extra>' 
                             )
 
     figure_2_22 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -1007,9 +1007,9 @@ def figure_2_23():
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
-                      hovertemplate='%{x}<br>' +
+                      hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Monthly Mean</b><br>' +
-                            'CFC-12: %{y:.2f}ppt<extra></extra>' 
+                            'CFC-12: %{y:.2f} ppt<extra></extra>' 
                             )
 
     figure_2_23 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -1054,9 +1054,9 @@ def figure_2_24():
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_PRIMARY,
                             width=2),
-                      hovertemplate='%{x}<br>' +
+                      hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Monthly Mean</b><br>' +
-                            'HFC-134a: %{y:.2f}ppt<extra></extra>' 
+                            'HFC-134a: %{y:.2f} ppt<extra></extra>' 
                             )
 
     figure_2_24 = make_subplots(specs=[[{'secondary_y': False}]])
@@ -2081,7 +2081,7 @@ def figure_4_11():
                                                      size=4,
                                                      line=dict(color='#db2001',
                                                                width=0)),
-                                         hovertemplate='%{x}<br>' +
+                                         hovertemplate='1990 - %{x}<br>' +
                                          '<b>Artificial Surfacese</b><br>' +
                                          'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
@@ -2093,7 +2093,7 @@ def figure_4_11():
                                                     size=4,
                                                     line=dict(color='#e6e43b',
                                                               width=0)),
-                                        hovertemplate='%{x}<br>' +
+                                        hovertemplate='1990 - %{x}<br>' +
                                         '<b>Agricultural Areas</b><br>' +
                                         'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
@@ -2105,7 +2105,7 @@ def figure_4_11():
                                          size=4,
                                          line=dict(color='#5ea32a',
                                                    width=0)),
-                             hovertemplate='%{x}<br>' +
+                             hovertemplate='1990 - %{x}<br>' +
                              '<b>Forest</b><br>' +
                              'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
@@ -2117,7 +2117,7 @@ def figure_4_11():
                                                             size=4,
                                                             line=dict(color='#c4fd89',
                                                                       width=0)),
-                                                hovertemplate='%{x}<br>' +
+                                                hovertemplate='1990 - %{x}<br>' +
                                                 '<b>Semi-Natural & Low Vegetations</b><br>' +
                                                 'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
@@ -2129,7 +2129,7 @@ def figure_4_11():
                                            size=4,
                                            line=dict(color='#4c52f9',
                                                      width=0)),
-                               hovertemplate='%{x}<br>' +
+                               hovertemplate='1990 - %{x}<br>' +
                                '<b>Wetlands</b><br>' +
                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
@@ -2141,7 +2141,7 @@ def figure_4_11():
                                               size=4,
                                               line=dict(color='#72caf0',
                                                         width=0)),
-                                  hovertemplate='%{x}<br>' +
+                                  hovertemplate='1990 - %{x}<br>' +
                                   '<b>Water Bodies</b><br>' +
                                   'Cumalitive Change.: %{y:.2%}<extra></extra>')
 
@@ -2277,15 +2277,6 @@ def figure_4_12():
             faparDF.at[index, 'xAxis'] = 35
         elif row.Month == 12 and row.Day < 32:
             faparDF.at[index, 'xAxis'] = 36
-    my_text = ['{}<br>'.format(date)+
-            #    'Min: {:.1%}<br>'.format(mn)+
-               '<b>Mean: {:.2}</b><br>'.format(mean)
-            #    'Max: {:.1%}<br>'.format(mx)
-               for date, mean, mn,mx, in zip(list(faparDF['Date']),
-                                             list(faparDF['Mean']),
-                                             list(faparDF['Min']),
-                                             list(faparDF['Max'])
-                                        )]
     colorscale = [
         # 5% are to be purple
         [0.0, 'rgb(98, 55, 155)'],
@@ -2307,7 +2298,7 @@ def figure_4_12():
         [1.0, 'rgb(219, 32, 1)'],
     ]
     date_list = [datetime.date.today() - dateutil.relativedelta.relativedelta(months=x)
-                 for x in range(11, -1, -1)]
+             for x in range(11, -1, -1)]
     month_list = [datetime.date.strftime(x, '%b') for x in date_list]
     faparTrace = go.Heatmap(
         z=faparDF.Mean,
@@ -2316,71 +2307,98 @@ def figure_4_12():
         text=faparDF['Date'],
         colorscale=colorscale,
         colorbar=dict(
-            # lenmode="pixels",
-            # len=100,
-                      tickmode='array',
-                      thickness=10,
-                      ticktext=['0.47-0.50', '0.50-0.56', '0.56-0.65',
-                                '0.65-0.72', '0.72-0.76', '>0.76'],
-                      tickvals=[0.48, 0.52, 0.59, 0.67, 0.735, 0.77]),
-        hovertemplate='%{text}'+
-        'Mean FAPAR: %{z:.2}<extra></extra>')
+            len=0.87,
+                    tickmode='array',
+                    thickness=10,
+                    x=1.045,
+            title='|  <b>Intervals</b>',
+                    ticktext=['0.47-0.50', '0.50-0.56', '0.56-0.65',
+                        '0.65-0.72', '0.72-0.76', '>0.76'],
+                    tickvals=[0.48, 0.52, 0.59, 0.67, 0.735, 0.77]
+        
+        ),
+        hovertemplate='%{text|%d %b %Y}<br>'+
+        'Mean FAPAR: %{z:.2f}<extra></extra>')
 
+    xPerc=1.055
+    annotations=(
+        dict(
+            text="<b>Perc.</b>",
+            xref="paper",yref="paper",
+            x=xPerc, y=0.92,
+            showarrow=False,
+            align="center"
+            ),
+        dict(
+            xref="paper",yref="paper",
+            x=xPerc, y=0.85,
+            text="95",
+            showarrow=False,
+            align="center"
+            ),
+        dict(
+            xref="paper",yref="paper",
+            x=xPerc, y=0.77,
+            text="75",
+            showarrow=False,
+            align="center"
+            ),
+        dict(
+            xref="paper",yref="paper",
+            x=xPerc, y=0.58,
+            text="50",
+            showarrow=False,
+            align="center"
+
+            ),
+        dict(
+            xref="paper",yref="paper",
+            x=xPerc, y=0.38,
+            text="25",
+            showarrow=False,
+            align="center"
+
+            ),
+        dict(
+            xref="paper",yref="paper",
+            x=xPerc, y=0.19,
+            text="5",
+            showarrow=False,
+            align="center"
+
+            ),
+        dict(
+            xref="paper",yref="paper",
+            x=xPerc, y=0.09,
+            text="min",
+            showarrow=False,
+            align="center"
+            )
+    )
     figure_4_12 = go.Figure(data=faparTrace, layout=TIMESERIES_LAYOUT)
     figure_4_12.update_layout(
+        annotations=annotations,
         yaxis=dict(
             title='Year',
             nticks=20),
         xaxis=dict(
             title='Month',
             ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
-            showgrid=True, gridwidth=3, gridcolor='black',
+            showgrid=False,
             tickvals=[2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35],))
     figure_4_12.add_shape(
         type='line',
         x0=3.5, y0=1998.6, x1=3.5, y1=2018.4,
         line=dict(color='White', width=3)
     )
-    figure_4_12.add_shape(type='line',
-                          x0=6.5, y0=1998.6, x1=6.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=9.5, y0=1998.6, x1=9.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=12.5, y0=1998.6, x1=12.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=15.5, y0=1998.6, x1=15.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=18.5, y0=1998.6, x1=18.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=21.5, y0=1998.6, x1=21.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=24.5, y0=1998.6, x1=24.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=27.5, y0=1998.6, x1=27.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=30.5, y0=1998.6, x1=30.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
-    figure_4_12.add_shape(type='line',
-                          x0=33.5, y0=1998.6, x1=33.5, y1=2018.4,
-                          line=dict(color='White', width=3)
-                          )
+    x0=3.5
+    for i in range(0,11):
+        figure_4_12.add_shape(type='line',
+                            x0=x0, y0=1998.6, x1=x0, y1=2018.4,
+                            line=dict(color='White', width=3))
+        x0+=3
+
+    
     return figure_4_12
 
 def figure_4_21():
