@@ -354,9 +354,9 @@ def figure_2_3():
         'Trend in CSD per Decade: ' + csd1DFStr["CSDI_days_"]+ ' days<br>' +
             'Lat: ' + csd1DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + csd1DFStr["lon"]+ '\u00b0<br>' +
-            '<extra><br>'+
-            'Trend in WSD per Decade: ' + csd1DFStr["WSDI_days_"]+' days<br>' +
-            '</extra>',
+            'Min. Year: ' + csd1DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + csd1DFStr["max_year"] + "<br>"+
+            '<extra></extra>',
         )
 
     csd2DF = df.loc[(df['CSDI_days_']>0)&(df['CSDI_days_']<=1.0)]
@@ -371,7 +371,8 @@ def figure_2_3():
         'Trend in CSD per Decade: ' + csd2DFStr["CSDI_days_"]+' days<br>' +
             'Lat: ' + csd2DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + csd2DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in WSD per Decade: ' + csd2DFStr["WSDI_days_"]+' days<br>' +
+            'Min. Year: ' + csd2DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + csd2DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     csd3DF = df.loc[(df['CSDI_days_']>1.0)&(df['CSDI_days_']<=2.0)]
@@ -386,13 +387,14 @@ def figure_2_3():
         'Trend in CSD per Decade: ' + csd3DFStr["CSDI_days_"]+' days<br>' +
             'Lat: ' + csd3DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + csd3DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in WSD per Decade: ' + csd3DFStr["WSDI_days_"]+' days<br>' +
+          'Min. Year: ' + csd3DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + csd3DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     csd4DF = df.loc[df['CSDI_days_']>2.0]
     csd4DFStr=csd4DF.astype(str)
     csd4Trend = go.Scattermapbox(
-            name='> 2.0',
+            name='> 2.0, <= 3.0',
             lon=csd4DF.lon,
             lat=csd4DF.lat,
             marker=dict(color="#4c0073",#purple
@@ -401,7 +403,8 @@ def figure_2_3():
         'Trend in CSD per Decade: ' + csd4DFStr["CSDI_days_"]+' days<br>' +
             'Lat: ' + csd4DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + csd4DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in WSD per Decade: ' + csd4DFStr["WSDI_days_"]+' days<br>' +
+            'Min. Year: ' + csd4DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + csd4DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     figure_2_3_1 = go.Figure(
@@ -413,13 +416,13 @@ def figure_2_3():
     # Warm Spell chart
     # wsd1DF = df.loc[(df['WSDI_days_']<=0.0)] 
     # wsd1DF is empty but need to create 'None' array to show on legend
-    wsd1Trend = go.Scattermapbox(
-            name='<= 0.0',
-            lon=[None],
-            lat=[None],
-            marker=dict(color="#70a800",#green
-                        size=8,),
-        )
+    # wsd1Trend = go.Scattermapbox(
+    #         name='<= 0.0',
+    #         lon=[None],
+    #         lat=[None],
+    #         marker=dict(color="#70a800",#green
+    #                     size=8,),
+    #     )
 
     wsd2DF = df.loc[(df['WSDI_days_']>0.0)&(df['WSDI_days_']<=1.0)]
     wsd2DFStr=wsd2DF.astype(str)
@@ -433,7 +436,8 @@ def figure_2_3():
         'Trend in WSD per Decade: ' + wsd2DFStr["WSDI_days_"]+' days<br>' +
             'Lat: ' + wsd2DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + wsd2DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CSD per Decade: ' + wsd2DFStr["CSDI_days_"]+' days<br>' +
+                'Min. Year: ' + wsd2DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + wsd2DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     wsd3DF = df.loc[(df['WSDI_days_']>1.0)&(df['WSDI_days_']<=2.0)]
@@ -448,13 +452,14 @@ def figure_2_3():
         'Trend in WSD per Decade: ' + wsd3DFStr["WSDI_days_"]+' days<br>' +
             'Lat: ' + wsd3DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + wsd3DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CSD per Decade: ' + wsd3DFStr["CSDI_days_"]+' days<br>' +
+                'Min. Year: ' + wsd3DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + wsd3DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     wsd4DF = df.loc[(df['WSDI_days_']>2.0)]
     wsd4DFStr=wsd4DF.astype(str)
     wsd4Trend = go.Scattermapbox(
-            name='> 2.0',
+            name='> 2.0, <= 3.0',
             lon=wsd4DF.lon,
             lat=wsd4DF.lat,
             marker=dict(color="#e60000",#red
@@ -463,11 +468,12 @@ def figure_2_3():
         'Trend in WSD per Decade: ' + wsd4DFStr["WSDI_days_"]+' days<br>' +
             'Lat: ' + wsd4DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + wsd4DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CSD per Decade: ' + wsd4DFStr["CSDI_days_"]+' days<br>' +
+            'Min. Year: ' + wsd4DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + wsd4DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     figure_2_3_2 = go.Figure(
-        data=[wsd1Trend,wsd2Trend,wsd3Trend,wsd4Trend],
+        data=[wsd2Trend,wsd3Trend,wsd4Trend],
         layout=MAP_LAYOUT)
     figure_2_3_2.update_layout(legend_title="<b>Trend in number of"+
                         "<br>annual warm spell days (WSD) per decade</b>")
@@ -614,13 +620,11 @@ def figure_2_10():
                         size=8,),
             hovertemplate='<b>'+cwd1DF["station_id"]+'</b><br>' +
         'Trend in CWD per Decade: ' + cwd1DFStr["CWD_decade"]+ ' days<br>' +
-            'Trend in CWD per Year: ' + cwd1DFStr["CWD_year"]+' days<br>' +
             'Lat: ' + cwd1DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + cwd1DFStr["lon"]+ '\u00b0<br>' +
-            '<extra><br>'+
-            'Trend in CDD per Decade: ' + cwd1DFStr["CDD_decade"]+' days<br>' +
-            'Trend in CDD per Year: ' + cwd1DFStr["CDD_year"]+' days<br>' +
-            '</extra>',
+            'Min. Year: ' + cwd1DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + cwd1DFStr["max_year"] + "<br>"+
+            '<extra></extra>',
         )
 
     cwd2DF = df.loc[(df['CWD_decade']>0)&(df['CWD_decade']<=0.5)]
@@ -633,11 +637,10 @@ def figure_2_10():
                         size=10,),
             hovertemplate='<b>'+cwd2DFStr["station_id"]+'</b><br>' +
         'Trend in CWD per Decade: ' + cwd2DFStr["CWD_decade"]+' days<br>' +
-            'Trend in CWD per Year: ' + cwd2DFStr["CWD_year"]+' days<br>' +
             'Lat: ' + cwd2DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + cwd2DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CDD per Decade: ' + cwd2DFStr["CDD_decade"]+' days<br>' +
-            'Trend in CDD per Year: ' + cwd2DFStr["CDD_year"]+' days<br>' +
+                       'Min. Year: ' + cwd2DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + cwd2DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     cwd3DF = df.loc[(df['CWD_decade']>0.5)&(df['CWD_decade']<=1)]
@@ -650,28 +653,26 @@ def figure_2_10():
                         size=12,),
             hovertemplate='<b>'+cwd3DFStr["station_id"]+'</b><br>' +
         'Trend in CWD per Decade: ' + cwd3DFStr["CWD_decade"]+' days<br>' +
-            'Trend in CWD per Year: ' + cwd3DFStr["CWD_year"]+' days<br>' +
             'Lat: ' + cwd3DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + cwd3DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CDD per Decade: ' + cwd3DFStr["CDD_decade"]+' days<br>' +
-            'Trend in CDD per Year: ' + cwd3DFStr["CDD_year"]+' days<br>' +
+                       'Min. Year: ' + cwd3DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + cwd3DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     cwd4DF = df.loc[df['CWD_decade']>1.0]
     cwd4DFStr=cwd4DF.astype(str)
     cwd4Trend = go.Scattermapbox(
-            name='> 1.0',
+            name='> 1.0, <= 2.0',
             lon=cwd4DF.lon,
             lat=cwd4DF.lat,
             marker=dict(color="#4c0073",#purple
                         size=14,),
             hovertemplate='<b>'+cwd4DFStr["station_id"]+'</b><br>' +
         'Trend in CWD per Decade: ' + cwd4DFStr["CWD_decade"]+' days<br>' +
-            'Trend in CWD per Year: ' + cwd4DFStr["CWD_year"]+' days<br>' +
             'Lat: ' + cwd4DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + cwd4DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CDD per Decade: ' + cwd4DFStr["CDD_decade"]+' days<br>' +
-            'Trend in CDD per Year: ' + cwd4DFStr["CDD_year"]+' days<br>' +
+                       'Min. Year: ' + cwd4DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + cwd4DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     
@@ -693,13 +694,11 @@ def figure_2_10():
                         size=8,),
             hovertemplate='<b>'+cdd1DF["station_id"]+'</b><br>' +
         'Trend in CDD per Decade: ' + cdd1DFStr["CDD_decade"]+ ' days<br>' +
-            'Trend in CDD per Year: ' + cdd1DFStr["CDD_year"]+' days<br>' +
             'Lat: ' + cdd1DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + cdd1DFStr["lon"]+ '\u00b0<br>' +
-            '<extra><br>'+
-            'Trend in CWD per Decade: ' + cdd1DFStr["CWD_decade"]+' days<br>' +
-            'Trend in CWD per Year: ' + cdd1DFStr["CWD_year"]+' days<br>' +
-            '</extra>',
+                       'Min. Year: ' + cdd1DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + cdd1DFStr["max_year"] + "<br>"+
+            '<extra></extra>',
         )
 
     cdd2DF = df.loc[(df['CDD_decade']>0)&(df['CDD_decade']<=0.5)]
@@ -712,11 +711,10 @@ def figure_2_10():
                         size=10,),
             hovertemplate='<b>'+cdd2DFStr["station_id"]+'</b><br>' +
         'Trend in CDD per Decade: ' + cdd2DFStr["CDD_decade"]+' days<br>' +
-            'Trend in CDD per Year: ' + cdd2DFStr["CDD_year"]+' days<br>' +
             'Lat: ' + cdd2DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + cdd2DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CWD per Decade: ' + cdd2DFStr["CWD_decade"]+' days<br>' +
-            'Trend in CWD per Year: ' + cdd2DFStr["CWD_year"]+' days<br>' +
+                       'Min. Year: ' + cdd2DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + cdd2DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     cdd3DF = df.loc[(df['CDD_decade']>0.5)&(df['CDD_decade']<=1)]
@@ -729,28 +727,26 @@ def figure_2_10():
                         size=12,),
             hovertemplate='<b>'+cdd3DFStr["station_id"]+'</b><br>' +
         'Trend in CDD per Decade: ' + cdd3DFStr["CDD_decade"]+' days<br>' +
-            'Trend in CDD per Year: ' + cdd3DFStr["CDD_year"]+' days<br>' +
             'Lat: ' + cdd3DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + cdd3DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CWD per Decade: ' + cdd3DFStr["CWD_decade"]+' days<br>' +
-            'Trend in CWD per Year: ' + cdd3DFStr["CWD_year"]+' days<br>' +
+                       'Min. Year: ' + cdd3DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + cdd3DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     cdd4DF = df.loc[df['CDD_decade']>1.0]
     cdd4DFStr=cdd4DF.astype(str)
     cdd4Trend = go.Scattermapbox(
-            name='> 1.0',
+            name='> 1.0, <= 2.0',
             lon=cdd4DF.lon,
             lat=cdd4DF.lat,
             marker=dict(color="#e60000",#red
                         size=14,),
             hovertemplate='<b>'+cdd4DFStr["station_id"]+'</b><br>' +
         'Trend in CDD per Decade: ' + cdd4DFStr["CDD_decade"]+' days<br>' +
-            'Trend in CDD per Year: ' + cdd4DFStr["CDD_year"]+' days<br>' +
             'Lat: ' + cdd4DFStr["lat"]+ '\u00b0<br>' +
             'Lon: ' + cdd4DFStr["lon"]+ '\u00b0<br>' +
-            'Trend in CWD per Decade: ' + cdd4DFStr["CWD_decade"]+' days<br>' +
-            'Trend in CWD per Year: ' + cdd4DFStr["CWD_year"]+' days<br>' +
+                       'Min. Year: ' + cdd4DFStr["min_year"] + "<br>"+
+            'Max. Year: ' + cdd4DFStr["max_year"] + "<br>"+
             '<extra></extra>',
         )
     figure_2_10_2 = go.Figure(
@@ -1138,7 +1134,7 @@ def figure_3_1():
                                 )
     normal = go.Scatter(x=df["year"],
                         y=df["Unnamed: 5"],
-                        name='1981-2010 Normal',
+                        name='1981-2010 Average',
                         mode='lines',  # 'line' is default
                         line_shape='spline',
                         line=dict(color="#fdbf2d", #color used in report
@@ -1154,7 +1150,7 @@ def figure_3_1():
     figure_3_1.add_trace(normal,
                 secondary_y=True,)
     figure_3_1.update_layout(TIMESERIES_LAYOUT)
-    figure_3_1.update_yaxes(title_text='Difference (\u00b0C) from 1981-2010 Normal',
+    figure_3_1.update_yaxes(title_text='Difference (\u00b0C) from 1981-2010 Average',
                             secondary_y=False,
                             range=[-1, 1],
                             showgrid=False,

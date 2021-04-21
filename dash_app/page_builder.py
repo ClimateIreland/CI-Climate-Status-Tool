@@ -109,15 +109,15 @@ def build_breadcrumb(chapter_dict):
     return dbc.Container(
         className='sr-page-breadcrumb',
         children=[
-            dcc.Link(
-                style={'color': chapter_dict['domain-color']},
-                children='Climate Ireland',
-                href='https://www.climateireland.ie',
-                target='_blank'
-            ),
-            html.Span(
-                children=' / ',
-            ),
+            # dcc.Link(
+            #     style={'color': chapter_dict['domain-color']},
+            #     children='Climate Ireland',
+            #     href='https://www.climateireland.ie',
+            #     target='_blank'
+            # ),
+            # html.Span(
+            #     children=' / ',
+            # ),
             dcc.Link(
                 style={'color': chapter_dict['domain-color']},
                 className="sr-return-link",

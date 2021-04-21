@@ -36,16 +36,16 @@ trendChart = figure_2_9()
 trendCaption = """
 A time-series graph (1941-2019) of the annual average rainfall totals (yellow bars, right-hand axis) 
 and the annual anomalies, or differences, from the 1961–1990 normal (left-hand axis). 
-A moving average for periods of 11 years is also shown (green line). 
+A moving average for periods of 11 years is also shown (blue line). 
 Since the 1980s an increasing trend can be observed in the 11-year moving average. 
-Compared with an annual average rainfall of 1186mm in the period 1961–1990 (blue line), 
-the last 30-year period (1990–2019) (blue dashed line) shows a 79-mm or almost 7% increase in annual rainfall.
+Compared with an annual average rainfall of 1186 mm in the period 1961–1990 (blue dashed line), 
+the last 30-year period (1990–2019) (blue dashed line) shows a 79 mm or almost 7% increase in annual rainfall.
         """
 
 
 trendChart2, trendChart3 = figure_2_10()
-trendChartTitle2 = 'Trend in Max. Length of Annual Wet Spell Days per Decade '
-trendChartTitle3 = 'Trend in Continuous Dry Spell Days'
+trendChartTitle2 = 'Wet Spell Days'
+trendChartTitle3 = 'Dry Spell Days'
 trendCaption2 = """
 Trends in the maximum length of annual wet spell days 
 (maximum number of consecutive days with precipitation of 1 mm or above) 

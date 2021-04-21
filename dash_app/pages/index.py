@@ -44,8 +44,12 @@ intro = dbc.Container(
                         children=[
                             html.Img(
                                 className='sr-menu-logo',
-                                src='assets/images/CSRI2020Logo.png'
-                            )])]
+                                style={"width":"150px"},
+                                src='assets/images/Climate_status.png'
+                            ),
+                          ]),
+                     html.H1("Ireland's Climate Status Tool", 
+                            style={"color":"rgba(0,10,20,.80)","marginTop":"30px"})]
             )),
         dbc.Row(
             children=[
@@ -53,42 +57,11 @@ intro = dbc.Container(
                     className='text-center',
                     children=[
                         html.Img(
-                            src='assets/images/LogoBannerCSRI.png'
+                            style={"width":"100%","maxWidth":"800px"},
+                            src='assets/images/ProjectBannerCSRI.png'
                         ),
 
                     ])]),
-        # dbc.Row(
-        #     children=[
-        #         dbc.Col(
-        #             className='col-3 col-sm-2 offset-sm-2 my-auto text-center',
-        #             children=html.Img(
-        #                 className='sr-banner-org-icon',
-        #                 src='assets/images/UCC_Logo_2018_low.png'
-        #             )
-        #         ),
-        #         dbc.Col(
-        #             className='col-3 col-sm-2 my-auto text-center',
-        #             children=html.Img(
-        #                 className='sr-banner-org-icon',
-        #                 src='assets/images/EPA_logo.gif'
-        #             )
-        #         ),
-        #         dbc.Col(
-        #             className='col-3 col-sm-2 my-auto text-center',
-        #             children=html.Img(
-        #                 className='sr-banner-org-icon',
-        #                 src='assets/images/mi_logo.gif'
-        #             )
-        #         ),
-        #         dbc.Col(
-        #             className='col-3 col-sm-1 my-auto text-center',
-        #             children=html.Img(
-        #                 className='sr-banner-org-icon',
-        #                 src='assets/images/met.ie-logo.gif'
-        #             )
-        #         ),
-        #     ],
-        # ),
         dbc.Row(
             dbc.Col(
                 className='sr-menu-intro-col',
@@ -107,6 +80,15 @@ intro = dbc.Container(
 
                                   ]
                     ),
+                    # html.Div(
+                    #         className='text-center',
+                    # children=[
+                    #     html.Img(
+                    #         style={"width":"100%","maxWidth":"800px"},
+                    #         src='assets/images/ProjectBannerCSRI.png'
+                    #     )],
+
+                    # )
                 ]
 
             )

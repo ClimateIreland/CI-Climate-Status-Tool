@@ -47,7 +47,7 @@ trendChartTitle2 = 'Ballyglass Harbour, Co. Mayo'
 trendChart2 = figure_3_7_2()
 
 # fourth chart
-trendChartTitle3 = 'Castletownbare Port, Co. Cork'
+trendChartTitle3 = 'Castletownbare, Co. Cork'
 trendChart3 = figure_3_7_3()
 
 # fifth chart
