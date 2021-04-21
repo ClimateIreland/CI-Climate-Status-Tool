@@ -168,7 +168,9 @@ menu_graphic = dbc.Container(
         id=chapter['id'],
         className="dropdown",
         children=[
-            dcc.Link(children=[
+            dcc.Link(
+                className="sr-graphic-link",
+                children=[
                 html.Img(src='assets/images/icons/' +
                          chapter['icon-src'])
             ],
@@ -185,6 +187,7 @@ menu_graphic = dbc.Container(
                 className="dropdown-content",
                 children=[
                     dcc.Link(
+                        className="sr-graphic-link",
                         style={'color': chapter['domain-color']},
                         children=chapter['title'],
                         href=chapter['href'])

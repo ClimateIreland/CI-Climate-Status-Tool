@@ -120,6 +120,7 @@ def build_breadcrumb(chapter_dict):
             ),
             dcc.Link(
                 style={'color': chapter_dict['domain-color']},
+                className="sr-return-link",
                 children='Climate Status Report',
                 href='/dash/'
             ),
@@ -413,6 +414,7 @@ def build_nav_carousel(chapter_dict):
                     ),
                         dcc.Link(
                             href='/dash/',
+                            className="sr-return-link",
                             style={'color': chapter_dict['domain-color']},
                             children=["Or Return to Index"])
                     ]
