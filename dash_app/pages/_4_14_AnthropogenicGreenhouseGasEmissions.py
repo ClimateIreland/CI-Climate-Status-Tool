@@ -132,7 +132,7 @@ custom_trend = dbc.Container(
                                     className='sr-chart-title',
                                     children=trendChartTitle2),
                                 html.Img(
-                                style={"max-width":"800px"},
+                                style={"width":"100%","max-width":"800px"},
                                 # className='w-100',
                                 src=trendChart2)
                                     ]
