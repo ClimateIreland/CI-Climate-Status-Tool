@@ -21,8 +21,9 @@ STATION_COLORS = {
     'Climate': '#004da8', # blue
     'WaveRide/SmartBayObsCenter': '#ffff00', # yellow
     'MI_Survey': '#ff0000', # red
-    'EPA': '#002673', # dark blue
-    'NUIG': '#00734c', # dark green
+    'EPA': '#00734c', # dark green
+    'NUIG': '#ff0000', # red
+    'Met': '#002673', # dark blue
     'TidbiT': '#004da8', # blue
     'ExtendedElletLineBuoy': '#00734c', # dark green
     'TideGauge': '#8400a8', # purple

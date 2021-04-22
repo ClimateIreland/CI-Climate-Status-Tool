@@ -846,7 +846,65 @@ def map_2_10():
         df = pd.read_csv(data_path+'Map2.10_StationTable.txt')
     except:
         return empty_chart()
-    map_2_10=stations_map(df)
+
+    epaDF = df.loc[(df['Type'] == 'EPA')]
+    epaDFStr=epaDF.astype(str)
+    epaTrend = go.Scattermapbox(
+        name='EPA',
+        lon=epaDF.Longitude,
+        lat=epaDF.Latitude,
+        marker=dict(color=STATION_COLORS['EPA'],
+                    size=7),
+        hovertemplate='Name: ' + epaDFStr['name'] + '<br>' +
+                'County: ' + epaDFStr['County'] + '<br>' +
+                'Agency: EPA<br>' +
+                'Station No.: ' + epaDFStr['Station_Nu'] + '<br>' +
+                'Open Year: ' + epaDFStr['Open_Year'] + '<br>' +
+                'Height: ' + epaDFStr['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    nuigDF = df.loc[(df['Type'] == 'NUIG')]
+    nuigDFStr=nuigDF.astype(str)
+    nuigTrend = go.Scattermapbox(
+        name='NUIG',
+        lon=nuigDF.Longitude,
+        lat=nuigDF.Latitude,
+        marker=dict(color=STATION_COLORS['NUIG'],
+                    size=7),
+        hovertemplate='Name: ' + nuigDFStr['name'] + '<br>' +
+                'County: ' + nuigDFStr['County'] + '<br>' +
+                'Agency: NUIG<br>' +
+                'Station No.: ' + nuigDFStr['Station_Nu'] + '<br>' +
+                'Open Year: ' + nuigDFStr['Open_Year'] + '<br>' +
+                'Height: ' + nuigDFStr['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    metDF = df.loc[(df['Type'] == 'Synoptic')]
+    metDFStr=metDF.astype(str)
+    metTrend = go.Scattermapbox(
+        name='Met Eireann',
+        lon=metDF.Longitude,
+        lat=metDF.Latitude,
+        marker=dict(color=STATION_COLORS['Met'],
+                    size=7),
+        hovertemplate='Name: ' + metDFStr['name'] + '<br>' +
+                'County: ' + metDFStr['County'] + '<br>' +
+                'Agency: NUIG<br>' +
+                'Station No.: ' + metDFStr['Station_Nu'] + '<br>' +
+                'Open Year: ' + metDFStr['Open_Year'] + '<br>' +
+                'Height: ' + metDFStr['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    map_2_10 = go.Figure(data=[epaTrend,nuigTrend,metTrend],
+                    layout=MAP_LAYOUT)
+    map_2_10.update_layout(legend_title="<b>  Agency</b>")
+
     return map_2_10
 
 def figure_2_20():
@@ -925,7 +983,46 @@ def map_2_11():
         df = pd.read_csv(data_path+'Map2.11_StationTable.txt')
     except:
         return empty_chart()
-    map_2_11=stations_map(df)
+    
+    epaDF = df.loc[(df['Type'] == 'EPA')]
+    epaDFStr=epaDF.astype(str)
+    epaTrend = go.Scattermapbox(
+        name='EPA',
+        lon=epaDF.Longitude,
+        lat=epaDF.Latitude,
+        marker=dict(color=STATION_COLORS['EPA'],
+                    size=7),
+        hovertemplate='Name: ' + epaDFStr['name'] + '<br>' +
+                'County: ' + epaDFStr['County'] + '<br>' +
+                'Agency: EPA<br>' +
+                'Station No.: ' + epaDFStr['Station_Nu'] + '<br>' +
+                'Open Year: ' + epaDFStr['Open_Year'] + '<br>' +
+                'Height: ' + epaDFStr['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    nuigDF = df.loc[(df['Type'] == 'NUIG')]
+    nuigDFStr=nuigDF.astype(str)
+    nuigTrend = go.Scattermapbox(
+        name='NUIG',
+        lon=nuigDF.Longitude,
+        lat=nuigDF.Latitude,
+        marker=dict(color=STATION_COLORS['NUIG'],
+                    size=7),
+        hovertemplate='Name: ' + nuigDFStr['name'] + '<br>' +
+                'County: ' + nuigDFStr['County'] + '<br>' +
+                'Agency: NUIG<br>' +
+                'Station No.: ' + nuigDFStr['Station_Nu'] + '<br>' +
+                'Open Year: ' + nuigDFStr['Open_Year'] + '<br>' +
+                'Height: ' + nuigDFStr['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    map_2_11 = go.Figure(data=[epaTrend,nuigTrend],
+                    layout=MAP_LAYOUT)
+    map_2_11.update_layout(legend_title="<b>  Agency</b>")
     return map_2_11
 
 def figure_2_22():
@@ -1084,7 +1181,44 @@ def map_2_12():
         df = pd.read_csv(data_path+'Map2.12_StationTable.txt')
     except:
         return empty_chart()
-    map_2_12=stations_map(df)
+    nuigDF = df.loc[(df['Type'] == 'NUIG')]
+    nuigDFStr=nuigDF.astype(str)
+    nuigTrend = go.Scattermapbox(
+        name='NUIG',
+        lon=nuigDF.Longitude,
+        lat=nuigDF.Latitude,
+        marker=dict(color=STATION_COLORS['NUIG'],
+                    size=7),
+        hovertemplate='Name: ' + nuigDFStr['name'] + '<br>' +
+                'County: ' + nuigDFStr['County'] + '<br>' +
+                'Agency: NUIG<br>' +
+                'Station No.: ' + nuigDFStr['Station_Nu'] + '<br>' +
+                'Open Year: ' + nuigDFStr['Open_Year'] + '<br>' +
+                'Height: ' + nuigDFStr['Height__m_'] + '<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    metDF = df.loc[(df['Type'] == 'ClosedS')]
+    metDFStr=metDF.astype(str)
+    metTrend = go.Scattermapbox(
+        name='Met Eireann',
+        lon=metDF.Longitude,
+        lat=metDF.Latitude,
+        marker=dict(color=STATION_COLORS['Met'],
+                    size=7),
+        hovertemplate='Name: ' + metDFStr['name'] + '<br>' +
+                'County: ' + metDFStr['County'] + '<br>' +
+                'Agency: NUIG<br>' +
+                'Station No.: ' + metDFStr['Station_Nu'] + '<br>' +
+                'Open Year: ' + metDFStr['Open_Year'] + '<br>' +
+                'Height: ' + metDFStr['Height__m_'] + '<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+    map_2_12 = go.Figure(data=[nuigTrend,metTrend],
+                    layout=MAP_LAYOUT)
+    map_2_12.update_layout(legend_title="<b>  Agency</b>")
     return map_2_12
 
 def figure_3_1():
@@ -1785,8 +1919,88 @@ def map_3_6():
         miStationsDF.at[index,'Longitude']=stationRow['Longitude']
         miStationsDF.at[index,'Type']='MI_Survey'
 
-    combinedDF = pd.concat([epaStationsDF,smartBayStationsDF,maceHeadStationsDF, miStationsDF])
-    map_3_6=stations_map(combinedDF)
+    combinedDF = pd.concat([epaStationsDF,smartBayStationsDF,maceHeadStationsDF,miStationsDF])
+    df=combinedDF
+
+    epaDF = df.loc[(df['Type'] == 'EPA')]
+    epaDFStr=epaDF.astype(str)
+    epaTrend = go.Scattermapbox(
+        name='EPA',
+        lon=epaDF.Longitude,
+        lat=epaDF.Latitude,
+        marker=dict(color=STATION_COLORS['EPA'],
+                    size=7),
+        hovertemplate='Name: ' + epaDFStr['name'] + '<br>' +
+                'Agency: EPA<br>' +
+                'Station No.: ' + epaDFStr['Station_Nu'] + '<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    nuigDF = df.loc[(df['Type'] == 'NUIG')]
+    nuigDFStr=nuigDF.astype(str)
+    nuigTrend = go.Scattermapbox(
+        name='NUIG',
+        lon=nuigDF.Longitude,
+        lat=nuigDF.Latitude,
+        marker=dict(color=STATION_COLORS['NUIG'],
+                    size=7),
+        hovertemplate='Name: ' + nuigDFStr['name'] + '<br>' +
+                'County: ' + nuigDFStr['name'] + '<br>' +
+                'Agency: NUIG<br>' +
+                'Station No.: ' + nuigDFStr['Station_Nu'] + '<br>' +
+                'Open Year: ' + nuigDFStr['Open_Year'] + '<br>' +
+                'Height: ' + nuigDFStr['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    metDF = df.loc[(df['Type'] == 'Synoptic')]
+    metDFStr=metDF.astype(str)
+    metTrend = go.Scattermapbox(
+        name='Met Eireann',
+        lon=metDF.Longitude,
+        lat=metDF.Latitude,
+        marker=dict(color=STATION_COLORS['Met'],
+                    size=7),
+        hovertemplate='Name: ' + metDFStr['name'] + '<br>' +
+                'Agency: EPA<br>' +
+                'Station No.: ' + metDFStr['Station_Nu'] + '<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    wrDF = df.loc[(df['Type'] == 'WaveRide/SmartBayObsCenter')]
+    wrDFStr=wrDF.astype(str)
+    wrTrend = go.Scattermapbox(
+        name='WaveRide/SmartBayObsCenter',
+        lon=wrDF.Longitude,
+        lat=wrDF.Latitude,
+        marker=dict(color=STATION_COLORS['WaveRide/SmartBayObsCenter'],
+                    size=7),
+        hovertemplate='Name: ' + wrDFStr['name'] + '<br>' +
+                'Agency: NUIG<br>' +
+                'Station No.: ' + wrDFStr['Station_Nu'] + '<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    miDF = df.loc[(df['Type'] == 'MI_Survey')]
+    miDFStr=miDF.astype(str)
+    miTrend = go.Scattermapbox(
+        name='MI Survey',
+        lon=miDF.Longitude,
+        lat=miDF.Latitude,
+        marker=dict(color=STATION_COLORS['MI_Survey'],
+                    size=7),
+        hovertemplate='Name: ' + wrDFStr['name'] + '<br>' +
+                'Agency: Marine Institute<br>' +
+                'Station No.: ' + wrDFStr['Station_Nu'] + '<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+    map_3_6 = go.Figure(data=[epaTrend,metTrend, wrTrend, miTrend],
+                    layout=MAP_LAYOUT)
 
     return map_3_6
 

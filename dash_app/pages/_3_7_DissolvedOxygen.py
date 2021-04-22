@@ -54,10 +54,10 @@ Above shows a deep-water dissolved oxygen section as measured during the annual
 
 infrastructureText = """
 The annual winter environmental survey on board the RV Celtic Voyager collects dissolved oxygen sensor profiles in coastal and 
-shelf waters around the island of Ireland (outlined in red in inset, Map 3.6). As part of ongoing projects, 
-observations are also made at the Mace Head buoy and at the SmartBay Observatory in Galway Bay (yellow dots, Map 3.6). 
+shelf waters around the island of Ireland (red). As part of ongoing projects, 
+observations are also made at the Mace Head buoy (blue) and at the SmartBay Observatory in Galway Bay (yellow). 
 As part of Ireland’s water framework directive and shellfish waters monitoring programme, in situ dissolved oxygen measurements are made 
-by the EPA and the Marine Institute in 116 transitional and coastal water bodies (blue dots, Map 3.6). 
+by the EPA (green) and the Marine Institute (red) in 116 transitional and coastal water bodies. 
 This monitoring programme has been in place since 2007.
         """
 infrastructureMap = map_3_6()
