@@ -2529,80 +2529,69 @@ def figure_4_27():
     """
     try:
         data_path = DATA_PATH+'Terrestrial_Domain/4.14AnthropogenicGreenhouseGasEmissions/Figure4.27/'
-        xls = pd.ExcelFile(
-            data_path+'NIR_GHG_Emissions_CSRI2020.xlsx')
-        df = pd.read_excel(xls, 'Figure 2.1')
+        df = pd.read_csv(data_path + 'NIR_GHG_Emissions_CSRI2020_forOnline.csv')
     except:
         return empty_chart()
-    df = df.drop(columns=['Unnamed: 0', 
-                          'Unnamed: 31',
-                          'Unnamed: 32',
-                          'Unnamed: 33',
-                            ])
-    df.loc[1,'Total GHG emissions by sector (kt CO2e)']='Year'
-    df1=df.T
-    new_header = df1.iloc[0]#grab the first row for the header
-    df1 = df1[1:] #take the data less the header row
-    df1.columns = new_header #set the header row as the df header
 
     energyTrace=go.Bar(
     name="Energy",
-    x=df1.Year,
-    y=df1["Energy"]/1000,
-        text=df1['Energy']*100/df1['Total '],
+    x=df.Year,
+    y=df["Energy"]/1000,
+        text=df['Energy']*100/df['Total'],
     marker_color="#5182bb",
-    hovertemplate='%{x}<br>' +
-    '<b>Energy</b><br>' +
-    '%{y:.2f}kTCO\u2082eq<br>' +
+    hovertemplate='<b>Energy</b><br>' +
+    '%{x}<br>' +
+    '%{y}kTCO₂eq<br>' +
     '%{text:.2f} %</sub><extra></extra>'
                             )
 
     agricultureTrace=go.Bar(
         name="Agriculture",
-        x=df1.Year,
-        y=df1["Agriculture "]/1000,
-            text=df1['Agriculture ']*100/df1['Total '],
+        x=df.Year,
+        y=df["Agriculture"]/1000,
+            text=df['Agriculture']*100/df['Total'],
         marker_color="#fdbf2d",
-        hovertemplate=  '%{x}<br>' +
-        '<b>Agriculture</b><br>' +
-        '%{y:.2f}kTCO\u2082eq<br>' +
+        hovertemplate='<b>Agriculture</b><br>' +
+        '%{x}<br>' +
+        '%{y}kTCO₂eq<br>' +
         '%{text:.2f} %</sub><extra></extra>'
                                 )
 
     landuseTrace=go.Bar(
         name="Land-Use Change and Forestry (LULUCF)",
-        x=df1.Year,
-        y=df1["Land-Use Change and Forestry (LULUCF)"]/1000,
-            text=df1["Land-Use Change and Forestry (LULUCF)"]*100/df1['Total '],
+        x=df.Year,
+        y=df["Land-Use Change and Forestry (LULUCF)"]/1000,
+            text=df["Land-Use Change and Forestry (LULUCF)"]*100/df['Total'],
         marker_color="#3dca3f",
-        hovertemplate='%{x}<br>' +
-        '<b>Land-Use Change and Forestry</b><br>' +
-        '%{y:.2f}kTCO\u2082eq<br>' +
+        hovertemplate='<b>Land-Use Change and Forestry)</b><br>' +
+        '%{x}<br>' +
+        '%{y}kTCO₂eq<br>' +
         '%{text:.2f} %</sub><extra></extra>'
                                 )
     industryTrace=go.Bar(
         name="Industrial Processes and Product Use (IPPU)",
-        x=df1.Year,
-        y=df1["Industrial Processes and Product Use (IPPU)"]/1000,
-        text=df1["Industrial Processes and Product Use (IPPU)"]*100/df1['Total '],
+        x=df.Year,
+        y=df["Industrial Processes and Product Use (IPPU)"]/1000,
+        text=df["Industrial Processes and Product Use (IPPU)"]*100/df['Total'],
         marker_color="#fc0d1b",
-        hovertemplate='%{x}<br>' +
-        '<b>Industrial Processes and Product Use (IPPU)</b><br>' +
-        '%{y:.2f}kTCO\u2082eq<br>' +
+        hovertemplate='<b>Industrial Processes and Product Use (IPPU)</b><br>' +
+        '%{x}<br>' +
+        '%{y}kTCO₂eq<br>' +
         '%{text:.2f} %</sub><extra></extra>'
                                 )
 
     wasteTrace=go.Bar(
         name="Waste",
-        x=df1.Year,
-        y=df1['Waste ']/1000,
-        text=df1['Waste ']*100/df1['Total '],
+        x=df.Year,
+        y=df['Waste']/1000,
+        text=df['Waste']*100/df['Total'],
         marker_color="#262626",
-        hovertemplate='%{x}<br>' +
-        '<b>Agriculture</b><br>' +
-        '%{y:.2f}kTCO\u2082eq<br>' +
+        hovertemplate='<b>Agriculture</b><br>' +
+        '%{x}<br>' +
+        '%{y}kTCO₂eq<br>' +
         '%{text:.2f} %</sub><extra></extra>'
                                 )
+
     figure_4_27=go.Figure(data=[energyTrace,
                                 agricultureTrace,
                                 landuseTrace,
