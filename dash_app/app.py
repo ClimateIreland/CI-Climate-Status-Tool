@@ -42,6 +42,7 @@ app = dash.Dash(
     ],
 )
 
+
 server = app.server
 
 app.title = 'Climate Status Report Ireland'
