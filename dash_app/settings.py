@@ -97,7 +97,7 @@ CHAPTERS = [
         'icon-lg-src': 'carbon-dioxide.png',
         'icon-lg-hover-src': 'carbon-dioxide_hover.png',
         'icon-src': 'ico-ac-co2.png',
-        'icon-src': 'CO2_Hover_DropShadow_1.png',
+        # 'icon-src': 'CO2_Hover_DropShadow_1.png',
         'icon-hover-src': 'ico-ac-co2_hover.png',
         'domain': 'Atmosphere',
         'subdomain': 'Atmospheric Composition',
