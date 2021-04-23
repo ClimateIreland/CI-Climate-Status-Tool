@@ -11,8 +11,9 @@ ATMOSPHERE_BG_COLOR = '#e6f5fc'
 OCEAN_BG_COLOR = '#e6f3f5'
 TERRESTRIAL_BG_COLOR = '#fef4e6'
 
-TIMESERIES_COLOR_PRIMARY = "#00a4ae"
-TIMESERIES_COLOR_SECONDARY = "#E1AF00"
+TIMESERIES_COLOR_1 = "#00a4ae"
+TIMESERIES_COLOR_2 = "#E1AF00"
+TIMESERIES_COLOR_3 = "#de8bb7"
 
 STATION_COLORS = {
     'Buoy': '#e69800', # orange
@@ -96,6 +97,7 @@ CHAPTERS = [
         'icon-lg-src': 'carbon-dioxide.png',
         'icon-lg-hover-src': 'carbon-dioxide_hover.png',
         'icon-src': 'ico-ac-co2.png',
+        'icon-src': 'CO2_Hover_DropShadow_1.png',
         'icon-hover-src': 'ico-ac-co2_hover.png',
         'domain': 'Atmosphere',
         'subdomain': 'Atmospheric Composition',

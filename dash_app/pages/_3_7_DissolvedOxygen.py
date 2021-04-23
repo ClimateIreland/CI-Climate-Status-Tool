@@ -10,7 +10,7 @@ from charts import figure_3_15, map_3_6
 
 chapter_num = '3.7'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Dissolved OxygenTomasz_Szumski.JPG'
-bannerImgCredit = 'Tomasz_Szumski'
+bannerImgCredit = 'Tomasz Szumski'
 
 introText = """
         Oxygen is essential for ocean life. 
@@ -30,11 +30,11 @@ bulletPoint2 = """
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
-trendChartTitle = 'Dissolved Oxygen Saturation' #(2002-2019)
+trendChartTitle = 'Dissolved Oxygen Saturation'  # (2002-2019)
 trendChart = figure_3_15()
 
 trendCaption = """
-        Above shows the percentage saturation of dissolved oxygen taken at sampling sites 
+        Percentage saturation of dissolved oxygen taken at sampling sites 
         in McSwyne’s Bay, Co. Donegal, mainly during summer months, from 2002 to 2019. 
         Measurements were made at water depths ranging from just below the surface to 30 m. 
         In general, levels were close to full saturation over the period of the observations. 
@@ -47,9 +47,12 @@ trendCaption = """
         """
 
 trendCaption2 = """
-Above shows a deep-water dissolved oxygen section as measured during the annual
- Rockall Ocean Climate Survey in winter 2013. The lowest values are observed in the subsurface waters at 
- approximately 500m depth due to respiration associated with decomposition of organic matter. 
+Deep-water dissolved oxygen section (left) as measured during the annual 
+Rockall Ocean Climate Survey (right) in winter 2013.
+The rows of vertical dots represent sampling points at different depths (left) and correspond 
+to the blue point locations indicated in the red polygon (right). 
+The lowest values are observed in the subsurface waters at approximately 500 m 
+depth due to respiration associated with decomposition of organic matter.
 """
 
 infrastructureText = """
@@ -116,7 +119,9 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption
+                                children=[html.I(className="fas fa-play _up",
+                                                 style={"color": chapter_dict['domain-color']}),
+                                          trendCaption]
                             )]
                         )
             ]
@@ -130,7 +135,7 @@ custom_trend = dbc.Container(
                                 className='w-100',
                                 src=IMAGES_PATH+'OceanicSections/Figure3.16_OxygenConcentrationSectionRockallTrough.png'
                             )
-                            ]
+                        ]
                         )
             ]
         ),
@@ -140,7 +145,9 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption2
+                                children=[html.I(className="fas fa-play _up",
+                                                 style={"color": chapter_dict['domain-color']}),
+                                          trendCaption2]
                             )]
                         )
             ]

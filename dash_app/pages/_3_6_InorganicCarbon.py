@@ -10,7 +10,7 @@ from charts import empty_chart
 
 chapter_num = '3.6'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Inorganic Carbon_Tomas Szumski.jpg'
-bannerImgCredit = 'Tomasz s Szumski'
+bannerImgCredit = 'Tomasz Szumski'
 
 introText = """
         The ocean absorbs significant quantities of carbon through natural cycles 
@@ -32,13 +32,13 @@ bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = ''
 trendChart = empty_chart()
 
-trendCaption = """
-Deep-water dissolved inorganic carbon concentration (µmol/kg) section for the Rockall Trough in the winter of 2013 (left), 
-during the annual survey on the Irish Shelf (right). The rows of vertical dots represent sampling points at different depths (left) 
-and correspond to the blue point locations indicated in the red polygon (left). Measurements in the surface waters of the Rockall 
-Trough between 1991 and 2013 indicated an increase in anthropogenic dissolved inorganic carbon, equivalent to a decrease of 0.050 pH units. 
-This represents an increase in acidity that is comparable to the rate of change in other ocean time series. 
-        """
+# trendCaption = """
+# Deep-water dissolved inorganic carbon concentration (µmol/kg) section for the Rockall Trough in the winter of 2013 (left),
+# during the annual survey on the Irish Shelf (right). The rows of vertical dots represent sampling points at different depths (left)
+# and correspond to the blue point locations indicated in the red polygon (right). Measurements in the surface waters of the Rockall
+# Trough between 1991 and 2013 indicated an increase in anthropogenic dissolved inorganic carbon, equivalent to a decrease of 0.050 pH units.
+# This represents an increase in acidity that is comparable to the rate of change in other ocean time series.
+#         """
 
 infrastructureText = """
 The Marine Institute and NUI Galway have undertaken measurements of the inorganic carbon system and associated biogeochemical 
@@ -80,7 +80,7 @@ figure_3_13 = IMAGES_PATH + \
 trendCaption1 = """
 Deep-water dissolved inorganic carbon concentration (µmol/kg) section for the Rockall Trough in the winter of 2013 (left), 
 during the annual survey on the Irish Shelf (right). The rows of vertical dots represent sampling points at different depths (left) 
-and correspond to the blue point locations indicated in the red polygon (left). Measurements in the surface waters of the Rockall 
+and correspond to the blue point locations indicated in the red polygon (right). Measurements in the surface waters of the Rockall 
 Trough between 1991 and 2013 indicated an increase in anthropogenic dissolved inorganic carbon, equivalent to a decrease of 0.050 pH units. 
 This represents an increase in acidity that is comparable to the rate of change in other ocean time series. 
 """
@@ -91,7 +91,7 @@ trendCaption2 = """
 Surface water pCO\u2082 measurements in a) Winter 2017-18 and b) Summer 2018, as collected by the RV Celtic Explorer. 
 Temporal (seasonal) variations due to increasing primary production, e.g. photosynthesis from the spring phytoplankton 
 bloom and shell formation from growth of organisms, results in increased uptake of pCO\u2082 from water, giving lower surface 
-seawater pCO\u2082 in spring and summer periods. In addition, warming water temperatures can hold less dissolved CO\u2082. Conversely, 
+seawater pCO\u2082 in spring and summer periods. In addition, warmer water can hold less dissolved CO\u2082. Conversely, 
 reduced primary production and the seasonal die-off of phytoplankton in autumn, together with the gradual remineralisation of 
 organic matter, releases CO\u2082 back into the surface waters and therefore the highest concentrations are observed in winter periods.
 """
@@ -128,7 +128,9 @@ custom_trend = dbc.Container(
                     children=[
                         html.P(
                             className='sr-chart-caption',
-                            children=trendCaption1
+                            children=[html.I(className="fas fa-play _up",
+                                             style={"color": chapter_dict['domain-color']}),
+                                      trendCaption1]
                         )]
                 )
             ]
@@ -147,7 +149,7 @@ custom_trend = dbc.Container(
                                 className='sr-chart-title',
                                 children='Winter 2017-18 '),
                             html.Img(
-                                style={"marginTop": "-40px",
+                                style={"marginTop": "-20px",
                                        "position": "relative",
                                        "z-index": "-1"},
                                 src=figure_3_14_a
@@ -159,7 +161,7 @@ custom_trend = dbc.Container(
                                 className='sr-chart-title',
                                 children='Summer 2018'),
                             html.Img(
-                                style={"marginTop": "-40px",
+                                style={"marginTop": "-20px",
                                        "position": "relative",
                                        "z-index": "-1"},
                                 src=figure_3_14_b
@@ -175,9 +177,11 @@ custom_trend = dbc.Container(
                     children=[
                         html.P(
                             className='sr-chart-caption',
-                            style={"marginTop": "-40px",
+                            style={"marginTop": "-20px",
                                    "position": "relative", },
-                            children=trendCaption2
+                            children=[html.I(className="fas fa-play _up",
+                                             style={"color": chapter_dict['domain-color']}),
+                                      trendCaption2]
                         )]
                 )
             ]
@@ -205,14 +209,14 @@ custom_infrastructure = dbc.Container(
                         children=[html.Div(
                             style={"position": "relative"},
                             children=[html.Img(
-                                style={"width":"100%"},
+                                style={"width": "100%"},
                                 src=IMAGES_PATH+'OceanicSections/Celtic_Explorer_TomaszSzumski.jpg'
                             ),
                                 html.Span(
                                 className='sr-img-credit',
                                 children='Credit: Tomasz Szumski'
                             ),
-                        ])])
+                            ])])
             ])
     ])
 

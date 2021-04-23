@@ -33,10 +33,10 @@ trendChart = figure_4_11()
 
 
 trendCaption = """
-           CORINE main category distribution over Ireland (% national area) for the CORINE 1990 version (left) and for the CORINE 2018 version (right)
+           CORINE main category distribution over Ireland (% national area) for the CORINE 1990 version and for the CORINE 2018 version.
         """
 trendCaption2 = """
-              Above shows percentage cumulative change within each main category for 
+              Percentage cumulative change within each main category for 
               the five CORINE versions between 1990 and 2018.  Artificial surfaces 
               show the greatest cumulative increase, with a particularly high rate 
               between 1990 and 2006. Forest areas have also increased, being particularly marked during the 1990s.  
@@ -48,9 +48,9 @@ infrastructureText = """
 Since 1990 regular, systematic land cover mapping of Ireland, using satellite imagery, has taken place as part of the 
 European Commission’s CORINE  programme. Until now, CORINE has been the only initiative in place in Ireland that 
 provides a set of time series of land cover data, however albeit with a coarse (25-ha) spatial resolution that misses 
-many important environmental features within the very fragmented landscape of Ireland. A current EPA- and Ordnance Survey 
-Ireland (OSi)-led initiative aimed at generating a new land cover dataset, with a spatial resolution almost 250 times better than CORINE, 
-will release the new dataset later in 2021.
+many important environmental features within the very fragmented landscape of Ireland. A current EPA and Ordnance Survey 
+Ireland (OSi) led initiative aimed at generating a new land cover dataset, with a spatial resolution almost 250 times better than CORINE, 
+will release later in 2021.
         """
 # custom infrastruture uses corina iframe
 # infrastructureMap=surfaceAirTempStationsMap()
@@ -123,7 +123,9 @@ custom_trend = dbc.Container(
                     children=[
                         html.P(
                             className='sr-chart-caption',
-                            children=trendCaption
+                                    children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption]
                         )]
                 )
             ]
@@ -148,7 +150,9 @@ custom_trend = dbc.Container(
                     children=[
                         html.P(
                             className='sr-chart-caption',
-                            children=trendCaption2
+                                    children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
                         )]
                 )
             ]

@@ -14,7 +14,7 @@ bannerImgCredit = 'Aldert Otter'
 
 introText = """
         Sea Level is among the primary indicators of global climate change. 
-        Sea level continues to rise because increasing global temperatures cause 
+        Sea level continues to rise because increasing global temperature causes
         thermal expansion of the oceans as well as increasing freshwater input due 
         to melting land ice sources (e.g. glaciers and ice sheets, permafrost). 
         """
@@ -47,7 +47,7 @@ trendChartTitle2 = 'Ballyglass Harbour, Co. Mayo'
 trendChart2 = figure_3_7_2()
 
 # fourth chart
-trendChartTitle3 = 'Castletownbare, Co. Cork'
+trendChartTitle3 = 'Castletownbere, Co. Cork'
 trendChart3 = figure_3_7_3()
 
 # fifth chart
@@ -73,10 +73,10 @@ infrastructureText = """
 Measurements of sea level rely on high precision contemporaneous measurements of sea and land level. 
 Measurements of relative sea levels are mainly made by a network of tide gauges around the Irish Coast, 
 which are operated by a number of different bodies including the Marine Institute (MI) (blue), the Office of Public Works (OPW) 
-(red and yellow), Local Authorities and Port Companies (brown and orange) (map 3.4). 
+(red and yellow), Local Authorities and Port Companies (brown and orange). 
 The “EPA Gauging Station Register” is a national inventory for all gauges including tide gauges. 
-The longest continuous records for Ireland are from Dublin Port (orange) where a tide gauge has been 
-in operation since at least 1923, with digitised records available from 1938, and from Malin Head, Co. Donegal (yellow), 
+The longest continuous records for Ireland are from Dublin Port (orange inner, green outer) where a tide gauge has been 
+in operation since at least 1923, with digitised records available from 1938, and from Malin Head, Co. Donegal (yellow inner, blue outer), 
 in operation since 1958.
         """
 infrastructureMap = map_3_4()
@@ -185,7 +185,9 @@ custom_trend =  dbc.Container(
                             children=[
                                 html.P(
                                     className='sr-chart-caption',
-                                    children=trendCaption1
+                                            children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption1]
                                 )]
                             )
                 ]
@@ -211,7 +213,9 @@ custom_trend =  dbc.Container(
                             children=[
                                 html.P(
                                     className='sr-chart-caption',
-                                    children=trendCaption2
+                                            children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
                                 )]
                             )
                 ]

@@ -21,7 +21,7 @@ introText = """
         more than 90% of the excess heat trapped in the Earth system in the past few decades. 
         """
 bulletPoint1 = """
-        The global ocean surface temperatures has increased by  approximately 0.7°C since the 1850s, 
+        The global ocean surface temperature has increased by  approximately 0.7°C since the 1850s, 
         with the rate of warming estimated to have doubled since the 1990s.  
         """
 bulletPoint2 = """
@@ -41,9 +41,9 @@ trendCaption = """
         """
 
 infrastructureText = """
-Sea surface temperature (SST) measurements are made by the Irish Marine Data Buoy Observation Network (orange and red), 
-at the Malin Head Atmospheric Research Station, Co. Donegal (yellow), at the Ballycotton tide gauge station, Co. Cork (purple), 
-and at wave buoys (brown and black). A set of coastal temperature sensors (blue) installed predominately at aquaculture sites by 
+Sea surface temperature (SST) measurements are made by the Irish Marine Data Buoy Observation Network (orange), 
+at the Malin Head Atmospheric Research Station, Co. Donegal (red), at the Ballycotton tide gauge station, Co. Cork (purple), 
+and at wave buoys (yellow). A set of coastal temperature sensors (blue) installed predominately at aquaculture sites by 
 the Marine Institute measure temperature but are not accurate enough for climate studies.
         """
 infrastructureMap = map_3_1a()

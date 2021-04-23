@@ -119,7 +119,9 @@ custom_trend = dbc.Container(
                             children=[
                                 html.P(
                                     className='sr-chart-caption',
-                                    children=trendCaption
+                                            children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption]
                                 )]
                             )
                 ]
@@ -145,7 +147,9 @@ custom_trend = dbc.Container(
                             children=[
                                 html.P(
                                     className='sr-chart-caption',
-                                    children=trendCaption2
+                                            children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
                                 )]
                             )
                 ]

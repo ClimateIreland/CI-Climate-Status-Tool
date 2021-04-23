@@ -334,7 +334,10 @@ def build_trend(trendChartTitle, trendChart, trendCaption, chapter_dict):
                             children=[
                                 html.P(
                                     className='sr-chart-caption',
-                                    children=trendCaption
+                                    children=[
+                                        html.I(className="fas fa-play _up",
+                                               style={"color": chapter_dict['domain-color']}),
+                                        trendCaption]
                                 )]
                             )
                 ]

@@ -34,12 +34,12 @@ trendChartTitle = 'Annual Rainfall Totals and Anomalies'
 trendChart = figure_2_9()
 
 trendCaption = """
-A time-series graph (1941-2019) of the annual average rainfall totals (yellow bars, right-hand axis) 
+A time-series graph (1941-2019) of the annual average rainfall totals (right-hand axis) 
 and the annual anomalies, or differences, from the 1961–1990 normal (left-hand axis). 
 A moving average for periods of 11 years is also shown (blue line). 
 Since the 1980s an increasing trend can be observed in the 11-year moving average. 
-Compared with an annual average rainfall of 1186 mm in the period 1961–1990 (blue dashed line), 
-the last 30-year period (1990–2019) (blue dashed line) shows a 79 mm or almost 7% increase in annual rainfall.
+Compared with an annual average rainfall of 1186 mm in the period 1961–1990 (pink solid), 
+the last 30-year period (1990–2019) (pink dashed) shows a 79 mm or almost 7% increase in annual rainfall.
         """
 
 
@@ -126,7 +126,10 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption
+                                           children=[
+                                    html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption]
                             )]
                         )
             ]
@@ -161,7 +164,10 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption2
+                                           children=[
+                                    html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
                             )]
                         )
             ]

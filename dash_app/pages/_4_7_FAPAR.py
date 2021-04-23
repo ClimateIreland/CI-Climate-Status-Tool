@@ -36,9 +36,9 @@ trendChartTitle = '10-day average FAPAR over Ireland'
 trendChart = figure_4_12()
 
 trendCaption = """
-Above shows a heat map of 10-day averaged FAPAR over Ireland derived from the Copernicus Global Land Services (CGLS) dataset (1999-2018). 
+Heat map of 10-day averaged FAPAR over Ireland derived from the Copernicus Global Land Services (CGLS) dataset (1999-2018). 
 The data are presented as percentiles calculated using the complete dataset. For example, the 75th percentile means that 75% of all 
-the values are below 0.72 and 25% of the values are above it.. A seasonal trend is observed, where the highest values occur during summer, 
+the values are below 0.72 and 25% of the values are above it A seasonal trend is observed, where the highest values occur during summer, 
 particularly in June, when vegetation tends to have higher photosynthetic activity, whilst the lowest values are observed during winter months. 
 The highest values in the time series are in the summer periods between 2007 and 2009, and between 2013 and2017.
         """

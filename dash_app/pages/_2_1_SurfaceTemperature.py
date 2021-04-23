@@ -38,7 +38,7 @@ bulletPoints = [bulletPoint1, bulletPoint2]
 # scientificArea='Energy and Temperature'
 # authors='Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin'
 
-trendChartTitle = 'Mean Surface Air Temperature' #(1900-2019)
+trendChartTitle = 'Mean Surface Air Temperature'  # (1900-2019)
 trendChart = figure_2_1()
 
 trendCaption = """
@@ -67,7 +67,7 @@ infrastructureText = """
         Surface air temperature is measured at the 25 synoptic (red) and numerous climatological 
         (blue) weather stations and also at the Irish Marine Data Buoy Observation Network stations (orange). 
         Readings at automated synoptic stations are made every minute and at staffed stations, located in the main airports, 
-        every hour on the hour; at climatological stations readings of maximum and minimum temperatures over the previous 24 
+        every hour on the hour; at climatological stations readings of maximum and minimum temperature over the previous 24 
         hours are made once a day at 0900 Coordinated Universal Time (UTC). Eighty climatological stations are currently 
         being automated to facilitate sub-hourly temperature measurements. Surface air temperature is measured every hour 
         on the marine data buoys, the first of which was deployed in 2000.
@@ -130,7 +130,10 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption
+                                children=[
+                                    html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption]
                             )]
                         )
             ]
@@ -144,8 +147,9 @@ custom_trend = dbc.Container(
                                 children=trendChartTitle2),
                             dcc.Graph(
                                 figure=trendChart2,
-                                 config={'displayModeBar': False,'scrollZoom': False,},
-                                )]
+                                config={'displayModeBar': False,
+                                        'scrollZoom': False, },
+                            )]
                         ),
                 dbc.Col(className="col-12 col-md-6",
                         children=[
@@ -154,8 +158,9 @@ custom_trend = dbc.Container(
                                 children=trendChartTitle3),
                             dcc.Graph(
                                 figure=trendChart3,
-                                config={'displayModeBar': False,'scrollZoom': False,},
-                                )]
+                                config={'displayModeBar': False,
+                                        'scrollZoom': False, },
+                            )]
                         ),
             ]
         ),
@@ -165,12 +170,16 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption2
+                                children=[
+                                    html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
                             )]
                         )
             ]
         ),
     ])
+
 
 def create_chart(app):
     return dcc.Graph(
@@ -192,11 +201,11 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
+            #     pb.build_trend(trendChartTitle,
+            #                    trendChart,
+            #                    trendCaption,
+            #                    chapter_dict
+            #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

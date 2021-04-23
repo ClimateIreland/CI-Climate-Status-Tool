@@ -85,7 +85,7 @@ infoLinks = [
      'url': 'https://gwis.jrc.ec.europa.eu/apps/gwis_current_situation/'},
 
     {'text': 'Fire, Land and Atmospheric Remote Sensing of Emissions (FLARES) project',
-     'url': 'https://www.ucc.ie/en/eri/projects/flares--fire-land-and-atmospheric-remote-sensing-of-emissions.html'},
+     'url': 'https://www.ucc.ie/en/flares/'},
 
 ]
 
@@ -123,7 +123,9 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption
+                                children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption]
                             )]
                         )
             ]
@@ -147,7 +149,9 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption2
+                                children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
                             )]
                         )
             ]
@@ -175,7 +179,9 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=trendCaption3
+                                        children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption3]
                             )]
                         )
             ]

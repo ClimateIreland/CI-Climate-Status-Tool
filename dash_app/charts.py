@@ -105,7 +105,7 @@ def stations_map(df):
     )
 
     elletTrend = go.Scattermapbox(
-        name='Extended Ellet Line Buoy',
+        name='Extended Ellett Line Buoy',
         lon=elletDF.Longitude,
         lat=elletDF.Latitude,
         marker=dict(color=STATION_COLORS['ExtendedElletLineBuoy'],
@@ -174,11 +174,11 @@ def stations_map(df):
               nuigTrend,
               ghgFluxTrend, 
               rainfallTrend, 
-              tidbiTTrend, 
               elletTrend, 
               tideGaugeTrend,
               waveRideTrend,
-              miTrend],
+              miTrend,
+              tidbiTTrend, ],
         layout=MAP_LAYOUT)
     stations_map.update_layout(
         mapbox=dict(bearing=0,
@@ -245,7 +245,7 @@ def figure_2_1():
                                 name='11 Year Moving Average',
                                 mode='lines',  # 'line' is default
                                 line_shape='spline',
-                                line=dict(color=TIMESERIES_COLOR_PRIMARY,
+                                line=dict(color=TIMESERIES_COLOR_1,
                                           width=2),
                                 hovertemplate='%{x}<br>' +
                                 '<b>Moving Average</b><br>' +
@@ -256,7 +256,7 @@ def figure_2_1():
                              name='Annual Mean',
                              mode='markers',
                              text=dataDF.Anom,
-                             marker=dict(color=TIMESERIES_COLOR_SECONDARY,
+                             marker=dict(color=TIMESERIES_COLOR_2,
                                          size=5,
                                          opacity=0.5),
                              hovertemplate='%{x}<br>' +
@@ -272,7 +272,7 @@ def figure_2_1():
     linearTrendTrace = go.Scatter(x=movingAvgDF['Year'],
                                   y=linearTrendY,
                                   name='Linear Trend',
-                                  line=dict(color=TIMESERIES_COLOR_PRIMARY,
+                                  line=dict(color=TIMESERIES_COLOR_1,
                                             dash='dash',
                                             width=2),
                                   hoverinfo='skip',
@@ -297,7 +297,7 @@ def figure_2_1():
                             fixedrange=True,
                             showspikes=True,
                             zeroline=True,  # add a zero line
-                            zerolinecolor=TIMESERIES_COLOR_SECONDARY
+                            zerolinecolor=TIMESERIES_COLOR_2
                             )
 
     figure_2_1.update_yaxes(title_text='Mean Annual Temperature (\u00b0C)',
@@ -327,7 +327,7 @@ def figure_2_1():
                               text='1961-1990 Normal',
                               showarrow=False,
                               font=dict(
-                                  color=TIMESERIES_COLOR_SECONDARY),)
+                                  color=TIMESERIES_COLOR_2),)
 
     return figure_2_1
 
@@ -518,7 +518,7 @@ def figure_2_9():
                          name='Annual',
                          marker=dict(
         # color="#214a7b", color used in report
-        color=TIMESERIES_COLOR_SECONDARY,
+        color=TIMESERIES_COLOR_2,
         opacity=0.5
     ),
         hovertemplate='%{x}<br>' +
@@ -534,7 +534,7 @@ def figure_2_9():
                                line_shape='spline',
                                line=dict(
         # color="#fc0d1b", color used in report
-        color=TIMESERIES_COLOR_PRIMARY,
+        color=TIMESERIES_COLOR_1,
         width=2),
         hovertemplate='%{x}<br>' +
         '<b>11yr Moving Average</b><br>' +
@@ -546,8 +546,8 @@ def figure_2_9():
                         name='1961-1990 Normal',
                         mode='lines',  # 'line' is default
                         line_shape='spline',
-                        line=dict(color="#22b2ed",  # color used in report
-                                  width=1),
+                        line=dict(color=TIMESERIES_COLOR_3, 
+                                  width=2),
                         hoverinfo='skip',
                         )
     average1990_2019 = go.Scatter(x=dataDF["years"],
@@ -555,9 +555,9 @@ def figure_2_9():
                                   name='1990-2019 Average',
                                   mode='lines',  # 'line' is default
                                   line_shape='spline',
-                                  line=dict(color="#22b2ed",  # color used in report
-                                  dash='dash',
-                                  width=1),
+                                  line=dict(color=TIMESERIES_COLOR_3, #""#22b2ed",  # color used in report
+                                            dash='dash',
+                                            width=2),
                                   hoverinfo='skip',
                                   )
     figure_2_9 = make_subplots(specs=[[{'secondary_y': True}]])
@@ -581,7 +581,7 @@ def figure_2_9():
                             fixedrange=True,
                             showspikes=True,
                             # zeroline=True,  # add a zero line
-                            # zerolinecolor=TIMESERIES_COLOR_SECONDARY
+                            # zerolinecolor=TIMESERIES_COLOR_2
                             )
     figure_2_9.update_yaxes(title_text='Annual Rainfall Total (mm)',
                             secondary_y=True,
@@ -793,7 +793,7 @@ def figure_2_18():
                      line_shape='spline',
                      line=dict(
                             # color="#fc0d1b", color used in report
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color=TIMESERIES_COLOR_1,
                             width=2),
                       hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Mauna Loa (Hawaii)</b><br>' +
@@ -806,7 +806,7 @@ def figure_2_18():
                      line_shape='spline',
                      line=dict(
                             # color="#fc0d1b", color used in report
-                            color=TIMESERIES_COLOR_SECONDARY,
+                            color=TIMESERIES_COLOR_2,
                             width=2),
                       hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Mace Head</b><br>' +
@@ -893,7 +893,7 @@ def map_2_10():
                     size=7),
         hovertemplate='Name: ' + metDFStr['name'] + '<br>' +
                 'County: ' + metDFStr['County'] + '<br>' +
-                'Agency: NUIG<br>' +
+                'Agency: Met Eireann<br>' +
                 'Station No.: ' + metDFStr['Station_Nu'] + '<br>' +
                 'Open Year: ' + metDFStr['Open_Year'] + '<br>' +
                 'Height: ' + metDFStr['Height__m_'] + ' m<br>' +
@@ -929,7 +929,7 @@ def figure_2_20():
                      y=dataDF["CH4"],
                      name='Monthly Mean',
                      mode='markers',
-                     marker=dict(color=TIMESERIES_COLOR_SECONDARY,
+                     marker=dict(color=TIMESERIES_COLOR_2,
                                 size=5,
                                 opacity=0.5),
                       hovertemplate='%{x|%b %Y}<br>' +
@@ -943,7 +943,7 @@ def figure_2_20():
                      line_shape='spline',
                      line=dict(
                             # color="#fc0d1b", color used in report
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color=TIMESERIES_COLOR_1,
                             width=2),
                       hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Moving Avaerge</b><br>' +
@@ -1049,7 +1049,7 @@ def figure_2_22():
                      line_shape='spline',
                      line=dict(
                             # color="#fc0d1b", color used in report
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color=TIMESERIES_COLOR_1,
                             width=2),
                       hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Monthly Mean</b><br>' +
@@ -1098,7 +1098,7 @@ def figure_2_23():
                      line_shape='spline',
                      line=dict(
                             # color="#fc0d1b", color used in report
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color=TIMESERIES_COLOR_1,
                             width=2),
                       hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Monthly Mean</b><br>' +
@@ -1145,7 +1145,7 @@ def figure_2_24():
                      line_shape='spline',
                      line=dict(
                             # color="#fc0d1b", color used in report
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color=TIMESERIES_COLOR_1,
                             width=2),
                       hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Monthly Mean</b><br>' +
@@ -1243,7 +1243,7 @@ def figure_3_1():
                         name='Annual',
                         marker=dict(
                                 # color="#214a7b", color used in report
-                                color=TIMESERIES_COLOR_SECONDARY,
+                                color=TIMESERIES_COLOR_2,
                                 opacity=0.5
                                 ),
                         hovertemplate='%{x}<br>' +
@@ -1259,7 +1259,7 @@ def figure_3_1():
                         line_shape='spline',
                         line=dict(
                                 # color="#fc0d1b", color used in report
-                                color=TIMESERIES_COLOR_PRIMARY,
+                                color=TIMESERIES_COLOR_1,
                                 width=2),
                         hovertemplate='%{x}<br>' +
                                 '<b>5yr Moving Average</b><br>' +
@@ -1293,7 +1293,7 @@ def figure_3_1():
                             fixedrange=True,
                             showspikes=True,
                             # zeroline=True,  # add a zero line
-                            # zerolinecolor=TIMESERIES_COLOR_SECONDARY
+                            # zerolinecolor=TIMESERIES_COLOR_2
                             )
     figure_3_1.update_yaxes(title_text='Sea Surface Temperature (\u00b0C)',
                         secondary_y=True,
@@ -1331,10 +1331,10 @@ def figure_3_3():
                       mode='lines',  # 'line' is default
                         line_shape='spline',
                         line=dict(
-                                color=TIMESERIES_COLOR_SECONDARY,
+                                color=TIMESERIES_COLOR_2,
                                 width=2),
                     # mode='markers',
-                    # marker=dict(color=TIMESERIES_COLOR_SECONDARY,
+                    # marker=dict(color=TIMESERIES_COLOR_2,
                     #             size=5,
                     #             # opacity=0.5
                     #             ),
@@ -1348,7 +1348,7 @@ def figure_3_3():
                         mode='lines',  # 'line' is default
                         line_shape='spline',
                         line=dict(
-                                color=TIMESERIES_COLOR_PRIMARY,
+                                color=TIMESERIES_COLOR_1,
                                 width=2),
                         hovertemplate='%{x}<br>' +
                                 '<b>5yr Moving Average</b><br>' +
@@ -1736,7 +1736,7 @@ def figure_3_8():
                      y=df["Msl_OD_Malin"],
                      name='Monthly Average',
                     mode='markers',
-                    marker=dict(color=TIMESERIES_COLOR_SECONDARY,
+                    marker=dict(color=TIMESERIES_COLOR_2,
                                 size=5,
                                 opacity=0.5),
                     hovertemplate='%{x}<br>' +
@@ -1749,7 +1749,7 @@ def figure_3_8():
                         mode='lines',  # 'line' is default
                         line_shape='spline',
                         line=dict(
-                                color=TIMESERIES_COLOR_PRIMARY,
+                                color=TIMESERIES_COLOR_1,
                                 width=2),
                         hovertemplate='%{x}<br>' +
                                 '<b>Annual Average</b><br>' +
@@ -1768,78 +1768,159 @@ def map_3_4():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Map3.4/'
-        tidalGaugeDF = pd.read_csv(
-                data_path+'Map3.4_StationTable_IrishNationalTideGaugeNetwork.txt')
+        df = pd.read_csv(data_path+'Map3.4_StationTable_IrishNationalTideGaugeNetwork.txt')
     except:
         return empty_chart()
-    stationColumns=['FID', 'County', 'Station_Nu', 'name', 'Height__m_', 'Easting',
-       'Northing', 'Latitude', 'Longitude', 'Open_Year', 'Close_Year', 'Type']
-    tidalGaugeDFNew=pd.DataFrame(columns=stationColumns)
-    tidalGaugeDFNew['name']=tidalGaugeDF["Station_Na"]
-    tidalGaugeDFNew['Latitude']=tidalGaugeDF["Latitude"]
-    tidalGaugeDFNew['Longitude']=tidalGaugeDF["Longitude"]
-    tidalGaugeDFNew['Easting']=tidalGaugeDF["Easting"]
-    tidalGaugeDFNew['Northing']=tidalGaugeDF["Northing"]
-    tidalGaugeDFNew['Station_Nu']=tidalGaugeDF["Station_No"]
-    tidalGaugeDFNew['Body_Respo']=tidalGaugeDF["Body_Respo"]
-    tidalGaugeDFNew['Type']="TideGauge"
-    df=tidalGaugeDFNew
-    miDF = df.loc[(df['Body_Respo'] == 'MI')]
-    opwDF = df.loc[(df['Body_Respo'] == 'OPW')]
-    epaDF = df.loc[(df['Body_Respo'] == 'EPA')]
-    pcDF = df.loc[df['Body_Respo'].isin(['POC', 'SFPC','LHC','BHC','DLPC'])]
-    laDF = df.loc[df['Body_Respo'].isin(['Cork City Council', 'Dublin City Council'])]
-    miTrend = go.Scattermapbox(
-        name='Marine Institute',
-        lon=miDF.Longitude,
-        lat=miDF.Latitude,
-        marker=dict(color='blue',
-                    size=7),
-        hovertemplate='Maintainer: '+ miDF.Body_Respo + '<br>'+
-                     stations_map_hovertemplate(miDF),
-    )
-    opwTrend = go.Scattermapbox(
-            name='OPW',
-            lon=opwDF.Longitude,
-            lat=opwDF.Latitude,
-            marker=dict(color='yellow',
-                        size=7),
-            hovertemplate='Maintainer: '+ opwDF.Body_Respo + '<br>'+
-                        stations_map_hovertemplate(opwDF),
+    malinDF = df.loc[(df['Station_Na'] == 'Malin Head')]
+    malinTrace = go.Scattermapbox(
+            name='Malin Head',
+            lon=malinDF.Longitude,
+            lat=malinDF.Latitude,
+            marker=dict(color='#00a5e3',
+                        size=12),
+            hoverinfo='skip',
+        )
+    ballyglassDF = df.loc[(df['Station_Na'] == 'Ballyglass')]
+    ballyglassTrace = go.Scattermapbox(
+            name='Ballyglass Harbour',
+            lon=ballyglassDF.Longitude,
+            lat=ballyglassDF.Latitude,
+            marker=dict(color='#ff5768',
+                        size=12),
+            hoverinfo='skip',
         )
 
-    pcTrend = go.Scattermapbox(
-            name='Port Company',
-            lon=pcDF.Longitude,
-            lat=pcDF.Latitude,
-            marker=dict(color='brown',
-                        size=7),
-            hovertemplate='Maintainer: '+ pcDF.Body_Respo + '<br>'+
-                        stations_map_hovertemplate(pcDF),
+    casteltownDF = df.loc[(df['Station_Na'] == 'Castletownbere')]
+    casteltownTrace = go.Scattermapbox(
+            name='Casteltownbere',
+            lon=casteltownDF.Longitude,
+            lat=casteltownDF.Latitude,
+            marker=dict(color='#ff96c5',
+                        size=12),
+            hoverinfo='skip',
         )
-    laTrend = go.Scattermapbox(
+    howthDF = df.loc[(df['Station_Na'] == 'Howth Harbour')]
+    howthTrace = go.Scattermapbox(
+            name='Howth Harbour',
+            lon=howthDF.Longitude,
+            lat=howthDF.Latitude,
+            marker=dict(color='#ffbf65',
+                        size=12),
+            hoverinfo='skip',
+        )
+    dublinDF = df.loc[(df['Station_Na'] == 'Dublin port')]
+    dublinTrace = go.Scattermapbox(
+            name='Dublin Port',
+            lon=dublinDF.Longitude,
+            lat=dublinDF.Latitude,
+            hoverinfo='skip',
+            marker=dict(color="#00a4ae",
+                        size=12),
+        )
+    laDF = df.loc[df['Body_Respo'].isin(['Cork City Council', 'Dublin City Council'])]
+    dfStr=laDF.astype(str)
+    laTrace = go.Scattermapbox(
             name='Local Authority',
             lon=laDF.Longitude,
             lat=laDF.Latitude,
             marker=dict(color='orange',
                         size=7),
-            hovertemplate='Maintainer: '+ laDF.Body_Respo + '<br>'+
-                        stations_map_hovertemplate(laDF))
+                hovertemplate='Name: '+ dfStr['Station_Na'] +
+            '<br>Station No.: ' + dfStr['Station_No'] +
+            '<br>Agency: '+ dfStr['Body_Respo'] +
+            '<br>OPW Class.: '+ dfStr['OPW_Classi'] +
+            '<br>MI Class.: '+ dfStr['MI_Classif'] +
+             '<br>Final Class.: '+ dfStr['Final_Clas'] +
+             '<br>Type: '+ dfStr['Type__Tida'] +
+            '<br>Status: '+ dfStr['Status__Ac'] +
+            '<br>Lat: %{lat:.2f} \u00b0'+
+            '<br>Lon: %{lon:.2f} \u00b0<extra></extra>',
+        )
+    miDF = df.loc[(df['Body_Respo'] == 'MI')]
+    dfStr=miDF.astype(str)
+    miTrace = go.Scattermapbox(
+            name='Marine Institute',
+            lon=miDF.Longitude,
+            lat=miDF.Latitude,
+            hoverinfo='skip',
+            marker=dict(color='blue',
+                        size=7),
+            hovertemplate='Name: '+ dfStr['Station_Na'] +
+            '<br>Station No.: ' + dfStr['Station_No'] +
+            '<br>Agency: '+ dfStr['Body_Respo'] +
+            '<br>OPW Class.: '+ dfStr['OPW_Classi'] +
+            '<br>MI Class.: '+ dfStr['MI_Classif'] +
+             '<br>Final Class.: '+ dfStr['Final_Clas'] +
+             '<br>Type: '+ dfStr['Type__Tida'] +
+            '<br>Status: '+ dfStr['Status__Ac'] +
+            '<br>Lat: %{lat:.2f} \u00b0'+
+            '<br>Lon: %{lon:.2f} \u00b0<extra></extra>',
+        )
+    epaDF = df.loc[(df['Body_Respo'] == 'EPA')]
+    dfStr=epaDF.astype(str)
+    epaTrace = go.Scattermapbox(
+            name='EPA',
+            lon=epaDF.Longitude,
+            lat=epaDF.Latitude,
+            hoverinfo='skip',
+            marker=dict(color='green',
+                        size=7),
+            hovertemplate='Name: '+ dfStr['Station_Na'] +
+            '<br>Station No.: ' + dfStr['Station_No'] +
+            '<br>Agency: '+ dfStr['Body_Respo'] +
+            '<br>OPW Class.: '+ dfStr['OPW_Classi'] +
+            '<br>MI Class.: '+ dfStr['MI_Classif'] +
+             '<br>Final Class.: '+ dfStr['Final_Clas'] +
+             '<br>Type: '+ dfStr['Type__Tida'] +
+            '<br>Status: '+ dfStr['Status__Ac'] +
+            '<br>Lat: %{lat:.2f} \u00b0'+
+            '<br>Lon: %{lon:.2f} \u00b0<extra></extra>',
+        )
+    opwDF = df.loc[(df['Body_Respo'] == 'OPW')]
+    dfStr=opwDF.astype(str)
+    opwTrace = go.Scattermapbox(
+            name='OPW',
+            lon=opwDF.Longitude,
+            lat=opwDF.Latitude,
+            hoverinfo='skip',
+            marker=dict(color='yellow',
+                        size=7),
+            hovertemplate='Name: '+ dfStr['Station_Na'] +
+            '<br>Station No.: ' + dfStr['Station_No'] +
+            '<br>Agency: '+ dfStr['Body_Respo'] +
+            '<br>OPW Class.: '+ dfStr['OPW_Classi'] +
+            '<br>MI Class.: '+ dfStr['MI_Classif'] +
+             '<br>Final Class.: '+ dfStr['Final_Clas'] +
+             '<br>Type: '+ dfStr['Type__Tida'] +
+            '<br>Status: '+ dfStr['Status__Ac'] +
+            '<br>Lat: %{lat:.2f} \u00b0'+
+            '<br>Lon: %{lon:.2f} \u00b0<extra></extra>',
+        )
+
+    pcDF = df.loc[df['Body_Respo'].isin(['POC', 'SFPC','LHC','BHC','DLPC'])]
+    dfStr=pcDF.astype(str)
+    pcTrace = go.Scattermapbox(
+            name='Port Company',
+            lon=pcDF.Longitude,
+            lat=pcDF.Latitude,
+            hoverinfo='skip',
+            marker=dict(color='brown',
+                        size=7),
+            hovertemplate='Name: '+ dfStr['Station_Na'] +
+            '<br>Station No.: ' + dfStr['Station_No'] +
+            '<br>Agency: '+ dfStr['Body_Respo'] +
+            '<br>OPW Class.: '+ dfStr['OPW_Classi'] +
+            '<br>MI Class.: '+ dfStr['MI_Classif'] +
+             '<br>Final Class.: '+ dfStr['Final_Clas'] +
+             '<br>Type: '+ dfStr['Type__Tida'] +
+            '<br>Status: '+ dfStr['Status__Ac'] +
+            '<br>Lat: %{lat:.2f} \u00b0'+
+            '<br>Lon: %{lon:.2f} \u00b0<extra></extra>',
+        )
     map_3_4 = go.Figure(
-            data=[miTrend,
-                opwTrend,
-                pcTrend,
-                laTrend
-                ],
-            layout=MAP_LAYOUT)
-    map_3_4.update_layout(
-            mapbox=dict(bearing=0,
-                    center=dict(
-                        lat=54,
-                        lon=349
-                    ),
-                    pitch=0,
-                    zoom=4.2))
+        data=[malinTrace,ballyglassTrace,casteltownTrace,howthTrace,dublinTrace,miTrace,epaTrace,opwTrace,pcTrace,laTrace],
+        layout=MAP_LAYOUT)
+
     return map_3_4
 
 def figure_3_15():
@@ -1979,7 +2060,7 @@ def map_3_6():
         marker=dict(color=STATION_COLORS['WaveRide/SmartBayObsCenter'],
                     size=7),
         hovertemplate='Name: ' + wrDFStr['name'] + '<br>' +
-                'Agency: NUIG<br>' +
+                'Agency: Marine Institute<br>' +
                 'Station No.: ' + wrDFStr['Station_Nu'] + '<br>' +
                 'Lat: %{lat:.2f} \u00b0<br>'+
                 'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
@@ -2656,7 +2737,7 @@ def figure_4_21():
         x=df.Year,
         y=df["Fire service mobilisations"],
         mode="lines",
-        marker_color=TIMESERIES_COLOR_PRIMARY,
+        marker_color=TIMESERIES_COLOR_1,
         hovertemplate='%{x}<br>'
         '<b>Fire Service Mobilisations</b><br>' +
         'Callouts: %{y:.0f}<extra></extra>'
@@ -2665,7 +2746,7 @@ def figure_4_21():
                                 y=linearTrendY,
                                 name='Linear Trend',
                                 mode='lines',
-                                line=dict(color=TIMESERIES_COLOR_PRIMARY,
+                                line=dict(color=TIMESERIES_COLOR_1,
                                             dash='dash',
                                             width=2),
                                 hoverinfo='skip',
@@ -2713,7 +2794,7 @@ def figure_4_22():
                      name='Dublin Airport',
                      mode='lines',  # 'line' is default
                      line=dict(
-                            color=TIMESERIES_COLOR_PRIMARY,
+                            color=TIMESERIES_COLOR_1,
                             width=2),
                      hovertemplate='%{x}<br>' +
                             '<b>Dublin Airport</b><br>' +
@@ -2724,7 +2805,7 @@ def figure_4_22():
                         name='Shannon Airport',
                         mode='lines',  # 'line' is default
                         line=dict(
-                                color=TIMESERIES_COLOR_SECONDARY,
+                                color=TIMESERIES_COLOR_2,
                                 width=2),
                         hovertemplate='%{x}<br>' +
                                 '<b>Shannon Airport</b><br>' +

@@ -242,6 +242,12 @@ margin-top:15px;
 .sr-chart-short{
     height:300px;
 }
+
+._up{
+    -webkit-transform: rotate(270deg)!important;  /* to support Safari and Android browser */
+    -ms-transform: rotate(270deg)!important;      /* to support IE 9 */
+    transform: rotate(270deg)!important;
+}
 @media only screen and (max-width: 1000px) {
     #chart_4_7_FAPAR .annotation {
         visibility:hidden;

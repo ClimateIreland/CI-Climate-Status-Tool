@@ -75,7 +75,7 @@ intro = dbc.Container(
             The full report can be downloaded as a pdf here (link) or each ECV can be explored interactively below.
             """),
                                   html.P("""
-            This work was carried out by the MaREI Centre at University College Cork. This work has been endorsed by GCOS-Ireland and has been co-funded by the Environmental Protection Agency, the Marine Institute and Met Éireann.
+            This work was carried out by the MaREI Centre at University College Cork. It has been endorsed by GCOS-Ireland and has been co-funded by the Environmental Protection Agency, the Marine Institute and Met Éireann.
             """),
 
                                   ]
