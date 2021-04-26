@@ -44,12 +44,12 @@ intro = dbc.Container(
                         children=[
                             html.Img(
                                 className='sr-menu-logo',
-                                style={"width":"150px"},
+                                style={"width": "150px"},
                                 src='assets/images/Climate_status.png'
                             ),
-                          ]),
-                     html.H1("Ireland's Climate Status Tool", 
-                            style={"color":"rgba(0,10,20,.80)","marginTop":"30px"})]
+                        ]),
+                    html.H1("Ireland's Climate Status Tool",
+                            style={"color": "rgba(0,10,20,.80)", "marginTop": "30px"})]
             )),
         # dbc.Row(
         #     children=[
@@ -69,8 +69,8 @@ intro = dbc.Container(
                     html.Div(
 
                         children=[html.P("""
-        Ireland's Climate Status Tool provides interactive access to the Climate Status Report Ireland (CSRI) 2020. The CSRI report presents the state of Ireland’s climate based on the collation
-        and analysis of almost 50 internationally defined essential climate variables (ECV) observed in the atmospheric,
+            Ireland's Climate Status Tool provides interactive access to the Climate Status Report Ireland (CSRI) 2020. The CSRI report presents the state of Ireland’s climate based on the collation
+            and analysis of almost 50 internationally defined essential climate variables (ECV) observed in the atmospheric,
             oceanic and terrestrial environments. Moreover, it documents the status of Ireland’s climate-observing infrastructure.
             The full report can be downloaded as a pdf here (link) or each ECV can be explored interactively below.
             """),
@@ -81,12 +81,12 @@ intro = dbc.Container(
                                   ]
                     ),
                     html.Div(
-                            className='text-center',
-                    children=[
-                        html.Img(
-                            style={"width":"100%","maxWidth":"800px"},
-                            src='assets/images/ProjectBannerCSRI.png'
-                        )],
+                        className='text-center',
+                        children=[
+                            html.Img(
+                                style={"width": "100%", "maxWidth": "800px"},
+                                src='assets/images/ProjectBannerCSRI.png'
+                            )],
 
                     )
                 ]
@@ -153,9 +153,9 @@ menu_graphic = dbc.Container(
             dcc.Link(
                 className="sr-graphic-link",
                 children=[
-                html.Img(src='assets/images/icons/' +
-                         chapter['icon-src'])
-            ],
+                    html.Img(src='assets/images/icons/' +
+                             chapter['icon-src'])
+                ],
                 href=chapter['href']),
             html.Div(
                 className="overlay",
@@ -418,8 +418,9 @@ def create_layout(app):
                         html.P(
                             className="sr-gcos-ack",
                             children=[
-                                """Graphical elements and icons used in these pages are
-                                    reproduced with the permission of GCOS-WMO and are in line with those featured on the """,
+                                """Graphical elements and icons used in these pages are reproduced with the permission of
+                                the World Meteorological Organisation, one of the co-sponsors of GCOS and are in line with 
+                                those featured on the """,
                                 dcc.Link(
                                     children="GCOS ECV",
                                     href="https://gcos.wmo.int/en/essential-climate-variables",

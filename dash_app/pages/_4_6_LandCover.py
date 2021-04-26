@@ -49,8 +49,8 @@ Since 1990 regular, systematic land cover mapping of Ireland, using satellite im
 European Commission’s CORINE  programme. Until now, CORINE has been the only initiative in place in Ireland that 
 provides a set of time series of land cover data, however albeit with a coarse (25-ha) spatial resolution that misses 
 many important environmental features within the very fragmented landscape of Ireland. A current EPA and Ordnance Survey 
-Ireland (OSi) led initiative aimed at generating a new land cover dataset, with a spatial resolution almost 250 times better than CORINE, 
-will release later in 2021.
+Ireland (OSi) led initiative aimed at generating a new land cover dataset, with a spatial resolution almost 250 times better than CORINE,
+ will be released later in 2021.
         """
 # custom infrastruture uses corina iframe
 # infrastructureMap=surfaceAirTempStationsMap()

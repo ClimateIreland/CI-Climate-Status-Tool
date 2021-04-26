@@ -2266,7 +2266,7 @@ def figure_4_10_1():
         texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
         hovertemplate= '1990<br>' +
         '<b>%{label}</b><br>' +
-        '%{value:.0f}kHA<br>' +
+        '%{value:.0f} kHA<br>' +
         '%{percent:.2%}<extra></extra>',
     )
     figure_4_10_1 = go.Figure(data=[area1990Trace])
@@ -2317,7 +2317,7 @@ def figure_4_10_2():
                            texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
                            hovertemplate= '2018<br>' +
                            '<b>%{label}</b><br>' +
-                           '%{value:.0f}kHA<br>' +
+                           '%{value:.0f} kHA<br>' +
                            '%{percent:.2%}<extra></extra>',
                            )
     figure_4_10_2 = go.Figure(data=[area2018Trace])
