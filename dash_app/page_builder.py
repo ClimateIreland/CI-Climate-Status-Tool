@@ -43,63 +43,7 @@ def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
                                     html.Img(
                                         src='assets/images/LogoBannerCSRI.png'
                                     ),
-
                                     ])]),
-                    # Remove before release
-                    # dbc.Row(
-                    #     children=[
-                    #         dbc.Col(children=[
-                    #             html.Img(
-                    #                 className='sr-banner-org-icon2',
-                    #                 src='assets/images/UCC_Logo_2018_low.png'
-                    #             ),
-                    #             html.Img(
-                    #                 className='sr-banner-org-icon2',
-                    #                 src='assets/images/EPA_logo.gif'
-                    #             ),
-                    #             html.Img(
-                    #                 className='sr-banner-org-icon2',
-                    #                 src='assets/images/mi_logo.gif'
-                    #             ),
-                    #             html.Img(
-                    #                 className='sr-banner-org-icon2',
-                    #                 src='assets/images/met.ie-logo.gif'
-                    #             ),
-
-                    #         ])]),
-                    # dbc.Row(
-                    #     children=[
-                    #         dbc.Col(
-                    #             className='col-sm-3 offset-md-1 my-auto text-center',
-                    #             children=html.Img(
-                    #                 className='sr-banner-org-icon',
-                    #                 src='assets/images/UCC_Logo_2018_low.png'
-                    #             )
-                    #         ),
-                    #         dbc.Col(
-                    #             className='col-sm-3  my-auto text-center',
-                    #             children=html.Img(
-                    #                 className='sr-banner-org-icon',
-                    #                 src='assets/images/EPA_logo.gif'
-                    #             )
-                    #         ),
-                    #         dbc.Col(
-                    #             className='col-sm-3 my-auto text-center',
-                    #             children=html.Img(
-                    #                 className='sr-banner-org-icon',
-                    #                 src='assets/images/mi_logo.gif'
-                    #             )
-                    #         ),
-                    #         dbc.Col(
-                    #             className='col-sm-2 my-auto text-center',
-                    #             children=html.Img(
-                    #                 className='sr-banner-org-icon',
-                    #                 src='assets/images/met.ie-logo.gif'
-                    #             )
-                    #         ),
-
-                    #     ],
-                    # )
                 ]),
         ])
 
@@ -109,15 +53,6 @@ def build_breadcrumb(chapter_dict):
     return dbc.Container(
         className='sr-page-breadcrumb',
         children=[
-            # dcc.Link(
-            #     style={'color': chapter_dict['domain-color']},
-            #     children='Climate Ireland',
-            #     href='https://www.climateireland.ie',
-            #     target='_blank'
-            # ),
-            # html.Span(
-            #     children=' / ',
-            # ),
             dcc.Link(
                 style={'color': chapter_dict['domain-color']},
                 className="sr-return-link",
@@ -178,7 +113,8 @@ def build_nav(chapter_dict):
                                     style={
                                         'color': chapter_dict['domain-color']},
                                     children='Report Chapter (pdf)',
-                                    href=''),
+                                    target='_blank',
+                                    href=WEB_RESOURCE + '/pdf/statusReport2020/'+ 'Placeholder' + '.pdf'), # chapter_dict['href'] to replace 'placeholder'
                             ]),
                 ])])
 

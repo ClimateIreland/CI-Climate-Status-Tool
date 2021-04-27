@@ -2443,19 +2443,7 @@ def figure_4_11():
             wetlandsTrace,
             waterBodiesTrace]
 
-    figure_4_11 = go.Figure(data=data)
-    figure_4_11.update_layout(
-        height=450,
-        margin={'t': 0, 'b': 0, 'r': 0, 'l': 0, },
-        plot_bgcolor='#f7fbfd',
-        paper_bgcolor='rgba(0,0,0,0)',
-        font=CHART_FONT,
-        hovermode='closest',
-        legend=dict(
-            orientation='h',
-            y=-0.15,
-            bgcolor='rgba(0,0,0,0)',
-        ), )
+    figure_4_11 = go.Figure(data=data,layout=TIMESERIES_LAYOUT)
     figure_4_11.update_yaxes(title_text='Cumulative Change (%)',
                              tickformat=',.0%',)
     figure_4_11.update_xaxes(title_text='Year')

@@ -51,17 +51,6 @@ intro = dbc.Container(
                     html.H1("Ireland's Climate Status Tool",
                             style={"color": "rgba(0,10,20,.80)", "marginTop": "30px"})]
             )),
-        # dbc.Row(
-        #     children=[
-        #         dbc.Col(
-        #             className='text-center',
-        #             children=[
-        #                 html.Img(
-        #                     style={"width":"100%","maxWidth":"800px"},
-        #                     src='assets/images/ProjectBannerCSRI.png'
-        #                 ),
-
-        #             ])]),
         dbc.Row(
             dbc.Col(
                 className='sr-menu-intro-col',
@@ -71,9 +60,15 @@ intro = dbc.Container(
                         children=[html.P("""
             Ireland's Climate Status Tool provides interactive access to the Climate Status Report Ireland (CSRI) 2020. The CSRI report presents the state of Ireland’s climate based on the collation
             and analysis of almost 50 internationally defined essential climate variables (ECV) observed in the atmospheric,
-            oceanic and terrestrial environments. Moreover, it documents the status of Ireland’s climate-observing infrastructure.
-            The full report can be downloaded as a pdf here (link) or each ECV can be explored interactively below.
-            """),
+            oceanic and terrestrial environments. Moreover, it documents the status of Ireland’s climate-observing infrastructure."""),
+                                  html.P(children=[
+                                      html.Span('So far, 15 of the 50 ECVs can be explored using the tool below. The full report is available '),
+                                      html.A(
+                                          'here.',
+                                          target='_blank',
+                                          href=WEB_RESOURCE + '/pdf/statusReport2020/' + 'Placeholder' + '.pdf'
+                                      ),
+                                  ]),
                                   html.P("""
             This work was carried out by the MaREI Centre at University College Cork. It has been endorsed by GCOS-Ireland and has been co-funded by the Environmental Protection Agency, the Marine Institute and Met Éireann.
             """),

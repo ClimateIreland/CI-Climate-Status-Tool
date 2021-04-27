@@ -3,6 +3,8 @@ import os
 if os.path.isfile('env.py'):
     import env
 
+WEB_RESOURCE = 'https://www.climateireland.ie/web_resource'
+# WEB_RESOURCES ='/Users/dan/ClimateIreland/Repositories/docs/web_resource'
 ATMOSPHERE_COLOR = '#009fe3'
 OCEAN_COLOR = '#00909e'
 TERRESTRIAL_COLOR = '#f39200'
@@ -57,6 +59,7 @@ CHAPTERS = [
     # Surface Atmoshere
     {
         'chapter-num': '2.1',
+        # 'pdf-url':WEB_RESOURCES + '/pdf/Surface-Air-Temperature.pdf',
         'id': 'sa-1',
         'title': 'Surface Temperature',
         'href': '_2_1_SurfaceAirTemperature',
