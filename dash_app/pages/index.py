@@ -148,7 +148,9 @@ menu_graphic = dbc.Container(
             dcc.Link(
                 className="sr-graphic-link",
                 children=[
-                    html.Img(src='assets/images/icons/' +
+                    html.Img(
+                               style={'width':'50px'},
+                        src='assets/images/icons/' +
                              chapter['icon-src'])
                 ],
                 href=chapter['href']),
@@ -156,7 +158,9 @@ menu_graphic = dbc.Container(
                 className="overlay",
                 children=[
                     dcc.Link(children=[
-                        html.Img(src='assets/images/icons/' +
+                        html.Img(
+                            style={'width':'50px'},
+                            src='assets/images/icons/' +
                                  chapter['icon-hover-src'])
                     ],
                         href=chapter['href'])],),
