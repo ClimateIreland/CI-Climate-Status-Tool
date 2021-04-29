@@ -69,9 +69,9 @@ intro = dbc.Container(
                                           href=WEB_RESOURCE + '/pdf/statusReport2020/' + 'Placeholder' + '.pdf'
                                       ),
                                   ]),
-                                  html.P("""
-            This work was carried out by the MaREI Centre at University College Cork. It has been endorsed by GCOS-Ireland and has been co-funded by the Environmental Protection Agency, the Marine Institute and Met Éireann.
-            """),
+            #                       html.P("""
+            # This work was carried out by the MaREI Centre at University College Cork. It has been endorsed by GCOS-Ireland and has been co-funded by the Environmental Protection Agency, the Marine Institute and Met Éireann.
+            # """),
 
                                   ]
                     ),
@@ -149,7 +149,6 @@ menu_graphic = dbc.Container(
                 className="sr-graphic-link",
                 children=[
                     html.Img(
-                               style={'width':'50px'},
                         src='assets/images/icons/' +
                              chapter['icon-src'])
                 ],
@@ -159,7 +158,6 @@ menu_graphic = dbc.Container(
                 children=[
                     dcc.Link(children=[
                         html.Img(
-                            style={'width':'50px'},
                             src='assets/images/icons/' +
                                  chapter['icon-hover-src'])
                     ],
