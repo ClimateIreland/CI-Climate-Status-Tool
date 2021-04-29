@@ -53,7 +53,7 @@ def stations_map(df):
     climateDF = df.loc[df['Type'] == 'Climate']
     waveRideDF = df.loc[(df['Type'] == 'WaveRide/SmartBayObsCenter') | (df['Type'] == 'WaveRide')]
     tideGaugeDF = df.loc[(df['Type'] == 'TideGauge')]
-    elletDF = df.loc[(df['Type'] == 'ExtendedElletLineBuoy')]
+    ellettDF = df.loc[(df['Type'] == 'ExtendedEllettLineBuoy')]
     tidbiTDF = df.loc[df['Type'] == 'TidbiT Sea Temperature Station']
     miDF = df.loc[df['Type'] == 'MI_Survey']
     
@@ -104,13 +104,14 @@ def stations_map(df):
         hovertemplate=stations_map_hovertemplate(tideGaugeDF),
     )
 
-    elletTrend = go.Scattermapbox(
+    ellettTrend = go.Scattermapbox(
         name='Extended Ellett Line Buoy',
-        lon=elletDF.Longitude,
-        lat=elletDF.Latitude,
-        marker=dict(color=STATION_COLORS['ExtendedElletLineBuoy'],
+        lon=ellettDF.Longitude,
+        lat=ellettDF.Latitude,
+        mode="lines",
+        marker=dict(color=STATION_COLORS['ExtendedEllettLineBuoy'],
                     size=7),
-        hovertemplate=stations_map_hovertemplate(elletDF),
+        hovertemplate=stations_map_hovertemplate(ellettDF),
     )
 
     epaTrend = go.Scattermapbox(
@@ -173,10 +174,10 @@ def stations_map(df):
               epaTrend,
               nuigTrend,
               ghgFluxTrend, 
-              rainfallTrend, 
-              elletTrend, 
+              rainfallTrend,
               tideGaugeTrend,
               waveRideTrend,
+              ellettTrend, 
               miTrend,
               tidbiTTrend, ],
         layout=MAP_LAYOUT)
@@ -1371,31 +1372,31 @@ def figure_3_3():
     return figure_3_3
 
 
-def map_3_1():
-    """
-    Ocean Surface and Subsurface Temperature infrastructure map
-    """
-    try:
-        data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Map3.1/'
-        stationsDF = pd.read_csv(
-                    data_path+'Map3.1_StationTable_MI.txt')
+# def map_3_1():
+#     """
+#     Ocean Surface and Subsurface Temperature infrastructure map
+#     """
+#     try:
+#         data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Map3.1/'
+#         stationsDF = pd.read_csv(
+#                     data_path+'Map3.1_StationTable_MI.txt')
 
-        rockallDF = pd.read_csv(
-                    data_path+'Map3.1_StationTable_RockallTroughSection.txt')
-        tidbiDF = pd.read_csv(
-                    data_path+'Map3.1_StationTable_TidbiT.txt')
-    except:
-        return empty_chart()
-    tidbiDFNew=pd.DataFrame(columns=rockallDF.columns)
-    tidbiDFNew['name']=tidbiDF["localId"]
-    tidbiDFNew['Latitude']=tidbiDF["latitude"]
-    tidbiDFNew['Longitude']=tidbiDF["longitude"]
-    tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
-    # tidbiDFNew['Close_Year']=""
-    tidbiDFNew['Type']=tidbiDF["datasetNam"]
-    combinedDF = pd.concat([stationsDF,rockallDF, tidbiDFNew])
-    map_3_1a=stations_map(combinedDF)
-    return map_3_1a
+#         rockallDF = pd.read_csv(
+#                     data_path+'Map3.1_StationTable_RockallTroughSection.txt')
+#         tidbiDF = pd.read_csv(
+#                     data_path+'Map3.1_StationTable_TidbiT.txt')
+#     except:
+#         return empty_chart()
+#     tidbiDFNew=pd.DataFrame(columns=rockallDF.columns)
+#     tidbiDFNew['name']=tidbiDF["localId"]
+#     tidbiDFNew['Latitude']=tidbiDF["latitude"]
+#     tidbiDFNew['Longitude']=tidbiDF["longitude"]
+#     tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
+#     # tidbiDFNew['Close_Year']=""
+#     tidbiDFNew['Type']=tidbiDF["datasetNam"]
+#     combinedDF = pd.concat([stationsDF,rockallDF, tidbiDFNew])
+#     map_3_1=stations_map(combinedDF)
+#     return map_3_1
 
 def map_3_1a():
     """
@@ -1420,8 +1421,8 @@ def map_3_1a():
     # tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
     tidbiDFNew['Type']=tidbiDF["datasetNam"]
     combinedDF = pd.concat([stationsDF, tidbiDFNew])
-    map_3_1=stations_map(combinedDF)
-    return map_3_1
+    map_3_1a=stations_map(combinedDF)
+    return map_3_1a
 
 def figure_3_7():
     """
@@ -1705,15 +1706,25 @@ def map_3_1b():
                     data_path+'Map3.1_StationTable_MI.txt')
         stationsDF_subsurface = stationsDF[stationsDF['name'].isin(['M6_Buoy', 'SmartBay Wave Buoy'])]
 
-        rockallDF = pd.read_csv(
-                    data_path+'Map3.1_StationTable_RockallTroughSection.txt')
+        # rockallDF = pd.read_csv(
+        #             data_path+'Map3.1_StationTable_RockallTroughSection.txt')
         # tidbiDF = pd.read_csv(
         #             data_path+'Map3.1_StationTable_TidbiT.txt')
+        ellettLineDF = pd.read_csv(
+            data_path+'Map3.1_StationTable_ExtendedEllettLineBuoy.txt')
     except:
         return empty_chart()
 
-    combinedDF = pd.concat([stationsDF_subsurface,rockallDF])
+    combinedDF = pd.concat([stationsDF_subsurface,ellettLineDF])
     map_3_1b=stations_map(combinedDF)
+    map_3_1b.update_layout(
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=56,
+                    lon=343
+                ),
+                zoom=3.8)
+    )
     return map_3_1b
 
 def figure_3_8():

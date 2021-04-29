@@ -28,7 +28,7 @@ STATION_COLORS = {
     'NUIG': '#ff0000', # red
     'Met': '#002673', # dark blue
     'TidbiT': '#004da8', # blue
-    'ExtendedElletLineBuoy': '#00734c', # dark green
+    'ExtendedEllettLineBuoy': '#00734c', # dark green
     'TideGauge': '#8400a8', # purple
     'Flow': 'green', # green
     'GHG_FLUX_TOWER' : 'red'
