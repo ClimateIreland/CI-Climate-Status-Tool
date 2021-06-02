@@ -114,7 +114,7 @@ def build_nav(chapter_dict):
                                         'color': chapter_dict['domain-color']},
                                     children='Report Chapter (pdf)',
                                     target='_blank',
-                                    href=WEB_RESOURCE + '/pdf/statusReport2020/'+ 'Placeholder' + '.pdf'), # chapter_dict['href'] to replace 'placeholder'
+                                    href=WEB_RESOURCE + '/pdf/statusReport2020/'+ chapter_dict['pdf']),
                             ]),
                 ])])
 
