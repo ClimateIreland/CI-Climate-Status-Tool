@@ -423,7 +423,14 @@ def create_layout(app):
                                     href="https://gcos.wmo.int/en/essential-climate-variables",
                                     target="_blank"
                                 ),
-                                " pages."]
+                                " pages. This application was developed using the open-source ",
+                                          dcc.Link(
+                                    children="Plotly Dash",
+                                    href="https://plotly.com/dash/",
+                                    target="_blank"
+                                ),
+                                ' data visualization framework.'
+                                ]
                         ),
                     ]
                 )
