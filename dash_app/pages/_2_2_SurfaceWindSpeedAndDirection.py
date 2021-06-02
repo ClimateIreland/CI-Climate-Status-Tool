@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart, figure_2_4
 
 chapter_num = '2.2'
-bannerImgSrc = IMAGES_PATH+''
-bannerImgCredit = ''
+bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Wind_Myrtleville_Ophelia_Aldert Otter.jpg'
+bannerImgCredit = 'Aldert Otter'
 
 introText = """
 

@@ -82,14 +82,14 @@ CHAPTERS = [
         'id': 'sa-5',
         'title': 'Surface Wind Speed and Direction',
         'href': '_2_2_SurfaceWindSpeedAndDirection',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
+        'icon-lg-src': 'surface-wind.png',
+        'icon-lg-hover-src': 'surface-wind_hover.png',
         'icon-src': 'ico-sa-windspeed.png',
         'icon-hover-src': 'ico-sa-windspeed_hover.png',
         'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Surface',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
@@ -110,6 +110,41 @@ CHAPTERS = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 
     },
+    # Upper Air
+        {
+        'chapter-num': '2.7a',
+        'id': 'uaa-4',
+        'title': 'Upper Air Wind Speed and Direction',
+        'href': '_2_7a_UpperAirWindSpeedAndDirection',
+        'icon-lg-src': 'upperair-wind.png',
+        'icon-lg-hover-src': 'upperair-wind_hover.png',
+        'icon-src': 'ico-uaa-windspeed.png',
+        'icon-hover-src': 'ico-uaa-windspeed_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Upper Atmosphere',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Michael Gill',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+    {
+        'chapter-num': '2.7b',
+        'id': 'uaa-5',
+        'title': 'Upper Air Atmosphere Temperature',
+        'href': '_2_7b_UpperAirTemperature',
+        'icon-lg-src': 'upperair-temperature_0.png',
+        'icon-lg-hover-src': 'upperair-temperature_hover.png',
+        'icon-src': 'ico-uaa-temperature.png',
+        'icon-hover-src': 'ico-uaa-temperature_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Upper Atmosphere',
+        'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Michael Gill',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+    # Atmosheric Composition
+
     {
         'chapter-num': '2.10',
         'id': 'ac-1',
@@ -125,7 +160,6 @@ CHAPTERS = [
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Damien Martin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
-
     },
     {
         'chapter-num': '2.11',
@@ -136,12 +170,6 @@ CHAPTERS = [
         'icon-lg-hover-src': 'methane_hover.png',
         'icon-src': 'ico-ac-ch4.png',
         'icon-hover-src': 'ico-ac-ch4_hover.png',
-        # 'icon-lg-src': 'methane.png',
-        # 'icon-lg-hover-src': 'methane_hover.png',
-        # 'icon-src': 'ico-ac-ch4.png',
-        # 'icon-hover-src': 'ico-ac-ch4_hover.png',
-        # 'icon-src': 'ico-ac-ch4.png',
-        # 'icon-hover-src': 'ico-ac-ch4_hover.png',
         'domain': 'Atmosphere',
         'subdomain': 'Atmospheric Composition',
         'scientific-area': 'Carbon cycle and other GHGs',
@@ -166,6 +194,22 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 
+    },
+        {
+        'chapter-num': '2.14',
+        'id': 'ac-4',
+        'title': 'Aerosols',
+        'href': '_2_14_Aerosols',
+        'icon-lg-src': 'aerosols_1.png',
+        'icon-lg-hover-src': 'aerosols_hover.png',
+        'icon-src': 'ico-ac-aerosols.png',
+        'icon-hover-src': 'ico-ac-aerosols_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Atmospheric Composition',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Jurgita Ovadnevaite',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
 
     # Ocean Biogeochemistry
@@ -199,6 +243,22 @@ CHAPTERS = [
         'subdomain': 'Physical',
         'scientific-area': 'Energy and Temperature',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Kieran Lyons, Caroline Cusack, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+        {
+        'chapter-num': '3.2a',
+        'id': 'sop-7',
+        'title': 'Sea Surface Currents',
+        'href': '_3_2a_SeaSurfaceCurrents',
+        'icon-lg-src': 'surface-currents_0.png',
+        'icon-lg-hover-src': 'surface-currents_hover.png',
+        'icon-src': 'ico-sop-sea-surface-currents.png',
+        'icon-hover-src': 'ico-sop-sea-surface-currents_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Evin McGovern, Glenn Nolan',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -252,9 +312,40 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+        {
+        'chapter-num': '3.9',
+        'id': 'obgc-6',
+        'title': 'Ocean Colour',
+        'href': '_3_9_OceanColour',
+        'icon-lg-src': 'ocean-colour_0.png',
+        'icon-lg-hover-src': 'ocean-colour_hover.png',
+        'icon-src': 'ico-obgc-ocean-colour.png',
+        'icon-hover-src': 'ico-obgc-ocean-colour_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biogeochemistry',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Joe Silke',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+        {
+        'chapter-num': '3.10',
+        'id': 'obe-2',
+        'title': 'Plankton',
+        'href': '_3_10_Plankton',
+        'icon-lg-src': 'plankton_0.png',
+        'icon-lg-hover-src': 'plankton_hover.png',
+        'icon-src': 'ico-obe-plankton.png',
+        'icon-hover-src': 'ico-obe-plankton_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biological/Ecosystems',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Joe Silke, Caroline Cusack',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
 
     # Biosphere
-
     {
         'chapter-num': '4.1',
         'id': 'hyd-1',
@@ -268,6 +359,22 @@ CHAPTERS = [
         'subdomain': 'Hydrology',
         'scientific-area': 'Hydrosphere',
         'authors': 'Walther C.A. Cámaro García, Barry O’Dwyer, Conor Murphy, Ned Dwyer',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+    {
+        'chapter-num': '4.3',
+        'id': 'hyd-2',
+        'title': 'Lakes',
+        'href': '_4_3_Lakes',
+        'icon-lg-src': 'lakes_1.png',
+        'icon-lg-hover-src': 'lakes_hover.png',
+        'icon-src': 'ico-hyd-lakes.png',
+        'icon-hover-src': 'ico-hyd-lakes_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Hydrology',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Conor Quinlan',
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
@@ -336,6 +443,54 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
+        {
+            'chapter-num': '4.5',
+        'id': 'bio-5',
+        'title': 'Albedo',
+        'href': '_4_5_Albedo',
+        'icon-lg-src': 'albedo_0.png',
+        'icon-lg-hover-src': 'albedo_hover.png',
+        'icon-src': 'ico-bio-albedo.png',
+        'icon-hover-src': 'ico-bio-albedo_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Energy',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer ',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+        {
+        'chapter-num': '4.8',
+        'id': 'bio-7',
+        'title': 'Leaf Area Index (LAI)',
+        'href': '_4_8_LAI',
+        'icon-lg-src': 'leaf-area-index.png',
+        'icon-lg-hover-src': 'leaf-area-index_hover.png',
+        'icon-src': 'ico-bio-leaf-area-index.png',
+        'icon-hover-src': 'ico-bio-leaf-area-index_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer ',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+    {
+        'chapter-num': '4.12',
+        'id': 'bio-6',
+        'title': 'Land Surface Temperature',
+        'href': '_4_12_LandSurfaceTemperature',
+        'icon-lg-src': 'land-surface-temperature.png',
+        'icon-lg-hover-src': 'land-surface-temperature_hover.png',
+        'icon-src': 'ico-bio-land-surface-temperature.png',
+        'icon-hover-src': 'ico-bio-land-surface-temperature_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Energy and temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
 ]
 
 CHAPTERS_DEV = [
@@ -385,37 +540,7 @@ CHAPTERS_DEV = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-    {
-        'chapter-num': '2.2',
-        'id': 'uaa-4',
-        'title': 'Upper Air Wind Speed and Direction',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-uaa-windspeed.png',
-        'icon-hover-src': 'ico-uaa-windspeed_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
-    {
-        'id': 'uaa-5',
-        'title': 'Upper Air Atmosphere Temperature',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-uaa-temperature.png',
-        'icon-hover-src': 'ico-uaa-temperature_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
     {
         'id': 'uaa-6',
         'title': 'Upper Air Atmosphere Water Vapour',
@@ -432,21 +557,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     # ATMOSPHERE - COMPOSITION
-    {
-        'id': 'ac-4',
-        'title': 'Aerosols',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-ac-aerosols.png',
-        'icon-hover-src': 'ico-ac-aerosols_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
     {
         'id': 'ac-5',
         'title': 'Ozone',
@@ -585,21 +696,7 @@ CHAPTERS_DEV = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-    {
-        'id': 'sop-7',
-        'title': 'Surface Currents',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-sop-sea-surface-currents.png',
-        'icon-hover-src': 'ico-sop-sea-surface-currents_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
     # OCEANIC - SUBSURFACE OCEAN PHYSICS
     {
         'id': 'ssop-2',
@@ -677,21 +774,7 @@ CHAPTERS_DEV = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-    {
-        'id': 'obgc-6',
-        'title': 'Ocean Colour',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-obgc-ocean-colour.png',
-        'icon-hover-src': 'ico-obgc-ocean-colour_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Biogeochemistry',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
     # OCEANIC - BIOECO
     {
         'id': 'obe-1',
@@ -708,37 +791,9 @@ CHAPTERS_DEV = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-    {
-        'id': 'obe-2',
-        'title': 'Plankton',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-obe-plankton.png',
-        'icon-hover-src': 'ico-obe-plankton_hover.png',
-        'domain': 'Biological/Ecosystems',
-        'subdomain': 'Biosphere',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
     # TERRESTRIAL - HYDROSPHERE
-    {
-        'id': 'hyd-2',
-        'title': 'Lakes',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-hyd-lakes.png',
-        'icon-hover-src': 'ico-hyd-lakes_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Hydrology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
+
     {
         'id': 'hyd-3',
         'title': 'Groundwater',
@@ -785,51 +840,7 @@ CHAPTERS_DEV = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-    {
-        'id': 'bio-5',
-        'title': 'Albedo',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-bio-albedo.png',
-        'icon-hover-src': 'ico-bio-albedo_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-    {
-        'id': 'bio-6',
-        'title': 'Land Surface Temperature',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-bio-land-surface-temperature.png',
-        'icon-hover-src': 'ico-bio-land-surface-temperature_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-    {
-        'id': 'bio-7',
-        'title': 'Leaf Area Index (LAI)',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-bio-leaf-area-index.png',
-        'icon-hover-src': 'ico-bio-leaf-area-index_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
+
     {
         'id': 'bio-8',
         'title': 'Soil Carbon',
