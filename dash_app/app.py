@@ -14,6 +14,7 @@ from settings import *
 from pages import (
     index,
     _2_1_SurfaceTemperature,
+    _2_2_SurfaceWindSpeedAndDirection,
     _2_5_Precipitation,
     _2_10_CarbonDioxide,
     _2_11_Methane,
@@ -70,8 +71,8 @@ def display_page(pathname):
         return index.create_layout(app)
     elif "_2_1_SurfaceAirTemperature" in pathname:
         return _2_1_SurfaceTemperature.create_layout(app)
-    elif "_2_1_SurfaceAirTemperature/chart" in pathname:
-        return _2_1_SurfaceTemperature.create_chart(app)
+    elif "_2_2_SurfaceWindSpeedAndDirection" in pathname:
+        return _2_2_SurfaceWindSpeedAndDirection.create_layout(app)
     elif "_2_5_Precipitation" in pathname:
         return _2_5_Precipitation.create_layout(app)
     elif "_2_10_CarbonDioxide" in pathname:

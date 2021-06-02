@@ -13,9 +13,10 @@ ATMOSPHERE_BG_COLOR = '#e6f5fc'
 OCEAN_BG_COLOR = '#e6f3f5'
 TERRESTRIAL_BG_COLOR = '#fef4e6'
 
-TIMESERIES_COLOR_1 = "#00a4ae"
-TIMESERIES_COLOR_2 = "#E1AF00"
-TIMESERIES_COLOR_3 = "#de8bb7"
+TIMESERIES_COLOR_1 = "#00a4ae" # gold
+TIMESERIES_COLOR_2 = "#E1AF00" # blue
+TIMESERIES_COLOR_3 = "#de8bb7" # pink
+TIMESERIES_COLOR_4 = "#6e987b" # green
 
 STATION_COLORS = {
     'Buoy': '#e69800', # orange
@@ -74,6 +75,23 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 
+    },
+
+    {
+        'chapter-num': '2.2',
+        'id': 'sa-5',
+        'title': 'Surface Wind Speed and Direction',
+        'href': '_2_2_SurfaceWindSpeedAndDirection',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-sa-windspeed.png',
+        'icon-hover-src': 'ico-sa-windspeed_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
         'chapter-num': '2.5',
@@ -368,8 +386,9 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
+        'chapter-num': '2.2',
         'id': 'uaa-4',
-        'title': 'Wind Speed',
+        'title': 'Upper Air Wind Speed and Direction',
         'href': '',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
@@ -489,21 +508,7 @@ CHAPTERS_DEV = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-    {
-        'id': 'sa-5',
-        'title': 'Surface Wind Speed and Direction',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-sa-windspeed.png',
-        'icon-hover-src': 'ico-sa-windspeed_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
     {
         'id': 'sa-6',
         'title': 'Surface Water Vapour',

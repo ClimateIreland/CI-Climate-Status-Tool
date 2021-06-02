@@ -493,6 +493,161 @@ def map_2_1():
     map_2_1=stations_map(df)
     return map_2_1
 
+def figure_2_4():
+    """
+    Wind speed and gale gust days
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.2SurfaceWindSpeedDirection/Figure2.4/'
+        data_csv = data_path + 'Figure2.4_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+
+    valentia_df = df[df['location']=='Valentia']
+    dublin_df = df[df['location']=='Dublin_Airport']
+    # valentia 
+
+    df = valentia_df
+    annual_speed_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__annual__wind_speed'],
+                            name='Mean Annual Wind Speed',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Mean Annual</b><br>' +
+                            'Wind Speed: %{y:.2f} m/s<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_speed_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__11yr__wind_speed'],
+                                name='11 Year Moving Average Wind Speed',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11yr Moving Average</b><br>' +
+                                'Wind Speed: %{y:.2f} m/s<extra></extra>'
+                                )
+
+    gust_days_trace = go.Scatter(x=df['datetime'],
+                                y=df['sum__annual__gale_gust_days'],
+                            name='Gust Days',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_4,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual</b><br>' +
+                            'Gale Gust Days: %{y}<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_gust_days_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average_of_sum__11yr__gale_gust_days'],
+                                name='11 Year Moving Average Gale Gust Days',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_3,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11yr Moving Average</b><br>' +
+                                'Gale Gust Days: %{y}<extra></extra>'
+                                )
+    figure_2_4_a = make_subplots(rows=2, cols=1,
+                             subplot_titles=("Wind Speed", "Gale Gust Days"),
+                             shared_xaxes=True,
+                    vertical_spacing=0.08)
+    figure_2_4_a.update_xaxes(title_text="Year", row=2, col=1)
+    figure_2_4_a.update_yaxes(title_text="Wind Speed (m/s)", row=1, col=1)
+    figure_2_4_a.update_yaxes(title_text="Number of Days with <br> Gusts > 17.5 m/s", row=2, col=1)
+    figure_2_4_a.append_trace(annual_speed_trace,
+                            row=1, col=1)
+    figure_2_4_a.append_trace(moving_avg_speed_trace,
+                            row=1, col=1)
+    figure_2_4_a.append_trace(gust_days_trace,
+                            row=2, col=1)
+    figure_2_4_a.append_trace(moving_avg_gust_days_trace,
+                            row=2, col=1)
+    figure_2_4_a.update_layout(TIMESERIES_LAYOUT)
+    figure_2_4_a.update_layout(margin_t=30)
+    figure_2_4_a
+
+
+    
+    df = dublin_df
+    annual_speed_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__annual__wind_speed'],
+                            name='Mean Annual Wind Speed',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Mean Annual</b><br>' +
+                            'Wind Speed: %{y:.2f} m/s<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_speed_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__11yr__wind_speed'],
+                                name='11 Year Moving Average Wind Speed',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11yr Moving Average</b><br>' +
+                                'Wind Speed: %{y:.2f} m/s<extra></extra>'
+                                )
+
+    gust_days_trace = go.Scatter(x=df['datetime'],
+                                y=df['sum__annual__gale_gust_days'],
+                            name='Gust Days',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_4,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual</b><br>' +
+                            'Gale Gust Days: %{y}<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_gust_days_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average_of_sum__11yr__gale_gust_days'],
+                                name='11 Year Moving Average Gale Gust Days',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_3,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11yr Moving Average</b><br>' +
+                                'Gale Gust Days: %{y}<extra></extra>'
+                                )
+    figure_2_4_b = make_subplots(rows=2, cols=1,
+                            subplot_titles=("Wind Speed", "Gale Gust Days"),
+                            shared_xaxes=True,
+                vertical_spacing=0.08)
+    figure_2_4_b.update_xaxes(title_text="Year", row=2, col=1)
+    figure_2_4_b.update_yaxes(title_text="Wind Speed (m/s)", row=1, col=1)
+    figure_2_4_b.update_yaxes(title_text="Number of Days with <br> Gusts > 17.5 m/s", row=2, col=1)
+    figure_2_4_b.append_trace(annual_speed_trace,
+                            row=1, col=1)
+    figure_2_4_b.append_trace(moving_avg_speed_trace,
+                            row=1, col=1)
+    figure_2_4_b.append_trace(gust_days_trace,
+                            row=2, col=1)
+    figure_2_4_b.append_trace(moving_avg_gust_days_trace,
+                            row=2, col=1)
+    figure_2_4_b.update_layout(TIMESERIES_LAYOUT)
+    figure_2_4_b.update_layout(margin_t=30)
+    figure_2_4_b
+
+    return figure_2_4_a, figure_2_4_b
+
+
+
 def figure_2_9():
     """
     Precipitation Totals and Anomalies Trend
