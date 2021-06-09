@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, figure_4_3, map_4_3
 
 chapter_num = '4.3'
 bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Lakes_Lough Derg - Bronislav kordovanik.jpg'
@@ -22,8 +22,8 @@ bulletPoint2 = """
 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'Monthly Lake Levels - Lough Oughter, Co. Cavan'
+trendChart = figure_4_3()
 
 trendCaption = """
 
@@ -32,7 +32,7 @@ trendCaption = """
 infrastructureText = """
 
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_4_3()
 
 infoLinks = [
     {'text': '',

@@ -15,8 +15,8 @@ from pages import (
     index,
     _2_1_SurfaceTemperature,
     _2_2_SurfaceWindSpeedAndDirection,
-    _2_7a_UpperAirWindSpeedAndDirection,
-    _2_7b_UpperAirTemperature,
+    _2_7a_UpperAirTemperature,
+    _2_7b_UpperAirWindSpeedAndDirection,
     _2_5_Precipitation,
     _2_10_CarbonDioxide,
     _2_11_Methane,
@@ -25,7 +25,7 @@ from pages import (
 
     _3_1a_SeaSurfaceTemperature,
     _3_1b_SeaSubsurfaceTemperature,
-    _3_2a_SeaSurfaceCurrents,
+    _3_3_SeaSurfaceCurrents,
     _3_4_SeaLevel,
     _3_6_InorganicCarbon,
     _3_7_DissolvedOxygen,
@@ -87,10 +87,10 @@ def display_page(pathname):
         return _2_2_SurfaceWindSpeedAndDirection.create_layout(app)
     elif "_2_5_Precipitation" in pathname:
         return _2_5_Precipitation.create_layout(app)
-    elif "_2_7a_UpperAirWindSpeedAndDirection" in pathname:
-        return _2_7a_UpperAirWindSpeedAndDirection.create_layout(app)
-    elif "_2_7b_UpperAirTemperature" in pathname:
-        return _2_7b_UpperAirTemperature.create_layout(app)
+    elif "_2_7a_UpperAirTemperature" in pathname:
+        return _2_7a_UpperAirTemperature.create_layout(app)
+    elif "_2_7b_UpperAirWindSpeedAndDirection" in pathname:
+        return _2_7b_UpperAirWindSpeedAndDirection.create_layout(app)
     elif "_2_10_CarbonDioxide" in pathname:
         return _2_10_CarbonDioxide.create_layout(app)
     elif "_2_11_Methane" in pathname:
@@ -105,8 +105,8 @@ def display_page(pathname):
         return _3_1a_SeaSurfaceTemperature.create_layout(app)
     elif "_3_1b_SeaSubsurfaceTemperature" in pathname:
         return _3_1b_SeaSubsurfaceTemperature.create_layout(app)
-    elif "_3_2a_SeaSurfaceCurrents" in pathname:
-        return _3_2a_SeaSurfaceCurrents.create_layout(app)
+    elif "_3_3_SeaSurfaceCurrents" in pathname:
+        return _3_3_SeaSurfaceCurrents.create_layout(app)
     elif "_3_4_SeaLevel" in pathname:
         return _3_4_SeaLevel.create_layout(app)
     elif "_3_6_InorganicCarbon" in pathname:

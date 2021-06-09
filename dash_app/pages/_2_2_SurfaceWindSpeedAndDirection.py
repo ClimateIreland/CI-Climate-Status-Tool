@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart, figure_2_4
+from charts import empty_chart, figure_2_4, map_2_2
 
 chapter_num = '2.2'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Wind_Myrtleville_Ophelia_Aldert Otter.jpg'
@@ -34,7 +34,7 @@ trendCaption = """
 infrastructureText = """
 
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_2_2()
 
 infoLinks = [
     {'text': '',
@@ -46,6 +46,11 @@ infoLinks = [
 ########################################################################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
+
+figure_2_5 = IMAGES_PATH+'AtmosphericSections/Figure2.5_v2.png'
+trendCaption2 = """
+
+"""
 
 custom_trend = dbc.Container(
     className='sr-trends',
@@ -95,6 +100,32 @@ custom_trend = dbc.Container(
                                     children=[html.I(className="fas fa-play _up",
                                            style={"color": chapter_dict['domain-color']}),
                                     trendCaption]
+                        )]
+                )
+            ]
+        ),
+             dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center col",
+                        children=[
+                             html.H4(
+                                className='sr-chart-title',
+                                children='Example of Wind Speed and Direction Map'),
+                            html.Img(
+                                src=figure_2_5)]
+                        ),
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(
+                    className="col-md-10 offset-md-1",
+                    children=[
+                        html.P(
+                            className='sr-chart-caption',
+                                    children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
                         )]
                 )
             ]

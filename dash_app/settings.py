@@ -29,6 +29,7 @@ STATION_COLORS = {
     'NUIG': '#ff0000',  # red
     'Met': '#002673',  # dark blue
     'TidbiT': '#004da8',  # blue
+    'HAPs': '#004da8',  # blue
     'ExtendedEllettLineBuoy': '#00734c',  # dark green
     'TideGauge': '#8400a8',  # purple
     'Flow': 'green',  # green
@@ -83,6 +84,7 @@ CHAPTERS = [
         'id': 'sa-5',
         'title': 'Surface Wind Speed and Direction',
         'href': '_2_2_SurfaceWindSpeedAndDirection',
+        'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'surface-wind.png',
         'icon-lg-hover-src': 'surface-wind_hover.png',
         'icon-src': 'ico-sa-windspeed.png',
@@ -113,27 +115,13 @@ CHAPTERS = [
 
     },
     # Upper Air
-        {
-        'chapter-num': '2.7a',
-        'id': 'uaa-4',
-        'title': 'Upper Air Wind Speed and Direction',
-        'href': '_2_7a_UpperAirWindSpeedAndDirection',
-        'icon-lg-src': 'upperair-wind.png',
-        'icon-lg-hover-src': 'upperair-wind_hover.png',
-        'icon-src': 'ico-uaa-windspeed.png',
-        'icon-hover-src': 'ico-uaa-windspeed_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': 'Upper Atmosphere',
-        'scientific-area': 'Physical Properties',
-        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Michael Gill',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
     {
-        'chapter-num': '2.7b',
+        'chapter-num': '2.7a',
         'id': 'uaa-5',
         'title': 'Upper Air Atmosphere Temperature',
-        'href': '_2_7b_UpperAirTemperature',
+        'href': '_2_7a_UpperAirTemperature',
+        'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'upperair-temperature_0.png',
         'icon-lg-hover-src': 'upperair-temperature_hover.png',
         'icon-src': 'ico-uaa-temperature.png',
@@ -141,6 +129,23 @@ CHAPTERS = [
         'domain': 'Atmosphere',
         'subdomain': 'Upper Atmosphere',
         'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Michael Gill',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+            {
+        'chapter-num': '2.7b',
+        'id': 'uaa-4',
+        'title': 'Upper Air Wind Speed and Direction',
+        'href': '_2_7b_UpperAirWindSpeedAndDirection',
+        'pdf': 'Placeholder.pdf',
+        'icon-lg-src': 'upperair-wind.png',
+        'icon-lg-hover-src': 'upperair-wind_hover.png',
+        'icon-src': 'ico-uaa-windspeed.png',
+        'icon-hover-src': 'ico-uaa-windspeed_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Upper Atmosphere',
+        'scientific-area': 'Physical Properties',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Michael Gill',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
@@ -205,6 +210,7 @@ CHAPTERS = [
         'id': 'ac-4',
         'title': 'Aerosols',
         'href': '_2_14_Aerosols',
+        'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'aerosols_1.png',
         'icon-lg-hover-src': 'aerosols_hover.png',
         'icon-src': 'ico-ac-aerosols.png',
@@ -254,10 +260,11 @@ CHAPTERS = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
         {
-        'chapter-num': '3.2a',
+        'chapter-num': '3.3',
         'id': 'sop-7',
         'title': 'Sea Surface Currents',
-        'href': '_3_2a_SeaSurfaceCurrents',
+        'href': '_3_3_SeaSurfaceCurrents',
+        'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'surface-currents_0.png',
         'icon-lg-hover-src': 'surface-currents_hover.png',
         'icon-src': 'ico-sop-sea-surface-currents.png',
@@ -327,6 +334,7 @@ CHAPTERS = [
         'id': 'obgc-6',
         'title': 'Ocean Colour',
         'href': '_3_9_OceanColour',
+             'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'ocean-colour_0.png',
         'icon-lg-hover-src': 'ocean-colour_hover.png',
         'icon-src': 'ico-obgc-ocean-colour.png',
@@ -343,6 +351,7 @@ CHAPTERS = [
         'id': 'obe-2',
         'title': 'Plankton',
         'href': '_3_10_Plankton',
+             'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'plankton_0.png',
         'icon-lg-hover-src': 'plankton_hover.png',
         'icon-src': 'ico-obe-plankton.png',
@@ -378,6 +387,7 @@ CHAPTERS = [
         'id': 'hyd-2',
         'title': 'Lakes',
         'href': '_4_3_Lakes',
+                 'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'lakes_1.png',
         'icon-lg-hover-src': 'lakes_hover.png',
         'icon-src': 'ico-hyd-lakes.png',
@@ -463,6 +473,7 @@ CHAPTERS = [
         'id': 'bio-5',
         'title': 'Albedo',
         'href': '_4_5_Albedo',
+        'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'albedo_0.png',
         'icon-lg-hover-src': 'albedo_hover.png',
         'icon-src': 'ico-bio-albedo.png',
@@ -479,6 +490,7 @@ CHAPTERS = [
         'id': 'bio-7',
         'title': 'Leaf Area Index (LAI)',
         'href': '_4_8_LAI',
+        'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'leaf-area-index.png',
         'icon-lg-hover-src': 'leaf-area-index_hover.png',
         'icon-src': 'ico-bio-leaf-area-index.png',
@@ -495,6 +507,7 @@ CHAPTERS = [
         'id': 'bio-6',
         'title': 'Land Surface Temperature',
         'href': '_4_12_LandSurfaceTemperature',
+                'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'land-surface-temperature.png',
         'icon-lg-hover-src': 'land-surface-temperature_hover.png',
         'icon-src': 'ico-bio-land-surface-temperature.png',
