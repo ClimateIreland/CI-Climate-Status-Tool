@@ -3372,7 +3372,91 @@ def figure_4_14():
     except:
         return empty_chart()
     
-    df['xAxis'] = split_year_36(df)
+    # df['xAxis'] = split_year_36(df)
+    for index, row in df.iterrows():
+        if row.datetime.month == 1 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 1
+        elif row.datetime.month == 1 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 2
+        elif row.datetime.month == 1 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 3
+
+        elif row.datetime.month == 2 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 4
+        elif row.datetime.month == 2 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 5
+        elif row.datetime.month == 2 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 6
+
+        elif row.datetime.month == 3 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 7
+        elif row.datetime.month == 3 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 8
+        elif row.datetime.month == 3 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 9
+
+        elif row.datetime.month == 4 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 10
+        elif row.datetime.month == 4 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 11
+        elif row.datetime.month == 4 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 12
+
+        elif row.datetime.month == 5 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 13
+        elif row.datetime.month == 5 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 14
+        elif row.datetime.month == 5 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 15
+
+        elif row.datetime.month == 6 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 16
+        elif row.datetime.month == 6 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 17
+        elif row.datetime.month == 6 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 18
+
+        elif row.datetime.month == 7 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 19
+        elif row.datetime.month == 7 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 20
+        elif row.datetime.month == 7 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 21
+
+        elif row.datetime.month == 8 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 22
+        elif row.datetime.month == 8 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 23
+        elif row.datetime.month == 8 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 24
+
+        elif row.datetime.month == 9 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 25
+        elif row.datetime.month == 9 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 26
+        elif row.datetime.month == 9 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 27
+
+        elif row.datetime.month == 10 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 28
+        elif row.datetime.month == 10 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 29
+        elif row.datetime.month == 10 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 30
+
+        elif row.datetime.month == 11 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 31
+        elif row.datetime.month == 11 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 32
+        elif row.datetime.month == 11 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 33
+
+        elif row.datetime.month == 12 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 34
+        elif row.datetime.month == 12 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 35
+        elif row.datetime.month == 12 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 36
     trace = go.Heatmap(
         z=df['mean__10day__leaf_area_index'],
         x=df['xAxis'],
@@ -3383,6 +3467,7 @@ def figure_4_14():
         'LAI: %{z:.2f}<extra></extra>'
     )
     figure_4_14 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
+    xPerc=1.055
     figure_4_14.update_layout(
         yaxis=dict(title='Year',
                 nticks=12),
