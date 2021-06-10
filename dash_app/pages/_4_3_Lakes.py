@@ -13,30 +13,50 @@ bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Lakes_Lough Derg - Bronislav kor
 bannerImgCredit = 'Bronislav Kordovanik'
 
 introText = """
-
+        Lakes are linked to climate change effects due to evaporation of water. 
+        Information on variations in the level, area and temperature of lakes 
+        is essential to understand the dynamics of these water bodies, which 
+        are directly affected by regional climate. Lakes provide a range of 
+        services such as drinking water and supplies for industry and agriculture, 
+        recreational opportunities and ecosystem maintenance. 
         """
 bulletPoint1 = """
-
+        The most significant threats to Ireland´s more than 12,000 lakes and 
+        their biology is changes in water quality caused by land use change 
+        in their catchments and water temperature changes in the lakes themselves.
         """
 bulletPoint2 = """
-
+        Levels in Lough Oughter, Co. Cavan show seasonal variation, but no long-term 
+        trend in the 40-year data set is apparent.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = 'Monthly Lake Levels - Lough Oughter, Co. Cavan'
 trendChart = figure_4_3()
 
 trendCaption = """
-
+        Monthly mean levels on Lake Oughter, Co. Cavan (1977–2018).
         """
 
 infrastructureText = """
+Lake levels are currently measured at 74 locations by the EPA, the Office of Public Works and the Electricity Supply Board. The lake monitoring programme is undertaken to comply with the Water Framework Directive (WFD). In this programme, 226 lakes are examined for a broader range of biological and chemical parameters Lake water quality measures have been published regularly since 1987 by the EPA.  
+Satellite altimetry is used internationally to determine water levels in large lakes. This provides useful data in the absence of in situ measurements. Currently through the European Space Agency´s Climate Change Initiative a time series of a range of parameters including lake water level, water extent, surface water temperature, ice cover and water leaving reflectance is being prepared initially for 200 large lakes globally.
 
         """
 infrastructureMap = map_4_3()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Lakes ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/lakes/'},
+         {'text': 'The EPA’S website on lake monitoring',
+     'url': 'https://www.epa.ie/water/wm/lakes/'},
+         {'text': 'Data on lake locations and water quality from the EPA',
+     'url': 'http://gis.epa.ie/GetData/Download'},
+         {'text': 'Lake level data from the EPA',
+     'url': 'https://www.epa.ie/hydronet/#Water%20Levels'},
+         {'text': 'Online hydrometric data from the Office of Public Works hydrometric network.',
+     'url': 'https://waterlevel.ie/'},
+         {'text': 'ESA´s Lakes Climate Change Initiative',
+     'url': 'http://cci.esa.int/lakes'}
 
 ]
 

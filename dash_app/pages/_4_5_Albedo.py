@@ -13,13 +13,19 @@ bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Albedo_Malahide-BarryDuggan.jpg'
 bannerImgCredit = 'Barry Duggan'
 
 introText = """
-
+    Radiation from the sun is essential for all biological processes on Earth. 
+    The proportion of this radiation that is reflected by the Earth’s surface is known as 
+    albedo. Albedo is key to understanding energy exchanges between the atmosphere 
+    and the surface. The average Earth albedo is 0.3 on a scale from 0.0 to 1.0. 
+    However, this proportion changes seasonally and regionally. 
         """
 bulletPoint1 = """
-
+    High albedo values are observed from surfaces covered by snow, while dense forest 
+    and water bodies, which absorb most of the incident radiation, have low albedo.  
         """
 bulletPoint2 = """
-
+    An anomalously high value of albedo was observed during the last week of 2010, 
+    when most of Ireland was covered in snow.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = 'Mean 10 Day Albedo Over Ireland'
@@ -30,12 +36,22 @@ trendCaption = """
         """
 
 infrastructureText = """
+Ground-based observations of albedo require measurement of incoming and reflected solar radiation. These measurements tend to be made at local scales and for research studies. There is no long-term in situ albedo monitoring programme in Ireland.
+Regional albedo measurements are generally made by satellite sensors, which have the ability to measure the total radiation reflected by the Earth’s surface on a regular basis. There is very good continuity of satellite observations since the 1980s from which albedo estimates can be inferred. The Copernicus Global Land Service (CGLS) generates a surface albedo dataset as part of a suite of energy monitoring products. This dataset is derived from the SPOT VEGETATION and PROBA-V satellite programmes. 
 
         """
 infrastructureMap = empty_chart()
 
 infoLinks = [
-    {'text': '',
+    {'text': 'Albedo ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/albedo/'},
+         {'text': 'The Copernicus Global Land Service (CGLS) data',
+     'url': 'https://land.copernicus.eu/global/products/sa'},
+         {'text': 'Current global satellite albedo products',
+     'url': 'https://lpvs.gsfc.nasa.gov/producers2.php?topic=SurfRad'},
+         {'text': 'EUMETSAT Surface Albedo Validation Sites',
+     'url': 'http://savs.eumetsat.int/'},
+         {'text': 'Wang, Z., et al. (2019). Global Surface Albedo Product Validation Best Practices Protocol. Practice for Satellite Derived Land Product Validation (p. 45): Land Product Validation Subgroup (WGCV/CEOS). doi:10.5067/DOC/CEOSWGCV/LPV/ALBEDO.001 ',
      'url': ''},
 
 ]
@@ -44,6 +60,14 @@ infoLinks = [
 ########################################################################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
+
+trendCaption1 = """
+Time series of 10-Day periods of average albedo over Ireland derived from the Copernicus Global Land Service (CGLS) datasets for the period 1999 to 2018. 
+        """
+
+trendCaption2 = """
+Albedo during four 10-day periods in 2018 derived from the Copernicus Global Land Service (CGLS) datasets. © European Union, Copernicus Land Monitoring Service 2020, European Environment Agency (EEA).
+        """
 
 custom_trend = dbc.Container(
         className='sr-trends',
@@ -78,7 +102,7 @@ custom_trend = dbc.Container(
                                     children=[
                                         html.I(className="fas fa-play _up",
                                                style={"color": chapter_dict['domain-color']}),
-                                        trendCaption]
+                                        trendCaption1]
                                 )]
                             )
                 ]
@@ -103,7 +127,7 @@ custom_trend = dbc.Container(
                                     children=[
                                         html.I(className="fas fa-play _up",
                                                style={"color": chapter_dict['domain-color']}),
-                                        trendCaption]
+                                        trendCaption2]
                                 )]
                             )
                 ]

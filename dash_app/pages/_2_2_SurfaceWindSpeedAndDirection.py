@@ -13,13 +13,18 @@ bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Wind_Myrtleville_Ophelia_Aldert 
 bannerImgCredit = 'Aldert Otter'
 
 introText = """
-
+Wind is the movement of air caused by pressure differences at the Earth’s surface, 
+which in turn are caused by the differential heating of the Earth’s surface by the sun. 
+Wind drives the production of ocean waves and is a key component of ocean circulation, 
+which is responsible for the global transport of heat and carbon. Extreme winds, 
+especially during storms, can have huge social and economic impacts.  
         """
 bulletPoint1 = """
-
+      No long-term trend in wind speed can be 
+      determined with confidence based on the limited analysis carried out to date.
         """
 bulletPoint2 = """
-
+      Comprehensive analysis of wind data will be carried out by Met Éireann during 2021.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = ''
@@ -28,17 +33,44 @@ trendChartA, trendChartB = figure_2_4()
 trendChart = trendChartA
 
 trendCaption = """
-
+    Annual mean wind speeds (top) and number of days per year with gale gusts (bottom) 
+    at Valentia Observatory (1940–2019) and Dublin Airport (1944–2019).
         """
 
+
+
 infrastructureText = """
+    Wind speed and direction are measured  at the 23 synoptic weather stations (red) operated 
+    by Met Éireann and at the 5 Irish Marine Data Buoy Observation Network stations (orange). 
+    Additional parameters are calculated including gust speeds, the times of highest daily gusts, 
+    the mean wind speed and direction at the time of the highest gust and the highest 
+    10-minute mean speed in a 24-hour period. Records available in Ireland go back 
+    several decades at a number of stations, although there has been an upgrade and change in 
+    measurement equipment in the 1990s at many of these. As well as precipitation, rainfall 
+    radar also measure wind speed and direction and Met Éireann contributes to the 
+    E-WINPROF European wind profiler programme.
+    Space-borne radar scatterometer and passive microwave 
+    radiometer data are key sources for wind-field information over the ocean, 
+    where in situ measurements are sparse.
 
         """
 infrastructureMap = map_2_2()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Surface Wind Speed and Direction ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS. ',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/surface-wind'},
+         {'text': 'Met Éireann data source',
+     'url': 'https://www.met.ie/climate/available-data/historical-data'},
+         {'text': 'Met Éireann Wind measurements information',
+     'url': 'https://www.met.ie/climate/what-we-measure/wind'},
+         {'text': 'Information on data availability',
+     'url': 'https://www.met.ie/climate/available-data'},
+         {'text': 'Information from the Irish Marine Data Buoy Observation Network',
+     'url': 'http://www.marine.ie/Home/site-area/data-services/real-time-observations/irish-marine-data-buoy-observation-network'},
+         {'text': 'About EUMETSAT, Europe´s weather satellite programme',
+     'url': 'https://www.eumetsat.int/website/home/index.html'},
+         {'text': 'European wind profiler and weather radar (winds) network',
+     'url': 'http://cfa.aquila.infn.it/wiki.eg-climet.org/index.php5/E-WINPROF'},
 
 ]
 
@@ -49,8 +81,10 @@ chapter_dict = next(
 
 figure_2_5 = IMAGES_PATH+'AtmosphericSections/Figure2.5_v2.png'
 trendCaption2 = """
-
-"""
+    Example of a wind-speed and direction map derived from satellite-based observations. 
+    The lowest wind speeds can be seen towards the centre of an anticyclone located to 
+    the southwest of Ireland (Ref. Eumetsat, BUFRdisplay v0.8.2 180911 64-bit © Francis Breame 2008-2018) 
+    """
 
 custom_trend = dbc.Container(
     className='sr-trends',
