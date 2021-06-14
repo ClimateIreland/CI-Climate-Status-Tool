@@ -137,6 +137,25 @@ custom_trend = dbc.Container(
                 ]
             ),
         ])
+
+custom_infrastructure = dbc.Container(
+        className='sr-infrastructure',
+        style={'borderColor': chapter_dict['domain-color']},
+        id='infrastructure',
+        children=[
+            html.H3(
+                className='sr-section-heading',
+                children='Infrastructure',
+                style={'color': chapter_dict['domain-color']},
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-12 my-auto",
+                            children=[
+                                html.P(infrastructureText)]
+                            ),
+                ])
+        ])
 def create_layout(app):
     return html.Div(
         children=[
@@ -156,10 +175,11 @@ def create_layout(app):
         #                    chapter_dict
         #                    ),
             custom_trend,
-            pb.build_infrastructure(infrastructureText,
-                                    infrastructureMap,
-                                    chapter_dict
-                                    ),
+            # pb.build_infrastructure(infrastructureText,
+            #                         infrastructureMap,
+            #                         chapter_dict
+            #                         ),
+            custom_infrastructure,
             pb.build_info(infoLinks,
                           chapter_dict),
 

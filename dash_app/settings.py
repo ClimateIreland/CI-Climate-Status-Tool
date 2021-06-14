@@ -81,7 +81,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '2.2',
-        'id': 'sa-5',
+        'id': 'sa-2',
         'title': 'Surface Wind Speed and Direction',
         'href': '_2_2_SurfaceWindSpeedAndDirection',
         'pdf': 'Placeholder.pdf',
@@ -98,7 +98,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.5',
-        'id': 'sa-2',
+        'id': 'sa-3',
         'title': 'Precipitation',
         'href': '_2_5_Precipitation',
         'pdf': 'Placeholder.pdf',
@@ -118,7 +118,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '2.7a',
-        'id': 'uaa-5',
+        'id': 'uaa-1',
         'title': 'Upper Air Atmosphere Temperature',
         'href': '_2_7a_UpperAirTemperature',
         'pdf': 'Placeholder.pdf',
@@ -135,7 +135,7 @@ CHAPTERS = [
     },
             {
         'chapter-num': '2.7b',
-        'id': 'uaa-4',
+        'id': 'uaa-2',
         'title': 'Upper Air Wind Speed and Direction',
         'href': '_2_7b_UpperAirWindSpeedAndDirection',
         'pdf': 'Placeholder.pdf',
@@ -261,7 +261,7 @@ CHAPTERS = [
     },
         {
         'chapter-num': '3.3',
-        'id': 'sop-7',
+        'id': 'sop-2',
         'title': 'Sea Surface Currents',
         'href': '_3_3_SeaSurfaceCurrents',
         'pdf': 'Placeholder.pdf',
@@ -279,7 +279,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '3.4',
-        'id': 'sop-2',
+        'id': 'sop-3',
         'title': 'Sea Level',
         'href': '_3_4_SeaLevel',
         'pdf': 'Placeholder.pdf',
@@ -331,7 +331,7 @@ CHAPTERS = [
     },
         {
         'chapter-num': '3.9',
-        'id': 'obgc-6',
+        'id': 'obgc-3',
         'title': 'Ocean Colour',
         'href': '_3_9_OceanColour',
              'pdf': 'Placeholder.pdf',
@@ -348,7 +348,7 @@ CHAPTERS = [
     },
         {
         'chapter-num': '3.10',
-        'id': 'obe-2',
+        'id': 'obe-1',
         'title': 'Plankton',
         'href': '_3_10_Plankton',
              'pdf': 'Placeholder.pdf',
@@ -524,7 +524,7 @@ CHAPTERS = [
 CHAPTERS_DEV = [
     # Upper-air Atmoshere
     {
-        'id': 'uaa-1',
+        'id': 'uaa-3',
         'title': 'Lightning',
         'href': '',
         'icon-lg-src': '',
@@ -539,7 +539,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
-        'id': 'uaa-2',
+        'id': 'uaa-4',
         'title': 'Clouds',
         'href': '',
         'icon-lg-src': '',
@@ -554,7 +554,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
-        'id': 'uaa-3',
+        'id': 'uaa-5',
         'title': 'Earth Radiation Budget',
         'href': '',
         'icon-lg-src': '',
@@ -618,7 +618,7 @@ CHAPTERS_DEV = [
     },
     # ATMOSPHERE - SURFACE
     {
-        'id': 'sa-3',
+        'id': 'sa-4',
         'title': 'Surface Pressure',
         'href': '',
         'icon-lg-src': '',
@@ -633,7 +633,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
-        'id': 'sa-4',
+        'id': 'sa-5',
         'title': 'Surface Radiation Budget',
         'href': '',
         'icon-lg-src': '',
@@ -665,7 +665,7 @@ CHAPTERS_DEV = [
     },
     # OCEANIC - SURFACE OCEAN PHYSICS
     {
-        'id': 'sop-3',
+        'id': 'sop-4',
         'title': 'Sea State',
         'href': '',
         'icon-lg-src': '',
@@ -680,7 +680,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
-        'id': 'sop-4',
+        'id': 'sop-5',
         'title': 'Surface Stress',
         'href': '',
         'icon-lg-src': '',
@@ -695,7 +695,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
-        'id': 'sop-5',
+        'id': 'sop-6',
         'title': 'Ocean Surface Heat Flux',
         'href': '',
         'icon-lg-src': '',
@@ -710,7 +710,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
-        'id': 'sop-6',
+        'id': 'sop-7',
         'title': 'Sea Surface Ocean Salinity',
         'href': '',
         'icon-lg-src': '',
@@ -758,7 +758,7 @@ CHAPTERS_DEV = [
     },
     # OCEANIC -  Biogeochemistry
     {
-        'id': 'obgc-3',
+        'id': 'obgc-4',
         'title': 'Nutrients',
         'href': '',
         'icon-lg-src': '',
@@ -773,7 +773,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
-        'id': 'obgc-4',
+        'id': 'obgc-5',
         'title': 'Transient Tracers',
         'href': '',
         'icon-lg-src': '',
@@ -788,7 +788,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
-        'id': 'obgc-5',
+        'id': 'obgc-6',
         'title': 'Nitrous Oxide',
         'href': '',
         'icon-lg-src': '',
@@ -805,7 +805,7 @@ CHAPTERS_DEV = [
 
     # OCEANIC - BIOECO
     {
-        'id': 'obe-1',
+        'id': 'obe-2',
         'title': 'Marine Habitats',
         'href': '',
         'icon-lg-src': '',
