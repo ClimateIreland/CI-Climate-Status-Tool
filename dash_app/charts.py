@@ -6,7 +6,107 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from settings import *
 
+def split_year_36(df):
+    for index, row in df.iterrows():
+        if row.datetime.month == 1 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 1
+        elif row.datetime.month == 1 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 2
+        elif row.datetime.month == 1 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 3
+
+        elif row.datetime.month == 2 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 4
+        elif row.datetime.month == 2 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 5
+        elif row.datetime.month == 2 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 6
+
+        elif row.datetime.month == 3 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 7
+        elif row.datetime.month == 3 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 8
+        elif row.datetime.month == 3 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 9
+
+        elif row.datetime.month == 4 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 10
+        elif row.datetime.month == 4 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 11
+        elif row.datetime.month == 4 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 12
+
+        elif row.datetime.month == 5 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 13
+        elif row.datetime.month == 5 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 14
+        elif row.datetime.month == 5 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 15
+
+        elif row.datetime.month == 6 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 16
+        elif row.datetime.month == 6 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 17
+        elif row.datetime.month == 6 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 18
+
+        elif row.datetime.month == 7 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 19
+        elif row.datetime.month == 7 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 20
+        elif row.datetime.month == 7 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 21
+
+        elif row.datetime.month == 8 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 22
+        elif row.datetime.month == 8 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 23
+        elif row.datetime.month == 8 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 24
+
+        elif row.datetime.month == 9 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 25
+        elif row.datetime.month == 9 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 26
+        elif row.datetime.month == 9 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 27
+
+        elif row.datetime.month == 10 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 28
+        elif row.datetime.month == 10 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 29
+        elif row.datetime.month == 10 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 30
+
+        elif row.datetime.month == 11 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 31
+        elif row.datetime.month == 11 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 32
+        elif row.datetime.month == 11 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 33
+
+        elif row.datetime.month == 12 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 34
+        elif row.datetime.month == 12 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 35
+        elif row.datetime.month == 12 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 36
+            
+        return df['xAxis']
+
+def map_columns(columns_dict, original_df):
+    """
+    Create new data frame with new column names from data frame
+    and dictionary with new column names as keys and old column names as 
+    values
+    """
+    df = pd.DataFrame()
+    for key in columns_dict:
+        df[key] = original_df[columns_dict[key]]
+    return df
+
 def stations_map_hovertemplate(df):
+
     return ['Name: {}<br>'.format(n)+
             'County: {}<br>'.format(cnty)+
             'Type: {}<br>'.format(t)+
@@ -493,6 +593,171 @@ def map_2_1():
     map_2_1=stations_map(df)
     return map_2_1
 
+def figure_2_4():
+    """
+    Wind speed and gale gust days
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.2SurfaceWindSpeedDirection/Figure2.4/'
+        data_csv = data_path + 'Figure2.4_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+
+    valentia_df = df[df['location']=='Valentia']
+    dublin_df = df[df['location']=='Dublin_Airport']
+    # valentia 
+
+    df = valentia_df
+    annual_speed_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__annual__wind_speed'],
+                            name='Mean Annual Wind Speed',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Mean Annual</b><br>' +
+                            'Wind Speed: %{y:.2f} m/s<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_speed_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__11year__wind_speed'],
+                                name='11 Year Moving Average Wind Speed',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11yr Moving Average</b><br>' +
+                                'Wind Speed: %{y:.2f} m/s<extra></extra>'
+                                )
+
+    gust_days_trace = go.Scatter(x=df['datetime'],
+                                y=df['sum__annual__gale_gust_days'],
+                            name='Gust Days',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_4,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual</b><br>' +
+                            'Gale Gust Days: %{y}<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_gust_days_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average_of_sum__11year__gale_gust_days'],
+                                name='11 Year Moving Average Gale Gust Days',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_3,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11yr Moving Average</b><br>' +
+                                'Gale Gust Days: %{y}<extra></extra>'
+                                )
+    figure_2_4_a = make_subplots(rows=2, cols=1,
+                             subplot_titles=("Wind Speed", "Gale Gust Days"),
+                             shared_xaxes=True,
+                    vertical_spacing=0.08)
+    figure_2_4_a.update_xaxes(title_text="Year", row=2, col=1)
+    figure_2_4_a.update_yaxes(title_text="Wind Speed (m/s)", row=1, col=1)
+    figure_2_4_a.update_yaxes(title_text="Number of Days with <br> Gusts > 17.5 m/s", row=2, col=1)
+    figure_2_4_a.append_trace(annual_speed_trace,
+                            row=1, col=1)
+    figure_2_4_a.append_trace(moving_avg_speed_trace,
+                            row=1, col=1)
+    figure_2_4_a.append_trace(gust_days_trace,
+                            row=2, col=1)
+    figure_2_4_a.append_trace(moving_avg_gust_days_trace,
+                            row=2, col=1)
+    figure_2_4_a.update_layout(TIMESERIES_LAYOUT)
+    figure_2_4_a.update_layout(margin_t=30)
+    figure_2_4_a
+
+
+    
+    df = dublin_df
+    annual_speed_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__annual__wind_speed'],
+                            name='Mean Annual Wind Speed',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Mean Annual</b><br>' +
+                            'Wind Speed: %{y:.2f} m/s<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_speed_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__11year__wind_speed'],
+                                name='11 Year Moving Average Wind Speed',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11yr Moving Average</b><br>' +
+                                'Wind Speed: %{y:.2f} m/s<extra></extra>'
+                                )
+
+    gust_days_trace = go.Scatter(x=df['datetime'],
+                                y=df['sum__annual__gale_gust_days'],
+                            name='Gust Days',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_4,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual</b><br>' +
+                            'Gale Gust Days: %{y}<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_gust_days_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average_of_sum__11year__gale_gust_days'],
+                                name='11 Year Moving Average Gale Gust Days',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_3,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11yr Moving Average</b><br>' +
+                                'Gale Gust Days: %{y}<extra></extra>'
+                                )
+    figure_2_4_b = make_subplots(rows=2, cols=1,
+                            subplot_titles=("Wind Speed", "Gale Gust Days"),
+                            shared_xaxes=True,
+                vertical_spacing=0.08)
+    figure_2_4_b.update_xaxes(title_text="Year", row=2, col=1)
+    figure_2_4_b.update_yaxes(title_text="Wind Speed (m/s)", row=1, col=1)
+    figure_2_4_b.update_yaxes(title_text="Number of Days with <br> Gusts > 17.5 m/s", row=2, col=1)
+    figure_2_4_b.append_trace(annual_speed_trace,
+                            row=1, col=1)
+    figure_2_4_b.append_trace(moving_avg_speed_trace,
+                            row=1, col=1)
+    figure_2_4_b.append_trace(gust_days_trace,
+                            row=2, col=1)
+    figure_2_4_b.append_trace(moving_avg_gust_days_trace,
+                            row=2, col=1)
+    figure_2_4_b.update_layout(TIMESERIES_LAYOUT)
+    figure_2_4_b.update_layout(margin_t=30)
+    figure_2_4_b
+
+    return figure_2_4_a, figure_2_4_b
+
+def map_2_2():
+    """
+    Surface Wind Speed and Direction infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.2SurfaceWindSpeedDirection/Map2.2/'
+        df = pd.read_csv(data_path+'Map2.2_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_2=stations_map(df)
+    return map_2_2
+
 def figure_2_9():
     """
     Precipitation Totals and Anomalies Trend
@@ -771,6 +1036,136 @@ def map_2_5():
     map_2_5=stations_map(df)
     return map_2_5
 
+def figure_2_13_a():
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.7UpperAirTemperatureWind/Figure2.13/'
+        data_csv = data_path + 'Figure2.13_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    df = pd.read_csv(data_csv, index_col=0)
+    valentia_df = df[df['location']=='Valentia']
+    valentia_new_sensor_df = df[df['location']=='Valentia (New Sensor)']
+    mean_annual_trace = go.Scatter(x=valentia_df['datetime'],
+                                y=valentia_df['mean__annual__upper_air_temperature'],
+                            name='Annual Mean',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                        width=1),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual Mean</b><br>' +
+                            'Temperature: %{y:.2f} \u00b0C<br>' +
+                            '<extra></extra>'
+                            )
+
+    moving_avg_trace = go.Scatter(x=valentia_df['datetime'],
+                                y=valentia_df['moving_average__5year__upper_air_temperature'],
+                                name='5 Year Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>5yr Moving Average</b><br>' +
+                                'Temperature: %{y:.2f} \u00b0C<extra></extra>'
+                                )
+
+    mean_annual_trace_new_sensor = go.Scatter(x=valentia_new_sensor_df['datetime'],
+                                y=valentia_new_sensor_df['mean__annual__upper_air_temperature'],
+                            name='Annual Mean (New Sensor)',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                    dash='dash',
+                                        width=1),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual Mean</b><br>' +
+                            'Temperature: %{y:.2f} \u00b0C<br>' +
+                            '<extra></extra>'
+                            )
+    figure_2_13_a = go.Figure(data=[mean_annual_trace, mean_annual_trace_new_sensor,moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_13_a.update_layout(
+        yaxis=dict(title='Temperature at 300 hPa (\u00b0C)'),
+        xaxis=dict(title="Year"))
+
+    return figure_2_13_a
+
+def figure_2_13_b():
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.7UpperAirTemperatureWind/Figure2.13/'
+        data_csv = data_path + 'Figure2.13_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    df = pd.read_csv(data_csv, index_col=0)
+    valentia_df = df[df['location']=='Valentia']
+    valentia_new_sensor_df = df[df['location']=='Valentia (New Sensor)']
+    mean_annual_trace = go.Scatter(x=valentia_df['datetime'],
+                                y=valentia_df['mean__annual__upper_air_wind_speed'],
+                            name='Annual Mean',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                        width=1),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual Mean</b><br>' +
+                            'Wind Speed: %{y:.2f} knots<br>' +
+                            '<extra></extra>'
+                            )
+
+    moving_avg_trace = go.Scatter(x=valentia_df['datetime'],
+                                y=valentia_df['moving_average__5year__upper_air_wind_speed'],
+                                name='5 Year Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>5yr Moving Average</b><br>' +
+                                'Wind Speed: %{y:.2f} knots<extra></extra>'
+                                )
+
+    mean_annual_trace_new_sensor = go.Scatter(x=valentia_new_sensor_df['datetime'],
+                                y=valentia_new_sensor_df['mean__annual__upper_air_wind_speed'],
+                            name='Annual Mean (New Sensor)',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                    dash='dash',
+                                        width=1),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual Mean</b><br>' +
+                            'Wind Speed: %{y:.2f} knots<br>' +
+                            '<extra></extra>'
+                            )
+    figure_2_13_b = go.Figure(data=[mean_annual_trace, mean_annual_trace_new_sensor,moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_13_b.update_layout(
+        yaxis=dict(title='Wind Speed at 300 hPa (knots)'),
+        xaxis=dict(title="Year"))
+
+    return figure_2_13_b
+
+def map_2_7():
+    """
+    Upper air temperature and wind speed infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.7UpperAirTemperatureWind/Map2.7/'
+        df = pd.read_csv(data_path+'Map2.7_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_7=stations_map(df)
+    return map_2_7
+        
 def figure_2_18():
     """
     Monthly CO2 Trend
@@ -1221,6 +1616,19 @@ def map_2_12():
                     layout=MAP_LAYOUT)
     map_2_12.update_layout(legend_title="<b>  Agency</b>")
     return map_2_12
+
+def map_2_14():
+    """
+    Aerosols infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.14Aerosols/Map2.14/'
+        df = pd.read_csv(data_path+'Map2.14_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_14=stations_map(df)
+    return map_2_14
+        
 
 def figure_3_1():
     """
@@ -1727,6 +2135,18 @@ def map_3_1b():
     )
     return map_3_1b
 
+def map_3_3():
+    """
+    Surface Sea Current infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.3OceanSurfaceSubsurfaceCurrents/Map3.3/'
+        df = pd.read_csv(data_path+'Map3.3_StationTable.txt')
+    except:
+        return empty_chart()
+    map_3_3=stations_map(df)
+    return map_3_3
+
 def figure_3_8():
     """
     Sea Level Dublin Port 
@@ -2201,6 +2621,89 @@ def map_3_6_new():
     map_3_6 = 6
     return map_3_6
 
+
+def figure_3_20():
+    """
+    Ocean color trend
+    """
+
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.9OceanColour/Figure3.20/'
+        data_csv = data_path + 'Figure3.20_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+    except:
+        return empty_chart()
+    trace = go.Heatmap(
+        z=df['mean__monthly__mass_concentration_of_chlorophyll_a_in_sea_water'],
+        x=df['datetime'].dt.month,
+        y=df['datetime'].dt.year,
+        text=df['datetime'],
+        colorscale='Rainbow',
+        hovertemplate='%{text|%b %Y}<br>'+
+        'Concentration: %{z:.2f} mg/m\u00B3<extra></extra>'
+    )
+    figure_3_20 = go.Figure(data=trace, layout=TIMESERIES_LAYOUT)
+    figure_3_20.update_layout(
+    yaxis=dict(
+        title='Year',
+        nticks=12),
+    xaxis=dict(
+        title='Month',
+        ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+        showgrid=False,
+       tickvals=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    ))
+    
+    return figure_3_20
+
+def map_3_8():
+    """
+    Plankton MAp
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.10Plankton/Map3.8/'
+        wfd_stations = pd.read_csv(data_path + 'Map3.8_StationTable_WFD.txt')
+        mi_stations = pd.read_csv(data_path + 'Map3.8_StationTable_MarineInstitute.txt')
+    except:
+        return empty_chart()
+    wfd_stations_trace = go.Scattermapbox(
+        name="Water Framework Directive (WFD)",
+        lon=wfd_stations.Lat,
+        lat=wfd_stations.Long,
+        marker=dict(color=STATION_COLORS['MI_Survey'],
+                    size=7),
+            hovertemplate= 
+            "<b>WFD Sampling Point</b><br>"+
+            "Agency: " + wfd_stations['Agency']+"<br>" +
+            "Waterbody: " + wfd_stations['Waterbody']+"<br>" +
+            "Location: " + wfd_stations['Location']+"<br>" +
+            "Lat: %{lon}\u00b0<br>" +
+            "Lon: %{lat}\u00b0<br>" +
+            "<extra></extra>",
+    )
+
+    mi_stations_trace = go.Scattermapbox(
+            name="Harmful Algal Blooms (HAPs)",
+            lon=mi_stations.location_2,
+            lat=mi_stations.location_l,
+            text=mi_stations.location_n,
+            marker=dict(color=STATION_COLORS['HAPs'],
+                        size=7),
+                hovertemplate= 
+                "<b>HABs Sampling Point</b><br>"+
+                "Agency: Marine Institute<br>"+
+                "Location: %{text}<br>" +
+                "Lat: %{lat}\u00b0<br>" +
+                "Lon: %{lon}\u00b0<br>" +
+                "<extra></extra>",
+    )
+    map_3_8 = go.Figure(data=[mi_stations_trace,wfd_stations_trace],
+                    layout=MAP_LAYOUT)
+    map_3_8.update_layout(legend_title='<b>Sampling Programme</b>')
+    return map_3_8
+
+
 def map_4_1():
     """
     River Discharge infrastructure map
@@ -2239,6 +2742,170 @@ def map_4_1():
                 zoom=4.2)
     )
     return map_4_1
+
+def figure_4_3():
+    """
+    Lake Level
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.3Lakes/Figure4.3/'
+        data_csv = data_path + 'Figure4.3_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime']=pd.to_datetime(df['datetime'])
+    except:
+        return empty_chart()
+
+    season_color = {
+        12:'blue',
+        1:'blue',
+        2:'blue',
+        3:'orange',
+        4:'orange',
+        5:'orange',
+        6:'green',
+        7:'green',
+        8:'green',
+        9:'brown',
+        10:'brown',
+        11:'brown',
+    }
+    trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__monthly__lake_level'],
+                         name='Monthly Mean',
+                         mode='markers+lines',
+                         marker=dict(color=[season_color[k] for k in df['datetime'].dt.month.values],
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                      width=1),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Lake Level</b><br>' +
+                         'Monthly Mean: %{y:.2f} m<br>' +
+                         '<extra></extra>'
+                         )
+    figure_4_3 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
+    figure_4_3.update_layout(
+        yaxis=dict(title='Level Above OD Malin (m)'),
+        xaxis=dict(title="Date"))
+    return figure_4_3
+
+def map_4_3():
+    """
+    Lakes infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.3Lakes/Map4.3/'
+        df = pd.read_csv(data_path + 'Map4.3_StationTable_Lakes.txt')
+    except:
+        return empty_chart()
+    esb_df = df.loc[(df['LA'] == 'ESB')]
+    la_df = df.loc[(df['LA'] == 'Local Authority')]
+    opw_df = df.loc[(df['LA'] == 'OPW')]
+
+    esb_stations_trace = go.Scattermapbox(
+        name="ESB",
+        lon=esb_df.LONGITUDE,
+        lat=esb_df.LATITUDE,
+        marker=dict(color='green',
+                    size=7),
+            hovertemplate= 
+            "<b>"+esb_df['STN_NAME']+"</b><br>"+
+         "Agency: " + esb_df['BDS']+"<br>" +
+            "Waterbody: " + esb_df['WATERBODY']+"<br>" +
+                "Catchment: " + esb_df['CATCHMENT']+"<br>" +
+                "County: " + esb_df['COUNTY']+"<br>" +
+              "Measurements: " + esb_df['AVAILABLE']+"<br>" +
+            "Lat: %{lon}\u00b0<br>" +
+            "Lon: %{lat}\u00b0<br>" +
+            "<extra></extra>",
+    )
+
+    la_stations_trace = go.Scattermapbox(
+            name="Local Authority",
+            lon=la_df.LONGITUDE,
+            lat=la_df.LATITUDE,
+            marker=dict(color='blue',
+                        size=7),
+                hovertemplate= 
+                "<b>"+la_df['STN_NAME']+"</b><br>"+
+            "Agency: " + la_df['BDS']+"<br>" +
+                "Waterbody: " + la_df['WATERBODY']+"<br>" +
+                    "Catchment: " + la_df['CATCHMENT']+"<br>" +
+                    "County: " + la_df['COUNTY']+"<br>" +
+                "Measurements: " + la_df['AVAILABLE']+"<br>" +
+                "Lat: %{lon}\u00b0<br>" +
+                "Lon: %{lat}\u00b0<br>" +
+                "<extra></extra>",
+    )
+
+    opw_stations_trace = go.Scattermapbox(
+            name="OPW",
+            lon=opw_df.LONGITUDE,
+            lat=opw_df.LATITUDE,
+            marker=dict(color='red',
+                        size=7),
+                hovertemplate= 
+                "<b>"+opw_df['STN_NAME']+"</b><br>"+
+            "Agency: " + opw_df['BDS']+"<br>" +
+                "Waterbody: " + opw_df['WATERBODY']+"<br>" +
+                    "Catchment: " + opw_df['CATCHMENT']+"<br>" +
+                    "County: " + opw_df['COUNTY']+"<br>" +
+                "Measurements: " + opw_df['AVAILABLE']+"<br>" +
+                "Lat: %{lon}\u00b0<br>" +
+                "Lon: %{lat}\u00b0<br>" +
+                "<extra></extra>",
+    )
+
+    map_4_3 = go.Figure(data=[opw_stations_trace,la_stations_trace,esb_stations_trace],
+                    layout=MAP_LAYOUT)
+    map_4_3.update_layout(legend_title='<b>Station Agency</b>')
+    return map_4_3
+
+def figure_4_7():
+    """
+    10 day Albedo
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.5Albedo/Figure4.7/'
+        data_csv = data_path + 'Figure4.7_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    dfString=df.astype(str)
+    trace = go.Scatter(x=df['datetime'],
+                    y=df['mean__10day__albedo'],
+                            name='10 Day Mean',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_1,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_1,
+                                        width=1),
+                            hovertemplate='%{x|%Y-%b-%d}<br>' +
+                            '<b>10 Day Albedo</b><br>' +
+                            'Mean: %{y:.3f}<br>' +
+                            'Min: '+dfString['min__10day__albedo']+'<br>' +
+                            'Max: '+dfString['max__10day__albedo']+'<br>' 
+                            '<extra></extra>'
+                            )
+    figure_4_7 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
+    figure_4_7.update_layout(
+        yaxis=dict(title='Albedo'),
+        xaxis=dict(title="Date"))
+    figure_4_7.add_annotation(
+        x="2010-12-24", y=0.413,
+        text="High Albedo<br>due to snow cover",
+        showarrow=True,
+        arrowhead=1,
+        ax=-100,
+        ay=20,
+    )
+    return figure_4_7
+
+
+
+
+
 
 def figure_4_10_1():
     """
@@ -2482,6 +3149,7 @@ def figure_4_12():
     faparDF['Mean'] = dataDF['Mean']
     faparDF['Min'] = dataDF['Min']
     faparDF['Max'] = dataDF['Max']
+    faparDF['datetime'] = dataDF['Unnamed: 1']
 
     for index, row in faparDF.iterrows():
         if row.Month == 1 and row.Day < 12:
@@ -2567,6 +3235,8 @@ def figure_4_12():
             faparDF.at[index, 'xAxis'] = 35
         elif row.Month == 12 and row.Day < 32:
             faparDF.at[index, 'xAxis'] = 36
+
+    # faparDF['xAxis'] = split_year_36(faparDF)
     colorscale = [
         # 5% are to be purple
         [0.0, 'rgb(98, 55, 155)'],
@@ -2690,6 +3360,130 @@ def figure_4_12():
 
     
     return figure_4_12
+def figure_4_14():
+    """
+    LAI Trend
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.8LAI/Figure4.14/'
+        data_csv = data_path + 'Figure4.14_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+    except:
+        return empty_chart()
+    
+    # df['xAxis'] = split_year_36(df)
+    for index, row in df.iterrows():
+        if row.datetime.month == 1 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 1
+        elif row.datetime.month == 1 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 2
+        elif row.datetime.month == 1 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 3
+
+        elif row.datetime.month == 2 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 4
+        elif row.datetime.month == 2 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 5
+        elif row.datetime.month == 2 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 6
+
+        elif row.datetime.month == 3 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 7
+        elif row.datetime.month == 3 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 8
+        elif row.datetime.month == 3 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 9
+
+        elif row.datetime.month == 4 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 10
+        elif row.datetime.month == 4 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 11
+        elif row.datetime.month == 4 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 12
+
+        elif row.datetime.month == 5 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 13
+        elif row.datetime.month == 5 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 14
+        elif row.datetime.month == 5 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 15
+
+        elif row.datetime.month == 6 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 16
+        elif row.datetime.month == 6 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 17
+        elif row.datetime.month == 6 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 18
+
+        elif row.datetime.month == 7 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 19
+        elif row.datetime.month == 7 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 20
+        elif row.datetime.month == 7 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 21
+
+        elif row.datetime.month == 8 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 22
+        elif row.datetime.month == 8 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 23
+        elif row.datetime.month == 8 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 24
+
+        elif row.datetime.month == 9 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 25
+        elif row.datetime.month == 9 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 26
+        elif row.datetime.month == 9 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 27
+
+        elif row.datetime.month == 10 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 28
+        elif row.datetime.month == 10 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 29
+        elif row.datetime.month == 10 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 30
+
+        elif row.datetime.month == 11 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 31
+        elif row.datetime.month == 11 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 32
+        elif row.datetime.month == 11 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 33
+
+        elif row.datetime.month == 12 and row.datetime.day < 12:
+            df.at[index, 'xAxis'] = 34
+        elif row.datetime.month == 12 and row.datetime.day < 22:
+            df.at[index, 'xAxis'] = 35
+        elif row.datetime.month == 12 and row.datetime.day < 32:
+            df.at[index, 'xAxis'] = 36
+    trace = go.Heatmap(
+        z=df['mean__10day__leaf_area_index'],
+        x=df['xAxis'],
+        y=df['datetime'].dt.year,
+        text=df['datetime'],
+        colorscale='Rainbow',
+        hovertemplate='%{text|%d-%b-%Y}<br>'+
+        'LAI: %{z:.2f}<extra></extra>'
+    )
+    figure_4_14 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
+    xPerc=1.055
+    figure_4_14.update_layout(
+        yaxis=dict(title='Year',
+                nticks=12),
+        xaxis=dict(title="Month",
+                ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+                showgrid=False,
+                tickvals=[2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35],
+                ))
+    x0=3.5
+    for i in range(0,11):
+        figure_4_14.add_shape(type='line',
+                            x0=x0, y0=1998.6, x1=x0, y1=2018.4,
+                            line=dict(color='White', width=3))
+        x0+=3
+
+    return figure_4_14
 
 def figure_4_21():
     """
@@ -2816,6 +3610,53 @@ def figure_4_22():
         xaxis=dict(title='Year')
     )
     return figure_4_22
+def figure_4_24():
+    """
+    Land surface temperature
+    """
+
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.12LandSurfaceTemperature/Figure4.24/'
+        data_csv = data_path + 'Figure4.24_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    day_temp_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__monthly__surface_land_temperature_day'],
+                         name='LST Day',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%Y}<br>' +
+                         '<b>LST Day</b><br>' +
+                         'Mean: %{y:.2f} \u00b0C<br>' +
+                         '<extra></extra>'
+                         )
+
+    night_temp_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__monthly__surface_land_temperature_night'],
+                            name='LST Night',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_1,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_1,
+                                        width=1),
+                            hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>LST Night</b><br>' +
+                            'Mean: %{y:.2f} \u00b0C<br>' +
+                            '<extra></extra>'
+                            )
+    figure_4_24 = go.Figure(data=[day_temp_trace, night_temp_trace], layout=TIMESERIES_LAYOUT)
+    figure_4_24.update_layout(
+        yaxis=dict(title='Temperature (\u00b0C)'),
+        xaxis=dict(title="Date"))
+    
+    return figure_4_24
+
 
 def figure_4_27():
     """
