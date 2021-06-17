@@ -36,6 +36,27 @@ STATION_COLORS = {
     'GHG_FLUX_TOWER': 'red'
 }
 
+PERCENTILE_COLORSCALE= [
+    # 5% are to be purple
+    [0,"rgb(98, 55, 155)"],
+    [0.05,"rgb(98, 55, 155)"],
+    # 20% are to be blue
+    [0.05,"rgb(184, 197, 229)"],
+    [0.25,"rgb(184, 197, 229)"],
+    # 25% are to be green
+    [0.25,"rgb(166, 206, 93)"],
+    [0.50,"rgb(166, 206, 93)"],
+    # 25% are to be yellow
+    [0.50,"rgb(255, 254, 66)"],
+    [0.75,"rgb(255, 254, 66)"],
+    # 20% are to be orange
+    [0.75,"rgb(239, 191, 49)"],
+    [0.95,"rgb(239, 191, 49)"],
+    # 5% are to be red
+    [0.95,"rgb(219, 32, 1)"],
+    [1.0,"rgb(219, 32, 1)"],
+]
+
 CHART_FONT = dict(
     color="#7f7f7f")
 
@@ -262,13 +283,29 @@ CHAPTERS = [
         {
         'chapter-num': '3.3',
         'id': 'sop-2',
-        'title': 'Sea Surface Currents',
-        'href': '_3_3_SeaSurfaceCurrents',
+        'title': 'Surface Currents',
+        'href': '_3_3_OceanSurfaceAndSubsurfaceCurrents',
         'pdf': 'Placeholder.pdf',
         'icon-lg-src': 'surface-currents_0.png',
         'icon-lg-hover-src': 'surface-currents_hover.png',
         'icon-src': 'ico-sop-sea-surface-currents.png',
         'icon-hover-src': 'ico-sop-sea-surface-currents_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Evin McGovern, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+        {
+        'chapter-num': '3.3',
+        'id': 'ssop-2',
+        'title': 'Subsurface Currents',
+        'href': '_3_3_OceanSurfaceAndSubsurfaceCurrents',
+        'icon-lg-src': 'subsurface-currents_0.png',
+        'icon-lg-hover-src': 'subsurface-currents_hover.png',
+        'icon-src': 'ico-ssop-subsurface-currents.png',
+        'icon-hover-src': 'ico-ssop-subsurface-currents_hover.png',
         'domain': 'Ocean',
         'subdomain': 'Physical',
         'scientific-area': 'Energy and Temperature',
@@ -726,21 +763,7 @@ CHAPTERS_DEV = [
     },
 
     # OCEANIC - SUBSURFACE OCEAN PHYSICS
-    {
-        'id': 'ssop-2',
-        'title': 'Subsurface Currents',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-ssop-subsurface-currents.png',
-        'icon-hover-src': 'ico-ssop-subsurface-currents_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
     {
         'id': 'ssop-3',
         'title': 'Subsuface Salinity',

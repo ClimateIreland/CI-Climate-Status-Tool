@@ -60,10 +60,14 @@ chapter_dict = next(
 
 trendCaption1 = """
 Time series of monthly average Land Surface Temperature for day and night time over Ireland derived from MODIS for the period of 2002 to 2018. 
+Seasonal and diurnal variability can be observed, in which the highest values occur during summer and during daylight hours.
         """
 
 trendCaption2 = """
-Maximum Land Surface Temperature during four 10-day periods in 2018 derived from the Copernicus Global Land Service (CGLS) datasets.    © European Union, Copernicus Land Monitoring Service 2020, European Environment Agency (EEA).
+Maximum Land Surface Temperature during four 10-day periods in 2018 derived from the Copernicus Global Land Service (CGLS) datasets.    
+© European Union, Copernicus Land Monitoring Service 2020, European Environment Agency (EEA).
+During the winter the maximum LST values are below 12°C, with the coldest areas generally to the north-west, 
+while during the summer the temperature can reach 40°C in parts of the east of the country
         """
 
 custom_trend = dbc.Container(

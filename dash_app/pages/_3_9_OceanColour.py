@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart, figure_3_20
 
 chapter_num = '3.9'
-bannerImgSrc = IMAGES_PATH+'OceanicSections/Ocean Cover Tomasz Szumski_2.JPG'
-bannerImgCredit = 'Tomasz Szumski'
+bannerImgSrc = IMAGES_PATH+'OceanicSections/Ocean_Colour_Pebbles Rita Wilson.jpg'
+bannerImgCredit = 'Rita Wilson'
 
 introText = """
     Ocean colour refers to the sunlight reflected from the ocean surface. 
@@ -27,11 +27,14 @@ bulletPoint2 = """
     Maximum Chl-a concentrations are generally reached in the March to May period and minimum values from October to December.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Monhtly Mean Chlorophyll-a Concentration - Irish Shelf'
+trendChartTitle = 'Monthly Mean Chlorophyll-a Concentration - Irish Shelf'
 trendChart = figure_3_20()
 
 trendCaption = """
 Monthly mean Chlorophyll-a concentration in the northeast Atlantic. Derived from the NASA Chlorophyll Concentration product determined from MODIS AQUA sensor observations. 
+The red colour identifies the months with the greatest Chl-a concentration. The 95th percentile value (0.92) indicates that 95% of all of the values 
+recorded fall below this value. A seasonal variation can be observed with maximum Chl-a concentrations generally reached in the March to May period 
+and minimum values from October to December.
         """
 
 infrastructureText = """
@@ -48,7 +51,7 @@ infoLinks = [
      'url': ''},
          {'text': 'Sathyendranath S., Brewin R.J.W., Brockmann C., et al. (2019) An Ocean-Colour Time Series for Use in Climate Studies: The Experience of the Ocean-Colour Climate Change Initiative (OC-CCI), Sensors, Vol. 19, No. 4285',
      'url': 'https://doi.org/10.3390/s19194285'},
-         {'text': '-Von Schuckmann, K., P.-Y. Le Traon, N. Smith et al., (2020) Copernicus Marine Service Ocean State Report, Issue 4, Journal of Operational Oceanography, 13:sup1, s1–s172; ',
+         {'text': 'Von Schuckmann, K., P.-Y. Le Traon, N. Smith et al., (2020) Copernicus Marine Service Ocean State Report, Issue 4, Journal of Operational Oceanography, 13:sup1, s1–s172; ',
      'url': 'https://doi.org/10.1080/1755876X.2020.1785097'},
          {'text': 'MODIS and NASA data via Giovanni from the Goddard Earth Sciences and Information Services Centre',
      'url': 'https://giovanni.gsfc.nasa.gov/giovanni/'},
@@ -58,8 +61,8 @@ infoLinks = [
      'url': 'https://ioccg.org/'},
          {'text': 'Marine Institute Weekly HAB Bulletin',
      'url': 'https://www.marine.ie/Home/site-area/data-services/interactive-maps/weekly-hab-bulletin'},
-         {'text': 'Water Quality in Ireland under the Water Framework Directive',
-     'url': 'http://www.epa.ie/pubs/reports/water/waterqua/waterqualityinireland2013-2018.html'},
+         {'text': 'Water Quality in Ireland',
+     'url': 'https://www.catchments.ie/water-quality-in-ireland-2013-2018/'},
 
 ]
 
@@ -70,7 +73,11 @@ chapter_dict = next(
 
 
 trendCaption2 = """
-Average Chlorophyll-a concentration (mg/m3) for (a) March to May 2015 and (b) October to December 2015. Data Source: ESA CCI Ocean Colour Project.
+Average Chlorophyll-a concentration (mg/m\u00b3) for (a) March to May 2015 and (b) October 
+to December 2015. Data Source: ESA CCI Ocean Colour Project.
+Seasonal variability can be seen in the open ocean with higher concentrations in spring. 
+The high concentrations indicated near coastal areas may be incorrect, as satellite retrievals 
+of Chl-a in shallow waters and near coasts are unreliable.
 """
 
 custom_trend = dbc.Container(

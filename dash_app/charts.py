@@ -6,6 +6,36 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from settings import *
 
+def percentile_series(df,col):
+    """
+    Returns series with percentile catagory based on column name submitted
+    """
+    def assign_percentile(df,row,col):
+        val = row[col]
+        if val >= np.percentile(df[col], 95):
+            return 95
+        elif val >= np.percentile(df[col], 75):
+            return 75
+        elif val >= np.percentile(df[col], 50):
+            return 50
+        elif val >= np.percentile(df[col], 25):
+            return 25
+        elif val >= np.percentile(df[col], 5):
+            return 5
+        else:
+            return 0
+        
+    return df.apply (lambda row: assign_percentile(df,row,col), axis=1)
+
+def date_to_day_number(row):
+    """
+    Returns the day of the year, standardised to a 30 day month
+    """
+    day = row.datetime.day
+    if day in [28,29,30,31]:
+        day = 30
+    return (row.datetime.month*30)+day
+
 def split_year_36(df):
     for index, row in df.iterrows():
         if row.datetime.month == 1 and row.datetime.day < 12:
@@ -1282,14 +1312,14 @@ def map_2_10():
     metDF = df.loc[(df['Type'] == 'Synoptic')]
     metDFStr=metDF.astype(str)
     metTrend = go.Scattermapbox(
-        name='Met Eireann',
+        name='Met Éireann',
         lon=metDF.Longitude,
         lat=metDF.Latitude,
         marker=dict(color=STATION_COLORS['Met'],
                     size=7),
         hovertemplate='Name: ' + metDFStr['name'] + '<br>' +
                 'County: ' + metDFStr['County'] + '<br>' +
-                'Agency: Met Eireann<br>' +
+                'Agency: Met Éireann<br>' +
                 'Station No.: ' + metDFStr['Station_Nu'] + '<br>' +
                 'Open Year: ' + metDFStr['Open_Year'] + '<br>' +
                 'Height: ' + metDFStr['Height__m_'] + ' m<br>' +
@@ -1598,7 +1628,7 @@ def map_2_12():
     metDF = df.loc[(df['Type'] == 'ClosedS')]
     metDFStr=metDF.astype(str)
     metTrend = go.Scattermapbox(
-        name='Met Eireann',
+        name='Met Éireann',
         lon=metDF.Longitude,
         lat=metDF.Latitude,
         marker=dict(color=STATION_COLORS['Met'],
@@ -1742,11 +1772,6 @@ def figure_3_3():
                         line=dict(
                                 color=TIMESERIES_COLOR_2,
                                 width=2),
-                    # mode='markers',
-                    # marker=dict(color=TIMESERIES_COLOR_2,
-                    #             size=5,
-                    #             # opacity=0.5
-                    #             ),
                      hovertemplate='%{x}<br>' +
                             '<b>Annual</b><br>' +
                             'Temperature: %{y:.2f} \u00b0C<extra></extra>'
@@ -1778,33 +1803,6 @@ def figure_3_3():
     ) 
 
     return figure_3_3
-
-
-# def map_3_1():
-#     """
-#     Ocean Surface and Subsurface Temperature infrastructure map
-#     """
-#     try:
-#         data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Map3.1/'
-#         stationsDF = pd.read_csv(
-#                     data_path+'Map3.1_StationTable_MI.txt')
-
-#         rockallDF = pd.read_csv(
-#                     data_path+'Map3.1_StationTable_RockallTroughSection.txt')
-#         tidbiDF = pd.read_csv(
-#                     data_path+'Map3.1_StationTable_TidbiT.txt')
-#     except:
-#         return empty_chart()
-#     tidbiDFNew=pd.DataFrame(columns=rockallDF.columns)
-#     tidbiDFNew['name']=tidbiDF["localId"]
-#     tidbiDFNew['Latitude']=tidbiDF["latitude"]
-#     tidbiDFNew['Longitude']=tidbiDF["longitude"]
-#     tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
-#     # tidbiDFNew['Close_Year']=""
-#     tidbiDFNew['Type']=tidbiDF["datasetNam"]
-#     combinedDF = pd.concat([stationsDF,rockallDF, tidbiDFNew])
-#     map_3_1=stations_map(combinedDF)
-#     return map_3_1
 
 def map_3_1a():
     """
@@ -2470,13 +2468,13 @@ def map_3_6():
     metDF = df.loc[(df['Type'] == 'Synoptic')]
     metDFStr=metDF.astype(str)
     metTrend = go.Scattermapbox(
-        name='Met Eireann',
+        name='Met Éireann',
         lon=metDF.Longitude,
         lat=metDF.Latitude,
         marker=dict(color=STATION_COLORS['Met'],
                     size=7),
         hovertemplate='Name: ' + metDFStr['name'] + '<br>' +
-                'Agency: EPA<br>' +
+                'Agency: Met Éireann<br>' +
                 'Station No.: ' + metDFStr['Station_Nu'] + '<br>' +
                 'Lat: %{lat:.2f} \u00b0<br>'+
                 'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
@@ -2600,31 +2598,9 @@ def map_3_6_old():
 
     return map_3_6
 
-def map_3_6_new():
-    """
-    Dissolved Oxygen infrastructure map
-    """
-
-    try:
-        data_path = DATA_PATH+'Oceanic_Domain/3.7Oxygen/Map3.6/'
-        epaStationsDF = pd.read_csv(
-            data_path+'Map3.6_StationTable_EPA_Stations.txt')
-        maceHeadStationsDF = pd.read_csv(
-            data_path+'Map3.6_StationTable_MaceHead.txt')
-        MIStationsDF_origin = pd.read_csv(
-            data_path+'Map3.6_StationTable_MI_SurveysStations.txt')
-        smartBayStationsDF = pd.read_csv(
-            data_path+'Map3.6_StationTable_SmartBayObservatory.txt')
-    except:
-        return empty_chart()
-    
-    map_3_6 = 6
-    return map_3_6
-
-
 def figure_3_20():
     """
-    Ocean color trend
+    Ocean color trend 
     """
 
     try:
@@ -2632,16 +2608,32 @@ def figure_3_20():
         data_csv = data_path + 'Figure3.20_data.csv'
         df = pd.read_csv(data_csv, index_col=0)
         df['datetime'] = pd.to_datetime(df['datetime'])
+        df['percentile'] = percentile_series(df,'mean__monthly__mass_concentration_of_chlorophyll_a_in_sea_water')
     except:
         return empty_chart()
     trace = go.Heatmap(
-        z=df['mean__monthly__mass_concentration_of_chlorophyll_a_in_sea_water'],
+        z=df['percentile'],
         x=df['datetime'].dt.month,
         y=df['datetime'].dt.year,
-        text=df['datetime'],
-        colorscale='Rainbow',
-        hovertemplate='%{text|%b %Y}<br>'+
-        'Concentration: %{z:.2f} mg/m\u00B3<extra></extra>'
+        text=df['mean__monthly__mass_concentration_of_chlorophyll_a_in_sea_water'],
+        colorscale=PERCENTILE_COLORSCALE, 
+        colorbar=dict(
+                    tickmode='array',
+                    thickness=10,
+            xanchor="left",
+            title='<b>   Percentile</b><br> Range (mg/m\u00B3)',
+                    ticktext=[
+                        '    <b>min.</b><br>(0.56-0.6)', 
+                        '     <b>5</b><br>(0.6-0.66)', 
+                        '    <b>25</b><br>(0.66-0.73)', 
+                        '    <b>50</b><br>(0.73-0.81)',
+                        '    <b>75</b><br>(0.81-0.92)', 
+                        '    <b>95</b><br>(>0.92)'],
+                    tickvals=[2,15,35,60, 80, 92]  
+        ),
+        hovertemplate='%{x} %{y}<br>'+
+        'Concentration: %{text:.2f} mg/m\u00B3<br>'+
+        'Percentile: %{z}<extra></extra>'
     )
     figure_3_20 = go.Figure(data=trace, layout=TIMESERIES_LAYOUT)
     figure_3_20.update_layout(
@@ -2654,12 +2646,20 @@ def figure_3_20():
         showgrid=False,
        tickvals=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     ))
+
+    # Include white lines as xaxis gridlines
+    x0=1.5
+    for i in range(0,11):
+        figure_3_20.add_shape(type='line',
+                            x0=x0, y0=2001.5, x1=x0, y1=2019,
+                            line=dict(color='White', width=3))
+        x0+=1
     
     return figure_3_20
 
 def map_3_8():
     """
-    Plankton MAp
+    Plankton Map
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.10Plankton/Map3.8/'
@@ -2755,25 +2755,11 @@ def figure_4_3():
     except:
         return empty_chart()
 
-    season_color = {
-        12:'blue',
-        1:'blue',
-        2:'blue',
-        3:'orange',
-        4:'orange',
-        5:'orange',
-        6:'green',
-        7:'green',
-        8:'green',
-        9:'brown',
-        10:'brown',
-        11:'brown',
-    }
     trace = go.Scatter(x=df['datetime'],
                             y=df['mean__monthly__lake_level'],
                          name='Monthly Mean',
                          mode='markers+lines',
-                         marker=dict(color=[season_color[k] for k in df['datetime'].dt.month.values],
+                         marker=dict(color=TIMESERIES_COLOR_1,
                                      size=5,
                                      opacity=0.5),
                          line=dict(color=TIMESERIES_COLOR_1,
@@ -3360,6 +3346,7 @@ def figure_4_12():
 
     
     return figure_4_12
+
 def figure_4_14():
     """
     LAI Trend
@@ -3369,119 +3356,53 @@ def figure_4_14():
         data_csv = data_path + 'Figure4.14_data.csv'
         df = pd.read_csv(data_csv, index_col=0)
         df['datetime'] = pd.to_datetime(df['datetime'])
+        df['percentile'] = percentile_series(df,'mean__10day__leaf_area_index')
+        df['xAxis'] = df.apply (lambda row: date_to_day_number(row), axis=1)
     except:
         return empty_chart()
-    
-    # df['xAxis'] = split_year_36(df)
-    for index, row in df.iterrows():
-        if row.datetime.month == 1 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 1
-        elif row.datetime.month == 1 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 2
-        elif row.datetime.month == 1 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 3
 
-        elif row.datetime.month == 2 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 4
-        elif row.datetime.month == 2 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 5
-        elif row.datetime.month == 2 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 6
-
-        elif row.datetime.month == 3 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 7
-        elif row.datetime.month == 3 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 8
-        elif row.datetime.month == 3 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 9
-
-        elif row.datetime.month == 4 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 10
-        elif row.datetime.month == 4 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 11
-        elif row.datetime.month == 4 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 12
-
-        elif row.datetime.month == 5 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 13
-        elif row.datetime.month == 5 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 14
-        elif row.datetime.month == 5 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 15
-
-        elif row.datetime.month == 6 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 16
-        elif row.datetime.month == 6 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 17
-        elif row.datetime.month == 6 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 18
-
-        elif row.datetime.month == 7 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 19
-        elif row.datetime.month == 7 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 20
-        elif row.datetime.month == 7 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 21
-
-        elif row.datetime.month == 8 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 22
-        elif row.datetime.month == 8 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 23
-        elif row.datetime.month == 8 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 24
-
-        elif row.datetime.month == 9 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 25
-        elif row.datetime.month == 9 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 26
-        elif row.datetime.month == 9 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 27
-
-        elif row.datetime.month == 10 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 28
-        elif row.datetime.month == 10 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 29
-        elif row.datetime.month == 10 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 30
-
-        elif row.datetime.month == 11 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 31
-        elif row.datetime.month == 11 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 32
-        elif row.datetime.month == 11 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 33
-
-        elif row.datetime.month == 12 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 34
-        elif row.datetime.month == 12 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 35
-        elif row.datetime.month == 12 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 36
     trace = go.Heatmap(
-        z=df['mean__10day__leaf_area_index'],
+        z=df['percentile'],
         x=df['xAxis'],
         y=df['datetime'].dt.year,
         text=df['datetime'],
-        colorscale='Rainbow',
+        customdata=df['mean__10day__leaf_area_index'],
+        colorscale=PERCENTILE_COLORSCALE, 
+        colorbar=dict(
+                tickmode='array',
+                thickness=10,
+        title='<b>   Percentile</b><br> Range (LAI)',
+                ticktext=[
+                    '    <b>min.</b><br>(1.09-1.2)', 
+                    '     <b>5</b><br>(1.2-1.46)', 
+                    '    <b>25</b><br>(1.46-2.16)', 
+                    '    <b>50</b><br>(2.16-3.07)',
+                    '    <b>75</b><br>(3.07-3.81)', 
+                    '    <b>95</b><br>(>3.81)'],
+                tickvals=[2,15,35,60, 80, 92]  
+        ),
         hovertemplate='%{text|%d-%b-%Y}<br>'+
-        'LAI: %{z:.2f}<extra></extra>'
+        'LAI: %{customdata:.2f}<br>'+
+        'Percentile: %{z}<extra></extra>'
     )
     figure_4_14 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
-    xPerc=1.055
     figure_4_14.update_layout(
         yaxis=dict(title='Year',
                 nticks=12),
         xaxis=dict(title="Month",
                 ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
                 showgrid=False,
-                tickvals=[2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35],
-                ))
-    x0=3.5
-    for i in range(0,11):
+                tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380, 410],
+                )
+    )
+
+    # Include white lines as xaxis gridlines
+    x0=35
+    for i in range(0,12):
         figure_4_14.add_shape(type='line',
                             x0=x0, y0=1998.6, x1=x0, y1=2018.4,
                             line=dict(color='White', width=3))
-        x0+=3
+        x0+=30
 
     return figure_4_14
 

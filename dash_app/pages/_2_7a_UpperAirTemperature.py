@@ -10,7 +10,7 @@ from charts import empty_chart, figure_2_13_a, map_2_7
 
 chapter_num = '2.7a'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Upper Air_Met_Eireann_Fig14.jpg'
-bannerImgCredit = 'Met Eireann'
+bannerImgCredit = 'Met Éireann'
 
 introText = """
         Knowledge of the vertical profiles of temperature and wind in the atmosphere 
@@ -45,11 +45,6 @@ infrastructureText = """
         wind speed and direction, humidity and temperatures twice a day. The measurements are taken 
         every 2 seconds as the balloon travels up through the atmosphere. This enables the production 
         of a tephigram which is a ‘snapshot’ of the vertical structure of the atmosphere. 
-        Since the late 1970s, globally upper air temperature measurements have been made 
-        based on satellite-borne microwave sounders. Changes in sensor technology have made it difficult 
-        to integrate and compare the temperature measurements over time. Consequently, 
-        climate quality data sets can be extracted only following a careful intercalibration 
-        process between the data extracted from different sensors.
         """
 infrastructureMap = map_2_7()
 

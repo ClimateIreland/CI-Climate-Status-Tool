@@ -34,13 +34,16 @@ trendChartTitle = 'Monthly Lake Levels - Lough Oughter, Co. Cavan'
 trendChart = figure_4_3()
 
 trendCaption = """
-        Monthly mean levels on Lake Oughter, Co. Cavan (1977–2018).
+        Monthly mean levels on Lake Oughter, Co. Cavan (1977–2018). 
+        Levels show seasonal variation, with minimum values during the summer and maximum 
+        values during the winter, but no long-term trend in the data is apparent.
         """
 
 infrastructureText = """
-Lake levels are currently measured at 74 locations by the EPA, the Office of Public Works and the Electricity Supply Board. The lake monitoring programme is undertaken to comply with the Water Framework Directive (WFD). In this programme, 226 lakes are examined for a broader range of biological and chemical parameters Lake water quality measures have been published regularly since 1987 by the EPA.  
-Satellite altimetry is used internationally to determine water levels in large lakes. This provides useful data in the absence of in situ measurements. Currently through the European Space Agency´s Climate Change Initiative a time series of a range of parameters including lake water level, water extent, surface water temperature, ice cover and water leaving reflectance is being prepared initially for 200 large lakes globally.
-
+Lake levels are currently measured at 74 locations by the EPA, the Office of Public Works and 
+the Electricity Supply Board. The lake monitoring programme is undertaken to comply with the 
+Water Framework Directive (WFD). In this programme, 226 lakes are examined for a broader 
+range of biological and chemical parameters Lake water quality measures have been published regularly since 1987 by the EPA.  
         """
 infrastructureMap = map_4_3()
 

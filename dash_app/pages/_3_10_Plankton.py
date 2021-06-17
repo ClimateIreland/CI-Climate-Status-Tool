@@ -17,7 +17,7 @@ introText = """
     the phytoplankton formed by free-floating plants and the zooplankton formed mainly 
     by microscopic animals. Changes in plankton affect marine ecosystems, 
     living marine resources used by humans and the carbon cycle. Plankton play a key 
-    role in climate regulation, as they sequester CO2 at the surface and transfer 
+    role in climate regulation, as they sequester CO\u2082 at the surface and transfer 
     it to the deep ocean. 
         """
 bulletPoint1 = """
@@ -35,23 +35,31 @@ trendCaption = """
         """
 
 infrastructureText = """
-The Marine Institute has been monitoring phytoplankton since the 1980s.  Phytoplankton analysis has focussed on the phytoplankton populations and dynamics from aquaculture sites around the Irish coastline (blue), with special attention to the harmful and toxic phytoplankton. At well-mixed shallow sites, surface seawater samples are collected while at deeper sites an integrated seawater sample from the water column is collected and analysed on a weekly basis.
-As part of the Ireland’s Water Framework Directive monitoring programme, monthly Phytoplankton measurements in coastal waters and seasonal sampling in estuaries have been made (red) by the Marine Institute and EPA. 
-Continuous Plankton Recorder (CPR) surveys are established in several areas around the world including the North Atlantic Ocean since 1931. In this area the programme is coordinated by the UK´s Marine Biological Association (MBA) with a set of voluntary observing ships undertaking regular plankton tows. Currently these are the only systematic measurements of zooplankton taken in parts of the Irish Shelf. 
-Measurements from a number of satellite sensors that detect radiation reflected from the ocean surface (ocean colour) are used to infer chlorophyll and hence phytoplankton concentrations. Observations are available from various satellite sensors going back to the late 1980s. Currently information on chlorophyll concentrations can be retrieved from the Copernicus Marine service and the ESA-CCI-Ocean Colour project.
-
+The Marine Institute has been monitoring phytoplankton since the 1980s.  
+Phytoplankton analysis has focussed on the phytoplankton populations and dynamics from 
+aquaculture sites around the Irish coastline (blue), with special attention to the harmful 
+and toxic phytoplankton. At well-mixed shallow sites, surface seawater samples are 
+collected while at deeper sites an integrated seawater sample from the water column 
+is collected and analysed on a weekly basis.
+As part of the Ireland’s Water Framework Directive monitoring programme, monthly Phytoplankton 
+measurements in coastal waters and seasonal sampling in estuaries have been made (red) by the Marine Institute and EPA. 
+Continuous Plankton Recorder (CPR) surveys are established in several areas around the 
+world including the North Atlantic Ocean since 1931. In this area the programme is 
+coordinated by the UK´s Marine Biological Association (MBA) with a set of voluntary observing 
+ships undertaking regular plankton tows. Currently these are the only systematic measurements 
+of zooplankton taken in parts of the Irish Shelf. 
         """
 infrastructureMap = map_3_8()
 
 infoLinks = [
     {'text': 'Plankton ESSENTIAL CLIMATE VARIABLE (ECV) GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/plankton/'},
-         {'text': '-	Edwards, M., Helaouet,P., Alhaija, R.A., et al., (2016) Global Marine Ecological Status Report: results from the global CPR Survey 2014/2015. SAHFOS Technical Report, No. 11: 1-32. Plymouth, U.K. ISSN 1744-0750',
+         {'text': 'Edwards, M., Helaouet,P., Alhaija, R.A., et al., (2016) Global Marine Ecological Status Report: results from the global CPR Survey 2014/2015. SAHFOS Technical Report, No. 11: 1-32. Plymouth, U.K. ISSN 1744-0750',
      'url': 'https://www.cprsurvey.org/publications/scientific-reports/ecostatus-reports/'},
          {'text': 'Marine Institute Phytoplankton programme information',
      'url': 'https://www.marine.ie/Home/site-area/areas-activity/marine-environment/phytoplankton-monitoring'},
-         {'text': 'WFD coastal sites(Water Quality in Ireland under the Water Framework Directive)',
-     'url': 'http://www.epa.ie/pubs/reports/water/waterqua/waterqualityinireland2013-2018.html'},
+         {'text': 'WFD coastal sites (Water Quality in Ireland under the Water Framework Directive)',
+     'url': 'https://www.catchments.ie/water-quality-in-ireland-2013-2018/'},
          {'text': 'Information about the MBA CPR Surveys',
      'url': 'https://www.cprsurvey.org/'},
 ]
@@ -62,11 +70,30 @@ chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
 trendCaption1 = """
-Percentage of monthly samples analysed between 1990 – 2018 where Karenia mikimotoi was detected. 
+Percentage of monthly samples analysed between 1990 – 2018 where Karenia mikimotoi was detected.
+An increase in the percentage of samples that contain K. mikimotoi is evident in recent years, 
+especially in summer. During winter, K. mikimotoi was observed intermittently in the first decade of 
+this century but an almost continuous presence throughout the year has been observed since 2010.
         """
 
+trendCaption1 = [
+    html.I(className="fas fa-play _up",style={"color": chapter_dict['domain-color']}),
+    html.Span('Percentage of monthly samples analysed between 1990 – 2018 where '),
+    html.I('Karenia mikimotoi'),
+    html.Span(' was detected. An increase in the percentage of samples that contain '),
+    html.I('K. mikimotoi'),
+    html.Span(' is evident in recent years, especially in summer. During winter, '),
+    html.I('K. mikimotoi'),
+    html.Span(' was observed intermittently in the first decade of this century but an almost continuous presence throughout the year has been observed since 2010.'),
+]
+
 trendCaption2 = """
-Annual mean abundance expressed as anomalies above and below the long term mean for a number of plankton life-forms (functional group) from 1958-2014 for the Celtic Sea. Ref: Global Marine Ecological Status Report, results from the global CPR Survey 2014/2015. SAHFOS Technical Report, 11: 1-32.
+Annual mean abundance expressed as anomalies above and below the long term mean for a number of plankton 
+life-forms (functional group) from 1958-2014 for the Celtic Sea. Ref: Global Marine Ecological Status Report, 
+results from the global CPR Survey 2014/2015. SAHFOS Technical Report, 11: 1-32.
+A decreasing temporal trend in the abundance of taxa is observed for many plankton life forms in the Celtic Sea. 
+This suggests that a major ecosystem alteration has taken place over the period examined.
+
         """
 custom_trend = dbc.Container(
     className='sr-trends',
@@ -96,9 +123,7 @@ custom_trend = dbc.Container(
                         children=[
                             html.P(
                                 className='sr-chart-caption',
-                                children=[html.I(className="fas fa-play _up",
-                                                 style={"color": chapter_dict['domain-color']}),
-                                          trendCaption1]
+                                children=trendCaption1
                             )]
                         )
             ]

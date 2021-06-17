@@ -10,7 +10,7 @@ from charts import empty_chart, figure_2_13_b, map_2_7
 
 chapter_num = '2.7b'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Upper Air_Met_Eireann_Fig14.jpg'
-bannerImgCredit = 'Met Eireann'
+bannerImgCredit = 'Met Éireann'
 
 introText = """
         Knowledge of the vertical profiles of temperature and wind in the atmosphere is vital for a better understanding of the weather and climate system. 
@@ -39,10 +39,6 @@ infrastructureText = """
         humidity and temperatures twice a day. The measurements are taken every 2 seconds 
         as the balloon travels up through the atmosphere. 
         This enables the production of a tephigram which is a ‘snapshot’ of the vertical structure of the atmosphere. 
-
-        Wind speed and direction can be derived by tracking cloud motion from successive satellite observations. 
-        In 2018, ESA launched Aeolus as the first satellite mission to acquire profiles of Earth’s wind on a global scale using laser technology.
-
         """
 infrastructureMap = map_2_7()
 

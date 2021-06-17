@@ -7,6 +7,7 @@ import pathlib
 import page_builder as pb
 from settings import *
 from charts import empty_chart, map_3_3
+import copy
 
 chapter_num = '3.3'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Currents_Tomasz Szumski_ADCP.jpg'
@@ -31,7 +32,12 @@ trendChartTitle = ''
 trendChart = empty_chart()
 
 trendCaption = """
-    Schematic of the general circulation of the upper ocean (0-100m) in the North Atlantic. Ref: ICES Report on Ocean Climate 2018.   
+    Schematic of the general circulation of the upper ocean (0-100 m) in the North Atlantic. Ref: ICES Report on Ocean Climate 2018.   
+   Blue arrows represent the movement of cool water and red arrows show the known pathways of warm water. 
+   The surface water transport branch to the west of Ireland is the North Atlantic Current and, 
+   although multi-annual and decadal changes in its strength have been recorded, including slowing in recent years, 
+   there is no coherent evidence of a long-term trend. In the Irish Shelf seas, the Irish coastal current travels 
+   in a clockwise direction from the Celtic Sea (in the south) to the Malin Shelf (in the north) (black arrows).
         """
 
 infrastructureText = """
@@ -64,6 +70,9 @@ infoLinks = [
 ########################################################################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
+
+combined_chapter_dict = copy.copy(chapter_dict)
+combined_chapter_dict['title'] = 'Ocean Surface and Subsurface Currents'
 custom_trend = dbc.Container(
     className='sr-trends',
     style={'borderColor': chapter_dict['domain-color']},
@@ -107,13 +116,13 @@ def create_layout(app):
         children=[
             pb.build_banner(bannerImgSrc,
                             bannerImgCredit,
-                            chapter_dict
+                            combined_chapter_dict
                             ),
-            pb.build_breadcrumb(chapter_dict),
-            pb.build_nav(chapter_dict),
+            pb.build_breadcrumb(combined_chapter_dict),
+            pb.build_nav(combined_chapter_dict),
             pb.build_intro(introText,
                            bulletPoints,
-                           chapter_dict
+                           combined_chapter_dict
                            ),
         #     pb.build_trend(trendChartTitle,
         #                    trendChart,

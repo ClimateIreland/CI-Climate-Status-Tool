@@ -50,11 +50,6 @@ infrastructureText = """
     in at any remote location in the world and are webcast in near real time every 10-minutes. 
     Routine condensation nuclei measurements were made at Valentia Observatory between 1951 and 1994. 
     Measurements of aerosol optical depth are currently carried out at the Observatory.  
-    A range of sensors, such as TROPOMI on board the ESA SENTINEL 5P and MODIS on the 
-    NASA TERRA and AQUA satellites make observations from which aerosol properties can be inferred. 
-    Currently, the Copernicus Atmospheric Monitoring Service, 
-    the Climate Change Service and the ESA Climate Change Initiative – Aerosol provide various global aerosol products.  
-
         """
 infrastructureMap = map_2_14()
 
@@ -71,7 +66,7 @@ infoLinks = [
      'url': 'https://www.copernicus.eu/en/services/atmosphere'},
          {'text': 'Copernicus Climate Change Service',
      'url': 'https://www.copernicus.eu/en/services/climate-change'},
-         {'text': 'EA Climate Change Initiative- Aerosol',
+         {'text': 'ESA Climate Change Initiative - Aerosol',
      'url': 'http://cci.esa.int/aerosol'},
          {'text': 'NASA Earth Observations (NEO)',
      'url': 'https://neo.sci.gsfc.nasa.gov/'},
@@ -89,20 +84,16 @@ trendCaption1 = """
         """
 
 trendCaption2 = """
-Sulphur air pollution trends. SO2 pollution levels measured at Valentia Observatory over 
+Sulfur air pollution trends. SO\u2082 pollution levels measured at Valentia Observatory over 
 the period of 1980–2018 and European SOx emissions over the same period. 
-The dashed line represents an exponential fit to the SO2 measurement data 
+The dashed line represents an exponential fit to the SO\u2082 measurement data 
 and the pink shaded area represents confidence bands (95%) of exponential 
-fits to EU SOx emissions (left); non-sea-salt-SO4 PM10 pollution levels 
-measured at Valentia Observatory and non-sea salt -SO4 PM1 observed at 
+fits to EU SOx emissions (left); non-sea-salt-SO\u2084 PM10 pollution levels 
+measured at Valentia Observatory and non-sea-salt-SO\u2084 PM1 observed at 
 Mace Head over the same time period of 1980–2018. The dashed line 
-represents an exponential fit to the non-sea-salt-SO4 PM10  measurement data (right). 
-Both in terms of micrograms of sulphur per metre cubed (μ g S m−3). 
-        """
-
-trendCaption3 = """
-    Example of global aerosol optical depth as derived from satellite observations 
-    for September 2018.Ref: MODIS Atmosphere Science Team. NASA Earth Observations (NEO).
+represents an exponential fit to the non-sea-salt-SO\u2084 PM10  measurement data (right). 
+Both in terms of micrograms of sulfur per metre cubed (\u00b5gSm\u207b\u00b3). 
+This shows a significant reduction (~80%) over a 35-year period (1980–2015) and is in line with European observations.
         """
 
 custom_trend = dbc.Container(
@@ -146,7 +137,7 @@ custom_trend = dbc.Container(
                         children=[
                             html.H4(
                                 className='sr-chart-title',
-                                children='Sulphur Air Polution Trend'),
+                                children='Sulfur Air Pollution Trend'),
                             html.Img(
                                 src=IMAGES_PATH+'AtmosphericSections/Figure2.29_SulphurAirPollutionTrends_v2.png')]
                         )
@@ -165,32 +156,6 @@ custom_trend = dbc.Container(
                         )
             ]
         ),
-                        dbc.Row(
-            children=[
-                dbc.Col(className="col-md-10 offset-md-1 text-center",
-                        children=[
-                            html.H4(
-                                className='sr-chart-title',
-                                children='Global Aerosol Optical Depth'),
-                            html.Img(
-                                src=IMAGES_PATH+'AtmosphericSections/Figure2.30_GlobalAerosolOpticalDepthSatelliteObservations.png')]
-                        )
-            ]
-        ),
-        dbc.Row(
-            children=[
-                dbc.Col(className="col-md-10 offset-md-1",
-                        children=[
-                            html.P(
-                                className='sr-chart-caption',
-                                children=[html.I(className="fas fa-play _up",
-                                                 style={"color": chapter_dict['domain-color']}),
-                                          trendCaption3]
-                            )]
-                        )
-            ]
-        ),
-
     ])
 def create_layout(app):
     return html.Div(

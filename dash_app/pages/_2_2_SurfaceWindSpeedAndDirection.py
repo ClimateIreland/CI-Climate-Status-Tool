@@ -34,7 +34,11 @@ trendChart = trendChartA
 
 trendCaption = """
     Annual mean wind speeds (top) and number of days per year with gale gusts (bottom) 
-    at Valentia Observatory (1940–2019) and Dublin Airport (1944–2019).
+    at Valentia Observatory (1940–2019) and Dublin Airport (1944–2019). At Valentia a 
+    slightly decreasing trend in both parameters can be observed during the last two decades, 
+    while in Dublin the number of days with gale gusts also shows a decreasing trend. However, 
+    because of instrument changes in the 1990s and a lack of homogenisation of the full data record, 
+    long-term trends cannot be determined with confidence.
         """
 
 
@@ -78,13 +82,6 @@ infoLinks = [
 ########################################################################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
-
-figure_2_5 = IMAGES_PATH+'AtmosphericSections/Figure2.5_v2.png'
-trendCaption2 = """
-    Example of a wind-speed and direction map derived from satellite-based observations. 
-    The lowest wind speeds can be seen towards the centre of an anticyclone located to 
-    the southwest of Ireland (Ref. Eumetsat, BUFRdisplay v0.8.2 180911 64-bit © Francis Breame 2008-2018) 
-    """
 
 custom_trend = dbc.Container(
     className='sr-trends',
@@ -138,32 +135,6 @@ custom_trend = dbc.Container(
                 )
             ]
         ),
-             dbc.Row(
-            children=[
-                dbc.Col(className="col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center col",
-                        children=[
-                             html.H4(
-                                className='sr-chart-title',
-                                children='Example of Wind Speed and Direction Map'),
-                            html.Img(
-                                src=figure_2_5)]
-                        ),
-            ]
-        ),
-        dbc.Row(
-            children=[
-                dbc.Col(
-                    className="col-md-10 offset-md-1",
-                    children=[
-                        html.P(
-                            className='sr-chart-caption',
-                                    children=[html.I(className="fas fa-play _up",
-                                           style={"color": chapter_dict['domain-color']}),
-                                    trendCaption2]
-                        )]
-                )
-            ]
-        ),
     ])
 
 def create_layout(app):
@@ -179,11 +150,6 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
             custom_trend,
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,

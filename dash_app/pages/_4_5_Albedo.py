@@ -52,7 +52,7 @@ infoLinks = [
          {'text': 'EUMETSAT Surface Albedo Validation Sites',
      'url': 'http://savs.eumetsat.int/'},
          {'text': 'Wang, Z., et al. (2019). Global Surface Albedo Product Validation Best Practices Protocol. Practice for Satellite Derived Land Product Validation (p. 45): Land Product Validation Subgroup (WGCV/CEOS). doi:10.5067/DOC/CEOSWGCV/LPV/ALBEDO.001 ',
-     'url': ''},
+     'url': 'https://www.researchgate.net/publication/332106030_Global_Surface_Albedo_Product_Validation_Best_Practices'},
 
 ]
 
@@ -62,11 +62,17 @@ chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
 trendCaption1 = """
-Time series of 10-Day periods of average albedo over Ireland derived from the Copernicus Global Land Service (CGLS) datasets for the period 1999 to 2018. 
+Time series of 10-Day periods of average albedo over Ireland derived from the Copernicus Global
+ Land Service (CGLS) datasets for the period 1999 to 2018. 
+ A seasonal trend is observed, in which the highest values occur during winter, particularly in 
+ late December and early January, while the lowest values are observed during the summer months, 
+ when vegetation cover is at its maximum.
         """
 
 trendCaption2 = """
-Albedo during four 10-day periods in 2018 derived from the Copernicus Global Land Service (CGLS) datasets. © European Union, Copernicus Land Monitoring Service 2020, European Environment Agency (EEA).
+Albedo during four 10-day periods in 2018 derived from the Copernicus Global Land Service (CGLS) 
+datasets. © European Union, Copernicus Land Monitoring Service 2020, European Environment Agency (EEA). 
+The highest values are observed during the autumn and winter, when the presence of vegetation is reduced. 
         """
 
 custom_trend = dbc.Container(
