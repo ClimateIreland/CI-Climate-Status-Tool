@@ -48,7 +48,7 @@ infoLinks = [
     {'text': 'Ocean Colour ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/ocean-colour/'},
          {'text': 'Satellite Ocean Colour: Current Status and Future Perspective, (2019) S, Sathyendranath, S., Ban, Y., et al.,   Frontiers in Marine Science, Ocean Observation, Vol. 6, 485: doi: 10.3389/fmars.2019.00485',
-     'url': ''},
+     'url': 'https://doi.org/10.3389/fmars.2019.00485'},
          {'text': 'Sathyendranath S., Brewin R.J.W., Brockmann C., et al. (2019) An Ocean-Colour Time Series for Use in Climate Studies: The Experience of the Ocean-Colour Climate Change Initiative (OC-CCI), Sensors, Vol. 19, No. 4285',
      'url': 'https://doi.org/10.3390/s19194285'},
          {'text': 'Von Schuckmann, K., P.-Y. Le Traon, N. Smith et al., (2020) Copernicus Marine Service Ocean State Report, Issue 4, Journal of Operational Oceanography, 13:sup1, s1–s172; ',

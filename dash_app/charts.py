@@ -36,94 +36,6 @@ def date_to_day_number(row):
         day = 30
     return (row.datetime.month*30)+day
 
-def split_year_36(df):
-    for index, row in df.iterrows():
-        if row.datetime.month == 1 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 1
-        elif row.datetime.month == 1 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 2
-        elif row.datetime.month == 1 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 3
-
-        elif row.datetime.month == 2 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 4
-        elif row.datetime.month == 2 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 5
-        elif row.datetime.month == 2 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 6
-
-        elif row.datetime.month == 3 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 7
-        elif row.datetime.month == 3 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 8
-        elif row.datetime.month == 3 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 9
-
-        elif row.datetime.month == 4 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 10
-        elif row.datetime.month == 4 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 11
-        elif row.datetime.month == 4 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 12
-
-        elif row.datetime.month == 5 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 13
-        elif row.datetime.month == 5 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 14
-        elif row.datetime.month == 5 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 15
-
-        elif row.datetime.month == 6 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 16
-        elif row.datetime.month == 6 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 17
-        elif row.datetime.month == 6 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 18
-
-        elif row.datetime.month == 7 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 19
-        elif row.datetime.month == 7 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 20
-        elif row.datetime.month == 7 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 21
-
-        elif row.datetime.month == 8 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 22
-        elif row.datetime.month == 8 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 23
-        elif row.datetime.month == 8 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 24
-
-        elif row.datetime.month == 9 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 25
-        elif row.datetime.month == 9 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 26
-        elif row.datetime.month == 9 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 27
-
-        elif row.datetime.month == 10 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 28
-        elif row.datetime.month == 10 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 29
-        elif row.datetime.month == 10 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 30
-
-        elif row.datetime.month == 11 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 31
-        elif row.datetime.month == 11 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 32
-        elif row.datetime.month == 11 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 33
-
-        elif row.datetime.month == 12 and row.datetime.day < 12:
-            df.at[index, 'xAxis'] = 34
-        elif row.datetime.month == 12 and row.datetime.day < 22:
-            df.at[index, 'xAxis'] = 35
-        elif row.datetime.month == 12 and row.datetime.day < 32:
-            df.at[index, 'xAxis'] = 36
-            
-        return df['xAxis']
-
 def map_columns(columns_dict, original_df):
     """
     Create new data frame with new column names from data frame
@@ -2620,20 +2532,20 @@ def figure_3_20():
         colorbar=dict(
                     tickmode='array',
                     thickness=10,
-            xanchor="left",
-            title='<b>   Percentile</b><br> Range (mg/m\u00B3)',
-                    ticktext=[
-                        '    <b>min.</b><br>(0.56-0.6)', 
-                        '     <b>5</b><br>(0.6-0.66)', 
-                        '    <b>25</b><br>(0.66-0.73)', 
-                        '    <b>50</b><br>(0.73-0.81)',
-                        '    <b>75</b><br>(0.81-0.92)', 
-                        '    <b>95</b><br>(>0.92)'],
-                    tickvals=[2,15,35,60, 80, 92]  
+                    len=0.9,
+            
+        title='<b>Percentile</b> (mg/m\u00B3)',
+                ticktext=[
+                    '<b>Min.</b> (0.56)', 
+                    '<b> 5%</b> (0.6)', 
+                    '<b>25%</b> (0.66)', 
+                    '<b>50%</b> (0.73)',
+                    '<b>75%</b> (0.81)', 
+                    '<b>95%</b> (0.92)'],
+                tickvals=[0,5,24,47, 71, 90]  
         ),
         hovertemplate='%{x} %{y}<br>'+
-        'Concentration: %{text:.2f} mg/m\u00B3<br>'+
-        'Percentile: %{z}<extra></extra>'
+        'Concentration: %{text:.2f} mg/m\u00B3<extra></extra>'
     )
     figure_3_20 = go.Figure(data=trace, layout=TIMESERIES_LAYOUT)
     figure_3_20.update_layout(
@@ -2674,7 +2586,7 @@ def map_3_8():
         marker=dict(color=STATION_COLORS['MI_Survey'],
                     size=7),
             hovertemplate= 
-            "<b>WFD Sampling Point</b><br>"+
+            "<b>WFD Sampling Site</b><br>"+
             "Agency: " + wfd_stations['Agency']+"<br>" +
             "Waterbody: " + wfd_stations['Waterbody']+"<br>" +
             "Location: " + wfd_stations['Location']+"<br>" +
@@ -2684,14 +2596,14 @@ def map_3_8():
     )
 
     mi_stations_trace = go.Scattermapbox(
-            name="Harmful Algal Blooms (HAPs)",
+            name="Aquaculture",
             lon=mi_stations.location_2,
             lat=mi_stations.location_l,
             text=mi_stations.location_n,
             marker=dict(color=STATION_COLORS['HAPs'],
                         size=7),
                 hovertemplate= 
-                "<b>HABs Sampling Point</b><br>"+
+                "<b>Aquaculture Site</b><br>"+
                 "Agency: Marine Institute<br>"+
                 "Location: %{text}<br>" +
                 "Lat: %{lat}\u00b0<br>" +
@@ -2700,7 +2612,7 @@ def map_3_8():
     )
     map_3_8 = go.Figure(data=[mi_stations_trace,wfd_stations_trace],
                     layout=MAP_LAYOUT)
-    map_3_8.update_layout(legend_title='<b>Sampling Programme</b>')
+    map_3_8.update_layout(legend_title='<b>Site Type</b>')
     return map_3_8
 
 
@@ -3121,230 +3033,58 @@ def figure_4_12():
     """
     try:
         data_path = DATA_PATH+'Terrestrial_Domain/4.7FAPAR/Figure4.12/'
-        xls = pd.ExcelFile(
-            data_path+'FAPAR_CopernicusLandService_10Days_OverIreland_v2.xlsx')
-        dataDF = pd.read_excel(xls, 'FAPAR_10_Daily_OverIreland')
+        data_csv = data_path + 'Figure4.12_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        df['percentile'] = percentile_series(df,'mean__10day__fapar')
+        df['xAxis'] = df.apply (lambda row: date_to_day_number(row), axis=1)
     except:
         return empty_chart()
 
-    faparDF = pd.DataFrame()
-    faparDF['Date'] = dataDF['Unnamed: 1'].dt.date
-    faparDF['Year'] = dataDF['Unnamed: 1'].dt.year
-    faparDF['Month'] = dataDF['Unnamed: 1'].dt.month
-    faparDF['Day'] = dataDF['Unnamed: 1'].dt.day
-    faparDF['Mean'] = dataDF['Mean']
-    faparDF['Min'] = dataDF['Min']
-    faparDF['Max'] = dataDF['Max']
-    faparDF['datetime'] = dataDF['Unnamed: 1']
-
-    for index, row in faparDF.iterrows():
-        if row.Month == 1 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 1
-        elif row.Month == 1 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 2
-        elif row.Month == 1 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 3
-
-        elif row.Month == 2 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 4
-        elif row.Month == 2 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 5
-        elif row.Month == 2 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 6
-
-        elif row.Month == 3 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 7
-        elif row.Month == 3 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 8
-        elif row.Month == 3 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 9
-
-        elif row.Month == 4 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 10
-        elif row.Month == 4 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 11
-        elif row.Month == 4 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 12
-
-        elif row.Month == 5 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 13
-        elif row.Month == 5 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 14
-        elif row.Month == 5 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 15
-
-        elif row.Month == 6 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 16
-        elif row.Month == 6 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 17
-        elif row.Month == 6 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 18
-
-        elif row.Month == 7 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 19
-        elif row.Month == 7 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 20
-        elif row.Month == 7 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 21
-
-        elif row.Month == 8 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 22
-        elif row.Month == 8 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 23
-        elif row.Month == 8 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 24
-
-        elif row.Month == 9 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 25
-        elif row.Month == 9 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 26
-        elif row.Month == 9 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 27
-
-        elif row.Month == 10 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 28
-        elif row.Month == 10 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 29
-        elif row.Month == 10 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 30
-
-        elif row.Month == 11 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 31
-        elif row.Month == 11 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 32
-        elif row.Month == 11 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 33
-
-        elif row.Month == 12 and row.Day < 12:
-            faparDF.at[index, 'xAxis'] = 34
-        elif row.Month == 12 and row.Day < 22:
-            faparDF.at[index, 'xAxis'] = 35
-        elif row.Month == 12 and row.Day < 32:
-            faparDF.at[index, 'xAxis'] = 36
-
-    # faparDF['xAxis'] = split_year_36(faparDF)
-    colorscale = [
-        # 5% are to be purple
-        [0.0, 'rgb(98, 55, 155)'],
-        [0.08, 'rgb(98, 55, 155)'],
-        # 20% are to be blue
-        [0.08, 'rgb(184, 197, 229)'],
-        [0.28, 'rgb(184, 197, 229)'],
-        # 25% are to be green
-        [0.28, 'rgb(166, 206, 93)'],
-        [0.507, 'rgb(166, 206, 93)'],
-        # 25% are to be yellow
-        [0.507, 'rgb(255, 254, 66)'],
-        [0.77, 'rgb(255, 254, 66)'],
-        # 20% are to be orange
-        [0.77, 'rgb(239, 191, 49)'],
-        [0.92, 'rgb(239, 191, 49)'],
-        # 5% are to be red
-        [0.92, 'rgb(219, 32, 1)'],
-        [1.0, 'rgb(219, 32, 1)'],
-    ]
-    date_list = [datetime.date.today() - dateutil.relativedelta.relativedelta(months=x)
-             for x in range(11, -1, -1)]
-    month_list = [datetime.date.strftime(x, '%b') for x in date_list]
-    faparTrace = go.Heatmap(
-        z=faparDF.Mean,
-        x=faparDF.xAxis,
-        y=faparDF.Year,
-        text=faparDF['Date'],
-        colorscale=colorscale,
+    trace = go.Heatmap(
+        z=df['percentile'],
+        x=df['xAxis'],
+        y=df['datetime'].dt.year,
+        text=df['datetime'],
+        customdata=df['mean__10day__fapar'],
+        colorscale=PERCENTILE_COLORSCALE, 
         colorbar=dict(
-            len=0.87,
-                    tickmode='array',
-                    thickness=10,
-                    x=1.045,
-            title='|  <b>Intervals</b>',
-                    ticktext=['0.47-0.50', '0.50-0.56', '0.56-0.65',
-                        '0.65-0.72', '0.72-0.76', '>0.76'],
-                    tickvals=[0.48, 0.52, 0.59, 0.67, 0.735, 0.77]
-        
+                tickmode='array',
+                thickness=10,
+                len=0.9,
+        title='<b>Percentile</b> (FAPAR)',
+                ticktext=[
+                    '<b>Min.</b> (0.47)', 
+                    '<b> 5%</b> (0.5)', 
+                    '<b>25%</b> (0.56)', 
+                    '<b>50%</b> (0.65)',
+                    '<b>75%</b> (0.72)', 
+                    '<b>95%</b> (0.76)'],
+                tickvals=[0,5,24,47, 71, 90]  
         ),
-        hovertemplate='%{text|%d %b %Y}<br>'+
-        'Mean FAPAR: %{z:.2f}<extra></extra>')
-
-    xPerc=1.055
-    annotations=(
-        dict(
-            text="<b>Perc.</b>",
-            xref="paper",yref="paper",
-            x=xPerc, y=0.92,
-            showarrow=False,
-            align="center"
-            ),
-        dict(
-            xref="paper",yref="paper",
-            x=xPerc, y=0.85,
-            text="95",
-            showarrow=False,
-            align="center"
-            ),
-        dict(
-            xref="paper",yref="paper",
-            x=xPerc, y=0.77,
-            text="75",
-            showarrow=False,
-            align="center"
-            ),
-        dict(
-            xref="paper",yref="paper",
-            x=xPerc, y=0.58,
-            text="50",
-            showarrow=False,
-            align="center"
-
-            ),
-        dict(
-            xref="paper",yref="paper",
-            x=xPerc, y=0.38,
-            text="25",
-            showarrow=False,
-            align="center"
-
-            ),
-        dict(
-            xref="paper",yref="paper",
-            x=xPerc, y=0.19,
-            text="5",
-            showarrow=False,
-            align="center"
-
-            ),
-        dict(
-            xref="paper",yref="paper",
-            x=xPerc, y=0.09,
-            text="min",
-            showarrow=False,
-            align="center"
-            )
+        hovertemplate='%{text|%d-%b-%Y}<br>'+
+        'FAPAR: %{customdata:.2f}<extra></extra>'
     )
-    figure_4_12 = go.Figure(data=faparTrace, layout=TIMESERIES_LAYOUT)
+
+    figure_4_12 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_12.update_layout(
-        annotations=annotations,
-        yaxis=dict(
-            title='Year',
-            nticks=20),
-        xaxis=dict(
-            title='Month',
-            ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
-            showgrid=False,
-            tickvals=[2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35],))
-    figure_4_12.add_shape(
-        type='line',
-        x0=3.5, y0=1998.6, x1=3.5, y1=2018.4,
-        line=dict(color='White', width=3)
+        yaxis=dict(title='Year',
+                nticks=12),
+        xaxis=dict(title="Month",
+                ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+                showgrid=False,
+                tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380, 410],
+                )
     )
-    x0=3.5
-    for i in range(0,11):
+
+    # Include white lines as xaxis gridlines
+    x0=35
+    for i in range(0,12):
         figure_4_12.add_shape(type='line',
                             x0=x0, y0=1998.6, x1=x0, y1=2018.4,
                             line=dict(color='White', width=3))
-        x0+=3
+        x0+=30
 
-    
     return figure_4_12
 
 def figure_4_14():
@@ -3371,20 +3111,31 @@ def figure_4_14():
         colorbar=dict(
                 tickmode='array',
                 thickness=10,
-        title='<b>   Percentile</b><br> Range (LAI)',
+                len=0.9,
+        title='<b>Percentile</b> (LAI)',
                 ticktext=[
-                    '    <b>min.</b><br>(1.09-1.2)', 
-                    '     <b>5</b><br>(1.2-1.46)', 
-                    '    <b>25</b><br>(1.46-2.16)', 
-                    '    <b>50</b><br>(2.16-3.07)',
-                    '    <b>75</b><br>(3.07-3.81)', 
-                    '    <b>95</b><br>(>3.81)'],
-                tickvals=[2,15,35,60, 80, 92]  
+                    '<b>Min.</b> (1.09)', 
+                    '<b> 5%</b> (1.2)', 
+                    '<b>25%</b> (1.46)', 
+                    '<b>50%</b> (2.16)',
+                    '<b>75%</b> (3.07)', 
+                    '<b>95%</b> (3.81)'],
+                tickvals=[0,5,24,47, 71, 90]  
         ),
         hovertemplate='%{text|%d-%b-%Y}<br>'+
-        'LAI: %{customdata:.2f}<br>'+
-        'Percentile: %{z}<extra></extra>'
+        'LAI: %{customdata:.2f}<extra></extra>'
     )
+    figure_4_14 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
+    figure_4_14.update_layout(
+        yaxis=dict(title='Year',
+                nticks=12),
+        xaxis=dict(title="Month",
+                ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+                showgrid=False,
+                tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380, 410],
+                )
+    )
+
     figure_4_14 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_14.update_layout(
         yaxis=dict(title='Year',

@@ -72,7 +72,7 @@ infoLinks = [
          {'text': 'Information from the Irish Marine Data Buoy Observation Network',
      'url': 'http://www.marine.ie/Home/site-area/data-services/real-time-observations/irish-marine-data-buoy-observation-network'},
          {'text': 'About EUMETSAT, Europe´s weather satellite programme',
-     'url': 'https://www.eumetsat.int/website/home/index.html'},
+     'url': 'https://www.eumetsat.int/about-us/who-we-are'},
          {'text': 'European wind profiler and weather radar (winds) network',
      'url': 'http://cfa.aquila.infn.it/wiki.eg-climet.org/index.php5/E-WINPROF'},
 

@@ -71,7 +71,7 @@ infoLinks = [
      'url': 'http://www.epa.ie/pubs/reports/research/climate/Research_Report_227.pdf'},
 
      {'text': 'Ireland’s National Inventory Report 2020',
-     'url': 'http://www.epa.ie/pubs/reports/air/airemissions/ghg/nir2020/NIR%202020_Merge_finalv2.pdf'},
+     'url': 'https://www.epa.ie/publications/monitoring--assessment/climate-change/air-emissions/irelands-national-inventory-submissions-2020.php '},
 
 
      {'text': 'Fluxnet information',

@@ -59,7 +59,7 @@ infoLinks = [
      {'text': 'Greenhouse Gas Concentration in the European State of the Climate Bulletin – 2019',
      'url': 'https://climate.copernicus.eu/ESOTC/2019/greenhouse-gas-concentrations'},
      {'text': 'Integrated Carbon Observation System (ICOS)',
-     'url': '(https://www.icos-cp.eu/'}
+     'url': 'https://www.icos-cp.eu/'}
 ]
 
 

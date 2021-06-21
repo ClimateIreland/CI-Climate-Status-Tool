@@ -61,7 +61,7 @@ infoLinks = [
      'url': 'https://doi.org/10.1080/02626667.2013.782407'},
 
      {'text': 'The EPA website on river monitoring',
-     'url': 'https://www.epa.ie/water/wm/rivers/'},
+     'url': 'https://www.epa.ie/our-services/monitoring--assessment/freshwater--marine/rivers/'},
 
      {'text': 'EPA data source',
      'url': 'https://gis.epa.ie/GetData/Download'}, 

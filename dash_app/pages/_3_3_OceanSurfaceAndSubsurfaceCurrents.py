@@ -51,7 +51,7 @@ infrastructureMap = map_3_3()
 infoLinks = [
     {'text': 'Surface Currents ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/surface-currents/'},
-         {'text': 'Sub-Surface Currents ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
+         {'text': 'Subsurface Currents ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/subsurface-currents/ '},
          {'text': 'Holliday, N.P., Bersch, M., Berx, B. et al. (2020) Ocean circulation causes the largest freshening event for 120 years in eastern subpolar North Atlantic,  Nature Vol. 11, 585',
      'url': 'https://doi.org/10.1038/s41467-020-14474-y'},

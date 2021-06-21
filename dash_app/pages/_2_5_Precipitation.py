@@ -82,7 +82,7 @@ infoLinks = [
      'url': 'https://www.met.ie/climate/available-data'},
 
     {'text': 'About EUMETSAT, Europe´s weather satellite programme',
-     'url': 'https://www.eumetsat.int/website/home/index.html'},
+     'url': 'https://www.eumetsat.int/about-us/who-we-are'},
 
     {'text': 'About EUMETNET',
      'url': 'https://www.eumetnet.eu/about-us/'},

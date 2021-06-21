@@ -33,6 +33,9 @@ trendChart = figure_2_13_a()
 
 trendCaption = """
         Example of annual mean temperature at Valentia Observatory from one level in the atmosphere (1980–2018).
+        Observations at this height (300 hPa level) indicate a slight decrease in temperature in the period 1980–2015, 
+        in line with patterns observed globally. In 2015, the sensor type used to measure upper air parameters was replaced. 
+        Consequently, the information collected after that is not directly comparable to the preceding observations.
         """
 
 infrastructureText = """

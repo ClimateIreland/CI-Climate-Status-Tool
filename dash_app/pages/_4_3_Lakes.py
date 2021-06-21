@@ -51,7 +51,7 @@ infoLinks = [
     {'text': 'Lakes ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/lakes/'},
          {'text': 'The EPA’S website on lake monitoring',
-     'url': 'https://www.epa.ie/water/wm/lakes/'},
+     'url': 'https://www.epa.ie/our-services/monitoring--assessment/freshwater--marine/lakes/'},
          {'text': 'Data on lake locations and water quality from the EPA',
      'url': 'http://gis.epa.ie/GetData/Download'},
          {'text': 'Lake level data from the EPA',

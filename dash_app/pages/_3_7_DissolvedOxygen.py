@@ -79,7 +79,7 @@ infoLinks = [
     {'text': 'The Marine Institute operated Research Vessels',
      'url': 'https://www.marine.ie/Home/site-area/infrastructure-facilities/research-vessels/research-vessels'},
     {'text': 'Water Quality in Ireland under the Water Framework Directive',
-     'url': 'http://www.epa.ie/pubs/reports/water/waterqua/waterqualityinireland2013-2018.html'},
+     'url': 'https://www.catchments.ie/water-quality-in-ireland-2013-2018/'},
 ]
 
 

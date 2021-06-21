@@ -28,6 +28,9 @@ trendChart = figure_2_13_b()
 
 trendCaption = """
         Example of annual mean wind speed at Valentia Observatory from one level in the atmosphere (1980–2018).
+        Annual variability is observed, but there is no apparent trend in the upper air wind speed. In 2015, 
+        the sensor type used to measure upper air parameters was replaced. Consequently, the information 
+        collected after that is not directly comparable to the preceding observations.
         """
 
 infrastructureText = """

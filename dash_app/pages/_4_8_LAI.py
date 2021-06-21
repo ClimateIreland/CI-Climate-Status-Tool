@@ -63,8 +63,8 @@ chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
 trendCaption1 = """
-    Heat map of 10-Day periods of average LAI over Ireland derived from the Copernicus Global Land S
-    ervice (CGLS) datasets for the period 1999 to 2018. The data are presented as percentiles. 
+    Heat map of 10-Day periods of average LAI over Ireland derived from the Copernicus Global Land Service 
+    (CGLS) datasets for the period 1999 to 2018. The data are presented as percentiles. 
     For example, the 75th percentile means that 75% of all the values are below 3.07 and 25% of the values are above it.
     Seasonal variability is observed, in which the highest values occur during late spring and early summer, 
     particularly between May and June, while the lowest values are observed during the winter months.
