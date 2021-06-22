@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart
 
 chapter_num = '0'
-bannerImgSrc = IMAGES_PATH+''
-bannerImgCredit = ''
+bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Soil_Moisture_Ned_DwyerP1090366.JPG'
+bannerImgCredit = 'Ned Dwyer'
 
 introText = """
 

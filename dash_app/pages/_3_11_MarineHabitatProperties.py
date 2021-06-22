@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart
 
 chapter_num = '0'
-bannerImgSrc = IMAGES_PATH+''
-bannerImgCredit = ''
+bannerImgSrc = IMAGES_PATH+'OceanicSections/Habitats_Tomasz_Szumski_IMG_9140_biodiscovery survey 2014.jpg'
+bannerImgCredit = 'Tomasz Szumski'
 
 introText = """
 

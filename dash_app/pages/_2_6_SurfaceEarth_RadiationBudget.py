@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart
 
 chapter_num = '0'
-bannerImgSrc = IMAGES_PATH+''
-bannerImgCredit = ''
+bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Radiation_Ned_Dwyer_P1090408.JPG'
+bannerImgCredit = 'Ned Dwyer'
 
 introText = """
 

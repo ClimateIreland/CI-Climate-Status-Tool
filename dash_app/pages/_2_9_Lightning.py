@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart
 
 chapter_num = '0'
-bannerImgSrc = IMAGES_PATH+''
-bannerImgCredit = ''
+bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Lightning_Noel_Fitzpatrick_storm_chasing_2019_day7_lightning_stack_LR_brighter.jpg'
+bannerImgCredit = 'Noel Fitzpatrick'
 
 introText = """
 
