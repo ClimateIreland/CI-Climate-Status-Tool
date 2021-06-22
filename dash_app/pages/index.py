@@ -48,7 +48,7 @@ intro = dbc.Container(
                                 src='assets/images/Climate_status.png'
                             ),
                         ]),
-                    html.H1("Ireland's Climate Status Tool DEV",
+                    html.H1("Ireland's Climate Status Tool",
                             style={"color": "rgba(0,10,20,.80)", "marginTop": "30px"})]
             )),
         dbc.Row(
