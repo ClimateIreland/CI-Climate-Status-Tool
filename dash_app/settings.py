@@ -106,7 +106,7 @@ CHAPTERS = [
         'id': 'sa-2',
         'title': 'Surface Wind Speed and Direction',
         'href': '_2_2_SurfaceWindSpeedAndDirection',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_2_2_SurfaceWindSpeedAndDirection.pdf',
         'icon-lg-src': 'surface-wind.png',
         'icon-lg-hover-src': 'surface-wind_hover.png',
         'icon-src': 'ico-sa-windspeed.png',
@@ -123,7 +123,7 @@ CHAPTERS = [
         'id': 'sa-6',
         'title': 'Surface Water Vapour',
         'href': '_2_3_WaterVapour',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_2_3_WaterVapour.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-sa-watervapour.png',
@@ -140,7 +140,7 @@ CHAPTERS = [
         'id': 'sa-3',
         'title': 'Precipitation',
         'href': '_2_5_Precipitation',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_2_5_Precipitation.pdf',
         'icon-lg-src': 'precipitation.png',
         'icon-lg-hover-src': 'precipitation_hover.png',
         'icon-src': 'ico-sa-precipitation.png',
@@ -160,7 +160,7 @@ CHAPTERS = [
         'id': 'uaa-6',
         'title': 'Upper Air Atmosphere Water Vapour',
         'href': '_2_3_WaterVapour',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_2_3_WaterVapour.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-uaa-watervapour.png',
@@ -178,7 +178,7 @@ CHAPTERS = [
         'id': 'uaa-1',
         'title': 'Upper Air Atmosphere Temperature',
         'href': '_2_7a_UpperAirTemperature',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_2_7_UpperAirTemperatureWind.pdf',
         'icon-lg-src': 'upperair-temperature_0.png',
         'icon-lg-hover-src': 'upperair-temperature_hover.png',
         'icon-src': 'ico-uaa-temperature.png',
@@ -195,7 +195,7 @@ CHAPTERS = [
         'id': 'uaa-2',
         'title': 'Upper Air Wind Speed and Direction',
         'href': '_2_7b_UpperAirWindSpeedAndDirection',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_2_7_UpperAirTemperatureWind.pdf',
         'icon-lg-src': 'upperair-wind.png',
         'icon-lg-hover-src': 'upperair-wind_hover.png',
         'icon-src': 'ico-uaa-windspeed.png',
@@ -214,7 +214,7 @@ CHAPTERS = [
         'id': 'ac-1',
         'title': 'Carbon Dioxide',
         'href': '_2_10_CarbonDioxide',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_2_10_CarbonDioxide.pdf',
         'icon-lg-src': 'carbon-dioxide.png',
         'icon-lg-hover-src': 'carbon-dioxide_hover.png',
         'icon-src': 'ico-ac-co2.png',
@@ -267,7 +267,7 @@ CHAPTERS = [
         'id': 'ac-4',
         'title': 'Aerosols',
         'href': '_2_14_Aerosols',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_2_14_Aerosols.pdf',
         'icon-lg-src': 'aerosols_1.png',
         'icon-lg-hover-src': 'aerosols_hover.png',
         'icon-src': 'ico-ac-aerosols.png',
@@ -321,7 +321,7 @@ CHAPTERS = [
         'id': 'sop-2',
         'title': 'Surface Currents',
         'href': '_3_3_OceanSurfaceAndSubsurfaceCurrents',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_3_3_OceanSurfaceSubsurfaceCurrents.pdf',
         'icon-lg-src': 'surface-currents_0.png',
         'icon-lg-hover-src': 'surface-currents_hover.png',
         'icon-src': 'ico-sop-sea-surface-currents.png',
@@ -338,6 +338,7 @@ CHAPTERS = [
         'id': 'ssop-2',
         'title': 'Subsurface Currents',
         'href': '_3_3_OceanSurfaceAndSubsurfaceCurrents',
+        'pdf': '_3_3_OceanSurfaceSubsurfaceCurrents.pdf',
         'icon-lg-src': 'subsurface-currents_0.png',
         'icon-lg-hover-src': 'subsurface-currents_hover.png',
         'icon-src': 'ico-ssop-subsurface-currents.png',
@@ -355,7 +356,7 @@ CHAPTERS = [
         'id': 'sop-3',
         'title': 'Sea Level',
         'href': '_3_4_SeaLevel',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_3_4_SeaLevel.pdf',
         'icon-lg-src': 'sea-level_0.png',
         'icon-lg-hover-src': 'sea-level_0_hover.png',
         'icon-src': 'ico-sop-sea-level.png',
@@ -390,7 +391,7 @@ CHAPTERS = [
         'id': 'obgc-2',
         'title': 'Dissolved Oxygen',
         'href': '_3_7_DissolvedOxygen',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_3_7_DissolvedOxygen.pdf',
         'icon-lg-src': 'oxygen.png',
         'icon-lg-hover-src': 'oxygen_hover.png',
         'icon-src': 'ico-obgc-oxygen.png',
@@ -407,7 +408,7 @@ CHAPTERS = [
         'id': 'obgc-3',
         'title': 'Ocean Colour',
         'href': '_3_9_OceanColour',
-             'pdf': 'Placeholder.pdf',
+             'pdf': '_3_9_OceanColour.pdf',
         'icon-lg-src': 'ocean-colour_0.png',
         'icon-lg-hover-src': 'ocean-colour_hover.png',
         'icon-src': 'ico-obgc-ocean-colour.png',
@@ -424,7 +425,7 @@ CHAPTERS = [
         'id': 'obe-1',
         'title': 'Plankton',
         'href': '_3_10_Plankton',
-             'pdf': 'Placeholder.pdf',
+             'pdf': '_3_10_Plankton.pdf',
         'icon-lg-src': 'plankton_0.png',
         'icon-lg-hover-src': 'plankton_hover.png',
         'icon-src': 'ico-obe-plankton.png',
@@ -460,7 +461,7 @@ CHAPTERS = [
         'id': 'hyd-2',
         'title': 'Lakes',
         'href': '_4_3_Lakes',
-                 'pdf': 'Placeholder.pdf',
+        'pdf': '_4_3_Lakes.pdf',
         'icon-lg-src': 'lakes_1.png',
         'icon-lg-hover-src': 'lakes_hover.png',
         'icon-src': 'ico-hyd-lakes.png',
@@ -512,7 +513,7 @@ CHAPTERS = [
         'id': 'bio-3',
         'title': 'Fire Disturbance',
         'href': '_4_11_Fire',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_4_11_Fire.pdf',
         'icon-lg-src': 'fire_0.png',
         'icon-lg-hover-src': 'fire_0_hover.png',
         'icon-src': 'ico-bio-fire.png',
@@ -529,7 +530,7 @@ CHAPTERS = [
         'id': 'ant-1',
         'title': 'Anthropogenic Greenhouse Gas Emissions',
         'href': '_4_14_AnthropogenicGreenhouseGasEmissions',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_4_14_GHGEmissions.pdf',
         'icon-lg-src': 'anthropogenic-ghg-fluxes.png',
         'icon-lg-hover-src': 'anthropogenic-ghg-fluxes_hover.png',
         'icon-src': 'ico-ant-ghg-fluxes.png',
@@ -546,7 +547,7 @@ CHAPTERS = [
         'id': 'bio-5',
         'title': 'Albedo',
         'href': '_4_5_Albedo',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_4_5_Albedo.pdf',
         'icon-lg-src': 'albedo_0.png',
         'icon-lg-hover-src': 'albedo_hover.png',
         'icon-src': 'ico-bio-albedo.png',
@@ -563,7 +564,7 @@ CHAPTERS = [
         'id': 'bio-7',
         'title': 'Leaf Area Index (LAI)',
         'href': '_4_8_LAI',
-        'pdf': 'Placeholder.pdf',
+        'pdf': '_4_8_LeafAreaIndex.pdf',
         'icon-lg-src': 'leaf-area-index.png',
         'icon-lg-hover-src': 'leaf-area-index_hover.png',
         'icon-src': 'ico-bio-leaf-area-index.png',
@@ -580,7 +581,7 @@ CHAPTERS = [
         'id': 'bio-6',
         'title': 'Land Surface Temperature',
         'href': '_4_12_LandSurfaceTemperature',
-                'pdf': 'Placeholder.pdf',
+        'pdf': '_4_12_LandSurfaceTemperature.pdf',
         'icon-lg-src': 'land-surface-temperature.png',
         'icon-lg-hover-src': 'land-surface-temperature_hover.png',
         'icon-src': 'ico-bio-land-surface-temperature.png',
@@ -596,10 +597,12 @@ CHAPTERS = [
 
 CHAPTERS_DEV = [
     # Upper-air Atmoshere
-    {
+    {   
+        'chapter-num': '2.9',
         'id': 'uaa-3',
         'title': 'Lightning',
-        'href': '',
+        'href': '_2_9_Lightning',
+        'pdf': '_2_9_Lightning.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-uaa-lightning.png',
@@ -612,9 +615,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
+        'chapter-num': '2.8',
         'id': 'uaa-4',
         'title': 'Clouds',
-        'href': '',
+        'href': '_2_8_CloudProperties',
+        'pdf': '_2_8_CloudProperties.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-uaa-cloud-properties.png',
@@ -627,9 +632,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
+        'chapter-num': '2.6',
         'id': 'uaa-5',
         'title': 'Earth Radiation Budget',
-        'href': '',
+        'href': '_2_6_SurfaceEarthRadiationBudget',
+        'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-uaa-earth-radiation-budget.png',
@@ -642,13 +649,14 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
 
-
     # ATMOSPHERE - COMPOSITION
 
     {
+        'chapter-num': '2.13',
         'id': 'ac-5',
         'title': 'Ozone',
-        'href': '',
+        'href': '_2_13_Ozone',
+        'pdf': '_2_13_Ozone.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-ac-ozone.png',
@@ -661,9 +669,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
+        'chapter-num': '2.15',
         'id': 'ac-6',
         'title': 'Precursors for Aerosols and Ozone',
-        'href': '',
+        'href': '_2_15_PrecursorsAerosolsOzone',
+        'pdf': '_2_15_PrecursorsAerosolsOzone.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-ac-precursors.png',
@@ -677,9 +687,11 @@ CHAPTERS_DEV = [
     },
     # ATMOSPHERE - SURFACE
     {
+        'chapter-num': '2.4',
         'id': 'sa-4',
         'title': 'Surface Pressure',
-        'href': '',
+        'href': '_2_4_AtmosphericPressure',
+        'pdf': '_2_4_AtmosphericPressure.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-sa-pressure.png',
@@ -692,9 +704,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     {
+        'chapter-num': '2.6',
         'id': 'sa-5',
         'title': 'Surface Radiation Budget',
-        'href': '',
+        'href': '_2_6_SurfaceEarthRadiationBudget',
+        'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-sa-surfaceradiationbudget.png',
@@ -707,11 +721,14 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
 
+
     # OCEANIC - SURFACE OCEAN PHYSICS
     {
+        'chapter-num': '2.13',
         'id': 'sop-4',
         'title': 'Sea State',
-        'href': '',
+        'href': '_3_5_SeaState',
+        'pdf': '_3_5_SeaState.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-sop-sea-state.png',
@@ -724,9 +741,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
+        'chapter-num': '3.12',
         'id': 'sop-5',
         'title': 'Surface Stress',
-        'href': '',
+        'href': '_3_12_OtherOceanEcvs',
+        'pdf': '_3_12_OtherOceanEcvs.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-sop-surface-stress.png',
@@ -739,9 +758,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
+        'chapter-num': '3.12',
         'id': 'sop-6',
         'title': 'Ocean Surface Heat Flux',
-        'href': '',
+        'href': '_3_12_OtherOceanEcvs',
+        'pdf': '_3_12_OtherOceanEcvs.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-sop-ocean-surface-heat-flux.png',
@@ -754,9 +775,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
+        'chapter-num': '3.2',
         'id': 'sop-7',
         'title': 'Sea Surface Ocean Salinity',
-        'href': '',
+        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
+        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-sop-sea-surface-salinity.png',
@@ -772,9 +795,11 @@ CHAPTERS_DEV = [
     # OCEANIC - SUBSURFACE OCEAN PHYSICS
 
     {
+        'chapter-num': '3.2',
         'id': 'ssop-3',
         'title': 'Subsuface Salinity',
-        'href': '',
+        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
+        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-ssop-subsurface-salinity.png',
@@ -788,9 +813,11 @@ CHAPTERS_DEV = [
     },
     # OCEANIC -  Biogeochemistry
     {
+        'chapter-num': '3.8',
         'id': 'obgc-4',
         'title': 'Nutrients',
-        'href': '',
+        'href': '_3_8_Nutrients',
+        'pdf': '_3_8_Nutrients.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-obgc-nutrients.png',
@@ -803,9 +830,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
+        'chapter-num': '3.12',
         'id': 'obgc-5',
         'title': 'Transient Tracers',
-        'href': '',
+        'href': '_3_12_OtherOceanEcvs',
+        'pdf': '_3_12_OtherOceanEcvs.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-obgc-transient-tracers.png',
@@ -818,9 +847,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
     {
+        'chapter-num': '3.12',
         'id': 'obgc-6',
         'title': 'Nitrous Oxide',
-        'href': '',
+        'href': '_3_12_OtherOceanEcvs',
+        'pdf': '_3_12_OtherOceanEcvs.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-obgc-nitrous-oxide.png',
@@ -835,9 +866,11 @@ CHAPTERS_DEV = [
 
     # OCEANIC - BIOECO
     {
+        'chapter-num': '3.11',
         'id': 'obe-2',
         'title': 'Marine Habitats',
-        'href': '',
+        'href': '_3_11_MarineHabitatProperties',
+        'pdf': '_3_11_MarineHabitatProperties.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-obe-marine-habitat.png',
@@ -853,9 +886,11 @@ CHAPTERS_DEV = [
     # TERRESTRIAL - HYDROSPHERE
 
     {
+        'chapter-num': '4.2',
         'id': 'hyd-3',
         'title': 'Groundwater',
-        'href': '',
+        'href': '_4_2_GroundWater',
+        'pdf': '_4_2_GroundWater.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-hyd-groundwater.png',
@@ -868,9 +903,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
     {
+        'chapter-num': '4.4',
         'id': 'hyd-4',
         'title': 'Soil Moisture',
-        'href': '',
+        'href': '_4_4_SoilMoisture',
+        'pdf': '_4_4_SoilMoisture.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-hyd-soil-moisture.png',
@@ -884,9 +921,11 @@ CHAPTERS_DEV = [
     },
     # TERRESTRIAL - BIOSPHERE
     {
+        'chapter-num': '4.9',
         'id': 'bio-4',
         'title': 'Above-ground Biomass',
-        'href': '',
+        'href': '_4_9_AboveGroundBiomass',
+        'pdf': '_4_9_AboveGroundBiomass.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-bio-above-ground-biomass.png',
@@ -900,9 +939,11 @@ CHAPTERS_DEV = [
     },
 
     {
+        'chapter-num': '4.10',
         'id': 'bio-8',
         'title': 'Soil Carbon',
-        'href': '',
+        'href': '_4_10_SoilCarbon',
+        'pdf': '_4_10_SoilCarbon.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-bio-soil-carbon.png',
@@ -915,9 +956,11 @@ CHAPTERS_DEV = [
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
     {
+        'chapter-num': '4.13',
         'id': 'ant-2',
         'title': 'Anthropogenic Water Use',
-        'href': '',
+        'href': '_4_13_WaterUse',
+        'pdf': '_4_13_WaterUse.pdf',
         'icon-lg-src': '',
         'icon-lg-hover-src': '',
         'icon-src': 'ico-ant-wateruse.png',
@@ -928,8 +971,8 @@ CHAPTERS_DEV = [
         'authors': '',
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-]
+    }
+    ]
 
 MAP_LAYOUT = dict(
     legend=dict(title='<b>Station Type</b>',
