@@ -15,6 +15,7 @@ from pages import (
     index,
     _2_1_SurfaceTemperature,
     _2_2_SurfaceWindSpeedAndDirection,
+    _2_3_WaterVapour,
     _2_7a_UpperAirTemperature,
     _2_7b_UpperAirWindSpeedAndDirection,
     _2_5_Precipitation,
@@ -87,6 +88,8 @@ def display_page(pathname):
         return _2_1_SurfaceTemperature.create_layout(app)
     elif "_2_2_SurfaceWindSpeedAndDirection" in pathname:
         return _2_2_SurfaceWindSpeedAndDirection.create_layout(app)
+    elif "_2_3_WaterVapour" in pathname:
+        return _2_3_WaterVapour.create_layout(app)
     elif "_2_5_Precipitation" in pathname:
         return _2_5_Precipitation.create_layout(app)
     elif "_2_7a_UpperAirTemperature" in pathname:

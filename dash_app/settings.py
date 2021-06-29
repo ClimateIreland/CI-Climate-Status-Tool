@@ -28,6 +28,7 @@ STATION_COLORS = {
     'EPA': '#00734c',  # dark green
     'NUIG': '#ff0000',  # red
     'Met': '#002673',  # dark blue
+    'GPS': '#002673',  # dark blue
     'TidbiT': '#004da8',  # blue
     'HAPs': '#004da8',  # blue
     'ExtendedEllettLineBuoy': '#00734c',  # dark green
@@ -117,6 +118,23 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
+        {
+        'chapter-num': '2.3',
+        'id': 'sa-6',
+        'title': 'Surface Water Vapour',
+        'href': '_2_3_WaterVapour',
+        'pdf': 'Placeholder.pdf',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-sa-watervapour.png',
+        'icon-hover-src': 'ico-sa-watervapour_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
     {
         'chapter-num': '2.5',
         'id': 'sa-3',
@@ -136,6 +154,24 @@ CHAPTERS = [
 
     },
     # Upper Air
+
+        {
+        'chapter-num': '2.3',
+        'id': 'uaa-6',
+        'title': 'Upper Air Atmosphere Water Vapour',
+        'href': '_2_3_WaterVapour',
+        'pdf': 'Placeholder.pdf',
+        'icon-lg-src': '',
+        'icon-lg-hover-src': '',
+        'icon-src': 'ico-uaa-watervapour.png',
+        'icon-hover-src': 'ico-uaa-watervapour_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': '',
+        'scientific-area': '',
+        'authors': '',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
 
     {
         'chapter-num': '2.7a',
@@ -606,21 +642,7 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
 
-    {
-        'id': 'uaa-6',
-        'title': 'Upper Air Atmosphere Water Vapour',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-uaa-watervapour.png',
-        'icon-hover-src': 'ico-uaa-watervapour_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
     # ATMOSPHERE - COMPOSITION
 
     {
@@ -685,21 +707,6 @@ CHAPTERS_DEV = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
 
-    {
-        'id': 'sa-6',
-        'title': 'Surface Water Vapour',
-        'href': '',
-        'icon-lg-src': '',
-        'icon-lg-hover-src': '',
-        'icon-src': 'ico-sa-watervapour.png',
-        'icon-hover-src': 'ico-sa-watervapour_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
     # OCEANIC - SURFACE OCEAN PHYSICS
     {
         'id': 'sop-4',

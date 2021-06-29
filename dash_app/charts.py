@@ -90,7 +90,7 @@ def stations_map(df):
     ghgFluxDF = df.loc[(df['Type'] == 'GHG_FLUX_TOWER')]
     epaDF = df.loc[(df['Type'] == 'EPA')]
     nuigDF = df.loc[(df['Type'] == 'NUIG')]
-    synopticDF = df.loc[(df['Type'] == 'Synoptic') | (df['Type'] == 'ClosedS')]
+    synopticDF = df.loc[(df['Type'] == 'Synoptic') | (df['Type'] == 'ClosedS') | (df['Type'] == 'Synoptic - Valentia')]
     rainfallDF = df.loc[df['Type'] == 'Rainfall']
     climateDF = df.loc[df['Type'] == 'Climate']
     waveRideDF = df.loc[(df['Type'] == 'WaveRide/SmartBayObsCenter') | (df['Type'] == 'WaveRide')]
@@ -98,6 +98,17 @@ def stations_map(df):
     ellettDF = df.loc[(df['Type'] == 'ExtendedEllettLineBuoy')]
     tidbiTDF = df.loc[df['Type'] == 'TidbiT Sea Temperature Station']
     miDF = df.loc[df['Type'] == 'MI_Survey']
+    gpsDF = df.loc[(df['Type'] == 'GPS')]
+
+
+    gpsTrend = go.Scattermapbox(
+        name='GPS',
+        lon=gpsDF.Longitude,
+        lat=gpsDF.Latitude,
+        marker=dict(color=STATION_COLORS['GPS'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(gpsDF),
+    )
     
     tidbiTTrend = go.Scattermapbox(
         name='tidbiT',
@@ -221,7 +232,8 @@ def stations_map(df):
               waveRideTrend,
               ellettTrend, 
               miTrend,
-              tidbiTTrend, ],
+              tidbiTTrend,
+              gpsTrend],
         layout=MAP_LAYOUT)
     stations_map.update_layout(
         mapbox=dict(bearing=0,
@@ -700,6 +712,74 @@ def map_2_2():
     map_2_2=stations_map(df)
     return map_2_2
 
+def figure_2_6():
+    """
+    Vapour pressure
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.3WaterVapour/Figure2.6/'
+        data_csv = data_path + 'Figure2.6_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+    except:
+        return empty_chart()
+
+    months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    df_months = df.groupby(df['datetime'].dt.month).mean()
+    month_trace = go.Scatter(x=months,
+                            y=df_months['mean__monthly__water_vapour_pressure'],
+                         name='Monthly Average',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_1,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                      width=1),
+                         hovertemplate='%{x}<br>' +
+                         '<b>Monthly Average</b><br>' +
+                         'Vapour Pressure: %{y:.2f} hPa<br>' +
+                         '<extra></extra>'
+                         )
+    figure_2_6_a = go.Figure(data=[month_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_6_a.update_layout(
+        yaxis=dict(title='Vapour Presure (hPa)'),
+        xaxis=dict(title="Month"))
+    
+    mean_annual_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__annual__water_vapour_pressure'],
+                         name='Mean Annual',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%Y}<br>' +
+                         '<b>Mean Annual</b><br>' +
+                         'Vapour Pressure: %{y:.2f} hPa<br>' +
+                         '<extra></extra>'
+                         )
+    figure_2_6_b = go.Figure(data=[mean_annual_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_6_b.update_layout(
+        yaxis=dict(title='Vapour Presure (hPa)'),
+        xaxis=dict(title="Year"))
+
+    return figure_2_6_a, figure_2_6_b
+
+def map_2_3():
+    """
+    Water vapour infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.3WaterVapour/Map2.3/'
+        df = pd.read_csv(data_path+'Map2.3_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_3=stations_map(df)
+    return map_2_3
+
+
+    
 def figure_2_9():
     """
     Precipitation Totals and Anomalies Trend
