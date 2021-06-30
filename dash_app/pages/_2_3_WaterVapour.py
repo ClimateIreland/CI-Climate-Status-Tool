@@ -7,6 +7,7 @@ import pathlib
 import page_builder as pb
 from settings import *
 from charts import empty_chart, figure_2_6, map_2_3
+import copy
 
 chapter_num = '2.3'
 bannerImgSrc = IMAGES_PATH + \
@@ -81,6 +82,9 @@ infoLinks = [
 ########################################################################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
+combined_chapter_dict = copy.copy(chapter_dict)
+combined_chapter_dict['title'] = 'Water Vapour'
+combined_chapter_dict['subdomain'] = 'Surface / Upper Atmosphere'
 
 trendChart1, trendChart2 = figure_2_6()
 trendChartTitle1 = 'Monthly Average Vapour Pressure - Valentia'
@@ -99,6 +103,107 @@ trendImage = IMAGES_PATH+'AtmosphericSections/VapourPressureCurves2019.png'
 trendCaption3 = """
 Annual average water vapour pressure acrsos Ireland for 2019
 """
+
+custom_trend_alt = dbc.Container(
+    className='sr-trends',
+    style={'borderColor': chapter_dict['domain-color']},
+    id='trends',
+    children=[
+        html.H3(
+            className='sr-section-heading',
+            style={'color': chapter_dict['domain-color']},
+            children='Trends',
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-12 col-lg-5   text-center my-auto",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendChartTitle),
+                            html.Img(
+                                        style={"max-width": "400px"},
+                                        # className='w-100',
+                                        src=trendImage
+                                        ),
+                                               dbc.Row(
+            children=[
+                dbc.Col(className="",
+                        children=[
+                            html.P(
+                                className='sr-chart-caption',
+                                children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption3]
+                            )]
+                        )
+            ]
+        ),
+                        ]),
+                dbc.Col(className="col-12 col-lg-7 my-auto",
+                        children=[
+                dbc.Row(
+            children=[
+                dbc.Col(className="",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendChartTitle1),
+                            dcc.Graph(
+                                figure=trendChart1,
+                                config={'displayModeBar': False})]
+                        )
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="",
+                        children=[
+                            html.P(
+                                className='sr-chart-caption',
+                                children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption1]
+                            )]
+                        )
+            ]
+        ),
+                dbc.Row(
+            children=[
+                dbc.Col(className="",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendChartTitle2),
+                            dcc.Graph(
+                                figure=trendChart2,
+                                config={'displayModeBar': False})]
+                        )
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="",
+                        children=[
+                            html.P(
+                                className='sr-chart-caption',
+                                children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
+                            )]
+                        )
+            ]
+        )
+
+
+
+
+                        ])
+            ]
+        ),
+
+
+    ])
 
 custom_trend = dbc.Container(
     className='sr-trends',
@@ -200,15 +305,15 @@ def create_layout(app):
         children=[
             pb.build_banner(bannerImgSrc,
                             bannerImgCredit,
-                            chapter_dict
+                            combined_chapter_dict
                             ),
-            pb.build_breadcrumb(chapter_dict),
-            pb.build_nav(chapter_dict),
+            pb.build_breadcrumb(combined_chapter_dict),
+            pb.build_nav(combined_chapter_dict),
             pb.build_intro(introText,
                            bulletPoints,
-                           chapter_dict
+                           combined_chapter_dict
                            ),
-            custom_trend,
+            custom_trend_alt,
             #     pb.build_trend(trendChartTitle,
             #                    trendChart,
             #                    trendCaption,

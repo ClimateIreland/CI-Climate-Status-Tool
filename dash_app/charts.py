@@ -743,7 +743,8 @@ def figure_2_6():
     figure_2_6_a = go.Figure(data=[month_trace], layout=TIMESERIES_LAYOUT)
     figure_2_6_a.update_layout(
         yaxis=dict(title='Vapour Presure (hPa)'),
-        xaxis=dict(title="Month"))
+        xaxis=dict(title="Month"),
+        height=250)
     
     mean_annual_trace = go.Scatter(x=df['datetime'],
                             y=df['mean__annual__water_vapour_pressure'],
@@ -762,7 +763,8 @@ def figure_2_6():
     figure_2_6_b = go.Figure(data=[mean_annual_trace], layout=TIMESERIES_LAYOUT)
     figure_2_6_b.update_layout(
         yaxis=dict(title='Vapour Presure (hPa)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title="Year"),
+        height=250)
 
     return figure_2_6_a, figure_2_6_b
 
