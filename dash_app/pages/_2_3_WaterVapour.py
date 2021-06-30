@@ -16,9 +16,9 @@ bannerImgCredit = 'Madeleine Weber'
 introText = """
     Water vapour is a gaseous constituent of air at all levels in the 
     atmosphere, accounting for almost 60% of the natural greenhouse effect. 
-    Evaporation from the Earth’s surface is the source of water in the atmosphere, 
-    which condenses to form clouds, changing radiative properties and releasing heat 
-    that affects atmospheric circulation systems. 
+    Evaporation from the Earth’s surface is the source of water in the 
+    atmosphere, which condenses to form clouds, changing radiative properties 
+    and releasing heat that affects atmospheric circulation systems. 
         """
 bulletPoint1 = """
     Globally, higher air temperatures and warmer oceans have led to an 
@@ -38,16 +38,17 @@ trendCaption = """
         """
 
 infrastructureText = """
-Surface level water vapour and water vapour pressure are derived from humidity measurements 
-taken at the 25 synoptic weather stations (red) operated by Met Éireann. 
-Since 1943 weather balloons which are launched a number of times a day from Valentia Observatory 
-in Co. Kerry, measure the humidity up through the atmosphere. 
-Since 2009 Ireland has contributed to the E-GVAP Programme of EUMETNET , 
-retrieving column-integrated water vapour quantities from the Ordnance Survey Ireland (OSI) 
-Global Navigation Satellite System (GNSS) active network (blue) on an hourly basis. 
-A number of instruments on different satellites measure water vapour. 
-These include the HIRS, MHS and AMSU-A sensors that are part of the Metop satellite 
-constellation operated by EUMETSAT. 
+Surface level water vapour and water vapour pressure are derived from humidity 
+measurements taken at the 25 synoptic weather stations (red) operated by Met 
+Éireann. Since 1943 weather balloons which are launched a number of times a day
+ from Valentia Observatory in Co. Kerry, measure the humidity up through the 
+ atmosphere. Since 2009 Ireland has contributed to the E-GVAP Programme of 
+ EUMETNET, retrieving column-integrated water vapour quantities from the 
+ Ordnance Survey Ireland (OSI) Global Navigation Satellite System (GNSS) active
+  network (blue) on an hourly basis. A number of instruments on different 
+  satellites measure water vapour. These include the HIRS, MHS and AMSU-A 
+  sensors that are part of the Metop satellite constellation operated by 
+  EUMETSAT. 
 
         """
 infrastructureMap = map_2_3()

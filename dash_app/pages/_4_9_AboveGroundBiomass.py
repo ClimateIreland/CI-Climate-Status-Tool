@@ -13,13 +13,21 @@ bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Biomass-Mihaly Csernus.jpg'
 bannerImgCredit = 'Mihaly Csernus'
 
 introText = """
-
+Biomass is any organic or biological material that comes from plants or 
+animals. Above-ground biomass includes all biomass stored above the soil in 
+both woody and herbaceous living vegetation and is a key parameter for 
+understanding the evolution of and changes in the climate system. The process 
+of photosynthesis stores carbon in vegetation biomass in a similar amount to 
+that stored in the atmosphere and is one of the most visible carbon pools. 
         """
 bulletPoint1 = """
-
+The growing stock volume of trees has increased by 38% in Ireland in the period
+ between 2006 and 2017.
         """
 bulletPoint2 = """
-
+Just under 50% of the trees grown in Ireland are in private ownership and this 
+is where the biggest increase in tree volume has occurred thanks to state 
+grant aid.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = ''
@@ -41,7 +49,7 @@ infoLinks = [
 ]
 
 
-########################################################################################################################
+###############################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 

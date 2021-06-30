@@ -13,13 +13,21 @@ bannerImgSrc = IMAGES_PATH+'OceanicSections/Nutrients_Tomas Szumski_167.JPG'
 bannerImgCredit = 'Tomasz Szumski'
 
 introText = """
-
+The major nutrients, such as dissolved inorganic phosphorus, nitrogen and silicon, 
+play a key role in ocean life. They are essential for plant growth (e.g. 
+phytoplankton, algae) at the base of the food web and when depleted can limit 
+growth. In excess, they can cause eutrophication, whereby accelerated algal 
+growth can lead to depletion of oxygen and result in severe ecological harm. 
         """
 bulletPoint1 = """
-
+Nutrient concentrations in Irish waters are determined by natural dynamics and 
+the seasonal variability in the growth of phytoplankton and macroalgae; they 
+are also influenced by riverine and atmospheric inputs from human activities – 
+for example agricultural application of fertiliser and municipal waste discharges. 
         """
 bulletPoint2 = """
-
+Locations with elevated nitrogen concentrations linked to sources of pollution 
+are generally found on the south and east coasts of Ireland.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = ''
@@ -41,7 +49,7 @@ infoLinks = [
 ]
 
 
-########################################################################################################################
+###############################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
