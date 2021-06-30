@@ -129,12 +129,31 @@ CHAPTERS = [
         'icon-src': 'ico-sa-watervapour.png',
         'icon-hover-src': 'ico-sa-watervapour_hover.png',
         'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Surface',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin, Paul Kane ',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
+
+            {
+        'chapter-num': '2.3',
+        'id': 'uaa-6',
+        'title': 'Upper Air Atmosphere Water Vapour',
+        'href': '_2_3_WaterVapour',
+        'pdf': '_2_3_WaterVapour.pdf',
+        'icon-lg-src': 'upperair-water-vapour.png',
+        'icon-lg-hover-src': 'upperair-water-vapour_hover.png',
+        'icon-src': 'ico-uaa-watervapour.png',
+        'icon-hover-src': 'ico-uaa-watervapour_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Upper Atmosphere',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin, Paul Kane ',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+
     {
         'chapter-num': '2.5',
         'id': 'sa-3',
@@ -153,25 +172,45 @@ CHAPTERS = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 
     },
-    # Upper Air
 
         {
-        'chapter-num': '2.3',
-        'id': 'uaa-6',
-        'title': 'Upper Air Atmosphere Water Vapour',
-        'href': '_2_3_WaterVapour',
-        'pdf': '_2_3_WaterVapour.pdf',
-        'icon-lg-src': 'upperair-water-vapour.png',
-        'icon-lg-hover-src': 'upperair-water-vapour_hover.png',
-        'icon-src': 'ico-uaa-watervapour.png',
-        'icon-hover-src': 'ico-uaa-watervapour_hover.png',
+        'chapter-num': '2.6',
+        'id': 'sa-5',
+        'title': 'Surface Radiation Budget',
+        'href': '_2_6_SurfaceEarth_RadiationBudget',
+        'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
+        'icon-lg-src': 'surface-radiation-budget.png',
+        'icon-lg-hover-src': 'surface-radiation-budget_hover.png',
+        'icon-src': 'ico-sa-surfaceradiationbudget.png',
+        'icon-hover-src': 'ico-sa-surfaceradiationbudget_hover.png',
         'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
+        'subdomain': 'Surface',
+        'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
+
+        {
+        'chapter-num': '2.6',
+        'id': 'uaa-5',
+        'title': 'Earth Radiation Budget',
+        'href': '_2_6_SurfaceEarth_RadiationBudget',
+        'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
+        'icon-lg-src': 'earth-radiation-budget.png',
+        'icon-lg-hover-src': 'earth-radiation-budget_hover.png',
+        'icon-src': 'ico-uaa-earth-radiation-budget.png',
+        'icon-hover-src': 'ico-uaa-earth-radiation-budget_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Upper Atmosphere',
+        'scientific-area': 'Energy and Temperature',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+    # Upper Air
+
+
 
     {
         'chapter-num': '2.7a',
@@ -631,23 +670,7 @@ CHAPTERS_DEV = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-    {
-        'chapter-num': '2.6',
-        'id': 'uaa-5',
-        'title': 'Earth Radiation Budget',
-        'href': '_2_6_SurfaceEarthRadiationBudget',
-        'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
-        'icon-lg-src': 'earth-radiation-budget.png',
-        'icon-lg-hover-src': 'earth-radiation-budget_hover.png',
-        'icon-src': 'ico-uaa-earth-radiation-budget.png',
-        'icon-hover-src': 'ico-uaa-earth-radiation-budget_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
 
     # ATMOSPHERE - COMPOSITION
 
@@ -696,23 +719,6 @@ CHAPTERS_DEV = [
         'icon-lg-hover-src': 'surface-pressure_hover.png',
         'icon-src': 'ico-sa-pressure.png',
         'icon-hover-src': 'ico-sa-pressure_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
-    {
-        'chapter-num': '2.6',
-        'id': 'sa-5',
-        'title': 'Surface Radiation Budget',
-        'href': '_2_6_SurfaceEarthRadiationBudget',
-        'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
-        'icon-lg-src': 'surface-radiation-budget.png',
-        'icon-lg-hover-src': 'surface-radiation-budget_hover.png',
-        'icon-src': 'ico-sa-surfaceradiationbudget.png',
-        'icon-hover-src': 'ico-sa-surfaceradiationbudget_hover.png',
         'domain': 'Atmosphere',
         'subdomain': '',
         'scientific-area': '',

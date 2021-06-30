@@ -19,6 +19,7 @@ from pages import (
     _2_7a_UpperAirTemperature,
     _2_7b_UpperAirWindSpeedAndDirection,
     _2_5_Precipitation,
+    _2_6_SurfaceEarth_RadiationBudget,
     _2_10_CarbonDioxide,
     _2_11_Methane,
     _2_12_OtherGreenhouseGases,
@@ -82,7 +83,6 @@ def display_page(pathname):
     # if pathname == "/"+ROOT_URL:
     if pathname == "/dash/":
         return index.create_layout(app)
-    
     # Atmospheric
     elif "_2_1_SurfaceAirTemperature" in pathname:
         return _2_1_SurfaceTemperature.create_layout(app)
@@ -92,6 +92,8 @@ def display_page(pathname):
         return _2_3_WaterVapour.create_layout(app)
     elif "_2_5_Precipitation" in pathname:
         return _2_5_Precipitation.create_layout(app)
+    elif "_2_6_SurfaceEarth_RadiationBudget" in pathname:
+        return _2_6_SurfaceEarth_RadiationBudget.create_layout(app)
     elif "_2_7a_UpperAirTemperature" in pathname:
         return _2_7a_UpperAirTemperature.create_layout(app)
     elif "_2_7b_UpperAirWindSpeedAndDirection" in pathname:
