@@ -13,15 +13,25 @@ bannerImgSrc = IMAGES_PATH+'TerrestrialSections/Groundwater_Ned_Dwyer_P1090393.J
 bannerImgCredit = 'Ned Dwyer'
 
 introText = """
-
+Groundwater is located beneath the ground surface in pore spaces and fractures 
+of geological formations. It is estimated that almost 30% of the world’s 
+fresh water is stored as groundwater. Globally, it is a major source of 
+drinking water and is also widely used in agriculture and industry. 
+Groundwater volumes and levels are influenced by not only rainfall and dry 
+periods but mainly human use.
         """
 bulletPoint1 = """
-
+In Ireland about 18% of drinking water is from groundwater sources. 
         """
 bulletPoint2 = """
-
+Abstraction, especially in the world’s arid and semi-arid zones, is leading to 
+rapid rates of groundwater depletion.  
         """
-bulletPoints = [bulletPoint1, bulletPoint2]
+bulletPoint3 = """
+Regular analysis of groundwater levels in Ireland is carried out but not 
+primarily for identifying climate-driven changes.
+        """
+bulletPoints = [bulletPoint1, bulletPoint2, bulletPoint3]
 trendChartTitle = ''
 trendChart = empty_chart()
 
