@@ -1814,7 +1814,7 @@ def figure_2_26():
                                       width=1),
                          hovertemplate='%{x|%b %Y}<br>' +
                          '<b>Mean Monthly</b><br>' +
-                         'Concentration: %{y:.2f} ppb</sup><br>' +
+                         'Concentration: %{y:.2f} DU</sup><br>' +
                          '<extra></extra>'
                          )
     moving_avg_trace = go.Scatter(x=df['datetime'],
@@ -1826,14 +1826,127 @@ def figure_2_26():
                                         width=2),
                                 hovertemplate='%{x|%b %Y}<br>' +
                                     '<b>12 Month Moving Average</b><br>' +
-                                    'Concentration: %{y:.2f} ppb</sup><br>' +
+                                    'Concentration: %{y:.2f} DU</sup><br>' +
                                     '<extra></extra>'
                                 )
     figure_2_25 = go.Figure(data=[mean_monthly_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_2_25.update_layout(
-        yaxis=dict(title='Ozone, O<sub>3</sub> (ppb)'),
+        yaxis=dict(title='Ozone, O<sub>3</sub> (DU)'),
         xaxis=dict(title="Year"))
     return figure_2_25
+
+def map_2_13():
+    """
+    Ozone infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.13Ozone/Map2.13/'
+        df = pd.read_csv(data_path+'Map2.13_StationTable.csv')
+    except:
+        return empty_chart()
+    epa_df = df[df['OPERATOR'].isin(['EPA'])]
+    met_df = df[df['OPERATOR'].isin(['Met Eireann'])]
+    nuig_df = df[df['OPERATOR'].isin(['NUI-G'])]
+    uni_df = df[df['OPERATOR'].isin(['CIT','UCC','EPA Research Project'])]
+    la_df = df[df['OPERATOR'].isin(['Cork City Council'])]
+
+    epa_trend = go.Scattermapbox(
+        name='EPA',
+        lon=epa_df.LON,
+        lat=epa_df.LAT,
+        marker=dict(color=STATION_COLORS['EPA'],
+                    size=7),
+        hovertemplate='Name: ' + epa_df['NAME'] + '<br>' +
+            'County: ' + epa_df['LOCATION'] + '<br>' +
+            'Operator: ' + epa_df['OPERATOR'] + '<br>' +
+            'Type: ' + epa_df['TYPE'] + '<br>' +
+            'Coverage: ' + epa_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    met_trend = go.Scattermapbox(
+        name='Met Éireann',
+        lon=met_df.LON,
+        lat=met_df.LAT,
+        marker=dict(color=STATION_COLORS['Synoptic'],
+                    size=7),
+            hovertemplate='Name: ' + met_df['NAME'] + '<br>' +
+            'County: ' + met_df['LOCATION'] + '<br>' +
+            'Operator: ' + met_df['OPERATOR'] + '<br>' +
+            'Type: ' + met_df['TYPE'] + '<br>' +
+            'Coverage: ' + met_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    nuig_trend = go.Scattermapbox(
+        name='Mace Head',
+        lon=nuig_df.LON,
+        lat=nuig_df.LAT,
+        marker=dict(color='black',
+                    size=7),
+            hovertemplate='Name: ' + nuig_df['NAME'] + '<br>' +
+            'County: ' + nuig_df['LOCATION'] + '<br>' +
+            'Operator: ' + nuig_df['OPERATOR'] + '<br>' +
+            'Type: ' + nuig_df['TYPE'] + '<br>' +
+            'Coverage: ' + nuig_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    uni_trend = go.Scattermapbox(
+        name='University / EPA Research',
+        lon=uni_df.LON,
+        lat=uni_df.LAT,
+        marker=dict(color='orange',
+                    size=7),
+            hovertemplate='Name: ' + uni_df['NAME'] + '<br>' +
+            'County: ' + uni_df['LOCATION'] + '<br>' +
+            'Operator: ' + uni_df['OPERATOR'] + '<br>' +
+            'Type: ' + uni_df['TYPE'] + '<br>' +
+            'Coverage: ' + uni_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+        )
+
+    la_trend = go.Scattermapbox(
+        name='Local Authority',
+        lon=la_df.LON,
+        lat=la_df.LAT,
+        marker=dict(color='yellow',
+                    size=7),
+            hovertemplate='Name: ' + la_df['NAME'] + '<br>' +
+            'County: ' + la_df['LOCATION'] + '<br>' +
+            'Operator: ' + la_df['OPERATOR'] + '<br>' +
+            'Type: ' + la_df['TYPE'] + '<br>' +
+            'Coverage: ' + la_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    map_2_13 = go.Figure(
+        data=[
+            epa_trend,
+            met_trend,
+            nuig_trend,
+            la_trend,
+            uni_trend,
+            
+        ],
+        layout=MAP_LAYOUT)
+    map_2_13.update_layout(
+        legend_title='<b>Station Operator</b>',
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=54,
+                    lon=349
+                ),
+                pitch=0,
+                zoom=4.2)
+    )
+    
+    return map_2_13
 
 
 ##############################################################################
