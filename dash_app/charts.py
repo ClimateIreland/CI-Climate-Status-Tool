@@ -277,6 +277,9 @@ def empty_chart():
     )
     return empty_chart
 
+##############################################################################
+                 # Atmosphere Charts
+##############################################################################
 
 def figure_2_1():
     """
@@ -722,7 +725,7 @@ def figure_2_6():
         df = pd.read_csv(data_csv, index_col=0)
         df['datetime'] = pd.to_datetime(df['datetime'])
     except:
-        return empty_chart()
+        return empty_chart(), empty_chart()
 
     months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
     df_months = df.groupby(df['datetime'].dt.month).mean()
@@ -1747,6 +1750,95 @@ def map_2_14():
         return empty_chart()
     map_2_14=stations_map(df)
     return map_2_14
+
+def figure_2_25():
+    """
+    Ground level ozone mace head Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.13Ozone/Figure2.25/'
+        data_csv = data_path + 'Figure2.25_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    mean_monthly_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__monthly__ground_level_ozone_concentration'],
+                         name='Mean Monthly',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Mean Monthly</b><br>' +
+                         'Concentration: %{y:.2f} ppb</sup><br>' +
+                         '<extra></extra>'
+                         )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__12month__ground_level__ozone_concentration'],
+                                name='12 Month Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>12 Month Moving Average</b><br>' +
+                                    'Concentration: %{y:.2f} ppb</sup><br>' +
+                                    '<extra></extra>'
+                                )
+    figure_2_25 = go.Figure(data=[mean_monthly_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_25.update_layout(
+        yaxis=dict(title='Ozone, O<sub>3</sub> (ppb) Concentration (ppb)'),
+        xaxis=dict(title="Year"))
+    return figure_2_25
+
+def figure_2_26():
+    """
+    Total column ozone valentia Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.13Ozone/Figure2.26/'
+        data_csv = data_path + 'Figure2.26_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    mean_monthly_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__monthly__total_column_ozone_concentration'],
+                         name='Mean Monthly',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Mean Monthly</b><br>' +
+                         'Concentration: %{y:.2f} ppb</sup><br>' +
+                         '<extra></extra>'
+                         )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__12month__total_column_ozone_concentration'],
+                                name='12 Month Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>12 Month Moving Average</b><br>' +
+                                    'Concentration: %{y:.2f} ppb</sup><br>' +
+                                    '<extra></extra>'
+                                )
+    figure_2_25 = go.Figure(data=[mean_monthly_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_25.update_layout(
+        yaxis=dict(title='Ozone, O<sub>3</sub> (ppb)'),
+        xaxis=dict(title="Year"))
+    return figure_2_25
+
+
+##############################################################################
+                 # Ocean Charts
+##############################################################################
         
 
 def figure_3_1():
@@ -2791,6 +2883,13 @@ def map_3_8():
                     layout=MAP_LAYOUT)
     map_3_8.update_layout(legend_title='<b>Site Type</b>')
     return map_3_8
+
+
+
+##############################################################################
+                 # Terrestrial Charts
+##############################################################################
+
 
 
 def map_4_1():

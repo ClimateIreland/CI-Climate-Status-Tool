@@ -6,9 +6,9 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, figure_2_25, figure_2_26
 
-chapter_num = '0'
+chapter_num = '2.13'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Ozone_MetEireann.jpg'
 bannerImgCredit = 'Met Éireann'
 
@@ -54,6 +54,84 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+trendChartTitle1 = ''
+trendChart1 = figure_2_25()
+trendCaption1 = """
+Monthly mean ground-level ozone concentration observed at Mace Head (1987–2018).
+        """
+
+trendChartTitle2 = ''
+trendChart2 = figure_2_26()
+trendCaption2 = """
+Monthly mean total column ozone concentration (in Dobson Units) observed at Valentia Observatory (1993–2018). 
+        """
+
+custom_trend = dbc.Container(
+        className='sr-trends',
+        style={'borderColor': chapter_dict['domain-color']},
+        id='trends',
+        children=[
+            html.H3(
+                className='sr-section-heading',
+                style={'color': chapter_dict['domain-color']},
+                children='Trends',
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle1),
+                                dcc.Graph(
+                                    figure=trendChart1,
+                                    id='chart'+chapter_dict['href'],
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=[
+                                        html.I(className="fas fa-play _up",
+                                               style={"color": chapter_dict['domain-color']}),
+                                        trendCaption1]
+                                )]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle2),
+                                dcc.Graph(
+                                    figure=trendChart2,
+                                    id='chart'+chapter_dict['href'],
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=[
+                                        html.I(className="fas fa-play _up",
+                                               style={"color": chapter_dict['domain-color']}),
+                                        trendCaption2]
+                                )]
+                            )
+                ]
+            )])
 
 def create_layout(app):
     return html.Div(
@@ -68,11 +146,12 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
+            custom_trend,
+        #     pb.build_trend(trendChartTitle,
+        #                    trendChart,
+        #                    trendCaption,
+        #                    chapter_dict
+        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

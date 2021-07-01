@@ -302,6 +302,23 @@ CHAPTERS = [
 
     },
         {
+        'chapter-num': '2.13',
+        'id': 'ac-5',
+        'title': 'Ozone',
+        'href': '_2_13_Ozone',
+        'pdf': '_2_13_Ozone.pdf',
+        'icon-lg-src': 'ozone_0.png',
+        'icon-lg-hover-src': 'ozone_0_hover.png',
+        'icon-src': 'ico-ac-ozone.png',
+        'icon-hover-src': 'ico-ac-ozone_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Atmospheric Composition',
+        'scientific-area': 'Carbon Cycle and other GHGs',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin ',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+        {
         'chapter-num': '2.14',
         'id': 'ac-4',
         'title': 'Aerosols',
@@ -674,23 +691,7 @@ CHAPTERS_DEV = [
 
     # ATMOSPHERE - COMPOSITION
 
-    {
-        'chapter-num': '2.13',
-        'id': 'ac-5',
-        'title': 'Ozone',
-        'href': '_2_13_Ozone',
-        'pdf': '_2_13_Ozone.pdf',
-        'icon-lg-src': 'ozone_0.png',
-        'icon-lg-hover-src': 'ozone_0_hover.png',
-        'icon-src': 'ico-ac-ozone.png',
-        'icon-hover-src': 'ico-ac-ozone_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
     {
         'chapter-num': '2.15',
         'id': 'ac-6',
