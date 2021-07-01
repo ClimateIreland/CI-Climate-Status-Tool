@@ -46,7 +46,7 @@ from pages import (
 app = dash.Dash(
     __name__,
     # url_base_pathname="/"+ROOT_URL+"/",
-    url_base_pathname="/dash/",
+    url_base_pathname="/statusTool/",
     meta_tags=[{"name": "viewport",
                 "content": "width=device-width, initial-scale=1"}],
     external_stylesheets=[
@@ -79,7 +79,7 @@ app.layout = html.Div(children=[
 def display_page(pathname):
     
     # if pathname == "/"+ROOT_URL:
-    if pathname == "/dash/":
+    if pathname == "/statusTool/":
         return index.create_layout(app)
     
     # Atmospheric
@@ -143,7 +143,7 @@ def display_page(pathname):
     #     return dcc.Location(pathname="/StatusReport", id='any')
     else:
         # pathname = "/dash/"
-        return dcc.Location(pathname="/dash", id="someid_doesnt_matter")
+        return dcc.Location(pathname="/statusTool", id="someid_doesnt_matter")
         # return index.create_layout(app)
 
 if __name__ == '__main__':
