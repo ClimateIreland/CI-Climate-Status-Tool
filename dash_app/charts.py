@@ -90,7 +90,7 @@ def stations_map(df):
     ghgFluxDF = df.loc[(df['Type'] == 'GHG_FLUX_TOWER')]
     epaDF = df.loc[(df['Type'] == 'EPA')]
     nuigDF = df.loc[(df['Type'] == 'NUIG')]
-    synopticDF = df.loc[(df['Type'] == 'Synoptic') | (df['Type'] == 'ClosedS')]
+    synopticDF = df.loc[(df['Type'] == 'Synoptic') | (df['Type'] == 'ClosedS') | (df['Type'] == 'Synoptic - Valentia')]
     rainfallDF = df.loc[df['Type'] == 'Rainfall']
     climateDF = df.loc[df['Type'] == 'Climate']
     waveRideDF = df.loc[(df['Type'] == 'WaveRide/SmartBayObsCenter') | (df['Type'] == 'WaveRide')]
@@ -98,6 +98,17 @@ def stations_map(df):
     ellettDF = df.loc[(df['Type'] == 'ExtendedEllettLineBuoy')]
     tidbiTDF = df.loc[df['Type'] == 'TidbiT Sea Temperature Station']
     miDF = df.loc[df['Type'] == 'MI_Survey']
+    gpsDF = df.loc[(df['Type'] == 'GPS')]
+
+
+    gpsTrend = go.Scattermapbox(
+        name='GPS',
+        lon=gpsDF.Longitude,
+        lat=gpsDF.Latitude,
+        marker=dict(color=STATION_COLORS['GPS'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(gpsDF),
+    )
     
     tidbiTTrend = go.Scattermapbox(
         name='tidbiT',
@@ -221,7 +232,8 @@ def stations_map(df):
               waveRideTrend,
               ellettTrend, 
               miTrend,
-              tidbiTTrend, ],
+              tidbiTTrend,
+              gpsTrend],
         layout=MAP_LAYOUT)
     stations_map.update_layout(
         mapbox=dict(bearing=0,
@@ -265,6 +277,9 @@ def empty_chart():
     )
     return empty_chart
 
+##############################################################################
+                 # Atmosphere Charts
+##############################################################################
 
 def figure_2_1():
     """
@@ -700,6 +715,76 @@ def map_2_2():
     map_2_2=stations_map(df)
     return map_2_2
 
+def figure_2_6():
+    """
+    Vapour pressure
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.3WaterVapour/Figure2.6/'
+        data_csv = data_path + 'Figure2.6_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+    except:
+        return empty_chart(), empty_chart()
+
+    months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    df_months = df.groupby(df['datetime'].dt.month).mean()
+    month_trace = go.Scatter(x=months,
+                            y=df_months['mean__monthly__water_vapour_pressure'],
+                         name='Monthly Average',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_1,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                      width=1),
+                         hovertemplate='%{x}<br>' +
+                         '<b>Monthly Average</b><br>' +
+                         'Vapour Pressure: %{y:.2f} hPa<br>' +
+                         '<extra></extra>'
+                         )
+    figure_2_6_a = go.Figure(data=[month_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_6_a.update_layout(
+        yaxis=dict(title='Vapour Presure (hPa)'),
+        xaxis=dict(title="Month"),
+        height=250)
+    
+    mean_annual_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__annual__water_vapour_pressure'],
+                         name='Mean Annual',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%Y}<br>' +
+                         '<b>Mean Annual</b><br>' +
+                         'Vapour Pressure: %{y:.2f} hPa<br>' +
+                         '<extra></extra>'
+                         )
+    figure_2_6_b = go.Figure(data=[mean_annual_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_6_b.update_layout(
+        yaxis=dict(title='Vapour Presure (hPa)'),
+        xaxis=dict(title="Year"),
+        height=250)
+
+    return figure_2_6_a, figure_2_6_b
+
+def map_2_3():
+    """
+    Water vapour infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.3WaterVapour/Map2.3/'
+        df = pd.read_csv(data_path+'Map2.3_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_3=stations_map(df)
+    return map_2_3
+
+
+    
 def figure_2_9():
     """
     Precipitation Totals and Anomalies Trend
@@ -977,6 +1062,101 @@ def map_2_5():
         return empty_chart()
     map_2_5=stations_map(df)
     return map_2_5
+
+def figure_2_11():
+    """
+    Solar radiation
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.6SurfaceEarth_RadiationBudget/Figure2.11/'
+        data_csv = data_path + 'Figure2.11_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    sum_annual_trace = go.Scatter(x=df['datetime'],
+                            y=df['sum__annual__solar_radiation'],
+                         name='Annual Radiation',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%Y}<br>' +
+                         '<b>Annual Radiation</b><br>' +
+                         'R<sub>s</sub>: %{y:.2f} GJ/m<sup>2</sup><br>' +
+                         '<extra></extra>'
+                         )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average_of_sum__5year__solar_radiation'],
+                                name='5 Year Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>5yr Moving Average</b><br>' +
+                                'R<sub>s</sub>: %{y:.2f} GJ/m<sup>2</sup><extra></extra>'
+                                )
+    figure_2_11 = go.Figure(data=[sum_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_11.update_layout(
+        yaxis=dict(title='Solar Radiation, R<sub>s</sub> (GJ/m<sup>2</sup>)'),
+        xaxis=dict(title="Year"))
+    return figure_2_11
+
+def map_2_6():
+    """
+    Solar radiation infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.6SurfaceEarth_RadiationBudget/Map2.6/'
+        df = pd.read_csv(data_path+'Map2.6_StationTable.txt')
+    except:
+        return empty_chart()
+    autosol_stations = [
+        'Malin_head',
+        'Belmullet',
+        'Gurteen',
+        'Valentia_Observatory',
+        'JohnstownII',
+        'Dublin_Airport']
+    autosol_df = df[df['name'].isin(autosol_stations)]
+    standard_df = df[~df['name'].isin(autosol_stations)]
+    synoptic_trend = go.Scattermapbox(
+        name='Standard Synoptic',
+        lon=standard_df.Longitude,
+        lat=standard_df.Latitude,
+        marker=dict(color=STATION_COLORS['Synoptic'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(standard_df),
+    )
+
+    autosol_trend = go.Scattermapbox(
+        name='AUTOSOL Synoptic',
+        lon=autosol_df.Longitude,
+        lat=autosol_df.Latitude,
+        marker=dict(color='blue',
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(autosol_df),
+    )
+
+    map_2_6 = go.Figure(
+        data=[
+            synoptic_trend,
+            autosol_trend
+        ],
+        layout=MAP_LAYOUT)
+    map_2_6.update_layout(
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=54,
+                    lon=349
+                ),
+                pitch=0,
+                zoom=4.2)
+    )
+
+    return map_2_6
 
 def figure_2_13_a():
     try:
@@ -1570,6 +1750,208 @@ def map_2_14():
         return empty_chart()
     map_2_14=stations_map(df)
     return map_2_14
+
+def figure_2_25():
+    """
+    Ground level ozone mace head Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.13Ozone/Figure2.25/'
+        data_csv = data_path + 'Figure2.25_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    mean_monthly_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__monthly__ground_level_ozone_concentration'],
+                         name='Mean Monthly',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Mean Monthly</b><br>' +
+                         'Concentration: %{y:.2f} ppb</sup><br>' +
+                         '<extra></extra>'
+                         )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__12month__ground_level__ozone_concentration'],
+                                name='12 Month Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>12 Month Moving Average</b><br>' +
+                                    'Concentration: %{y:.2f} ppb</sup><br>' +
+                                    '<extra></extra>'
+                                )
+    figure_2_25 = go.Figure(data=[mean_monthly_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_25.update_layout(
+        yaxis=dict(title='Ozone, O<sub>3</sub> (ppb) Concentration (ppb)'),
+        xaxis=dict(title="Year"))
+    return figure_2_25
+
+def figure_2_26():
+    """
+    Total column ozone valentia Trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.13Ozone/Figure2.26/'
+        data_csv = data_path + 'Figure2.26_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    mean_monthly_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__monthly__total_column_ozone_concentration'],
+                         name='Mean Monthly',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Mean Monthly</b><br>' +
+                         'Concentration: %{y:.2f} DU</sup><br>' +
+                         '<extra></extra>'
+                         )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__12month__total_column_ozone_concentration'],
+                                name='12 Month Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>12 Month Moving Average</b><br>' +
+                                    'Concentration: %{y:.2f} DU</sup><br>' +
+                                    '<extra></extra>'
+                                )
+    figure_2_25 = go.Figure(data=[mean_monthly_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_25.update_layout(
+        yaxis=dict(title='Ozone, O<sub>3</sub> (DU)'),
+        xaxis=dict(title="Year"))
+    return figure_2_25
+
+def map_2_13():
+    """
+    Ozone infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.13Ozone/Map2.13/'
+        df = pd.read_csv(data_path+'Map2.13_StationTable.csv')
+    except:
+        return empty_chart()
+    epa_df = df[df['OPERATOR'].isin(['EPA'])]
+    met_df = df[df['OPERATOR'].isin(['Met Eireann'])]
+    nuig_df = df[df['OPERATOR'].isin(['NUI-G'])]
+    uni_df = df[df['OPERATOR'].isin(['CIT','UCC','EPA Research Project'])]
+    la_df = df[df['OPERATOR'].isin(['Cork City Council'])]
+
+    epa_trend = go.Scattermapbox(
+        name='EPA',
+        lon=epa_df.LON,
+        lat=epa_df.LAT,
+        marker=dict(color=STATION_COLORS['EPA'],
+                    size=7),
+        hovertemplate='Name: ' + epa_df['NAME'] + '<br>' +
+            'County: ' + epa_df['LOCATION'] + '<br>' +
+            'Operator: ' + epa_df['OPERATOR'] + '<br>' +
+            'Type: ' + epa_df['TYPE'] + '<br>' +
+            'Coverage: ' + epa_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    met_trend = go.Scattermapbox(
+        name='Met Éireann',
+        lon=met_df.LON,
+        lat=met_df.LAT,
+        marker=dict(color=STATION_COLORS['Synoptic'],
+                    size=7),
+            hovertemplate='Name: ' + met_df['NAME'] + '<br>' +
+            'County: ' + met_df['LOCATION'] + '<br>' +
+            'Operator: ' + met_df['OPERATOR'] + '<br>' +
+            'Type: ' + met_df['TYPE'] + '<br>' +
+            'Coverage: ' + met_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    nuig_trend = go.Scattermapbox(
+        name='Mace Head',
+        lon=nuig_df.LON,
+        lat=nuig_df.LAT,
+        marker=dict(color='black',
+                    size=7),
+            hovertemplate='Name: ' + nuig_df['NAME'] + '<br>' +
+            'County: ' + nuig_df['LOCATION'] + '<br>' +
+            'Operator: ' + nuig_df['OPERATOR'] + '<br>' +
+            'Type: ' + nuig_df['TYPE'] + '<br>' +
+            'Coverage: ' + nuig_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    uni_trend = go.Scattermapbox(
+        name='University / EPA Research',
+        lon=uni_df.LON,
+        lat=uni_df.LAT,
+        marker=dict(color='orange',
+                    size=7),
+            hovertemplate='Name: ' + uni_df['NAME'] + '<br>' +
+            'County: ' + uni_df['LOCATION'] + '<br>' +
+            'Operator: ' + uni_df['OPERATOR'] + '<br>' +
+            'Type: ' + uni_df['TYPE'] + '<br>' +
+            'Coverage: ' + uni_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+        )
+
+    la_trend = go.Scattermapbox(
+        name='Local Authority',
+        lon=la_df.LON,
+        lat=la_df.LAT,
+        marker=dict(color='yellow',
+                    size=7),
+            hovertemplate='Name: ' + la_df['NAME'] + '<br>' +
+            'County: ' + la_df['LOCATION'] + '<br>' +
+            'Operator: ' + la_df['OPERATOR'] + '<br>' +
+            'Type: ' + la_df['TYPE'] + '<br>' +
+            'Coverage: ' + la_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    map_2_13 = go.Figure(
+        data=[
+            epa_trend,
+            met_trend,
+            nuig_trend,
+            la_trend,
+            uni_trend,
+            
+        ],
+        layout=MAP_LAYOUT)
+    map_2_13.update_layout(
+        legend_title='<b>Station Operator</b>',
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=54,
+                    lon=349
+                ),
+                pitch=0,
+                zoom=4.2)
+    )
+    
+    return map_2_13
+
+
+##############################################################################
+                 # Ocean Charts
+##############################################################################
         
 
 def figure_3_1():
@@ -2614,6 +2996,13 @@ def map_3_8():
                     layout=MAP_LAYOUT)
     map_3_8.update_layout(legend_title='<b>Site Type</b>')
     return map_3_8
+
+
+
+##############################################################################
+                 # Terrestrial Charts
+##############################################################################
+
 
 
 def map_4_1():

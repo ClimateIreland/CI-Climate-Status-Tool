@@ -15,12 +15,15 @@ from pages import (
     index,
     _2_1_SurfaceTemperature,
     _2_2_SurfaceWindSpeedAndDirection,
+    _2_3_WaterVapour,
     _2_7a_UpperAirTemperature,
     _2_7b_UpperAirWindSpeedAndDirection,
     _2_5_Precipitation,
+    _2_6_SurfaceEarth_RadiationBudget,
     _2_10_CarbonDioxide,
     _2_11_Methane,
     _2_12_OtherGreenhouseGases,
+    _2_13_Ozone,
     _2_14_Aerosols,
 
     _3_1a_SeaSurfaceTemperature,
@@ -81,14 +84,17 @@ def display_page(pathname):
     # if pathname == "/"+ROOT_URL:
     if pathname == "/statusTool/":
         return index.create_layout(app)
-    
     # Atmospheric
     elif "_2_1_SurfaceAirTemperature" in pathname:
         return _2_1_SurfaceTemperature.create_layout(app)
     elif "_2_2_SurfaceWindSpeedAndDirection" in pathname:
         return _2_2_SurfaceWindSpeedAndDirection.create_layout(app)
+    elif "_2_3_WaterVapour" in pathname:
+        return _2_3_WaterVapour.create_layout(app)
     elif "_2_5_Precipitation" in pathname:
         return _2_5_Precipitation.create_layout(app)
+    elif "_2_6_SurfaceEarth_RadiationBudget" in pathname:
+        return _2_6_SurfaceEarth_RadiationBudget.create_layout(app)
     elif "_2_7a_UpperAirTemperature" in pathname:
         return _2_7a_UpperAirTemperature.create_layout(app)
     elif "_2_7b_UpperAirWindSpeedAndDirection" in pathname:
@@ -97,6 +103,8 @@ def display_page(pathname):
         return _2_10_CarbonDioxide.create_layout(app)
     elif "_2_11_Methane" in pathname:
         return _2_11_Methane.create_layout(app)
+    elif "_2_13_Ozone" in pathname:
+        return _2_13_Ozone.create_layout(app)
     elif "_2_12_OtherGreenhouseGases" in pathname:
         return _2_12_OtherGreenhouseGases.create_layout(app)
     elif "_2_14_Aerosols" in pathname:

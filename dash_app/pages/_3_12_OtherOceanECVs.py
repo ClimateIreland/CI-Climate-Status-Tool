@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart
 
 chapter_num = '0'
-bannerImgSrc = IMAGES_PATH+''
-bannerImgCredit = ''
+bannerImgSrc = IMAGES_PATH+'OceanicSections/Other_Marine_Institute_ DSC_03515_Weather buoy.JPG'
+bannerImgCredit = 'Marine Institute'
 
 introText = """
 
@@ -41,7 +41,7 @@ infoLinks = [
 ]
 
 
-###############################################################################
+########################################################################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 

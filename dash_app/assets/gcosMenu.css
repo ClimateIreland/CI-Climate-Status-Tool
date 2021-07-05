@@ -5,10 +5,11 @@ position: relative;
 -webkit-box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.75);F
 -moz-box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 5px -7px rgba(0,0,0,0.75);*/
-width: 1140px;
+/* width: 1140px; */
 height: 708px;
-background-image: url(https://ane4bf-datap1.s3-eu-west-1.amazonaws.com/wmocms/s3fs-public/ckeditor/files/Globe-ECV_Website_1140-708_white.png?T9YhqXHd9rpGiak06WzxOKhDzqIYp.sd);
-margin:auto;
+/* background-image: url(https://ane4bf-datap1.s3-eu-west-1.amazonaws.com/wmocms/s3fs-public/ckeditor/files/Globe-ECV_Website_1140-708_white.png?T9YhqXHd9rpGiak06WzxOKhDzqIYp.sd); */ 
+/* background-image: url('/statusTool/assets/images/Globe-ECV_Website_1140-708_white.png'); */
+/* margin:auto; */
 }
 /*Icones titles */
 /*Icones titles */
@@ -27,15 +28,15 @@ padding: 0px 5px 0px 5px;
 }
 #uaa-text
 {
-top:45px;
-left:165px;
+top:65px;
+left:135px;
 color:#299DD8;	
 }
 #sa-text
 {
 /* top: 133px; */
-top: 165px;
-left: 415px;
+top: 185px;
+left: 400px;
 color:#299DD8;
 }
 
@@ -43,8 +44,8 @@ color:#299DD8;
 {
 /*width: 200px;*/
 /* top: 80px; */
-top: 120px;
-left: 758px;
+top: 105px;
+left: 660px;
 color:#299DD8;	
 }
 #cry-text
@@ -71,7 +72,7 @@ color: #F09100;
 #hyd-text
 {
 top: 590px;
-left: 870px;
+left: 800px;
 color: #F09100;
 }
 #sop-text
@@ -118,7 +119,7 @@ height: 63px;
 #uaa-1, #uaa-2, #uaa-3, #uaa-4, #uaa-5, #uaa-6     
 
 {	
-top: 75px;
+top: 95px;
 }
 
 #uaa-1 
@@ -154,7 +155,7 @@ left: 350px;
 #sa-1, #sa-2, #sa-3, #sa-4, #sa-5, #sa-6
 {
 /* top:170px; */
-top: 200px;
+top: 220px;
 }
 
 #sa-1
@@ -186,32 +187,32 @@ left: 600px;
 #ac-1, #ac-2, #ac-3, #ac-4, #ac-5, #ac-6
 {
 /* top:120px; */
-top: 160px;
+top: 140px;
 }
 
 #ac-1
 {
-left: 750px;
+left: 650px;
 }
 #ac-2
 {
-left: 800px;
+left: 700px;
 }
 #ac-3
 {
-left: 850px;
+left: 750px;
 }
 #ac-4
 {
-left: 900px;
+left: 800px;
 }
 #ac-5
 {
-left: 950px;
+left: 850px;
 }
 #ac-6
 {
-left: 1000px;
+left: 900px;
 }
 /*Cryosphere icones*/
 

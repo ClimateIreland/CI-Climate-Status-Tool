@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart
 
 chapter_num = '0'
-bannerImgSrc = IMAGES_PATH+''
-bannerImgCredit = ''
+bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Pressure_Tomasz_Szumski_DSC_9880.JPG'
+bannerImgCredit = 'Tomasz Szumski'
 
 introText = """
 
@@ -41,7 +41,7 @@ infoLinks = [
 ]
 
 
-###############################################################################
+########################################################################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 

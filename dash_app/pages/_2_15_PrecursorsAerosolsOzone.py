@@ -9,8 +9,8 @@ from settings import *
 from charts import empty_chart
 
 chapter_num = '0'
-bannerImgSrc = IMAGES_PATH+''
-bannerImgCredit = ''
+bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Precursotrs_Met_Eireann_20160315_062831.jpg'
+bannerImgCredit = 'Met Éireann'
 
 introText = """
 
@@ -41,7 +41,7 @@ infoLinks = [
 ]
 
 
-###############################################################################
+########################################################################################################################
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
