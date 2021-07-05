@@ -62,7 +62,7 @@ intro = dbc.Container(
             and analysis of almost 50 internationally defined essential climate variables (ECV) observed in the atmospheric,
             oceanic and terrestrial environments. Moreover, it documents the status of Ireland’s climate-observing infrastructure."""),
                                   html.P(children=[
-                                      html.Span('So far, 27 of the 50 ECVs can be explored using the tool below. The full report is available '),
+                                      html.Span('So far, 32 of the 50 ECVs can be explored using the tool below. The full report is available '),
                                       html.A(
                                           'here.',
                                           target='_blank',
@@ -101,12 +101,22 @@ intro = dbc.Container(
         ), ]
 )
 
+menu_graphic_small = dbc.Container(
+    id='gcosGraphicSmall',
+    className='d-lg-none d-xl-none',
+    children=[html.Img(src='assets/images/menu_graphic_small.png')]
+)
+
 menu_graphic = dbc.Container(
 
     id='gcosGraphicMenu',
-    className='d-none d-lg-block',
+    className='d-none d-lg-block sr-menu-graphic',
     # style={'marginTop': '-0px'},
     children=[
+        html.Img(
+                className='sr-graphic-menu-img',
+                src='assets/images/Globe-ECV_Website_1140-708_white.png'
+            ),
         html.Div(
             id='uaa-text',
             children='Upper-air Atmosphere'),
@@ -398,6 +408,7 @@ def create_layout(app):
         children=[
             intro,
             menu_graphic,
+            menu_graphic_small,
             menu_list,
             # dbc.Row(
             #     dbc.Col(

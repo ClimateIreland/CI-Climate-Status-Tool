@@ -41,6 +41,23 @@ a, a:active, a:focus{
     margin-bottom:15px;
 }
 
+.sr-menu-graphic {
+    top:-60px;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.sr-graphic-menu-img {
+    width: 1140px;
+    max-width: 1140px;
+    position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+
 .sr-menu-logo{
     max-width:300px;
     margin-top:15px

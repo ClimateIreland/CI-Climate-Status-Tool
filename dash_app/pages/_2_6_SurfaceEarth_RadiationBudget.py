@@ -45,7 +45,11 @@ trendChart = figure_2_11()
 
 trendCaption = """
 Annual solar radiation at Valentia Observatory (1964–2019). Units are in 
-Gigajoules per metre squared (GJ/m\u00B2) per year.
+Gigajoules per metre squared (GJ/m\u00B2) per year. The decreases may, in part,
+ be due to increases in atmospheric pollutants, such as black particles, 
+ sulfate particles and/or sulfate cloud forming nuclei, the presence of which 
+ causes the sun’s energy to be reflected back into space before reaching the 
+ Earth’s surface.
         """
 
 infrastructureText = """
