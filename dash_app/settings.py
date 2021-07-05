@@ -34,7 +34,8 @@ STATION_COLORS = {
     'ExtendedEllettLineBuoy': '#00734c',  # dark green
     'TideGauge': '#8400a8',  # purple
     'Flow': 'green',  # green
-    'GHG_FLUX_TOWER': 'red'
+    'GHG_FLUX_TOWER': 'red',
+    'buoySubSurf': 'pink'
 }
 
 PERCENTILE_COLORSCALE= [
@@ -120,7 +121,7 @@ CHAPTERS = [
     },
         {
         'chapter-num': '2.3',
-        'id': 'sa-6',
+        'id': 'sa-3',
         'title': 'Surface Water Vapour',
         'href': '_2_3_WaterVapour',
         'pdf': '_2_3_WaterVapour.pdf',
@@ -138,7 +139,7 @@ CHAPTERS = [
 
             {
         'chapter-num': '2.3',
-        'id': 'uaa-6',
+        'id': 'uaa-3',
         'title': 'Upper Air Atmosphere Water Vapour',
         'href': '_2_3_WaterVapour',
         'pdf': '_2_3_WaterVapour.pdf',
@@ -156,7 +157,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '2.5',
-        'id': 'sa-3',
+        'id': 'sa-4',
         'title': 'Precipitation',
         'href': '_2_5_Precipitation',
         'pdf': '_2_5_Precipitation.pdf',
@@ -193,7 +194,7 @@ CHAPTERS = [
 
         {
         'chapter-num': '2.6',
-        'id': 'uaa-5',
+        'id': 'uaa-4',
         'title': 'Earth Radiation Budget',
         'href': '_2_6_SurfaceEarth_RadiationBudget',
         'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
@@ -369,6 +370,42 @@ CHAPTERS = [
         'subdomain': 'Physical',
         'scientific-area': 'Energy and Temperature',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Kieran Lyons, Caroline Cusack, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+       {
+        'chapter-num': '3.2',
+        'id': 'sop-7',
+        'title': 'Sea Surface Ocean Salinity',
+        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
+        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
+        'icon-lg-src': 'surface-salinity_0.png',
+        'icon-lg-hover-src': 'surface-salinity_0_hover.png',
+        'icon-src': 'ico-sop-sea-surface-salinity.png',
+        'icon-hover-src': 'ico-sop-sea-surface-salinity_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Evin McGovern, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+    # OCEANIC - SUBSURFACE OCEAN PHYSICS
+    {
+        'chapter-num': '3.2',
+        'id': 'ssop-3',
+        'title': 'Subsurface Salinity',
+        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
+        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
+        'icon-lg-src': 'subsurface-salinity_0.png',
+        'icon-lg-hover-src': 'subsurface-salinity_0_hover.png',
+        'icon-src': 'ico-ssop-subsurface-salinity.png',
+        'icon-hover-src': 'ico-ssop-subsurface-salinity_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Evin McGovern, Glenn Nolan',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -655,7 +692,7 @@ CHAPTERS_DEV = [
     # Upper-air Atmoshere
     {   
         'chapter-num': '2.9',
-        'id': 'uaa-3',
+        'id': 'uaa-5',
         'title': 'Lightning',
         'href': '_2_9_Lightning',
         'pdf': '_2_9_Lightning.pdf',
@@ -672,7 +709,7 @@ CHAPTERS_DEV = [
     },
     {
         'chapter-num': '2.8',
-        'id': 'uaa-4',
+        'id': 'uaa-6',
         'title': 'Clouds',
         'href': '_2_8_CloudProperties',
         'pdf': '_2_8_CloudProperties.pdf',
@@ -712,7 +749,7 @@ CHAPTERS_DEV = [
     # ATMOSPHERE - SURFACE
     {
         'chapter-num': '2.4',
-        'id': 'sa-4',
+        'id': 'sa-6',
         'title': 'Surface Pressure',
         'href': '_2_4_AtmosphericPressure',
         'pdf': '_2_4_AtmosphericPressure.pdf',
@@ -781,42 +818,7 @@ CHAPTERS_DEV = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-    {
-        'chapter-num': '3.2',
-        'id': 'sop-7',
-        'title': 'Sea Surface Ocean Salinity',
-        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
-        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
-        'icon-lg-src': 'surface-salinity_0.png',
-        'icon-lg-hover-src': 'surface-salinity_0_hover.png',
-        'icon-src': 'ico-sop-sea-surface-salinity.png',
-        'icon-hover-src': 'ico-sop-sea-surface-salinity_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-
-    # OCEANIC - SUBSURFACE OCEAN PHYSICS
-    {
-        'chapter-num': '3.2',
-        'id': 'ssop-3',
-        'title': 'Subsuface Salinity',
-        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
-        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
-        'icon-lg-src': 'subsurface-salinity_0.png',
-        'icon-lg-hover-src': 'subsurface-salinity_0_hover.png',
-        'icon-src': 'ico-ssop-subsurface-salinity.png',
-        'icon-hover-src': 'ico-ssop-subsurface-salinity_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+ 
     # OCEANIC -  Biogeochemistry
     {
         'chapter-num': '3.8',

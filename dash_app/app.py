@@ -28,6 +28,7 @@ from pages import (
 
     _3_1a_SeaSurfaceTemperature,
     _3_1b_SeaSubsurfaceTemperature,
+    _3_2_OceanSurfaceSubsurfaceSalinity,
     _3_3_OceanSurfaceAndSubsurfaceCurrents,
     _3_4_SeaLevel,
     _3_6_InorganicCarbon,
@@ -115,6 +116,8 @@ def display_page(pathname):
         return _3_1a_SeaSurfaceTemperature.create_layout(app)
     elif "_3_1b_SeaSubsurfaceTemperature" in pathname:
         return _3_1b_SeaSubsurfaceTemperature.create_layout(app)
+    elif "_3_2_OceanSurfaceSubsurfaceSalinity" in pathname:
+        return _3_2_OceanSurfaceSubsurfaceSalinity.create_layout(app)
     elif "_3_3_OceanSurfaceAndSubsurfaceCurrents" in pathname:
         return _3_3_OceanSurfaceAndSubsurfaceCurrents.create_layout(app)
     elif "_3_4_SeaLevel" in pathname:
