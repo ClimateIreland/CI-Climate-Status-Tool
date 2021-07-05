@@ -34,7 +34,8 @@ STATION_COLORS = {
     'ExtendedEllettLineBuoy': '#00734c',  # dark green
     'TideGauge': '#8400a8',  # purple
     'Flow': 'green',  # green
-    'GHG_FLUX_TOWER': 'red'
+    'GHG_FLUX_TOWER': 'red',
+    'buoySubSurf': 'pink'
 }
 
 PERCENTILE_COLORSCALE= [
@@ -369,6 +370,42 @@ CHAPTERS = [
         'subdomain': 'Physical',
         'scientific-area': 'Energy and Temperature',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Kieran Lyons, Caroline Cusack, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+       {
+        'chapter-num': '3.2',
+        'id': 'sop-7',
+        'title': 'Sea Surface Ocean Salinity',
+        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
+        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
+        'icon-lg-src': 'surface-salinity_0.png',
+        'icon-lg-hover-src': 'surface-salinity_0_hover.png',
+        'icon-src': 'ico-sop-sea-surface-salinity.png',
+        'icon-hover-src': 'ico-sop-sea-surface-salinity_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Evin McGovern, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+    # OCEANIC - SUBSURFACE OCEAN PHYSICS
+    {
+        'chapter-num': '3.2',
+        'id': 'ssop-3',
+        'title': 'Subsurface Salinity',
+        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
+        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
+        'icon-lg-src': 'subsurface-salinity_0.png',
+        'icon-lg-hover-src': 'subsurface-salinity_0_hover.png',
+        'icon-src': 'ico-ssop-subsurface-salinity.png',
+        'icon-hover-src': 'ico-ssop-subsurface-salinity_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Evin McGovern, Glenn Nolan',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -781,42 +818,7 @@ CHAPTERS_DEV = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-    {
-        'chapter-num': '3.2',
-        'id': 'sop-7',
-        'title': 'Sea Surface Ocean Salinity',
-        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
-        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
-        'icon-lg-src': 'surface-salinity_0.png',
-        'icon-lg-hover-src': 'surface-salinity_0_hover.png',
-        'icon-src': 'ico-sop-sea-surface-salinity.png',
-        'icon-hover-src': 'ico-sop-sea-surface-salinity_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-
-    # OCEANIC - SUBSURFACE OCEAN PHYSICS
-    {
-        'chapter-num': '3.2',
-        'id': 'ssop-3',
-        'title': 'Subsuface Salinity',
-        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
-        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
-        'icon-lg-src': 'subsurface-salinity_0.png',
-        'icon-lg-hover-src': 'subsurface-salinity_0_hover.png',
-        'icon-src': 'ico-ssop-subsurface-salinity.png',
-        'icon-hover-src': 'ico-ssop-subsurface-salinity_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+ 
     # OCEANIC -  Biogeochemistry
     {
         'chapter-num': '3.8',

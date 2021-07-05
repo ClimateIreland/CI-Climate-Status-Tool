@@ -22,7 +22,7 @@ Ozone (O\u2083) is another potent greenhouse gas in terms of radiative forcing.
         """
 bulletPoint1 = """
 The implementation of the internationally agreed Montreal Protocol (1987) has 
-been effective in reducing the production of O\u2083-depleting substances and 
+been effective in reducing the production of O\u2083, depleting substances and 
 gradually restoring stratospheric O\u2083 concentrations.
         """
 bulletPoint2 = """

@@ -36,7 +36,7 @@ trendCaption = """
         """
 
 infrastructureText = """
-Measurements of subsurface ocean temperature in Irish waters are made by the Marine Institute at the M6 buoy mooring (orange) 
+Measurements of subsurface ocean temperature in Irish waters are made by the Marine Institute at the M6 buoy mooring (pink) 
 and at the SmartBay Observatory (yellow) in Galway Bay. 
 Annual oceanographic surveys are also carried out in the North Atlantic by international teams. 
 One such survey line is the Extended Ellett line (green). Since 2008, the Marine Institute has deployed 

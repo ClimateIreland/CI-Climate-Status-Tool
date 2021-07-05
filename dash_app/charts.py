@@ -85,7 +85,8 @@ def stations_map_hovertemplate(df):
 
 
 def stations_map(df):
-    buoyDF = df.loc[(df['Type'] == 'Buoy') | (df['Type'] == 'BuoySubSurf')]
+    buoyDF = df.loc[(df['Type'] == 'Buoy')]
+    buoySubSurfDF = df.loc[(df['Type'] == 'BuoySubSurf')]
     flowDF = df.loc[(df['Type'] == 'Flow')]
     ghgFluxDF = df.loc[(df['Type'] == 'GHG_FLUX_TOWER')]
     epaDF = df.loc[(df['Type'] == 'EPA')]
@@ -109,6 +110,8 @@ def stations_map(df):
                     size=7),
         hovertemplate=stations_map_hovertemplate(gpsDF),
     )
+
+
     
     tidbiTTrend = go.Scattermapbox(
         name='tidbiT',
@@ -194,6 +197,15 @@ def stations_map(df):
         hovertemplate=stations_map_hovertemplate(buoyDF),
     )
 
+    buoySubSurfTrend = go.Scattermapbox(
+        name='Buoy Subsurface',
+        lon=buoySubSurfDF.Longitude,
+        lat=buoySubSurfDF.Latitude,
+        marker=dict(color=STATION_COLORS['buoySubSurf'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(buoySubSurfDF),
+    )
+
     rainfallTrend = go.Scattermapbox(
         name='Rainfall',
         lon=rainfallDF.Longitude,
@@ -224,6 +236,7 @@ def stations_map(df):
         data=[synopticTrend, 
               climateTrend,
               buoyTrend, 
+              buoySubSurfTrend,
               epaTrend,
               nuigTrend,
               ghgFluxTrend, 
@@ -2123,6 +2136,105 @@ def map_3_1a():
     combinedDF = pd.concat([stationsDF, tidbiDFNew])
     map_3_1a=stations_map(combinedDF)
     return map_3_1a
+
+def figure_3_4():
+    """
+    Sea Surface Salinity
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.2OceanSurfaceSubsurfaceSalinity/Figure3.4/'
+        data_csv = data_path + 'Figure3.4_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    mean_annual_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__annual__upper_sea_salinity'],
+                         name='Mean Annual',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Mean Annual</b><br>' +
+                         'Salinity: %{y:.2f}<br>' +
+                         '<extra></extra>'
+                         )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__5year__upper_sea_salinity'],
+                                name='5 Year Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>5 Year Moving Average</b><br>' +
+                                    'Salinity: %{y:.2f}<br>' +
+                                    '<extra></extra>'
+                                )
+    figure_3_4 = go.Figure(data=[mean_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_3_4.update_layout(
+        yaxis=dict(title='Salinity'),
+        xaxis=dict(title="Year"))
+    return figure_3_4
+
+def figure_3_5():
+    """
+    Deep Sea Salinity
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.2OceanSurfaceSubsurfaceSalinity/Figure3.5/'
+        data_csv = data_path + 'Figure3.5_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    mean_annual_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__annual__deep_sea_salinity'],
+                            name='Mean Annual',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                        width=1),
+                            hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Mean Annual</b><br>' +
+                            'Salinity: %{y:.2f}<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__5year__deep_sea_salinity'],
+                                name='5 Year Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>5 Year Moving Average</b><br>' +
+                                    'Salinity: %{y:.2f}<br>' +
+                                    '<extra></extra>'
+                                )
+    figure_3_5 = go.Figure(data=[mean_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_3_5.update_layout(
+        yaxis=dict(title='Salinity'),
+        xaxis=dict(title="Year"))
+    return figure_3_5
+
+def map_3_2():
+    """
+    Surface Sea Salinity infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.2OceanSurfaceSubsurfaceSalinity/Map3.2/'
+        data_csv = data_path + 'Map3.2_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    map_3_2=stations_map(df)
+    return map_3_2
+
+
 
 def figure_3_7():
     """
