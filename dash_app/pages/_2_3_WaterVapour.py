@@ -90,18 +90,19 @@ trendChart1, trendChart2 = figure_2_6()
 trendChartTitle1 = 'Monthly Average Vapour Pressure - Valentia'
 
 trendCaption1 = """
-Monthly average water vapour pressure at Valentia Observatory (1940-2019)
+Monthly average water vapour pressure at Valentia Observatory (1940-2019). 
+It is higher in summer as the air is warmer and can hold more moisture. 
         """
 
 trendChartTitle2 = 'Mean Annual Vapour Pressure - Valentia'
 
 trendCaption2 = """
-Mean annual water vapour pressure at Valentia Observatory (1940-2019)
+Mean annual water vapour pressure at Valentia Observatory (1940-2019).
         """
 
 trendImage = IMAGES_PATH+'AtmosphericSections/VapourPressureCurves2019.png'
 trendCaption3 = """
-Annual average water vapour pressure acrsos Ireland for 2019
+Annual average water vapour pressure across Ireland for 2019.
 """
 
 custom_trend_alt = dbc.Container(
