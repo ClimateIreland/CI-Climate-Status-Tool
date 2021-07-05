@@ -23,6 +23,7 @@ from pages import (
     _2_10_CarbonDioxide,
     _2_11_Methane,
     _2_12_OtherGreenhouseGases,
+    _2_13_Ozone,
     _2_14_Aerosols,
 
     _3_1a_SeaSurfaceTemperature,
@@ -102,6 +103,8 @@ def display_page(pathname):
         return _2_10_CarbonDioxide.create_layout(app)
     elif "_2_11_Methane" in pathname:
         return _2_11_Methane.create_layout(app)
+    elif "_2_13_Ozone" in pathname:
+        return _2_13_Ozone.create_layout(app)
     elif "_2_12_OtherGreenhouseGases" in pathname:
         return _2_12_OtherGreenhouseGases.create_layout(app)
     elif "_2_14_Aerosols" in pathname:

@@ -6,15 +6,15 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import empty_chart, figure_2_25, figure_2_26, map_2_13
 
-chapter_num = '0'
+chapter_num = '2.13'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Ozone_MetEireann.jpg'
 bannerImgCredit = 'Met Éireann'
 
 introText = """
 Ozone (O\u2083) is another potent greenhouse gas in terms of radiative forcing.
- The influence of O3 on climate is complex, with different impacts in the upper
+ The influence of O\u2083 on climate is complex, with different impacts in the upper
   and lower atmosphere. It also has multiple potential environmental and health
    impacts. In the upper atmosphere (stratosphere) it prevents harmful 
    ultraviolet radiation from reaching the Earth’s surface. In the lower 
@@ -39,13 +39,48 @@ trendCaption = """
         """
 
 infrastructureText = """
-
+The Environmental Protection Agency (EPA), through the national ambient air 
+quality monitoring network, is in charge of the ground based O\u2083 
+measurements. 
+Eleven of these stations are directly operated by the EPA (green); Valentia 
+Observatory, Co. Kerry (red) is operated by Met Éireann;  Mace Head, 
+Co. Galway (black) is operated by the National University of Ireland Galway 
+(NUI Galway) and the remaining stations are operated by local authorities 
+(yellow) or by universities and research initiatives (orange).
+Total column and stratospheric O\u2083 has been measured at Valentia Observatory 
+since 1993, providing continuous data for more than twenty-five years. These 
+measurements are routinely made using equipment carried on weather balloons to 
+heights greater than 30 km.
+Measurements of O\u2083 from satellites have been made since the 1970s with 
+different sensors operating in the ultraviolet, visible and microwave part of 
+the spectrum. Both total column and profiles of O\u2083 at different heights 
+in the atmosphere have been retrieved. Currently, The Copernicus Atmospheric
+Monitoring Service and the Climate Change Service provide various global 
+O\u2083 datasets some developed under the ESA Ozone Climate Change Initiative.  
+In addition, the NASA Ozone Watch portal compiles a set of O\u2083 data 
+products derived from several Satellite missions.
         """
-infrastructureMap = empty_chart()
+infrastructureMap = map_2_13()
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
+    {'text': 'Ozone Properties ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS.',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/ozone'},
+         {'text': 'EPA Air Quality Monitoring Network  information',
+     'url': 'https://www.epa.ie/air/quality'},
+         {'text': 'National Ambient Air Quality Monitoring Programme 2017-2022',
+     'url': 'https://www.epa.ie/publications/monitoring--assessment/air/national-ambient-air-quality-monitoring-programme-2017-2022.php'},
+         {'text': 'A description of the Ozone Measurement Programme at Valentia Observatory',
+     'url': 'https://www.met.ie/science/valentia/ozone-monitoring'},
+         {'text': 'Information on the Mace Head Facility',
+     'url': 'http://www.macehead.org'},
+         {'text': 'Copernicus Atmospheric Monitoring Service',
+     'url': 'https://www.copernicus.eu/en/services/atmosphere'},
+         {'text': 'Copernicus Climate Change Service',
+     'url': 'https://www.copernicus.eu/en/services/climate-change'},
+        {'text': 'ESA Sentinel 5P Mission',
+     'url': 'https://earth.esa.int/web/guest/missions/esa-eo-missions/sentinel-5p'},
+        {'text': 'NASA Ozone Watch (Ozone Maps)',
+     'url': 'https://ozonewatch.gsfc.nasa.gov/monthly/NH.html'},
 
 ]
 
@@ -54,6 +89,84 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+trendChartTitle1 = ''
+trendChart1 = figure_2_25()
+trendCaption1 = """
+Monthly mean ground-level ozone concentration observed at Mace Head (1987–2018).
+        """
+
+trendChartTitle2 = ''
+trendChart2 = figure_2_26()
+trendCaption2 = """
+Monthly mean total column ozone concentration (in Dobson Units) observed at Valentia Observatory (1993–2019). 
+        """
+
+custom_trend = dbc.Container(
+        className='sr-trends',
+        style={'borderColor': chapter_dict['domain-color']},
+        id='trends',
+        children=[
+            html.H3(
+                className='sr-section-heading',
+                style={'color': chapter_dict['domain-color']},
+                children='Trends',
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle1),
+                                dcc.Graph(
+                                    figure=trendChart1,
+                                    id='chart'+chapter_dict['href'],
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=[
+                                        html.I(className="fas fa-play _up",
+                                               style={"color": chapter_dict['domain-color']}),
+                                        trendCaption1]
+                                )]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle2),
+                                dcc.Graph(
+                                    figure=trendChart2,
+                                    id='chart'+chapter_dict['href'],
+                                    config={'displayModeBar': False})]
+                            )
+                ]
+            ),
+            dbc.Row(
+                children=[
+                    dbc.Col(className="col-md-10 offset-md-1",
+                            children=[
+                                html.P(
+                                    className='sr-chart-caption',
+                                    children=[
+                                        html.I(className="fas fa-play _up",
+                                               style={"color": chapter_dict['domain-color']}),
+                                        trendCaption2]
+                                )]
+                            )
+                ]
+            )])
 
 def create_layout(app):
     return html.Div(
@@ -68,11 +181,12 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
+            custom_trend,
+        #     pb.build_trend(trendChartTitle,
+        #                    trendChart,
+        #                    trendCaption,
+        #                    chapter_dict
+        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

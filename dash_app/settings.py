@@ -120,7 +120,7 @@ CHAPTERS = [
     },
         {
         'chapter-num': '2.3',
-        'id': 'sa-6',
+        'id': 'sa-3',
         'title': 'Surface Water Vapour',
         'href': '_2_3_WaterVapour',
         'pdf': '_2_3_WaterVapour.pdf',
@@ -138,7 +138,7 @@ CHAPTERS = [
 
             {
         'chapter-num': '2.3',
-        'id': 'uaa-6',
+        'id': 'uaa-3',
         'title': 'Upper Air Atmosphere Water Vapour',
         'href': '_2_3_WaterVapour',
         'pdf': '_2_3_WaterVapour.pdf',
@@ -156,7 +156,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '2.5',
-        'id': 'sa-3',
+        'id': 'sa-4',
         'title': 'Precipitation',
         'href': '_2_5_Precipitation',
         'pdf': '_2_5_Precipitation.pdf',
@@ -193,7 +193,7 @@ CHAPTERS = [
 
         {
         'chapter-num': '2.6',
-        'id': 'uaa-5',
+        'id': 'uaa-4',
         'title': 'Earth Radiation Budget',
         'href': '_2_6_SurfaceEarth_RadiationBudget',
         'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
@@ -300,6 +300,23 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
 
+    },
+        {
+        'chapter-num': '2.13',
+        'id': 'ac-5',
+        'title': 'Ozone',
+        'href': '_2_13_Ozone',
+        'pdf': '_2_13_Ozone.pdf',
+        'icon-lg-src': 'ozone_0.png',
+        'icon-lg-hover-src': 'ozone_0_hover.png',
+        'icon-src': 'ico-ac-ozone.png',
+        'icon-hover-src': 'ico-ac-ozone_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Atmospheric Composition',
+        'scientific-area': 'Carbon Cycle and other GHGs',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin ',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
         {
         'chapter-num': '2.14',
@@ -638,7 +655,7 @@ CHAPTERS_DEV = [
     # Upper-air Atmoshere
     {   
         'chapter-num': '2.9',
-        'id': 'uaa-3',
+        'id': 'uaa-5',
         'title': 'Lightning',
         'href': '_2_9_Lightning',
         'pdf': '_2_9_Lightning.pdf',
@@ -655,7 +672,7 @@ CHAPTERS_DEV = [
     },
     {
         'chapter-num': '2.8',
-        'id': 'uaa-4',
+        'id': 'uaa-6',
         'title': 'Clouds',
         'href': '_2_8_CloudProperties',
         'pdf': '_2_8_CloudProperties.pdf',
@@ -674,23 +691,7 @@ CHAPTERS_DEV = [
 
     # ATMOSPHERE - COMPOSITION
 
-    {
-        'chapter-num': '2.13',
-        'id': 'ac-5',
-        'title': 'Ozone',
-        'href': '_2_13_Ozone',
-        'pdf': '_2_13_Ozone.pdf',
-        'icon-lg-src': 'ozone_0.png',
-        'icon-lg-hover-src': 'ozone_0_hover.png',
-        'icon-src': 'ico-ac-ozone.png',
-        'icon-hover-src': 'ico-ac-ozone_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
     {
         'chapter-num': '2.15',
         'id': 'ac-6',
@@ -711,7 +712,7 @@ CHAPTERS_DEV = [
     # ATMOSPHERE - SURFACE
     {
         'chapter-num': '2.4',
-        'id': 'sa-4',
+        'id': 'sa-6',
         'title': 'Surface Pressure',
         'href': '_2_4_AtmosphericPressure',
         'pdf': '_2_4_AtmosphericPressure.pdf',
