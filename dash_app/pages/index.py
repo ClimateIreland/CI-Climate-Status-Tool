@@ -40,7 +40,7 @@ intro = dbc.Container(
                 className='text-center',
                 children=[
                     dcc.Link(
-                        href='/',
+                        href='/statusTool',
                         children=[
                             html.Img(
                                 className='sr-menu-logo',
