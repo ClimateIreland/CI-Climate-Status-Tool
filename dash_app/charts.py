@@ -2510,6 +2510,18 @@ def figure_3_7_4():
                             )
     return figure_3_7_4
 
+def map_3_7():
+    """
+    Nutrients infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.8Nutrients/Map3.7/'
+        df = pd.read_csv(data_path+'Map3.7_data.csv')
+    except:
+        return empty_chart()
+    map_3_7=stations_map(df)
+    return map_3_7
+
 def map_3_1b():
     """
     Sea Subsurface Temperature infrastructure map

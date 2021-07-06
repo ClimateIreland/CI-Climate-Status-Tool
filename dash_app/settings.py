@@ -496,6 +496,25 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+
+        {
+        'chapter-num': '3.8',
+        'id': 'obgc-4',
+        'title': 'Nutrients',
+        'href': '_3_8_Nutrients',
+        'pdf': '_3_8_Nutrients.pdf',
+        'icon-lg-src': 'nutrients_0.png',
+        'icon-lg-hover-src': 'nutrients_0_hover.png',
+        'icon-src': 'ico-obgc-nutrients.png',
+        'icon-hover-src': 'ico-obgc-nutrients_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biogeochemistry',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes, Evin McGovern',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
         {
         'chapter-num': '3.9',
         'id': 'obgc-3',
@@ -541,13 +560,14 @@ CHAPTERS = [
         'icon-lg-hover-src': 'marine-habitat_hover.png',
         'icon-src': 'ico-obe-marine-habitat.png',
         'icon-hover-src': 'ico-obe-marine-habitat_hover.png',
-        'domain': 'Biological/Ecosystems',
+        'domain': 'Ocean',
         'subdomain': 'Biological/Ecosystems',
         'scientific-area': 'Biosphere',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+    
 
     # Biosphere
     {
@@ -838,23 +858,7 @@ CHAPTERS_DEV = [
     },
  
     # OCEANIC -  Biogeochemistry
-    {
-        'chapter-num': '3.8',
-        'id': 'obgc-4',
-        'title': 'Nutrients',
-        'href': '_3_8_Nutrients',
-        'pdf': '_3_8_Nutrients.pdf',
-        'icon-lg-src': 'nutrients_0.png',
-        'icon-lg-hover-src': 'nutrients_0_hover.png',
-        'icon-src': 'ico-obgc-nutrients.png',
-        'icon-hover-src': 'ico-obgc-nutrients_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Biogeochemistry',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
     {
         'chapter-num': '3.12',
         'id': 'obgc-5',

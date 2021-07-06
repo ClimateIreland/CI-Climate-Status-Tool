@@ -33,6 +33,7 @@ from pages import (
     _3_4_SeaLevel,
     _3_6_InorganicCarbon,
     _3_7_DissolvedOxygen,
+    _3_8_Nutrients,
     _3_9_OceanColour,
     _3_10_Plankton,
     _3_11_MarineHabitatProperties,
@@ -127,6 +128,8 @@ def display_page(pathname):
         return _3_6_InorganicCarbon.create_layout(app)
     elif "_3_7_DissolvedOxygen" in pathname:
         return _3_7_DissolvedOxygen.create_layout(app)
+    elif "_3_8_Nutrients" in pathname:
+        return _3_8_Nutrients.create_layout(app)
     elif "_3_9_OceanColour" in pathname:
         return _3_9_OceanColour.create_layout(app)
     elif "_3_10_Plankton" in pathname:
