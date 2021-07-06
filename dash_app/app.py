@@ -35,6 +35,7 @@ from pages import (
     _3_7_DissolvedOxygen,
     _3_9_OceanColour,
     _3_10_Plankton,
+    _3_11_MarineHabitatProperties,
 
     _4_1_RiverDischarge,
     _4_3_Lakes,
@@ -130,6 +131,8 @@ def display_page(pathname):
         return _3_9_OceanColour.create_layout(app)
     elif "_3_10_Plankton" in pathname:
         return _3_10_Plankton.create_layout(app)
+    elif "_3_11_MarineHabitatProperties" in pathname:
+        return _3_11_MarineHabitatProperties.create_layout(app)
 
     # Terrestrial
     elif "_4_1_RiverDischarge" in pathname:

@@ -39,15 +39,11 @@ intro = dbc.Container(
             dbc.Col(
                 className='text-center',
                 children=[
-                    dcc.Link(
-                        href='/',
-                        children=[
-                            html.Img(
+                    html.Img(
                                 className='sr-menu-logo',
                                 style={"width": "150px"},
                                 src='assets/images/Climate_status.png'
                             ),
-                        ]),
                     html.H1("Ireland's Climate Status Tool",
                             style={"color": "rgba(0,10,20,.80)", "marginTop": "30px"})]
             )),

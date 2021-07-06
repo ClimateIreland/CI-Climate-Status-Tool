@@ -531,6 +531,24 @@ CHAPTERS = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
 
+        {
+        'chapter-num': '3.11',
+        'id': 'obe-2',
+        'title': 'Marine Habitats',
+        'href': '_3_11_MarineHabitatProperties',
+        'pdf': '_3_11_MarineHabitatProperties.pdf',
+        'icon-lg-src': 'marine-habitat.png',
+        'icon-lg-hover-src': 'marine-habitat_hover.png',
+        'icon-src': 'ico-obe-marine-habitat.png',
+        'icon-hover-src': 'ico-obe-marine-habitat_hover.png',
+        'domain': 'Biological/Ecosystems',
+        'subdomain': 'Biological/Ecosystems',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
     # Biosphere
     {
         'chapter-num': '4.1',
@@ -873,23 +891,7 @@ CHAPTERS_DEV = [
     },
 
     # OCEANIC - BIOECO
-    {
-        'chapter-num': '3.11',
-        'id': 'obe-2',
-        'title': 'Marine Habitats',
-        'href': '_3_11_MarineHabitatProperties',
-        'pdf': '_3_11_MarineHabitatProperties.pdf',
-        'icon-lg-src': 'marine-habitat.png',
-        'icon-lg-hover-src': 'marine-habitat_hover.png',
-        'icon-src': 'ico-obe-marine-habitat.png',
-        'icon-hover-src': 'ico-obe-marine-habitat_hover.png',
-        'domain': 'Biological/Ecosystems',
-        'subdomain': 'Biosphere',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
 
     # TERRESTRIAL - HYDROSPHERE
 
