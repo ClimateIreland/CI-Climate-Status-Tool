@@ -40,6 +40,7 @@ intro = dbc.Container(
                 className='text-center',
                 children=[
                     html.Img(
+
                                 className='sr-menu-logo',
                                 style={"width": "150px"},
                                 src='assets/images/Climate_status.png'
