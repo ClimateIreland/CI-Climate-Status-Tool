@@ -5,6 +5,8 @@ import dateutil
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from settings import *
+import json
+import geopandas as gpd
 
 def percentile_series(df,col):
     """
@@ -2508,6 +2510,18 @@ def figure_3_7_4():
                             )
     return figure_3_7_4
 
+def map_3_7():
+    """
+    Nutrients infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.8Nutrients/Map3.7/'
+        df = pd.read_csv(data_path+'Map3.7_data.csv')
+    except:
+        return empty_chart()
+    map_3_7=stations_map(df)
+    return map_3_7
+
 def map_3_1b():
     """
     Sea Subsurface Temperature infrastructure map
@@ -2757,6 +2771,90 @@ def map_3_4():
         layout=MAP_LAYOUT)
 
     return map_3_4
+
+def figure_3_10():
+    """
+    Sea State daily average 
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.5SeaState/Figure3.10/'
+        data_csv = data_path + 'Figure3.10_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        df['xAxis'] = df.apply (lambda row: date_to_day_number(row), axis=1)
+        df_16 = df.loc[(df['datetime'].dt.year == 2016)]
+        df_17 = df.loc[(df['datetime'].dt.year == 2017)]
+        df_18 = df.loc[(df['datetime'].dt.year == 2018)]
+    except:
+        return empty_chart()
+    trace_16 = go.Scatter(x=df['xAxis'],
+                      y=df_16['mean__daily__sea_surface_wave_significant_height'],
+                         name='2016',
+                         mode='markers+lines',
+                         text=df['datetime'],
+                         marker=dict(color=TIMESERIES_COLOR_1,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                      width=1),
+                         hovertemplate='%{text|%d-%b}-2016<br>' +
+                         '<b>2016 Daily Average</b><br>' +
+                         'Wave Height: %{y:.2f} m<br>' +
+                         '<extra></extra>'
+                         )
+    trace_17 = go.Scatter(x=df['xAxis'],
+                        y=df_17['mean__daily__sea_surface_wave_significant_height'],
+                            name='2017',
+                            mode='markers+lines',
+                            text=df['datetime'],
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                        width=1),
+                            hovertemplate='%{text|%d-%b}-2017<br>' +
+                            '<b>2017 Daily Average</b><br>' +
+                            'Wave Height: %{y:.2f} m<br>' +
+                            '<extra></extra>'
+                            )
+    trace_18 = go.Scatter(x=df['xAxis'],
+                        y=df_18['mean__daily__sea_surface_wave_significant_height'],
+                            name='2018',
+                            mode='markers+lines',
+                            text=df['datetime'],
+                            marker=dict(color=TIMESERIES_COLOR_3,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_3,
+                                        width=1),
+                            hovertemplate='%{text|%d-%b}-2018<br>' +
+                            '<b>2018 Daily Average</b><br>' +
+                            'Wave Height: %{y:.2f} m<br>' +
+                            '<extra></extra>'
+                            )
+    figure_3_10 = go.Figure(data=[trace_16,trace_17,trace_18], layout=TIMESERIES_LAYOUT)
+    figure_3_10.update_layout(
+        yaxis=dict(title='Mean Significant Wave Height, H<sub>s</sub> (m)'),
+        xaxis=dict(
+            title="Month",
+            ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+            showgrid=False,
+            tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
+        )
+    )
+    return figure_3_10
+
+def map_3_5():
+    """
+    Sea state infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.5SeaState/Map3.5/'
+        df = pd.read_csv(data_path+'SeaStations.txt')
+    except:
+        return empty_chart()
+    map_3_5=stations_map(df)
+    return map_3_5
 
 def figure_3_15():
     """
@@ -3108,6 +3206,163 @@ def map_3_8():
                     layout=MAP_LAYOUT)
     map_3_8.update_layout(legend_title='<b>Site Type</b>')
     return map_3_8
+
+def figure_3_24():
+    """
+    Sea grass sites trajectory
+    """
+
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.11MarineHabitatProperties/Figure3.24/'
+        data_csv = data_path + 'Figure3.24_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+
+    increase_df = df.loc[(df['Trajectory_GLOBAL']=='increase')]
+    decrease_df = df.loc[(df['Trajectory_GLOBAL']=='decrease')]
+    no_change_df = df.loc[(df['Trajectory_GLOBAL']=='no change')]
+    increase_trend = go.Scattermapbox(
+            name='Increase',
+            lon=increase_df.Longitude,
+            lat=increase_df.Latitude,
+            marker=dict(color="#359107",#green
+                        size=8,),
+            hovertemplate='<b>'+increase_df["SITE"]+'</b><br>' +
+            'Trajectory: Increase<br>' +
+            'Source: '+ increase_df["SOURCE"] +'<br>' +
+            'Lat: %{lat}\u00b0<br>' +
+            'Lon: %{lon}\u00b0<br>' +
+            '<extra></extra>',
+        )
+
+    decrease_trend = go.Scattermapbox(
+            name='Decrease',
+            lon=decrease_df.Longitude,
+            lat=decrease_df.Latitude,
+            marker=dict(color="#eb34d8",#pink
+                        size=8,),
+            hovertemplate='<b>'+decrease_df["SITE"]+'</b><br>' +
+            'Trajectory: Decrease<br>' +
+            'Source: '+ decrease_df["SOURCE"] +'<br>' +
+            'Lat: %{lat}\u00b0<br>' +
+            'Lon: %{lon}\u00b0<br>' +
+            '<extra></extra>',
+        )
+
+    no_change_trend = go.Scattermapbox(
+            name='No Change',
+            lon=no_change_df.Longitude,
+            lat=no_change_df.Latitude,
+            marker=dict(color="yellow",#yellow
+                        size=8,),
+            hovertemplate='<b>'+no_change_df["SITE"]+'</b><br>' +
+            'Trajectory: No Change<br>' +
+            'Source: '+ no_change_df["SOURCE"] +'<br>' +
+            'Lat: %{lat}\u00b0<br>' +
+            'Lon: %{lon}\u00b0<br>' +
+            '<extra></extra>',
+        )
+
+
+
+    figure_3_24 = go.Figure(
+            data=[decrease_trend,increase_trend,no_change_trend],
+            layout=MAP_LAYOUT)
+    figure_3_24.update_layout(legend_title="<b>Site Trajectories</b>")
+    return figure_3_24
+
+def figure_3_25():
+    """
+    Marine special areas sites
+    """
+
+    try:
+       
+        data_path = DATA_PATH+'Oceanic_Domain/3.11MarineHabitatProperties/Figure3.25/'
+        data_csv = data_path + 'Fifure3.25_StationTable_VMEDataSetIrishShelf.txt'
+        with open(data_path + 'SAC_Offshore_WGS84_2015_11.geojson') as json_file:
+            sac_data = json.load(json_file)
+        sac_df = gpd.read_file(data_path + 'SAC_Offshore_WGS84_2015_11.geojson')
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    
+    vme_list = [
+        'Anemones',
+        'Black coral',
+        'Cup coral',
+        'Gorgonian',
+        'Sea-pen',
+        'Soft coral',
+        'Sponge',
+        'Stony coral',
+        'Stylasterids',
+        ' '
+    ]
+    data = []
+    sac_trend = go.Scattermapbox(
+            name='SAC Site',
+            lon=sac_df.Centroid_X,
+            lat=sac_df.Centroid_Y,
+            text=sac_df["LAEA_Area"],
+            marker=dict(color='pink',size=10,symbol='square'),
+            hovertemplate='SAC Site: '+ sac_df["SITE_NAME"]+'<br>' +
+            'N2k Code: '+ sac_df["N2k_Code"]+'<br>' +
+            'Area: %{text} ha<br>' +
+            'Center Lat: %{lat:.2f}\u00b0<br>' +
+            'Center Lon: %{lon:.2f}\u00b0<br>' +
+            '<extra></extra>',
+        )
+    data.append(sac_trend)
+    for key in vme_list:
+        trend_df = df.loc[(df['VME_Indica']==key)]
+        if key == ' ':
+            key = 'Other'
+        trend = go.Scattermapbox(
+            name=key,
+            lon=trend_df.MiddleLong,
+            lat=trend_df.MiddleLati,
+            marker=dict(size=5,),
+            hovertemplate='VME Indicator: '+ trend_df["VME_Indica"]+'<br>' +
+            'Species: '+ trend_df["Species"]+'<br>' +
+            'Habitat Type: '+ trend_df["HabitatTyp"]+'<br>' +
+            'VME Habitat Type: '+ trend_df["VME_Habita"]+'<br>' +
+            'Status: '+ trend_df["status"]+'<br>' +
+            # Getting t.replace is not a fucntion errors on hover when these lines are inlcuded
+    #         'Data Owner: '+ df["DataOwner"]+'<br>' +
+    #         'Vessel Type: '+ trend_df["VesselType"]+'<br>' +
+    #         'Survey Method: '+ trend_df["SurveyMeth"]+'<br>' +
+    #         'Survey Key: '+ trend_df["SurveyKey"]+'<br>' +
+            'Observation Date: '+ trend_df["ObsDate"]+'<br>' +
+            'Placename: '+ trend_df["PlaceName"]+'<br>' +
+            'Lat: %{lat:.2f}\u00b0<br>' +
+            'Lon: %{lon:.2f}\u00b0<br>' +
+            '<extra></extra>',
+        )
+        data.append(trend)
+    
+    figure_3_25 = go.Figure(
+            data=data,
+            layout=MAP_LAYOUT)
+    figure_3_25.update_layout(
+        legend_title="<b>    SAC Sites & <br> ICES-VME Indicators</b>",
+            mapbox=dict(bearing=0,
+                    center=dict(
+                        lat=53.0,
+                        lon=350
+                    ),
+                    zoom=3.8,
+                        
+                    ))
+
+    figure_3_25.update_layout(
+        mapbox = {
+            'layers': [{
+                'source': sac_data,
+                'type': "fill", 'below': "traces", 'color': "pink"}]}
+    )
+    return figure_3_25
 
 
 

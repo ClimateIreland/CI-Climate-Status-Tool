@@ -375,7 +375,7 @@ CHAPTERS = [
     },
        {
         'chapter-num': '3.2',
-        'id': 'sop-7',
+        'id': 'sop-5',
         'title': 'Sea Surface Ocean Salinity',
         'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
         'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
@@ -462,6 +462,24 @@ CHAPTERS = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
 
+            {
+        'chapter-num': '3.5',
+        'id': 'sop-4',
+        'title': 'Sea State',
+        'href': '_3_5_SeaState',
+        'pdf': '_3_5_SeaState.pdf',
+        'icon-lg-src': 'sea-state_0.png',
+        'icon-lg-hover-src': 'sea-state_0_hover.png',
+        'icon-src': 'ico-sop-sea-state.png',
+        'icon-hover-src': 'ico-sop-sea-state_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Guy Westbrook, Kieran Lyons, Alan Berry',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
     {
         'chapter-num': '3.6',
         'id': 'obgc-1',
@@ -496,6 +514,25 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+
+        {
+        'chapter-num': '3.8',
+        'id': 'obgc-4',
+        'title': 'Nutrients',
+        'href': '_3_8_Nutrients',
+        'pdf': '_3_8_Nutrients.pdf',
+        'icon-lg-src': 'nutrients_0.png',
+        'icon-lg-hover-src': 'nutrients_0_hover.png',
+        'icon-src': 'ico-obgc-nutrients.png',
+        'icon-hover-src': 'ico-obgc-nutrients_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biogeochemistry',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes, Evin McGovern',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
         {
         'chapter-num': '3.9',
         'id': 'obgc-3',
@@ -530,6 +567,27 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+
+        {
+        'chapter-num': '3.11',
+        'id': 'obe-2',
+        'title': 'Marine Habitats',
+        'href': '_3_11_MarineHabitatProperties',
+        'pdf': '_3_11_MarineHabitatProperties.pdf',
+        'icon-lg-src': 'marine-habitat.png',
+        'icon-lg-hover-src': 'marine-habitat_hover.png',
+        'icon-src': 'ico-obe-marine-habitat.png',
+        'icon-hover-src': 'ico-obe-marine-habitat_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biological/Ecosystems',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+
+    
 
     # Biosphere
     {
@@ -767,26 +825,10 @@ CHAPTERS_DEV = [
 
 
     # OCEANIC - SURFACE OCEAN PHYSICS
-    {
-        'chapter-num': '2.13',
-        'id': 'sop-4',
-        'title': 'Sea State',
-        'href': '_3_5_SeaState',
-        'pdf': '_3_5_SeaState.pdf',
-        'icon-lg-src': 'sea-state_0.png',
-        'icon-lg-hover-src': 'sea-state_0_hover.png',
-        'icon-src': 'ico-sop-sea-state.png',
-        'icon-hover-src': 'ico-sop-sea-state_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
     {
         'chapter-num': '3.12',
-        'id': 'sop-5',
+        'id': 'sop-6',
         'title': 'Surface Stress',
         'href': '_3_12_OtherOceanEcvs',
         'pdf': '_3_12_OtherOceanEcvs.pdf',
@@ -803,7 +845,7 @@ CHAPTERS_DEV = [
     },
     {
         'chapter-num': '3.12',
-        'id': 'sop-6',
+        'id': 'sop-7',
         'title': 'Ocean Surface Heat Flux',
         'href': '_3_12_OtherOceanEcvs',
         'pdf': '_3_12_OtherOceanEcvs.pdf',
@@ -820,23 +862,7 @@ CHAPTERS_DEV = [
     },
  
     # OCEANIC -  Biogeochemistry
-    {
-        'chapter-num': '3.8',
-        'id': 'obgc-4',
-        'title': 'Nutrients',
-        'href': '_3_8_Nutrients',
-        'pdf': '_3_8_Nutrients.pdf',
-        'icon-lg-src': 'nutrients_0.png',
-        'icon-lg-hover-src': 'nutrients_0_hover.png',
-        'icon-src': 'ico-obgc-nutrients.png',
-        'icon-hover-src': 'ico-obgc-nutrients_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Biogeochemistry',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
     {
         'chapter-num': '3.12',
         'id': 'obgc-5',
@@ -873,23 +899,7 @@ CHAPTERS_DEV = [
     },
 
     # OCEANIC - BIOECO
-    {
-        'chapter-num': '3.11',
-        'id': 'obe-2',
-        'title': 'Marine Habitats',
-        'href': '_3_11_MarineHabitatProperties',
-        'pdf': '_3_11_MarineHabitatProperties.pdf',
-        'icon-lg-src': 'marine-habitat.png',
-        'icon-lg-hover-src': 'marine-habitat_hover.png',
-        'icon-src': 'ico-obe-marine-habitat.png',
-        'icon-hover-src': 'ico-obe-marine-habitat_hover.png',
-        'domain': 'Biological/Ecosystems',
-        'subdomain': 'Biosphere',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
 
     # TERRESTRIAL - HYDROSPHERE
 
