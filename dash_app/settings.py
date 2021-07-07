@@ -375,7 +375,7 @@ CHAPTERS = [
     },
        {
         'chapter-num': '3.2',
-        'id': 'sop-7',
+        'id': 'sop-5',
         'title': 'Sea Surface Ocean Salinity',
         'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
         'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
@@ -458,6 +458,24 @@ CHAPTERS = [
         'subdomain': 'Physical',
         'scientific-area': 'Physical Properties',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Guy Westbrook, Glenn Nolan, Rosemarie Lawlor, Sarah Gallaher, Gerard McCarthy',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+            {
+        'chapter-num': '3.5',
+        'id': 'sop-4',
+        'title': 'Sea State',
+        'href': '_3_5_SeaState',
+        'pdf': '_3_5_SeaState.pdf',
+        'icon-lg-src': 'sea-state_0.png',
+        'icon-lg-hover-src': 'sea-state_0_hover.png',
+        'icon-src': 'ico-sop-sea-state.png',
+        'icon-hover-src': 'ico-sop-sea-state_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Guy Westbrook, Kieran Lyons, Alan Berry',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -567,6 +585,8 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+
+
     
 
     # Biosphere
@@ -805,26 +825,10 @@ CHAPTERS_DEV = [
 
 
     # OCEANIC - SURFACE OCEAN PHYSICS
-    {
-        'chapter-num': '2.13',
-        'id': 'sop-4',
-        'title': 'Sea State',
-        'href': '_3_5_SeaState',
-        'pdf': '_3_5_SeaState.pdf',
-        'icon-lg-src': 'sea-state_0.png',
-        'icon-lg-hover-src': 'sea-state_0_hover.png',
-        'icon-src': 'ico-sop-sea-state.png',
-        'icon-hover-src': 'ico-sop-sea-state_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
     {
         'chapter-num': '3.12',
-        'id': 'sop-5',
+        'id': 'sop-6',
         'title': 'Surface Stress',
         'href': '_3_12_OtherOceanEcvs',
         'pdf': '_3_12_OtherOceanEcvs.pdf',
@@ -841,7 +845,7 @@ CHAPTERS_DEV = [
     },
     {
         'chapter-num': '3.12',
-        'id': 'sop-6',
+        'id': 'sop-7',
         'title': 'Ocean Surface Heat Flux',
         'href': '_3_12_OtherOceanEcvs',
         'pdf': '_3_12_OtherOceanEcvs.pdf',

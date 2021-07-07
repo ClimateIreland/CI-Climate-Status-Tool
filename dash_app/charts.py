@@ -2772,6 +2772,90 @@ def map_3_4():
 
     return map_3_4
 
+def figure_3_10():
+    """
+    Sea State daily average 
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.5SeaState/Figure3.10/'
+        data_csv = data_path + 'Figure3.10_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        df['xAxis'] = df.apply (lambda row: date_to_day_number(row), axis=1)
+        df_16 = df.loc[(df['datetime'].dt.year == 2016)]
+        df_17 = df.loc[(df['datetime'].dt.year == 2017)]
+        df_18 = df.loc[(df['datetime'].dt.year == 2018)]
+    except:
+        return empty_chart()
+    trace_16 = go.Scatter(x=df['xAxis'],
+                      y=df_16['mean__daily__sea_surface_wave_significant_height'],
+                         name='2016',
+                         mode='markers+lines',
+                         text=df['datetime'],
+                         marker=dict(color=TIMESERIES_COLOR_1,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                      width=1),
+                         hovertemplate='%{text|%d-%b}-2016<br>' +
+                         '<b>2016 Daily Average</b><br>' +
+                         'Wave Height: %{y:.2f} m<br>' +
+                         '<extra></extra>'
+                         )
+    trace_17 = go.Scatter(x=df['xAxis'],
+                        y=df_17['mean__daily__sea_surface_wave_significant_height'],
+                            name='2017',
+                            mode='markers+lines',
+                            text=df['datetime'],
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                        width=1),
+                            hovertemplate='%{text|%d-%b}-2017<br>' +
+                            '<b>2017 Daily Average</b><br>' +
+                            'Wave Height: %{y:.2f} m<br>' +
+                            '<extra></extra>'
+                            )
+    trace_18 = go.Scatter(x=df['xAxis'],
+                        y=df_18['mean__daily__sea_surface_wave_significant_height'],
+                            name='2018',
+                            mode='markers+lines',
+                            text=df['datetime'],
+                            marker=dict(color=TIMESERIES_COLOR_3,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_3,
+                                        width=1),
+                            hovertemplate='%{text|%d-%b}-2018<br>' +
+                            '<b>2018 Daily Average</b><br>' +
+                            'Wave Height: %{y:.2f} m<br>' +
+                            '<extra></extra>'
+                            )
+    figure_3_10 = go.Figure(data=[trace_16,trace_17,trace_18], layout=TIMESERIES_LAYOUT)
+    figure_3_10.update_layout(
+        yaxis=dict(title='Mean Significant Wave Height, H<sub>s</sub> (m)'),
+        xaxis=dict(
+            title="Month",
+            ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+            showgrid=False,
+            tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
+        )
+    )
+    return figure_3_10
+
+def map_3_5():
+    """
+    Sea state infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.5SeaState/Map3.5/'
+        df = pd.read_csv(data_path+'SeaStations.txt')
+    except:
+        return empty_chart()
+    map_3_5=stations_map(df)
+    return map_3_5
+
 def figure_3_15():
     """
     Dissolved Oxygen trend
