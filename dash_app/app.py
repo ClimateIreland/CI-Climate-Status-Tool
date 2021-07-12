@@ -40,11 +40,15 @@ from pages import (
     _3_11_MarineHabitatProperties,
 
     _4_1_RiverDischarge,
+    _4_2_Groundwater,
     _4_3_Lakes,
+    _4_4_SoilMoisture,
     _4_5_Albedo,
     _4_6_LandCover,
     _4_7_FAPAR,
     _4_8_LAI,
+    _4_9_AboveGroundBiomass,
+    _4_10_SoilCarbon,
     _4_11_Fire,
     _4_12_LandSurfaceTemperature,
     _4_14_AnthropogenicGreenhouseGasEmissions,
@@ -141,10 +145,14 @@ def display_page(pathname):
         return _3_11_MarineHabitatProperties.create_layout(app)
 
     # Terrestrial
+    elif "_4_2_Groundwater" in pathname:
+        return _4_2_Groundwater.create_layout(app)
     elif "_4_1_RiverDischarge" in pathname:
         return _4_1_RiverDischarge.create_layout(app)
     elif "_4_3_Lakes" in pathname:
         return _4_3_Lakes.create_layout(app)
+    elif "_4_4_SoilMoisture" in pathname:
+        return _4_4_SoilMoisture.create_layout(app)
     elif "_4_5_Albedo" in pathname:
         return _4_5_Albedo.create_layout(app)
     elif "_4_6_LandCover" in pathname:
@@ -153,6 +161,10 @@ def display_page(pathname):
         return _4_7_FAPAR.create_layout(app)
     elif "_4_8_LAI" in pathname:
         return _4_8_LAI.create_layout(app)
+    elif "_4_9_AboveGroundBiomass" in pathname:
+        return _4_9_AboveGroundBiomass.create_layout(app)
+    elif "_4_10_SoilCarbon" in pathname:
+        return _4_10_SoilCarbon.create_layout(app)
     elif "_4_11_Fire" in pathname:
         return _4_11_Fire.create_layout(app)
     elif "_4_12_LandSurfaceTemperature" in pathname:

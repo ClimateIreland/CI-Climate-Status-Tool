@@ -607,6 +607,23 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
+        {
+        'chapter-num': '4.2',
+        'id': 'hyd-3',
+        'title': 'Groundwater',
+        'href': '_4_2_Groundwater',
+        'pdf': '_4_2_Groundwater.pdf',
+        'icon-lg-src': 'groundwater_1.png',
+        'icon-lg-hover-src': 'groundwater_1_hover.png',
+        'icon-src': 'ico-hyd-groundwater.png',
+        'icon-hover-src': 'ico-hyd-groundwater_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Hydrology',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Conor Quinlan',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
     {
         'chapter-num': '4.3',
         'id': 'hyd-2',
@@ -621,6 +638,23 @@ CHAPTERS = [
         'subdomain': 'Hydrology',
         'scientific-area': 'Hydrosphere',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Conor Quinlan',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+        {
+        'chapter-num': '4.4',
+        'id': 'hyd-4',
+        'title': 'Soil Moisture',
+        'href': '_4_4_SoilMoisture',
+        'pdf': '_4_4_SoilMoisture.pdf',
+        'icon-lg-src': 'soil-moisture.png',
+        'icon-lg-hover-src': 'soil-moisture_hover.png',
+        'icon-src': 'ico-hyd-soil-moisture.png',
+        'icon-hover-src': 'ico-hyd-soil-moisture_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Hydrology',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
@@ -651,6 +685,42 @@ CHAPTERS = [
         'icon-lg-hover-src': 'fapar_hover.png',
         'icon-src': 'ico-bio-fapr.png',
         'icon-hover-src': 'ico-bio-fapr_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+
+        {
+        'chapter-num': '4.9',
+        'id': 'bio-4',
+        'title': 'Above-ground Biomass',
+        'href': '_4_9_AboveGroundBiomass',
+        'pdf': '_4_9_AboveGroundBiomass.pdf',
+        'icon-lg-src': 'above-ground-biomass.png',
+        'icon-lg-hover-src': 'above-ground-biomass_hover.png',
+        'icon-src': 'ico-bio-above-ground-biomass.png',
+        'icon-hover-src': 'ico-bio-above-ground-biomass_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+
+        {
+        'chapter-num': '4.10',
+        'id': 'bio-8',
+        'title': 'Soil Carbon',
+        'href': '_4_10_SoilCarbon',
+        'pdf': '_4_10_SoilCarbon.pdf',
+        'icon-lg-src': 'soil-carbon_1.png',
+        'icon-lg-hover-src': 'soil-carbon_1_hover.png',
+        'icon-src': 'ico-bio-soil-carbon.png',
+        'icon-hover-src': 'ico-bio-soil-carbon_hover.png',
         'domain': 'Terrestrial',
         'subdomain': 'Biology',
         'scientific-area': 'Biosphere',
@@ -903,76 +973,12 @@ CHAPTERS_DEV = [
 
     # TERRESTRIAL - HYDROSPHERE
 
-    {
-        'chapter-num': '4.2',
-        'id': 'hyd-3',
-        'title': 'Groundwater',
-        'href': '_4_2_GroundWater',
-        'pdf': '_4_2_GroundWater.pdf',
-        'icon-lg-src': 'groundwater_1.png',
-        'icon-lg-hover-src': 'groundwater_1_hover.png',
-        'icon-src': 'ico-hyd-groundwater.png',
-        'icon-hover-src': 'ico-hyd-groundwater_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Hydrology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-    {
-        'chapter-num': '4.4',
-        'id': 'hyd-4',
-        'title': 'Soil Moisture',
-        'href': '_4_4_SoilMoisture',
-        'pdf': '_4_4_SoilMoisture.pdf',
-        'icon-lg-src': 'soil-moisture.png',
-        'icon-lg-hover-src': 'soil-moisture_hover.png',
-        'icon-src': 'ico-hyd-soil-moisture.png',
-        'icon-hover-src': 'ico-hyd-soil-moisture_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Hydrology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-    # TERRESTRIAL - BIOSPHERE
-    {
-        'chapter-num': '4.9',
-        'id': 'bio-4',
-        'title': 'Above-ground Biomass',
-        'href': '_4_9_AboveGroundBiomass',
-        'pdf': '_4_9_AboveGroundBiomass.pdf',
-        'icon-lg-src': 'above-ground-biomass.png',
-        'icon-lg-hover-src': 'above-ground-biomass_hover.png',
-        'icon-src': 'ico-bio-above-ground-biomass.png',
-        'icon-hover-src': 'ico-bio-above-ground-biomass_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
 
-    {
-        'chapter-num': '4.10',
-        'id': 'bio-8',
-        'title': 'Soil Carbon',
-        'href': '_4_10_SoilCarbon',
-        'pdf': '_4_10_SoilCarbon.pdf',
-        'icon-lg-src': 'soil-carbon_1.png',
-        'icon-lg-hover-src': 'soil-carbon_1_hover.png',
-        'icon-src': 'ico-bio-soil-carbon.png',
-        'icon-hover-src': 'ico-bio-soil-carbon_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
+
+    # TERRESTRIAL - BIOSPHERE
+
+
+
     {
         'chapter-num': '4.13',
         'id': 'ant-2',
