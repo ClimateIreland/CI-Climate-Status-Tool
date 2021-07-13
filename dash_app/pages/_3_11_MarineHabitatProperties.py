@@ -54,8 +54,8 @@ infrastructureMap = empty_chart()
 infoLinks = [
     {'text': 'Marine Habitat Properties ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/marine-habitats/'},
-         {'text': 'WFD coastal sites(Water Quality in Ireland under the Water Framework Directive',
-     'url': 'https://www.epa.ie/our-services/monitoring--assessment/'},
+         {'text': 'WFD coastal sites (Water Quality in Ireland under the Water Framework Directive',
+     'url': 'https://www.catchments.ie/water-quality-in-ireland-2013-2018/ '},
          {'text': 'NPWS Special Areas of Conservation (SAC)',
      'url': 'https://www.npws.ie/protected-sites/sac'},
          {'text': 'ICES Vulnerable Marine Ecosystems',
@@ -75,7 +75,9 @@ chapter_dict = next(
 trendChartTitle1 = 'Intertidal Seagrass Sites'
 trendChart1 = figure_3_24()
 trendCaption1 = """
-Distribution of intertidal seagrass sites and their trajectories.
+Distribution of intertidal seagrass sites and their trajectories since 2006. 
+An increase in the presence of seagrass is observed in most sites, except for 
+the Moy estuary, Co. Mayo, and those in Northern Ireland. 
         """
 
 trendChartTitle2 = 'Special Areas of Conservation and Vulnerable Marine Ecosystems'

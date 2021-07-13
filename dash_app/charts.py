@@ -36,7 +36,7 @@ def date_to_day_number(row,standard30=True):
     day = row.datetime.day
     if standard30 & (day in [28,29,30,31]):
         day = 30
-    return ((row.datetime.month-1)*30)+day-1
+    return ((row.datetime.month-1)*30) + day  
 
 def map_columns(columns_dict, original_df):
     """
@@ -163,7 +163,7 @@ def stations_map(df):
     )
 
     ellettTrend = go.Scattermapbox(
-        name='Extended Ellett Line Buoy',
+        name='Extended Ellett Line',
         lon=ellettDF.Longitude,
         lat=ellettDF.Latitude,
         mode="lines",
@@ -182,7 +182,7 @@ def stations_map(df):
     )
 
     waveRideTrend = go.Scattermapbox(
-        name='WaveRide/SmartBayObsCent',
+        name='WaveRider/SmartBayObsCent',
         lon=waveRideDF.Longitude,
         lat=waveRideDF.Latitude,
         marker=dict(color=STATION_COLORS['WaveRide/SmartBayObsCenter'],
@@ -2231,9 +2231,20 @@ def map_3_2():
         data_path = DATA_PATH+'Oceanic_Domain/3.2OceanSurfaceSubsurfaceSalinity/Map3.2/'
         data_csv = data_path + 'Map3.2_data.csv'
         df = pd.read_csv(data_csv, index_col=0)
+        # ellettLineDF = pd.read_csv(
+        #     data_path+'Map3.1_StationTable_ExtendedEllettLineBuoy.txt')
+        # df=pd.concat(df, ellettLineDF)
     except:
         return empty_chart()
     map_3_2=stations_map(df)
+    map_3_2.update_layout(
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=56,
+                    lon=343
+                ),
+                zoom=3.5)
+    )
     return map_3_2
 
 
@@ -2520,6 +2531,8 @@ def map_3_7():
     except:
         return empty_chart()
     map_3_7=stations_map(df)
+    map_3_7.update_traces(name="Mace Head",
+                  selector=dict(name="Synoptic"))
     return map_3_7
 
 def map_3_1b():
@@ -2839,7 +2852,8 @@ def figure_3_10():
             title="Month",
             ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
             showgrid=False,
-            tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
+            # tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
+            tickvals=[15,45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345],
         )
     )
     return figure_3_10

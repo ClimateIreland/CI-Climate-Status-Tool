@@ -45,20 +45,18 @@ Sea surface salinity measurements are made across the Irish Marine Data Buoy
 Observation Network (IMDBON) (orange and pink). Some subsurface salinity in 
 Irish waters are made by the Marine Institute at the M6 buoy location (pink), 
 at the Smart Bay Observatory (yellow) and since 2008 with underwater autonomous 
-profilers as part of the Euro-Argo programme. 
+profilers as part of the Euro-Argo programme. Annual oceanographic surveys are 
+also carried out in the North Atlantic by international teams. One such survey 
+line is the Extended Ellett Line (green).
 In addition, the Marine Institute routinely collects and archives water 
 salinity observations through several initiatives and projects and through 
-ships working with CTD profilers . As part of Ireland’s Water Framework 
+ships working with CTD profilers. As part of Ireland’s Water Framework 
 Directive monitoring programme salinity measurements are made by the 
 Environmental Protection Agency in a number of estuaries and nearshore coastal 
 waters. 
 Sea-surface salinity can be monitored from space at a coarse spatial 
 resolution following the launch of the ESA SMOS (Soil Moisture Ocean Salinity) 
-mission in 2010 and NASA’s AQUARIUS mission in 2011. Both use sensors that 
-detect microwave radiation emitted from the ocean surface from which salinity 
-levels can be inferred. In situ measurements are required to validate these 
-satellite-derived observations, especially in colder north Atlantic waters 
-where there are still significant differences between the satellite derived.
+mission in 2010 and NASA’s AQUARIUS mission in 2011.
         """
 infrastructureMap = map_3_2()
 
@@ -98,13 +96,21 @@ combined_chapter_dict['title'] = 'Ocean Surface and Subsurface Salinity'
 trendChartTitle1 = 'Upper Ocean Salinity - Rockall Trough'
 trendChart1 = figure_3_4()
 trendCaption1 = """
-Mean annual upper ocean (top 800m) salinity in the North Rockall Trough (1975-2018). 
+Mean annual upper ocean (top 800 m) salinity in the North Rockall Trough 
+(1975-2018). An increasing salinity trend can be observed in the earlier 
+decades, followed by a decreasing trend, representing a freshening of the 
+water, in the late 2000s and reaching the lowest recorded values since 1978 
+between 2016 and 2018.
         """
 
 trendChartTitle2 = 'Deep Ocean Salinity - Rockall Trough'
 trendChart2 = figure_3_5()
 trendCaption2 = """
-Mean annual deep ocean salinity, at depths between 1,500 m and 2,000 m, in the North Rockall Trough (1975-2018). 
+Mean annual deep ocean salinity, at depths between 1,500 m and 2,000 m, in the 
+North Rockall Trough (1975-2018). Salinity decreased from the 1970s to the 
+mid-1990s, representing a freshening of the water, after which there has been a
+ gradual increase in salinity, with the values observed in 2018 close to the 
+ long-term mean.
         """
 
 custom_trend = dbc.Container(

@@ -10,7 +10,7 @@ from charts import empty_chart, figure_3_10, map_3_5
 
 chapter_num = '3.5'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Sea_State_Tomasz_SzumskiDSC_9048.JPG'
-bannerImgCredit = 'Tomasz_Szumski'
+bannerImgCredit = 'Tomasz Szumski'
 
 introText = """
 Observations of wave height, direction, length, frequency and swell are relevant 
@@ -25,7 +25,7 @@ Atlantic with typical winter season trends of increases up to 20 cm per decade,
  along with a northward displacement of storm tracks.
         """
 bulletPoint2 = """
-Seasonal variations in wave heights are observed at buoys deployed of the coast
+Seasonal variations in wave heights are observed at buoys deployed off the coast
  of Ireland, however no comprehensive analysis of wave parameters has been 
  carried out on these data. 
         """
@@ -72,7 +72,8 @@ trendChartTitle1 = 'Daily Average Significant Wave Height - Buoy M3'
 trendChart1 = figure_3_10()
 
 trendCaption1 = """
-Daily averaged significant wave height at Buoy M3 (2016-2018). 
+Daily averaged significant wave height at Buoy M3 off the southwest coast 
+(2016-2018). Seasonal variations are evident.
         """
 
 figure_3_11a = IMAGES_PATH+'OceanicSections/Figure3.11_HeatMapSignificantWaveHeight_BuoyM2.png'
@@ -84,7 +85,9 @@ trendCaption2 = """
 Heat Map of Monthly Mean of Average Significant Wave Height at Buoys M2 and M3 
 (2002 – 2018). The data are presented as percentiles of all data combined for 
 both buoys. For example, the 75th percentile means that 75% of all the values 
-are below 2.7 m and 25% of the values are above it.   
+are below 2.7 m and 25% of the values are above it. The values observed at the 
+M3 buoy are higher than those observed at M2, which is in a less exposed 
+location.
         """
 
 trendChartTitle3 = ''

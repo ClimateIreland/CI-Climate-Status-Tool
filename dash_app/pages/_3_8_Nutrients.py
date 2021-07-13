@@ -82,24 +82,30 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 trendChartTitle1 = "Nitrogen Winter Exceedances Above the Recommended Thresholds"
-trendChartTitle2 = "Mean Winter Surface Phosphate and Total Oxidised Nitrogen "
-trendChartTitle3 = "Deep-water Total Oxidised Nitrogen "
+trendChartTitle2 = ["Mean Winter Surface",html.Br(), "Phosphate"]
+trendChartTitle3 = ["Mean Winter Surface",html.Br(), "Total Oxidised Nitrogen"]
+trendChartTitle4 = "Deep-water Total Oxidised Nitrogen "
 figure_3_17 = IMAGES_PATH+'OceanicSections/NitrogenIrishCoasts.png'
 figure_3_18a = IMAGES_PATH+'OceanicSections/Figure3.18_MeanWinterSurface_Phosphate.png'
-figure_3_18b = IMAGES_PATH+'OceanicSections/Figure3.18_MeanWinterSurface_Phosphate.png'
+figure_3_18b = IMAGES_PATH+'OceanicSections/Figure3.18_MeanWinterSurface_TotalOxidisedNitrogen.png'
 figure_3_19 = IMAGES_PATH+'OceanicSections/Nutrients_DeepSectionRockall.png'
 trendCaption1 = """
-Nitrogen winter exceedances above the recommended thresholds. 2016-2018. 
-Dissolved Inorganic Nitrogen thresholds indicative of status (blue=excellent, 
-green = good, yellow = moderate, orange = poor, red = bad) The sampling 
-stations with white arrows were used for trend analysis for the period 
-2008-2018. Ref: EPA – Water Quality in Ireland 2013-2018 Report.  
+Nitrogen winter exceedances above the recommended thresholds (2016-2018). 
+Dissolved Inorganic Nitrogen thresholds indicative of status (blue = excellent, 
+green = good, yellow = moderate, orange = poor, red = bad). 
+Twenty-five percent of the sites, mainly to the south and east, showed excess 
+nitrogen concentrations, which can be linked to land-based sources of pollution.
 """
 trendCaption2 = """
-Mean winter surface a) phosphate and b) total oxidised nitrogen (nitrate (NO\u2083) 
-+ nitrite (NO\u2082)) concentrations (µmol/L), 2007-2018.
+Mean winter surface phosphate concentration (µmol/L) (2007-2018). Higher 
+values are observed to the south and east and particularly in bays and estuaries.
 """
 trendCaption3 = """
+Mean winter surface total oxidised nitrogen (nitrate 
+(NO\u2083) + nitrite (NO\u2082)) concentration (µmol/L) (2007-2018). Higher 
+values are observed to the south and east and particularly in bays and estuaries.
+"""
+trendCaption4 = """
 Deep-water total oxidised nitrogen (nitrate + nitrite) concentration (µmol/L) 
 section for the Rockall Trough in the winter of 2013 (left), during the annual 
 Rockall Ocean Climate survey (right).  The rows of vertical dots represent 
@@ -146,18 +152,27 @@ custom_trend = dbc.Container(
             ),
                         dbc.Row(
                 children=[
-                dbc.Col(className="col-12",
-                            children=[
-                                html.H4(
-                                    className='sr-chart-title',
-                                    children=trendChartTitle2),
-                                    ]
-                            ),
+                # dbc.Col(className="col-12",
+                #             children=[
+                #                 html.H4(
+                #                     className='sr-chart-title',
+                #                     children=trendChartTitle2),
+                #                     ]
+                #             ),
                     dbc.Col(className="col-12 col-md-6",
                             children=[
+                            html.H4(
+                                    className='sr-chart-title',
+                                    children=trendChartTitle2),
                                 html.Img(
                                     className='w-100',
                                     src=figure_3_18a
+                                ),
+                                       html.P(
+                                    className='sr-chart-caption',
+                                            children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption2]
                                 )
                                     ]
                             ),
@@ -165,35 +180,42 @@ custom_trend = dbc.Container(
                             children=[
                                 html.H4(
                                     className='sr-chart-title',
-                                    children=trendChartTitle),
+                                    children=trendChartTitle3),
                                 html.Img(
                                     className='w-100',
                                     src=figure_3_18b
+                                ),
+                                html.P(
+                                    className='sr-chart-caption',
+                                            children=[html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption3]
                                 )
                                     ]
                             )
                 ]
             ),
-            dbc.Row(
-                children=[
-                    dbc.Col(className="col-md-10 offset-md-1",
-                            children=[
-                                html.P(
-                                    className='sr-chart-caption',
-                                            children=[html.I(className="fas fa-play _up",
-                                           style={"color": chapter_dict['domain-color']}),
-                                    trendCaption2]
-                                )]
-                            )
-                ]
-            ),
+            # dbc.Row(
+            #     children=[
+            #         dbc.Col(className="col-md-10 offset-md-1",
+            #                 children=[
+            #                     html.P(
+            #                         className='sr-chart-caption',
+            #                                 children=[html.I(className="fas fa-play _up",
+            #                                style={"color": chapter_dict['domain-color']}),
+            #                         trendCaption2]
+            #                     )
+            #                     ]
+            #                 )
+            #     ]
+            # ),
                         dbc.Row(
                 children=[
                     dbc.Col(className="col-12",
                             children=[
                                 html.H4(
                                     className='sr-chart-title',
-                                    children=trendChartTitle3),
+                                    children=trendChartTitle4),
                                 html.Img(
                                     className='w-100',
                                     src=figure_3_19
@@ -210,7 +232,7 @@ custom_trend = dbc.Container(
                                     className='sr-chart-caption',
                                             children=[html.I(className="fas fa-play _up",
                                            style={"color": chapter_dict['domain-color']}),
-                                    trendCaption3]
+                                    trendCaption4]
                                 )]
                             )
                 ]
