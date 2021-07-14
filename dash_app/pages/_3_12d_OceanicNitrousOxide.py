@@ -54,6 +54,7 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+<<<<<<< HEAD
 trendText= """
 Nitrous Oxide was added in the 2016 revision of the GCOS implementation plan. To date no observations have been established for Ireland.
 """
@@ -77,6 +78,8 @@ custom_trend = dbc.Container(
             ])
     ])
 
+=======
+>>>>>>> a72fadad0ee2461f2812cb8210d88bd419730c0c
 custom_infrastructure = dbc.Container(
     className='sr-infrastructure',
     style={'borderColor': chapter_dict['domain-color']},
@@ -110,7 +113,10 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
+<<<<<<< HEAD
             custom_trend,
+=======
+>>>>>>> a72fadad0ee2461f2812cb8210d88bd419730c0c
         #     pb.build_trend(trendChartTitle,
         #                    trendChart,
         #                    trendCaption,

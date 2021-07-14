@@ -115,7 +115,10 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
+<<<<<<< HEAD
             custom_trend,
+=======
+>>>>>>> a72fadad0ee2461f2812cb8210d88bd419730c0c
         #     pb.build_trend(trendChartTitle,
         #                    trendChart,
         #                    trendCaption,
