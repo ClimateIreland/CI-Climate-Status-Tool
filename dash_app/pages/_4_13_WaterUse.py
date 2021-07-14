@@ -54,9 +54,9 @@ infoLinks = [
     {'text': 'Water use data on the OECD (Organisation for Economic Co-operation and Development) portal ',
      'url': 'https://stats.oecd.org/'},
     {'text': 'The EPA website on water abstraction registration',
-     'url': 'https://www.epa.ie/licensing/watwaste/watabs/'},
+     'url': 'https://www.epa.ie/our-services/monitoring--assessment/freshwater--marine/rivers/water-resources-and-abstractions/'},
     {'text': 'The EPA website on the Water Framework Directive',
-     'url': 'https://www.epa.ie/water/watmg/wfd/'},
+     'url': 'https://www.epa.ie/our-services/monitoring--assessment/freshwater--marine/'},
     {'text': 'UNESCO (United Nations Educational, Scientific and Cultural Organization), The United Nations World Water Development Report 2020: Water and Climate Change',
      'url': 'https://unesdoc.unesco.org/ark:/48223/pf0000372985.locale=en'},
 ]

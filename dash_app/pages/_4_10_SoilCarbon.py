@@ -69,7 +69,7 @@ infoLinks = [
      'url': 'https://www.epa.ie/publications/research/land-use-soils-and-transport/research-204.php'},
     {'text': 'Irish SIS data sources',
      'url': 'http://gis.teagasc.ie/soils/'},
-    {'text': 'ay, D. et al., 2007. Soil Geochemical Atlas of Ireland. Teagasc and Environmental Protection Agency',
+    {'text': 'Fay, D. et al., 2007. Soil Geochemical Atlas of Ireland. Teagasc and Environmental Protection Agency',
      'url': 'https://www.teagasc.ie/media/website/publications/2011/Soil_Geochemical_AtlasofIreland.pdf'},
 
     {'text': 'Soil Geochemical Atlas of Ireland',
@@ -93,16 +93,16 @@ trendChartTitle1 = 'Bulk Density Map of Agricultural Soils'
 trendImg1 = IMAGES_PATH+'TerrestrialSections/Figure4.19.png'
 trendCaption1 = """
 Indicative bulk density map of agricultural soils in Ireland (left: 0–30 cm 
-and right: 30-50cm). (Ref: Soil Property Maps, EPA and Teagasc funded project 
-“Irish Soil Information System”) 
+and right: 30-50cm). Source: Creamer et al. (2016). The higher values occur at 
+depth and are observed in general towards the Midlands.
 """
 
 trendChartTitle2 = 'Carbon Stock Map of Agricultural Soils'
 trendImg2 = IMAGES_PATH+'TerrestrialSections/SoilCarbonStockMap.png'
 trendCaption2 = """
 Indicative soil organic carbon stock map of agricultural soils (0–50 cm). 
-(Ref: Soil Property Maps, EPA and Teagasc funded project “Irish Soil 
-Information System”) 
+Source: Creamer et al. (2016). The highest values are observed towards the west and 
+around the Wicklow mountains.” 
 """
 
 custom_trend = dbc.Container(

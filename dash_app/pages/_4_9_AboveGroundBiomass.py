@@ -86,13 +86,15 @@ trendChartTitle1 = 'Forestry Cover'
 trendImg1 = IMAGES_PATH+'TerrestrialSections/IrelandNationalForestOwnership-1.png'
 trendCaption1 = """
 Map of forest cover in Ireland by ownership, 2017. Ref: National Forestry 
-Service. 
+Service. Just over half (50.8%) of forests are in public ownership and the 
+remainder (49.2%) are privately owned.
 """
 
 trendChartTitle2 = 'Total Growing Stock Volume by Ownership'
 trendChart2 = figure_4_17()
 trendCaption2 = """
-Total growing stock volume (million m\u00B3) by ownership (2006 to 2017).
+Total growing stock volume (million m\u00B3) by ownership (2006 to 2017). 
+Growing stock volume increased by 38% over the period 2006–2017.
 """
 
 custom_trend = dbc.Container(

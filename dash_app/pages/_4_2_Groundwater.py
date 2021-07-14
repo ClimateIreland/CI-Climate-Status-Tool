@@ -37,7 +37,8 @@ trendChart = figure_4_2()
 
 trendCaption = """
 Daily mean groundwater level (m) at a well in Knocktopher, Co. Kilkenny 
-(1980–2018).
+(1980–2018). Levels change on a seasonal basis, with a minimum during the 
+summer months and a maximum during winter, when groundwater recharge occurs.
         """
 
 infrastructureText = """
@@ -61,7 +62,7 @@ infoLinks = [
     {'text': 'Groundwater Essential Climate Variable (ECV) Factsheet ',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/groundwater/'},
      {'text': 'The EPA website on groundwater monitoring',
-     'url': 'https://www.epa.ie/water/wm/groundwater/'},
+     'url': 'https://www.epa.ie/our-services/monitoring--assessment/freshwater--marine/groundwater/'},
      {'text': 'The EPA Geo Portal data source on groundwater ',
      'url': 'http://gis.epa.ie/GetData/Download'},
      {'text': 'The EPA HydroNet portal – groundwater level data',

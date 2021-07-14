@@ -59,7 +59,7 @@ intro = dbc.Container(
             and analysis of almost 50 internationally defined essential climate variables (ECV) observed in the atmospheric,
             oceanic and terrestrial environments. Moreover, it documents the status of Ireland’s climate-observing infrastructure."""),
                                   html.P(children=[
-                                      html.Span('So far, 37 of the 50 ECVs can be explored using the tool below. The full report is available '),
+                                      html.Span('So far, 46 of the 50 ECVs can be explored using the tool below. The full report is available '),
                                       html.A(
                                           'here.',
                                           target='_blank',

@@ -38,6 +38,11 @@ from pages import (
     _3_9_OceanColour,
     _3_10_Plankton,
     _3_11_MarineHabitatProperties,
+    # _3_12_OtherOceanECVs,
+    _3_12a_TransientTracers,
+    _3_12b_OceanSurfaceStress,
+    _3_12c_OceanSurfaceHeatFlux,
+    _3_12d_OceanicNitrousOxide,
 
     _4_1_RiverDischarge,
     _4_2_Groundwater,
@@ -144,6 +149,17 @@ def display_page(pathname):
         return _3_10_Plankton.create_layout(app)
     elif "_3_11_MarineHabitatProperties" in pathname:
         return _3_11_MarineHabitatProperties.create_layout(app)
+    # elif "_3_12_OtherOceanECVs" in pathname:
+    #     return _3_12_OtherOceanECVs.create_layout(app)
+    elif "_3_12a_TransientTracers" in pathname:
+        return _3_12a_TransientTracers.create_layout(app)
+    elif "_3_12b_OceanSurfaceStress" in pathname:
+        return _3_12b_OceanSurfaceStress.create_layout(app)
+    elif "_3_12c_OceanSurfaceHeatFlux" in pathname:
+        return _3_12c_OceanSurfaceHeatFlux.create_layout(app)
+    elif "_3_12d_OceanicNitrousOxide" in pathname:
+        return _3_12d_OceanicNitrousOxide.create_layout(app)
+
 
     # Terrestrial
     elif "_4_2_Groundwater" in pathname:

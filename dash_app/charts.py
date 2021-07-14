@@ -219,6 +219,7 @@ def stations_map(df):
 
     synopticTrend = go.Scattermapbox(
         name='Synoptic',
+        showlegend=True,
         lon=synopticDF.Longitude,
         lat=synopticDF.Latitude,
         marker=dict(color=STATION_COLORS['Synoptic'],
@@ -3400,6 +3401,7 @@ def map_4_1():
 
     flowTrend = go.Scattermapbox(
         name='Flow',
+        showlegend=True,
         lon=dfString.Longitude,
         lat=dfString.Latitude,
         marker=dict(color=STATION_COLORS['Flow'],
@@ -3466,7 +3468,8 @@ def map_4_2():
     except:
         return empty_chart()
     trace = go.Scattermapbox(
-        name='Flow',
+        name='Groundwater',
+        showlegend=True,
         lon=dfString.Longitude,
         lat=dfString.Latitude,
         marker=dict(color=STATION_COLORS['EPA'],
@@ -4137,6 +4140,7 @@ def figure_4_17():
     total_trace = go.Scatter(x=total_df['datetime'].dt.year,
                             y=total_df['sum__annual__growing_stock_volume'],
                             name='Total',
+                            
                             text=total_df['sum__annual__growing_stock_volume'],
                                     mode='lines',  # 'line' is default
                             line_shape='spline',
@@ -4153,6 +4157,7 @@ def figure_4_17():
                             y=public_df['sum__annual__growing_stock_volume'],
                             name='Public',
                             text=public_df['percentage__annual__growing_stock_volume'],
+                            mode='lines+markers',
                             marker=dict(color='#5b9bd5'), # blue,
                             stackgroup="one",
                             hovertemplate='<b>Public</b><br>' +
@@ -4163,6 +4168,7 @@ def figure_4_17():
     private_grant_trace = go.Scatter(x=private_grants_df['datetime'].dt.year,
                             y=private_grants_df['sum__annual__growing_stock_volume'],
                             name='Private (Grant Aided)',
+                            mode='lines+markers',
                             text=private_grants_df['percentage__annual__growing_stock_volume'],
                             marker=dict(color='#ed7d31'), # brown,
                             stackgroup="one",
@@ -4174,6 +4180,7 @@ def figure_4_17():
     private_other_trace = go.Scatter(x=private_other_df['datetime'].dt.year,
                             y=private_other_df['sum__annual__growing_stock_volume'],
                             name='Private (Other)',
+                            mode='lines+markers',
                             text=private_other_df['percentage__annual__growing_stock_volume'],
                             marker=dict(color='#ffff00'), # yellow,
                             stackgroup="one",

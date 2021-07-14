@@ -88,17 +88,22 @@ chapter_dict = next(
 trendChartTitle1 = 'Average Daily Soil Moisture Deficits'
 trendChart1 = figure_4_4()
 trendCaption1 = """
-Average daily soil moisture deficits calculated at Valentia Observatory and 
+Average daily soil moisture deficit calculated at Valentia Observatory and 
 Dublin Airport (1980–2019).
+The greatest SMDs, which usually occur in the summer and when sustained can be 
+indicative of droughts, generally occur in the east and south-east of the country.  
         """
 
 trendChartTitle2 = 'Mean Monthly Soil Moisture Deficit, SMD - Dublin Airport'
 trendChart2 = figure_4_5()
 trendCaption2 = """
-Mean monthly surface soil moisture as derived from measurements at Dublin 
-Airport. The data are presented as percentiles. For example, the 75th 
+Mean monthly surface soil moisture deficit as derived from measurements at Dublin 
+Airport. The data is presented as percentiles. For example, the 75th 
 percentile means that 75% of all the values are below the corresponding values 
-and 25% of the values are above it.   
+and 25% of the values are above it.
+The consecutive red values during summer 2018, with June and July being the 
+highest values of all in the time series, are in line with the heatwave and 
+drought conditions experienced during that summer.
         """
 
 custom_trend = dbc.Container(
