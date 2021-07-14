@@ -49,7 +49,7 @@ The leading global observation network
 that supports collection of the required information is the Global Ocean Ship 
 based Hydrographic Investigations Programme (GO-SHIP). NUI Galway and the 
 Marine Institute have collaborated with GEOMAR, Germany who have specific 
-expertise in this field, to sample for CFCs and SF6 during the trans-Atlantic 
+expertise in this field, to sample for CFCs and SF\u2086 during the trans-Atlantic 
 GOSHIP A02 survey in 2017 and subsequently in the Rockall Trough. 
         """
 infrastructureMap = empty_chart()
@@ -125,6 +125,7 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
+            custom_trend,
         #     pb.build_trend(trendChartTitle,
         #                    trendChart,
         #                    trendCaption,
