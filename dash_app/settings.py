@@ -13,8 +13,8 @@ ATMOSPHERE_BG_COLOR = '#e6f5fc'
 OCEAN_BG_COLOR = '#e6f3f5'
 TERRESTRIAL_BG_COLOR = '#fef4e6'
 
-TIMESERIES_COLOR_1 = "#00a4ae" # gold
-TIMESERIES_COLOR_2 = "#E1AF00" # blue
+TIMESERIES_COLOR_1 = "#00a4ae" # blue
+TIMESERIES_COLOR_2 = "#E1AF00" # gold
 TIMESERIES_COLOR_3 = "#de8bb7" # pink
 TIMESERIES_COLOR_4 = "#6e987b" # green
 
@@ -34,7 +34,8 @@ STATION_COLORS = {
     'ExtendedEllettLineBuoy': '#00734c',  # dark green
     'TideGauge': '#8400a8',  # purple
     'Flow': 'green',  # green
-    'GHG_FLUX_TOWER': 'red'
+    'GHG_FLUX_TOWER': 'red',
+    'buoySubSurf': 'pink'
 }
 
 PERCENTILE_COLORSCALE= [
@@ -372,9 +373,45 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+       {
+        'chapter-num': '3.2',
+        'id': 'sop-2',
+        'title': 'Sea Surface Ocean Salinity',
+        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
+        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
+        'icon-lg-src': 'surface-salinity_0.png',
+        'icon-lg-hover-src': 'surface-salinity_0_hover.png',
+        'icon-src': 'ico-sop-sea-surface-salinity.png',
+        'icon-hover-src': 'ico-sop-sea-surface-salinity_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Evin McGovern, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+    # OCEANIC - SUBSURFACE OCEAN PHYSICS
+    {
+        'chapter-num': '3.2',
+        'id': 'ssop-2',
+        'title': 'Subsurface Salinity',
+        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
+        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
+        'icon-lg-src': 'subsurface-salinity_0.png',
+        'icon-lg-hover-src': 'subsurface-salinity_0_hover.png',
+        'icon-src': 'ico-ssop-subsurface-salinity.png',
+        'icon-hover-src': 'ico-ssop-subsurface-salinity_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Caroline Cusack, Evin McGovern, Glenn Nolan',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
         {
         'chapter-num': '3.3',
-        'id': 'sop-2',
+        'id': 'sop-3',
         'title': 'Surface Currents',
         'href': '_3_3_OceanSurfaceAndSubsurfaceCurrents',
         'pdf': '_3_3_OceanSurfaceSubsurfaceCurrents.pdf',
@@ -391,7 +428,7 @@ CHAPTERS = [
     },
         {
         'chapter-num': '3.3',
-        'id': 'ssop-2',
+        'id': 'ssop-3',
         'title': 'Subsurface Currents',
         'href': '_3_3_OceanSurfaceAndSubsurfaceCurrents',
         'pdf': '_3_3_OceanSurfaceSubsurfaceCurrents.pdf',
@@ -409,7 +446,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '3.4',
-        'id': 'sop-3',
+        'id': 'sop-4',
         'title': 'Sea Level',
         'href': '_3_4_SeaLevel',
         'pdf': '_3_4_SeaLevel.pdf',
@@ -421,6 +458,24 @@ CHAPTERS = [
         'subdomain': 'Physical',
         'scientific-area': 'Physical Properties',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Guy Westbrook, Glenn Nolan, Rosemarie Lawlor, Sarah Gallaher, Gerard McCarthy',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+            {
+        'chapter-num': '3.5',
+        'id': 'sop-5',
+        'title': 'Sea State',
+        'href': '_3_5_SeaState',
+        'pdf': '_3_5_SeaState.pdf',
+        'icon-lg-src': 'sea-state_0.png',
+        'icon-lg-hover-src': 'sea-state_0_hover.png',
+        'icon-src': 'ico-sop-sea-state.png',
+        'icon-hover-src': 'ico-sop-sea-state_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Guy Westbrook, Kieran Lyons, Alan Berry',
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
@@ -459,9 +514,28 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
+
+        {
+        'chapter-num': '3.8',
+        'id': 'obgc-3',
+        'title': 'Nutrients',
+        'href': '_3_8_Nutrients',
+        'pdf': '_3_8_Nutrients.pdf',
+        'icon-lg-src': 'nutrients_0.png',
+        'icon-lg-hover-src': 'nutrients_0_hover.png',
+        'icon-src': 'ico-obgc-nutrients.png',
+        'icon-hover-src': 'ico-obgc-nutrients_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biogeochemistry',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes, Evin McGovern',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
         {
         'chapter-num': '3.9',
-        'id': 'obgc-3',
+        'id': 'obgc-4',
         'title': 'Ocean Colour',
         'href': '_3_9_OceanColour',
              'pdf': '_3_9_OceanColour.pdf',
@@ -494,6 +568,99 @@ CHAPTERS = [
         'domain-bg-color': OCEAN_BG_COLOR
     },
 
+        {
+        'chapter-num': '3.11',
+        'id': 'obe-2',
+        'title': 'Marine Habitats',
+        'href': '_3_11_MarineHabitatProperties',
+        'pdf': '_3_11_MarineHabitatProperties.pdf',
+        'icon-lg-src': 'marine-habitat.png',
+        'icon-lg-hover-src': 'marine-habitat_hover.png',
+        'icon-src': 'ico-obe-marine-habitat.png',
+        'icon-hover-src': 'ico-obe-marine-habitat_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biological/Ecosystems',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Robert Wilkes',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+        {
+        'chapter-num': '3.12a',
+        'id': 'obgc-5',
+        'title': 'Transient Tracers',
+        'href': '_3_12a_TransientTracers',
+        'pdf': '_3_12_OtherOceanEcvs.pdf',
+        'icon-lg-src': 'transient-tracers_0.png',
+        'icon-lg-hover-src': 'transient-tracers_0_hover.png',
+        'icon-src': 'ico-obgc-transient-tracers.png',
+        'icon-hover-src': 'ico-obgc-transient-tracers_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biogeochemical',
+        'scientific-area': 'Carbon Cycle and other GHGs',
+        'authors': 'Ned Dwyer, Walther C.A. Cámaro García',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+        {
+        'chapter-num': '3.12b',
+        'id': 'sop-6',
+        'title': 'Surface Stress',
+        'href': '_3_12b_OceanSurfaceStress',
+        'pdf': '_3_12_OtherOceanEcvs.pdf',
+        'icon-lg-src': 'surface-stress.png',
+        'icon-lg-hover-src': 'surface-stress_hover.png',
+        'icon-src': 'ico-sop-surface-stress.png',
+        'icon-hover-src': 'ico-sop-surface-stress_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Ned Dwyer, Walther C.A. Cámaro García',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+    {
+        'chapter-num': '3.12c',
+        'id': 'sop-7',
+        'title': 'Ocean Surface Heat Flux',
+        'href': '_3_12c_OceanSurfaceHeatFlux',
+        'pdf': '_3_12_OtherOceanEcvs.pdf',
+        'icon-lg-src': 'ocean-surface-heat-flux_0.png',
+        'icon-lg-hover-src': 'ocean-surface-heat-flux_0_hover.png',
+        'icon-src': 'ico-sop-ocean-surface-heat-flux.png',
+        'icon-hover-src': 'ico-sop-ocean-surface-heat-flux_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Physical',
+        'scientific-area': 'Physical properties',
+        'authors': 'Ned Dwyer, Walther C.A. Cámaro García',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+ 
+
+    {
+        'chapter-num': '3.12d',
+        'id': 'obgc-6',
+        'title': 'Nitrous Oxide',
+        'href': '_3_12d_OceanicNitrousOxide',
+        'pdf': '_3_12_OtherOceanEcvs.pdf',
+        'icon-lg-src': 'nitrous-oxide_0.png',
+        'icon-lg-hover-src': 'nitrous-oxide_0_hover.png',
+        'icon-src': 'ico-obgc-nitrous-oxide.png',
+        'icon-hover-src': 'ico-obgc-nitrous-oxide_hover.png',
+        'domain': 'Ocean',
+        'subdomain': 'Biogeochemical',
+        'scientific-area': 'Carbon Cycle and other GHGs',
+        'authors': 'Ned Dwyer, Walther C.A. Cámaro García',
+        'domain-color': OCEAN_COLOR,
+        'domain-bg-color': OCEAN_BG_COLOR
+    },
+
+
+    
+
     # Biosphere
     {
         'chapter-num': '4.1',
@@ -512,9 +679,26 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
+        {
+        'chapter-num': '4.2',
+        'id': 'hyd-2',
+        'title': 'Groundwater',
+        'href': '_4_2_Groundwater',
+        'pdf': '_4_2_Groundwater.pdf',
+        'icon-lg-src': 'groundwater_1.png',
+        'icon-lg-hover-src': 'groundwater_1_hover.png',
+        'icon-src': 'ico-hyd-groundwater.png',
+        'icon-hover-src': 'ico-hyd-groundwater_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Hydrology',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Conor Quinlan',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
     {
         'chapter-num': '4.3',
-        'id': 'hyd-2',
+        'id': 'hyd-3',
         'title': 'Lakes',
         'href': '_4_3_Lakes',
         'pdf': '_4_3_Lakes.pdf',
@@ -529,9 +713,43 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
+        {
+        'chapter-num': '4.4',
+        'id': 'hyd-4',
+        'title': 'Soil Moisture',
+        'href': '_4_4_SoilMoisture',
+        'pdf': '_4_4_SoilMoisture.pdf',
+        'icon-lg-src': 'soil-moisture.png',
+        'icon-lg-hover-src': 'soil-moisture_hover.png',
+        'icon-src': 'ico-hyd-soil-moisture.png',
+        'icon-hover-src': 'ico-hyd-soil-moisture_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Hydrology',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+            {
+            'chapter-num': '4.5',
+        'id': 'bio-1',
+        'title': 'Albedo',
+        'href': '_4_5_Albedo',
+        'pdf': '_4_5_Albedo.pdf',
+        'icon-lg-src': 'albedo_0.png',
+        'icon-lg-hover-src': 'albedo_hover.png',
+        'icon-src': 'ico-bio-albedo.png',
+        'icon-hover-src': 'ico-bio-albedo_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Energy',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer ',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
     {
         'chapter-num': '4.6',
-        'id': 'bio-1',
+        'id': 'bio-2',
         'title': 'Land Cover',
         'href': '_4_6_LandCover',
         'pdf': '_4_6_LandCover.pdf',
@@ -548,7 +766,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '4.7',
-        'id': 'bio-2',
+        'id': 'bio-3',
         'title': 'Fraction of Absorbed Photosynthetically Active Radiation (FAPAR)',
         'href': '_4_7_FAPAR',
         'pdf': '_4_7_FAPAR.pdf',
@@ -563,61 +781,9 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-
-    {
-        'chapter-num': '4.11',
-        'id': 'bio-3',
-        'title': 'Fire Disturbance',
-        'href': '_4_11_Fire',
-        'pdf': '_4_11_Fire.pdf',
-        'icon-lg-src': 'fire_0.png',
-        'icon-lg-hover-src': 'fire_0_hover.png',
-        'icon-src': 'ico-bio-fire.png',
-        'icon-hover-src': 'ico-bio-fire_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': 'Biosphere',
-        'authors': 'Ciaran Nugent, Ned Dwyer, Walther C.A. Cámaro García, Keith Lambkin, Frank Barrett  ',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-    {
-        'chapter-num': '4.14',
-        'id': 'ant-1',
-        'title': 'Anthropogenic Greenhouse Gas Emissions',
-        'href': '_4_14_AnthropogenicGreenhouseGasEmissions',
-        'pdf': '_4_14_GHGEmissions.pdf',
-        'icon-lg-src': 'anthropogenic-ghg-fluxes.png',
-        'icon-lg-hover-src': 'anthropogenic-ghg-fluxes_hover.png',
-        'icon-src': 'ico-ant-ghg-fluxes.png',
-        'icon-hover-src': 'ico-ant-ghg-fluxes_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Human Use of Natural Resources',
-        'scientific-area': 'Biosphere',
-        'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-        {
-            'chapter-num': '4.5',
-        'id': 'bio-5',
-        'title': 'Albedo',
-        'href': '_4_5_Albedo',
-        'pdf': '_4_5_Albedo.pdf',
-        'icon-lg-src': 'albedo_0.png',
-        'icon-lg-hover-src': 'albedo_hover.png',
-        'icon-src': 'ico-bio-albedo.png',
-        'icon-hover-src': 'ico-bio-albedo_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': 'Energy',
-        'authors': 'Walther C.A. Cámaro García, Ned Dwyer ',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-        {
+            {
         'chapter-num': '4.8',
-        'id': 'bio-7',
+        'id': 'bio-4',
         'title': 'Leaf Area Index (LAI)',
         'href': '_4_8_LAI',
         'pdf': '_4_8_LeafAreaIndex.pdf',
@@ -632,9 +798,63 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-    {
-        'chapter-num': '4.12',
+
+        {
+        'chapter-num': '4.9',
+        'id': 'bio-5',
+        'title': 'Above-ground Biomass',
+        'href': '_4_9_AboveGroundBiomass',
+        'pdf': '_4_9_AboveGroundBiomass.pdf',
+        'icon-lg-src': 'above-ground-biomass.png',
+        'icon-lg-hover-src': 'above-ground-biomass_hover.png',
+        'icon-src': 'ico-bio-above-ground-biomass.png',
+        'icon-hover-src': 'ico-bio-above-ground-biomass_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+
+        {
+        'chapter-num': '4.10',
         'id': 'bio-6',
+        'title': 'Soil Carbon',
+        'href': '_4_10_SoilCarbon',
+        'pdf': '_4_10_SoilCarbon.pdf',
+        'icon-lg-src': 'soil-carbon_1.png',
+        'icon-lg-hover-src': 'soil-carbon_1_hover.png',
+        'icon-src': 'ico-bio-soil-carbon.png',
+        'icon-hover-src': 'ico-bio-soil-carbon_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+
+    {
+        'chapter-num': '4.11',
+        'id': 'bio-7',
+        'title': 'Fire Disturbance',
+        'href': '_4_11_Fire',
+        'pdf': '_4_11_Fire.pdf',
+        'icon-lg-src': 'fire_0.png',
+        'icon-lg-hover-src': 'fire_0_hover.png',
+        'icon-src': 'ico-bio-fire.png',
+        'icon-hover-src': 'ico-bio-fire_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Biology',
+        'scientific-area': 'Biosphere',
+        'authors': 'Ciaran Nugent, Ned Dwyer, Walther C.A. Cámaro García, Keith Lambkin, Frank Barrett  ',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+        {
+        'chapter-num': '4.12',
+        'id': 'bio-8',
         'title': 'Land Surface Temperature',
         'href': '_4_12_LandSurfaceTemperature',
         'pdf': '_4_12_LandSurfaceTemperature.pdf',
@@ -649,6 +869,41 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
+
+        {
+        'chapter-num': '4.13',
+        'id': 'ant-1',
+        'title': 'Anthropogenic Water Use',
+        'href': '_4_13_WaterUse',
+        'pdf': '_4_13_WaterUse.pdf',
+        'icon-lg-src': 'anthropogenic-water-use.png',
+        'icon-lg-hover-src': 'anthropogenic-water-use_hover.png',
+        'icon-src': 'ico-ant-wateruse.png',
+        'icon-hover-src': 'ico-ant-wateruse_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Human Use of Natural Resources',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer and Conor Quinlan',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    },
+    {
+        'chapter-num': '4.14',
+        'id': 'ant-2',
+        'title': 'Anthropogenic Greenhouse Gas Emissions',
+        'href': '_4_14_AnthropogenicGreenhouseGasEmissions',
+        'pdf': '_4_14_GHGEmissions.pdf',
+        'icon-lg-src': 'anthropogenic-ghg-fluxes.png',
+        'icon-lg-hover-src': 'anthropogenic-ghg-fluxes_hover.png',
+        'icon-src': 'ico-ant-ghg-fluxes.png',
+        'icon-hover-src': 'ico-ant-ghg-fluxes_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Human Use of Natural Resources',
+        'scientific-area': 'Biosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    }
 ]
 
 CHAPTERS_DEV = [
@@ -730,254 +985,21 @@ CHAPTERS_DEV = [
 
 
     # OCEANIC - SURFACE OCEAN PHYSICS
-    {
-        'chapter-num': '2.13',
-        'id': 'sop-4',
-        'title': 'Sea State',
-        'href': '_3_5_SeaState',
-        'pdf': '_3_5_SeaState.pdf',
-        'icon-lg-src': 'sea-state_0.png',
-        'icon-lg-hover-src': 'sea-state_0_hover.png',
-        'icon-src': 'ico-sop-sea-state.png',
-        'icon-hover-src': 'ico-sop-sea-state_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-    {
-        'chapter-num': '3.12',
-        'id': 'sop-5',
-        'title': 'Surface Stress',
-        'href': '_3_12_OtherOceanEcvs',
-        'pdf': '_3_12_OtherOceanEcvs.pdf',
-        'icon-lg-src': 'surface-stress.png',
-        'icon-lg-hover-src': 'surface-stress_hover.png',
-        'icon-src': 'ico-sop-surface-stress.png',
-        'icon-hover-src': 'ico-sop-surface-stress_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-    {
-        'chapter-num': '3.12',
-        'id': 'sop-6',
-        'title': 'Ocean Surface Heat Flux',
-        'href': '_3_12_OtherOceanEcvs',
-        'pdf': '_3_12_OtherOceanEcvs.pdf',
-        'icon-lg-src': 'ocean-surface-heat-flux_0.png',
-        'icon-lg-hover-src': 'ocean-surface-heat-flux_0_hover.png',
-        'icon-src': 'ico-sop-ocean-surface-heat-flux.png',
-        'icon-hover-src': 'ico-sop-ocean-surface-heat-flux_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-    {
-        'chapter-num': '3.2',
-        'id': 'sop-7',
-        'title': 'Sea Surface Ocean Salinity',
-        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
-        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
-        'icon-lg-src': 'surface-salinity_0.png',
-        'icon-lg-hover-src': 'surface-salinity_0_hover.png',
-        'icon-src': 'ico-sop-sea-surface-salinity.png',
-        'icon-hover-src': 'ico-sop-sea-surface-salinity_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
 
-    # OCEANIC - SUBSURFACE OCEAN PHYSICS
-    {
-        'chapter-num': '3.2',
-        'id': 'ssop-3',
-        'title': 'Subsuface Salinity',
-        'href': '_3_2_OceanSurfaceSubsurfaceSalinity',
-        'pdf': '_3_2_OceanSurfaceSubsurfaceSalinity.pdf',
-        'icon-lg-src': 'subsurface-salinity_0.png',
-        'icon-lg-hover-src': 'subsurface-salinity_0_hover.png',
-        'icon-src': 'ico-ssop-subsurface-salinity.png',
-        'icon-hover-src': 'ico-ssop-subsurface-salinity_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Physical',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-    # OCEANIC -  Biogeochemistry
-    {
-        'chapter-num': '3.8',
-        'id': 'obgc-4',
-        'title': 'Nutrients',
-        'href': '_3_8_Nutrients',
-        'pdf': '_3_8_Nutrients.pdf',
-        'icon-lg-src': 'nutrients_0.png',
-        'icon-lg-hover-src': 'nutrients_0_hover.png',
-        'icon-src': 'ico-obgc-nutrients.png',
-        'icon-hover-src': 'ico-obgc-nutrients_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Biogeochemistry',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-    {
-        'chapter-num': '3.12',
-        'id': 'obgc-5',
-        'title': 'Transient Tracers',
-        'href': '_3_12_OtherOceanEcvs',
-        'pdf': '_3_12_OtherOceanEcvs.pdf',
-        'icon-lg-src': 'transient-tracers_0.png',
-        'icon-lg-hover-src': 'transient-tracers_0_hover.png',
-        'icon-src': 'ico-obgc-transient-tracers.png',
-        'icon-hover-src': 'ico-obgc-transient-tracers_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Biogeochemistry',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
-    {
-        'chapter-num': '3.12',
-        'id': 'obgc-6',
-        'title': 'Nitrous Oxide',
-        'href': '_3_12_OtherOceanEcvs',
-        'pdf': '_3_12_OtherOceanEcvs.pdf',
-        'icon-lg-src': 'nitrous-oxide_0.png',
-        'icon-lg-hover-src': 'nitrous-oxide_0_hover.png',
-        'icon-src': 'ico-obgc-nitrous-oxide.png',
-        'icon-hover-src': 'ico-obgc-nitrous-oxide_hover.png',
-        'domain': 'Ocean',
-        'subdomain': 'Biogeochemistry',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
 
     # OCEANIC - BIOECO
-    {
-        'chapter-num': '3.11',
-        'id': 'obe-2',
-        'title': 'Marine Habitats',
-        'href': '_3_11_MarineHabitatProperties',
-        'pdf': '_3_11_MarineHabitatProperties.pdf',
-        'icon-lg-src': 'marine-habitat.png',
-        'icon-lg-hover-src': 'marine-habitat_hover.png',
-        'icon-src': 'ico-obe-marine-habitat.png',
-        'icon-hover-src': 'ico-obe-marine-habitat_hover.png',
-        'domain': 'Biological/Ecosystems',
-        'subdomain': 'Biosphere',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': OCEAN_COLOR,
-        'domain-bg-color': OCEAN_BG_COLOR
-    },
+
 
     # TERRESTRIAL - HYDROSPHERE
 
-    {
-        'chapter-num': '4.2',
-        'id': 'hyd-3',
-        'title': 'Groundwater',
-        'href': '_4_2_GroundWater',
-        'pdf': '_4_2_GroundWater.pdf',
-        'icon-lg-src': 'groundwater_1.png',
-        'icon-lg-hover-src': 'groundwater_1_hover.png',
-        'icon-src': 'ico-hyd-groundwater.png',
-        'icon-hover-src': 'ico-hyd-groundwater_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Hydrology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-    {
-        'chapter-num': '4.4',
-        'id': 'hyd-4',
-        'title': 'Soil Moisture',
-        'href': '_4_4_SoilMoisture',
-        'pdf': '_4_4_SoilMoisture.pdf',
-        'icon-lg-src': 'soil-moisture.png',
-        'icon-lg-hover-src': 'soil-moisture_hover.png',
-        'icon-src': 'ico-hyd-soil-moisture.png',
-        'icon-hover-src': 'ico-hyd-soil-moisture_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Hydrology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-    # TERRESTRIAL - BIOSPHERE
-    {
-        'chapter-num': '4.9',
-        'id': 'bio-4',
-        'title': 'Above-ground Biomass',
-        'href': '_4_9_AboveGroundBiomass',
-        'pdf': '_4_9_AboveGroundBiomass.pdf',
-        'icon-lg-src': 'above-ground-biomass.png',
-        'icon-lg-hover-src': 'above-ground-biomass_hover.png',
-        'icon-src': 'ico-bio-above-ground-biomass.png',
-        'icon-hover-src': 'ico-bio-above-ground-biomass_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
 
-    {
-        'chapter-num': '4.10',
-        'id': 'bio-8',
-        'title': 'Soil Carbon',
-        'href': '_4_10_SoilCarbon',
-        'pdf': '_4_10_SoilCarbon.pdf',
-        'icon-lg-src': 'soil-carbon_1.png',
-        'icon-lg-hover-src': 'soil-carbon_1_hover.png',
-        'icon-src': 'ico-bio-soil-carbon.png',
-        'icon-hover-src': 'ico-bio-soil-carbon_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    },
-    {
-        'chapter-num': '4.13',
-        'id': 'ant-2',
-        'title': 'Anthropogenic Water Use',
-        'href': '_4_13_WaterUse',
-        'pdf': '_4_13_WaterUse.pdf',
-        'icon-lg-src': 'anthropogenic-water-use.png',
-        'icon-lg-hover-src': 'anthropogenic-water-use_hover.png',
-        'icon-src': 'ico-ant-wateruse.png',
-        'icon-hover-src': 'ico-ant-wateruse_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    }
+
+    # TERRESTRIAL - BIOSPHERE
+
+
+
+
     ]
 
 MAP_LAYOUT = dict(

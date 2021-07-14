@@ -5,6 +5,8 @@ import dateutil
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from settings import *
+import json
+import geopandas as gpd
 
 def percentile_series(df,col):
     """
@@ -27,14 +29,14 @@ def percentile_series(df,col):
         
     return df.apply (lambda row: assign_percentile(df,row,col), axis=1)
 
-def date_to_day_number(row):
+def date_to_day_number(row,standard30=True):
     """
     Returns the day of the year, standardised to a 30 day month
     """
     day = row.datetime.day
-    if day in [28,29,30,31]:
+    if standard30 & (day in [28,29,30,31]):
         day = 30
-    return (row.datetime.month*30)+day
+    return ((row.datetime.month-1)*30) + day  
 
 def map_columns(columns_dict, original_df):
     """
@@ -85,7 +87,8 @@ def stations_map_hovertemplate(df):
 
 
 def stations_map(df):
-    buoyDF = df.loc[(df['Type'] == 'Buoy') | (df['Type'] == 'BuoySubSurf')]
+    buoyDF = df.loc[(df['Type'] == 'Buoy')]
+    buoySubSurfDF = df.loc[(df['Type'] == 'BuoySubSurf')]
     flowDF = df.loc[(df['Type'] == 'Flow')]
     ghgFluxDF = df.loc[(df['Type'] == 'GHG_FLUX_TOWER')]
     epaDF = df.loc[(df['Type'] == 'EPA')]
@@ -109,6 +112,8 @@ def stations_map(df):
                     size=7),
         hovertemplate=stations_map_hovertemplate(gpsDF),
     )
+
+
     
     tidbiTTrend = go.Scattermapbox(
         name='tidbiT',
@@ -158,7 +163,7 @@ def stations_map(df):
     )
 
     ellettTrend = go.Scattermapbox(
-        name='Extended Ellett Line Buoy',
+        name='Extended Ellett Line',
         lon=ellettDF.Longitude,
         lat=ellettDF.Latitude,
         mode="lines",
@@ -177,7 +182,7 @@ def stations_map(df):
     )
 
     waveRideTrend = go.Scattermapbox(
-        name='WaveRide/SmartBayObsCent',
+        name='WaveRider/SmartBayObsCent',
         lon=waveRideDF.Longitude,
         lat=waveRideDF.Latitude,
         marker=dict(color=STATION_COLORS['WaveRide/SmartBayObsCenter'],
@@ -194,6 +199,15 @@ def stations_map(df):
         hovertemplate=stations_map_hovertemplate(buoyDF),
     )
 
+    buoySubSurfTrend = go.Scattermapbox(
+        name='Buoy Subsurface',
+        lon=buoySubSurfDF.Longitude,
+        lat=buoySubSurfDF.Latitude,
+        marker=dict(color=STATION_COLORS['buoySubSurf'],
+                    size=7),
+        hovertemplate=stations_map_hovertemplate(buoySubSurfDF),
+    )
+
     rainfallTrend = go.Scattermapbox(
         name='Rainfall',
         lon=rainfallDF.Longitude,
@@ -205,6 +219,7 @@ def stations_map(df):
 
     synopticTrend = go.Scattermapbox(
         name='Synoptic',
+        showlegend=True,
         lon=synopticDF.Longitude,
         lat=synopticDF.Latitude,
         marker=dict(color=STATION_COLORS['Synoptic'],
@@ -224,6 +239,7 @@ def stations_map(df):
         data=[synopticTrend, 
               climateTrend,
               buoyTrend, 
+              buoySubSurfTrend,
               epaTrend,
               nuigTrend,
               ghgFluxTrend, 
@@ -2124,6 +2140,116 @@ def map_3_1a():
     map_3_1a=stations_map(combinedDF)
     return map_3_1a
 
+def figure_3_4():
+    """
+    Sea Surface Salinity
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.2OceanSurfaceSubsurfaceSalinity/Figure3.4/'
+        data_csv = data_path + 'Figure3.4_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    mean_annual_trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__annual__upper_sea_salinity'],
+                         name='Mean Annual',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_2,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=1),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Mean Annual</b><br>' +
+                         'Salinity: %{y:.2f}<br>' +
+                         '<extra></extra>'
+                         )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__5year__upper_sea_salinity'],
+                                name='5 Year Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>5 Year Moving Average</b><br>' +
+                                    'Salinity: %{y:.2f}<br>' +
+                                    '<extra></extra>'
+                                )
+    figure_3_4 = go.Figure(data=[mean_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_3_4.update_layout(
+        yaxis=dict(title='Salinity'),
+        xaxis=dict(title="Year"))
+    return figure_3_4
+
+def figure_3_5():
+    """
+    Deep Sea Salinity
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.2OceanSurfaceSubsurfaceSalinity/Figure3.5/'
+        data_csv = data_path + 'Figure3.5_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    mean_annual_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__annual__deep_sea_salinity'],
+                            name='Mean Annual',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                        width=1),
+                            hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Mean Annual</b><br>' +
+                            'Salinity: %{y:.2f}<br>' +
+                            '<extra></extra>'
+                            )
+    moving_avg_trace = go.Scatter(x=df['datetime'],
+                                y=df['moving_average__5year__deep_sea_salinity'],
+                                name='5 Year Moving Average',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>5 Year Moving Average</b><br>' +
+                                    'Salinity: %{y:.2f}<br>' +
+                                    '<extra></extra>'
+                                )
+    figure_3_5 = go.Figure(data=[mean_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
+    figure_3_5.update_layout(
+        yaxis=dict(title='Salinity'),
+        xaxis=dict(title="Year"))
+    return figure_3_5
+
+def map_3_2():
+    """
+    Surface Sea Salinity infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.2OceanSurfaceSubsurfaceSalinity/Map3.2/'
+        data_csv = data_path + 'Map3.2_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        # ellettLineDF = pd.read_csv(
+        #     data_path+'Map3.1_StationTable_ExtendedEllettLineBuoy.txt')
+        # df=pd.concat(df, ellettLineDF)
+    except:
+        return empty_chart()
+    map_3_2=stations_map(df)
+    map_3_2.update_layout(
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=56,
+                    lon=343
+                ),
+                zoom=3.5)
+    )
+    return map_3_2
+
+
+
 def figure_3_7():
     """
     Sea Level Monthly Mean, Ballyglass, Casteltownbare, Howth Harbout, Malin head
@@ -2396,6 +2522,20 @@ def figure_3_7_4():
                             )
     return figure_3_7_4
 
+def map_3_7():
+    """
+    Nutrients infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.8Nutrients/Map3.7/'
+        df = pd.read_csv(data_path+'Map3.7_data.csv')
+    except:
+        return empty_chart()
+    map_3_7=stations_map(df)
+    map_3_7.update_traces(name="Mace Head",
+                  selector=dict(name="Synoptic"))
+    return map_3_7
+
 def map_3_1b():
     """
     Sea Subsurface Temperature infrastructure map
@@ -2645,6 +2785,91 @@ def map_3_4():
         layout=MAP_LAYOUT)
 
     return map_3_4
+
+def figure_3_10():
+    """
+    Sea State daily average 
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.5SeaState/Figure3.10/'
+        data_csv = data_path + 'Figure3.10_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        df['xAxis'] = df.apply (lambda row: date_to_day_number(row), axis=1)
+        df_16 = df.loc[(df['datetime'].dt.year == 2016)]
+        df_17 = df.loc[(df['datetime'].dt.year == 2017)]
+        df_18 = df.loc[(df['datetime'].dt.year == 2018)]
+    except:
+        return empty_chart()
+    trace_16 = go.Scatter(x=df['xAxis'],
+                      y=df_16['mean__daily__sea_surface_wave_significant_height'],
+                         name='2016',
+                         mode='markers+lines',
+                         text=df['datetime'],
+                         marker=dict(color=TIMESERIES_COLOR_1,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                      width=1),
+                         hovertemplate='%{text|%d-%b}-2016<br>' +
+                         '<b>2016 Daily Average</b><br>' +
+                         'Wave Height: %{y:.2f} m<br>' +
+                         '<extra></extra>'
+                         )
+    trace_17 = go.Scatter(x=df['xAxis'],
+                        y=df_17['mean__daily__sea_surface_wave_significant_height'],
+                            name='2017',
+                            mode='markers+lines',
+                            text=df['datetime'],
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                        width=1),
+                            hovertemplate='%{text|%d-%b}-2017<br>' +
+                            '<b>2017 Daily Average</b><br>' +
+                            'Wave Height: %{y:.2f} m<br>' +
+                            '<extra></extra>'
+                            )
+    trace_18 = go.Scatter(x=df['xAxis'],
+                        y=df_18['mean__daily__sea_surface_wave_significant_height'],
+                            name='2018',
+                            mode='markers+lines',
+                            text=df['datetime'],
+                            marker=dict(color=TIMESERIES_COLOR_3,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_3,
+                                        width=1),
+                            hovertemplate='%{text|%d-%b}-2018<br>' +
+                            '<b>2018 Daily Average</b><br>' +
+                            'Wave Height: %{y:.2f} m<br>' +
+                            '<extra></extra>'
+                            )
+    figure_3_10 = go.Figure(data=[trace_16,trace_17,trace_18], layout=TIMESERIES_LAYOUT)
+    figure_3_10.update_layout(
+        yaxis=dict(title='Mean Significant Wave Height, H<sub>s</sub> (m)'),
+        xaxis=dict(
+            title="Month",
+            ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+            showgrid=False,
+            # tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
+            tickvals=[15,45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345],
+        )
+    )
+    return figure_3_10
+
+def map_3_5():
+    """
+    Sea state infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.5SeaState/Map3.5/'
+        df = pd.read_csv(data_path+'SeaStations.txt')
+    except:
+        return empty_chart()
+    map_3_5=stations_map(df)
+    return map_3_5
 
 def figure_3_15():
     """
@@ -2997,6 +3222,170 @@ def map_3_8():
     map_3_8.update_layout(legend_title='<b>Site Type</b>')
     return map_3_8
 
+def figure_3_24():
+    """
+    Sea grass sites trajectory
+    """
+
+    try:
+        data_path = DATA_PATH+'Oceanic_Domain/3.11MarineHabitatProperties/Figure3.24/'
+        data_csv = data_path + 'Figure3.24_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+
+    increase_df = df.loc[(df['Trajectory_GLOBAL']=='increase')]
+    decrease_df = df.loc[(df['Trajectory_GLOBAL']=='decrease')]
+    no_change_df = df.loc[(df['Trajectory_GLOBAL']=='no change')]
+    increase_trend = go.Scattermapbox(
+            name='Increase',
+            lon=increase_df.Longitude,
+            lat=increase_df.Latitude,
+            marker=dict(color="#359107",#green
+                        size=8,),
+            hovertemplate='<b>'+increase_df["SITE"]+'</b><br>' +
+            'Trajectory: Increase<br>' +
+            'Source: '+ increase_df["SOURCE"] +'<br>' +
+            'Lat: %{lat}\u00b0<br>' +
+            'Lon: %{lon}\u00b0<br>' +
+            '<extra></extra>',
+        )
+
+    decrease_trend = go.Scattermapbox(
+            name='Decrease',
+            lon=decrease_df.Longitude,
+            lat=decrease_df.Latitude,
+            marker=dict(color="#eb34d8",#pink
+                        size=8,),
+            hovertemplate='<b>'+decrease_df["SITE"]+'</b><br>' +
+            'Trajectory: Decrease<br>' +
+            'Source: '+ decrease_df["SOURCE"] +'<br>' +
+            'Lat: %{lat}\u00b0<br>' +
+            'Lon: %{lon}\u00b0<br>' +
+            '<extra></extra>',
+        )
+
+    no_change_trend = go.Scattermapbox(
+            name='No Change',
+            lon=no_change_df.Longitude,
+            lat=no_change_df.Latitude,
+            marker=dict(color="yellow",#yellow
+                        size=8,),
+            hovertemplate='<b>'+no_change_df["SITE"]+'</b><br>' +
+            'Trajectory: No Change<br>' +
+            'Source: '+ no_change_df["SOURCE"] +'<br>' +
+            'Lat: %{lat}\u00b0<br>' +
+            'Lon: %{lon}\u00b0<br>' +
+            '<extra></extra>',
+        )
+
+
+
+    figure_3_24 = go.Figure(
+            data=[decrease_trend,increase_trend,no_change_trend],
+            layout=MAP_LAYOUT)
+    figure_3_24.update_layout(legend_title="<b>Site Trajectories</b>")
+    return figure_3_24
+
+def figure_3_25():
+    """
+    Marine special areas sites
+    """
+
+    try:
+       
+        data_path = DATA_PATH+'Oceanic_Domain/3.11MarineHabitatProperties/Figure3.25/'
+        data_csv = data_path + 'Fifure3.25_StationTable_VMEDataSetIrishShelf.txt'
+        with open(data_path + 'SAC_Offshore_WGS84_2015_11.geojson') as json_file:
+            sac_data = json.load(json_file)
+        sac_df = gpd.read_file(data_path + 'SAC_Offshore_WGS84_2015_11.geojson')
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    
+    vme_list = [
+        'Anemones',
+        'Black coral',
+        'Cup coral',
+        'Gorgonian',
+        'Sea-pen',
+        'Soft coral',
+        'Sponge',
+        'Stony coral',
+        'Stylasterids',
+        ' '
+    ]
+    data = []
+    sac_trend = go.Scattermapbox(
+            name='SAC Site',
+            lon=sac_df.Centroid_X,
+            lat=sac_df.Centroid_Y,
+            text=sac_df["LAEA_Area"],
+            marker=dict(color='pink',size=10,symbol='square'),
+            hovertemplate='SAC Site: '+ sac_df["SITE_NAME"]+'<br>' +
+            'N2k Code: '+ sac_df["N2k_Code"]+'<br>' +
+            'Area: %{text} ha<br>' +
+            'Center Lat: %{lat:.2f}\u00b0<br>' +
+            'Center Lon: %{lon:.2f}\u00b0<br>' +
+            '<extra></extra>',
+        )
+    data.append(sac_trend)
+    for key in vme_list:
+        trend_df = df.loc[(df['VME_Indica']==key)]
+        if key == ' ':
+            key = 'Other'
+        trend = go.Scattermapbox(
+            name=key,
+            lon=trend_df.MiddleLong,
+            lat=trend_df.MiddleLati,
+            marker=dict(size=5,),
+            hovertemplate='VME Indicator: '+ trend_df["VME_Indica"]+'<br>' +
+            'Species: '+ trend_df["Species"]+'<br>' +
+            'Habitat Type: '+ trend_df["HabitatTyp"]+'<br>' +
+            'VME Habitat Type: '+ trend_df["VME_Habita"]+'<br>' +
+            'Status: '+ trend_df["status"]+'<br>' +
+            # Getting t.replace is not a fucntion errors on hover when these lines are inlcuded
+    #         'Data Owner: '+ df["DataOwner"]+'<br>' +
+    #         'Vessel Type: '+ trend_df["VesselType"]+'<br>' +
+    #         'Survey Method: '+ trend_df["SurveyMeth"]+'<br>' +
+    #         'Survey Key: '+ trend_df["SurveyKey"]+'<br>' +
+            'Observation Date: '+ trend_df["ObsDate"]+'<br>' +
+            'Placename: '+ trend_df["PlaceName"]+'<br>' +
+            'Lat: %{lat:.2f}\u00b0<br>' +
+            'Lon: %{lon:.2f}\u00b0<br>' +
+            '<extra></extra>',
+        )
+        data.append(trend)
+    
+    figure_3_25 = go.Figure(
+            data=data,
+            layout=MAP_LAYOUT)
+    figure_3_25.update_layout(
+        legend_title="<b>    SAC Sites & <br> ICES-VME Indicators</b>",
+            mapbox=dict(bearing=0,
+                    center=dict(
+                        lat=53.0,
+                        lon=350
+                    ),
+                    zoom=3.8,
+                        
+                    ))
+
+    figure_3_25.update_layout(
+        mapbox = {
+            'layers': [{
+                'source': sac_data,
+                'type': "fill", 'below': "traces", 'color': "pink"}]}
+    )
+    return figure_3_25
+
+
+
+##############################################################################
+                 # Terrestrial Charts
+##############################################################################
+
+
 
 
 ##############################################################################
@@ -3019,6 +3408,7 @@ def map_4_1():
 
     flowTrend = go.Scattermapbox(
         name='Flow',
+        showlegend=True,
         lon=dfString.Longitude,
         lat=dfString.Latitude,
         marker=dict(color=STATION_COLORS['Flow'],
@@ -3043,6 +3433,67 @@ def map_4_1():
                 zoom=4.2)
     )
     return map_4_1
+
+def figure_4_2():
+    """
+    Groundwater Level
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.2Groundwater/Figure4.2/'
+        data_csv = data_path + 'Figure4.2_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    trace = go.Scatter(x=df['datetime'],
+                            y=df['mean__daily__groundwater_level'],
+                         name='Mean Daily',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_1,
+                                     size=1,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                      width=1),
+                         hovertemplate='%{x|%d-%b-%Y}<br>' +
+                         'Mean Level: %{y:.2f} m<br>' +
+                         '<extra></extra>'
+                         )
+    figure_4_2 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
+    figure_4_2.update_layout(
+        yaxis=dict(title='Level Above Malin Datum (m)'),
+        xaxis=dict(title="Year"))
+    return figure_4_2
+
+def map_4_2():
+    """
+    Groundwater infrastructure map
+    """
+
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.2Groundwater/Map4.2/'
+        df = pd.read_csv(data_path+'Map4.2_StationTable_GWSTations.txt', delimiter = ",")
+        dfString=df.astype(str)
+    except:
+        return empty_chart()
+    trace = go.Scattermapbox(
+        name='Groundwater',
+        showlegend=True,
+        lon=dfString.Longitude,
+        lat=dfString.Latitude,
+        marker=dict(color=STATION_COLORS['EPA'],
+                    size=7),
+        hovertemplate='Station: ' + dfString.StationNam +
+                '<br>Entity: '+ dfString.EntityName +
+                '<br>Created By: '+ dfString.CreatedByO +
+                '<br>Local Authority: '+ dfString.LA +
+                '<br>Station Type: ' + dfString.StationTyp +
+                '<br>Station ID.: ' + dfString.StationID +
+                '<br>Lat: %{lat:.2f}'+
+                '<br>Lon: %{lon:.2f}<extra></extra>',)
+    map_4_2=go.Figure(
+        data=trace,
+        layout=MAP_LAYOUT)
+
+    return map_4_2
 
 def figure_4_3():
     """
@@ -3147,6 +3598,137 @@ def map_4_3():
                     layout=MAP_LAYOUT)
     map_4_3.update_layout(legend_title='<b>Station Agency</b>')
     return map_4_3
+
+def figure_4_4():
+    """
+    Soil moisute deficit averaged daily 
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.4SoilMoisture/Figure4.4/'
+        data_csv = data_path + 'Figure4.4_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['year']=df['end_year']
+        df['datetime']=pd.to_datetime(df[['year','month','day']])
+        valentia_df = df.loc[(df['location'] == 'Valentia')]
+        dublin_df = df.loc[(df['location'] == 'Dublin_Airport')]
+    except:
+        return empty_chart()
+    valentia_trace = go.Scatter(x=valentia_df['datetime'],
+                            y=valentia_df['average__daily__soil_moisture_deficit'],
+                         name='Valentia',
+                         mode='markers+lines',
+                         marker=dict(color=TIMESERIES_COLOR_1,
+                                     size=5,
+                                     opacity=0.5),
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                      width=1),
+                         hovertemplate='%{x|%d %b}<br>' +
+                         '<b>Valentia</b><br>' +
+                         'Average SMD: %{y:.2f} mm<br>' +
+                         '<extra></extra>'
+                         )
+    dublin_trace = go.Scatter(x=dublin_df['datetime'],
+                                y=dublin_df['average__daily__soil_moisture_deficit'],
+                            name='Dublin Airport',
+                            mode='markers+lines',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                        width=1),
+                            hovertemplate='%{x|%d %b}<br>' +
+                            '<b>Dublin Airport</b><br>' +
+                            'Average SMD: %{y:.2f} mm<br>' +
+                            '<extra></extra>'
+                            )
+
+    figure_4_4 = go.Figure(data=[valentia_trace, dublin_trace], layout=TIMESERIES_LAYOUT)
+    figure_4_4.update_layout(
+        yaxis=dict(
+            title='Soil Moisture Deficet, SMD (mm)',),
+        xaxis=dict(
+            title="Month",
+            dtick="M1",
+            tickformat="%b",
+            ticklabelmode="period",
+                ))
+    return figure_4_4
+
+def figure_4_5():
+    """
+    Soil moisute heat map
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.4SoilMoisture/Figure4.5/'
+        data_csv = data_path + 'Figure4.5_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df = df.loc[(df['location'] == 'Dublin_Airport')]
+        df['datetime'] = pd.to_datetime(df['datetime'])
+        df['percentile'] = percentile_series(df,'mean__monthly__soil_moisture_deficit')
+    except:
+        return empty_chart()
+    
+    trace = go.Heatmap(
+        z=df['percentile'],
+        x=df['datetime'].dt.month,
+        y=df['datetime'].dt.year,
+        text=df['mean__monthly__soil_moisture_deficit'],
+        colorscale=PERCENTILE_COLORSCALE, 
+        colorbar=dict(
+                    tickmode='array',
+                    thickness=10,
+                    len=0.9,
+            
+        title='<b>Percentile</b> (mm)',
+                ticktext=[
+                    '<b>Min.</b> (-3.6)', 
+                    '<b> 5%</b> (-1.9)', 
+                    '<b>25%</b> (0.4)', 
+                    '<b>50%</b> (6.9)',
+                    '<b>75%</b> (23.3)', 
+                    '<b>95%</b> (49.8)'],
+                tickvals=[0,5,24,47, 71, 90]  
+        ),
+        hovertemplate='%{x} %{y}<br>'+
+        'Mean SMD: %{text:.2f} mm<extra></extra>'
+    )
+    figure_4_5 = go.Figure(data=trace, layout=TIMESERIES_LAYOUT)
+    figure_4_5.update_layout(
+    yaxis=dict(
+        title='Year',
+        range=[1980, 2020]
+        ),
+    xaxis=dict(
+        title='Month',
+        ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
+        showgrid=False,
+    tickvals=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    ))
+
+    # Include white lines as xaxis gridlines
+    x0=1.5
+    for i in range(0,11):
+        figure_4_5.add_shape(type='line',
+                            x0=x0, y0=1979.5, x1=x0, y1=2019.5,
+                            line=dict(color='White', width=3))
+        x0+=1
+
+    return figure_4_5
+
+def map_4_4():
+    """
+    Soil moisture infrastructure map
+    """
+
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.4SoilMoisture/Map4.4/'
+        df = pd.read_csv(data_path+'Map4.4_StationTable_SoilMoisture.txt', delimiter = ",")
+        # df = df.rename(columns={'Height_m_': 'Height__m_'})
+    except:
+        return empty_chart()
+
+    map_4_4=stations_map(df)
+    return map_4_4
 
 def figure_4_7():
     """
@@ -3546,6 +4128,82 @@ def figure_4_14():
 
     return figure_4_14
 
+def figure_4_17():
+    """
+    Growning Stock Trend
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.9AboveGroundBiomass/Figure4.17/'
+        data_csv = data_path + 'Figure4.17_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+    except:
+        return empty_chart()
+
+    public_df = df.loc[(df['ownership'] == 'Public')]
+    private_grants_df = df.loc[(df['ownership'] == 'Private (grant aided)')]
+    private_other_df = df.loc[(df['ownership'] == 'Private (Other)')]
+    total_df = df.loc[(df['ownership'] == 'Total')]
+    total_trace = go.Scatter(x=total_df['datetime'].dt.year,
+                            y=total_df['sum__annual__growing_stock_volume'],
+                            name='Total',
+                            
+                            text=total_df['sum__annual__growing_stock_volume'],
+                                    mode='lines',  # 'line' is default
+                            line_shape='spline',
+                            line=dict(
+                                    # color="#fc0d1b", color used in report
+                                    color=TIMESERIES_COLOR_1,
+                                    width=2),
+                            hovertemplate='<b>Total</b><br>' +
+                            'Stock Volume: %{y:.2f} Mm<sup>3</sup><br>' +
+                            '------------------------------<br>' +
+                            '<extra></extra>'
+                            )
+    public_trace = go.Scatter(x=public_df['datetime'].dt.year,
+                            y=public_df['sum__annual__growing_stock_volume'],
+                            name='Public',
+                            text=public_df['percentage__annual__growing_stock_volume'],
+                            mode='lines+markers',
+                            marker=dict(color='#5b9bd5'), # blue,
+                            stackgroup="one",
+                            hovertemplate='<b>Public</b><br>' +
+                            'Stock Volume: %{y:.2f} Mm<sup>3</sup><br>' +
+                            'Percent of Total: %{text:.2%}<br>' +
+                            '<extra></extra>'
+                            )
+    private_grant_trace = go.Scatter(x=private_grants_df['datetime'].dt.year,
+                            y=private_grants_df['sum__annual__growing_stock_volume'],
+                            name='Private (Grant Aided)',
+                            mode='lines+markers',
+                            text=private_grants_df['percentage__annual__growing_stock_volume'],
+                            marker=dict(color='#ed7d31'), # brown,
+                            stackgroup="one",
+                            hovertemplate='<b>Private (Grant Aided)</b><br>' +
+                            'Stock Volume: %{y:.2f} Mm<sup>3</sup><br>' +
+                            'Percent of Total: %{text:.2%}<br>' +
+                            '<extra></extra>'
+                            )
+    private_other_trace = go.Scatter(x=private_other_df['datetime'].dt.year,
+                            y=private_other_df['sum__annual__growing_stock_volume'],
+                            name='Private (Other)',
+                            mode='lines+markers',
+                            text=private_other_df['percentage__annual__growing_stock_volume'],
+                            marker=dict(color='#ffff00'), # yellow,
+                            stackgroup="one",
+                            hovertemplate='<b>Private (Other)</b><br>' +
+                            'Stock Volume: %{y:.2f} Mm<sup>3</sup><br>' +
+                            'Percent of Total: %{text:.2%}<br>' +
+                            '<extra></extra>'
+                            )
+    figure_4_17 = go.Figure(data=[public_trace,private_other_trace,private_grant_trace,total_trace],
+                            layout=TIMESERIES_LAYOUT)
+    figure_4_17.update_layout(
+            yaxis=dict(title='Total Growing Stock Volume (million m<sup>3</sup>)'),
+        xaxis=dict(title="Year",tickvals=[2006, 2012, 2017],range=[2005, 2018]),
+        hovermode="x unified",)
+    return figure_4_17
+
 def figure_4_21():
     """
     Fire bar chart
@@ -3718,6 +4376,113 @@ def figure_4_24():
     
     return figure_4_24
 
+def figure_4_26():
+    """
+    Anthropogenic water Use
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.13AnthropogenicWaterUse/Figure4.26/'
+        data_csv = data_path + 'Figure4.26_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    
+    source_trace = go.Pie(labels=df['water_source'],
+                       values=df['sum__annual__freshwater_abstraction'],
+                       textinfo='label+percent',
+                       textposition='inside',
+                       direction='clockwise',
+                       marker=dict(colors=["#00a4ae", # blue
+                                           "#E1AF00", # gold
+                                           "#E1AF00", # gold
+                                           "#E1AF00", # gold
+                                           "#E1AF00", # gold
+                                           "#E1AF00", # gold
+                                          ]),
+
+                       sort=True,
+                       texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
+                       hovertemplate= '2018<br>' +
+                       '<b>%{label}</b><br>' +
+                       '%{value:.0f} Mm<sup>3</sup><br>' +
+                       '%{percent:.2%}<extra></extra>',
+                       )
+
+    figure_4_26a = go.Figure(data=source_trace)
+    figure_4_26a.update_layout(
+        height=300,
+        margin={"b": 0, "r": 0, "l": 0, "t": 0},
+        font=CHART_FONT,
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        showlegend=False)
+    
+    surface_df = df.loc[(df['water_source'] == 'Surface water')]
+    surface_trace = go.Pie(labels=surface_df['sector'],
+                        values=surface_df['sum__annual__freshwater_abstraction'],
+                        textinfo='label+percent',
+                        textposition='auto',
+                            marker=dict(colors=[
+                                '#ef553b', # red
+                            '#ab63fa', # purple
+                            '#00cc96', # green
+                            '#ffa15a', # orange
+                            '#636efa', # blue
+                        ]),
+                        sort=True,
+                        hole=.65,
+                        texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
+                        hovertemplate= '2018<br>' +
+                        '<b>%{label}</b><br>' +
+                       '%{value:.0f} Mm<sup>3</sup><br>' +
+                       '%{percent:.2%}<extra></extra>',
+                        )
+
+    figure_4_26b = go.Figure(data=surface_trace)
+    figure_4_26b.update_layout(
+        annotations=[dict(text='<b>Surface water</b><br>1,655 Mm<sup>3</sup><br>82% of Total', x=0.5, y=0.5, font_size=15, showarrow=False)],
+        height=300,
+        margin={"b": 0, "r": 0, "l": 0, "t": 0},
+        font=CHART_FONT,
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        showlegend=False)
+
+    ground_df = df.loc[(df['water_source'] == 'Groundwater')]
+    ground_trace = go.Pie(labels=ground_df['sector'],
+                        values=ground_df['sum__annual__freshwater_abstraction'],
+                        textinfo='label+percent',
+                        textposition='outside',
+                            marker=dict(colors=[
+                                '#ef553b', # red
+                            '#ab63fa', # purple
+                            '#00cc96', # green
+                            '#ffa15a', # orange
+                            '#636efa', # blue
+                        ]),
+                        sort=True,
+                        texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
+                        hole=.65,
+                        
+                        hovertemplate= '2018<br>' +
+                        '<b>%{label}</b><br>' +
+                        '%{value:.0f} Mm<sup>3</sup><br>' +
+                        '%{percent:.2%}<extra></extra>',
+                        )
+
+    figure_4_26c = go.Figure(data=ground_trace)
+    figure_4_26c.update_layout(
+        annotations=[dict(text='<b>Groundwater</b><br>375 Mm<sup>3</sup><br>18% of Total', x=0.5, y=0.5, font_size=15, showarrow=False)],
+        height=300,
+        margin={"b": 0, "r": 0, "l": 0, "t": 0},
+        font=CHART_FONT,
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        showlegend=False)
+    
+    return figure_4_26a, figure_4_26b, figure_4_26c
+
+
 
 def figure_4_27():
     """
@@ -3816,3 +4581,4 @@ def map_4_5():
 
     map_4_5=stations_map(df)
     return map_4_5
+

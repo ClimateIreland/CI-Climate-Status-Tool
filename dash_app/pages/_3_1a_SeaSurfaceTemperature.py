@@ -41,7 +41,7 @@ trendCaption = """
         """
 
 infrastructureText = """
-Sea surface temperature (SST) measurements are made by the Irish Marine Data Buoy Observation Network (orange), 
+Sea surface temperature (SST) measurements are made by the Irish Marine Data Buoy Observation Network (orange and pink), 
 at the Malin Head Atmospheric Research Station, Co. Donegal (red), at the Ballycotton tide gauge station, Co. Cork (purple), 
 and at wave buoys (yellow). A set of coastal temperature sensors (blue) installed predominately at aquaculture sites by 
 the Marine Institute measure temperature but are not accurate enough for climate studies.

@@ -41,9 +41,25 @@ trendCaption = """
         """
 
 infrastructureText = """
-    There are no permanent operational moored current meter arrays in the ocean area adjacent to Ireland. Large scale North Atlantic physical oceanographic studies are conducted annually by combining information from the scientific surveys of multiple countries.   Information on ocean currents is available from numerical models or, in the case of surface currents, from satellite estimations of sea level dynamics.  Validation is an essential step to verify the quality of the numerical models and to identify any limitations. Model validation can only be provided by the In-situ ocean observing system.
-Regarding in situ current measurements   made by the Marine Institute, some examples where this is carried out include the Galway Bay Observatory and the M6 buoy. In addition, current measurements are routinely made by several ocean observing initiatives such as  the Argo programme (autonomous drifters; large scale circulation patterns) and deployment of Acoustic Doppler Current Profilers (ADCP ), at localised stations which  collect information on currents for research purposes. 
-Globcurrent is an ESA funded project and is the main repository of quantitative estimations of surface currents based on several parameters derived from satellite sensor measurements. 
+    There are no permanent operational moored current meter arrays in the 
+    ocean area adjacent to Ireland. Large scale North Atlantic physical 
+    oceanographic studies are conducted annually by combining information from 
+    the scientific surveys of multiple countries.   Information on ocean 
+    currents is available from numerical models or, in the case of surface 
+    currents, from satellite estimations of sea level dynamics.  Validation is 
+    an essential step to verify the quality of the numerical models and to 
+    identify any limitations. Model validation can only be provided by the 
+    In-situ ocean observing system.
+Regarding in situ current measurements   made by the Marine Institute, some 
+examples where this is carried out include the Galway Bay Observatory and the 
+M6 buoy. In addition, current measurements are routinely made by several ocean 
+observing initiatives such as  the Argo programme (autonomous drifters; large 
+scale circulation patterns) and deployment of Acoustic Doppler Current 
+Profilers (ADCP ), at localised stations which  collect information on 
+currents for research purposes. 
+Globcurrent is an ESA funded project and is the main repository of 
+quantitative estimations of surface currents based on several parameters 
+derived from satellite sensor measurements. 
 
         """
 infrastructureMap = map_3_3()

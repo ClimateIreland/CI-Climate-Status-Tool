@@ -39,15 +39,12 @@ intro = dbc.Container(
             dbc.Col(
                 className='text-center',
                 children=[
-                    dcc.Link(
-                        href='/statusTool',
-                        children=[
-                            html.Img(
+                    html.Img(
+
                                 className='sr-menu-logo',
                                 style={"width": "150px"},
                                 src='assets/images/Climate_status.png'
                             ),
-                        ]),
                     html.H1("Ireland's Climate Status Tool",
                             style={"color": "rgba(0,10,20,.80)", "marginTop": "30px"})]
             )),
@@ -62,7 +59,7 @@ intro = dbc.Container(
             and analysis of almost 50 internationally defined essential climate variables (ECV) observed in the atmospheric,
             oceanic and terrestrial environments. Moreover, it documents the status of Ireland’s climate-observing infrastructure."""),
                                   html.P(children=[
-                                      html.Span('So far, 32 of the 50 ECVs can be explored using the tool below. The full report is available '),
+                                      html.Span('So far, 46 of the 50 ECVs can be explored using the tool below. The full report is available '),
                                       html.A(
                                           'here.',
                                           target='_blank',
