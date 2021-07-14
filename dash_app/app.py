@@ -51,6 +51,7 @@ from pages import (
     _4_10_SoilCarbon,
     _4_11_Fire,
     _4_12_LandSurfaceTemperature,
+    _4_13_WaterUse,
     _4_14_AnthropogenicGreenhouseGasEmissions,
 )
 
@@ -169,6 +170,8 @@ def display_page(pathname):
         return _4_11_Fire.create_layout(app)
     elif "_4_12_LandSurfaceTemperature" in pathname:
         return _4_12_LandSurfaceTemperature.create_layout(app)
+    elif "_4_13_WaterUse" in pathname:
+        return _4_13_WaterUse.create_layout(app) 
     elif "_4_14_AnthropogenicGreenhouseGasEmissions" in pathname:
         return _4_14_AnthropogenicGreenhouseGasEmissions.create_layout(app)
     # else:

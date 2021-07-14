@@ -13,8 +13,8 @@ ATMOSPHERE_BG_COLOR = '#e6f5fc'
 OCEAN_BG_COLOR = '#e6f3f5'
 TERRESTRIAL_BG_COLOR = '#fef4e6'
 
-TIMESERIES_COLOR_1 = "#00a4ae" # gold
-TIMESERIES_COLOR_2 = "#E1AF00" # blue
+TIMESERIES_COLOR_1 = "#00a4ae" # blue
+TIMESERIES_COLOR_2 = "#E1AF00" # gold
 TIMESERIES_COLOR_3 = "#de8bb7" # pink
 TIMESERIES_COLOR_4 = "#6e987b" # green
 
@@ -814,6 +814,24 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
+
+        {
+        'chapter-num': '4.13',
+        'id': 'ant-2',
+        'title': 'Anthropogenic Water Use',
+        'href': '_4_13_WaterUse',
+        'pdf': '_4_13_WaterUse.pdf',
+        'icon-lg-src': 'anthropogenic-water-use.png',
+        'icon-lg-hover-src': 'anthropogenic-water-use_hover.png',
+        'icon-src': 'ico-ant-wateruse.png',
+        'icon-hover-src': 'ico-ant-wateruse_hover.png',
+        'domain': 'Terrestrial',
+        'subdomain': 'Human Use of Natural Resources',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer and Conor Quinlan',
+        'domain-color': TERRESTRIAL_COLOR,
+        'domain-bg-color': TERRESTRIAL_BG_COLOR
+    }
 ]
 
 CHAPTERS_DEV = [
@@ -979,23 +997,7 @@ CHAPTERS_DEV = [
 
 
 
-    {
-        'chapter-num': '4.13',
-        'id': 'ant-2',
-        'title': 'Anthropogenic Water Use',
-        'href': '_4_13_WaterUse',
-        'pdf': '_4_13_WaterUse.pdf',
-        'icon-lg-src': 'anthropogenic-water-use.png',
-        'icon-lg-hover-src': 'anthropogenic-water-use_hover.png',
-        'icon-src': 'ico-ant-wateruse.png',
-        'icon-hover-src': 'ico-ant-wateruse_hover.png',
-        'domain': 'Terrestrial',
-        'subdomain': 'Biology',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': TERRESTRIAL_COLOR,
-        'domain-bg-color': TERRESTRIAL_BG_COLOR
-    }
+
     ]
 
 MAP_LAYOUT = dict(

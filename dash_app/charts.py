@@ -4362,6 +4362,113 @@ def figure_4_24():
     
     return figure_4_24
 
+def figure_4_26():
+    """
+    Anthropogenic water Use
+    """
+    try:
+        data_path = DATA_PATH+'Terrestrial_Domain/4.13AnthropogenicWaterUse/Figure4.26/'
+        data_csv = data_path + 'Figure4.26_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    
+    source_trace = go.Pie(labels=df['water_source'],
+                       values=df['sum__annual__freshwater_abstraction'],
+                       textinfo='label+percent',
+                       textposition='inside',
+                       direction='clockwise',
+                       marker=dict(colors=["#00a4ae", # blue
+                                           "#E1AF00", # gold
+                                           "#E1AF00", # gold
+                                           "#E1AF00", # gold
+                                           "#E1AF00", # gold
+                                           "#E1AF00", # gold
+                                          ]),
+
+                       sort=True,
+                       texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
+                       hovertemplate= '2018<br>' +
+                       '<b>%{label}</b><br>' +
+                       '%{value:.0f} Mm<sup>3</sup><br>' +
+                       '%{percent:.2%}<extra></extra>',
+                       )
+
+    figure_4_26a = go.Figure(data=source_trace)
+    figure_4_26a.update_layout(
+        height=300,
+        margin={"b": 0, "r": 0, "l": 0, "t": 0},
+        font=CHART_FONT,
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        showlegend=False)
+    
+    surface_df = df.loc[(df['water_source'] == 'Surface water')]
+    surface_trace = go.Pie(labels=surface_df['sector'],
+                        values=surface_df['sum__annual__freshwater_abstraction'],
+                        textinfo='label+percent',
+                        textposition='auto',
+                            marker=dict(colors=[
+                                '#ef553b', # red
+                            '#ab63fa', # purple
+                            '#00cc96', # green
+                            '#ffa15a', # orange
+                            '#636efa', # blue
+                        ]),
+                        sort=True,
+                        hole=.65,
+                        texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
+                        hovertemplate= '2018<br>' +
+                        '<b>%{label}</b><br>' +
+                       '%{value:.0f} Mm<sup>3</sup><br>' +
+                       '%{percent:.2%}<extra></extra>',
+                        )
+
+    figure_4_26b = go.Figure(data=surface_trace)
+    figure_4_26b.update_layout(
+        annotations=[dict(text='<b>Surface water</b><br>1,655 Mm<sup>3</sup><br>82% of Total', x=0.5, y=0.5, font_size=15, showarrow=False)],
+        height=300,
+        margin={"b": 0, "r": 0, "l": 0, "t": 0},
+        font=CHART_FONT,
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        showlegend=False)
+
+    ground_df = df.loc[(df['water_source'] == 'Groundwater')]
+    ground_trace = go.Pie(labels=ground_df['sector'],
+                        values=ground_df['sum__annual__freshwater_abstraction'],
+                        textinfo='label+percent',
+                        textposition='outside',
+                            marker=dict(colors=[
+                                '#ef553b', # red
+                            '#ab63fa', # purple
+                            '#00cc96', # green
+                            '#ffa15a', # orange
+                            '#636efa', # blue
+                        ]),
+                        sort=True,
+                        texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
+                        hole=.65,
+                        
+                        hovertemplate= '2018<br>' +
+                        '<b>%{label}</b><br>' +
+                        '%{value:.0f} Mm<sup>3</sup><br>' +
+                        '%{percent:.2%}<extra></extra>',
+                        )
+
+    figure_4_26c = go.Figure(data=ground_trace)
+    figure_4_26c.update_layout(
+        annotations=[dict(text='<b>Groundwater</b><br>375 Mm<sup>3</sup><br>18% of Total', x=0.5, y=0.5, font_size=15, showarrow=False)],
+        height=300,
+        margin={"b": 0, "r": 0, "l": 0, "t": 0},
+        font=CHART_FONT,
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)',
+        showlegend=False)
+    
+    return figure_4_26a, figure_4_26b, figure_4_26c
+
+
 
 def figure_4_27():
     """
@@ -4460,3 +4567,4 @@ def map_4_5():
 
     map_4_5=stations_map(df)
     return map_4_5
+
