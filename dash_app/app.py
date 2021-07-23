@@ -86,10 +86,6 @@ app.layout = html.Div(children=[
     #     children='Climate Ireland'
     # ),
     html.Div(id='page-content'),
-    # html.Div(
-    #     className='sr-footer',
-    #     children='Climate Ireland'
-    # )
 ],
 )
 

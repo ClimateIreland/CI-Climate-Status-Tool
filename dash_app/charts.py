@@ -2287,6 +2287,7 @@ def map_2_13():
     
     return map_2_13
 def figure_2_31():
+    # not used because too much hourly data
     """
     Precursors for Aerosols and Ozone trend
     """
@@ -2335,29 +2336,32 @@ def map_2_15():
         df = pd.read_csv(data_path+'Map2.15_StationTable.csv')
     except:
         return empty_chart()
-    epa_df = df[df['OPERATOR'].isin(['EPA'])]
-    met_df = df[df['OPERATOR'].isin(['Met Eireann'])]
-    other_df = df[df['OPERATOR'].isin([
-        'Public Analyst',
-        "Public Analyst's Laboratory, Galway"])]
-    uni_df = df[df['OPERATOR'].isin([
-        'CIT',
-        'UCC',
-        'University College Galway',
-        'EPA Research Project', 
-        ])]
-    la_df = df[df['OPERATOR'].isin([
-        'Cork City Council',
-        'DCC',
-        'Dublin County Council',
-        'South Dublin County Council',
-        'Limerick Co. Co.',
-        'Wexford Co. Co.'])]
+    epa_df = df
+    #  dancasey 2021-07-23: Keep for now and ask Ned can they be removed
+    # epa_df = df[df['OPERATOR'].isin(['EPA'])]
+    # met_df = df[df['OPERATOR'].isin(['Met Eireann'])]
+    # other_df = df[df['OPERATOR'].isin([
+    #     'Public Analyst',
+    #     "Public Analyst's Laboratory, Galway"])]
+    # uni_df = df[df['OPERATOR'].isin([
+    #     'CIT',
+    #     'UCC',
+    #     'University College Galway',
+    #     'EPA Research Project', 
+    #     ])]
+    # la_df = df[df['OPERATOR'].isin([
+    #     'Cork City Council',
+    #     'DCC',
+    #     'Dublin County Council',
+    #     'South Dublin County Council',
+    #     'Limerick Co. Co.',
+    #     'Wexford Co. Co.'])]
 
     epa_trend = go.Scattermapbox(
-        name='EPA',
+        name='Air Quality Monitoring Network',
         lon=epa_df.LON,
         lat=epa_df.LAT,
+        showlegend=True,
         marker=dict(color=STATION_COLORS['EPA'],
                     size=7),
         hovertemplate='Name: ' + epa_df['NAME'] + '<br>' +
@@ -2369,78 +2373,79 @@ def map_2_15():
             'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
     )
 
-    met_trend = go.Scattermapbox(
-        name='Met Éireann',
-        lon=met_df.LON,
-        lat=met_df.LAT,
-        marker=dict(color=STATION_COLORS['Synoptic'],
-                    size=7),
-            hovertemplate='Name: ' + met_df['NAME'] + '<br>' +
-            'County: ' + met_df['LOCATION'] + '<br>' +
-            'Operator: ' + met_df['OPERATOR'] + '<br>' +
-            'Type: ' + met_df['TYPE'] + '<br>' +
-            'Coverage: ' + met_df['COVERAGE'] + '<br>' +
-            'Lat: %{lat:.2f} \u00b0<br>'+
-            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
-    )
+#  dancasey 2021-07-23: Keep for now and ask Ned can they be removed
+    # met_trend = go.Scattermapbox(
+    #     name='Met Éireann',
+    #     lon=met_df.LON,
+    #     lat=met_df.LAT,
+    #     marker=dict(color=STATION_COLORS['Synoptic'],
+    #                 size=7),
+    #         hovertemplate='Name: ' + met_df['NAME'] + '<br>' +
+    #         'County: ' + met_df['LOCATION'] + '<br>' +
+    #         'Operator: ' + met_df['OPERATOR'] + '<br>' +
+    #         'Type: ' + met_df['TYPE'] + '<br>' +
+    #         'Coverage: ' + met_df['COVERAGE'] + '<br>' +
+    #         'Lat: %{lat:.2f} \u00b0<br>'+
+    #         'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    # )
 
-    other_trend = go.Scattermapbox(
-        name='Public Analyst Lab',
-        lon=other_df.LON,
-        lat=other_df.LAT,
-        marker=dict(color='black',
-                    size=7),
-            hovertemplate='Name: ' + other_df['NAME'] + '<br>' +
-            'County: ' + other_df['LOCATION'] + '<br>' +
-            'Operator: ' + other_df['OPERATOR'] + '<br>' +
-            'Type: ' + other_df['TYPE'] + '<br>' +
-            'Coverage: ' + other_df['COVERAGE'] + '<br>' +
-            'Lat: %{lat:.2f} \u00b0<br>'+
-            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
-    )
+    # other_trend = go.Scattermapbox(
+    #     name='Public Analyst Lab',
+    #     lon=other_df.LON,
+    #     lat=other_df.LAT,
+    #     marker=dict(color='black',
+    #                 size=7),
+    #         hovertemplate='Name: ' + other_df['NAME'] + '<br>' +
+    #         'County: ' + other_df['LOCATION'] + '<br>' +
+    #         'Operator: ' + other_df['OPERATOR'] + '<br>' +
+    #         'Type: ' + other_df['TYPE'] + '<br>' +
+    #         'Coverage: ' + other_df['COVERAGE'] + '<br>' +
+    #         'Lat: %{lat:.2f} \u00b0<br>'+
+    #         'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    # )
 
-    uni_trend = go.Scattermapbox(
-        name='University / EPA Research',
-        lon=uni_df.LON,
-        lat=uni_df.LAT,
-        marker=dict(color='orange',
-                    size=7),
-            hovertemplate='Name: ' + uni_df['NAME'] + '<br>' +
-            'County: ' + uni_df['LOCATION'] + '<br>' +
-            'Operator: ' + uni_df['OPERATOR'] + '<br>' +
-            'Type: ' + uni_df['TYPE'] + '<br>' +
-            'Coverage: ' + uni_df['COVERAGE'] + '<br>' +
-            'Lat: %{lat:.2f} \u00b0<br>'+
-            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
-        )
+    # uni_trend = go.Scattermapbox(
+    #     name='University / EPA Research',
+    #     lon=uni_df.LON,
+    #     lat=uni_df.LAT,
+    #     marker=dict(color='orange',
+    #                 size=7),
+    #         hovertemplate='Name: ' + uni_df['NAME'] + '<br>' +
+    #         'County: ' + uni_df['LOCATION'] + '<br>' +
+    #         'Operator: ' + uni_df['OPERATOR'] + '<br>' +
+    #         'Type: ' + uni_df['TYPE'] + '<br>' +
+    #         'Coverage: ' + uni_df['COVERAGE'] + '<br>' +
+    #         'Lat: %{lat:.2f} \u00b0<br>'+
+    #         'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    #     )
 
-    la_trend = go.Scattermapbox(
-        name='Local Authority',
-        lon=la_df.LON,
-        lat=la_df.LAT,
-        marker=dict(color='yellow',
-                    size=7),
-            hovertemplate='Name: ' + la_df['NAME'] + '<br>' +
-            'County: ' + la_df['LOCATION'] + '<br>' +
-            'Operator: ' + la_df['OPERATOR'] + '<br>' +
-            'Type: ' + la_df['TYPE'] + '<br>' +
-            'Coverage: ' + la_df['COVERAGE'] + '<br>' +
-            'Lat: %{lat:.2f} \u00b0<br>'+
-            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
-    )
+    # la_trend = go.Scattermapbox(
+    #     name='Local Authority',
+    #     lon=la_df.LON,
+    #     lat=la_df.LAT,
+    #     marker=dict(color='yellow',
+    #                 size=7),
+    #         hovertemplate='Name: ' + la_df['NAME'] + '<br>' +
+    #         'County: ' + la_df['LOCATION'] + '<br>' +
+    #         'Operator: ' + la_df['OPERATOR'] + '<br>' +
+    #         'Type: ' + la_df['TYPE'] + '<br>' +
+    #         'Coverage: ' + la_df['COVERAGE'] + '<br>' +
+    #         'Lat: %{lat:.2f} \u00b0<br>'+
+    #         'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    # )
 
     map_2_15 = go.Figure(
         data=[
             epa_trend,
-            met_trend,
-            la_trend,
-            uni_trend,
-            other_trend
+            # met_trend,
+            # la_trend,
+            # uni_trend,
+            # other_trend
             
         ],
         layout=MAP_LAYOUT)
     map_2_15.update_layout(
-        legend_title='<b>Station Operator</b>',
+        # legend_title='<b>Station Operator</b>',
         mapbox=dict(bearing=0,
                 center=dict(
                     lat=54,

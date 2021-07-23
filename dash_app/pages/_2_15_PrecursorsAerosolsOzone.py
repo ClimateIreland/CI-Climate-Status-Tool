@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import figure_2_31, map_2_15
+from charts import map_2_15
 
 chapter_num = '2.15'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Precursotrs_Met_Eireann_20160315_062831.jpg'
@@ -31,8 +31,8 @@ bulletPoint2 = """
 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Hourly NO\u2082 - Ballyfermot'
-trendChart = figure_2_31()
+trendChartTitle = 'Nitrogen Dioxide Concentration - Ballyfermot'
+# trendChart = figure_2_31()
 
 trendCaption = """
 Hourly concentrations (µg/m\u00b3) of nitrogen dioxide, NO\u2082, at Ballyfermot, Co. Dublin (2013–2018).
@@ -64,6 +64,50 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
+trendImg = IMAGES_PATH+'AtmosphericSections/figure_2_31.png'
+
+custom_trend = dbc.Container(
+    className='sr-trends',
+    style={'borderColor': chapter_dict['domain-color']},
+    id='trends',
+    children=[
+        html.H3(
+            className='sr-section-heading',
+            style={'color': chapter_dict['domain-color']},
+            children='Trends',
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1 text-center",
+                        children=[
+                            html.H4(
+                                className='sr-chart-title',
+                                children=trendChartTitle),
+                            html.Img(
+                                className='w-100',
+                                style={'max-width':800},
+                                src=trendImg
+                            )
+                        ]
+                        ),
+
+            ]
+        ),
+        dbc.Row(
+            children=[
+                dbc.Col(className="col-md-10 offset-md-1",
+                        children=[
+                            html.P(
+                                className='sr-chart-caption',
+                                children=[
+                                    html.I(className="fas fa-play _up",
+                                           style={"color": chapter_dict['domain-color']}),
+                                    trendCaption]
+                            )]
+                        )
+            ]
+        ),
+    ])
 
 def create_layout(app):
     return html.Div(
@@ -78,11 +122,12 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            pb.build_trend(trendChartTitle,
-                           trendChart,
-                           trendCaption,
-                           chapter_dict
-                           ),
+           custom_trend,
+        #     pb.build_trend(trendChartTitle,
+        #                    trendChart,
+        #                    trendCaption,
+        #                    chapter_dict
+        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict
