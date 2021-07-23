@@ -6,38 +6,57 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart
+from charts import figure_2_31, map_2_15
 
-chapter_num = '0'
+chapter_num = '2.15'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/Precursotrs_Met_Eireann_20160315_062831.jpg'
 bannerImgCredit = 'Met Éireann'
 
 introText = """
-
-        """
+Precursors are chemical species in the atmosphere that lead to the production 
+of aerosols and ozone. Precursors include nitrogen dioxide (NO\u2082), sulfur 
+dioxide (SO\u2082), carbon monoxide (CO) and formaldehyde (HCHO). In Ireland 
+emissions from vehicles are the main source of NO\u2082 and CO, while domestic 
+heating and electricity generation leads to emissions of SO\u2082. Aerosols and O\u2083 
+in the near-surface atmosphere allied with these precursors can directly harm 
+human health and produce detrimental environmental impacts (e.g. crop damage, 
+acid rain).
+       """
 bulletPoint1 = """
-
+Reductions in the concentrations of near-surface aerosols and O\u2083
+have been observed in specific regions where the emissions of 
+some precursors are regulated.
         """
 bulletPoint2 = """
 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = ''
-trendChart = empty_chart()
+trendChartTitle = 'Hourly NO\u2082 - Ballyfermot'
+trendChart = figure_2_31()
 
 trendCaption = """
-
+Hourly concentrations (µg/m\u00b3) of nitrogen dioxide, NO\u2082, at Ballyfermot, Co. Dublin (2013–2018).
         """
-
+infrastructureMap = map_2_15()
 infrastructureText = """
-
+The Environmental Protection Agency (EPA), through the national ambient air 
+quality monitoring network, monitors NO\u2082, SO\u2082 and CO, as part of the air 
+quality for health programme. These are not monitored as part of a climate 
+observation programme. These observations comply to the EU's ambient air 
+quality directives. The accompanying map shows the current national air monitoring 
+sites. Not all species are measured at all sites.  
         """
-infrastructureMap = empty_chart()
+
 
 infoLinks = [
-    {'text': '',
-     'url': ''},
-
+    {'text': 'Precursors for Aerosols and Ozone Essential Climate Variable (ECV) Factsheet',
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/precursors/'},
+     {'text': 'National Ambient Air Quality Monitoring Programme 2017–2022',
+     'url': 'https://www.epa.ie/publications/monitoring--assessment/air/national-ambient-air-quality-monitoring-programme-2017-2022.php'},
+     {'text': 'EPA Air Quality Index for Health',
+     'url': 'https://www.epa.ie/environment-and-you/air/'},
+          {'text': 'EPA Air Quality Index for Health Map',
+     'url': 'https://airquality.ie/'},
 ]
 
 

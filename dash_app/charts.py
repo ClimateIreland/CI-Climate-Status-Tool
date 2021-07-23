@@ -3,6 +3,7 @@ import numpy as np
 import datetime
 import dateutil
 import plotly.graph_objects as go
+import plotly.express as px
 from plotly.subplots import make_subplots
 from settings import *
 import json
@@ -799,7 +800,120 @@ def map_2_3():
     map_2_3=stations_map(df)
     return map_2_3
 
+def figure_2_8():
+    """
+    Surface pressure
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.4AtmosphericPressure/Figure2.8/'
+        data_csv = data_path + 'Figure2.8_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
+    except:
+        return empty_chart()
+    mean_monthly_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__monthly__surface_pressure'],
+                            name='Mean Monthly',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_1,
+                                        size=5,
+                                        opacity=0.3),
+                            legendgroup="group1",
+                            hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Mean Monthly</b><br>' +
+                            'MSL Pressure: %{y:.2f} hPa<br>' +
+                            '<extra></extra>'
+                            )
+    min_monthly_trace = go.Scatter(x=df['datetime'],
+                                y=df['min__monthly__surface_pressure'],
+                            name='Min. Monthly',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.3),
+                            legendgroup="group2",
+                            hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Min. Monthly</b><br>' +
+                            'MSL Pressure: %{y:.2f} hPa<br>' +
+                            '<extra></extra>'
+                            )
+    max_monthly_trace = go.Scatter(x=df['datetime'],
+                            y=df['max__monthly__surface_pressure'],
+                         name='Max. Monthly',
+                         legendgroup="group3",
+                         mode='markers',
+                         marker=dict(color=TIMESERIES_COLOR_3,
+                                     size=5,
+                                     opacity=0.3),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Max. Monthly</b><br>' +
+                         'MSL Pressure: %{y:.2f} hPa<br>' +
+                         '<extra></extra>'
+                         )
 
+    mean_annual_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean__annual__surface_pressure'],
+                            name='Mean Annual',
+                            mode='lines',
+                                legendgroup="group1",
+                            line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                            hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Mean Annual</b><br>' +
+                            'MSL Pressure: %{y:.2f} hPa<br>' +
+                            '<extra></extra>'
+                            )
+    min_annual_trace = go.Scatter(x=df['datetime'],
+                            y=df['min__annual__surface_pressure'],
+                         name='Min. Annual',
+                         mode='lines',
+                              legendgroup="group2",
+                         line=dict(color=TIMESERIES_COLOR_2,
+                                      width=2),
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Min. Annual</b><br>' +
+                         'MSL Pressure: %{y:.2f} hPa<br>' +
+                         '<extra></extra>'
+                         )
+
+    max_annual_trace = go.Scatter(x=df['datetime'],
+                                y=df['max__annual__surface_pressure'],
+                            name='Max. Annual',
+                            mode='lines',
+                                legendgroup="group3",
+                            line=dict(color=TIMESERIES_COLOR_3,
+                                        width=2),
+                            hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Max. Annual</b><br>' +
+                            'MSL Pressure: %{y:.2f} hPa<br>' +
+                            '<extra></extra>'
+                            )
+    figure_2_8 = go.Figure(data=[
+        mean_annual_trace, 
+        max_annual_trace, 
+        min_annual_trace,
+        mean_monthly_trace, 
+        max_monthly_trace, 
+        min_monthly_trace,
+    ], 
+                        layout=TIMESERIES_LAYOUT
+                        )
+    figure_2_8.update_layout(
+        yaxis=dict(title='Mean Sea Level Pressure (hPa)'),
+        xaxis=dict(title="Year"))
+    return figure_2_8
+
+def map_2_4():
+    """
+    Surface vapour infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.4AtmosphericPressure/Map2.4/'
+        df = pd.read_csv(data_path+'Map2.4_StationTable.txt')
+    except:
+        return empty_chart()
+    map_2_4=stations_map(df)
+    return map_2_4
     
 def figure_2_9():
     """
@@ -1303,6 +1417,125 @@ def map_2_7():
         return empty_chart()
     map_2_7=stations_map(df)
     return map_2_7
+
+def figure_2_16():
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.9LIghtning/Figure2.16/'
+        data_csv = data_path + 'Figure2.16_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        land_df = df[df['location']=='Irish Land']
+    except:
+        return empty_chart()
+    shelf_trace = go.Scatter(x=df['datetime'],
+                        y=df['sum__10day__lightning_pulses'],
+                         name='Irish Shelf',
+                         mode='lines',
+                         line=dict(color=TIMESERIES_COLOR_1,
+                                        width=1),
+                       hovertemplate='%{x|%Y-%b-%d}<br>' +
+                                     '<b>Land Area</b><br>' +
+                                     'Total 10 Day Lightning Strikes: %{y:.2f} <br>' +
+                                     '<extra></extra>'
+                         )
+
+
+    land_trace = go.Scatter(x=land_df['datetime'],
+                            y=land_df['sum__10day__lightning_pulses'],
+                            name='Irish Land',
+                            line=dict(color=TIMESERIES_COLOR_2,
+                                            width=1),
+                            hovertemplate='%{x|%Y-%b-%d}<br>' +
+                            '<b>Land Area</b><br>' +
+                            'Total 10 Day Lightning Strikes: %{y:.2f} <br>' +
+                            '<extra></extra>'
+                         )
+    figure_2_16 = make_subplots(
+        rows=2, 
+        cols=1,
+        shared_xaxes=True,
+        vertical_spacing=0.1,
+        subplot_titles=("a) Over Whole Irish Shelf", "b) Over Irish Land Area",),
+        x_title='Year',
+        y_title='Number of Lightning Strikes',
+    )
+    figure_2_16.append_trace(shelf_trace, row=1,col=1)
+    figure_2_16.append_trace(land_trace, row=2,col=1)
+    figure_2_16.update_layout(TIMESERIES_LAYOUT)
+    figure_2_16.update_layout(
+        height=600,
+        margin_t=50,
+    )
+    figure_2_16.layout["yaxis2"].title.text = ""
+    return figure_2_16
+
+
+def figure_2_17():
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.9LIghtning/Figure2.17/'
+        data_csv = data_path + 'Figure2.17_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    figure_2_17 = px.scatter_mapbox(df,
+            lat="lat" ,
+            lon="lon",
+#               hover_name="TYPE",
+            hover_data = ['datetime','lat','lon'],
+            height=400,
+            color='irish_sf_nr',
+            color_continuous_scale=px.colors.sequential.Jet,
+            range_color=[0,50],
+            animation_frame='15min_interval',
+            mapbox_style="open-street-map",
+                center=dict(
+                    lat=53.4,
+                    lon=352
+                ),
+                zoom=4,
+            category_orders={
+            '15min_interval':list(np.sort(df['15min_interval'].unique()))
+            },   )
+    figure_2_17.update_layout(margin=dict(l=0, r=0, t=0, b=0))
+    figure_2_17.update_coloraxes(colorbar_thickness=10)
+
+    figure_2_17['layout']['updatemenus'][0]['pad']=dict(t= 20)
+    figure_2_17['layout']['sliders'][0]['pad']=dict(l=20,t= 20)
+
+    return figure_2_17
+
+def map_2_9():
+    """
+    Lightning infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.9LIghtning/Map2.9/'
+        df = pd.read_csv(data_path+'Map2.9_StationTable.txt')
+    except:
+        return empty_chart()
+    df=df.astype(str)
+    synoptic_trend = go.Scattermapbox(
+        name='Synoptic',
+        lon=df.Longitude,
+        lat=df.Latitude,
+        marker=dict(color=STATION_COLORS['Synoptic'],
+                    size=7),
+            hovertemplate='Name: ' + df['name'] + '<br>' +
+                'County: ' + df['County'] + '<br>' +
+                'Agency: Met Éireann<br>' +
+                'Station No.: ' + df['Station_Nu'] + '<br>' +
+                'Open Year: ' + df['Open_Year'] + '<br>' +
+                'Height: ' + df['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    map_2_9 = go.Figure(
+        data=[
+            synoptic_trend,
+        ],
+        layout=MAP_LAYOUT)
+
+    return map_2_9
         
 def figure_2_18():
     """
@@ -1370,6 +1603,96 @@ def figure_2_18():
                             )
 
     return figure_2_18
+
+def map_2_8():
+    """
+    Cloud infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.8CloudProperties/Map2.8/'
+        df = pd.read_csv(data_path+'Map2.8_StationTable.txt')
+    except:
+        return empty_chart()
+    gpsDF = df.loc[(df['Type'] == 'GPS')]
+
+
+    auto_df = df.loc[(df['Parameters'] == 'CHCC(AUTOMATED)')]
+    auto_df_str=auto_df.astype(str)
+    auto_trend = go.Scattermapbox(
+        name='Automated',
+        lon=auto_df_str.Longitude,
+        lat=auto_df_str.Latitude,
+        marker=dict(color='red',
+                    size=7),
+        hovertemplate='Type: ' + auto_df_str['Parameters'] + '<br>' +
+                 'Name: ' + auto_df_str['name'] + '<br>' +
+                'County: ' + auto_df_str['County'] + '<br>' +
+                'Agency: Met Éireann<br>' +
+                'Station No.: ' + auto_df_str['Station_Nu'] + '<br>' +
+                'Open Year: ' + auto_df_str['Open_Year'] + '<br>' +
+                'Height: ' + auto_df_str['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+    man_df = df.loc[(df['Parameters'] == 'CCCTCH(MANUAL)')]
+    man_df_str=man_df.astype(str)
+    man_trend = go.Scattermapbox(
+        name='Manual',
+        lon=man_df_str.Longitude,
+        lat=man_df_str.Latitude,
+        marker=dict(color='orange',
+                    size=7),
+        hovertemplate=
+                'Type: ' + man_df_str['Parameters'] + '<br>' +
+                'Name: ' + man_df_str['name'] + '<br>' +
+                'County: ' + man_df_str['County'] + '<br>' +
+                'Agency: Met Éireann<br>' +
+                'Station No.: ' + man_df_str['Station_Nu'] + '<br>' +
+                'Open Year: ' + man_df_str['Open_Year'] + '<br>' +
+                'Height: ' + man_df_str['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+    auto_man_df = df.loc[(df['Parameters'] == 'CCCTCH(MANUAL)+CHCC(AUTOMATED)')]
+    auto_man_df_str=auto_man_df.astype(str)
+    auto_man_trend = go.Scattermapbox(
+        name='Manual + Auto',
+        lon=auto_man_df_str.Longitude,
+        lat=auto_man_df_str.Latitude,
+        marker=dict(color='blue',
+                    size=7),
+        hovertemplate='Type: ' + auto_man_df_str['Parameters'] + '<br>' +
+                 'Name: ' + auto_man_df_str['name'] + '<br>' +
+                'County: ' + auto_man_df_str['County'] + '<br>' +
+                'Agency: Met Éireann<br>' +
+                'Station No.: ' + auto_man_df_str['Station_Nu'] + '<br>' +
+                'Open Year: ' + auto_man_df_str['Open_Year'] + '<br>' +
+                'Height: ' + auto_man_df_str['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+    gen_df = df.loc[(df['Parameters'] == 'GeneralProperties.')]
+    gen_df_str=gen_df.astype(str)
+    gen_trend = go.Scattermapbox(
+        name='General Properties',
+        lon=gen_df_str.Longitude,
+        lat=gen_df_str.Latitude,
+        marker=dict(color='black',
+                    size=7),
+        hovertemplate='Type: ' + gen_df_str['Parameters'] + '<br>' +
+                'Name: ' + gen_df_str['name'] + '<br>' +
+                'County: ' + gen_df_str['County'] + '<br>' +
+                'Agency: Met Éireann<br>' +
+                'Station No.: ' + gen_df_str['Station_Nu'] + '<br>' +
+                'Open Year: ' + gen_df_str['Open_Year'] + '<br>' +
+                'Height: ' + gen_df_str['Height__m_'] + ' m<br>' +
+                'Lat: %{lat:.2f} \u00b0<br>'+
+                'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+    map_2_8 = go.Figure(data=[auto_trend, man_trend, auto_man_trend, gen_trend],
+                    layout=MAP_LAYOUT)
+    # map_2_8.update_layout(legend_title="<b>  T</b>")
+    return map_2_8
 
 def map_2_10():
     """
@@ -1963,6 +2286,171 @@ def map_2_13():
     )
     
     return map_2_13
+def figure_2_31():
+    """
+    Precursors for Aerosols and Ozone trend
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.15PrecursorsAerosolsOzone/Figure2.31/'
+        data_csv = data_path + 'Figure2.31_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+    except:
+        return empty_chart()
+    hourly_trace = go.Scatter(x=df['datetime'],
+                                y=df['nitrogen_dioxide_concentration'],
+                            name='Hourly',
+                            mode='markers',
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.3),
+                            hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Hourly NO<sub>2</sub></b><br>' +
+                            'Concentration: %{y:.2f} µg/m<sup>3</sup><br>' +
+                            '<extra></extra>'
+                            )
+    monthly_trace = go.Scatter(x=df['datetime'],
+                                y=df['mean_monthly__nitrogen_dioxide_concentration'],
+                                name='Mean Monthly',
+                                mode='lines',  # 'line' is default
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_1,
+                                        width=2),
+                                hovertemplate='%{x|%b %Y}<br>' +
+                                    '<b>Mean Monthly NO<sub>2</sub></b><br>' +
+                                    'Concentration: %{y:.2f} µg/m<sup>3</sup></sup><br>' +
+                                    '<extra></extra>'
+                                )
+    figure_2_31 = go.Figure(data=[hourly_trace, monthly_trace], layout=TIMESERIES_LAYOUT)
+    figure_2_31.update_layout(
+        yaxis=dict(title='NO<sub>2</sub> Concentration (µg/m<sup>3</sup>)'),
+        xaxis=dict(title="Year"))
+    return figure_2_31
+
+def map_2_15():
+    """
+    Precursors for Aerosols and Ozone for infrastructure map
+    """
+    try:
+        data_path = DATA_PATH+'Atmospheric_Domain/2.15PrecursorsAerosolsOzone/Map2.15/'
+        df = pd.read_csv(data_path+'Map2.15_StationTable.csv')
+    except:
+        return empty_chart()
+    epa_df = df[df['OPERATOR'].isin(['EPA'])]
+    met_df = df[df['OPERATOR'].isin(['Met Eireann'])]
+    other_df = df[df['OPERATOR'].isin([
+        'Public Analyst',
+        "Public Analyst's Laboratory, Galway"])]
+    uni_df = df[df['OPERATOR'].isin([
+        'CIT',
+        'UCC',
+        'University College Galway',
+        'EPA Research Project', 
+        ])]
+    la_df = df[df['OPERATOR'].isin([
+        'Cork City Council',
+        'DCC',
+        'Dublin County Council',
+        'South Dublin County Council',
+        'Limerick Co. Co.',
+        'Wexford Co. Co.'])]
+
+    epa_trend = go.Scattermapbox(
+        name='EPA',
+        lon=epa_df.LON,
+        lat=epa_df.LAT,
+        marker=dict(color=STATION_COLORS['EPA'],
+                    size=7),
+        hovertemplate='Name: ' + epa_df['NAME'] + '<br>' +
+            'County: ' + epa_df['LOCATION'] + '<br>' +
+            'Operator: ' + epa_df['OPERATOR'] + '<br>' +
+            'Type: ' + epa_df['TYPE'] + '<br>' +
+            'Coverage: ' + epa_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    met_trend = go.Scattermapbox(
+        name='Met Éireann',
+        lon=met_df.LON,
+        lat=met_df.LAT,
+        marker=dict(color=STATION_COLORS['Synoptic'],
+                    size=7),
+            hovertemplate='Name: ' + met_df['NAME'] + '<br>' +
+            'County: ' + met_df['LOCATION'] + '<br>' +
+            'Operator: ' + met_df['OPERATOR'] + '<br>' +
+            'Type: ' + met_df['TYPE'] + '<br>' +
+            'Coverage: ' + met_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    other_trend = go.Scattermapbox(
+        name='Public Analyst Lab',
+        lon=other_df.LON,
+        lat=other_df.LAT,
+        marker=dict(color='black',
+                    size=7),
+            hovertemplate='Name: ' + other_df['NAME'] + '<br>' +
+            'County: ' + other_df['LOCATION'] + '<br>' +
+            'Operator: ' + other_df['OPERATOR'] + '<br>' +
+            'Type: ' + other_df['TYPE'] + '<br>' +
+            'Coverage: ' + other_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    uni_trend = go.Scattermapbox(
+        name='University / EPA Research',
+        lon=uni_df.LON,
+        lat=uni_df.LAT,
+        marker=dict(color='orange',
+                    size=7),
+            hovertemplate='Name: ' + uni_df['NAME'] + '<br>' +
+            'County: ' + uni_df['LOCATION'] + '<br>' +
+            'Operator: ' + uni_df['OPERATOR'] + '<br>' +
+            'Type: ' + uni_df['TYPE'] + '<br>' +
+            'Coverage: ' + uni_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+        )
+
+    la_trend = go.Scattermapbox(
+        name='Local Authority',
+        lon=la_df.LON,
+        lat=la_df.LAT,
+        marker=dict(color='yellow',
+                    size=7),
+            hovertemplate='Name: ' + la_df['NAME'] + '<br>' +
+            'County: ' + la_df['LOCATION'] + '<br>' +
+            'Operator: ' + la_df['OPERATOR'] + '<br>' +
+            'Type: ' + la_df['TYPE'] + '<br>' +
+            'Coverage: ' + la_df['COVERAGE'] + '<br>' +
+            'Lat: %{lat:.2f} \u00b0<br>'+
+            'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
+    )
+
+    map_2_15 = go.Figure(
+        data=[
+            epa_trend,
+            met_trend,
+            la_trend,
+            uni_trend,
+            other_trend
+            
+        ],
+        layout=MAP_LAYOUT)
+    map_2_15.update_layout(
+        legend_title='<b>Station Operator</b>',
+        mapbox=dict(bearing=0,
+                center=dict(
+                    lat=54,
+                    lon=349
+                ),
+                pitch=0,
+                zoom=4.2)
+    )
+    
+    return map_2_15
 
 
 ##############################################################################
