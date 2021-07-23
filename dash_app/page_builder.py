@@ -114,7 +114,7 @@ def build_nav(chapter_dict):
                                         'color': chapter_dict['domain-color']},
                                     children='Report Chapter (pdf)',
                                     target='_blank',
-                                    href=WEB_RESOURCE + '/pdf/statusReport2020/'+ chapter_dict['pdf']),
+                                    href=WEB_RESOURCE + '/pdf/statusReport2020/' + chapter_dict['pdf']),
                             ]),
                 ])])
 
@@ -402,4 +402,26 @@ def build_nav_carousel(chapter_dict):
                                     'initialSlide': chapter_index
                                 }
                             }]
-                    )))])
+                    ))),
+# The row below can be removed after initial release
+            dbc.Row(
+                className='sr-feedback',
+                style={'borderColor': chapter_dict['domain-color']},
+                children=[
+                    dbc.Col([
+                    html.H3('Feedback Appreciated',
+                    # className='text-center',
+                    style={'color': chapter_dict['domain-color']}),
+                    html.P(
+                    'After taking time to explore the tool, we would appreciate if you could complete a short user survey. The link below is available on all pages.'
+                    ),
+                     html.A(
+                        'Help us improve. Complete user survey.',
+                        target='_blank',
+                        href='https://surveyhero.com/c/8a7cf6b7',
+                        className='text-center'),
+            ],
+            className='text-center')
+            ])
+
+        ])

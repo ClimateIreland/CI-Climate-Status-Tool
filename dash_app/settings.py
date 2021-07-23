@@ -268,7 +268,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '2.8',
-        'id': 'uaa-6',
+        'id': 'ac-1',
         'title': 'Clouds',
         'href': '_2_8_CloudProperties',
         'pdf': '_2_8_CloudProperties.pdf',
@@ -277,7 +277,7 @@ CHAPTERS = [
         'icon-src': 'ico-uaa-cloud-properties.png',
         'icon-hover-src': 'ico-uaa-cloud-properties_hover.png',
         'domain': 'Atmosphere',
-        'subdomain': 'Upper Atmosphere',
+        'subdomain': 'Atmospheric Composition',
         'scientific-area': 'Hydrosphere',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Jurgita Ovadnevaite',
         'domain-color': ATMOSPHERE_COLOR,
@@ -305,7 +305,7 @@ CHAPTERS = [
 
     {
         'chapter-num': '2.10',
-        'id': 'ac-1',
+        'id': 'ac-2',
         'title': 'Carbon Dioxide',
         'href': '_2_10_CarbonDioxide',
         'pdf': '_2_10_CarbonDioxide.pdf',
@@ -322,7 +322,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.11',
-        'id': 'ac-2',
+        'id': 'ac-3',
         'title': 'Methane',
         'href': '_2_11_Methane',
         'pdf': '_2_11_Methane.pdf',
@@ -340,7 +340,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.12',
-        'id': 'ac-3',
+        'id': 'ac-4',
         'title': 'Other Greenhouse Gases',
         'href': '_2_12_OtherGreenhouseGases',
         'pdf': '_2_12_OtherGreenhouseGases.pdf',
@@ -375,7 +375,7 @@ CHAPTERS = [
     },
         {
         'chapter-num': '2.14',
-        'id': 'ac-4',
+        'id': 'ac-6',
         'title': 'Aerosols',
         'href': '_2_14_Aerosols',
         'pdf': '_2_14_Aerosols.pdf',
@@ -392,7 +392,7 @@ CHAPTERS = [
     },
        {
         'chapter-num': '2.15',
-        'id': 'ac-6',
+        'id': 'ac-7',
         'title': 'Precursors for Aerosols and Ozone',
         'href': '_2_15_PrecursorsAerosolsOzone',
         'pdf': '_2_15_PrecursorsAerosolsOzone.pdf',
