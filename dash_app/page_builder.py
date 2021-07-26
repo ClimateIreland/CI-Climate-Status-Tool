@@ -336,9 +336,21 @@ def build_info(infoLinks, chapter_dict):
 
 def build_nav_carousel(chapter_dict):
     chapter_index = CHAPTERS.index(chapter_dict)
-    chapters_before = CHAPTERS[0:chapter_index+1]
-    chapters_after = CHAPTERS[chapter_index+1:]
-    chapters_sorted = chapters_after+chapters_before
+
+    def active_style(chapter):
+        """
+        Check if active page and sets style
+        """
+        if chapter == chapter_dict:
+            return {
+                    'borderColor': chapter['domain-bg-color'],
+                    'borderStyle':'solid',
+                    'borderWidth':'10px',
+                    'borderRadius':'50%'}
+        else:
+            return {
+                    'borderColor': 'white',
+                    }
 
     return dbc.Container(
         className='sr-nav-carousel container-fluid',
@@ -373,10 +385,12 @@ def build_nav_carousel(chapter_dict):
                                     children=[
                                         html.Img(
                                             className='sr-nav-carousel-img',
-                                            src=IMAGES_PATH+'icons/'+chapter['icon-lg-src']),
+                                            src=IMAGES_PATH+'icons/'+chapter['icon-lg-src'],
+                                            style=active_style(chapter)),
                                         html.Img(
                                             className='sr-nav-carousel-img-hover',
-                                            src=IMAGES_PATH+'icons/'+chapter['icon-lg-hover-src']),
+                                            src=IMAGES_PATH+'icons/'+chapter['icon-lg-hover-src'],
+                                            style={'borderColor':chapter['domain-color']}),
                                         html.Div(
                                             children=chapter['title']
                                         )])
@@ -384,12 +398,12 @@ def build_nav_carousel(chapter_dict):
                         slides_to_scroll=1,
                         swipe_to_slide=True,
                         autoplay=False,
-                        speed=2000,
+                        speed=1000,
                         variable_width=False,
                         center_mode=True,
                         responsive=[
                             {
-                                'breakpoint': 3000,
+                                'breakpoint': 10000,
                                 'settings': {
                                     'initialSlide': chapter_index
                                 }
@@ -410,7 +424,6 @@ def build_nav_carousel(chapter_dict):
                 children=[
                     dbc.Col([
                     html.H3('Feedback Appreciated',
-                    # className='text-center',
                     style={'color': chapter_dict['domain-color']}),
                     html.P(
                     'After taking time to explore the tool, we would appreciate if you could complete a short user survey. The link below is available on all pages.'

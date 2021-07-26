@@ -5,7 +5,7 @@ if os.path.isfile('env.py'):
 
 WEB_RESOURCE = 'https://www.climateireland.ie/web_resource'
 # WEB_RESOURCES ='/Users/dan/ClimateIreland/Repositories/docs/web_resource'
-ATMOSPHERE_COLOR = '#009fe3'
+ATMOSPHERE_COLOR = '#00aeef' #009fe3'
 OCEAN_COLOR = '#00909e'
 TERRESTRIAL_COLOR = '#f39200'
 
