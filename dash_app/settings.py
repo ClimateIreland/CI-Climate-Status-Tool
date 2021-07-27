@@ -5,7 +5,7 @@ if os.path.isfile('env.py'):
 
 WEB_RESOURCE = 'https://www.climateireland.ie/web_resource'
 # WEB_RESOURCES ='/Users/dan/ClimateIreland/Repositories/docs/web_resource'
-ATMOSPHERE_COLOR = '#009fe3'
+ATMOSPHERE_COLOR = '#00aeef' #009fe3'
 OCEAN_COLOR = '#00909e'
 TERRESTRIAL_COLOR = '#f39200'
 
@@ -154,10 +154,28 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
+            {
+        'chapter-num': '2.4',
+        'id': 'sa-4',
+        'title': 'Surface Pressure',
+        'href': '_2_4_AtmosphericPressure',
+        'pdf': '_2_4_AtmosphericPressure.pdf',
+        'icon-lg-src': 'surface-pressure.png',
+        'icon-lg-hover-src': 'surface-pressure_hover.png',
+        'icon-src': 'ico-sa-pressure.png',
+        'icon-hover-src': 'ico-sa-pressure_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Surface',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+
 
     {
         'chapter-num': '2.5',
-        'id': 'sa-4',
+        'id': 'sa-5',
         'title': 'Precipitation',
         'href': '_2_5_Precipitation',
         'pdf': '_2_5_Precipitation.pdf',
@@ -176,7 +194,7 @@ CHAPTERS = [
 
         {
         'chapter-num': '2.6',
-        'id': 'sa-5',
+        'id': 'sa-6',
         'title': 'Surface Radiation Budget',
         'href': '_2_6_SurfaceEarth_RadiationBudget',
         'pdf': '_2_6_SurfaceEarthRadiationBudget.pdf',
@@ -247,11 +265,47 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
+
+    {
+        'chapter-num': '2.8',
+        'id': 'ac-1',
+        'title': 'Clouds',
+        'href': '_2_8_CloudProperties',
+        'pdf': '_2_8_CloudProperties.pdf',
+        'icon-lg-src': 'clouds_0.png',
+        'icon-lg-hover-src': 'clouds_0_hover.png',
+        'icon-src': 'ico-uaa-cloud-properties.png',
+        'icon-hover-src': 'ico-uaa-cloud-properties_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Atmospheric Composition',
+        'scientific-area': 'Hydrosphere',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Jurgita Ovadnevaite',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+        {   
+        'chapter-num': '2.9',
+        'id': 'uaa-5',
+        'title': 'Lightning',
+        'href': '_2_9_Lightning',
+        'pdf': '_2_9_Lightning.pdf',
+        'icon-lg-src': 'lightning.png',
+        'icon-lg-hover-src': 'lightning_hover.png',
+        'icon-src': 'ico-uaa-lightning.png',
+        'icon-hover-src': 'ico-uaa-lightning_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Upper Atmosphere',
+        'scientific-area': 'Physical Properties',
+        'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+
     # Atmosheric Composition
 
     {
         'chapter-num': '2.10',
-        'id': 'ac-1',
+        'id': 'ac-2',
         'title': 'Carbon Dioxide',
         'href': '_2_10_CarbonDioxide',
         'pdf': '_2_10_CarbonDioxide.pdf',
@@ -268,7 +322,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.11',
-        'id': 'ac-2',
+        'id': 'ac-3',
         'title': 'Methane',
         'href': '_2_11_Methane',
         'pdf': '_2_11_Methane.pdf',
@@ -286,7 +340,7 @@ CHAPTERS = [
     },
     {
         'chapter-num': '2.12',
-        'id': 'ac-3',
+        'id': 'ac-4',
         'title': 'Other Greenhouse Gases',
         'href': '_2_12_OtherGreenhouseGases',
         'pdf': '_2_12_OtherGreenhouseGases.pdf',
@@ -321,7 +375,7 @@ CHAPTERS = [
     },
         {
         'chapter-num': '2.14',
-        'id': 'ac-4',
+        'id': 'ac-6',
         'title': 'Aerosols',
         'href': '_2_14_Aerosols',
         'pdf': '_2_14_Aerosols.pdf',
@@ -333,6 +387,23 @@ CHAPTERS = [
         'subdomain': 'Atmospheric Composition',
         'scientific-area': 'Physical Properties',
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Jurgita Ovadnevaite',
+        'domain-color': ATMOSPHERE_COLOR,
+        'domain-bg-color': ATMOSPHERE_BG_COLOR
+    },
+       {
+        'chapter-num': '2.15',
+        'id': 'ac-7',
+        'title': 'Precursors for Aerosols and Ozone',
+        'href': '_2_15_PrecursorsAerosolsOzone',
+        'pdf': '_2_15_PrecursorsAerosolsOzone.pdf',
+        'icon-lg-src': 'precursors_0.png',
+        'icon-lg-hover-src': 'precursors_0_hover.png',
+        'icon-src': 'ico-ac-precursors.png',
+        'icon-hover-src': 'ico-ac-precursors_hover.png',
+        'domain': 'Atmosphere',
+        'subdomain': 'Atmospheric Composition',
+        'scientific-area': 'Carbon Cycle and other GHGs',
+        'authors': 'Ned Dwyer, Walther C.A. Cámaro García',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
@@ -908,80 +979,14 @@ CHAPTERS = [
 
 CHAPTERS_DEV = [
     # Upper-air Atmoshere
-    {   
-        'chapter-num': '2.9',
-        'id': 'uaa-5',
-        'title': 'Lightning',
-        'href': '_2_9_Lightning',
-        'pdf': '_2_9_Lightning.pdf',
-        'icon-lg-src': 'lightning.png',
-        'icon-lg-hover-src': 'lightning_hover.png',
-        'icon-src': 'ico-uaa-lightning.png',
-        'icon-hover-src': 'ico-uaa-lightning_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
-    {
-        'chapter-num': '2.8',
-        'id': 'uaa-6',
-        'title': 'Clouds',
-        'href': '_2_8_CloudProperties',
-        'pdf': '_2_8_CloudProperties.pdf',
-        'icon-lg-src': 'clouds_0.png',
-        'icon-lg-hover-src': 'clouds_0_hover.png',
-        'icon-src': 'ico-uaa-cloud-properties.png',
-        'icon-hover-src': 'ico-uaa-cloud-properties_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
+
 
 
     # ATMOSPHERE - COMPOSITION
 
-
-    {
-        'chapter-num': '2.15',
-        'id': 'ac-6',
-        'title': 'Precursors for Aerosols and Ozone',
-        'href': '_2_15_PrecursorsAerosolsOzone',
-        'pdf': '_2_15_PrecursorsAerosolsOzone.pdf',
-        'icon-lg-src': 'precursors_0.png',
-        'icon-lg-hover-src': 'precursors_0_hover.png',
-        'icon-src': 'ico-ac-precursors.png',
-        'icon-hover-src': 'ico-ac-precursors_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
     # ATMOSPHERE - SURFACE
-    {
-        'chapter-num': '2.4',
-        'id': 'sa-6',
-        'title': 'Surface Pressure',
-        'href': '_2_4_AtmosphericPressure',
-        'pdf': '_2_4_AtmosphericPressure.pdf',
-        'icon-lg-src': 'surface-pressure.png',
-        'icon-lg-hover-src': 'surface-pressure_hover.png',
-        'icon-src': 'ico-sa-pressure.png',
-        'icon-hover-src': 'ico-sa-pressure_hover.png',
-        'domain': 'Atmosphere',
-        'subdomain': '',
-        'scientific-area': '',
-        'authors': '',
-        'domain-color': ATMOSPHERE_COLOR,
-        'domain-bg-color': ATMOSPHERE_BG_COLOR
-    },
+
 
 
     # OCEANIC - SURFACE OCEAN PHYSICS

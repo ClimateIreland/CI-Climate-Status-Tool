@@ -221,7 +221,8 @@ a, a:active, a:focus{
 }
 
 .sr-nav-carousel {
-margin-top:15px;
+margin-top:15px;    
+/* border-bottom: 1px solid; */
 }
 
 .sr-nav-carousel-logo {
@@ -239,6 +240,8 @@ margin-top:15px;
     max-width:100px;
     margin-left: auto;
     margin-right: auto;
+    border: 2px solid;
+    border-radius:50%;
     transition: .3s ease;
 }
 
@@ -258,6 +261,12 @@ margin-top:15px;
 
 .sr-chart-short{
     height:300px;
+}
+
+.sr-feedback{
+    border-top: 1px solid;
+    padding-top: 15px;
+    margin-bottom:15px;
 }
 
 ._up{

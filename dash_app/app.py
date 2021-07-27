@@ -16,15 +16,19 @@ from pages import (
     _2_1_SurfaceTemperature,
     _2_2_SurfaceWindSpeedAndDirection,
     _2_3_WaterVapour,
-    _2_7a_UpperAirTemperature,
-    _2_7b_UpperAirWindSpeedAndDirection,
+    _2_4_AtmosphericPressure,
     _2_5_Precipitation,
     _2_6_SurfaceEarth_RadiationBudget,
+    _2_7a_UpperAirTemperature,
+    _2_7b_UpperAirWindSpeedAndDirection,
+    _2_8_CloudProperties,
+    _2_9_Lightning,
     _2_10_CarbonDioxide,
     _2_11_Methane,
     _2_12_OtherGreenhouseGases,
     _2_13_Ozone,
     _2_14_Aerosols,
+    _2_15_PrecursorsAerosolsOzone,
 
     _3_1a_SeaSurfaceTemperature,
     _3_1b_SeaSubsurfaceTemperature,
@@ -82,10 +86,6 @@ app.layout = html.Div(children=[
     #     children='Climate Ireland'
     # ),
     html.Div(id='page-content'),
-    # html.Div(
-    #     className='sr-footer',
-    #     children='Climate Ireland'
-    # )
 ],
 )
 
@@ -105,6 +105,8 @@ def display_page(pathname):
         return _2_2_SurfaceWindSpeedAndDirection.create_layout(app)
     elif "_2_3_WaterVapour" in pathname:
         return _2_3_WaterVapour.create_layout(app)
+    elif "_2_4_AtmosphericPressure" in pathname:
+        return _2_4_AtmosphericPressure.create_layout(app)
     elif "_2_5_Precipitation" in pathname:
         return _2_5_Precipitation.create_layout(app)
     elif "_2_6_SurfaceEarth_RadiationBudget" in pathname:
@@ -113,6 +115,10 @@ def display_page(pathname):
         return _2_7a_UpperAirTemperature.create_layout(app)
     elif "_2_7b_UpperAirWindSpeedAndDirection" in pathname:
         return _2_7b_UpperAirWindSpeedAndDirection.create_layout(app)
+    elif "_2_8_CloudProperties" in pathname:
+        return _2_8_CloudProperties.create_layout(app)
+    elif "_2_9_Lightning" in pathname:
+        return _2_9_Lightning.create_layout(app)
     elif "_2_10_CarbonDioxide" in pathname:
         return _2_10_CarbonDioxide.create_layout(app)
     elif "_2_11_Methane" in pathname:
@@ -122,8 +128,10 @@ def display_page(pathname):
     elif "_2_12_OtherGreenhouseGases" in pathname:
         return _2_12_OtherGreenhouseGases.create_layout(app)
     elif "_2_14_Aerosols" in pathname:
-        return _2_14_Aerosols.create_layout(app)
-
+        return _2_14_Aerosols.create_layout(app)    
+    elif "_2_15_PrecursorsAerosolsOzone" in pathname:
+        return _2_15_PrecursorsAerosolsOzone.create_layout(app)
+        
     # Oceanic
     elif "_3_1a_SeaSurfaceTemperature" in pathname:
         return _3_1a_SeaSurfaceTemperature.create_layout(app)
@@ -149,8 +157,6 @@ def display_page(pathname):
         return _3_10_Plankton.create_layout(app)
     elif "_3_11_MarineHabitatProperties" in pathname:
         return _3_11_MarineHabitatProperties.create_layout(app)
-    # elif "_3_12_OtherOceanECVs" in pathname:
-    #     return _3_12_OtherOceanECVs.create_layout(app)
     elif "_3_12a_TransientTracers" in pathname:
         return _3_12a_TransientTracers.create_layout(app)
     elif "_3_12b_OceanSurfaceStress" in pathname:
