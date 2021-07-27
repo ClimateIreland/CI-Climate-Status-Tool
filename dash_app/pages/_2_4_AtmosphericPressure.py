@@ -16,18 +16,17 @@ introText = """
 Atmospheric pressure is a key meteorological variable for monitoring the 
 climate system, as the local and large-scale atmospheric circulation patterns 
 are driven by differences in air pressure. Changes in large-scale pressure 
-patterns can affect local and regional weather. An understanding of 
-atmospheric pressure distributions is required for the long-term simulations 
-of past weather and climate known as reanalyses. This understanding is also 
-fundamental for weather forecasting.
+patterns can affect local and regional weather. 
      """
 bulletPoint1 = """
-There is no noteable trends in surface air pressure.
+An understanding of atmospheric pressure distributions is required for the 
+long-term simulations of past weather and climate known as reanalyses. This 
+understanding is also fundamental for weather forecasting.  
         """
 bulletPoint2 = """
 Resources are required to digitise older records and carry out comprehensive 
 time series analysis, which would help in understanding if and how storm 
-tracks are changing
+tracks are changing.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = 'Annual and Monthly Surface Pressure - Valentia'
@@ -35,13 +34,13 @@ trendChart = figure_2_8()
 
 trendCaption = """
 Monthly and annual minimum, average and maximum surface pressure at Valentia 
-Observatory, Co. Kerry (1940–2019).
-Little variation is seen. However, maximum and minimum series show greater 
-variability, particularly the minimum values. This behaviour is linked to 
-mid-latitude cyclones or low-pressure systems that frequently pass over 
-Ireland. The very low pressure observed in December 1989 was associated with 
-an Atlantic depression that passed over Ireland, causing some damage due to 
-high seas, high tides and heavy rain.
+Observatory, Co. Kerry (1940–2019). Little variation is seen in the average 
+series. However, maximum and minimum series show greater variability, 
+particularly the minimum values. This behaviour is linked to mid-latitude 
+cyclones or low-pressure systems that frequently pass over Ireland. The very 
+low pressure observed in December 1989 was associated with an Atlantic 
+depression that passed over Ireland, causing some damage due to high seas, 
+high tides and heavy rain.
      """
 
 infrastructureText = """

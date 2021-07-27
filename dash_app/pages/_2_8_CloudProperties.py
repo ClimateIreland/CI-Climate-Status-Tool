@@ -86,12 +86,13 @@ trendCaption = [
         html.Sub(html.I('eff')),
         """
         ) (b) by air mass transport. Cloud properties in marine (clean) and 
-        continental (polluted) air masses are presented with colour bars while clouds 
-        in modified air masses are plotted as lines (modified air masses are the 
-        mixture of both marine and continental air masses, where mar. mod. - marine m
-        odified represents marine air mass with some continental influence and cont. 
-        mod. - continental modified - represents continental air mass with some marine 
-        influence). Data cover the period (2009 – 2015) at Mace Head.
+        continental (polluted) air masses are presented with colour bars while 
+        clouds in modified air masses are plotted as lines (modified air 
+        masses are a mixture of both marine and continental air masses, where 
+        marine modified (mar. mod.)  represents marine air mass with some 
+        continental influence and continental modified (cont. mod.) represents 
+        continental air mass with some marine influence). Data cover the 
+        period (2009 – 2015) at Mace Head.
         """
         ]
 

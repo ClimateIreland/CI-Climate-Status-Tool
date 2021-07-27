@@ -1495,11 +1495,13 @@ def figure_2_17():
             category_orders={
             '15min_interval':list(np.sort(df['15min_interval'].unique()))
             },   )
-    figure_2_17.update_layout(margin=dict(l=0, r=0, t=0, b=0))
-    figure_2_17.update_coloraxes(colorbar_thickness=10)
+    figure_2_17.update_layout(margin=dict(l=0, r=0, t=0))
+    figure_2_17.update_coloraxes(dict(
+        colorbar_thickness=10,
+        colorbar_title='<b>Pulses</b><br>(sferics)'))
 
     figure_2_17['layout']['updatemenus'][0]['pad']=dict(t= 20)
-    figure_2_17['layout']['sliders'][0]['pad']=dict(l=20,t= 20)
+    figure_2_17['layout']['sliders'][0]['pad']=dict(l=20,t= 20, b=20)
 
     return figure_2_17
 

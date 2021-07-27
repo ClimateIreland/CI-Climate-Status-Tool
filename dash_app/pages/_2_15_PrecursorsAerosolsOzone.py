@@ -17,10 +17,10 @@ Precursors are chemical species in the atmosphere that lead to the production
 of aerosols and ozone. Precursors include nitrogen dioxide (NO\u2082), sulfur 
 dioxide (SO\u2082), carbon monoxide (CO) and formaldehyde (HCHO). In Ireland 
 emissions from vehicles are the main source of NO\u2082 and CO, while domestic 
-heating and electricity generation leads to emissions of SO\u2082. Aerosols and O\u2083 
-in the near-surface atmosphere allied with these precursors can directly harm 
-human health and produce detrimental environmental impacts (e.g. crop damage, 
-acid rain).
+heating and electricity generation leads to emissions of SO\u2082. Aerosols 
+and O\u2083 in the near-surface atmosphere allied with these precursors can 
+directly harm human health and produce detrimental environmental impacts (e.g. 
+crop damage, acid rain).
        """
 bulletPoint1 = """
 Reductions in the concentrations of near-surface aerosols and O\u2083
@@ -28,14 +28,18 @@ have been observed in specific regions where the emissions of
 some precursors are regulated.
         """
 bulletPoint2 = """
-
+In 2018 the EPA reported levels of precursors below the European Union (EU) 
+legislative limits, although levels of NO\u2082 were above World Health 
+Organization (WHO) guideline at a number of stations. 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = 'Nitrogen Dioxide Concentration - Ballyfermot'
 # trendChart = figure_2_31()
 
 trendCaption = """
-Hourly concentrations (µg/m\u00b3) of nitrogen dioxide, NO\u2082, at Ballyfermot, Co. Dublin (2013–2018).
+Hourly concentrations (µg/m\u00b3) of nitrogen dioxide, NO\u2082, at 
+Ballyfermot, Co. Dublin (2013–2018). The WHO hourly limit of 200 µg/m\u00b3 
+was exceeded on 5 April 2018. 
         """
 infrastructureMap = map_2_15()
 infrastructureText = """
