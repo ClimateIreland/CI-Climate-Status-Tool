@@ -28,7 +28,7 @@ bulletPoint2 = """
         in the period 1980– 2015, in line with patterns observed globally.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Upper Air Temperature - Valentia, Co.Kerry'
+trendChartTitle = 'Upper Air Temperature - Valentia, Co. Kerry'
 trendChart = figure_2_13_a()
 
 trendCaption = """

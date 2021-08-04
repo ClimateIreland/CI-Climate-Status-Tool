@@ -82,7 +82,7 @@ infoLinks = [
          {'text': 'World Radiation Data Centre',
      'url': 'http://wrdc.mgo.rssi.ru'},
          {'text': 'About EUMETSAT, Europe´s weather satellite programme',
-     'url': 'https://www.eumetsat.int/website/home/index.html'},
+     'url': 'https://www.eumetsat.int/about-us/who-we-are'},
 
 ]
 

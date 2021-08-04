@@ -19,7 +19,7 @@ warming potential 256 times that of carbon dioxide and in the lower atmosphere
 it destroys ozone.  
         """
 bulletPoint1 = """
-Globally, about 40 % of total N\u2082O emissions come from human activities, 
+Globally, about 40% of total N\u2082O emissions come from human activities, 
 approximately 30% comes the microbial breakdown of nitrogen in soils, and 
 microbial activity in the ocean is responsible for the remaining 30%. 
         """

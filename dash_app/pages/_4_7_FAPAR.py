@@ -32,7 +32,7 @@ bulletPoints = [bulletPoint1, bulletPoint2]
 # scientificArea='Biosphere'
 # authors='Walther C.A. Cámaro García, Ned Dwyer'
 
-trendChartTitle = '10-Day Average FAPAR Over Ireland'
+trendChartTitle = '10-Day Mean FAPAR - Ireland'
 trendChart = figure_4_12()
 
 trendCaption = """

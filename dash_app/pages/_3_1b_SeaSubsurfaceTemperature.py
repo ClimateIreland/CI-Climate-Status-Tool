@@ -27,7 +27,7 @@ bulletPoint2 = """
         However, observations of the annual water temperature in the Rockall Trough at depths between 1500 m and 2000 m from 1975 to 2018 show no evident trend.   
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Mean Sea Subsurface Temperature' #(1961-2018)
+trendChartTitle = 'Sea Subsurface Temperature - Rockall Trough' #(1961-2018)
 trendChart = figure_3_3()
 
 trendCaption = """

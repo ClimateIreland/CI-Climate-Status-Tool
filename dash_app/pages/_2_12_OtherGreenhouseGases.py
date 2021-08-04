@@ -20,7 +20,7 @@ CO\u2082 and synthetic gases which are exclusively produced by human activities 
         """
 bulletPoint1 = """
         N\u2082O concentrations in the atmosphere are now approximately 20% 
-        higher compared to the pre-industrial era  
+        higher compared to the pre-industrial era.  
         """
 bulletPoint2 = """
         Synthetic gasses, which replaced ozone depleting chlorofluorocarbons 
@@ -29,7 +29,7 @@ bulletPoint2 = """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
 # first chart
-trendChartTitle = 'Nitrous oxide (N\u2082O) Concentration' #(1978-2018)
+trendChartTitle = 'Nitrous Oxide (N\u2082O) Concentration - Adrigole and Mace Head' #(1978-2018)
 trendChart = figure_2_22()
 trendCaption = """
 Monthly mean N\u2082O concentration observed at Adrigole (1978-1984) and Mace Head Research Station (1987–2018). 
@@ -37,15 +37,15 @@ A steady increase is observed, with concentrations now above 330 ppb.
 This is a 20% increase compared to the pre-industrial era when N\u2082O global concentrations were around 270 ppb.
         """
 # second chart
-trendChartTitle2 = 'CFC-12 Concentration' #(1978-2018)
+trendChartTitle2 = 'CFC-12 Concentration - Adrigole and Mace Head' #(1978-2018)
 trendChart2 = figure_2_23()
 trendCaption2 = """
-Monthly mean CFC-12 concentration observed at Adrigole (1978-1984) and Mace Head Research Station (1987-–2018).  
+Monthly mean CFC-12 concentration observed at Adrigole (1978-1984) and Mace Head Research Station (1987–2018).  
 A steady increase can be observed through the 1980s but, after the adoption of the Montreal Protocol in 1987, 
 banning the production and use of CFCs, there was no further increase and levels have been falling since 2004.
         """
 # third chart
-trendChartTitle3 = 'HFC-134a Concentration' #(1994-2018)
+trendChartTitle3 = 'HFC-134a Concentration - Mace Head' #(1994-2018)
 trendChart3 = figure_2_24()
 trendCaption3 = """
 Monthly mean HFC-134a concentration observed at Mace Head Research Station (1994-2018).
@@ -57,14 +57,14 @@ Monthly mean HFC-134a concentration observed at Mace Head Research Station (1994
 infrastructureText = """
 Greenhouse gas concentrations have been measured routinely at the Mace Head Atmospheric Research Station, 
 Carna, Co. Galway (red), since the 1990s. Monitoring of a number of HFC and HCFC compounds started in 1994 
-and of PFCs and SF6 in 2004. N\u2082O and CFCs were measured at Adrigole, Co. Cork (blue), from 1978 to 1984.
+and of PFCs and SF\u2086 in 2004. N\u2082O and CFCs were measured at Adrigole, Co. Cork (blue), from 1978 to 1984.
         """
 infrastructureMap = map_2_12()
 
 infoLinks = [
     {'text': 'Carbon Dioxide, Methane & Other Greenhouse Gases ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/ghg/'},
-     {'text': 'Simmonds, P.G., M. Rigby, A. McCulloch, et al., (2017) Changing trends and emissions of hydrochlorofluorocarbons (HCFCs) and their hydrofluorcarbon (HFCs) replacements. Atmospheric Chemistry and Physics. Vol. 17, pp. 4641-4655',
+     {'text': 'Simmonds, P.G., M. Rigby, A. McCulloch, et al., (2017) Changing trends and emissions of hydrochlorofluorocarbons (HCFCs) and their hydrofluorocarbon (HFCs) replacements. Atmospheric Chemistry and Physics. Vol. 17, pp. 4641-4655',
      'url': 'https://doi.org/10.5194/acp-17-4641-2017'},
      {'text': 'Information on the Mace Head Facility',
      'url': 'http://www.macehead.org/'},

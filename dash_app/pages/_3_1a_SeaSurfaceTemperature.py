@@ -29,7 +29,7 @@ bulletPoint2 = """
         """
 
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Mean Sea Surface Temperature' #(1961-2018)
+trendChartTitle = 'Sea Surface Temperature - Malin Head' #(1961-2018)
 trendChart = figure_3_1()
 
 trendCaption = """
@@ -56,7 +56,7 @@ infoLinks = [
      'url': 'https://academic.oup.com/icesjms/article/66/7/1480/657991'},
 
      {'text': 'Tinker, J., Howes, E., Wakelin, S., et al. (2020) The impacts of climate change on temperature (air and sea), relevant to the coastal and marine environment around the UK. MCCIP Science Review 2020, Marine Climate Change Impacts Partnership, pp 1–30',
-     'url': 'http://www.mccip.org.uk/media/2003/01_temperature_2020.pdf'},
+     'url': 'https://www.mccip.org.uk/sites/default/files/2021-07/01_temperature_2020.pdf'},
 
      {'text': 'Annual ICES Report on Ocean Climate (IROC)',
      'url': 'https://ocean.ices.dk/iroc/#'},

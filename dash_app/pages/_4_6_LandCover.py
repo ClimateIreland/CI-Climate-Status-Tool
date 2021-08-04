@@ -28,7 +28,7 @@ bulletPoint2 = """
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
-trendChartTitle = 'Percentage of Cumulative Change within Each Class'
+trendChartTitle = 'Percentage of Cumulative Change - Ireland'
 trendChart = figure_4_11()
 
 
@@ -94,7 +94,7 @@ custom_trend = dbc.Container(
                         children=[
                             html.H4(
                                 className='sr-chart-title',
-                                children='Ireland Landcover Distribution')]
+                                children='Landcover Distribution - Ireland')]
                         ),
                 dbc.Col(className="col-12 col-md-6",
                         children=[

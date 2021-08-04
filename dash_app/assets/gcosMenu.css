@@ -36,7 +36,7 @@ color:#299DD8;
 {
 /* top: 133px; */
 top: 185px;
-left: 400px;
+left: 380px;
 color:#299DD8;
 }
 
@@ -45,7 +45,7 @@ color:#299DD8;
 /*width: 200px;*/
 /* top: 80px; */
 top: 105px;
-left: 660px;
+left: 670px;
 color:#299DD8;	
 }
 #cry-text
@@ -58,7 +58,7 @@ color:#F09100;
 #ant-text
 {
 top: 285px;
-left: 750px;
+left: 720px;
 color: #F09100;
 }
 
@@ -78,13 +78,13 @@ color: #F09100;
 #sop-text
 {
 top: 335px;
-left: 164px;
+left: 135px;
 color: #00839B;
 }
 #obe-text
 {
-top: 470px;
-left: 360px;
+top: 467px;
+left: 350px;
 /*width: 250px;*/
 color: #00839B;
 }
@@ -99,7 +99,7 @@ color: #00839B;
 #ssop-text
 {
 top: 560px;
-left: 305px;
+left: 280px;
 /*width:250px;*/
 color: #00839B;
 }
@@ -270,19 +270,19 @@ top: 490px;
 
 #bio-1, #bio-5
 {
-left:740px;
+left:750px;
 }
 #bio-2, #bio-6
 {
-left:790px;
+left:800px;
 }
 #bio-3, #bio-7
 {
-left:840px;
+left:850px;
 }
 #bio-4, #bio-8
 {
-left:890px;
+left:900px;
 }
 
 /*Hydrosphere icones*/

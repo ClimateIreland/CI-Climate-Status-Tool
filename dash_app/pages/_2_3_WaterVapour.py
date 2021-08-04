@@ -66,7 +66,7 @@ infoLinks = [
         {'text': 'Valentia Observatory information',
      'url': 'https://www.met.ie/about-us/our-history/valentia-observatory'},
         {'text': 'About EUMETSAT, Europe´s weather satellite programme',
-     'url': 'https://www.eumetsat.int/website/home/index.html'},
+     'url': 'https://www.eumetsat.int/about-us/who-we-are'},
         {'text': 'About EUMETNET',
      'url': 'https://www.eumetnet.eu/about-us/'},
         {'text': 'E-GVAP observation Programme information',
@@ -83,7 +83,7 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 combined_chapter_dict = copy.copy(chapter_dict)
-combined_chapter_dict['title'] = 'Water Vapour'
+combined_chapter_dict['title'] = 'Surface and Upper Air Atmosphere Water Vapour'
 combined_chapter_dict['subdomain'] = 'Surface / Upper Atmosphere'
 
 trendChart1, trendChart2 = figure_2_6()

@@ -32,7 +32,7 @@ Regular analysis of groundwater levels in Ireland is carried out but not
 primarily for identifying climate-driven changes.
         """
 bulletPoints = [bulletPoint1, bulletPoint2, bulletPoint3]
-trendChartTitle = 'Daily Groundwater Levels - Knocktopher, Co. Kilkenny'
+trendChartTitle = 'Daily Groundwater Levels - Knocktopher'
 trendChart = figure_4_2()
 
 trendCaption = """
