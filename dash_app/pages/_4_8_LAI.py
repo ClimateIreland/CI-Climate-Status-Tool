@@ -31,7 +31,7 @@ bulletPoint2 = """
     are observed between May and June.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = '10-Day Mean Leaf Area Index Over Ireland'
+trendChartTitle = '10-Day Mean Leaf Area Index - Ireland'
 trendChart = figure_4_14()
 
 trendCaption = """

@@ -21,7 +21,7 @@ introText = """
         """
 bulletPoint1 = """
         Analysis of a long time series of more than 50 years of data (1972 to 2017) 
-        indicates an increase in river flows across most of the country
+        indicates an increase in river flows across most of the country.
         """
 bulletPoint2 = """
         Analysis of a shorter data period from 1992 suggests an increase in potential 

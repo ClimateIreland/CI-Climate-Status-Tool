@@ -39,10 +39,10 @@ trendCaption = """
 
 infrastructureText = """
 Wave height and wave period measurements have been made at the Irish Marine 
-Buoy Observation Network (IMDBON) (orange) since 2002 and in addition since 
+Data Buoy Observation Network (IMDBON) (orange) since 2002 and in addition since 
 2013 wave direction has been measured.  Wave height, wave period and 
 direction measurements are also made as part of the Ocean Energy Programme by 
-the waverider network (yellow) operated by the Marine Institute. 
+the Waverider network (yellow) operated by the Marine Institute. 
 Radar altimeters, on board a number of satellites including the Jason and 
 Sentinel series, make measurements from which wave height and wave frequency 
 can be inferred. In situ measurements are required to calibrate and validate 

@@ -33,7 +33,7 @@ legislative limits, although levels of NO\u2082 were above World Health
 Organization (WHO) guideline at a number of stations. 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Nitrogen Dioxide Concentration - Ballyfermot'
+trendChartTitle = 'Nitrogen Dioxide (NO\u2082) Concentration - Ballyfermot'
 # trendChart = figure_2_31()
 
 trendCaption = """

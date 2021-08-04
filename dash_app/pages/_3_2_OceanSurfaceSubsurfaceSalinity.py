@@ -18,7 +18,7 @@ Salinity is defined as the total amount of dissolved salts in water.
 These salts constitute approximately 3.5% of the ocean’s mass. Globally, 
 areas that currently have net evaporation are expected to become saltier 
 at the ocean surface, while areas with net precipitation, increased river 
-un-off and land ice melt are expected to get fresher. Salinity and temperature 
+run-off and land ice melt are expected to get fresher. Salinity and temperature 
 control water density and are key variables for identifying and tracing 
 ocean water masses and for understanding ocean physical processes. 
         """

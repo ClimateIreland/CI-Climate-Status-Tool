@@ -38,7 +38,7 @@ bulletPoints = [bulletPoint1, bulletPoint2]
 # scientificArea='Energy and Temperature'
 # authors='Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin'
 
-trendChartTitle = 'Mean Surface Air Temperature'  # (1900-2019)
+trendChartTitle = 'Surface Air Temperature - Ireland'  # (1900-2019)
 trendChart = figure_2_1()
 
 trendCaption = """
@@ -77,7 +77,7 @@ infrastructureMap = map_2_1()
 infoLinks = [{'text': 'Surface Temperature ESSENTIAL CLIMATE VARIABLES (ECV). GCOS FACTSHEETS',
               'url': 'https://gcos.wmo.int/en/essential-climate-variables/surface-temperature/'},
 
-             {'text': 'ETCCDI/CRD Climate Change Indices. Definiton of the 27 core indices',
+             {'text': 'ETCCDI/CRD Climate Change Indices. Definition of the 27 core indices',
              'url': 'http://etccdi.pacificclimate.org/list_27_indices.shtml'},
 
              {'text': 'Met Éireann information on air temperature in Ireland',

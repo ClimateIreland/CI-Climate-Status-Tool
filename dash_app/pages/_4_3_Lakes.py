@@ -30,7 +30,7 @@ bulletPoint2 = """
         trend in the 40-year data set is apparent.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Monthly Lake Levels - Lough Oughter, Co. Cavan'
+trendChartTitle = 'Monthly Mean Lake Level - Lough Oughter'
 trendChart = figure_4_3()
 
 trendCaption = """

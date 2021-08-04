@@ -55,7 +55,7 @@ infrastructureMap = map_2_14()
 
 infoLinks = [
     {'text': 'Aerosol Properties ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
-     'url': 'https://gcos.wmo.int/en/essential-climate-variables/ecv-factsheets'},
+     'url': 'https://gcos.wmo.int/en/essential-climate-variables/aerosols'},
          {'text': 'A description of the Aerosol Optical Depth Measurement Programme at Valentia Observatory',
      'url': 'https://www.met.ie/science/valentia/aerosol-optical-depth-measurement'},
          {'text': 'Information on the Mace Head Facility',
@@ -112,7 +112,7 @@ custom_trend = dbc.Container(
                         children=[
                             html.H4(
                                 className='sr-chart-title',
-                                children='Aerosol Scattering Coefficient - Mace Head, Co. Galway'),
+                                children='Aerosol Scattering Coefficient - Mace Head'),
                             html.Img(
                                 src=IMAGES_PATH+'AtmosphericSections/Figure 2.28_MonthlyYearlyAerosolMaceHead.png')]
                         )
@@ -137,7 +137,7 @@ custom_trend = dbc.Container(
                         children=[
                             html.H4(
                                 className='sr-chart-title',
-                                children='Sulfur Air Pollution Trend'),
+                                children='Sulfur Air Pollution Trends'),
                             html.Img(
                                 src=IMAGES_PATH+'AtmosphericSections/Figure2.29_SulphurAirPollutionTrends_v2.png')]
                         )

@@ -22,7 +22,7 @@ Ozone (O\u2083) is another potent greenhouse gas in terms of radiative forcing.
         """
 bulletPoint1 = """
 The implementation of the internationally agreed Montreal Protocol (1987) has 
-been effective in reducing the production of O\u2083, depleting substances and 
+been effective in reducing the production of O\u2083 depleting substances and 
 gradually restoring stratospheric O\u2083 concentrations.
         """
 bulletPoint2 = """
@@ -84,7 +84,7 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
-trendChartTitle1 = ''
+trendChartTitle1 = 'Ground-level Ozone Concentration - Mace Head'
 trendChart1 = figure_2_25()
 trendCaption1 = """
 Monthly mean ground-level ozone concentration observed at Mace Head (1987–2018).
@@ -92,7 +92,7 @@ Monthly mean ground-level ozone concentration observed at Mace Head (1987–2018
  in the northern hemisphere during that period.  
         """
 
-trendChartTitle2 = ''
+trendChartTitle2 = 'Total Column Ozone Concentration - Valentia'
 trendChart2 = figure_2_26()
 trendCaption2 = """
 Monthly mean total column ozone concentration (in Dobson Units) observed at 

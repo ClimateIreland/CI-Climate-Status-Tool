@@ -28,7 +28,7 @@ bulletPoint2 = """
     when most of Ireland was covered in snow.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Mean 10 Day Albedo Over Ireland'
+trendChartTitle = 'Mean 10 Day Albedo - Ireland'
 trendChart = figure_4_7()
 
 trendCaption = """

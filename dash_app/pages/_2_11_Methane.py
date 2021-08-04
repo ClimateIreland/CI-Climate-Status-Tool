@@ -24,11 +24,11 @@ bulletPoint2 = """
 Following a stable period in the late 1990s and early 2000s there has been a 4% increase in CH\u2084 concentrations since 2007 observed at Mace Head. 
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Methane (CH\u2084) Concentration at Mace Head' #(1987-2018)
+trendChartTitle = 'Methane (CH\u2084) Concentration - Mace Head' #(1987-2018)
 trendChart = figure_2_20()
 
 trendCaption = """
-Concentration of atmospheric CH\u2084 at the Mace Head station. 
+Concentration of atmospheric CH\u2084 at the Mace Head, Co. Galway station. 
 Average global CH\u2084 concentrations in the atmosphere are now almost 1900 ppb, 
 but the concentrations observed at Mace Head are higher because most of the sources of CH\u2084 are located in the northern hemisphere. 
 Increases were observed between 1987 and 1998. Levels then stabilised until 2007 after which an increasing trend is observed. 

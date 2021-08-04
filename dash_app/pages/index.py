@@ -457,7 +457,7 @@ def create_layout(app):
                     'After taking time to explore the tool, we would appreciate if you could complete a short user survey. The link below is available on all pages.'
                     ),
                      html.A(
-                        'Help us improve. Complete user survey.',
+                        'Complete our user survey.',
                         target='_blank',
                         href='https://surveyhero.com/c/8a7cf6b7',
                         className='text-center'),

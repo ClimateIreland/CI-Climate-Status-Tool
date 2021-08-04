@@ -30,7 +30,7 @@ bulletPoint2 = """
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
-trendChartTitle = 'Dissolved Oxygen Saturation'  # (2002-2019)
+trendChartTitle = 'Dissolved Oxygen Saturation - McSwyne´s Bay'  # (2002-2019)
 trendChart = figure_3_15()
 
 trendCaption = """
