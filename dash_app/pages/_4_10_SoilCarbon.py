@@ -71,13 +71,14 @@ infoLinks = [
      'url': 'http://gis.teagasc.ie/soils/'},
     {'text': 'Fay, D. et al., 2007. Soil Geochemical Atlas of Ireland. Teagasc and Environmental Protection Agency',
      'url': 'https://www.teagasc.ie/media/website/publications/2011/Soil_Geochemical_AtlasofIreland.pdf'},
-
-    {'text': 'Soil Geochemical Atlas of Ireland',
-     'url': 'http://erc.epa.ie/safer/iso19115/displayISO19115.jsp?isoID=105'},
+# bad cert
+    # {'text': 'Soil Geochemical Atlas of Ireland',
+    #  'url': 'http://erc.epa.ie/safer/iso19115/displayISO19115.jsp?isoID=105'},
     {'text': 'Kiely, G. et al., 2010. SoilC – Measurement and Modelling of Soil Carbon Stocks and Stock Changes in Irish Soils. Environmental Protection Agency ',
      'url': 'https://www.epa.ie/publications/research/land-use-soils-and-transport/strive-35.php'},
-    {'text': 'SoilC data sources',
-             'url': 'http://erc.epa.ie/safer/iso19115/displayISO19115.jsp?isoID=107#files'},
+# bad cert   
+    # {'text': 'SoilC data sources',
+    #          'url': 'http://erc.epa.ie/safer/iso19115/displayISO19115.jsp?isoID=107#files'},
     {'text': 'National Peatlands Strategy',
      'url': 'https://www.npws.ie/peatlands-and-turf-cutting/peatlands-council/national-peatlands-strategy'},
     {'text': 'Orgiazzi, A. et al., 2018. LUCAS Soil, the largest expandable soil dataset for Europe: a review, European Journal of Soil Science 69: 140–153',

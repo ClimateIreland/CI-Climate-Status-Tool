@@ -372,7 +372,7 @@ def figure_2_1():
                             fixedrange=True,
                             showspikes=True,
                             zeroline=True,  # add a zero line
-                            zerolinecolor=TIMESERIES_COLOR_2
+                            zerolinecolor=TIMESERIES_COLOR_3
                             )
 
     figure_2_1.update_yaxes(title_text='Mean Annual Temperature (\u00b0C)',
@@ -402,7 +402,7 @@ def figure_2_1():
                               text='1961-1990 Normal',
                               showarrow=False,
                               font=dict(
-                                  color=TIMESERIES_COLOR_2),)
+                                  color=TIMESERIES_COLOR_3),)
 
     return figure_2_1
 
@@ -1433,7 +1433,7 @@ def figure_2_16():
                          line=dict(color=TIMESERIES_COLOR_1,
                                         width=1),
                        hovertemplate='%{x|%Y-%b-%d}<br>' +
-                                     '<b>Land Area</b><br>' +
+                                     '<b>Irish Shelf</b><br>' +
                                      'Total 10 Day Lightning Strikes: %{y:.2f} <br>' +
                                      '<extra></extra>'
                          )
@@ -1571,7 +1571,7 @@ def figure_2_18():
 
     MaceHead = go.Scatter(x=dataDF["Date"],
                      y=dataDF["Mace Head"],
-                     name='Mace Head',
+                     name='Mace Head (Ireland)',
                      line_shape='spline',
                      line=dict(
                             # color="#fc0d1b", color used in report
@@ -1906,6 +1906,7 @@ def figure_2_22():
                      y=dataDF["N2O"],
                      name='Monthly Mean',
                      line_shape='spline',
+                     showlegend=True,
                      line=dict(
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_1,
@@ -1955,6 +1956,7 @@ def figure_2_23():
                      y=dataDF["CFC-12"],
                      name='Monthly Mean',
                      line_shape='spline',
+                     showlegend=True,
                      line=dict(
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_1,
@@ -2001,6 +2003,7 @@ def figure_2_24():
     MonthlyMean = go.Scatter(x=dataDF["Date"],
                      y=dataDF["HFC-134a"],
                      name='Monthly Mean',
+                     showlegend=True,
                      line_shape='spline',
                      line=dict(
                             # color="#fc0d1b", color used in report
@@ -2172,7 +2175,7 @@ def figure_2_26():
                                 )
     figure_2_25 = go.Figure(data=[mean_monthly_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_2_25.update_layout(
-        yaxis=dict(title='Ozone, O<sub>3</sub> (DU)'),
+        yaxis=dict(title='Ozone, O<sub>3</sub> Concentration (DU)'),
         xaxis=dict(title="Year"))
     return figure_2_25
 
@@ -2484,21 +2487,21 @@ def figure_3_1():
     annualTrace = go.Bar(x=df["year"],
                         y=df["Calculated Anomalies"],
                         text=df["temperature"],
-                        name='Annual',
+                        name='Annual Mean',
                         marker=dict(
                                 # color="#214a7b", color used in report
                                 color=TIMESERIES_COLOR_2,
                                 opacity=0.5
                                 ),
                         hovertemplate='%{x}<br>' +
-                                '<b>Annual</b><br>' +
+                                '<b>Annual Mean</b><br>' +
                                 'Total: %{text:.2f} \u00b0C<br>' +
                                 'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
     movingAverage = go.Scatter(x=df["year"],
                         y=df["5 year moving average"],
                         text=df["5 Year Moving Average - Mean"],
-                        name='5yr Moving Average',
+                        name='5 Year Moving Average',
                         mode='lines',  # 'line' is default
                         line_shape='spline',
                         line=dict(
@@ -2506,7 +2509,7 @@ def figure_3_1():
                                 color=TIMESERIES_COLOR_1,
                                 width=2),
                         hovertemplate='%{x}<br>' +
-                                '<b>5yr Moving Average</b><br>' +
+                                '<b>5 Year Moving Average</b><br>' +
                                 'Total: %{text:.2f} \u00b0C<br>' +
                                 'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
@@ -2515,7 +2518,7 @@ def figure_3_1():
                         name='1981-2010 Average',
                         mode='lines',  # 'line' is default
                         line_shape='spline',
-                        line=dict(color="#fdbf2d", #color used in report
+                        line=dict(color=TIMESERIES_COLOR_3, #color used in report
                                 width=1),
                         hoverinfo='skip',
                                 )
@@ -2571,26 +2574,26 @@ def figure_3_3():
         return empty_chart()
     annualTrace = go.Scatter(x=df["Decimal Year"],
                      y=df["Temperature °C"],
-                     name='Annual',
+                     name='Annual Mean',
                       mode='lines',  # 'line' is default
                         line_shape='spline',
                         line=dict(
                                 color=TIMESERIES_COLOR_2,
                                 width=2),
                      hovertemplate='%{x}<br>' +
-                            '<b>Annual</b><br>' +
+                            '<b>Annual Mean</b><br>' +
                             'Temperature: %{y:.2f} \u00b0C<extra></extra>'
                             )
     movingAverage = go.Scatter(x=df["Decimal Year"],
                         y=df["5 Year Moving Average - Mean"],
-                        name='5yr Moving Average',
+                        name='5 Year Moving Average',
                         mode='lines',  # 'line' is default
                         line_shape='spline',
                         line=dict(
                                 color=TIMESERIES_COLOR_1,
                                 width=2),
                         hovertemplate='%{x}<br>' +
-                                '<b>5yr Moving Average</b><br>' +
+                                '<b>5 Year Moving Average</b><br>' +
                                 'Temperature: %{y:.2f} \u00b0C<extra></extra>'
                                 )
 
@@ -2647,15 +2650,15 @@ def figure_3_4():
         return empty_chart()
     mean_annual_trace = go.Scatter(x=df['datetime'],
                             y=df['mean__annual__upper_sea_salinity'],
-                         name='Mean Annual',
+                         name='Annual Mean',
                          mode='markers+lines',
                          marker=dict(color=TIMESERIES_COLOR_2,
                                      size=5,
                                      opacity=0.5),
                          line=dict(color=TIMESERIES_COLOR_2,
                                       width=1),
-                         hovertemplate='%{x|%b %Y}<br>' +
-                         '<b>Mean Annual</b><br>' +
+                         hovertemplate='%{x|%Y}<br>' +
+                         '<b>Annual Mean</b><br>' +
                          'Salinity: %{y:.2f}<br>' +
                          '<extra></extra>'
                          )
@@ -2666,7 +2669,7 @@ def figure_3_4():
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
-                                hovertemplate='%{x|%b %Y}<br>' +
+                                hovertemplate='%{x|%Y}<br>' +
                                     '<b>5 Year Moving Average</b><br>' +
                                     'Salinity: %{y:.2f}<br>' +
                                     '<extra></extra>'
@@ -2689,15 +2692,15 @@ def figure_3_5():
         return empty_chart()
     mean_annual_trace = go.Scatter(x=df['datetime'],
                                 y=df['mean__annual__deep_sea_salinity'],
-                            name='Mean Annual',
+                            name='Annual Mean',
                             mode='markers+lines',
                             marker=dict(color=TIMESERIES_COLOR_2,
                                         size=5,
                                         opacity=0.5),
                             line=dict(color=TIMESERIES_COLOR_2,
                                         width=1),
-                            hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>Mean Annual</b><br>' +
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual Mean</b><br>' +
                             'Salinity: %{y:.2f}<br>' +
                             '<extra></extra>'
                             )
@@ -2708,7 +2711,7 @@ def figure_3_5():
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
-                                hovertemplate='%{x|%b %Y}<br>' +
+                                hovertemplate='%{x|%Y}<br>' +
                                     '<b>5 Year Moving Average</b><br>' +
                                     'Salinity: %{y:.2f}<br>' +
                                     '<extra></extra>'
@@ -4012,7 +4015,7 @@ def figure_4_3():
     figure_4_3 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_3.update_layout(
         yaxis=dict(title='Level Above OD Malin (m)'),
-        xaxis=dict(title="Date"))
+        xaxis=dict(title="Year"))
     return figure_4_3
 
 def map_4_3():
@@ -4248,7 +4251,7 @@ def figure_4_7():
     figure_4_7 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_7.update_layout(
         yaxis=dict(title='Albedo'),
-        xaxis=dict(title="Date"))
+        xaxis=dict(title="Year"))
     figure_4_7.add_annotation(
         x="2010-12-24", y=0.413,
         text="High Albedo<br>due to snow cover",
@@ -4312,7 +4315,12 @@ def figure_4_10_1():
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         showlegend=False)
+
+
     return figure_4_10_1
+
+
+
 
 
 def figure_4_10_2():
@@ -4532,7 +4540,7 @@ def figure_4_12():
         xaxis=dict(title="Month",
                 ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
                 showgrid=False,
-                tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380, 410],
+                tickvals=[20,50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
                 )
     )
 
@@ -4582,7 +4590,7 @@ def figure_4_14():
                 tickvals=[0,5,24,47, 71, 90]  
         ),
         hovertemplate='%{text|%d-%b-%Y}<br>'+
-        'LAI: %{customdata:.2f}<extra></extra>'
+        'Mean LAI: %{customdata:.2f}<extra></extra>'
     )
     figure_4_14 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_14.update_layout(
@@ -4591,18 +4599,7 @@ def figure_4_14():
         xaxis=dict(title="Month",
                 ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
                 showgrid=False,
-                tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380, 410],
-                )
-    )
-
-    figure_4_14 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
-    figure_4_14.update_layout(
-        yaxis=dict(title='Year',
-                nticks=12),
-        xaxis=dict(title="Month",
-                ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
-                showgrid=False,
-                tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380, 410],
+                tickvals=[20, 50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
                 )
     )
 
@@ -4830,22 +4827,22 @@ def figure_4_24():
         return empty_chart()
     day_temp_trace = go.Scatter(x=df['datetime'],
                             y=df['mean__monthly__surface_land_temperature_day'],
-                         name='LST Day',
+                         name='Day',
                          mode='markers+lines',
                          marker=dict(color=TIMESERIES_COLOR_2,
                                      size=5,
                                      opacity=0.5),
                          line=dict(color=TIMESERIES_COLOR_2,
                                       width=1),
-                         hovertemplate='%{x|%Y}<br>' +
-                         '<b>LST Day</b><br>' +
-                         'Mean: %{y:.2f} \u00b0C<br>' +
+                         hovertemplate='%{x|%b %Y}<br>' +
+                         '<b>Day</b><br>' +
+                         'Mean LST: %{y:.2f} \u00b0C<br>' +
                          '<extra></extra>'
                          )
 
     night_temp_trace = go.Scatter(x=df['datetime'],
                                 y=df['mean__monthly__surface_land_temperature_night'],
-                            name='LST Night',
+                            name='Night',
                             mode='markers+lines',
                             marker=dict(color=TIMESERIES_COLOR_1,
                                         size=5,
@@ -4853,14 +4850,14 @@ def figure_4_24():
                             line=dict(color=TIMESERIES_COLOR_1,
                                         width=1),
                             hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>LST Night</b><br>' +
-                            'Mean: %{y:.2f} \u00b0C<br>' +
+                            '<b>Night</b><br>' +
+                            'Mean LST: %{y:.2f} \u00b0C<br>' +
                             '<extra></extra>'
                             )
     figure_4_24 = go.Figure(data=[day_temp_trace, night_temp_trace], layout=TIMESERIES_LAYOUT)
     figure_4_24.update_layout(
         yaxis=dict(title='Temperature (\u00b0C)'),
-        xaxis=dict(title="Date"))
+        xaxis=dict(title="Year"))
     
     return figure_4_24
 
@@ -4988,9 +4985,9 @@ def figure_4_27():
     y=df["Energy"]/1000,
         text=df['Energy']*100/df['Total'],
     marker_color="#5182bb",
-    hovertemplate='<b>Energy</b><br>' +
-    '%{x}<br>' +
-    '%{y}kTCO₂eq<br>' +
+    hovertemplate='%{x}<br>' +
+    '<b>Energy</b><br>' +
+    '%{y} kTCO₂eq<br>' +
     '%{text:.2f} %</sub><extra></extra>'
                             )
 
@@ -5000,9 +4997,9 @@ def figure_4_27():
         y=df["Agriculture"]/1000,
             text=df['Agriculture']*100/df['Total'],
         marker_color="#fdbf2d",
-        hovertemplate='<b>Agriculture</b><br>' +
-        '%{x}<br>' +
-        '%{y}kTCO₂eq<br>' +
+        hovertemplate=
+        '<b>Agriculture</b><br>' +
+        '%{y} kTCO₂eq<br>' +
         '%{text:.2f} %</sub><extra></extra>'
                                 )
 
@@ -5012,9 +5009,9 @@ def figure_4_27():
         y=df["Land-Use Change and Forestry (LULUCF)"]/1000,
             text=df["Land-Use Change and Forestry (LULUCF)"]*100/df['Total'],
         marker_color="#3dca3f",
-        hovertemplate='<b>Land-Use Change and Forestry)</b><br>' +
-        '%{x}<br>' +
-        '%{y}kTCO₂eq<br>' +
+        hovertemplate='%{x}<br>' +
+        '<b>Land-Use Change and Forestry)</b><br>' +
+        '%{y} kTCO₂eq<br>' +
         '%{text:.2f} %</sub><extra></extra>'
                                 )
     industryTrace=go.Bar(
@@ -5023,9 +5020,9 @@ def figure_4_27():
         y=df["Industrial Processes and Product Use (IPPU)"]/1000,
         text=df["Industrial Processes and Product Use (IPPU)"]*100/df['Total'],
         marker_color="#fc0d1b",
-        hovertemplate='<b>Industrial Processes and Product Use (IPPU)</b><br>' +
-        '%{x}<br>' +
-        '%{y}kTCO₂eq<br>' +
+        hovertemplate='%{x}<br>' +
+        '<b>Industrial Processes and Product Use (IPPU)</b><br>' +
+        '%{y} kTCO₂eq<br>' +
         '%{text:.2f} %</sub><extra></extra>'
                                 )
 
@@ -5035,9 +5032,9 @@ def figure_4_27():
         y=df['Waste']/1000,
         text=df['Waste']*100/df['Total'],
         marker_color="#262626",
-        hovertemplate='<b>Agriculture</b><br>' +
-        '%{x}<br>' +
-        '%{y}kTCO₂eq<br>' +
+        hovertemplate='%{x}<br>' +
+        '<b>Agriculture</b><br>' +
+        '%{y} kTCO₂eq<br>' +
         '%{text:.2f} %</sub><extra></extra>'
                                 )
 

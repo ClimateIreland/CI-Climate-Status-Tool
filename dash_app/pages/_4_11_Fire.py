@@ -66,7 +66,7 @@ using meteorological variables derived using the Canadian Fire Weather Index (FW
 and fire danger notices are issued to forestry interests by DAFM throughout the fire season. 
 Satellite data are used internationally to make regional and global estimates of fire 
 disturbance and their impact on the atmosphere and some research studies have been 
-carried out on their utility over Ireland This image from the Sentinel- 2 satellite 
+carried out on their utility over Ireland. This image from the Sentinel- 2 satellite 
 shows a fire burning in Co. Wicklow on June 30th 2018. 
         """
 infrastructureImg = IMAGES_PATH+'TerrestrialSections/FireInfrastructure.png'

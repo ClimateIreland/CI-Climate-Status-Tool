@@ -10,7 +10,7 @@ from charts import empty_chart, figure_3_24, figure_3_25
 
 chapter_num = '3.11'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Habitats_Tomasz_Szumski_IMG_9140_biodiscovery survey 2014.jpg'
-bannerImgCredit = 'Tomasz Szumski'
+bannerImgCredit = 'Marine Institute'
 
 introText = """
 Seaweed, seagrass and coral abundance and condition are good indicators of 
@@ -54,7 +54,7 @@ infrastructureMap = empty_chart()
 infoLinks = [
     {'text': 'Marine Habitat Properties ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/marine-habitats/'},
-         {'text': 'WFD coastal sites (Water Quality in Ireland under the Water Framework Directive',
+         {'text': 'WFD coastal sites (Water Quality in Ireland under the Water Framework Directive)',
      'url': 'https://www.catchments.ie/water-quality-in-ireland-2013-2018/ '},
          {'text': 'NPWS Special Areas of Conservation (SAC)',
      'url': 'https://www.npws.ie/protected-sites/sac'},

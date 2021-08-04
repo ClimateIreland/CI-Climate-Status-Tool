@@ -62,7 +62,7 @@ infoLinks = [
      'url': 'https://gcos.wmo.int/en/essential-climate-variables/biomass/'},
          {'text': 'Green, S., Martin, A., Gharechelou, S., at al., 2019, BRIAR: Biomass Retrieval in Ireland using Active Remote Sensing, Report No. 305, Environmental Protection Agency, Johnstown Castle, Co. Wexford',
      'url': 'https://www.epa.ie/publications/research/climate-change/research-305.php'},
-         {'text': 'Black, K., Green, S., Mullooley, G., Poveda, A., 2014, Carbon Sequestration by Hedgerows in the Irtish Landscape, CCRP Report No. 32, Environmental Protection Agency, Johnstown Castle, Co. Wexford',
+         {'text': 'Black, K., Green, S., Mullooley, G., Poveda, A., 2014, Carbon Sequestration by Hedgerows in the Irish Landscape, CCRP Report No. 32, Environmental Protection Agency, Johnstown Castle, Co. Wexford',
      'url': 'https://www.epa.ie/publications/research/climate-change/carbon-sequestration-by-hedgerows-in-the-irish-landscape.php'},
          {'text': 'Information about the National Forestry Service',
      'url': 'https://www.agriculture.gov.ie/forestservice/forestservicegeneralinformation/abouttheforestservice/'},
@@ -90,7 +90,7 @@ Service. Just over half (50.8%) of forests are in public ownership and the
 remainder (49.2%) are privately owned.
 """
 
-trendChartTitle2 = 'Total Growing Stock Volume by Ownership'
+trendChartTitle2 = 'Total Growing Stock Volume by Ownership - Ireland'
 trendChart2 = figure_4_17()
 trendCaption2 = """
 Total growing stock volume (million m\u00B3) by ownership (2006 to 2017). 

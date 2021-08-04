@@ -20,16 +20,16 @@ introText = """
         """
 bulletPoint1 = """
         Estimates show that globally, average sea level has risen approximately 160 mm 
-        since 1902, at a rate of approximately 1.4mm per year. 
+        since 1902, at a rate of approximately 1.4 mm per year. 
         """
 bulletPoint2 = """
         Satellite observations indicate that the sea level around Ireland has 
-        risen by approximately 2-3mm/year since the early 1990s.
+        risen by approximately 2-3 mm/year since the early 1990s.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
 # first chart
-trendChartTitle2 = 'Mean Monthly Sea Level - Dublin Port' #(1938-2016)
+trendChartTitle2 = 'Sea Level - Dublin Port' #(1938-2016)
 trendChart2 = figure_3_8()
 trendCaption2 = """
 The complete time series for the Dublin Port monthly mean sea level from 1938 to 2016 (updated by Maynooth University). 
@@ -60,7 +60,7 @@ The time series are not yet long enough to accurately determine any trend. Moreo
 glacial isostatic adjustment or other factors are not taken into account.
         """
 
-trendChartTitle5 = 'Mean Monthly Sea Level - Dublin Port' #(1938-2016)
+trendChartTitle5 = 'Sea Level - Dublin Port' #(1938-2016)
 trendChart5 = figure_3_8()
 trendCaption2 = """
 The complete time series for the Dublin Port monthly mean sea level from 1938 to 2016 (updated by Maynooth University). 

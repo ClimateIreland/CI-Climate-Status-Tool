@@ -39,7 +39,7 @@ which is 8% higher than emissions in 1990. An increasing trend in overall emissi
 is observed between 1990 and 2001, after which they slowly declined.
         """
 
-trendChartTitle2 = 'Annual Cumulative CO\u2082 Flux - Dripsey, Co. Cork' 
+trendChartTitle2 = 'Annual Cumulative CO\u2082 Flux - Dripsey' 
 trendChart2 = IMAGES_PATH+'TerrestrialSections/CO2_DripseyGrassland.png'
 
 trendCaption2 = """

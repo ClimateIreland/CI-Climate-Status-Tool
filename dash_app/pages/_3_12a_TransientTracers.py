@@ -15,7 +15,7 @@ bannerImgCredit = 'Marine Institute'
 introText = """
 Transient tracers are human-made chemical substances that have a known 
 concentration history in the atmosphere. These substances are partly absorbed 
-by the ocean and becomes dissolved in water. Their  measurement provides an 
+by the ocean and become dissolved in water. Their  measurement provides an 
 insight into ocean processes. By measuring their presence in the subsurface 
 of the ocean it is possible to estimate when the gas entered the ocean, how 
 quickly it disperses and how it is transported by currents and into the deep 
@@ -34,7 +34,7 @@ recognition of the damage they were causing to the Earth’s ozone layer.
 bulletPoint2 = """
 14C 
 and tritium were released to the atmosphere in pulses during nuclear weapons 
-tests in the 1950s and 1960s.
+tests in the 1950s and 1960s. Small quantities are now found in the ocean.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = ''

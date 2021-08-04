@@ -1040,4 +1040,4 @@ if os.path.isdir(local_data_dir):
     DATA_PATH = local_data_dir+'/'   
 else:
     DATA_PATH = "/home/data/"
-print('DATA_PATH: ' + DATA_PATH)
+print('DATA_PATH set to ' + DATA_PATH)

@@ -134,7 +134,7 @@ custom_trend = dbc.Container(
                         children=[
                             html.H4(
                                 className='sr-chart-title',
-                                children='Annual Mean Abundance of Plankton in the Celtic Sea'),
+                                children='Annual Mean Abundance of Plankton - Celtic Sea'),
                             html.Img(
                                 src=IMAGES_PATH+'OceanicSections/Figure3.23_ZooplanktonConcentration.png')]
                         )

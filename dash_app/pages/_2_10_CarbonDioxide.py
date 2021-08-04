@@ -29,7 +29,7 @@ Atmospheric CO\u2082 concentrations of 413 ppm at Mace Head in 2018 are estimate
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
-trendChartTitle = 'Carbon Dioxide (CO\u2082) Concentration' #(1958-2018)
+trendChartTitle = 'Mean Monthly Carbon Dioxide (CO\u2082) Concentration' #(1958-2018)
 trendChart = figure_2_18()
 
 trendCaption = """

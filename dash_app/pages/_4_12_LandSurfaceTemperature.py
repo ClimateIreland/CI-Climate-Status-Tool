@@ -27,7 +27,7 @@ bulletPoint2 = """
     In summer LST can reach 40°C in some parts of the east of the country.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-trendChartTitle = 'Area-Averaged Monthly Land Surface Temperature Over Ireland'
+trendChartTitle = 'Mean Monthly Land Surface Temperature - Ireland'
 trendChart = figure_4_24()
 
 trendCaption = """
@@ -59,7 +59,7 @@ chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
 trendCaption1 = """
-Time series of monthly average Land Surface Temperature for day and night time over Ireland derived from MODIS for the period of 2002 to 2018. 
+Time series of monthly average Land Surface Temperature (LST) for day and night time over Ireland derived from MODIS for the period of 2002 to 2018. 
 Seasonal and diurnal variability can be observed, in which the highest values occur during summer and during daylight hours.
         """
 

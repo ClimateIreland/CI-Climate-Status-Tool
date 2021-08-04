@@ -23,7 +23,7 @@ bulletPoint2 = """
 
         """
 bulletPoints = [bulletPoint1]
-trendChartTitle = 'Upper Air Wind Speed - Valentia, Co.Kerry'
+trendChartTitle = 'Upper Air Wind Speed - Valentia, Co. Kerry'
 trendChart = figure_2_13_b()
 
 trendCaption = """
