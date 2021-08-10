@@ -63,7 +63,9 @@ CHART_FONT = dict(
     color="#7f7f7f")
 
 TIMESERIES_LAYOUT = dict(
-    xaxis=dict(showgrid=False),
+    xaxis=dict(
+        showgrid=False,
+        title_standoff=0.1),
     height=450,
     margin={"t": 0, "b": 0, "r": 0, "l": 0, },
     plot_bgcolor='#f7fbfd',
