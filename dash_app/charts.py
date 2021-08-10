@@ -305,62 +305,73 @@ def figure_2_1():
 
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.1SurfaceAirTemperature/Figure2.1/'
-        xls = pd.ExcelFile(
-            data_path+'AnnualMeanSurfaceAirTemperature1900-2019.xlsx')
-        dataDF = pd.read_excel(xls, 'Sheet1')
+        data_csv = data_path + 'Figure2.1_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
     except:
         return empty_chart()
-    # remove first row as part of column names, and rename Anom colum
-    dataDF = dataDF[1:]
-    dataDF = dataDF.rename(columns={'1961-1990 Normal': 'Anom'})
 
-    movingAvgTrace = go.Scatter(x=dataDF.Year,
-                                y=dataDF.filter11,
-                                text=dataDF['Std Dev (11 year average)'],
+    annualTrace = go.Scatter(x=df.datetime,
+                            y=df.mean__annual__surface_air_temperature,
+                            name='Annual Mean',
+                            mode='markers',
+                            text=df.mean__annual__surface_air_temperature_anomaly,
+                            marker=dict(color=TIMESERIES_COLOR_2,
+                                        size=5,
+                                        opacity=0.5),
+                            hovertemplate='%{x|%Y}<br>' +
+                            '<b>Annual</b><br>' +
+                            'Tmean: %{y:.2f} \u00b0C<br>' +
+                            'Anomaly: %{text:.2f} \u00b0C<extra></extra>'
+                            )
+
+    movingAvgTrace = go.Scatter(x=df.datetime,
+                                y=df.moving_average__11year__surface_air_temperature_anomaly,
+                                text=df.moving_average__11year__surface_air_temperature,
                                 name='11 Year Moving Average',
                                 mode='lines',  # 'line' is default
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
-                                          width=2),
-                                hovertemplate='%{x}<br>' +
-                                '<b>Moving Average</b><br>' +
+                                        width=2),
+                                hovertemplate='%{x|%Y}<br>' +
+                                '<b>11 Year Moving Average</b><br>' +
+                                'Tmean: %{text:.2f} \u00b0C<br>' +
                                 'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
-    annualTrace = go.Scatter(x=dataDF.Year,
-                             y=dataDF.Tmean,
-                             name='Annual Mean',
-                             mode='markers',
-                             text=dataDF.Anom,
-                             marker=dict(color=TIMESERIES_COLOR_2,
-                                         size=5,
-                                         opacity=0.5),
-                             hovertemplate='%{x}<br>' +
-                             '<b>Annual</b><br>' +
-                             'Tmean: %{y:.2f} \u00b0C<br>' +
-                             'Anomaly: %{text:.2f} \u00b0C<extra></extra>'
-                             )
-
-    movingAvgDF = dataDF.loc[dataDF.filter11.notna()]
+    movingAvgDF=df
+    movingAvgDF.dropna(subset=['moving_average__11year__surface_air_temperature_anomaly'],inplace=True)
+    movingAvgDF['year'] = movingAvgDF['datetime'].dt.year
     linearTrendPoly = np.polyfit(
-        movingAvgDF['Year'], movingAvgDF['filter11'], 1)
-    linearTrendY = np.poly1d(linearTrendPoly)(movingAvgDF['Year'])
-    linearTrendTrace = go.Scatter(x=movingAvgDF['Year'],
-                                  y=linearTrendY,
-                                  name='Linear Trend',
-                                  line=dict(color=TIMESERIES_COLOR_1,
+        movingAvgDF['year'], movingAvgDF['moving_average__11year__surface_air_temperature_anomaly'],1)
+    linearTrendY = np.poly1d(linearTrendPoly)(movingAvgDF['year'])
+    linearTrendTrace = go.Scatter(x=movingAvgDF['datetime'],
+                                y=linearTrendY,
+                                name='Linear Trend',
+                                line=dict(color=TIMESERIES_COLOR_1,
                                             dash='dash',
                                             width=2),
-                                  hoverinfo='skip',
-                                  )
+                                hoverinfo='skip',
+                                )
+    normal = go.Scatter(x=['1898-01-01', '2021-01-01'],
+                        y=[9.55,9.55],
+                        name='1961-1990 Normal',
+                        mode='lines',  # 'line' is default
+                        line_shape='spline',
+                        line=dict(color=TIMESERIES_COLOR_3, 
+                                width=2),
+                        hoverinfo='skip',
+                        )
 
     figure_2_1 = make_subplots(specs=[[{'secondary_y': True}]])
 
     figure_2_1.add_trace(annualTrace,
-                         secondary_y=True,)
+                        secondary_y=True,)
     figure_2_1.add_trace(movingAvgTrace,
-                         secondary_y=False)
+                        secondary_y=False)
     figure_2_1.add_trace(linearTrendTrace,
-                         secondary_y=False)
+                        secondary_y=False)
+    figure_2_1.add_trace(normal,
+                        secondary_y=True)
     figure_2_1.update_layout(TIMESERIES_LAYOUT)
     # Update y-axes layout seperatly due to the double y-axis chart
     figure_2_1.update_yaxes(title_text='Difference (\u00b0C) from 1961-1990 Normal',
@@ -369,10 +380,7 @@ def figure_2_1():
                             showgrid=False,
                             dtick=0.5,  # dtick sets the distance between ticks
                             tick0=0,  # tick0 sets a point to map the other ticks
-                            fixedrange=True,
-                            showspikes=True,
                             zeroline=True,  # add a zero line
-                            zerolinecolor=TIMESERIES_COLOR_3
                             )
 
     figure_2_1.update_yaxes(title_text='Mean Annual Temperature (\u00b0C)',
@@ -382,27 +390,19 @@ def figure_2_1():
                             dtick=0.5,  # dtick sets the distance between ticks
                             tick0=9.55,  # tick0 sets a point to map the other ticks
                             fixedrange=True,
-                            #                      linewidth = 2,
-                            #                   spikethickness = 2,
-                            #                   linecolor = '#356b6a'
                             )
-
+    
     figure_2_1.update_xaxes(
-        title='Year',
-        fixedrange=True,  # stops the users being able to zoom
-        tickformat='000',  # number format
-        showspikes=True,  # show the spike lines on hover
-        spikethickness=2,  # spike line thickness
-        #                  linewidth = 2, #width of axis line
-        #                  linecolor = '#356b6a'
-    )  # colour of axis line
+        title_text='Year',
+        range=['1898-01-01', '2021-01-01'],
+    ) 
 
-    figure_2_1.add_annotation(x=2015,
-                              y=0.055,
-                              text='1961-1990 Normal',
-                              showarrow=False,
-                              font=dict(
-                                  color=TIMESERIES_COLOR_3),)
+    # figure_2_1.add_annotation(x='2010-01-01',
+    #                         y=0.055,
+    #                         text='1961-1990 Normal',
+    #                         showarrow=False,
+    #                         font=dict(
+    #                             color=TIMESERIES_COLOR_3))
 
     return figure_2_1
 
@@ -603,7 +603,7 @@ def figure_2_4():
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
                                 hovertemplate='%{x|%Y}<br>' +
-                                '<b>11yr Moving Average</b><br>' +
+                                '<b>11 Year Moving Average</b><br>' +
                                 'Wind Speed: %{y:.2f} m/s<extra></extra>'
                                 )
 
@@ -627,14 +627,14 @@ def figure_2_4():
                                 line=dict(color=TIMESERIES_COLOR_3,
                                         width=2),
                                 hovertemplate='%{x|%Y}<br>' +
-                                '<b>11yr Moving Average</b><br>' +
+                                '<b>11 Year Moving Average</b><br>' +
                                 'Gale Gust Days: %{y}<extra></extra>'
                                 )
     figure_2_4_a = make_subplots(rows=2, cols=1,
                              subplot_titles=("Wind Speed", "Gale Gust Days"),
                              shared_xaxes=True,
                     vertical_spacing=0.08)
-    figure_2_4_a.update_xaxes(title_text="Year", row=2, col=1)
+    figure_2_4_a.update_xaxes(title_text="Year", title_standoff=0.1,row=2, col=1)
     figure_2_4_a.update_yaxes(title_text="Wind Speed (m/s)", row=1, col=1)
     figure_2_4_a.update_yaxes(title_text="Number of Days with <br> Gusts > 17.5 m/s", row=2, col=1)
     figure_2_4_a.append_trace(annual_speed_trace,
@@ -672,7 +672,7 @@ def figure_2_4():
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
                                 hovertemplate='%{x|%Y}<br>' +
-                                '<b>11yr Moving Average</b><br>' +
+                                '<b>11 Year Moving Average</b><br>' +
                                 'Wind Speed: %{y:.2f} m/s<extra></extra>'
                                 )
 
@@ -696,14 +696,14 @@ def figure_2_4():
                                 line=dict(color=TIMESERIES_COLOR_3,
                                         width=2),
                                 hovertemplate='%{x|%Y}<br>' +
-                                '<b>11yr Moving Average</b><br>' +
+                                '<b>11 Year Moving Average</b><br>' +
                                 'Gale Gust Days: %{y}<extra></extra>'
                                 )
     figure_2_4_b = make_subplots(rows=2, cols=1,
                             subplot_titles=("Wind Speed", "Gale Gust Days"),
                             shared_xaxes=True,
                 vertical_spacing=0.08)
-    figure_2_4_b.update_xaxes(title_text="Year", row=2, col=1)
+    figure_2_4_b.update_xaxes(title_text="Year", title_standoff=0.1,row=2, col=1)
     figure_2_4_b.update_yaxes(title_text="Wind Speed (m/s)", row=1, col=1)
     figure_2_4_b.update_yaxes(title_text="Number of Days with <br> Gusts > 17.5 m/s", row=2, col=1)
     figure_2_4_b.append_trace(annual_speed_trace,
@@ -952,7 +952,7 @@ def figure_2_9():
     movingAverage = go.Scatter(x=dataDF["years"],
                                y=dataDF["11 Year Moving Average Anomaly"],
                                text=dataDF["11 Year Moving Average Totals"],
-                               name='11yr Moving Average',
+                               name='11 Year Moving Average',
                                mode='lines',  # 'line' is default
                                line_shape='spline',
                                line=dict(
@@ -960,7 +960,7 @@ def figure_2_9():
         color=TIMESERIES_COLOR_1,
         width=2),
         hovertemplate='%{x}<br>' +
-        '<b>11yr Moving Average</b><br>' +
+        '<b>11 Year Moving Average</b><br>' +
         'Total: %{text:.2f} mm<br>' +
         'Anomaly: %{y:.2f} mm<extra></extra>'
     )
@@ -1016,7 +1016,7 @@ def figure_2_9():
                             )
 
     figure_2_9.update_xaxes(
-        title='Year',
+        title_text='Year',
         fixedrange=True,
         tickformat='000',
         showspikes=True,
@@ -1225,7 +1225,7 @@ def figure_2_11():
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
                                 hovertemplate='%{x|%Y}<br>' +
-                                '<b>5yr Moving Average</b><br>' +
+                                '<b>5 Year Moving Average</b><br>' +
                                 'R<sub>s</sub>: %{y:.2f} GJ/m<sup>2</sup><extra></extra>'
                                 )
     figure_2_11 = go.Figure(data=[sum_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
@@ -1321,7 +1321,7 @@ def figure_2_13_a():
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
                                 hovertemplate='%{x|%Y}<br>' +
-                                '<b>5yr Moving Average</b><br>' +
+                                '<b>5 Year Moving Average</b><br>' +
                                 'Temperature: %{y:.2f} \u00b0C<extra></extra>'
                                 )
 
@@ -1380,7 +1380,7 @@ def figure_2_13_b():
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
                                 hovertemplate='%{x|%Y}<br>' +
-                                '<b>5yr Moving Average</b><br>' +
+                                '<b>5 Year Moving Average</b><br>' +
                                 'Wind Speed: %{y:.2f} knots<extra></extra>'
                                 )
 
@@ -2551,7 +2551,7 @@ def figure_3_1():
                         fixedrange=True,
                         )
     figure_3_1.update_xaxes(
-        title='Year',
+        title_text='Year',
         fixedrange=True,
         tickformat='000',  
         showspikes=True,  
@@ -2603,7 +2603,7 @@ def figure_3_3():
                             )
 
     figure_3_3.update_xaxes(
-        title='Year',
+        title_text='Year',
         fixedrange=True,
         tickformat='000',  
         showspikes=True,  
@@ -3408,7 +3408,7 @@ def figure_3_15():
         data=dissolvedOxygenDateTrace, layout=TIMESERIES_LAYOUT)
     figure_3_15.update_layout(
         yaxis=dict(title='Saturation (%)'),
-        xaxis=dict(title='Year'))
+        xaxis=dict(title_text='Year'))
 
     return figure_3_15
 
@@ -3655,7 +3655,7 @@ def figure_3_20():
     figure_3_20 = go.Figure(data=trace, layout=TIMESERIES_LAYOUT)
     figure_3_20.update_layout(
     yaxis=dict(
-        title='Year',
+        title_text='Year',
         nticks=12),
     xaxis=dict(
         title='Month',
@@ -4186,7 +4186,7 @@ def figure_4_5():
     figure_4_5 = go.Figure(data=trace, layout=TIMESERIES_LAYOUT)
     figure_4_5.update_layout(
     yaxis=dict(
-        title='Year',
+        title_text='Year',
         range=[1980, 2020]
         ),
     xaxis=dict(
@@ -4535,7 +4535,7 @@ def figure_4_12():
 
     figure_4_12 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_12.update_layout(
-        yaxis=dict(title='Year',
+        yaxis=dict(title_text='Year',
                 nticks=12),
         xaxis=dict(title="Month",
                 ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
@@ -4594,7 +4594,7 @@ def figure_4_14():
     )
     figure_4_14 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_14.update_layout(
-        yaxis=dict(title='Year',
+        yaxis=dict(title_text='Year',
                 nticks=12),
         xaxis=dict(title="Month",
                 ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
@@ -4760,7 +4760,7 @@ def figure_4_21():
                 secondary_y=False)
     figure_4_21.update_layout(TIMESERIES_LAYOUT)
     figure_4_21.update_layout(
-        xaxis=dict(title='Year',
+        xaxis=dict(title_text='Year',
                   dtick=5,),
         barmode='stack')
     figure_4_21.update_yaxes(title_text='Area Burnt (Ha)',
@@ -4811,7 +4811,7 @@ def figure_4_22():
     figure_4_22=go.Figure(data=[dublinTrace, shannonTrace], layout=TIMESERIES_LAYOUT)
     figure_4_22.update_layout(
         yaxis=dict(title='Number of Days'),
-        xaxis=dict(title='Year')
+        xaxis=dict(title_text='Year')
     )
     return figure_4_22
 def figure_4_24():
@@ -5047,7 +5047,7 @@ def figure_4_27():
     figure_4_27.update_layout(
         barmode='stack',
         yaxis=dict(title='kilotonnes CO\u2082 eq'),
-        xaxis=dict(title='Year')
+        xaxis=dict(title_text='Year')
         )
 
     return figure_4_27
