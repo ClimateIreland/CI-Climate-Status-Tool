@@ -60,12 +60,15 @@ PERCENTILE_COLORSCALE= [
 ]
 
 CHART_FONT = dict(
-    color="#7f7f7f")
+    color="#7f7f7f",
+    family="Arial"
+    )
 
 TIMESERIES_LAYOUT = dict(
     xaxis=dict(
         showgrid=False,
-        title_standoff=0.1),
+        title_standoff=0.2
+        ),
     height=450,
     margin={"t": 0, "b": 0, "r": 0, "l": 0, },
     plot_bgcolor='#f7fbfd',
@@ -88,7 +91,7 @@ CHAPTERS = [
         'chapter-num': '2.1',
         # 'pdf-url':WEB_RESOURCES + '/pdf/Surface-Air-Temperature.pdf',
         'id': 'sa-1',
-        'title': 'Surface Temperature',
+        'title': 'Surface Air Temperature',
         'href': '_2_1_SurfaceAirTemperature',
         'pdf': '_2_1_SurfaceAirTemperature.pdf',
         'icon-lg-src': 'surface-temperature.png',
@@ -1010,6 +1013,10 @@ CHAPTERS_DEV = [
     ]
 
 MAP_LAYOUT = dict(
+    font=dict(
+        color="#2a3f5f",
+        family="Arial"
+        ),
     legend=dict(title='<b>Station Type</b>',
                 x=0.01),
     plot_bgcolor='rgba(0,0,0,0)',
