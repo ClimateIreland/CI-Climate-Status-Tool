@@ -313,14 +313,14 @@ def figure_2_1():
 
     annualTrace = go.Scatter(x=df.datetime,
                             y=df.mean__annual__surface_air_temperature,
-                            name='Annual Mean',
+                            name='Mean Annual',
                             mode='markers',
                             text=df.mean__annual__surface_air_temperature_anomaly,
                             marker=dict(color=TIMESERIES_COLOR_2,
                                         size=5,
                                         opacity=0.5),
                             hovertemplate='%{x|%Y}<br>' +
-                            '<b>Annual</b><br>' +
+                            '<b>Mean Annual</b><br>' +
                             'Tmean: %{y:.2f} \u00b0C<br>' +
                             'Anomaly: %{text:.2f} \u00b0C<extra></extra>'
                             )
@@ -763,7 +763,7 @@ def figure_2_6():
     figure_2_6_a = go.Figure(data=[month_trace], layout=TIMESERIES_LAYOUT)
     figure_2_6_a.update_layout(
         yaxis=dict(title='Vapour Presure (hPa)'),
-        xaxis=dict(title="Month"),
+        xaxis=dict(title_text="Month"),
         height=250)
     
     mean_annual_trace = go.Scatter(x=df['datetime'],
@@ -783,7 +783,7 @@ def figure_2_6():
     figure_2_6_b = go.Figure(data=[mean_annual_trace], layout=TIMESERIES_LAYOUT)
     figure_2_6_b.update_layout(
         yaxis=dict(title='Vapour Presure (hPa)'),
-        xaxis=dict(title="Year"),
+        xaxis=dict(title_text="Year"),
         height=250)
 
     return figure_2_6_a, figure_2_6_b
@@ -900,7 +900,7 @@ def figure_2_8():
                         )
     figure_2_8.update_layout(
         yaxis=dict(title='Mean Sea Level Pressure (hPa)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_2_8
 
 def map_2_4():
@@ -1231,7 +1231,7 @@ def figure_2_11():
     figure_2_11 = go.Figure(data=[sum_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_2_11.update_layout(
         yaxis=dict(title='Solar Radiation, R<sub>s</sub> (GJ/m<sup>2</sup>)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_2_11
 
 def map_2_6():
@@ -1343,7 +1343,7 @@ def figure_2_13_a():
     figure_2_13_a = go.Figure(data=[mean_annual_trace, mean_annual_trace_new_sensor,moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_2_13_a.update_layout(
         yaxis=dict(title='Temperature at 300 hPa (\u00b0C)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
 
     return figure_2_13_a
 
@@ -1402,7 +1402,7 @@ def figure_2_13_b():
     figure_2_13_b = go.Figure(data=[mean_annual_trace, mean_annual_trace_new_sensor,moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_2_13_b.update_layout(
         yaxis=dict(title='Wind Speed at 300 hPa (knots)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
 
     return figure_2_13_b
 
@@ -1432,7 +1432,7 @@ def figure_2_16():
                          mode='lines',
                          line=dict(color=TIMESERIES_COLOR_1,
                                         width=1),
-                       hovertemplate='%{x|%Y-%b-%d}<br>' +
+                       hovertemplate='%{x|%d-%b-%Y}<br>' +
                                      '<b>Irish Shelf</b><br>' +
                                      'Total 10 Day Lightning Strikes: %{y:.2f} <br>' +
                                      '<extra></extra>'
@@ -1444,7 +1444,7 @@ def figure_2_16():
                             name='Irish Land',
                             line=dict(color=TIMESERIES_COLOR_2,
                                             width=1),
-                            hovertemplate='%{x|%Y-%b-%d}<br>' +
+                            hovertemplate='%{x|%d-%b-%Y}<br>' +
                             '<b>Land Area</b><br>' +
                             'Total 10 Day Lightning Strikes: %{y:.2f} <br>' +
                             '<extra></extra>'
@@ -2134,7 +2134,7 @@ def figure_2_25():
     figure_2_25 = go.Figure(data=[mean_monthly_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_2_25.update_layout(
         yaxis=dict(title='Ozone, O<sub>3</sub> (ppb) Concentration (ppb)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_2_25
 
 def figure_2_26():
@@ -2176,7 +2176,7 @@ def figure_2_26():
     figure_2_25 = go.Figure(data=[mean_monthly_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_2_25.update_layout(
         yaxis=dict(title='Ozone, O<sub>3</sub> Concentration (DU)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_2_25
 
 def map_2_13():
@@ -2329,7 +2329,7 @@ def figure_2_31():
     figure_2_31 = go.Figure(data=[hourly_trace, monthly_trace], layout=TIMESERIES_LAYOUT)
     figure_2_31.update_layout(
         yaxis=dict(title='NO<sub>2</sub> Concentration (µg/m<sup>3</sup>)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_2_31
 
 def map_2_15():
@@ -2677,7 +2677,7 @@ def figure_3_4():
     figure_3_4 = go.Figure(data=[mean_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_3_4.update_layout(
         yaxis=dict(title='Salinity'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_3_4
 
 def figure_3_5():
@@ -2719,7 +2719,7 @@ def figure_3_5():
     figure_3_5 = go.Figure(data=[mean_annual_trace, moving_avg_trace], layout=TIMESERIES_LAYOUT)
     figure_3_5.update_layout(
         yaxis=dict(title='Salinity'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_3_5
 
 def map_3_2():
@@ -3348,7 +3348,7 @@ def figure_3_10():
     figure_3_10.update_layout(
         yaxis=dict(title='Mean Significant Wave Height, H<sub>s</sub> (m)'),
         xaxis=dict(
-            title="Month",
+            title_text="Month",
             ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
             showgrid=False,
             # tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
@@ -3951,7 +3951,7 @@ def figure_4_2():
     figure_4_2 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_2.update_layout(
         yaxis=dict(title='Level Above Malin Datum (m)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_4_2
 
 def map_4_2():
@@ -4015,7 +4015,7 @@ def figure_4_3():
     figure_4_3 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_3.update_layout(
         yaxis=dict(title='Level Above OD Malin (m)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     return figure_4_3
 
 def map_4_3():
@@ -4138,7 +4138,7 @@ def figure_4_4():
         yaxis=dict(
             title='Soil Moisture Deficet, SMD (mm)',),
         xaxis=dict(
-            title="Month",
+            title_text="Month",
             dtick="M1",
             tickformat="%b",
             ticklabelmode="period",
@@ -4241,7 +4241,7 @@ def figure_4_7():
                                         opacity=0.5),
                             line=dict(color=TIMESERIES_COLOR_1,
                                         width=1),
-                            hovertemplate='%{x|%Y-%b-%d}<br>' +
+                            hovertemplate='%{x|%d-%b-%Y}<br>' +
                             '<b>10 Day Albedo</b><br>' +
                             'Mean: %{y:.3f}<br>' +
                             'Min: '+dfString['min__10day__albedo']+'<br>' +
@@ -4251,7 +4251,7 @@ def figure_4_7():
     figure_4_7 = go.Figure(data=[trace], layout=TIMESERIES_LAYOUT)
     figure_4_7.update_layout(
         yaxis=dict(title='Albedo'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     figure_4_7.add_annotation(
         x="2010-12-24", y=0.413,
         text="High Albedo<br>due to snow cover",
@@ -4537,7 +4537,7 @@ def figure_4_12():
     figure_4_12.update_layout(
         yaxis=dict(title_text='Year',
                 nticks=12),
-        xaxis=dict(title="Month",
+        xaxis=dict(title_text="Month",
                 ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
                 showgrid=False,
                 tickvals=[20,50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
@@ -4596,7 +4596,7 @@ def figure_4_14():
     figure_4_14.update_layout(
         yaxis=dict(title_text='Year',
                 nticks=12),
-        xaxis=dict(title="Month",
+        xaxis=dict(title_text="Month",
                 ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
                 showgrid=False,
                 tickvals=[20, 50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
@@ -4685,7 +4685,7 @@ def figure_4_17():
                             layout=TIMESERIES_LAYOUT)
     figure_4_17.update_layout(
             yaxis=dict(title='Total Growing Stock Volume (million m<sup>3</sup>)'),
-        xaxis=dict(title="Year",tickvals=[2006, 2012, 2017],range=[2005, 2018]),
+        xaxis=dict(title_text="Year",tickvals=[2006, 2012, 2017],range=[2005, 2018]),
         hovermode="x unified",)
     return figure_4_17
 
@@ -4857,7 +4857,7 @@ def figure_4_24():
     figure_4_24 = go.Figure(data=[day_temp_trace, night_temp_trace], layout=TIMESERIES_LAYOUT)
     figure_4_24.update_layout(
         yaxis=dict(title='Temperature (\u00b0C)'),
-        xaxis=dict(title="Year"))
+        xaxis=dict(title_text="Year"))
     
     return figure_4_24
 
