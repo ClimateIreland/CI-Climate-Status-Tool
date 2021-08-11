@@ -30,7 +30,7 @@ There is evidence that there is an increasing trend in winter rainfall and a dec
         """
 bulletPoints = [bulletPoint1, bulletPoint2, bulletPoint3]
 
-trendChartTitle = 'Annual Rainfall Totals and Anomalies'
+trendChartTitle = 'Annual Rainfall Totals and Anomalies - Ireland'
 trendChart = figure_2_9()
 
 trendCaption = """

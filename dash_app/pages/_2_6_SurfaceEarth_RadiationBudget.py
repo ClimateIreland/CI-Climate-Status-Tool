@@ -39,7 +39,7 @@ trendChartTitle = html.Span(
         children=[
                 'Solar Radiation, R',
                 html.Sub('s'),
-                ' - Valentia Observatory'
+                ' - Valentia'
                 ])
 trendChart = figure_2_11()
 
