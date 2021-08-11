@@ -85,7 +85,7 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
-trendChartTitle1 = 'Average Daily Soil Moisture Deficits'
+trendChartTitle1 = 'Average Daily Soil Moisture Deficits - Valentia'
 trendChart1 = figure_4_4()
 trendCaption1 = """
 Average daily soil moisture deficit calculated at Valentia Observatory and 
