@@ -63,7 +63,8 @@ intro = dbc.Container(
                                       html.A(
                                           'here.',
                                           target='_blank',
-                                          href='https://www.epa.ie/publications/',
+                                        #   href='https://www.epa.ie/publications/',
+                                          href='https://www.epa.ie/publications/research/climate-change/research-386-the-status-of-irelands-climate-2020',
                                         #   href=WEB_RESOURCE + '/pdf/statusReport2020/' + 'Climate_Status_Report_for_Ireland_2020' + '.pdf'
                                       ),
                                   ]),
