@@ -2120,7 +2120,7 @@ def figure_2_25():
                          '<extra></extra>'
                          )
     moving_avg_trace = go.Scatter(x=df['datetime'],
-                                y=df['moving_average__12month__ground_level__ozone_concentration'],
+                                y=df['moving_average__12month__ground_level_ozone_concentration'],
                                 name='12 Month Moving Average',
                                 mode='lines',  # 'line' is default
                                 line_shape='spline',
