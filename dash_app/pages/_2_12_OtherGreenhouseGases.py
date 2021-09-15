@@ -29,7 +29,7 @@ bulletPoint2 = """
 bulletPoints = [bulletPoint1, bulletPoint2]
 
 # first chart
-trendChartTitle = 'Nitrous Oxide (N\u2082O) Concentration - Adrigole and Mace Head' #(1978-2018)
+trendChartTitle = 'Mean Monthly Nitrous Oxide (N\u2082O) Concentration' #(1978-2018)
 trendChart = figure_2_22()
 trendCaption = """
 Monthly mean N\u2082O concentration observed at Adrigole (1978-1984) and Mace Head Research Station (1987–2018). 
@@ -37,7 +37,7 @@ A steady increase is observed, with concentrations now above 330 ppb.
 This is a 20% increase compared to the pre-industrial era when N\u2082O global concentrations were around 270 ppb.
         """
 # second chart
-trendChartTitle2 = 'CFC-12 Concentration - Adrigole and Mace Head' #(1978-2018)
+trendChartTitle2 = 'Mean Monthly CFC-12 Concentration' #(1978-2018)
 trendChart2 = figure_2_23()
 trendCaption2 = """
 Monthly mean CFC-12 concentration observed at Adrigole (1978-1984) and Mace Head Research Station (1987–2018).  
@@ -45,7 +45,7 @@ A steady increase can be observed through the 1980s but, after the adoption of t
 banning the production and use of CFCs, there was no further increase and levels have been falling since 2004.
         """
 # third chart
-trendChartTitle3 = 'HFC-134a Concentration - Mace Head' #(1994-2018)
+trendChartTitle3 = 'Mean Monthly HFC-134a Concentration' #(1994-2018)
 trendChart3 = figure_2_24()
 trendCaption3 = """
 Monthly mean HFC-134a concentration observed at Mace Head Research Station (1994-2018).

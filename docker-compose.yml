@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  climate_status_tool:
+    container_name: climate_status_tool_alone
+    restart: always
+    build: 
+      context: ./
+    ports:
+      - "8080:8080"
+    command: gunicorn -w 1 -b 0.0.0.0:8080 app:server
+    volumes:
+      - $STATUS_TOOL_DATA:/home/data

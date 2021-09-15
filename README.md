@@ -41,16 +41,42 @@ python dash_app/app.py
 
 The application will then be running at http://127.0.0.1:8050/ (Check your terminal in case of different port number). If the charts display a X instead of the expected data check that the correct data path is being used.
 
+## Running with Docker
+
+If you have have Docker and Docker-Compose installed you can run the tool as a container.
+
+Set the data path as an env variable:
+```bash
+export STATUS_TOOL_DATA=<path_to_data>
+```
+
+Run with docker-compose:
+```bash
+docker-compose up # or run in background with docker-compose up -d
+```
+
+The application will be running at http://0.0.0.0:8080/statusTool
+
+
+
+
 ## Key files and folders
 
 - ./dash_app/app.py: Starts the application and routes the requests
 - ./dash_app/charts.py: Functions for developing each individual chart
 - ./dash_app/page_builder.py: Functions to develop ECV page html
+- ./dash_app/settings.py: Settings for chapter info and chart styling
 - ./dash_app/pages/*: Folder containing all chapter html templates. Each chapter has its own page and can easily be updated via variables, rather than accessing the html
 - ./dash_app/assets/*: Contains additional css, js and images. CSS files in the folder root will be automatically applied to the application
 - ./data/*: Contains the data used for charts
-- ./notebooks/*: Contains jupyter notebooks for pre-processing data and for initial chart development
-- ecv_naming_convention.csv: An attempt at standardising naming conventions across variables. Not all generated CSVs follow the convention, but should be followed in future developments.
+- ./notebooks/copy_core_data.ipynb: Notebook for copying status report data, excluding specific file type associated with large files
+- ./notebooks/list_data_files.ipynb: Notebook for listing the available files and data within the data folder structure
+- ./notebooks/<chapter>.ipynb: Notebook for tidying chapter data and initial chart development
+- ./ecv_naming_convention.csv: An attempt at standardising naming conventions across variables. Not all generated CSVs follow the convention, but should be followed in future developments.
+- ./data_files_list.csv: Output from script listing available data files in data folders
+- ./requirements.txt: Python packages required to run app
+- ./Dockerfile: For running status tool with docker
+- ./docker-compose.yml: For running status tool with docker-compose
 
 ## Future Development
 - Read all chart data from CSV generated from original Excel data. CSV files should follow naming convention
