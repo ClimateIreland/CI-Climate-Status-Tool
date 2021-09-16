@@ -4,7 +4,7 @@ Climate Ireland's Climate Status Tool is a standalone [Python Dash](https://dash
 
 The application can be accessed [here](http://www.climateireland.ie/#!/tools/statusReport2020), where it is integrated into the main Climate Ireland website as an iFrame.
 
-The tool currently reads data from both the original Excel files provided by the report authors, and also from CSV files produced from the original Excel files. The CSV files were produced to reduce load time from the Excel files and processing for the charts. Jupyter notebooks are included detailing how the CSVs were generated. The CSV files begin to standardise the naming convention across all variables.
+The chart data is primarily read from CSV files generated from the original Excel files provided by the report authors. The CSV files follow a standardised structure and naming convention. The CSV files were generated to speed up the load time, over reading direct from Excel. Jupyter notebooks are included detailing how the CSVs were generated. Map charts are developed from a combination of .txt and .csv files, both provided by the report authors and generated specifically for the status tool.
 
 The tool is a step towards a digital first climate status reporting, that can be updated annually and used to both analyse and share the findings of the data.
 
