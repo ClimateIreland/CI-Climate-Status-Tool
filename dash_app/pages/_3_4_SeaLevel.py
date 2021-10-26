@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 import pathlib
 import page_builder as pb
 from settings import *
-from charts import empty_chart,figure_3_8, map_3_4, figure_3_7, figure_3_7_1, figure_3_7_2, figure_3_7_3, figure_3_7_4
+from charts import empty_chart,figure_3_8, map_3_4, figure_3_7_1, figure_3_7_2, figure_3_7_3, figure_3_7_4
 
 chapter_num = '3.4'
 bannerImgSrc = IMAGES_PATH+'OceanicSections/Sea_Level_Aldert Otter.jpg'

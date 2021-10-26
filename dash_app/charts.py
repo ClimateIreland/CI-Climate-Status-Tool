@@ -921,107 +921,94 @@ def figure_2_9():
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.5Precipitation/Figure2.9/'
-        xls = pd.ExcelFile(
-            data_path+'Annual_rainfall_totals_and_anomalies_OverIreland.xlsx')
-        dataDF = pd.read_excel(xls, '2010SeasannRR')
+        data_csv = data_path + 'Figure2.9_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
     except:
         return empty_chart()
-
-    dataDF.rename(columns={
-        "Unnamed: 3": "11 Year Moving Average Totals",
-        "Unnamed: 4": "Anomaly",
-        "11 year moving average": "11 Year Moving Average Anomaly"
-    }, inplace=True)
-    movingAverageTotals = dataDF.ANN.rolling(window=11, center=True).mean()
-    dataDF["11 Year Average"] = movingAverageTotals
-
-    annualTrace = go.Bar(x=dataDF["years"],
-                         y=dataDF["Anomaly"],
-                         text=dataDF["ANN"],
-                         name='Annual',
-                         marker=dict(
-        # color="#214a7b", color used in report
+    annualTrace = go.Bar(x=df["datetime"],
+                        y=df["sum__annual__precipitation_anomaly"],
+                        text=df["sum__annual__precipitation"],
+                        name='Annual',
+                        marker=dict(
         color=TIMESERIES_COLOR_2,
         opacity=0.5
     ),
-        hovertemplate='%{x}<br>' +
+        hovertemplate='%{x|%Y}<br>' +
         '<b>Annual</b><br>' +
         'Total: %{text:.2f} mm<br>' +
         'Anomaly: %{y:.2f} mm<extra></extra>'
     )
-    movingAverage = go.Scatter(x=dataDF["years"],
-                               y=dataDF["11 Year Moving Average Anomaly"],
-                               text=dataDF["11 Year Moving Average Totals"],
-                               name='11 Year Moving Average',
-                               mode='lines',  # 'line' is default
-                               line_shape='spline',
-                               line=dict(
-        # color="#fc0d1b", color used in report
+    movingAverage = go.Scatter(x=df["datetime"],
+                            y=df["moving_average_of_sum__11year__precipitation_anomaly"],
+                            text=df["moving_average_of_sum__11year__precipitation"],
+                            name='11 Year Moving Average',
+                            mode='lines', 
+                            line_shape='spline',
+                            line=dict(
         color=TIMESERIES_COLOR_1,
         width=2),
-        hovertemplate='%{x}<br>' +
+        hovertemplate='%{x|%Y}<br>' +
         '<b>11 Year Moving Average</b><br>' +
         'Total: %{text:.2f} mm<br>' +
         'Anomaly: %{y:.2f} mm<extra></extra>'
     )
-    normal = go.Scatter(x=dataDF["years"],
-                        y=dataDF["ANNmean"],
+    normal = go.Scatter(x=df["datetime"],
+                        y=df["normal_1961_1990__precipitation"],
                         name='1961-1990 Normal',
-                        mode='lines',  # 'line' is default
+                        mode='lines', 
                         line_shape='spline',
                         line=dict(color=TIMESERIES_COLOR_3, 
-                                  width=2),
+                                width=2),
                         hoverinfo='skip',
                         )
-    average1990_2019 = go.Scatter(x=dataDF["years"],
-                                  y=dataDF["1990-2019 Average"],
-                                  name='1990-2019 Average',
-                                  mode='lines',  # 'line' is default
-                                  line_shape='spline',
-                                  line=dict(color=TIMESERIES_COLOR_3, #""#22b2ed",  # color used in report
+    average1990_2019 = go.Scatter(x=df["datetime"],
+                                y=df["average_1990_2019__precipitation"],
+                                name='1990-2019 Average',
+                                mode='lines',
+                                line_shape='spline',
+                                line=dict(color=TIMESERIES_COLOR_3,
                                             dash='dash',
                                             width=2),
-                                  hoverinfo='skip',
-                                  )
+                                hoverinfo='skip',
+                                )
     figure_2_9 = make_subplots(specs=[[{'secondary_y': True}]])
     figure_2_9.add_trace(annualTrace,
-                         secondary_y=False,)
+                        secondary_y=False,)
     figure_2_9.add_trace(movingAverage,
-                         secondary_y=False,)
+                        secondary_y=False,)
     figure_2_9.add_trace(normal,
-                         secondary_y=True,)
+                        secondary_y=True,)
 
     figure_2_9.add_trace(average1990_2019,
-                         secondary_y=False,)
+                        secondary_y=False,)
 
     figure_2_9.update_layout(TIMESERIES_LAYOUT)
     figure_2_9.update_yaxes(title_text='Difference (mm) from 1961-1990 Normal',
                             secondary_y=False,
                             range=[-300, 330],
                             showgrid=False,
-                            dtick=100,  # dtick sets the distance between ticks
-                            tick0=0,  # tick0 sets a point to map the other ticks
+                            dtick=100,
+                            tick0=0,
                             fixedrange=True,
                             showspikes=True,
-                            # zeroline=True,  # add a zero line
-                            # zerolinecolor=TIMESERIES_COLOR_2
                             )
     figure_2_9.update_yaxes(title_text='Annual Rainfall Total (mm)',
                             secondary_y=True,
                             range=[886, 1517],
                             showgrid=False,
-                            dtick=100,  # dtick sets the distance between ticks
-                            tick0=1186,  # tick0 sets a point to map the other ticks
+                            dtick=100,
+                            tick0=1186,
                             fixedrange=True,
                             )
 
     figure_2_9.update_xaxes(
-        title_text='Year',
+        title='Year',
         fixedrange=True,
-        tickformat='000',
         showspikes=True,
         spikethickness=2,
     )
+
     return figure_2_9
 
 def figure_2_10():
@@ -1545,63 +1532,45 @@ def figure_2_18():
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.10CarbonDioxide/Figure2.18/'
-        xls = pd.ExcelFile(
-            data_path+'MonthlyMeanConcentrationOfCarbonDioxide_MaunaLoa_MaceHead2018.xlsx')
-        dataDF = pd.read_excel(xls, 'co2_mm_mlo')
+        data_csv = data_path + 'Figure2.18_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
 
-    dataDF.rename(columns = {
-        "Unnamed: 0":"Date"
-    }, inplace = True)
-    dataDF = dataDF.iloc[:, 0:5]
+    mauna_df = df.loc[(df['location'] == 'MaunaLoa')]
+    mace_df = df.loc[(df['location'] == 'MaceHead')]
 
-    MaunaLoa = go.Scatter(x=dataDF["Date"],
-                     y=dataDF["Mauna Loa (Hawaii)"],
-                     name='Mauna Loa (Hawaii)',
-                     line_shape='spline',
-                     line=dict(
+    MaunaLoa = go.Scatter(x=mauna_df["datetime"],
+                    y=mauna_df["mean__monthly__carbon_dioxide_concentration"],
+                    name='Mauna Loa (Hawaii)',
+                    line_shape='spline',
+                    line=dict(
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_1,
                             width=2),
-                      hovertemplate='%{x|%b %Y}<br>' +
+                    hovertemplate='%{x|%b %Y}<br>' +
                             '<b>Mauna Loa (Hawaii)</b><br>' +
                             'CO\u2082: %{y:.2f} ppm<extra></extra>' 
                             )
 
-    MaceHead = go.Scatter(x=dataDF["Date"],
-                     y=dataDF["Mace Head"],
-                     name='Mace Head (Ireland)',
-                     line_shape='spline',
-                     line=dict(
+    MaceHead = go.Scatter(x=mace_df["datetime"],
+                    y=mace_df["mean__monthly__carbon_dioxide_concentration"],
+                    name='Mace Head (Ireland)',
+                    line_shape='spline',
+                    line=dict(
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_2,
                             width=2),
-                      hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>Mace Head</b><br>' +
+                    hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Mace Head (Ireland)</b><br>' +
                             'CO\u2082: %{y:.2f} ppm<extra></extra>' 
                             )
 
-    figure_2_18 = make_subplots(specs=[[{'secondary_y': False}]])
-
-    figure_2_18.add_trace(MaunaLoa,
-                secondary_y=False,)
-
-    figure_2_18.add_trace(MaceHead,
-                secondary_y=False,)
-
-    figure_2_18.update_layout(TIMESERIES_LAYOUT)
-
+    figure_2_18 = go.Figure(data=[MaunaLoa, MaceHead],
+                        layout=TIMESERIES_LAYOUT)
     figure_2_18.update_yaxes(title_text='CO\u2082 Concentration (ppm)',
-                            showgrid=False,
-                            fixedrange=True,
-                            showspikes=True,
                             )
     figure_2_18.update_xaxes(title_text='Year',
-                            range=['1955-01-01', '2020-01-01'],
-                            tickformat="%Y",
-                            showspikes=True,  
-                            spikethickness=2
                             )
 
     return figure_2_18
@@ -1772,63 +1741,40 @@ def figure_2_20():
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.11Methane/Figure2.20/'
-        xls = pd.ExcelFile(
-            data_path+'MonthlyMeanMethaneConcentration_MaceHead_2018.xlsx')
-        dataDF = pd.read_excel(xls, 'MHD-gcmd')
+        data_csv = data_path + 'Figure2.20_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
+    MonthlyMean = go.Scatter(x=df["datetime"],
+                        y=df["mean__monthly__methane_concentration"],
+                        name='Monthly Mean',
+                        mode='markers',
+                        marker=dict(color=TIMESERIES_COLOR_2,
+                                    size=5,
+                                    opacity=0.5),
+                        hovertemplate='%{x|%b %Y}<br>' +
+                                '<b>Monthly Mean</b><br>' +
+                                'CH\u2084: %{y:.2f} ppb<extra></extra>' 
+                                )
 
-    dataDF.rename(columns = {
-        "Unnamed: 0":"Date",
-        "Unnamed: 2":"MovingAverage"
-        }, inplace = True)
-    dataDF = dataDF.iloc[:, 0:3]
-
-    MonthlyMean = go.Scatter(x=dataDF["Date"],
-                     y=dataDF["CH4"],
-                     name='Monthly Mean',
-                     mode='markers',
-                     marker=dict(color=TIMESERIES_COLOR_2,
-                                size=5,
-                                opacity=0.5),
-                      hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>Monthly Mean</b><br>' +
-                            'CH\u2084: %{y:.2f} ppb<extra></extra>' 
-                            )
-
-    MovingAverage = go.Scatter(x=dataDF["Date"],
-                     y=dataDF["MovingAverage"],
-                     name='12 Month Moving Average',
-                     line_shape='spline',
-                     line=dict(
+    MovingAverage = go.Scatter(x=df["datetime"],
+                    y=df["moving_average__12month__methane_concentration"],
+                    name='12 Month Moving Average',
+                    line_shape='spline',
+                    line=dict(
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_1,
                             width=2),
-                      hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>Moving Avaerge</b><br>' +
+                    hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Moving Average</b><br>' +
                             'CH\u2084: %{y:.2f} ppb<extra></extra>' 
                             )
 
-    figure_2_20 = make_subplots(specs=[[{'secondary_y': False}]])
-
-    figure_2_20.add_trace(MonthlyMean,
-                secondary_y=False,)
-
-    figure_2_20.add_trace(MovingAverage,
-                secondary_y=False,)
-
-    figure_2_20.update_layout(TIMESERIES_LAYOUT)
-
+    figure_2_20 = go.Figure(data=[MonthlyMean, MovingAverage],
+                        layout=TIMESERIES_LAYOUT)
     figure_2_20.update_yaxes(title_text='CH\u2084 Concentration (ppb)',
-                            showgrid=False,
-                            fixedrange=True,
-                            showspikes=True,
                             )
     figure_2_20.update_xaxes(title_text='Year',
-                            range=['1985-01-01', '2020-12-31'],
-                            tickformat="%Y",
-                            showspikes=True,  
-                            spikethickness=2
                             )
 
     return figure_2_20
@@ -1890,48 +1836,43 @@ def figure_2_22():
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Figure2.22/'
-        xls = pd.ExcelFile(
-            data_path+'Monthly_Mean_N20.xlsx')
-        dataDF = pd.read_excel(xls, 'Sheet1', header = None, skiprows=[0,1,2])
+        data_csv = data_path + 'Figure2.22_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
 
-    dataDF.rename(columns = {
-        0:"Date",
-        1:"N2O"
-        }, inplace = True)
-    dataDF = dataDF.iloc[:, 0:2]
-
-    MonthlyMean = go.Scatter(x=dataDF["Date"],
-                     y=dataDF["N2O"],
-                     name='Monthly Mean',
-                     line_shape='spline',
-                     showlegend=True,
-                     line=dict(
-                            # color="#fc0d1b", color used in report
-                            color=TIMESERIES_COLOR_1,
+    adrigole_df = df.loc[(df['location'] == 'Adrigole')]
+    mace_head_df = df.loc[(df['location'] == 'MaceHead')]
+    adrigole_trace = go.Scatter(x=adrigole_df["datetime"],
+                    y=adrigole_df["mean__monthly__nitrous_oxide_concentration"],
+                    name='Adrigole',
+                    line_shape='spline',
+                    showlegend=True,
+                    line=dict(
+                            color=TIMESERIES_COLOR_2,
                             width=2),
-                      hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>Monthly Mean</b><br>' +
+                    hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Adrigole</b><br>' +
                             'N\u2082O: %{y:.2f} ppb<extra></extra>' 
                             )
-
-    figure_2_22 = make_subplots(specs=[[{'secondary_y': False}]])
-    figure_2_22.add_trace(MonthlyMean,
-            secondary_y=False,)
-    figure_2_22.update_layout(TIMESERIES_LAYOUT)
-    figure_2_22.update_yaxes(title_text='N\u2082O Concentration (ppb)',
-                         showgrid=False,
-                         fixedrange=True,
-                         showspikes=True,
-                        )
+    mace_head_trace = go.Scatter(x=mace_head_df["datetime"],
+                    y=mace_head_df["mean__monthly__nitrous_oxide_concentration"],
+                    name='Mace Head',
+                    line_shape='spline',
+                    showlegend=True,
+                    line=dict(
+                            color=TIMESERIES_COLOR_1,
+                            width=2),
+                    hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Mace Head</b><br>' +
+                            'N\u2082O: %{y:.2f} ppb<extra></extra>' 
+                            )
+    figure_2_22 = go.Figure(data=[adrigole_trace, mace_head_trace],
+                        layout=TIMESERIES_LAYOUT)
+    figure_2_22.update_yaxes(title_text='N₂O Concentration (ppb)',
+                            )
     figure_2_22.update_xaxes(title_text='Year',
-                         range=['1978-01-01', '2020-06-30'],
-                         tickformat="%Y",
-                         showspikes=True,  
-                         spikethickness=2
                         )
-
     return figure_2_22
 
 def figure_2_23():
@@ -1940,47 +1881,43 @@ def figure_2_23():
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Figure2.23/'
-        xls = pd.ExcelFile(
-            data_path+'Monthly_Mean_CFC12.xlsx')
-        dataDF = pd.read_excel(xls, 'Sheet1', header = None, skiprows=[0,1,2])
+        data_csv = data_path + 'Figure2.23_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
 
-    dataDF.rename(columns = {
-        0:"Date",
-        1:"CFC-12"
-        }, inplace = True)
-    dataDF = dataDF.iloc[:, 0:2]
-
-    MonthlyMean = go.Scatter(x=dataDF["Date"],
-                     y=dataDF["CFC-12"],
-                     name='Monthly Mean',
-                     line_shape='spline',
-                     showlegend=True,
-                     line=dict(
+    adrigole_df = df.loc[(df['location'] == 'Adrigole')]
+    mace_head_df = df.loc[(df['location'] == 'MaceHead')]
+    adrigole_trace = go.Scatter(x=adrigole_df["datetime"],
+                    y=adrigole_df["mean__monthly__cfc_12_concentration"],
+                    name='Adrigole',
+                    line_shape='spline',
+                    showlegend=True,
+                    line=dict(
                             # color="#fc0d1b", color used in report
-                            color=TIMESERIES_COLOR_1,
+                            color=TIMESERIES_COLOR_2,
                             width=2),
-                      hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>Monthly Mean</b><br>' +
+                    hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Adrigole</b><br>' +
                             'CFC-12: %{y:.2f} ppt<extra></extra>' 
                             )
+    mace_head_trace = go.Scatter(x=mace_head_df["datetime"],
+                    y=mace_head_df["mean__monthly__cfc_12_concentration"],
+                    name='Mace Head',
+                    line_shape='spline',
+                    showlegend=True,
+                    line=dict(
+                            color=TIMESERIES_COLOR_1,
+                            width=2),
+                    hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Mace Head</b><br>' +
+                            'CFC-12: %{y:.2f} ppt<extra></extra>' 
+                            )
+    figure_2_23 = go.Figure(data=[adrigole_trace, mace_head_trace],
+                        layout=TIMESERIES_LAYOUT)
+    figure_2_23.update_yaxes(title_text='CFC-12 Concentration (ppt)')
+    figure_2_23.update_xaxes(title_text='Year')
 
-    figure_2_23 = make_subplots(specs=[[{'secondary_y': False}]])
-    figure_2_23.add_trace(MonthlyMean,
-                secondary_y=False,)
-    figure_2_23.update_layout(TIMESERIES_LAYOUT)
-    figure_2_23.update_yaxes(title_text='CFC-12 Concentration (ppt)',
-                            showgrid=False,
-                            fixedrange=True,
-                            showspikes=True,
-                            )
-    figure_2_23.update_xaxes(title_text='Year',
-                            range=['1978-01-01', '2020-06-30'],
-                            tickformat="%Y",
-                            showspikes=True,  
-                            spikethickness=2
-                            )
     return figure_2_23
 
 def figure_2_24():
@@ -1989,49 +1926,30 @@ def figure_2_24():
     """
     try:
         data_path = DATA_PATH+'Atmospheric_Domain/2.12OtherGHGs/Figure2.24/'
-        xls = pd.ExcelFile(
-            data_path+'Monthly_MeanHFC134a.xlsx')
-        dataDF = pd.read_excel(xls, 'Sheet1')
+        data_csv = data_path + 'Figure2.24_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
 
-    dataDF.rename(columns = {
-        "MONTH":"Date"
-        }, inplace = True)
-    dataDF = dataDF.iloc[:, 0:2]
-
-    MonthlyMean = go.Scatter(x=dataDF["Date"],
-                     y=dataDF["HFC-134a"],
-                     name='Monthly Mean',
-                     showlegend=True,
-                     line_shape='spline',
-                     line=dict(
+    mace_head_trace = go.Scatter(x=df["datetime"],
+                    y=df["mean__monthly__hfc_134a_concentration"],
+                    name='Mace Head',
+                    line_shape='spline',
+                    showlegend=True,
+                    line=dict(
                             # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_1,
                             width=2),
-                      hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>Monthly Mean</b><br>' +
+                    hovertemplate='%{x|%b %Y}<br>' +
+                            '<b>Mace Head</b><br>' +
                             'HFC-134a: %{y:.2f} ppt<extra></extra>' 
                             )
-
-    figure_2_24 = make_subplots(specs=[[{'secondary_y': False}]])
-    figure_2_24.add_trace(MonthlyMean,
-                secondary_y=False,)
-
-
-    figure_2_24.update_layout(TIMESERIES_LAYOUT)
-
+    figure_2_24 = go.Figure(data=[mace_head_trace],
+                        layout=TIMESERIES_LAYOUT)
     figure_2_24.update_yaxes(title_text='HFC-134a Concentration (ppt)',
-                            showgrid=False,
-                            fixedrange=True,
-                            showspikes=True,
                             )
-    figure_2_24.update_xaxes(title_text='Year',
-                            range=['1994-01-01', '2020-06-30'],
-                            tickformat="%Y",
-                            showspikes=True,  
-                            spikethickness=2
-                            )
+    figure_2_24.update_xaxes(title_text='Year')
+
     return figure_2_24
 
 def map_2_12():
@@ -2291,46 +2209,48 @@ def map_2_13():
     )
     
     return map_2_13
-def figure_2_31():
-    # not used because too much hourly data
-    """
-    Precursors for Aerosols and Ozone trend
-    """
-    try:
-        data_path = DATA_PATH+'Atmospheric_Domain/2.15PrecursorsAerosolsOzone/Figure2.31/'
-        data_csv = data_path + 'Figure2.31_data.csv'
-        df = pd.read_csv(data_csv, index_col=0)
-    except:
-        return empty_chart()
-    hourly_trace = go.Scatter(x=df['datetime'],
-                                y=df['nitrogen_dioxide_concentration'],
-                            name='Hourly',
-                            mode='markers',
-                            marker=dict(color=TIMESERIES_COLOR_2,
-                                        size=5,
-                                        opacity=0.3),
-                            hovertemplate='%{x|%b %Y}<br>' +
-                            '<b>Hourly NO<sub>2</sub></b><br>' +
-                            'Concentration: %{y:.2f} µg/m<sup>3</sup><br>' +
-                            '<extra></extra>'
-                            )
-    monthly_trace = go.Scatter(x=df['datetime'],
-                                y=df['mean_monthly__nitrogen_dioxide_concentration'],
-                                name='Mean Monthly',
-                                mode='lines',  # 'line' is default
-                                line_shape='spline',
-                                line=dict(color=TIMESERIES_COLOR_1,
-                                        width=2),
-                                hovertemplate='%{x|%b %Y}<br>' +
-                                    '<b>Mean Monthly NO<sub>2</sub></b><br>' +
-                                    'Concentration: %{y:.2f} µg/m<sup>3</sup></sup><br>' +
-                                    '<extra></extra>'
-                                )
-    figure_2_31 = go.Figure(data=[hourly_trace, monthly_trace], layout=TIMESERIES_LAYOUT)
-    figure_2_31.update_layout(
-        yaxis=dict(title='NO<sub>2</sub> Concentration (µg/m<sup>3</sup>)'),
-        xaxis=dict(title_text="Year"))
-    return figure_2_31
+
+     # not used because too much hourly data
+# def figure_2_31():
+#    
+#     """
+#     Precursors for Aerosols and Ozone trend
+#     """
+#     try:
+#         data_path = DATA_PATH+'Atmospheric_Domain/2.15PrecursorsAerosolsOzone/Figure2.31/'
+#         data_csv = data_path + 'Figure2.31_data.csv'
+#         df = pd.read_csv(data_csv, index_col=0)
+#     except:
+#         return empty_chart()
+#     hourly_trace = go.Scatter(x=df['datetime'],
+#                                 y=df['nitrogen_dioxide_concentration'],
+#                             name='Hourly',
+#                             mode='markers',
+#                             marker=dict(color=TIMESERIES_COLOR_2,
+#                                         size=5,
+#                                         opacity=0.3),
+#                             hovertemplate='%{x|%b %Y}<br>' +
+#                             '<b>Hourly NO<sub>2</sub></b><br>' +
+#                             'Concentration: %{y:.2f} µg/m<sup>3</sup><br>' +
+#                             '<extra></extra>'
+#                             )
+#     monthly_trace = go.Scatter(x=df['datetime'],
+#                                 y=df['mean__monthly__nitrogen_dioxide_concentration'],
+#                                 name='Mean Monthly',
+#                                 mode='lines',  # 'line' is default
+#                                 line_shape='spline',
+#                                 line=dict(color=TIMESERIES_COLOR_1,
+#                                         width=2),
+#                                 hovertemplate='%{x|%b %Y}<br>' +
+#                                     '<b>Mean Monthly NO<sub>2</sub></b><br>' +
+#                                     'Concentration: %{y:.2f} µg/m<sup>3</sup></sup><br>' +
+#                                     '<extra></extra>'
+#                                 )
+#     figure_2_31 = go.Figure(data=[hourly_trace, monthly_trace], layout=TIMESERIES_LAYOUT)
+#     figure_2_31.update_layout(
+#         yaxis=dict(title='NO<sub>2</sub> Concentration (µg/m<sup>3</sup>)'),
+#         xaxis=dict(title_text="Year"))
+#     return figure_2_31
 
 def map_2_15():
     """
@@ -2474,33 +2394,28 @@ def figure_3_1():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Figure3.1/'
-        xls = pd.ExcelFile(
-            data_path+'MeanAnnualSeaSurfaceTemperature_Anomalies_MalinHead.xlsx')
-        df = pd.read_excel(xls, 'MALIN_Timeseries')
+        data_csv = data_path + 'Figure3.1_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
 
-    movingAverageTotals = df.temperature.rolling(window=5, center=True).mean() 
-    df["5 Year Moving Average - Mean"]=movingAverageTotals
-
-
-    annualTrace = go.Bar(x=df["year"],
-                        y=df["Calculated Anomalies"],
-                        text=df["temperature"],
-                        name='Annual Mean',
+    annualTrace = go.Bar(x=df["datetime"],
+                        y=df["mean__annual__surface_sea_temperature_anomaly"],
+                        text=df["mean__annual__surface_sea_temperature"],
+                        name='Annual',
                         marker=dict(
                                 # color="#214a7b", color used in report
                                 color=TIMESERIES_COLOR_2,
                                 opacity=0.5
                                 ),
-                        hovertemplate='%{x}<br>' +
-                                '<b>Annual Mean</b><br>' +
-                                'Total: %{text:.2f} \u00b0C<br>' +
+                        hovertemplate='%{x|%Y}<br>' +
+                                '<b>Annual</b><br>' +
+                                'Mean: %{text:.2f} \u00b0C<br>' +
                                 'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
-    movingAverage = go.Scatter(x=df["year"],
-                        y=df["5 year moving average"],
-                        text=df["5 Year Moving Average - Mean"],
+    movingAverage = go.Scatter(x=df["datetime"],
+                        y=df["moving_average__5year__surface_sea_temperature_anomaly"],
+                        text=df["moving_average__5year__surface_sea_temperature"],
                         name='5 Year Moving Average',
                         mode='lines',  # 'line' is default
                         line_shape='spline',
@@ -2508,13 +2423,13 @@ def figure_3_1():
                                 # color="#fc0d1b", color used in report
                                 color=TIMESERIES_COLOR_1,
                                 width=2),
-                        hovertemplate='%{x}<br>' +
+                        hovertemplate='%{x|%Y}<br>' +
                                 '<b>5 Year Moving Average</b><br>' +
-                                'Total: %{text:.2f} \u00b0C<br>' +
+                                'Mean: %{text:.2f} \u00b0C<br>' +
                                 'Anomaly: %{y:.2f} \u00b0C<extra></extra>'
                                 )
-    normal = go.Scatter(x=df["year"],
-                        y=df["Unnamed: 5"],
+    normal = go.Scatter(x=df["datetime"],
+                        y=df["normal_1981_2010__surface_sea_temperature"],
                         name='1981-2010 Average',
                         mode='lines',  # 'line' is default
                         line_shape='spline',
@@ -2553,11 +2468,10 @@ def figure_3_1():
     figure_3_1.update_xaxes(
         title_text='Year',
         fixedrange=True,
-        tickformat='000',  
         showspikes=True,  
         spikethickness=2, 
         ) 
-    
+
     return figure_3_1
 
 def figure_3_3():
@@ -2566,33 +2480,31 @@ def figure_3_3():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.1OceanSurfaceSubsurfaceTemperature/Figure3.3/'
-        xls = pd.ExcelFile(
-            data_path+'SubSurfaceTemperature_Anomalies_Rockall.xlsx')
-        df = xls.parse('Depth_Rockall', skiprows=20, index_col=None, na_values=['NA'])
-        df["5 Year Moving Average - Mean"]=df["Unnamed: 6"]
+        data_csv = data_path + 'Figure3.3_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
-    annualTrace = go.Scatter(x=df["Decimal Year"],
-                     y=df["Temperature °C"],
-                     name='Annual Mean',
-                      mode='lines',  # 'line' is default
+    annualTrace = go.Scatter(x=df["datetime"],
+                    y=df["mean__annual__subsurface_sea_temperature"],
+                    name='Annual Mean',
+                    mode='lines',
                         line_shape='spline',
                         line=dict(
                                 color=TIMESERIES_COLOR_2,
                                 width=2),
-                     hovertemplate='%{x}<br>' +
+                    hovertemplate='%{x|%Y}<br>' +
                             '<b>Annual Mean</b><br>' +
                             'Temperature: %{y:.2f} \u00b0C<extra></extra>'
                             )
-    movingAverage = go.Scatter(x=df["Decimal Year"],
-                        y=df["5 Year Moving Average - Mean"],
+    movingAverage = go.Scatter(x=df["datetime"],
+                        y=df["moving_average__5year__surface_sea_temperature"],
                         name='5 Year Moving Average',
-                        mode='lines',  # 'line' is default
+                        mode='lines', 
                         line_shape='spline',
                         line=dict(
                                 color=TIMESERIES_COLOR_1,
                                 width=2),
-                        hovertemplate='%{x}<br>' +
+                        hovertemplate='%{x|%Y}<br>' +
                                 '<b>5 Year Moving Average</b><br>' +
                                 'Temperature: %{y:.2f} \u00b0C<extra></extra>'
                                 )
@@ -2604,8 +2516,7 @@ def figure_3_3():
 
     figure_3_3.update_xaxes(
         title_text='Year',
-        fixedrange=True,
-        tickformat='000',  
+        fixedrange=True, 
         showspikes=True,  
         spikethickness=2, 
     ) 
@@ -2746,137 +2657,40 @@ def map_3_2():
     )
     return map_3_2
 
-
-
-def figure_3_7():
-    """
-    Sea Level Monthly Mean, Ballyglass, Casteltownbare, Howth Harbout, Malin head
-    """
-    try:
-        data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
-                         parse_dates=['Date'],
-                         dayfirst=True)
-    except:
-        return empty_chart()
-
-    ballyglassTrace = go.Scatter(x=df["Date"],
-                     y=df["Ballyglass_MonthlyAverage_m"],
-                     name='Ballyglass',
-                     mode='lines',
-                     line_shape='spline',
-                     line=dict(
-                            color='#ff5768',
-                            width=2),
-                        hovertemplate='%{x}<br>' +
-                            '<b>Ballyglass</b><br>' +
-                            'Mean Sea Level: %{y:.2f} m<extra></extra>',
-                            )
-
-    castletownbareTrace = go.Scatter(x=df["Date"],
-                     y=df["Castletownbare_MonthlyAverage_m"],
-                     name='Castletownbare',
-                     mode='lines', 
-                     line_shape='spline',
-                     line=dict(
-                            color='#ff96c5',
-                            width=2),
-                      hovertemplate='%{x}<br>' +
-                            '<b>Castletownbare</b><br>' +
-                            'Mean Sea Level: %{y:.2f} m<extra></extra>',
-                            )
-
-    howthHarbourTrace = go.Scatter(x=df["Date"],
-                     y=df["HowthHarbour_MonthlyAverage_m"],
-                     name='Howth Harbour',
-                     mode='lines',
-                     line_shape='spline',
-                     line=dict(
-                            color='#ffbf65',
-                            width=2),
-                        hovertemplate='%{x}<br>' +
-                            '<b>Howth Harbour</b><br>' +
-                            'Mean Sea Level: %{y:.2f} m<extra></extra>',
-                            )
-
-    malinHeadTrace = go.Scatter(x=df["Date"],
-                     y=df["MalinHead_MonthlyAverage_m"],
-                     name='Malin Head',
-                     mode='lines',
-                     line_shape='spline',
-                     line=dict(
-                            color='#00a5e3',
-                            width=2),
-                        hovertemplate='%{x}<br>' +
-                            '<b>Malin Head</b><br>' +
-                            'Mean Sea Level: %{y:.2f} m<extra></extra>',
-                            )
-    figure_3_7=go.Figure(data=[
-                           malinHeadTrace,
-                           ballyglassTrace,
-                           castletownbareTrace,
-                           howthHarbourTrace,
-                           ],
-                    layout=TIMESERIES_LAYOUT)
-    figure_3_7.update_yaxes(title_text='Sea Level (m) Relative to OD Malin',
-                            range=[-0.45, 0.45],
-                            showgrid=False,
-                            fixedrange=True,
-                            )
-    figure_3_7.update_xaxes(title_text='Year',
-                            range=['2003-01-01', '2020-06-30'],)
-    figure_3_7.update_layout(legend = dict(title=dict(text='<b>Click to Toggle Trend</b>',
-                                                      side='top'),
-                                            itemclick='toggle'))
-    return figure_3_7
-
 def figure_3_7_1():
     """
     Sea Level Malin Head
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
-                         parse_dates=['Date'],
-                         dayfirst=True)
+        data_csv = data_path + 'Figure3.7_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        malin_df = df.loc[(df['location'] == 'Malin Head')]
     except:
         return empty_chart()
-    monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["MalinHead_MonthlyAverage_m"],
-                    #  text=dataDF["11 Year Moving Average Totals"],
-                     name='Malin Head',
-                     connectgaps=False,
-                     mode='lines',  # 'line' is default
-                     line_shape='spline',
-                     line=dict(
+
+    malin_trace = go.Scatter(x=malin_df["datetime"],
+                    y=malin_df["mean__monthly__sea_surface_height"],
+                    name='Malin Head',
+                    connectgaps=False,
+                    mode='lines',  # 'line' is default
+                    line_shape='spline',
+                    line=dict(
                             color="#00a5e3",
                             width=2),
-                      hovertemplate='%{x}<br>' +
+                    hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
                             'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
 
-    figure_3_7_1 = make_subplots(specs=[[{'secondary_y': False}]])
-
-    figure_3_7_1.add_trace(monthlyTrace,
-                secondary_y=False,)
-
+    figure_3_7_1 =go.Figure(data=[malin_trace], layout=TIMESERIES_LAYOUT)
     figure_3_7_1.update_layout(
-        TIMESERIES_LAYOUT,
-    )
+        yaxis=dict(title='Sea Level (m) Relative to OD Malin'),
+        xaxis=dict(
+            title='Year',
+            range=['2004-01-01', '2020-06-30']
+        ))
 
-    figure_3_7_1.update_yaxes(title_text='Sea Level (m)<br>Relative to OD Malin',
-                            range=[-0.45, 0.45],
-                            showgrid=False,
-                            fixedrange=True,
-                            showspikes=True,
-                            )
-    figure_3_7_1.update_xaxes(title_text='Year',
-                            range=['2004-01-01', '2020-06-30'],
-    #                          tickformat="%Y",
-                            showspikes=True,  
-                            spikethickness=2
-                            )
     return figure_3_7_1
 
 def figure_3_7_2():
@@ -2885,92 +2699,70 @@ def figure_3_7_2():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
-                         parse_dates=['Date'],
-                         dayfirst=True)
+        data_csv = data_path + 'Figure3.7_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        ballyglass_df = df.loc[(df['location'] == 'Ballyglass')]
     except:
         return empty_chart()
-    monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["Ballyglass_MonthlyAverage_m"],
-                    #  text=dataDF["11 Year Moving Average Totals"],
-                     name='Ballyglass',
-                     connectgaps=False,
-                     mode='lines',  # 'line' is default
-                     line_shape='spline',
-                     line=dict(
-                            color='#ff5768',
+
+    ballyglass_trace = go.Scatter(x=ballyglass_df["datetime"],
+                    y=ballyglass_df["mean__monthly__sea_surface_height"],
+                    name='Ballyglass',
+                    connectgaps=False,
+                    mode='lines',  # 'line' is default
+                    line_shape='spline',
+                    line=dict(
+                            color="#ff5768",
                             width=2),
-                      hovertemplate='%{x}<br>' +
+                    hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
                             'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
 
-    figure_3_7_2 = make_subplots(specs=[[{'secondary_y': False}]])
+    figure_3_7_2 =go.Figure(data=[ballyglass_trace], layout=TIMESERIES_LAYOUT)
+    figure_3_7_2.update_layout(
+        yaxis=dict(title='Sea Level (m) Relative to OD Malin'),
+        xaxis=dict(
+            title='Year',
+            range=['2004-01-01', '2020-06-30']
+        ))
 
-    figure_3_7_2.add_trace(monthlyTrace,
-                secondary_y=False,)
-
-    figure_3_7_2.update_layout(TIMESERIES_LAYOUT)
-
-    figure_3_7_2.update_yaxes(title_text='Sea Level (m)<br>Relative to OD Malin',
-                            range=[-0.45, 0.45],
-                            showgrid=False,
-                            fixedrange=True,
-                            showspikes=True,
-                            )
-    figure_3_7_2.update_xaxes(title_text='Year',
-                            range=['2004-01-01', '2020-06-30'],
-    #                          tickformat="%Y",
-                            showspikes=True,  
-                            spikethickness=2
-                            )
     return figure_3_7_2
 
 def figure_3_7_3():
     """
-    Sea Level Castletownbare
+    Sea Level Castletownbere
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
-                         parse_dates=['Date'],
-                         dayfirst=True)
+        data_csv = data_path + 'Figure3.7_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        castletownbere_df = df.loc[(df['location'] == 'Castletownbere')]
     except:
         return empty_chart()
-    monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["Castletownbare_MonthlyAverage_m"],
-                    #  text=dataDF["11 Year Moving Average Totals"],
-                     name='Castletownbare',
-                     connectgaps=False,
-                     mode='lines',  # 'line' is default
-                     line_shape='spline',
-                     line=dict(
-                            color='#ff96c5',
+
+    castletownbere_trace = go.Scatter(x=castletownbere_df["datetime"],
+                    y=castletownbere_df["mean__monthly__sea_surface_height"],
+                    name='Castletownbere',
+                    connectgaps=False,
+                    mode='lines',  # 'line' is default
+                    line_shape='spline',
+                    line=dict(
+                            color="#ff96c5",
                             width=2),
-                     hovertemplate='%{x}<br>' +
+                    hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
                             'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
 
-    figure_3_7_3 = make_subplots(specs=[[{'secondary_y': False}]])
+    figure_3_7_3 =go.Figure(data=[castletownbere_trace], layout=TIMESERIES_LAYOUT)
+    figure_3_7_3.update_layout(
+        yaxis=dict(title='Sea Level (m) Relative to OD Malin'),
+        xaxis=dict(
+            title='Year',
+            range=['2004-01-01', '2020-06-30']
+        ))
 
-    figure_3_7_3.add_trace(monthlyTrace,
-                secondary_y=False,)
-
-    figure_3_7_3.update_layout(TIMESERIES_LAYOUT)
-
-    figure_3_7_3.update_yaxes(title_text='Sea Level (m)<br>Relative to OD Malin',
-                            range=[-0.45, 0.45],
-                            showgrid=False,
-                            fixedrange=True,
-                            showspikes=True,
-                            )
-    figure_3_7_3.update_xaxes(title_text='Year',
-                            range=['2004-01-01', '2020-06-30'],
-    #                          tickformat="%Y",
-                            showspikes=True,  
-                            spikethickness=2
-                            )
     return figure_3_7_3
 
 def figure_3_7_4():
@@ -2979,45 +2771,34 @@ def figure_3_7_4():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.7/'
-        df = pd.read_csv(data_path+'Sea_level_IrishStationsMonthlyAverage_for_online_charts.csv',
-                         parse_dates=['Date'],
-                         dayfirst=True)
+        data_csv = data_path + 'Figure3.7_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        howth_df = df.loc[(df['location'] == 'Howth Harbour')]
     except:
         return empty_chart()
-    monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["HowthHarbour_MonthlyAverage_m"],
-                    #  text=dataDF["11 Year Moving Average Totals"],
-                     name='Howth Harbour',
-                     connectgaps=False,
-                     mode='lines',  # 'line' is default
-                     line_shape='spline',
-                     line=dict(
-                            color='#ffbf65',
+
+    howth_trace = go.Scatter(x=howth_df["datetime"],
+                    y=howth_df["mean__monthly__sea_surface_height"],
+                    name='Howth Harbour',
+                    connectgaps=False,
+                    mode='lines',  # 'line' is default
+                    line_shape='spline',
+                    line=dict(
+                            color="#ffbf65",
                             width=2),
                     hovertemplate='%{x}<br>' +
                             '<b>Monthly Average</b><br>' +
                             'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
 
-    figure_3_7_4 = make_subplots(specs=[[{'secondary_y': False}]])
+    figure_3_7_4 =go.Figure(data=[howth_trace], layout=TIMESERIES_LAYOUT)
+    figure_3_7_4.update_layout(
+        yaxis=dict(title='Sea Level (m) Relative to OD Malin'),
+        xaxis=dict(
+            title='Year',
+            range=['2004-01-01', '2020-06-30']
+        ))
 
-    figure_3_7_4.add_trace(monthlyTrace,
-                secondary_y=False,)
-
-    figure_3_7_4.update_layout(TIMESERIES_LAYOUT)
-
-    figure_3_7_4.update_yaxes(title_text='Sea Level (m)<br>Relative to OD Malin',
-                            range=[-0.45, 0.45],
-                            showgrid=False,
-                            fixedrange=True,
-                            showspikes=True,
-                            )
-    figure_3_7_4.update_xaxes(title_text='Year',
-                            range=['2004-01-01', '2020-06-30'],
-    #                          tickformat="%Y",
-                            showspikes=True,  
-                            spikethickness=2
-                            )
     return figure_3_7_4
 
 def map_3_7():
@@ -3083,19 +2864,15 @@ def figure_3_8():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.4SeaLevel/Figure3.8/'
-        xls = pd.ExcelFile(
-            data_path+'dub_all_1938_to_2016_v2.xlsx')
-        df = pd.read_excel(xls, 'dub_all_1938_to_2016')
-        df.rename(columns = {
-            "Unnamed: 3":"Date",
-            "Unnamed: 10":"AnnualDate",
-            "Unnamed: 11":"AnnualAverage"
-            }, inplace = True)
+        data_csv = data_path + 'Figure3.8_data.csv'
+        df = pd.read_csv(data_csv)
     except:
         return empty_chart()
-    monthlyTrace = go.Scatter(x=df["Date"],
-                     y=df["Msl_OD_Malin"],
-                     name='Monthly Average',
+    
+    annual_df = df[df['mean__annual__sea_surface_height'].notna()]
+    monthlyTrace = go.Scatter(x=df["datetime"],
+                    y=df["mean__monthly__sea_surface_height"],
+                    name='Monthly Average',
                     mode='markers',
                     marker=dict(color=TIMESERIES_COLOR_2,
                                 size=5,
@@ -3104,23 +2881,24 @@ def figure_3_8():
                             '<b>Monthly Average</b><br>' +
                             'Mean Sea Level: %{y:.2f} m<extra></extra>'
                             )
-    annualTrace = go.Scatter(x=df["AnnualDate"],
-                        y=df["AnnualAverage"],
+    annualTrace = go.Scatter(x=annual_df["datetime"],
+                        y=annual_df["mean__annual__sea_surface_height"],
                         name='Annual Average',
-                        mode='lines',  # 'line' is default
+                        mode='lines',
                         line_shape='spline',
                         line=dict(
                                 color=TIMESERIES_COLOR_1,
                                 width=2),
-                        hovertemplate='%{x}<br>' +
+                        hovertemplate='%{x|%Y}<br>' +
                                 '<b>Annual Average</b><br>' +
                                 'Mean Sea Level: %{y:.2f} m<extra></extra>'
                                 )
-    figure_3_8=go.Figure(data=[monthlyTrace, annualTrace], layout=TIMESERIES_LAYOUT)
+    figure_3_8=go.Figure(data=[monthlyTrace,annualTrace], layout=TIMESERIES_LAYOUT)
     figure_3_8.update_layout(
         yaxis=dict(title='Sea Level (m) Relative to OD Malin'),
-        xaxis=dict(title='Date'),
+        xaxis=dict(title='Year'),
         hovermode='closest')
+
     return figure_3_8
 
 def map_3_4():
@@ -3375,35 +3153,36 @@ def figure_3_15():
     """
     try:
         data_path = DATA_PATH+'Oceanic_Domain/3.7Oxygen/Figure3.15/'
-        xls = pd.ExcelFile(data_path+'DO_McSwynes_2019.xlsx')
+        data_csv = data_path + 'Figure3.15_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
-    dataDF = xls.parse('ECWM_Datasonde', skiprows=1,
-                       index_col=None, na_values=['NA'])
-    dissolvedOxygenDateTrace = go.Scatter(x=dataDF.date_Surveyed,
-                                          y=dataDF.DO_saturation,
-                                          name='Dissolved Oxygen Saturation',
-                                          mode='markers',
-                                          text=dataDF.Depth_sample,
-                                          marker=dict(
-                                              size=4,
-                                              # set color equal to a variable
-                                              color=dataDF.Depth_sample*(-1),
-                                              colorscale='Viridis',  # one of plotly colorscales
-                                              showscale=True,
-                                              colorbar=dict(title='Depth (m)',
+
+    dissolvedOxygenDateTrace = go.Scatter(x=df.datetime,
+                                        y=df.fractional_saturation_of_oxygen_in_sea_water,
+                                        name='Dissolved Oxygen Saturation',
+                                        mode='markers',
+                                        text=df.depth_sample,
+                                        marker=dict(
+                                            size=4,
+                                            # set color equal to a variable
+                                            color=df.depth_sample*(-1),
+                                            colorscale='Viridis',  # one of plotly colorscales
+                                            showscale=True,
+                                            colorbar=dict(title='<b>Depth</b> (m)',
+                                                            thickness=10,
                                                             tickmode='array',
                                                             ticktext=[
                                                                 0, 5, 10, 15, 20, 25, 30],
                                                             tickvals=[0, -5, -10, -15, -20, -25, -30]),
-                                              reversescale=False,
+                                            reversescale=False,
 
-                                          ),
-                                          showlegend=False,
-                                          hovertemplate='%{x}<br>' +
-                                          '<b>Dissolved Oxygen</b><br>' +
-                                          'Saturation: %{y} %<br>' +
-                                          'Depth: %{text} m<br><extra></extra>')
+                                        ),
+                                        showlegend=False,
+                                        hovertemplate='%{x}<br>' +
+                                        '<b>Dissolved Oxygen</b><br>' +
+                                        'Saturation: %{y} %<br>' +
+                                        'Depth: %{text} m<br><extra></extra>')
     figure_3_15 = go.Figure(
         data=dissolvedOxygenDateTrace, layout=TIMESERIES_LAYOUT)
     figure_3_15.update_layout(
@@ -4262,36 +4041,25 @@ def figure_4_7():
     )
     return figure_4_7
 
-
-
-
-
-
 def figure_4_10_1():
     """
     Landcover 1990 Pie
     """
 
-    #e6e43b = agri
-    # 4c52f9 = wetlands
-    # 5ea32a = forest
-    #c4fd89 = semiVeg
-    #db2001 = artiSurface
-    # 72caf0 = waterBodies
-
     try:
-        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
-        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx')
-        areaDF = pd.read_excel(xls, header=0,  skiprows=2, nrows=6)
+        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.10/'
+        data_csv = data_path + 'Figure4.10_data.csv'
+        df = pd.read_csv(data_csv)
+        df_1990=df.loc[(df['datetime'] == '1990-01-01')].copy()
     except:
         return empty_chart()
 
-    # Tidy text by wrapping
-    areaDF.loc[
-        areaDF['Corine L1 Class'] == 'Semi-Natural & Low Vegetation', 'Corine L1 Class'] = 'Semi-Natural &<br>Low Vegetation'
+    # wrap text for long label
+    df_1990.loc[df['corine_l1_class'] == 'Semi-Natural & Low Vegetation', 
+        'corine_l1_class'] = 'Semi-Natural &<br>Low Vegetation'
     area1990Trace = go.Pie(
-        labels=areaDF['Corine L1 Class'],
-        values=areaDF['CLC90 Area(HA)']/1000,
+        labels=df_1990['corine_l1_class'],
+        values=df_1990['land_cover']/1000,
         textinfo='label+percent',
         textposition='auto',
         marker=dict(colors=['#db2001',
@@ -4316,53 +4084,41 @@ def figure_4_10_1():
         plot_bgcolor='rgba(0,0,0,0)',
         showlegend=False)
 
-
     return figure_4_10_1
-
-
-
-
 
 def figure_4_10_2():
     """
     Landcover 2018 Pie
     """
-
-    #e6e43b = agri
-    # 4c52f9 = wetlands
-    # 5ea32a = forest
-    #c4fd89 = semiVeg
-    #db2001 = artiSurface
-    # 72caf0 = waterBodies
     try:
-        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
-        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx')
-        areaDF = pd.read_excel(xls, header=0,  skiprows=2, nrows=6)
+        data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.10/'
+        data_csv = data_path + 'Figure4.10_data.csv'
+        df = pd.read_csv(data_csv)
+        df_2018=df.loc[(df['datetime'] == '2018-01-01')].copy()
     except:
         return empty_chart()
-
-    # Tidy text by wrapping
-    areaDF.loc[
-        areaDF['Corine L1 Class'] == 'Semi-Natural & Low Vegetation', 'Corine L1 Class'] = 'Semi-Natural &<br>Low Vegetation'
-    area2018Trace = go.Pie(labels=areaDF['Corine L1 Class'],
-                           values=areaDF['CLC18 Area(HA)']/1000,
-                           textinfo='label+percent',
-                           textposition='auto',
-                           # insidetextorientation='radial',
-                           # textposition= 'inside',
-                           marker=dict(colors=['#db2001',
-                                               '#e6e43b',
-                                               '#5ea32a',
-                                               '#c4fd89',
-                                               '#4c52f9',
-                                               '#72caf0', ]),
-                           sort=True,
-                           texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
-                           hovertemplate= '2018<br>' +
-                           '<b>%{label}</b><br>' +
-                           '%{value:.0f} kHA<br>' +
-                           '%{percent:.2%}<extra></extra>',
-                           )
+        
+    # wrap text for long label
+    df_2018.loc[df_2018['corine_l1_class'] == 'Semi-Natural & Low Vegetation', 
+        'corine_l1_class'] = 'Semi-Natural &<br>Low Vegetation'
+    area2018Trace = go.Pie(
+        labels=df_2018['corine_l1_class'],
+        values=df_2018['land_cover']/1000,
+        textinfo='label+percent',
+        textposition='auto',
+        marker=dict(colors=['#db2001',
+                            '#e6e43b',
+                            '#5ea32a',
+                            '#c4fd89',
+                            '#4c52f9',
+                            '#72caf0', ]),
+        sort=True,
+        texttemplate='<b>%{label}<br>%{percent:.1%}<b>',
+        hovertemplate= '2018<br>' +
+        '<b>%{label}</b><br>' +
+        '%{value:.0f} kHA<br>' +
+        '%{percent:.2%}<extra></extra>',
+    )
     figure_4_10_2 = go.Figure(data=[area2018Trace])
     figure_4_10_2.update_layout(
         height=300,
@@ -4371,6 +4127,7 @@ def figure_4_10_2():
         paper_bgcolor='rgba(0,0,0,0)',
         plot_bgcolor='rgba(0,0,0,0)',
         showlegend=False)
+
     return figure_4_10_2
 
 
@@ -4379,116 +4136,114 @@ def figure_4_11():
     Landcover time series
     """
 
-    #e6e43b = agri
-    # 4c52f9 = wetlands
-    # 5ea32a = forest
-    #c4fd89 = semiVeg
-    #db2001 = artiSurface
-    # 72caf0 = waterBodies
-
     try:
         data_path = DATA_PATH+'Terrestrial_Domain/4.6LandCover/Figure4.11/'
-        xls = pd.ExcelFile(data_path+'CorineStats_CumulativeChanges.xlsx')
+        data_csv = data_path + 'Figure4.11_data.csv'
+        df = pd.read_csv(data_csv)
     except:
         return empty_chart()
+    
+    as_df=df.loc[(df['corine_l1_class'] == 'Artificial Surfaces')]
+    aa_df=df.loc[(df['corine_l1_class'] == 'Agricultural Areas')]
+    f_df=df.loc[(df['corine_l1_class'] == 'Forest')]
+    snlv_df=df.loc[(df['corine_l1_class'] == 'Semi-Natural & Low Vegetation')]
+    w_df=df.loc[(df['corine_l1_class'] == 'Wetlands')]
+    wb_df=df.loc[(df['corine_l1_class'] == 'Water Bodies')]
 
-    cumChangeDF = pd.read_excel(xls, header=0,  skiprows=22, nrows=6)
-    cumChangeDF = cumChangeDF.set_index('Corine L1 Class').T
-    cumChangeDF.reset_index(level=0, inplace=True)
-    cumChangeNameDict = {
-        'index': 'Year',
-        'Artificial Surfaces': 'ArtificialSurfacesCumChange',
-        'Agricultural Areas': 'AgriculturalAreasCumChange',
-        'Forest': 'ForestCumChange',
-        'Semi-Natural & Low Vegetation': 'SemiNaturalLowVegetationsCumChange',
-        'Wetlands': 'WetlandsCumChange',
-        'Water Bodies': 'WaterBodiesCumChange',
-    }
+    asTrace = go.Scatter(x=as_df.datetime,
+                     y=as_df.cumulative_change_1990_percentage__land_cover,
+                     text=as_df.cumulative_change_1990__land_cover/1000,
+                     name='Artificial Surfacese',
+                     mode='lines+markers',
+                     marker=dict(color='#db2001',
+                                 size=4,
+                                 line=dict(color='#db2001',
+                                           width=0)),
+                     hovertemplate='1990 - %{x|%Y}<br>' +
+                     '<b>Artificial Surfacese</b><br>' +
+                     'Cumalitive Change Perc.: %{y:.2%}<br>'+
+                     'Cumalitive Change Area: %{text:.2f} kHa<extra></extra>')
 
-    cumChangeDF = cumChangeDF.rename(columns=cumChangeNameDict)
+    aaTrace = go.Scatter(x=aa_df.datetime,
+                        y=aa_df.cumulative_change_1990_percentage__land_cover,
+                        text=aa_df.cumulative_change_1990__land_cover/1000,
+                        name='Agricultural Areas',
+                        mode='lines+markers',
+                        marker=dict(color='#e6e43b',
+                                    size=4,
+                                    line=dict(color='#e6e43b',
+                                            width=0)),
+                        hovertemplate='1990 - %{x|%Y}<br>' +
+                        '<b>Agricultural Areas</b><br>' +
+                        'Cumalitive Change Perc.: %{y:.2%}<br>'+
+                        'Cumalitive Change Area: %{text:.2f} kHa<extra></extra>')
 
-    artificialSurfacesTrace = go.Scatter(x=cumChangeDF.Year,
-                                         y=cumChangeDF.ArtificialSurfacesCumChange,
-                                         name='Artificial Surfacese',
-                                         mode='lines+markers',
-                                         marker=dict(color='#db2001',
-                                                     size=4,
-                                                     line=dict(color='#db2001',
-                                                               width=0)),
-                                         hovertemplate='1990 - %{x}<br>' +
-                                         '<b>Artificial Surfacese</b><br>' +
-                                         'Cumalitive Change.: %{y:.2%}<extra></extra>')
+    fTrace = go.Scatter(x=f_df.datetime,
+                        y=f_df.cumulative_change_1990_percentage__land_cover,
+                        text=f_df.cumulative_change_1990__land_cover/1000,
+                        name='Forest',
+                        mode='lines+markers',
+                        marker=dict(color='#5ea32a',
+                                    size=4,
+                                    line=dict(color='#5ea32a',
+                                            width=0)),
+                        hovertemplate='1990 - %{x|%Y}<br>' +
+                        '<b>Forest</b><br>' +
+                        'Cumalitive Change Perc.: %{y:.2%}<br>'+
+                        'Cumalitive Change Area: %{text:.2f} kHa<extra></extra>')
 
-    agriculturalAreasTrace = go.Scatter(x=cumChangeDF.Year,
-                                        y=cumChangeDF.AgriculturalAreasCumChange,
-                                        name='Agricultural Areas',
-                                        mode='lines+markers',
-                                        marker=dict(color='#e6e43b',
-                                                    size=4,
-                                                    line=dict(color='#e6e43b',
-                                                              width=0)),
-                                        hovertemplate='1990 - %{x}<br>' +
-                                        '<b>Agricultural Areas</b><br>' +
-                                        'Cumalitive Change.: %{y:.2%}<extra></extra>')
+    snlvTrace = go.Scatter(x=snlv_df.datetime,
+                        y=snlv_df.cumulative_change_1990_percentage__land_cover,
+                        text=snlv_df.cumulative_change_1990__land_cover/1000,
+                        name='Semi-Natural & Low Vegetations',
+                        mode='lines+markers',
+                        marker=dict(color='#c4fd89',
+                                    size=4,
+                                    line=dict(color='#c4fd89',
+                                                width=0)),
+                        hovertemplate='1990 - %{x|%Y}<br>' +
+                        '<b>Semi-Natural & Low Vegetations</b><br>' +
+                        'Cumalitive Change Perc.: %{y:.2%}<br>'+
+                        'Cumalitive Change Area: %{text:.2f} kHa<extra></extra>')
 
-    forestTrace = go.Scatter(x=cumChangeDF.Year,
-                             y=cumChangeDF.ForestCumChange,
-                             name='Forest',
-                             mode='lines+markers',
-                             marker=dict(color='#5ea32a',
-                                         size=4,
-                                         line=dict(color='#5ea32a',
-                                                   width=0)),
-                             hovertemplate='1990 - %{x}<br>' +
-                             '<b>Forest</b><br>' +
-                             'Cumalitive Change.: %{y:.2%}<extra></extra>')
+    wTrace = go.Scatter(x=w_df.datetime,
+                        y=w_df.cumulative_change_1990_percentage__land_cover,
+                        text=w_df.cumulative_change_1990__land_cover/1000,
+                        name='Wetlands',
+                        mode='lines+markers',
+                        marker=dict(color='#4c52f9',
+                                    size=4,
+                                    line=dict(color='#4c52f9',
+                                                width=0)),
+                        hovertemplate='1990 - %{x|%Y}<br>' +
+                        '<b>Wetlands</b><br>' +
+                        'Cumalitive Change Perc.: %{y:.2%}<br>'+
+                        'Cumalitive Change Area: %{text:.2f} kHa<extra></extra>')
 
-    semiNaturalLowVegetationsTrace = go.Scatter(x=cumChangeDF.Year,
-                                                y=cumChangeDF.SemiNaturalLowVegetationsCumChange,
-                                                name='Semi-Natural & Low Vegetations',
-                                                mode='lines+markers',
-                                                marker=dict(color='#c4fd89',
-                                                            size=4,
-                                                            line=dict(color='#c4fd89',
-                                                                      width=0)),
-                                                hovertemplate='1990 - %{x}<br>' +
-                                                '<b>Semi-Natural & Low Vegetations</b><br>' +
-                                                'Cumalitive Change.: %{y:.2%}<extra></extra>')
+    wbTrace = go.Scatter(x=wb_df.datetime,
+                        y=wb_df.cumulative_change_1990_percentage__land_cover,
+                        text=wb_df.cumulative_change_1990__land_cover/1000,
+                        name='Water Bodies',
+                        mode='lines+markers',
+                        marker=dict(color='#72caf0',
+                                    size=4,
+                                    line=dict(color='#72caf0',
+                                                width=0)),
+                        hovertemplate='1990 - %{x|%Y}<br>' +
+                        '<b>Water Bodies</b><br>' +
+                        'Cumalitive Change Perc.: %{y:.2%}<br>'+
+                        'Cumalitive Change Area: %{text:.2f} kHa<extra></extra>')
 
-    wetlandsTrace = go.Scatter(x=cumChangeDF.Year,
-                               y=cumChangeDF.WetlandsCumChange,
-                               name='Wetlands',
-                               mode='lines+markers',
-                               marker=dict(color='#4c52f9',
-                                           size=4,
-                                           line=dict(color='#4c52f9',
-                                                     width=0)),
-                               hovertemplate='1990 - %{x}<br>' +
-                               '<b>Wetlands</b><br>' +
-                               'Cumalitive Change.: %{y:.2%}<extra></extra>')
-
-    waterBodiesTrace = go.Scatter(x=cumChangeDF.Year,
-                                  y=cumChangeDF.WaterBodiesCumChange,
-                                  name='Water Bodies',
-                                  mode='lines+markers',
-                                  marker=dict(color='#72caf0',
-                                              size=4,
-                                              line=dict(color='#72caf0',
-                                                        width=0)),
-                                  hovertemplate='1990 - %{x}<br>' +
-                                  '<b>Water Bodies</b><br>' +
-                                  'Cumalitive Change.: %{y:.2%}<extra></extra>')
-
-    data = [artificialSurfacesTrace,
-            agriculturalAreasTrace,
-            forestTrace,
-            semiNaturalLowVegetationsTrace,
-            wetlandsTrace,
-            waterBodiesTrace]
+    data = [asTrace,
+            aaTrace,
+            fTrace,
+            snlvTrace,
+            wTrace,
+            wbTrace]
 
     figure_4_11 = go.Figure(data=data,layout=TIMESERIES_LAYOUT)
     figure_4_11.update_yaxes(title_text='Cumulative Change (%)',
-                             tickformat=',.0%',)
+                            tickformat=',.0%',)
     figure_4_11.update_xaxes(title_text='Year')
 
     return figure_4_11
@@ -4695,35 +4450,34 @@ def figure_4_21():
     """
     try:
         data_path = DATA_PATH+'Terrestrial_Domain/4.11Fire/Figure4.21/'
-        xls = pd.ExcelFile(
-            data_path+'Forest Fires 2000-2019.xlsx')
-        df = pd.read_excel(xls, 'Sheet1')
-        df['Total']=df['Coillte Forests']+df['Private Forests']
-        df = df.loc[df['Fire service mobilisations'].notna()]
-        linearTrendPoly = np.polyfit(
-            df['Year'], df['Fire service mobilisations'],1)
-        linearTrendY = np.poly1d(linearTrendPoly)(df['Year'])
+        data_csv = data_path + 'Figure4.21_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
+        df['datetime'] = pd.to_datetime(df['datetime'])
     except:
         return empty_chart()
     
-    coillteTrace=go.Bar(
-    name="Public Forests",
-    x=df.Year,
-    y=df["Coillte Forests"],
-    text=df['Coillte Forests']*100/df['Total'],
-    marker_color="#4f612c",
-    hovertemplate='%{x}<br>'
-    '<b>Coillte Forests</b><br>' +
-    'Area Burnt: %{y:.2f} Ha<br>' +
-    'Annual Percentage: %{text:.2f} %<extra></extra>'
-                            )
+    public_df = df.loc[(df['location'] == 'Public Land, Ireland')]
+    private_df = df.loc[(df['location'] == 'Private Land, Ireland')]
+    ireland_df = df.loc[(df['location'] == 'Ireland')]
+    
+    publicTrace=go.Bar(
+        name="Public Forests",
+        x=public_df.datetime,
+        y=public_df["sum__annual__fire_area"],
+        text=public_df['sum__annual__fire_area']*100/ireland_df['sum__annual__fire_area'],
+        marker_color="#4f612c",
+        hovertemplate='%{x|%Y}<br>'
+        '<b>Coillte Forests</b><br>' +
+        'Area Burnt: %{y:.2f} Ha<br>' +
+        'Annual Percentage: %{text:.2f} %<extra></extra>'
+                                )
     privateTrace=go.Bar(
         name="Private Forests",
-        x=df.Year,
-        y=df["Private Forests"],
-        text=df['Private Forests']*100/df['Total'],
+        x=private_df.datetime,
+        y=private_df["sum__annual__fire_area"],
+        text=private_df['sum__annual__fire_area']*100/ireland_df['sum__annual__fire_area'],
         marker_color="#9cba5f",
-        hovertemplate='%{x}<br>'
+        hovertemplate='%{x|%Y}<br>'
         '<b>Private Forests</b><br>' +
         'Area Burnt: %{y:.2f} Ha<br>' +
         'Annual Percentage: %{text:.2f} %<extra></extra>'
@@ -4731,15 +4485,20 @@ def figure_4_21():
 
     mobileTrace=go.Scatter(
         name="Fire Service Mobilisations",
-        x=df.Year,
-        y=df["Fire service mobilisations"],
+        x=ireland_df.datetime,
+        y=ireland_df["sum__annual__fire_service_mobilisations"],
         mode="lines",
         marker_color=TIMESERIES_COLOR_1,
-        hovertemplate='%{x}<br>'
+        hovertemplate='%{x|%Y}<br>'
         '<b>Fire Service Mobilisations</b><br>' +
         'Callouts: %{y:.0f}<extra></extra>'
-                                )
-    linearTrendTrace = go.Scatter(x=df['Year'],
+        )
+
+    ireland_df_notna = ireland_df.loc[ireland_df['sum__annual__fire_service_mobilisations'].notna()]
+    linearTrendPoly = np.polyfit(
+        ireland_df_notna['datetime'].dt.year, ireland_df_notna['sum__annual__fire_service_mobilisations'],1)
+    linearTrendY = np.poly1d(linearTrendPoly)(ireland_df_notna['datetime'].dt.year)
+    linearTrendTrace = go.Scatter(x=ireland_df_notna['datetime'],
                                 y=linearTrendY,
                                 name='Linear Trend',
                                 mode='lines',
@@ -4754,14 +4513,14 @@ def figure_4_21():
                 secondary_y=True)
     figure_4_21.add_trace(mobileTrace,
                 secondary_y=True)
-    figure_4_21.add_trace(coillteTrace,
+    figure_4_21.add_trace(publicTrace,
                 secondary_y=False)
     figure_4_21.add_trace(privateTrace,
                 secondary_y=False)
     figure_4_21.update_layout(TIMESERIES_LAYOUT)
     figure_4_21.update_layout(
         xaxis=dict(title_text='Year',
-                  dtick=5,),
+                ),
         barmode='stack')
     figure_4_21.update_yaxes(title_text='Area Burnt (Ha)',
                             secondary_y=False,
@@ -4780,31 +4539,33 @@ def figure_4_22():
     """
     try:
         data_path = DATA_PATH+'Terrestrial_Domain/4.11Fire/Figure4.22/'
-        xls = pd.ExcelFile(
-            data_path+'Figure4.22_FireIndex.xlsx')
-        df = pd.read_excel(xls, 'May_Sep')
+        data_csv = data_path + 'Figure4.22_data.csv'
+        df = pd.read_csv(data_csv, index_col=0)
     except:
         return empty_chart()
     
-    dublinTrace = go.Scatter(x=df["year"],
-                     y=df["mycount"],
-                     name='Dublin Airport',
-                     mode='lines',  # 'line' is default
-                     line=dict(
+    dublin_df = df.loc[(df['location'] == 'Dublin Airport')]
+    shannon_df = df.loc[(df['location'] == 'Shannon Airport')]
+
+    dublinTrace = go.Scatter(x=dublin_df["datetime"],
+                    y=dublin_df["sum__annual__fire_index_days"],
+                    name='Dublin Airport',
+                    mode='lines',  # 'line' is default
+                    line=dict(
                             color=TIMESERIES_COLOR_1,
                             width=2),
-                     hovertemplate='%{x}<br>' +
+                    hovertemplate='%{x|%Y}<br>' +
                             '<b>Dublin Airport</b><br>' +
                             'Days: %{y}<extra></extra>'
                             )
-    shannonTrace = go.Scatter(x=df["year"],
-                        y=df["mycount.1"],
+    shannonTrace = go.Scatter(x=shannon_df["datetime"],
+                        y=shannon_df["sum__annual__fire_index_days"],
                         name='Shannon Airport',
                         mode='lines',  # 'line' is default
                         line=dict(
                                 color=TIMESERIES_COLOR_2,
                                 width=2),
-                        hovertemplate='%{x}<br>' +
+                        hovertemplate='%{x|%Y}<br>' +
                                 '<b>Shannon Airport</b><br>' +
                                 'Days: %{y}<extra></extra>'
                                 )
@@ -4813,6 +4574,7 @@ def figure_4_22():
         yaxis=dict(title='Number of Days'),
         xaxis=dict(title_text='Year')
     )
+
     return figure_4_22
 def figure_4_24():
     """
@@ -4975,67 +4737,74 @@ def figure_4_27():
     """
     try:
         data_path = DATA_PATH+'Terrestrial_Domain/4.14AnthropogenicGreenhouseGasEmissions/Figure4.27/'
-        df = pd.read_csv(data_path + 'NIR_GHG_Emissions_CSRI2020_forOnline.csv')
+        data_csv = data_path + 'Figure4.27_data.csv'
+        df = pd.read_csv(data_csv)
     except:
         return empty_chart()
 
+    e_df=df.loc[(df['sector'] == 'Energy')]
+    ippu_df=df.loc[(df['sector'] == 'Industrial Processes and Product Use (IPPU)')]
+    lulucf_df=df.loc[(df['sector'] == 'Land-Use Change and Forestry (LULUCF)')]
+    w_df=df.loc[(df['sector'] == 'Waste')]
+    a_df=df.loc[(df['sector'] == 'Agriculture')]
+
     energyTrace=go.Bar(
-    name="Energy",
-    x=df.Year,
-    y=df["Energy"]/1000,
-        text=df['Energy']*100/df['Total'],
-    marker_color="#5182bb",
-    hovertemplate='%{x}<br>' +
-    '<b>Energy</b><br>' +
-    '%{y} kTCO₂eq<br>' +
-    '%{text:.2f} %</sub><extra></extra>'
-                            )
+        name="Energy",
+        x=e_df.datetime,
+        y=e_df.sum__annual__greenhouse_gas_emissions/1000,
+        text=e_df.percent__annual__greenhouse_gas_emissions,
+        marker_color="#5182bb",
+        hovertemplate='%{x|%Y}<br>' +
+        '<b>Energy</b><br>' +
+        '%{y:.2f} kTCO₂eq<br>' +
+        '%{text:.2%}</sub><extra></extra>'
+                                )
 
     agricultureTrace=go.Bar(
         name="Agriculture",
-        x=df.Year,
-        y=df["Agriculture"]/1000,
-            text=df['Agriculture']*100/df['Total'],
+        x=a_df.datetime,
+        y=a_df.sum__annual__greenhouse_gas_emissions/1000,
+        text=a_df.percent__annual__greenhouse_gas_emissions,
         marker_color="#fdbf2d",
-        hovertemplate=
+        hovertemplate='%{x|%Y}<br>' +
         '<b>Agriculture</b><br>' +
-        '%{y} kTCO₂eq<br>' +
-        '%{text:.2f} %</sub><extra></extra>'
+        '%{y:.2f} kTCO₂eq<br>' +
+        '%{text:.2%}</sub><extra></extra>'
                                 )
 
     landuseTrace=go.Bar(
         name="Land-Use Change and Forestry (LULUCF)",
-        x=df.Year,
-        y=df["Land-Use Change and Forestry (LULUCF)"]/1000,
-            text=df["Land-Use Change and Forestry (LULUCF)"]*100/df['Total'],
+        x=lulucf_df.datetime,
+        y=lulucf_df.sum__annual__greenhouse_gas_emissions/1000,
+        text=lulucf_df.percent__annual__greenhouse_gas_emissions,
         marker_color="#3dca3f",
-        hovertemplate='%{x}<br>' +
-        '<b>Land-Use Change and Forestry)</b><br>' +
-        '%{y} kTCO₂eq<br>' +
-        '%{text:.2f} %</sub><extra></extra>'
+        hovertemplate='%{x|%Y}<br>' +
+        '<b>Land-Use Change and Forestry</b><br>' +
+        '%{y:.2f} kTCO₂eq<br>' +
+        '%{text:.2%}</sub><extra></extra>'
                                 )
     industryTrace=go.Bar(
         name="Industrial Processes and Product Use (IPPU)",
-        x=df.Year,
-        y=df["Industrial Processes and Product Use (IPPU)"]/1000,
-        text=df["Industrial Processes and Product Use (IPPU)"]*100/df['Total'],
+        x=ippu_df.datetime,
+        y=ippu_df.sum__annual__greenhouse_gas_emissions/1000,
+        text=ippu_df.percent__annual__greenhouse_gas_emissions,
         marker_color="#fc0d1b",
-        hovertemplate='%{x}<br>' +
+        hovertemplate='%{x|%Y}<br>' +
         '<b>Industrial Processes and Product Use (IPPU)</b><br>' +
-        '%{y} kTCO₂eq<br>' +
-        '%{text:.2f} %</sub><extra></extra>'
+        '%{y:.2f} kTCO₂eq<br>' +
+        '%{text:.2%}</sub><extra></extra>'
                                 )
 
     wasteTrace=go.Bar(
         name="Waste",
-        x=df.Year,
-        y=df['Waste']/1000,
-        text=df['Waste']*100/df['Total'],
+        x=w_df.datetime,
+        y=w_df.sum__annual__greenhouse_gas_emissions/1000,
+        text=w_df.percent__annual__greenhouse_gas_emissions,
         marker_color="#262626",
-        hovertemplate='%{x}<br>' +
+        hovertemplate='%{x|%Y}<br>' +
         '<b>Agriculture</b><br>' +
-        '%{y} kTCO₂eq<br>' +
-        '%{text:.2f} %</sub><extra></extra>'
+        '%{y:.2f} kTCO₂eq<br>' +
+        '%{text:.2%}</sub><extra></extra>'
                                 )
 
     figure_4_27=go.Figure(data=[energyTrace,
@@ -5043,7 +4812,7 @@ def figure_4_27():
                                 landuseTrace,
                                 industryTrace,
                                 wasteTrace],
-                          layout=TIMESERIES_LAYOUT)
+                        layout=TIMESERIES_LAYOUT)
     figure_4_27.update_layout(
         barmode='stack',
         yaxis=dict(title='kilotonnes CO\u2082 eq'),
