@@ -24,7 +24,7 @@ bulletPoint1 = """
       determined with confidence based on the limited analysis carried out to date.
         """
 bulletPoint2 = """
-      Comprehensive analysis of wind data will be carried out by Met Éireann during 2021.
+      Comprehensive analysis of wind data should be carried out.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = ''
