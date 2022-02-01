@@ -1,0 +1,16 @@
+bin/
+etc/
+include/
+lib/
+__pycache__/
+lib64
+pyvenv.cfg
+share/
+.DS_Store
+.vscode/
+*.ipynb_checkpoints*
+*env.py
+data
+certbot/
+*.~lock.*
+notebooks/

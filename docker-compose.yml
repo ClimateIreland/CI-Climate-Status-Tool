@@ -2,7 +2,7 @@ version: '3'
 
 services:
   climate_status_tool:
-    container_name: climate_status_tool_alone
+    container_name: climate_status_tool
     build: 
       context: ./
     ports:

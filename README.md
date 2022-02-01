@@ -55,6 +55,16 @@ Run with docker-compose:
 docker-compose up # or run in background with docker-compose up -d
 ```
 
+Run with docker:
+```bash
+docker build --no-cache -t climate_core .
+docker run -it -p 8080:8080 --mount source=$STATUS_TOOL_DATA,target=/home/data --name climate_status_tool climate_status_tool
+# for running detached include the -d option as done below
+# docker run -it -p 8080:8080  --name climate_core climate_core
+```
+The app will be running on localhost:8080
+
+
 The application will be running at http://0.0.0.0:8080/statusTool
 
 
