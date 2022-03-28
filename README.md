@@ -4,11 +4,9 @@ Climate Ireland's Climate Status Tool is a standalone [Python Dash](https://dash
 
 The application can be accessed [here](http://www.climateireland.ie/#!/tools/statusReport2020), where it is integrated into the main Climate Ireland website as an iFrame.
 
-The chart data is primarily read from CSV files generated from the original Excel files provided by the report authors. The CSV files follow a standardised structure and naming convention. The CSV files were generated to speed up the load time, over reading direct from Excel. Jupyter notebooks are included detailing how the CSVs were generated. Map charts are developed from a combination of .txt and .csv files, both provided by the report authors and generated specifically for the status tool.
-
 The tool is a step towards a digital first climate status reporting, that can be updated annually and used to both analyse and share the findings of the data.
 
-## Downloading and running the application
+## Getting Started
 
 Clone the repo (Or download and `unzip` the repo from the [github repo](https://github.com/ClimateIreland/CI-Climate-Status-Tool)):
 ```bash
@@ -68,9 +66,7 @@ The app will be running on localhost:8080
 The application will be running at http://0.0.0.0:8080/statusTool
 
 
-
-
-## Key files and folders
+## Key files
 
 - ./dash_app/app.py: Starts the application and routes the requests
 - ./dash_app/charts.py: Functions for developing each individual chart
@@ -78,13 +74,7 @@ The application will be running at http://0.0.0.0:8080/statusTool
 - ./dash_app/settings.py: Settings for chapter info and chart styling
 - ./dash_app/pages/*: Folder containing all chapter html templates. Each chapter has its own page and can easily be updated via variables, rather than accessing the html
 - ./dash_app/assets/*: Contains additional css, js and images. CSS files in the folder root will be automatically applied to the application
-- ./data/*: Contains the data used for charts
-- ./notebooks/copy_core_data.ipynb: Notebook for copying status report data, excluding specific file type associated with large files
-- ./notebooks/list_data_files.ipynb: Notebook for listing the available files and data within the data folder structure
-- ./notebooks/<chapter>.ipynb: Notebook for tidying chapter data and initial chart development
-- ./ecv_naming_convention.csv: An attempt at standardising naming conventions across variables. Not all generated CSVs follow the convention, but should be followed in future developments.
-- ./data_files_list.csv: Output from script listing available data files in data folders
-- ./requirements.txt: Python packages required to run app
+- ./data/*: Contains the data used for charts. Needs to be set as a symbolic link to actual data
 - ./Dockerfile: For running status tool with docker
 - ./docker-compose.yml: For running status tool with docker-compose
 
