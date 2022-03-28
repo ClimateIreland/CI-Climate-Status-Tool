@@ -1,6 +1,6 @@
 CI-Climate-Status-Tool
 =========================================================
-Climate Ireland's Climate Status Tool is a standalone [Python Dash](https://dash.plotly.com/) application for exploring the 50 Essential Climate Variables (ECVs) detailed in the Climate Status Report Ireland 2020.
+Climate Ireland's Climate Status Tool is a standalone [Python Dash](https://dash.plotly.com/) application for exploring the 50 Essential Climate Variables (ECVs) detailed in the [Climate Status Report Ireland 2020](https://www.epa.ie/publications/research/climate-change/research-386-the-status-of-irelands-climate-2020).
 
 The application can be accessed [here](http://www.climateireland.ie/#!/tools/statusReport2020), where it is integrated into the main Climate Ireland website as an iFrame.
 
