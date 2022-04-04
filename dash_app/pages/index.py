@@ -2,12 +2,9 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 import pathlib
-import page_builder as pb
-# from settings import CHAPTERS
 from settings import *
 
 PATH = pathlib.Path(__file__).parent
-ICONS_PATH = PATH.joinpath("../assets/images/icons").resolve()
 
 atmoshpere_chapters = []
 ocean_chapters = []
@@ -43,7 +40,7 @@ intro = dbc.Container(
 
                                 className='sr-menu-logo',
                                 style={"width": "150px"},
-                                src='assets/images/Climate_status.png'
+                                src=IMAGES_PATH+'Climate_status.png'
                             ),
                     html.H1("Ireland's Climate Status Tool",
                             style={"color": "rgba(0,10,20,.80)", "marginTop": "30px"})]
@@ -79,7 +76,7 @@ intro = dbc.Container(
                         children=[
                             html.Img(
                                 style={"width": "100%", "maxWidth": "800px"},
-                                src='assets/images/ProjectBannerCSRI.png'
+                                src=IMAGES_PATH+'ProjectBannerCSRI.png'
                             )],
 
                     )
@@ -103,7 +100,7 @@ intro = dbc.Container(
 menu_graphic_small = dbc.Container(
     id='gcosGraphicSmall',
     className='d-lg-none d-xl-none',
-    children=[html.Img(src='assets/images/menu_graphic_small.png')]
+    children=[html.Img(src=IMAGES_PATH+'menu_graphic_small.png')]
 )
 
 menu_graphic = dbc.Container(
@@ -114,7 +111,7 @@ menu_graphic = dbc.Container(
     children=[
         html.Img(
                 className='sr-graphic-menu-img',
-                src='assets/images/Globe-ECV_Website_1140-708_white.png'
+                src=IMAGES_PATH+'Globe-ECV_Website_1140-708_white.png'
             ),
         html.Div(
             id='uaa-text',
@@ -158,7 +155,7 @@ menu_graphic = dbc.Container(
                 className="sr-graphic-link",
                 children=[
                     html.Img(
-                        src='assets/images/icons/' +
+                        src=IMAGES_PATH+'icons/' +
                              chapter['icon-src'])
                 ],
                 href=chapter['href']),
@@ -167,7 +164,7 @@ menu_graphic = dbc.Container(
                 children=[
                     dcc.Link(children=[
                         html.Img(
-                            src='assets/images/icons/' +
+                            src=IMAGES_PATH+'icons/' +
                                  chapter['icon-hover-src'])
                     ],
                         href=chapter['href'])],),
@@ -190,7 +187,7 @@ menu_graphic = dbc.Container(
             html.Div(children=[
                 html.Img(
                     style={"opacity": "0.4"},
-                    src='assets/images/icons/' +
+                    src=IMAGES_PATH+'icons/' +
                     chapter['icon-src'])
             ],
             ),
@@ -200,7 +197,7 @@ menu_graphic = dbc.Container(
                     html.Div(children=[
                         html.Img(
                             style={"opacity": "0.4"},
-                            src='assets/images/icons/' +
+                            src=IMAGES_PATH+'icons/' +
                             chapter['icon-hover-src'])
                     ],
                     )],),
@@ -244,7 +241,7 @@ menu_list = dbc.Container(
                                             children=[
                                                 html.Img(
                                                     className='sr-menu-list-icon',
-                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                                    src=IMAGES_PATH+'icons/'+chapter['icon-hover-src']),
                                             ]
                                         ),
                                         dbc.Col(
@@ -268,7 +265,7 @@ menu_list = dbc.Container(
                                                 html.Img(
                                                     className='sr-menu-list-icon',
                                                     style={"opacity": "0.4"},
-                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                                    src=IMAGES_PATH+'icons/'+chapter['icon-hover-src']),
                                             ]
                                         ),
                                         dbc.Col(
@@ -302,7 +299,7 @@ menu_list = dbc.Container(
                                             children=[
                                                 html.Img(
                                                     className='sr-menu-list-icon',
-                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                                    src=IMAGES_PATH+'icons/'+chapter['icon-hover-src']),
                                             ]
                                         ),
                                         dbc.Col(
@@ -326,7 +323,7 @@ menu_list = dbc.Container(
                                                 html.Img(
                                                     className='sr-menu-list-icon',
                                                     style={"opacity": "0.4"},
-                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                                    src=IMAGES_PATH+'icons/'+chapter['icon-hover-src']),
                                             ]
                                         ),
                                         dbc.Col(
@@ -358,7 +355,7 @@ menu_list = dbc.Container(
                                             children=[
                                                 html.Img(
                                                     className='sr-menu-list-icon',
-                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                                    src=IMAGES_PATH+'icons/'+chapter['icon-hover-src']),
                                             ]
                                         ),
                                         dbc.Col(
@@ -382,7 +379,7 @@ menu_list = dbc.Container(
                                                 html.Img(
                                                     className='sr-menu-list-icon',
                                                     style={"opacity": "0.4"},
-                                                    src='assets/images/icons/'+chapter['icon-hover-src']),
+                                                    src=IMAGES_PATH+'icons/'+chapter['icon-hover-src']),
                                             ]
                                         ),
                                         dbc.Col(
@@ -445,26 +442,6 @@ def create_layout(app):
                     ]
                 )
 
-            ),
-            # The row below can be removed after initial release
-            dbc.Row(
-                className='sr-feedback',
-                style={'borderColor': OCEAN_COLOR},
-                children=[
-                    dbc.Col([
-                    html.H3('Feedback Appreciated',
-                    # className='text-center',
-                    style={'color': OCEAN_COLOR}),
-                    html.P(
-                    'After taking time to explore the tool, we would appreciate if you could complete a short user survey. The link below is available on all pages.'
-                    ),
-                     html.A(
-                        'Complete our user survey.',
-                        target='_blank',
-                        href='https://surveyhero.com/c/8a7cf6b7',
-                        className='text-center'),
-            ],
-            className='text-center')
-            ])
+            )
 
         ])

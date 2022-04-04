@@ -35,13 +35,13 @@ def build_banner(bannerImgSrc, bannerImgCredit, chapter_dict):
                                 className='',
                                 children=html.Img(
                                     className='sr-banner-logo',
-                                    src='assets/images/CSRI2020Logo.png'
+                                    src=IMAGES_PATH+'CSRI2020Logo.png'
                                 ),)]),
                     dbc.Row(
                         children=[
                             dbc.Col(children=[
                                     html.Img(
-                                        src='assets/images/LogoBannerCSRI.png'
+                                        src=IMAGES_PATH+'LogoBannerCSRI.png'
                                     ),
                                     ])]),
                 ]),

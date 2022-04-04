@@ -1041,7 +1041,8 @@ MAP_LAYOUT = dict(
 # IMAGES_PATH='/Users/dan/ClimateIreland/Projects/CI-Status-Report-Dash/assets/images/'
 # IMAGES_PATH='https://www.climateireland.ie/web_resource/images/'
 
-IMAGES_PATH = '/statusTool/assets/images/'
+# IMAGES_PATH = '/statusTool/assets/images/'
+IMAGES_PATH = 'https://climate-docs.s3.eu-west-1.amazonaws.com/web_resource/images/status-tool/'
 
 PROJECT_PATH = pathlib.Path(__file__).parent.parent
 local_data_dir = str(PROJECT_PATH)+'/data'
