@@ -57,10 +57,7 @@ def stations_map_hovertemplate(df):
             'Type: {}<br>'.format(t)+
             'Station No.: {}<br>'.format(sN)+
             'Open Year: {}<br>'.format(oY)+
-            # 'Close Year: {}<br>'.format(cY)+
             'Height: {:.2f} m<br>'.format(h)+
-            # 'Easting: {}<br>'.format(easting)+
-            # 'Northing: {}<br>'.format(northing)+
             'Lat: {:.2f} \u00b0<br>'.format(lat)+
             'Lon: {:.2f} \u00b0<br>'.format(lon)+'<extra></extra>'
             for n, t, sN, cnty, oY, cY, h, lat, lon in zip(list(df['name']),
@@ -76,10 +73,6 @@ def stations_map_hovertemplate(df):
                 df['Close_Year']),
         list(
                 df['Height__m_']),
-        # list(
-        #         df['Easting']),
-        # list(
-        #         df['Northing']),
         list(
                 df['Latitude']),
         list(
@@ -329,7 +322,7 @@ def figure_2_1():
                                 y=df.moving_average__11year__surface_air_temperature_anomaly,
                                 text=df.moving_average__11year__surface_air_temperature,
                                 name='11 Year Moving Average',
-                                mode='lines',  # 'line' is default
+                                mode='lines',
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -355,7 +348,7 @@ def figure_2_1():
     normal = go.Scatter(x=['1898-01-01', '2021-01-01'],
                         y=[9.55,9.55],
                         name='1961-1990 Normal',
-                        mode='lines',  # 'line' is default
+                        mode='lines',  
                         line_shape='spline',
                         line=dict(color=TIMESERIES_COLOR_3, 
                                 width=2),
@@ -373,22 +366,23 @@ def figure_2_1():
     figure_2_1.add_trace(normal,
                         secondary_y=True)
     figure_2_1.update_layout(TIMESERIES_LAYOUT)
-    # Update y-axes layout seperatly due to the double y-axis chart
+    
+    # Update y-axes layout separately due to the double y-axis chart
     figure_2_1.update_yaxes(title_text='Difference (\u00b0C) from 1961-1990 Normal',
                             secondary_y=False,
                             range=[-0.9, 1.3],
                             showgrid=False,
-                            dtick=0.5,  # dtick sets the distance between ticks
-                            tick0=0,  # tick0 sets a point to map the other ticks
-                            zeroline=True,  # add a zero line
+                            dtick=0.5,  
+                            tick0=0,  
+                            zeroline=True,
                             )
 
     figure_2_1.update_yaxes(title_text='Mean Annual Temperature (\u00b0C)',
                             secondary_y=True,
                             range=[8.65, 10.85],
                             showgrid=False,
-                            dtick=0.5,  # dtick sets the distance between ticks
-                            tick0=9.55,  # tick0 sets a point to map the other ticks
+                            dtick=0.5,  
+                            tick0=9.55,  
                             fixedrange=True,
                             )
     
@@ -396,13 +390,6 @@ def figure_2_1():
         title_text='Year',
         range=['1898-01-01', '2021-01-01'],
     ) 
-
-    # figure_2_1.add_annotation(x='2010-01-01',
-    #                         y=0.055,
-    #                         text='1961-1990 Normal',
-    #                         showarrow=False,
-    #                         font=dict(
-    #                             color=TIMESERIES_COLOR_3))
 
     return figure_2_1
 
@@ -487,17 +474,6 @@ def figure_2_3():
         layout=MAP_LAYOUT)
     figure_2_3_1.update_layout(legend_title="<b>Trend in number of"+
                         "<br>annual cold spell days (CSD) per decade</b>")
-    
-    # Warm Spell chart
-    # wsd1DF = df.loc[(df['WSDI_days_']<=0.0)] 
-    # wsd1DF is empty but need to create 'None' array to show on legend
-    # wsd1Trend = go.Scattermapbox(
-    #         name='<= 0.0',
-    #         lon=[None],
-    #         lat=[None],
-    #         marker=dict(color="#70a800",#green
-    #                     size=8,),
-    #     )
 
     wsd2DF = df.loc[(df['WSDI_days_']>0.0)&(df['WSDI_days_']<=1.0)]
     wsd2DFStr=wsd2DF.astype(str)
@@ -598,7 +574,7 @@ def figure_2_4():
     moving_avg_speed_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average__11year__wind_speed'],
                                 name='11 Year Moving Average Wind Speed',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -622,7 +598,7 @@ def figure_2_4():
     moving_avg_gust_days_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average_of_sum__11year__gale_gust_days'],
                                 name='11 Year Moving Average Gale Gust Days',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_3,
                                         width=2),
@@ -667,7 +643,7 @@ def figure_2_4():
     moving_avg_speed_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average__11year__wind_speed'],
                                 name='11 Year Moving Average Wind Speed',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -691,7 +667,7 @@ def figure_2_4():
     moving_avg_gust_days_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average_of_sum__11year__gale_gust_days'],
                                 name='11 Year Moving Average Gale Gust Days',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_3,
                                         width=2),
@@ -1207,7 +1183,7 @@ def figure_2_11():
     moving_avg_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average_of_sum__5year__solar_radiation'],
                                 name='5 Year Moving Average',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -1303,7 +1279,7 @@ def figure_2_13_a():
     moving_avg_trace = go.Scatter(x=valentia_df['datetime'],
                                 y=valentia_df['moving_average__5year__upper_air_temperature'],
                                 name='5 Year Moving Average',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -1362,7 +1338,7 @@ def figure_2_13_b():
     moving_avg_trace = go.Scatter(x=valentia_df['datetime'],
                                 y=valentia_df['moving_average__5year__upper_air_wind_speed'],
                                 name='5 Year Moving Average',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -1466,7 +1442,6 @@ def figure_2_17():
     figure_2_17 = px.scatter_mapbox(df,
             lat="lat" ,
             lon="lon",
-#               hover_name="TYPE",
             hover_data = ['datetime','lat','lon'],
             height=400,
             color='irish_sf_nr',
@@ -1545,7 +1520,6 @@ def figure_2_18():
                     name='Mauna Loa (Hawaii)',
                     line_shape='spline',
                     line=dict(
-                            # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_1,
                             width=2),
                     hovertemplate='%{x|%b %Y}<br>' +
@@ -1558,7 +1532,6 @@ def figure_2_18():
                     name='Mace Head (Ireland)',
                     line_shape='spline',
                     line=dict(
-                            # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_2,
                             width=2),
                     hovertemplate='%{x|%b %Y}<br>' +
@@ -1662,7 +1635,6 @@ def map_2_8():
     )
     map_2_8 = go.Figure(data=[auto_trend, man_trend, auto_man_trend, gen_trend],
                     layout=MAP_LAYOUT)
-    # map_2_8.update_layout(legend_title="<b>  T</b>")
     return map_2_8
 
 def map_2_10():
@@ -1762,7 +1734,6 @@ def figure_2_20():
                     name='12 Month Moving Average',
                     line_shape='spline',
                     line=dict(
-                            # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_1,
                             width=2),
                     hovertemplate='%{x|%b %Y}<br>' +
@@ -1894,7 +1865,6 @@ def figure_2_23():
                     line_shape='spline',
                     showlegend=True,
                     line=dict(
-                            # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_2,
                             width=2),
                     hovertemplate='%{x|%b %Y}<br>' +
@@ -1937,7 +1907,6 @@ def figure_2_24():
                     line_shape='spline',
                     showlegend=True,
                     line=dict(
-                            # color="#fc0d1b", color used in report
                             color=TIMESERIES_COLOR_1,
                             width=2),
                     hovertemplate='%{x|%b %Y}<br>' +
@@ -2040,7 +2009,7 @@ def figure_2_25():
     moving_avg_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average__12month__ground_level_ozone_concentration'],
                                 name='12 Month Moving Average',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -2082,7 +2051,7 @@ def figure_2_26():
     moving_avg_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average__12month__total_column_ozone_concentration'],
                                 name='12 Month Moving Average',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -2210,48 +2179,6 @@ def map_2_13():
     
     return map_2_13
 
-     # not used because too much hourly data
-# def figure_2_31():
-#    
-#     """
-#     Precursors for Aerosols and Ozone trend
-#     """
-#     try:
-#         data_path = DATA_PATH+'Atmospheric_Domain/2.15PrecursorsAerosolsOzone/Figure2.31/'
-#         data_csv = data_path + 'Figure2.31_data.csv'
-#         df = pd.read_csv(data_csv, index_col=0)
-#     except:
-#         return empty_chart()
-#     hourly_trace = go.Scatter(x=df['datetime'],
-#                                 y=df['nitrogen_dioxide_concentration'],
-#                             name='Hourly',
-#                             mode='markers',
-#                             marker=dict(color=TIMESERIES_COLOR_2,
-#                                         size=5,
-#                                         opacity=0.3),
-#                             hovertemplate='%{x|%b %Y}<br>' +
-#                             '<b>Hourly NO<sub>2</sub></b><br>' +
-#                             'Concentration: %{y:.2f} µg/m<sup>3</sup><br>' +
-#                             '<extra></extra>'
-#                             )
-#     monthly_trace = go.Scatter(x=df['datetime'],
-#                                 y=df['mean__monthly__nitrogen_dioxide_concentration'],
-#                                 name='Mean Monthly',
-#                                 mode='lines',  # 'line' is default
-#                                 line_shape='spline',
-#                                 line=dict(color=TIMESERIES_COLOR_1,
-#                                         width=2),
-#                                 hovertemplate='%{x|%b %Y}<br>' +
-#                                     '<b>Mean Monthly NO<sub>2</sub></b><br>' +
-#                                     'Concentration: %{y:.2f} µg/m<sup>3</sup></sup><br>' +
-#                                     '<extra></extra>'
-#                                 )
-#     figure_2_31 = go.Figure(data=[hourly_trace, monthly_trace], layout=TIMESERIES_LAYOUT)
-#     figure_2_31.update_layout(
-#         yaxis=dict(title='NO<sub>2</sub> Concentration (µg/m<sup>3</sup>)'),
-#         xaxis=dict(title_text="Year"))
-#     return figure_2_31
-
 def map_2_15():
     """
     Precursors for Aerosols and Ozone for infrastructure map
@@ -2262,26 +2189,6 @@ def map_2_15():
     except:
         return empty_chart()
     epa_df = df
-    #  dancasey 2021-07-23: Keep for now and ask Ned can they be removed
-    # epa_df = df[df['OPERATOR'].isin(['EPA'])]
-    # met_df = df[df['OPERATOR'].isin(['Met Eireann'])]
-    # other_df = df[df['OPERATOR'].isin([
-    #     'Public Analyst',
-    #     "Public Analyst's Laboratory, Galway"])]
-    # uni_df = df[df['OPERATOR'].isin([
-    #     'CIT',
-    #     'UCC',
-    #     'University College Galway',
-    #     'EPA Research Project', 
-    #     ])]
-    # la_df = df[df['OPERATOR'].isin([
-    #     'Cork City Council',
-    #     'DCC',
-    #     'Dublin County Council',
-    #     'South Dublin County Council',
-    #     'Limerick Co. Co.',
-    #     'Wexford Co. Co.'])]
-
     epa_trend = go.Scattermapbox(
         name='Air Quality Monitoring Network',
         lon=epa_df.LON,
@@ -2298,79 +2205,12 @@ def map_2_15():
             'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
     )
 
-#  dancasey 2021-07-23: Keep for now and ask Ned can they be removed
-    # met_trend = go.Scattermapbox(
-    #     name='Met Éireann',
-    #     lon=met_df.LON,
-    #     lat=met_df.LAT,
-    #     marker=dict(color=STATION_COLORS['Synoptic'],
-    #                 size=7),
-    #         hovertemplate='Name: ' + met_df['NAME'] + '<br>' +
-    #         'County: ' + met_df['LOCATION'] + '<br>' +
-    #         'Operator: ' + met_df['OPERATOR'] + '<br>' +
-    #         'Type: ' + met_df['TYPE'] + '<br>' +
-    #         'Coverage: ' + met_df['COVERAGE'] + '<br>' +
-    #         'Lat: %{lat:.2f} \u00b0<br>'+
-    #         'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
-    # )
-
-    # other_trend = go.Scattermapbox(
-    #     name='Public Analyst Lab',
-    #     lon=other_df.LON,
-    #     lat=other_df.LAT,
-    #     marker=dict(color='black',
-    #                 size=7),
-    #         hovertemplate='Name: ' + other_df['NAME'] + '<br>' +
-    #         'County: ' + other_df['LOCATION'] + '<br>' +
-    #         'Operator: ' + other_df['OPERATOR'] + '<br>' +
-    #         'Type: ' + other_df['TYPE'] + '<br>' +
-    #         'Coverage: ' + other_df['COVERAGE'] + '<br>' +
-    #         'Lat: %{lat:.2f} \u00b0<br>'+
-    #         'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
-    # )
-
-    # uni_trend = go.Scattermapbox(
-    #     name='University / EPA Research',
-    #     lon=uni_df.LON,
-    #     lat=uni_df.LAT,
-    #     marker=dict(color='orange',
-    #                 size=7),
-    #         hovertemplate='Name: ' + uni_df['NAME'] + '<br>' +
-    #         'County: ' + uni_df['LOCATION'] + '<br>' +
-    #         'Operator: ' + uni_df['OPERATOR'] + '<br>' +
-    #         'Type: ' + uni_df['TYPE'] + '<br>' +
-    #         'Coverage: ' + uni_df['COVERAGE'] + '<br>' +
-    #         'Lat: %{lat:.2f} \u00b0<br>'+
-    #         'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
-    #     )
-
-    # la_trend = go.Scattermapbox(
-    #     name='Local Authority',
-    #     lon=la_df.LON,
-    #     lat=la_df.LAT,
-    #     marker=dict(color='yellow',
-    #                 size=7),
-    #         hovertemplate='Name: ' + la_df['NAME'] + '<br>' +
-    #         'County: ' + la_df['LOCATION'] + '<br>' +
-    #         'Operator: ' + la_df['OPERATOR'] + '<br>' +
-    #         'Type: ' + la_df['TYPE'] + '<br>' +
-    #         'Coverage: ' + la_df['COVERAGE'] + '<br>' +
-    #         'Lat: %{lat:.2f} \u00b0<br>'+
-    #         'Lon: %{lon:.2f} \u00b0<br><extra></extra>',
-    # )
-
     map_2_15 = go.Figure(
         data=[
             epa_trend,
-            # met_trend,
-            # la_trend,
-            # uni_trend,
-            # other_trend
-            
         ],
         layout=MAP_LAYOUT)
     map_2_15.update_layout(
-        # legend_title='<b>Station Operator</b>',
         mapbox=dict(bearing=0,
                 center=dict(
                     lat=54,
@@ -2404,7 +2244,6 @@ def figure_3_1():
                         text=df["mean__annual__surface_sea_temperature"],
                         name='Annual',
                         marker=dict(
-                                # color="#214a7b", color used in report
                                 color=TIMESERIES_COLOR_2,
                                 opacity=0.5
                                 ),
@@ -2417,10 +2256,9 @@ def figure_3_1():
                         y=df["moving_average__5year__surface_sea_temperature_anomaly"],
                         text=df["moving_average__5year__surface_sea_temperature"],
                         name='5 Year Moving Average',
-                        mode='lines',  # 'line' is default
+                        mode='lines',  
                         line_shape='spline',
                         line=dict(
-                                # color="#fc0d1b", color used in report
                                 color=TIMESERIES_COLOR_1,
                                 width=2),
                         hovertemplate='%{x|%Y}<br>' +
@@ -2431,9 +2269,9 @@ def figure_3_1():
     normal = go.Scatter(x=df["datetime"],
                         y=df["normal_1981_2010__surface_sea_temperature"],
                         name='1981-2010 Average',
-                        mode='lines',  # 'line' is default
+                        mode='lines',  
                         line_shape='spline',
-                        line=dict(color=TIMESERIES_COLOR_3, #color used in report
+                        line=dict(color=TIMESERIES_COLOR_3,
                                 width=1),
                         hoverinfo='skip',
                                 )
@@ -2450,19 +2288,17 @@ def figure_3_1():
                             secondary_y=False,
                             range=[-1, 1],
                             showgrid=False,
-                            dtick=0.25,  # dtick sets the distance between ticks
-                            tick0=0,  # tick0 sets a point to map the other ticks
+                            dtick=0.25,
+                            tick0=0,  
                             fixedrange=True,
                             showspikes=True,
-                            # zeroline=True,  # add a zero line
-                            # zerolinecolor=TIMESERIES_COLOR_2
                             )
     figure_3_1.update_yaxes(title_text='Sea Surface Temperature (\u00b0C)',
                         secondary_y=True,
                         range=[9.5, 11.6],
                         showgrid=False,
-                        dtick=0.5,  # dtick sets the distance between ticks
-                        tick0=10.6,  # tick0 sets a point to map the other ticks
+                        dtick=0.5,  
+                        tick0=10.6,  
                         fixedrange=True,
                         )
     figure_3_1.update_xaxes(
@@ -2543,7 +2379,6 @@ def map_3_1a():
     tidbiDFNew['Latitude']=tidbiDF["latitude"]
     tidbiDFNew['Longitude']=tidbiDF["longitude"]
     tidbiDFNew['Open_Year']=pd.to_datetime(tidbiDF["beginLifes"]).dt.year
-    # tidbiDFNew['Close_Year']=pd.to_datetime(tidbiDF["endLifespa"]).dt.year
     tidbiDFNew['Type']=tidbiDF["datasetNam"]
     combinedDF = pd.concat([stationsDF, tidbiDFNew])
     map_3_1a=stations_map(combinedDF)
@@ -2576,7 +2411,7 @@ def figure_3_4():
     moving_avg_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average__5year__upper_sea_salinity'],
                                 name='5 Year Moving Average',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -2618,7 +2453,7 @@ def figure_3_5():
     moving_avg_trace = go.Scatter(x=df['datetime'],
                                 y=df['moving_average__5year__deep_sea_salinity'],
                                 name='5 Year Moving Average',
-                                mode='lines',  # 'line' is default
+                                mode='lines',  
                                 line_shape='spline',
                                 line=dict(color=TIMESERIES_COLOR_1,
                                         width=2),
@@ -2641,9 +2476,6 @@ def map_3_2():
         data_path = DATA_PATH+'Oceanic_Domain/3.2OceanSurfaceSubsurfaceSalinity/Map3.2/'
         data_csv = data_path + 'Map3.2_data.csv'
         df = pd.read_csv(data_csv, index_col=0)
-        # ellettLineDF = pd.read_csv(
-        #     data_path+'Map3.1_StationTable_ExtendedEllettLineBuoy.txt')
-        # df=pd.concat(df, ellettLineDF)
     except:
         return empty_chart()
     map_3_2=stations_map(df)
@@ -2673,7 +2505,7 @@ def figure_3_7_1():
                     y=malin_df["mean__monthly__sea_surface_height"],
                     name='Malin Head',
                     connectgaps=False,
-                    mode='lines',  # 'line' is default
+                    mode='lines',  
                     line_shape='spline',
                     line=dict(
                             color="#00a5e3",
@@ -2709,7 +2541,7 @@ def figure_3_7_2():
                     y=ballyglass_df["mean__monthly__sea_surface_height"],
                     name='Ballyglass',
                     connectgaps=False,
-                    mode='lines',  # 'line' is default
+                    mode='lines',  
                     line_shape='spline',
                     line=dict(
                             color="#ff5768",
@@ -2745,7 +2577,7 @@ def figure_3_7_3():
                     y=castletownbere_df["mean__monthly__sea_surface_height"],
                     name='Castletownbere',
                     connectgaps=False,
-                    mode='lines',  # 'line' is default
+                    mode='lines',  
                     line_shape='spline',
                     line=dict(
                             color="#ff96c5",
@@ -2781,7 +2613,7 @@ def figure_3_7_4():
                     y=howth_df["mean__monthly__sea_surface_height"],
                     name='Howth Harbour',
                     connectgaps=False,
-                    mode='lines',  # 'line' is default
+                    mode='lines',  
                     line_shape='spline',
                     line=dict(
                             color="#ffbf65",
@@ -2824,11 +2656,6 @@ def map_3_1b():
         stationsDF = pd.read_csv(
                     data_path+'Map3.1_StationTable_MI.txt')
         stationsDF_subsurface = stationsDF[stationsDF['name'].isin(['M6_Buoy', 'SmartBay Wave Buoy'])]
-
-        # rockallDF = pd.read_csv(
-        #             data_path+'Map3.1_StationTable_RockallTroughSection.txt')
-        # tidbiDF = pd.read_csv(
-        #             data_path+'Map3.1_StationTable_TidbiT.txt')
         ellettLineDF = pd.read_csv(
             data_path+'Map3.1_StationTable_ExtendedEllettLineBuoy.txt')
     except:
@@ -3129,7 +2956,6 @@ def figure_3_10():
             title_text="Month",
             ticktext=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'],
             showgrid=False,
-            # tickvals=[50,80, 110, 140, 170, 200, 230, 260, 290, 320, 350, 380],
             tickvals=[15,45, 75, 105, 135, 165, 195, 225, 255, 285, 315, 345],
         )
     )
@@ -3165,9 +2991,8 @@ def figure_3_15():
                                         text=df.depth_sample,
                                         marker=dict(
                                             size=4,
-                                            # set color equal to a variable
                                             color=df.depth_sample*(-1),
-                                            colorscale='Viridis',  # one of plotly colorscales
+                                            colorscale='Viridis',
                                             showscale=True,
                                             colorbar=dict(title='<b>Depth</b> (m)',
                                                             thickness=10,
@@ -3219,7 +3044,6 @@ def map_3_6():
     miStationsDF['Station_Nu']=miStationsDF_origin.Station.unique()
 
     for index, row in miStationsDF.iterrows():
-    #     print(row['Latitude'])
         stationRow=miStationsDF_origin[miStationsDF_origin.Station == row['Station_Nu']].iloc[0]
         miStationsDF.at[index,'Latitude']=stationRow['Latitude']
         miStationsDF.at[index,'Longitude']=stationRow['Longitude']
@@ -3621,11 +3445,6 @@ def figure_3_25():
             'Habitat Type: '+ trend_df["HabitatTyp"]+'<br>' +
             'VME Habitat Type: '+ trend_df["VME_Habita"]+'<br>' +
             'Status: '+ trend_df["status"]+'<br>' +
-            # Getting t.replace is not a fucntion errors on hover when these lines are inlcuded
-    #         'Data Owner: '+ df["DataOwner"]+'<br>' +
-    #         'Vessel Type: '+ trend_df["VesselType"]+'<br>' +
-    #         'Survey Method: '+ trend_df["SurveyMeth"]+'<br>' +
-    #         'Survey Key: '+ trend_df["SurveyKey"]+'<br>' +
             'Observation Date: '+ trend_df["ObsDate"]+'<br>' +
             'Placename: '+ trend_df["PlaceName"]+'<br>' +
             'Lat: %{lat:.2f}\u00b0<br>' +
@@ -3993,7 +3812,6 @@ def map_4_4():
     try:
         data_path = DATA_PATH+'Terrestrial_Domain/4.4SoilMoisture/Map4.4/'
         df = pd.read_csv(data_path+'Map4.4_StationTable_SoilMoisture.txt', delimiter = ",")
-        # df = df.rename(columns={'Height_m_': 'Height__m_'})
     except:
         return empty_chart()
 
@@ -4097,8 +3915,7 @@ def figure_4_10_2():
         df_2018=df.loc[(df['datetime'] == '2018-01-01')].copy()
     except:
         return empty_chart()
-        
-    # wrap text for long label
+
     df_2018.loc[df_2018['corine_l1_class'] == 'Semi-Natural & Low Vegetation', 
         'corine_l1_class'] = 'Semi-Natural &<br>Low Vegetation'
     area2018Trace = go.Pie(
@@ -4389,7 +4206,7 @@ def figure_4_17():
                             name='Total',
                             
                             text=total_df['sum__annual__growing_stock_volume'],
-                                    mode='lines',  # 'line' is default
+                                    mode='lines',  
                             line_shape='spline',
                             line=dict(
                                     # color="#fc0d1b", color used in report
@@ -4550,7 +4367,7 @@ def figure_4_22():
     dublinTrace = go.Scatter(x=dublin_df["datetime"],
                     y=dublin_df["sum__annual__fire_index_days"],
                     name='Dublin Airport',
-                    mode='lines',  # 'line' is default
+                    mode='lines',  
                     line=dict(
                             color=TIMESERIES_COLOR_1,
                             width=2),
@@ -4561,7 +4378,7 @@ def figure_4_22():
     shannonTrace = go.Scatter(x=shannon_df["datetime"],
                         y=shannon_df["sum__annual__fire_index_days"],
                         name='Shannon Airport',
-                        mode='lines',  # 'line' is default
+                        mode='lines',  
                         line=dict(
                                 color=TIMESERIES_COLOR_2,
                                 width=2),

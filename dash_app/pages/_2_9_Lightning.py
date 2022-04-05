@@ -33,12 +33,6 @@ Valentia Observatory is a flagship weather station making the only lightning
 observations in Ireland.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-# trendChartTitle = ''
-# trendChart = figure_2_17()
-
-# trendCaption = """
-# Number of 15 minute lightning pulses detected by the ATDnet Lightning system for 26th – 27th May 2018 allows the trajectory of a thunderstorm to be tracked.  
-#         """
 
 infrastructureText = """
 Lightning measurements have been taken by Met Éireann at Valentia Observatory, 
@@ -183,11 +177,6 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

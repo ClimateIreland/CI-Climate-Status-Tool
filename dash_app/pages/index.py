@@ -60,15 +60,9 @@ intro = dbc.Container(
                                       html.A(
                                           'here.',
                                           target='_blank',
-                                        #   href='https://www.epa.ie/publications/',
                                           href='https://www.epa.ie/publications/research/climate-change/research-386-the-status-of-irelands-climate-2020',
-                                        #   href=WEB_RESOURCE + '/pdf/statusReport2020/' + 'Climate_Status_Report_for_Ireland_2020' + '.pdf'
                                       ),
                                   ]),
-            #                       html.P("""
-            # This work was carried out by the MaREI Centre at University College Cork. It has been endorsed by GCOS-Ireland and has been co-funded by the Environmental Protection Agency, the Marine Institute and Met Éireann.
-            # """),
-
                                   ]
                     ),
                     html.Div(
@@ -107,7 +101,6 @@ menu_graphic = dbc.Container(
 
     id='gcosGraphicMenu',
     className='d-none d-lg-block sr-menu-graphic',
-    # style={'marginTop': '-0px'},
     children=[
         html.Img(
                 className='sr-graphic-menu-img',
@@ -122,9 +115,6 @@ menu_graphic = dbc.Container(
         html.Div(
             id='ac-text',
             children='Atmospheric Composition'),
-        # html.Div(
-        #     id='cry-text',
-        #     children='Cryosphere'),
         html.Div(
             id='ant-text',
             children='Anthroposphere'),
@@ -406,15 +396,6 @@ def create_layout(app):
             menu_graphic,
             menu_graphic_small,
             menu_list,
-            # dbc.Row(
-            #     dbc.Col(
-            #         children=[
-            #             html.P(
-            #                 className='sr-section-title text-center',
-            #                 style={'color': '#08839b'},
-            #                 children='More Chapters in Development'
-            #             )])
-            # ),
             dbc.Row(
                 dbc.Col(
                     className="",

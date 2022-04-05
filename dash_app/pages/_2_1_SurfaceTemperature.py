@@ -9,10 +9,8 @@ from settings import *
 from charts import figure_2_1, figure_2_3, map_2_1
 
 chapter_num = '2.1'
-ecvName = 'Surface Air Temperature'
 bannerImgSrc = IMAGES_PATH+'AtmosphericSections/AirTemp_MetEireann.jpg'
 bannerImgCredit = 'Met Éireann'
-# ecvIconSrc=IMAGES_PATH+'icons/surface-temperature.png'
 
 introText = """
         Surface air temperature is a key climate indicator and has widespread impacts 
@@ -33,12 +31,7 @@ bulletPoint2 = """
 
 bulletPoints = [bulletPoint1, bulletPoint2]
 
-# domain='Atmosphere'
-# subdomain='Surface'
-# scientificArea='Energy and Temperature'
-# authors='Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin'
-
-trendChartTitle = 'Surface Air Temperature - Ireland'  # (1900-2019)
+trendChartTitle = 'Surface Air Temperature - Ireland'
 trendChart = figure_2_1()
 
 trendCaption = """
@@ -201,11 +194,6 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-            #     pb.build_trend(trendChartTitle,
-            #                    trendChart,
-            #                    trendCaption,
-            #                    chapter_dict
-            #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

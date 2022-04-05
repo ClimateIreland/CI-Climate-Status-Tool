@@ -152,13 +152,6 @@ custom_trend = dbc.Container(
             ),
                         dbc.Row(
                 children=[
-                # dbc.Col(className="col-12",
-                #             children=[
-                #                 html.H4(
-                #                     className='sr-chart-title',
-                #                     children=trendChartTitle2),
-                #                     ]
-                #             ),
                     dbc.Col(className="col-12 col-md-6",
                             children=[
                             html.H4(
@@ -195,20 +188,6 @@ custom_trend = dbc.Container(
                             )
                 ]
             ),
-            # dbc.Row(
-            #     children=[
-            #         dbc.Col(className="col-md-10 offset-md-1",
-            #                 children=[
-            #                     html.P(
-            #                         className='sr-chart-caption',
-            #                                 children=[html.I(className="fas fa-play _up",
-            #                                style={"color": chapter_dict['domain-color']}),
-            #                         trendCaption2]
-            #                     )
-            #                     ]
-            #                 )
-            #     ]
-            # ),
                         dbc.Row(
                 children=[
                     dbc.Col(className="col-12",
@@ -253,11 +232,6 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

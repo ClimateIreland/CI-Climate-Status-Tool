@@ -4,7 +4,18 @@ if os.path.isfile('env.py'):
     import env
 
 WEB_RESOURCE = 'https://www.climateireland.ie/web_resource'
-# WEB_RESOURCES ='/Users/dan/ClimateIreland/Repositories/docs/web_resource'
+IMAGES_PATH = 'https://climate-docs.s3.eu-west-1.amazonaws.com/web_resource/images/status-tool/'
+
+PROJECT_PATH = pathlib.Path(__file__).parent.parent
+local_data_dir = str(PROJECT_PATH)+'/data'
+if os.path.isdir(local_data_dir):
+    DATA_PATH = local_data_dir+'/'   
+else:
+    DATA_PATH = "/home/data/"
+print('DATA_PATH set to ' + DATA_PATH)
+
+
+# Global colors, referenced in python rather CSS as dependent on functions
 ATMOSPHERE_COLOR = '#00aeef' #009fe3'
 OCEAN_COLOR = '#00909e'
 TERRESTRIAL_COLOR = '#f39200'
@@ -85,11 +96,32 @@ TIMESERIES_LAYOUT = dict(
     ),
 )
 
+MAP_LAYOUT = dict(
+    font=dict(
+        color="#2a3f5f",
+        family="Arial"
+        ),
+    legend=dict(title='<b>Station Type</b>',
+                x=0.01),
+    plot_bgcolor='rgba(0,0,0,0)',
+    paper_bgcolor='rgba(0,0,0,0)',
+    height=400,
+    margin=dict(t=0, b=0, r=0, l=0),
+    mapbox=dict(bearing=0,
+                center=dict(
+                    lat=53.4,
+                    lon=352
+                ),
+                pitch=0,
+                zoom=5,
+                style="open-street-map"  # does not require token
+                )
+)
+
 CHAPTERS = [
-    # Surface Atmoshere
+    # Surface Atmosphere
     {
         'chapter-num': '2.1',
-        # 'pdf-url':WEB_RESOURCES + '/pdf/Surface-Air-Temperature.pdf',
         'id': 'sa-1',
         'title': 'Surface Air Temperature',
         'href': '_2_1_SurfaceAirTemperature',
@@ -104,9 +136,7 @@ CHAPTERS = [
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
-
     },
-
     {
         'chapter-num': '2.2',
         'id': 'sa-2',
@@ -141,8 +171,7 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-
-            {
+    {
         'chapter-num': '2.3',
         'id': 'uaa-3',
         'title': 'Upper Air Atmosphere Water Vapour',
@@ -176,8 +205,6 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-
-
     {
         'chapter-num': '2.5',
         'id': 'sa-5',
@@ -194,9 +221,7 @@ CHAPTERS = [
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Keith Lambkin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
-
     },
-
         {
         'chapter-num': '2.6',
         'id': 'sa-6',
@@ -214,7 +239,6 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-
         {
         'chapter-num': '2.6',
         'id': 'uaa-4',
@@ -233,9 +257,6 @@ CHAPTERS = [
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
     # Upper Air
-
-
-
     {
         'chapter-num': '2.7a',
         'id': 'uaa-1',
@@ -270,7 +291,6 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-
     {
         'chapter-num': '2.8',
         'id': 'ac-1',
@@ -305,9 +325,7 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-
-    # Atmosheric Composition
-
+    # Atmospheric Composition
     {
         'chapter-num': '2.10',
         'id': 'ac-2',
@@ -341,7 +359,6 @@ CHAPTERS = [
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Damien Martin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
-
     },
     {
         'chapter-num': '2.12',
@@ -359,7 +376,6 @@ CHAPTERS = [
         'authors': 'Walther C.A. Cámaro García, Ned Dwyer, Damien Martin',
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
-
     },
         {
         'chapter-num': '2.13',
@@ -412,7 +428,6 @@ CHAPTERS = [
         'domain-color': ATMOSPHERE_COLOR,
         'domain-bg-color': ATMOSPHERE_BG_COLOR
     },
-
     # Ocean Biogeochemistry
     {
         'chapter-num': '3.1a',
@@ -466,7 +481,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
     # OCEANIC - SUBSURFACE OCEAN PHYSICS
     {
         'chapter-num': '3.2',
@@ -519,7 +533,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
     {
         'chapter-num': '3.4',
         'id': 'sop-4',
@@ -537,7 +550,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
             {
         'chapter-num': '3.5',
         'id': 'sop-5',
@@ -555,7 +567,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
     {
         'chapter-num': '3.6',
         'id': 'obgc-1',
@@ -590,7 +601,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
         {
         'chapter-num': '3.8',
         'id': 'obgc-3',
@@ -608,13 +618,12 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
         {
         'chapter-num': '3.9',
         'id': 'obgc-4',
         'title': 'Ocean Colour',
         'href': '_3_9_OceanColour',
-             'pdf': '_3_9_OceanColour.pdf',
+        'pdf': '_3_9_OceanColour.pdf',
         'icon-lg-src': 'ocean-colour_0.png',
         'icon-lg-hover-src': 'ocean-colour_hover.png',
         'icon-src': 'ico-obgc-ocean-colour.png',
@@ -631,7 +640,7 @@ CHAPTERS = [
         'id': 'obe-1',
         'title': 'Plankton',
         'href': '_3_10_Plankton',
-             'pdf': '_3_10_Plankton.pdf',
+        'pdf': '_3_10_Plankton.pdf',
         'icon-lg-src': 'plankton_0.png',
         'icon-lg-hover-src': 'plankton_hover.png',
         'icon-src': 'ico-obe-plankton.png',
@@ -643,7 +652,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
         {
         'chapter-num': '3.11',
         'id': 'obe-2',
@@ -661,7 +669,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
         {
         'chapter-num': '3.12a',
         'id': 'obgc-5',
@@ -679,7 +686,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
         {
         'chapter-num': '3.12b',
         'id': 'sop-6',
@@ -714,8 +720,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
- 
-
     {
         'chapter-num': '3.12d',
         'id': 'obgc-6',
@@ -733,10 +737,6 @@ CHAPTERS = [
         'domain-color': OCEAN_COLOR,
         'domain-bg-color': OCEAN_BG_COLOR
     },
-
-
-    
-
     # Biosphere
     {
         'chapter-num': '4.1',
@@ -806,8 +806,8 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-            {
-            'chapter-num': '4.5',
+        {
+        'chapter-num': '4.5',
         'id': 'bio-1',
         'title': 'Albedo',
         'href': '_4_5_Albedo',
@@ -857,7 +857,7 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-            {
+    {
         'chapter-num': '4.8',
         'id': 'bio-4',
         'title': 'Leaf Area Index (LAI)',
@@ -874,7 +874,6 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-
         {
         'chapter-num': '4.9',
         'id': 'bio-5',
@@ -892,7 +891,6 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-
         {
         'chapter-num': '4.10',
         'id': 'bio-6',
@@ -910,7 +908,6 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-
     {
         'chapter-num': '4.11',
         'id': 'bio-7',
@@ -945,7 +942,6 @@ CHAPTERS = [
         'domain-color': TERRESTRIAL_COLOR,
         'domain-bg-color': TERRESTRIAL_BG_COLOR
     },
-
         {
         'chapter-num': '4.13',
         'id': 'ant-1',
@@ -982,72 +978,21 @@ CHAPTERS = [
     }
 ]
 
+ # CHAPTER_DEV is used for when chapters are still in development
 CHAPTERS_DEV = [
     # Upper-air Atmoshere
-
-
-
 
     # ATMOSPHERE - COMPOSITION
 
     # ATMOSPHERE - SURFACE
 
-
-
     # OCEANIC - SURFACE OCEAN PHYSICS
-
-
 
     # OCEANIC - BIOECO
 
-
     # TERRESTRIAL - HYDROSPHERE
-
-
 
     # TERRESTRIAL - BIOSPHERE
 
-
-
-
     ]
 
-MAP_LAYOUT = dict(
-    font=dict(
-        color="#2a3f5f",
-        family="Arial"
-        ),
-    legend=dict(title='<b>Station Type</b>',
-                x=0.01),
-    plot_bgcolor='rgba(0,0,0,0)',
-    paper_bgcolor='rgba(0,0,0,0)',
-    height=400,
-    margin=dict(t=0, b=0, r=0, l=0),
-    mapbox=dict(bearing=0,
-                center=dict(
-                    lat=53.4,
-                    lon=352
-                ),
-                pitch=0,
-                zoom=5,
-                style="open-street-map"  # does not require token
-                )
-)
-
-# ROOT_URL = os.getenv("ROOT_URL","")
-# print('ROOT_URL: ' + ROOT_URL)
-# IMAGES_PATH = '/'+ ROOT_URL + '/assets/images/'
-# print(IMAGES_PATH)
-# IMAGES_PATH='/Users/dan/ClimateIreland/Projects/CI-Status-Report-Dash/assets/images/'
-# IMAGES_PATH='https://www.climateireland.ie/web_resource/images/'
-
-# IMAGES_PATH = '/statusTool/assets/images/'
-IMAGES_PATH = 'https://climate-docs.s3.eu-west-1.amazonaws.com/web_resource/images/status-tool/'
-
-PROJECT_PATH = pathlib.Path(__file__).parent.parent
-local_data_dir = str(PROJECT_PATH)+'/data'
-if os.path.isdir(local_data_dir):
-    DATA_PATH = local_data_dir+'/'   
-else:
-    DATA_PATH = "/home/data/"
-print('DATA_PATH set to ' + DATA_PATH)

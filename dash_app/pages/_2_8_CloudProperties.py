@@ -37,9 +37,6 @@ in 2020, as ongoing operational funding could not be secured.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = 'Probability Distributions of Cloud Droplet Concentrations (CDNC) - Mace Head'
-# trendChart = empty_chart()
-
-
 
 infrastructureText = """
 A range of cloud properties are observed at the Mace Head Atmospheric Research 
@@ -145,11 +142,6 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

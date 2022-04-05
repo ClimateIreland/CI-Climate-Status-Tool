@@ -52,8 +52,6 @@ many important environmental features within the very fragmented landscape of Ir
 Ireland (OSi) led initiative aimed at generating a new land cover dataset, with a spatial resolution almost 250 times better than CORINE,
  will be released later in 2021.
         """
-# custom infrastruture uses corina iframe
-# infrastructureMap=surfaceAirTempStationsMap()
 
 infoLinks = [
     {'text': 'Land Cover ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
@@ -213,19 +211,9 @@ def create_layout(app):
                            bulletPoints,
                            chapter_dict
                            ),
-            # pb.build_trend(trendChartTitle,
-            #                trendChart,
-            #                trendCaption,
-            #                chapter_dict
-            #                ),
             custom_trend,
             custom_infrastructure,
-            # pb.build_infrastructure(infrastructureText,
-            #                         infrastructureMap,
-            #                         chapter_dict
-            #                         ),
             pb.build_info(infoLinks,
                           chapter_dict),
-
             pb.build_nav_carousel(chapter_dict)
         ])

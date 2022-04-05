@@ -34,7 +34,6 @@ Organization (WHO) guideline at a number of stations.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = 'Nitrogen Dioxide (NO\u2082) Concentration - Ballyfermot'
-# trendChart = figure_2_31()
 
 trendCaption = """
 Hourly concentrations (µg/m\u00b3) of nitrogen dioxide, NO\u2082, at 
@@ -127,11 +126,6 @@ def create_layout(app):
                            chapter_dict
                            ),
            custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

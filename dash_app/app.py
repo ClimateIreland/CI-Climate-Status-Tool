@@ -29,7 +29,6 @@ from pages import (
     _2_13_Ozone,
     _2_14_Aerosols,
     _2_15_PrecursorsAerosolsOzone,
-
     _3_1a_SeaSurfaceTemperature,
     _3_1b_SeaSubsurfaceTemperature,
     _3_2_OceanSurfaceSubsurfaceSalinity,
@@ -42,12 +41,10 @@ from pages import (
     _3_9_OceanColour,
     _3_10_Plankton,
     _3_11_MarineHabitatProperties,
-    # _3_12_OtherOceanECVs,
     _3_12a_TransientTracers,
     _3_12b_OceanSurfaceStress,
     _3_12c_OceanSurfaceHeatFlux,
     _3_12d_OceanicNitrousOxide,
-
     _4_1_RiverDischarge,
     _4_2_Groundwater,
     _4_3_Lakes,
@@ -66,7 +63,6 @@ from pages import (
 
 app = dash.Dash(
     __name__,
-    # url_base_pathname="/"+ROOT_URL+"/",
     url_base_pathname="/statusTool/",
     meta_tags=[{"name": "viewport",
                 "content": "width=device-width, initial-scale=1"}],
@@ -81,21 +77,14 @@ server = app.server
 app.title = 'Climate Status Report Ireland'
 app.layout = html.Div(children=[
     dcc.Location(id='url', refresh=False),
-    # html.Div(
-    #     className='sr-header text-center',
-    #     children='Climate Ireland'
-    # ),
     html.Div(id='page-content'),
 ],
 )
 
 # Update page
-
-
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    
-    # if pathname == "/"+ROOT_URL:
+
     if pathname == "/statusTool/":
         return index.create_layout(app)
     # Atmospheric
@@ -166,7 +155,6 @@ def display_page(pathname):
     elif "_3_12d_OceanicNitrousOxide" in pathname:
         return _3_12d_OceanicNitrousOxide.create_layout(app)
 
-
     # Terrestrial
     elif "_4_2_Groundwater" in pathname:
         return _4_2_Groundwater.create_layout(app)
@@ -196,12 +184,8 @@ def display_page(pathname):
         return _4_13_WaterUse.create_layout(app) 
     elif "_4_14_AnthropogenicGreenhouseGasEmissions" in pathname:
         return _4_14_AnthropogenicGreenhouseGasEmissions.create_layout(app)
-    # else:
-    #     return dcc.Location(pathname="/StatusReport", id='any')
     else:
-        # pathname = "/dash/"
         return dcc.Location(pathname="/statusTool", id="someid_doesnt_matter")
-        # return index.create_layout(app)
 
 if __name__ == '__main__':
     app.run_server(debug='True')

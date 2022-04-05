@@ -116,16 +116,7 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
-           custom_infrastructure,
-        #     pb.build_infrastructure(infrastructureText,
-        #                             infrastructureMap,
-        #                             chapter_dict
-        #                             ),
+            custom_infrastructure,
             pb.build_info(infoLinks,
                           chapter_dict),
 

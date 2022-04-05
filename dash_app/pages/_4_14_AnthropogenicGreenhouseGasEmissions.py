@@ -135,7 +135,6 @@ custom_trend = dbc.Container(
                                     children=trendChartTitle2),
                                 html.Img(
                                 style={"width":"100%","max-width":"800px"},
-                                # className='w-100',
                                 src=trendChart2)
                                     ]
                             )
@@ -170,11 +169,6 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

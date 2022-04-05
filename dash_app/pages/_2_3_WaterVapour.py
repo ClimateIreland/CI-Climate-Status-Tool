@@ -32,7 +32,6 @@ bulletPoint2 = """
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
 trendChartTitle = ''
-# trendChart = empty_chart()
 
 trendCaption = """
 
@@ -124,7 +123,6 @@ custom_trend_alt = dbc.Container(
                                 children=trendChartTitle),
                             html.Img(
                                         style={"max-width": "400px"},
-                                        # className='w-100',
                                         src=trendImage
                                         ),
                                                dbc.Row(
@@ -195,10 +193,6 @@ custom_trend_alt = dbc.Container(
                         )
             ]
         )
-
-
-
-
                         ])
             ]
         ),
@@ -225,7 +219,6 @@ custom_trend = dbc.Container(
                                 children=trendChartTitle),
                             html.Img(
                                         style={"max-width": "400px"},
-                                        # className='w-100',
                                         src=trendImage
                                         ),
                                 ]
@@ -315,11 +308,7 @@ def create_layout(app):
                            combined_chapter_dict
                            ),
             custom_trend_alt,
-            #     pb.build_trend(trendChartTitle,
-            #                    trendChart,
-            #                    trendCaption,
-            #                    chapter_dict
-            #                    ),
+
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict

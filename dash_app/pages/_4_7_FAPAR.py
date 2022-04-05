@@ -27,10 +27,6 @@ bulletPoint2 = """
         validate and support satellite observations.
         """
 bulletPoints = [bulletPoint1, bulletPoint2]
-# domain='Terrestrial'
-# subdomain='Biology'
-# scientificArea='Biosphere'
-# authors='Walther C.A. Cámaro García, Ned Dwyer'
 
 trendChartTitle = 'Mean 10-Day FAPAR - Ireland'
 trendChart = figure_4_12()
@@ -51,9 +47,6 @@ generally based on observations from satellite sensors, which have the ability t
 and infrared radiation reflected by the Earth’s surface on a regular basis. The CGLS generates a 
 FAPAR dataset as part of a set of vegetation monitoring products.
         """
-
-# no map
-# infrastructureMap=surfaceAirTempStationsMap()
 
 infoLinks = [
     {'text': 'FAPAR ESSENTIAL CLIMATE VARIABLE (ECV). GCOS FACTSHEETS',
@@ -115,10 +108,6 @@ def create_layout(app):
                            trendCaption,
                            chapter_dict
                            ),
-            # pb.build_infrastructure(infrastructureText,
-            #                         infrastructureMap,
-            #                         chapter_dict
-            #                         ),
             custom_infrastructure,
             pb.build_info(
                 infoLinks,

@@ -86,8 +86,6 @@ infoLinks = [
 chapter_dict = next(
     (item for item in CHAPTERS if item['chapter-num'] == chapter_num), None)
 
-
-# create a custom layout for >1 chart
 custom_trend =  dbc.Container(
             className='sr-trends',
         style={'borderColor': chapter_dict['domain-color']},
@@ -98,7 +96,6 @@ custom_trend =  dbc.Container(
                 style={'color': chapter_dict['domain-color']},
                 children='Trends',
             ),
-            # First chart
             dbc.Row(
                 children=[
                     dbc.Col(className="col-md-10 offset-md-1",
@@ -125,7 +122,6 @@ custom_trend =  dbc.Container(
                             )
                 ]
             ),
-            # Second chart
             dbc.Row(
                 children=[
                     dbc.Col(className="col-md-10 offset-md-1",
@@ -152,7 +148,6 @@ custom_trend =  dbc.Container(
                             )
                 ]
             ),
-            # Third chart
             dbc.Row(
                 children=[
                     dbc.Col(className="col-md-10 offset-md-1",
@@ -196,11 +191,6 @@ def create_layout(app):
                            chapter_dict
                            ),
             custom_trend,
-        #     pb.build_trend(trendChartTitle,
-        #                    trendChart,
-        #                    trendCaption,
-        #                    chapter_dict
-        #                    ),
             pb.build_infrastructure(infrastructureText,
                                     infrastructureMap,
                                     chapter_dict
