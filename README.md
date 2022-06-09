@@ -4,7 +4,10 @@ Climate Ireland's Climate Status Tool is a standalone [Python Dash](https://dash
 
 The application can be accessed [here](http://www.climateireland.ie/#!/tools/statusReport2020), where it is integrated into the main Climate Ireland website as an iFrame. 
 
-The tool is a step towards a digital first climate status reporting, that can be updated annually and used to both analyse and share the findings of the data.
+The tool is a step towards digital first climate status reporting, that can be updated annually and used to both analyse and share the findings of the data.
+
+## Data (Currently) Not Included
+The data collected and used in the Climate Status Report Ireland 2020 was sourced from a number of organisations. Most of the source organisations do have open access data policies, however formal agreements have yet to be arranged to share the processed datasets. Therefore, the underlying data is not included in this repo but may be requested by contacting the report authors.
 
 ## Getting Started
 
@@ -57,8 +60,6 @@ Run with docker:
 ```bash
 docker build --no-cache -t climate_core .
 docker run -it -p 8080:8080 --mount source=$STATUS_TOOL_DATA,target=/home/data --name climate_status_tool climate_status_tool
-# for running detached include the -d option as done below
-# docker run -it -p 8080:8080  --name climate_core climate_core
 ```
 The app will be running on localhost:8080
 
@@ -78,12 +79,7 @@ The application will be running at http://0.0.0.0:8080/statusTool
 - ./Dockerfile: For running status tool with docker
 - ./docker-compose.yml: For running status tool with docker-compose
 
-## Future Development
-- Read all chart data from CSV generated from original Excel data. CSV files should follow naming convention
-- Allow for data files to be downloaded from application
-- Include end-point to serve individual charts for displaying in other locations 
-- All map data to read CSV files rather txt files
-- Restructure data folder, removing unnecessary files, leaving only CSV files
-- Create database from CSV files
-- Read all chart data from database rather than CSV files
-- Heat maps should have year on x axis
+## Further Development
+- Secure open access data agreements with data providers.
+- Host all processed data (maps and time-series) as open access CSV files on cloud storage (i.e. AWS S3).
+- Include data download feature for each chart provided.
